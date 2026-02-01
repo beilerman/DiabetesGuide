@@ -29,9 +29,9 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 
 | Table | Key Columns | Notes |
 |-------|------------|-------|
-| `parks` | name, location, timezone, first_aid_locations (JSONB) | 12 parks total |
-| `restaurants` | park_id (FK), name, land, cuisine_type, hours (JSONB), lat/lon | ~167 restaurants |
-| `menu_items` | restaurant_id (FK), name, description, price, category (enum), is_seasonal, is_fried, is_vegetarian | 818 items |
+| `parks` | name, location, timezone, first_aid_locations (JSONB) | 24 parks total |
+| `restaurants` | park_id (FK), name, land, cuisine_type, hours (JSONB), lat/lon | ~355 restaurants |
+| `menu_items` | restaurant_id (FK), name, description, price, category (enum), is_seasonal, is_fried, is_vegetarian | ~1551 items |
 | `nutritional_data` | menu_item_id (FK), calories/carbs/fat/sugar/protein/fiber/sodium/cholesterol (all INTEGER), source (enum), confidence_score | One row per item |
 | `allergens` | menu_item_id (FK), allergen_type (TEXT), severity (enum: contains/may_contain) | ~800 records |
 
@@ -41,7 +41,7 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 
 ## Data Pipeline
 
-### Data Sources (11 JSON files in `data/parks/`)
+### Data Sources (13 JSON files in `data/parks/`)
 
 | File | Items | Parks |
 |------|-------|-------|
@@ -57,6 +57,10 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 | `busch-gardens-tampa.json` | 26 | Busch Gardens Tampa |
 | `disney-resorts.json` | 175 | Resort hotel restaurants (29 restaurants) |
 | `disney-seasonal.json` | 184 | Festival/event items (71 booths) |
+| `additional-dining-1.json` | ~50 | Disney Springs, resort dining, snack carts |
+| `additional-dining-2.json` | ~112 | Victoria & Albert's, CityWalk, Disney Springs bakeries, more parks |
+| `disney-springs.json` | 281 | Disney Springs (54 restaurants across Marketplace, Landing, Town Center, West Side) |
+| `downtown-disney.json` | 231 | Downtown Disney District at Disneyland Resort (21 restaurants) |
 
 ### Scripts (all in `scripts/`, run with `npx tsx`)
 
@@ -69,6 +73,12 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 | `enrich-allergens.ts` | Keyword-based allergen inference from names/descriptions | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `adjust-portions.ts` | Apply theme park portion size multipliers to nutrition data | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `get-unmatched.ts` | List items missing nutrition data | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `fix-data-anomalies.ts` | Fix surface-level data issues (sugar>carbs, wrong categories, wrong vegetarian flags, extreme values) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `fix-false-positives.ts` | Correct items incorrectly modified by fix-data-anomalies (Coffee Cake Cookie, BBQ Jackfruit, DOLE Whip) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `audit-dump.ts` | Export all ~1042 items with nutrition to `audit-dump.json` for analysis | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `audit-nutrition.ts` | 3-pass automated audit (internal consistency, external plausibility, systematic patterns) | None (reads `audit-dump.json`) |
+| `fix-audit-findings.ts` | Fix systemic issues found by audit (over-multiplied items, missing micros, low protein) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `fix-remaining.ts` | Targeted fixes for 15 specific items still flagged after bulk fixes | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 
 ### Data Pipeline Execution Order
 
@@ -90,7 +100,72 @@ npx tsx scripts/enrich-allergens.ts
 
 # 6. Portion size adjustment
 npx tsx scripts/adjust-portions.ts
+
+# 7. Data quality fixes (run after enrichment + portion adjustment)
+npx tsx scripts/fix-data-anomalies.ts
+npx tsx scripts/fix-false-positives.ts
+
+# 8. Audit (export → analyze → fix)
+npx tsx scripts/audit-dump.ts
+npx tsx scripts/audit-nutrition.ts       # reads audit-dump.json, writes audit-report.json
+npx tsx scripts/fix-audit-findings.ts
+npx tsx scripts/fix-remaining.ts
 ```
+
+**Total corrections applied:** 573 fixes across all data quality scripts.
+
+## Data Quality & Audit
+
+### The Over-Multiplication Problem
+
+The biggest systemic data issue: `adjust-portions.ts` applied 1.5-2.5x multipliers to ALL items, but many USDA matches already returned full-portion values. Items that were already correctly sized got doubled. The audit scripts detect and fix this by defining maximum plausible calorie ranges per food type and dividing all macros proportionally when items exceed the range.
+
+### Audit Architecture (3-pass in `audit-nutrition.ts`)
+
+**Pass 1 — Internal consistency:** Caloric math (estimated cal from P*4+C*4+F*9 vs stated), macro ratio plausibility (fried items >25% fat, desserts >35% carbs, meat >20% protein), sodium-calorie ratio, sugar/fiber must be ≤ carbs.
+
+**Pass 2 — External plausibility:** 27 food type profiles with expected calorie/macro ranges (burger 500-1400, pizza 400-1200, churro 200-600, etc.). Items outside range get flagged.
+
+**Pass 3 — Systematic patterns:** Round number clustering, duplicate nutrition profiles, category ranking violations (e.g., a "dessert" with 0g sugar), missing data patterns by park.
+
+### Fix Categories (in `fix-audit-findings.ts`)
+
+| Fix | What it does | Count |
+|-----|-------------|-------|
+| Over-multiplied | Divides macros proportionally for 26 food types exceeding max range | ~180 |
+| Fiber > carbs | Sets fiber to 10% of carbs (impossible for fiber to exceed carbs) | ~10 |
+| Alcohol drinks | Reduces calorie gap >500 that can't be explained by alcohol (7 cal/g) | ~5 |
+| Under-valued | Fixes items clearly too low (Garden Burger 104→450, Pretzel Dog 73→550) | ~10 |
+| Low protein meat | Estimates 20% of cal from protein for meat dishes with <15g protein | ~30 |
+| Missing micros | Fills sugar/protein/sodium/fiber for items with all nulls, estimated by food type | ~70 |
+
+### Known Audit False Positives
+
+The audit regex matches words within compound names — these are NOT data errors:
+- "beer" matches Butterbeer, Beer-battered Onion Rings
+- "coffee" matches Coffee Cake Cookie, Coffee-rubbed Rib-Eye
+- "wine" matches Red Wine-braised Beef Cheeks
+- "water" matches Twin Cold Water Lobster Tails
+- "cocktail" matches Shrimp Cocktail
+
+Alcoholic drinks legitimately show caloric math gaps because the P*4+C*4+F*9 formula doesn't account for alcohol calories (7 cal/g). A standard drink has ~100 cal from alcohol alone.
+
+### Confidence Scores
+
+| Score | Meaning |
+|-------|---------|
+| 70 | Original import data (source: official) |
+| 50-60 | Good USDA match (source: api_lookup) |
+| 40-45 | Fixed by audit scripts (data was corrected) |
+| 30 | Estimated micros (sugar/protein/sodium filled from food type heuristics) |
+
+### Data Quality Regex Gotchas
+
+When writing regex for food item names, beware of substring matches:
+- `/coffee/i` matches "Coffee Cake Cookie" — must anchor or exclude compound words
+- `/crisp/i` in category inference matches "Crispy Chicken" — the `inferCategory` function incorrectly categorized savory "Crispy" items as desserts
+- Vegetarian detection must exclude plant-based terms: "jackfruit", "beyond", "impossible" contain no meat despite descriptions mentioning food terms
+- DOLE Whip is vegetarian despite some flavors having "float" in the name
 
 ## USDA API Gotchas
 
@@ -267,12 +342,32 @@ Always shown with "Educational tool only — not medical advice" disclaimer.
 
 **Solution:** Removed the broken server-side filter, kept the client-side `useMemo` filter which already handled this correctly.
 
+### Data Anomaly Fix Script Caused False Positives
+**Problem:** `fix-data-anomalies.ts` had regex patterns that over-matched:
+1. Plain coffee detection (`/^(brewed )?coffee/i`) matched "Coffee Cake Cookie" and "Coffee-rubbed Rib-Eye Beef Puff", zeroing their nutrition data
+2. Vegetarian fix un-flagged BBQ Jackfruit Sandwich (jackfruit is plant-based) and DOLE Whip items
+
+**Solution:** Built `fix-false-positives.ts` to restore correct values for these 5 items. Lesson: always test regex against the full item list before applying bulk updates.
+
+### additional-dining-2.json Had Wrong Format
+**Problem:** The file used `lands` as an array of objects with `landId` references instead of the flat `land`/`restaurant` strings expected by `import-all.ts`.
+
+**Solution:** Transformed to flat format matching the import schema. Split a single generic park entry into 12 actual parks.
+
+### Windows Environment Variables in Scripts
+**Problem:** `$env:VAR="value"` (PowerShell) and `set VAR=value` (CMD) don't work in bash. `node -e` with `require('@supabase/supabase-js')` fails because CJS can't find the ESM module.
+
+**Solution:** Use inline bash syntax: `SUPABASE_URL="..." npx tsx scripts/script.ts`. Always write proper `.ts` files and run with `npx tsx` rather than inline `node -e`.
+
 ## Known Issues / Future Work
 
 - Supabase `.eq()` on nested joined tables is silently ignored — use client-side filtering
 - Allergen data is inferred from keywords, not confirmed by parks — marked as `may_contain`
 - Nutrition data is estimated from USDA matches with portion multipliers — not official park data
+- ~342 audit flags remain (43 HIGH, mostly alcoholic drinks and regex false positives — see `audit-report.json`)
 - No food photos (gradient placeholders currently used)
 - Favorites page not yet implemented (bottom nav links to Browse)
 - "More" page not yet implemented (settings, accessibility controls, packing list, guides)
 - Could add Nutritionix API as fallback for items USDA can't match
+- Some parks have sparse data coverage (Walt Disney World Parks had 100% missing sugar/protein/sodium, now estimated)
+- `inferCategory` in `seed.ts` has a "crisp" substring match that miscategorizes "Crispy" savory items as desserts — fixed in DB but the seed script still has the bug

@@ -46,6 +46,7 @@ function inferCategory(item: RawItem): string {
 
 function inferLocation(parkName: string): string {
   const n = parkName.toLowerCase()
+  if (/downtown disney|disneyland/.test(n)) return 'Disneyland Resort'
   if (/disney|magic kingdom|epcot|hollywood studios|animal kingdom/.test(n)) return 'Walt Disney World'
   if (/universal|islands of adventure|volcano bay/.test(n)) return 'Universal Orlando Resort'
   if (/seaworld/.test(n)) return 'SeaWorld Parks'
