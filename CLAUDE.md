@@ -238,6 +238,35 @@ suggestedDose = max(0, baseDose * (1 - adjustment))
 
 Always shown with "Educational tool only — not medical advice" disclaimer.
 
+## Problems Encountered & Solutions
+
+### USDA Enrichment Failed on First Run
+**Problem:** All 459 items failed with two errors:
+1. `invalid input syntax for type integer: "1.5"` — USDA API returns decimal floats but `nutritional_data` columns are INTEGER
+2. `invalid input value for enum nutrition_source: "usda_enriched"` — script used a value not in the enum
+
+**Solution:** Added `Math.round()` to all nutrient values before DB update, changed source to `'api_lookup'`.
+
+### 237 Items Had No USDA Match
+**Problem:** Theme-park-specific names like "Ronto Wrap", "Blue Milk", "Dole Whip" return zero results from USDA.
+
+**Solution:** Built `enrich-from-descriptions.ts` that maps item names/descriptions to generic food terms (e.g., "Ronto Wrap" → "pulled pork sandwich", "Blue Milk" → "coconut rice milk smoothie"). Also removed the `dataType` filter which was restricting results to Survey/Foundation/SR Legacy — adding Branded foods fixed the remaining 133 items.
+
+### Calories Underestimated After USDA Enrichment
+**Problem:** USDA returns nutrition per standard serving (e.g., a cheeseburger = ~350 cal). Theme park portions are 1.5-2.5x larger (a Disney cheeseburger with fries = 900-1200 cal). Users reported values looked too low.
+
+**Solution:** Researched actual portion sizes from disneyfoodblog.com, allears.net, touringplans.com (including one lab-tested cupcake at 1,072 cal). Built `data/portion-multipliers.json` with category multipliers and specific item overrides. Built `adjust-portions.ts` that classifies each item by food type and applies the appropriate multiplier to ALL nutrition fields (calories, carbs, fat, protein, sugar, fiber, sodium, cholesterol). Applied to 778 items.
+
+### PostgREST Schema Cache Stale After Migration
+**Problem:** After running migration SQL in Supabase SQL Editor, API calls failed with "column not found" errors for `land` and `is_fried`.
+
+**Solution:** Must run `NOTIFY pgrst, 'reload schema'` after any DDL changes. In our case the migration had also only partially executed — had to DROP all tables/types and re-run the complete migration from scratch, then reload.
+
+### Supabase Nested Filter Silently Ignored
+**Problem:** `.eq('restaurant.park_id', parkId)` on a nested join is silently ignored by Supabase — it doesn't error, just returns all rows unfiltered.
+
+**Solution:** Removed the broken server-side filter, kept the client-side `useMemo` filter which already handled this correctly.
+
 ## Known Issues / Future Work
 
 - Supabase `.eq()` on nested joined tables is silently ignored — use client-side filtering
