@@ -52,7 +52,6 @@ async function searchUSDA(query: string): Promise<USDAFood | null> {
     api_key: usdaKey!,
     query,
     pageSize: '3',
-    dataType: 'Survey (FNDDS),Foundation,SR Legacy',
   })
   const res = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?${params}`)
   if (!res.ok) return null
@@ -142,14 +141,14 @@ async function enrich() {
       continue
     }
 
-    const sugar = getNutrient(food, NUTRIENT_IDS.sugar)
-    const protein = getNutrient(food, NUTRIENT_IDS.protein)
-    const fiber = getNutrient(food, NUTRIENT_IDS.fiber)
-    const sodium = getNutrient(food, NUTRIENT_IDS.sodium)
-    const cholesterol = getNutrient(food, NUTRIENT_IDS.cholesterol)
-    const usdaCals = getNutrient(food, NUTRIENT_IDS.calories)
-    const usdaCarbs = getNutrient(food, NUTRIENT_IDS.carbs)
-    const usdaFat = getNutrient(food, NUTRIENT_IDS.fat)
+    const sugar = getNutrient(food, NUTRIENT_IDS.sugar) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.sugar)!) : null
+    const protein = getNutrient(food, NUTRIENT_IDS.protein) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.protein)!) : null
+    const fiber = getNutrient(food, NUTRIENT_IDS.fiber) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.fiber)!) : null
+    const sodium = getNutrient(food, NUTRIENT_IDS.sodium) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.sodium)!) : null
+    const cholesterol = getNutrient(food, NUTRIENT_IDS.cholesterol) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.cholesterol)!) : null
+    const usdaCals = getNutrient(food, NUTRIENT_IDS.calories) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.calories)!) : null
+    const usdaCarbs = getNutrient(food, NUTRIENT_IDS.carbs) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.carbs)!) : null
+    const usdaFat = getNutrient(food, NUTRIENT_IDS.fat) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.fat)!) : null
 
     const confidence = computeConfidence(usdaCals, nutData.calories ?? 0)
 
@@ -160,7 +159,7 @@ async function enrich() {
       sodium,
       cholesterol,
       confidence_score: confidence,
-      source: 'usda_enriched',
+      source: 'api_lookup',
     }
 
     // Backfill calories/carbs/fat if currently 0
