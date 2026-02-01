@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+.high-contrast {
+  --bg: #000;
+  --fg: #fff;
+  --border: #fff;
+}
+.high-contrast body { background: #000; color: #fff; }
+.high-contrast .bg-white { background: #111 !important; color: #fff !important; }
+.high-contrast .bg-gray-50 { background: #000 !important; color: #fff !important; }
+.high-contrast .border { border-color: #555 !important; }
+.high-contrast .text-gray-500 { color: #aaa !important; }
+.high-contrast .text-gray-600 { color: #bbb !important; }
