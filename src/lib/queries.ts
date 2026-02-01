@@ -29,7 +29,8 @@ export function useRestaurants(parkId: string | undefined) {
         .from('restaurants')
         .select('*')
         .eq('park_id', parkId)
-        .order('land, name')
+        .order('land')
+        .order('name')
       if (error) throw error
       return data as Restaurant[]
     },
@@ -41,7 +42,7 @@ export function useMenuItems(parkId?: string) {
   return useQuery({
     queryKey: ['menuItems', parkId],
     queryFn: async (): Promise<MenuItemWithNutrition[]> => {
-      let query = supabase
+      const query = supabase
         .from('menu_items')
         .select(`
           *,
@@ -50,10 +51,6 @@ export function useMenuItems(parkId?: string) {
           restaurant:restaurants (*, park:parks (*))
         `)
         .order('name')
-
-      if (parkId) {
-        query = query.eq('restaurant.park_id', parkId)
-      }
 
       const { data, error } = await query.limit(500)
       if (error) throw error
