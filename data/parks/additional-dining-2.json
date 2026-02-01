@@ -1,0 +1,1465 @@
+{
+  "parks": [
+    {
+      "id": "magic-kingdom",
+      "name": "Magic Kingdom",
+      "lands": [
+        "Main Street Bakery"
+      ],
+      "menuItems": [
+        {
+          "land": "Magic Kingdom",
+          "restaurant": "Main Street Bakery",
+          "name": "Christmas Wreath Cupcake",
+          "description": "Peppermint confetti cupcake filled with chocolate ganache and topped with marshmallow buttercream and chocolate décor",
+          "calories": 520,
+          "carbs": 72,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Magic Kingdom",
+          "restaurant": "Main Street Bakery",
+          "name": "Minnie-Shaped Cinnamon Roll",
+          "description": "Large cinnamon roll shaped like Minnie Mouse",
+          "calories": 680,
+          "carbs": 98,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Magic Kingdom",
+          "restaurant": "Main Street Bakery",
+          "name": "Chocolate-Hazelnut Bear Claw",
+          "description": "Flaky pastry filled with chocolate-hazelnut spread",
+          "calories": 520,
+          "carbs": 62,
+          "fat": 26,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        }
+      ]
+    },
+    {
+      "id": "epcot",
+      "name": "EPCOT",
+      "lands": [
+        "Takumi-Tei"
+      ],
+      "menuItems": []
+    },
+    {
+      "id": "animal-kingdom",
+      "name": "Disney's Animal Kingdom",
+      "lands": [
+        "Satu'li Canteen",
+        "Tiffins"
+      ],
+      "menuItems": [
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Tiffins Signature Bread Service",
+          "description": "Thai Red Curry Milk Bread, Pão de Queijo, Papadam with Coconut-Curry Sauce, Guava Sauce, and Ginger-Pear Chutney",
+          "calories": 520,
+          "carbs": 68,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Pineapple-Glazed Pork Belly",
+          "description": "With Guajillo Chili Sauce, Chicharrónes, and Spice Pickled Vegetable Slaw",
+          "calories": 640,
+          "carbs": 32,
+          "fat": 46,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Lobster Macaroni & Cheese",
+          "description": "Cheddar, Sherry, and Orecchiette Pasta with lobster",
+          "calories": 720,
+          "carbs": 54,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Korean Barbecue Oyster Mushroom Bao Bun",
+          "description": "Grilled Oyster Mushrooms, Cucumber Kimchi, and Pickled Green Papaya (Plant-based)",
+          "calories": 380,
+          "carbs": 58,
+          "fat": 12,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Gobi Manchurian",
+          "description": "Crispy-fried Cauliflower with Manchurian Sauce and Green Onion",
+          "calories": 420,
+          "carbs": 48,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "The Land Salad",
+          "description": "Young Lettuces from EPCOT's Land Pavilion, Muhammara, Feta, Sumac, Garlic Breadcrumbs, Citrus Vinaigrette",
+          "calories": 340,
+          "carbs": 28,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Shrimp & Grits",
+          "description": "South African Mealie Pap with Roasted Corn and Goat Cheese, Peri-Peri Shrimp, Green Tomato-Apple Chutney",
+          "calories": 680,
+          "carbs": 58,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Oaxacan Pork Duo",
+          "description": "Grilled Pork Chop, Salsa Macha, Plantain-Chipotle Sauce, Fresh Corn Tamal, Smoked Pork Shoulder, Salsa Verde, Cabbage Slaw",
+          "calories": 820,
+          "carbs": 46,
+          "fat": 48,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Surf & Turf",
+          "description": "South African Braai-spiced Beef Tenderloin, Seared Scallops, Truffle Polenta, Grilled Vegetables, Dhania Butter, Cola Demi-glace",
+          "calories": 920,
+          "carbs": 42,
+          "fat": 56,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Butter Chicken",
+          "description": "Chickpea-Rice Croquette, English Peas, Young Squash, Pickled Onion",
+          "calories": 680,
+          "carbs": 64,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Animal Kingdom",
+          "restaurant": "Tiffins",
+          "name": "Whole-Fried Sustainable Fish",
+          "description": "Coconut Fried Rice, Green and Red Curry, Thai Green Papaya Slaw, Peanuts",
+          "calories": 840,
+          "carbs": 78,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Animal Kingdom - Pandora",
+          "restaurant": "Satu'li Canteen",
+          "name": "Slow Roasted Pork Shoulder Potato Hash",
+          "description": "With Chorizo Sausage and Charred Onion Sauce",
+          "calories": 780,
+          "carbs": 62,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Animal Kingdom - Pandora",
+          "restaurant": "Satu'li Canteen",
+          "name": "Cinnamon French Toast",
+          "description": "With Blueberry Cream Cheese, Passion Fruit Anglaise, and Sausage",
+          "calories": 720,
+          "carbs": 88,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Animal Kingdom - Pandora",
+          "restaurant": "Satu'li Canteen",
+          "name": "Tropical Pandoran Forest Fruits",
+          "description": "With Fresh Yogurt, Muesli, and Honey",
+          "calories": 420,
+          "carbs": 72,
+          "fat": 8,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Animal Kingdom - Pandora",
+          "restaurant": "Satu'li Canteen",
+          "name": "Frittata and Beef",
+          "description": "Vegetable-Goat Cheese Frittata with Wood-fired Beef tossed in Chimichurri",
+          "calories": 680,
+          "carbs": 38,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        }
+      ]
+    },
+    {
+      "id": "hollywood-studios",
+      "name": "Hollywood Studios",
+      "lands": [
+        "Ronto Roasters",
+        "Woody's Lunch Box"
+      ],
+      "menuItems": [
+        {
+          "land": "Hollywood Studios - Toy Story Land",
+          "restaurant": "Woody's Lunch Box",
+          "name": "Breakfast Bowl",
+          "description": "Hearty portion of Potato Barrels smothered in Smoked Brisket Country Gravy, Scrambled Eggs and a sprinkling of Green Onions",
+          "calories": 820,
+          "carbs": 68,
+          "fat": 48,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Hollywood Studios - Toy Story Land",
+          "restaurant": "Woody's Lunch Box",
+          "name": "Raspberry Lunch Box Tart",
+          "description": "Raspberry Marmalade filling stuffed Pastry coated in a Strawberry Fondant and Crispy Pearls",
+          "calories": 380,
+          "carbs": 54,
+          "fat": 16,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Hollywood Studios - Galaxy's Edge",
+          "restaurant": "Ronto Roasters",
+          "name": "Ronto Morning Wrap",
+          "description": "Eggs, Grilled Pork Sausage, Shredded Cheddar, and Peppercorn Sauce in Pita Bread",
+          "calories": 680,
+          "carbs": 52,
+          "fat": 38,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Hollywood Studios - Galaxy's Edge",
+          "restaurant": "Ronto Roasters",
+          "name": "Ronto Wrap",
+          "description": "Roasted Pork, Grilled Pork Sausage, Peppercorn Sauce, and Tangy Slaw wrapped in Pita Bread",
+          "calories": 720,
+          "carbs": 58,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Hollywood Studios - Galaxy's Edge",
+          "restaurant": "Ronto Roasters",
+          "name": "Kyryll Pork Rinds",
+          "description": "Pork Rinds seasoned in a Savory Blend of Ancho Chile, Cheddar, Smoke, and Cinnamon",
+          "calories": 520,
+          "carbs": 8,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Hollywood Studios - Galaxy's Edge",
+          "restaurant": "Ronto Roasters",
+          "name": "Andoan Fruit with Muja Sauce",
+          "description": "Sticks of Jicama, Cucumber, Pineapple, Melon and Dragon Fruit doused in a Tamarind Sauce and dusted with Peppercorn Ash (Plant-Based)",
+          "calories": 180,
+          "carbs": 42,
+          "fat": 2,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        }
+      ]
+    },
+    {
+      "id": "grand-floridian",
+      "name": "Disney's Grand Floridian Resort",
+      "lands": [
+        "Victoria & Albert's"
+      ],
+      "menuItems": [
+        {
+          "land": "Disney's Grand Floridian Resort",
+          "restaurant": "Victoria & Albert's",
+          "name": "Royal Belgian Caviar with Cauliflower Panna Cotta",
+          "description": "Royal Belgian caviar on a bed of creamy cauliflower panna cotta, part of the 7-course tasting menu",
+          "calories": 220,
+          "carbs": 8,
+          "fat": 16,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Grand Floridian Resort",
+          "restaurant": "Victoria & Albert's",
+          "name": "Wagyu A-5 Miyazaki",
+          "description": "Premium Japanese Wagyu A-5 beef from Miyazaki prefecture, expertly prepared",
+          "calories": 580,
+          "carbs": 4,
+          "fat": 48,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Grand Floridian Resort",
+          "restaurant": "Victoria & Albert's",
+          "name": "Line-Caught Wild Turbot",
+          "description": "Line-caught wild turbot flown in from Brittany, France",
+          "calories": 340,
+          "carbs": 6,
+          "fat": 14,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Grand Floridian Resort",
+          "restaurant": "Victoria & Albert's",
+          "name": "New Zealand Langoustine Tart",
+          "description": "Delicate tarts set with New Zealand langoustine",
+          "calories": 280,
+          "carbs": 22,
+          "fat": 18,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        }
+      ]
+    },
+    {
+      "id": "contemporary",
+      "name": "Disney's Contemporary Resort",
+      "lands": [
+        "California Grill"
+      ],
+      "menuItems": [
+        {
+          "land": "Disney's Contemporary Resort",
+          "restaurant": "California Grill",
+          "name": "Sonoma Goat Cheese Ravioli",
+          "description": "Organic Mixed Mushroom Ragoût, Tomato-Fennel Brodo, California Extra Virgin Olive Oil (30th Anniversary Special)",
+          "calories": 580,
+          "carbs": 54,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Contemporary Resort",
+          "restaurant": "California Grill",
+          "name": "Grilled Pork Tenderloin",
+          "description": "Creamy Goat Cheese Polenta, Roasted Pork Belly, Aged Balsamic Organic Mushrooms, Zinfandel Glaze",
+          "calories": 780,
+          "carbs": 38,
+          "fat": 46,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's Contemporary Resort",
+          "restaurant": "California Grill",
+          "name": "Blueberry-Goat Cheese Cheesecake",
+          "description": "30th Anniversary Special featuring blueberries and goat cheese",
+          "calories": 520,
+          "carbs": 58,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        }
+      ]
+    },
+    {
+      "id": "boardwalk",
+      "name": "Disney's BoardWalk",
+      "lands": [
+        "Flying Fish"
+      ],
+      "menuItems": [
+        {
+          "land": "Disney's BoardWalk",
+          "restaurant": "Flying Fish",
+          "name": "Lobster Bisque",
+          "description": "Aged Brandy and Chive Oil",
+          "calories": 380,
+          "carbs": 18,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's BoardWalk",
+          "restaurant": "Flying Fish",
+          "name": "Fennel and Saffron Mussels",
+          "description": "Smoked Trout Roe, Chili Oil, Chardonnay Broth",
+          "calories": 320,
+          "carbs": 14,
+          "fat": 18,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's BoardWalk",
+          "restaurant": "Flying Fish",
+          "name": "Slow-Roasted Pork Belly BLT",
+          "description": "Sweet Tomato Conserva, Brioche Melba, Creamed Lollo Rosso",
+          "calories": 540,
+          "carbs": 32,
+          "fat": 38,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's BoardWalk",
+          "restaurant": "Flying Fish",
+          "name": "Seasonal Gazpacho",
+          "description": "Croustillant, Cured Tomato, Lemon Powder",
+          "calories": 180,
+          "carbs": 22,
+          "fat": 8,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney's BoardWalk",
+          "restaurant": "Flying Fish",
+          "name": "Chilean Sea Bass",
+          "description": "Jumbo Lump Crab, Grilled Asparagus, Tarragon, Ras el Hanout Brown Butter",
+          "calories": 680,
+          "carbs": 12,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's BoardWalk",
+          "restaurant": "Flying Fish",
+          "name": "Seafood Trofie Pasta",
+          "description": "Shrimp, Lobster, Scallops, Clams, Mussels in Yellow Tomato-Chardonnay Sauce",
+          "calories": 820,
+          "carbs": 68,
+          "fat": 38,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Disney's BoardWalk",
+          "restaurant": "Flying Fish",
+          "name": "Potato-Wrapped Red Snapper",
+          "description": "Leek Fondue, Cassis-Red Wine Reduction",
+          "calories": 640,
+          "carbs": 42,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        }
+      ]
+    },
+    {
+      "id": "disney-springs",
+      "name": "Disney Springs",
+      "lands": [
+        "Amorette's Patisserie",
+        "Erin McKenna's Bakery NYC",
+        "Ghirardelli Soda Fountain"
+      ],
+      "menuItems": [
+        {
+          "land": "Disney Springs",
+          "restaurant": "Ghirardelli Soda Fountain",
+          "name": "World Famous Hot Fudge Sundae",
+          "description": "Vanilla ice cream and handmade hot fudge topped with whipped cream, diced almonds, and a cherry",
+          "calories": 820,
+          "carbs": 98,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Ghirardelli Soda Fountain",
+          "name": "Ocean Beach Sea Salt Caramel Sundae",
+          "description": "Caramel sauce, vanilla ice cream, handmade milk or dark chocolate hot fudge topped with whipped cream, sea salt, and a Milk or Dark Sea Salt Caramel SQUARE",
+          "calories": 880,
+          "carbs": 108,
+          "fat": 46,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Ghirardelli Soda Fountain",
+          "name": "Cookie Crumble Hot Fudge Sundae",
+          "description": "Vanilla and cookies 'n cream ice cream, handmade hot fudge, whipped cream, chocolate chip cookie crumbles and two Milk Chocolate Caramel minis",
+          "calories": 980,
+          "carbs": 118,
+          "fat": 52,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Ghirardelli Soda Fountain",
+          "name": "Golden Gate Banana Split",
+          "description": "Vanilla, strawberry, and chocolate ice cream topped with crushed pineapple, sweetened strawberries and handmade hot fudge served with a banana, whipped cream, diced almonds, and a cherry",
+          "calories": 1120,
+          "carbs": 148,
+          "fat": 52,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Ghirardelli Soda Fountain",
+          "name": "Treasure Island Warm Brownie Sundae",
+          "description": "A warm chocolate brownie half, vanilla ice cream, and handmade hot fudge topped with whipped cream, diced almonds, and a cherry",
+          "calories": 920,
+          "carbs": 112,
+          "fat": 48,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Erin McKenna's Bakery NYC",
+          "name": "Banana Pudding",
+          "description": "Real bananas with buttery shortbread cookie crumble in creamy vegan pudding, 12 oz container (Vegan, Gluten-Free)",
+          "calories": 480,
+          "carbs": 68,
+          "fat": 20,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Erin McKenna's Bakery NYC",
+          "name": "Assorted Vegan Cupcakes",
+          "description": "Various flavors of vegan, gluten-free cupcakes (Vegan, Gluten-Free)",
+          "calories": 380,
+          "carbs": 52,
+          "fat": 16,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Erin McKenna's Bakery NYC",
+          "name": "Vegan Eclairs",
+          "description": "French-style eclairs, 100% vegan and gluten-free (Vegan, Gluten-Free)",
+          "calories": 420,
+          "carbs": 58,
+          "fat": 18,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Erin McKenna's Bakery NYC",
+          "name": "Vegan Donuts",
+          "description": "Various flavors of vegan, gluten-free donuts (Vegan, Gluten-Free)",
+          "calories": 360,
+          "carbs": 48,
+          "fat": 16,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Amorette's Patisserie",
+          "name": "Mickey Mousse",
+          "description": "Chocolate Chiffon Cake, Dark Chocolate Mousse, and White Chocolate Mousse shaped like Mickey",
+          "calories": 520,
+          "carbs": 58,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Amorette's Patisserie",
+          "name": "Christmas Present Cake Bar",
+          "description": "Gingerbread cake combined with milk chocolate mousse and caramel crispy pearls",
+          "calories": 480,
+          "carbs": 62,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Springs",
+          "restaurant": "Amorette's Patisserie",
+          "name": "Butterscotch Christmas Candy",
+          "description": "Butterscotch mousse, brown butter cake, and salted caramel crispy pearls",
+          "calories": 460,
+          "carbs": 58,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        }
+      ]
+    },
+    {
+      "id": "universal-citywalk",
+      "name": "Universal CityWalk",
+      "lands": [
+        "Antojitos Authentic Mexican Food",
+        "Bigfire",
+        "NBC Sports Grill & Brew",
+        "The Cowfish Sushi Burger Bar",
+        "Toothsome Chocolate Emporium",
+        "VIVO Italian Kitchen",
+        "Voodoo Doughnut"
+      ],
+      "menuItems": [
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Toothsome Chocolate Emporium",
+          "name": "Tour de Toothsome",
+          "description": "Half-pound house-made patty, chocolate-dipped bacon, sunny-side-up egg, chocolate-dipped pickle, butter lettuce, chocolate aioli, toasted brioche",
+          "calories": 1180,
+          "carbs": 68,
+          "fat": 72,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Toothsome Chocolate Emporium",
+          "name": "Chocolate Almond Bread",
+          "description": "Warm chocolate-infused bread with almonds (Vegetarian)",
+          "calories": 420,
+          "carbs": 52,
+          "fat": 18,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Toothsome Chocolate Emporium",
+          "name": "Brisket Sliders",
+          "description": "Tender brisket sliders with house-made sauces",
+          "calories": 720,
+          "carbs": 54,
+          "fat": 38,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Toothsome Chocolate Emporium",
+          "name": "Fried Cauliflower",
+          "description": "Crispy fried cauliflower with dipping sauce (Vegetarian)",
+          "calories": 480,
+          "carbs": 42,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Toothsome Chocolate Emporium",
+          "name": "Totchos",
+          "description": "Tater tot nachos loaded with toppings (Vegetarian)",
+          "calories": 820,
+          "carbs": 78,
+          "fat": 48,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "The Cowfish Sushi Burger Bar",
+          "name": "All-American Bacon Double Cheeseburgooshi",
+          "description": "Seasoned premium black angus beef, yellow cheddar, white cheddar, applewood bacon wrapped in soy paper and potato strings then flash fried",
+          "calories": 980,
+          "carbs": 64,
+          "fat": 62,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "The Cowfish Sushi Burger Bar",
+          "name": "The Cowfish Bento Box",
+          "description": "Mini-burger with American cheese, sweet potato fries, Thai cucumbers, edamame, and choice of 4-piece sushi roll",
+          "calories": 840,
+          "carbs": 82,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "The Cowfish Sushi Burger Bar",
+          "name": "The Rise & Swine Burger",
+          "description": "Cheddar cheese, grilled black forest ham, sunny-side-up egg, applewood bacon, grilled onions, Cowfish sauce, onion roll",
+          "calories": 1120,
+          "carbs": 58,
+          "fat": 68,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "The Cowfish Sushi Burger Bar",
+          "name": "Royal Burger",
+          "description": "Wagyu beef burger, Italico cheese, pork belly, fried shiitake mushrooms, A1-ioli, arugula, tomato, Kaiser roll",
+          "calories": 1280,
+          "carbs": 62,
+          "fat": 82,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "The Cowfish Sushi Burger Bar",
+          "name": "Crab Rangoon Dip",
+          "description": "Creamy crab rangoon with parmesan panko crust, wonton crisps, sweet chili sauce, and chives",
+          "calories": 680,
+          "carbs": 54,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "The Cowfish Sushi Burger Bar",
+          "name": "Tuna & Avocado-Tini",
+          "description": "Cubed yellowfin tuna and ripe avocado in ginger dressing",
+          "calories": 420,
+          "carbs": 18,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Voodoo Doughnut",
+          "name": "Voodoo Doll Doughnut",
+          "description": "Raised yeast filled with raspberry jelly, topped with chocolate frosting and a pretzel stake",
+          "calories": 420,
+          "carbs": 58,
+          "fat": 18,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Voodoo Doughnut",
+          "name": "Bacon Maple Bar",
+          "description": "Raised yeast with maple frosting and bacon on top",
+          "calories": 480,
+          "carbs": 54,
+          "fat": 26,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Voodoo Doughnut",
+          "name": "Portland Cream",
+          "description": "Raised yeast shell filled with Bavarian cream, topped with chocolate and two eyeballs",
+          "calories": 380,
+          "carbs": 52,
+          "fat": 16,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Voodoo Doughnut",
+          "name": "Universal Orangesicle",
+          "description": "Raised yeast filled with Bavarian cream, topped with citrus frosting and chocolate pearls",
+          "calories": 410,
+          "carbs": 56,
+          "fat": 18,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Voodoo Doughnut",
+          "name": "Miami Viceberry",
+          "description": "Yeast ring dipped in vanilla icing, blue raspberry sugar, and half dipped in pink sprinkles",
+          "calories": 350,
+          "carbs": 48,
+          "fat": 14,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Voodoo Doughnut",
+          "name": "ODB",
+          "description": "Raised yeast with chocolate frosting, Oreo cookies, and peanut butter",
+          "calories": 520,
+          "carbs": 62,
+          "fat": 26,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Voodoo Doughnut",
+          "name": "Oh Captain, My Captain",
+          "description": "Raised yeast with vanilla frosting and Captain Crunch cereal",
+          "calories": 390,
+          "carbs": 54,
+          "fat": 16,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Voodoo Doughnut",
+          "name": "Memphis Mafia Fritter",
+          "description": "Fried dough with banana chunks and cinnamon, covered in glaze, drizzled in chocolate and peanut butter, topped with peanuts and chocolate chips",
+          "calories": 680,
+          "carbs": 82,
+          "fat": 34,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Voodoo Doughnut",
+          "name": "Grape Ape",
+          "description": "Raised yeast with vanilla frosting, grape dust, and lavender sprinkles",
+          "calories": 340,
+          "carbs": 48,
+          "fat": 14,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Bigfire",
+          "name": "Bone-In Short Rib",
+          "description": "Slathered in Carolina barbecue sauce with grilled corn on the cob, vine tomatoes, cooling onions, and warm spicy maple glazed jalapeño cornbread",
+          "calories": 1180,
+          "carbs": 68,
+          "fat": 72,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Bigfire",
+          "name": "Grilled Barbecue Pork Chop",
+          "description": "12 oz. bone-in with smoked honey carrot puree, green bean almondine, blistered vine tomatoes, caramelized onions, and rich black cherry glaze",
+          "calories": 920,
+          "carbs": 52,
+          "fat": 48,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Bigfire",
+          "name": "Hot Honey Salmon",
+          "description": "Smoked cauliflower puree, heirloom carrots, blistered vine tomatoes, and fresh herb salad",
+          "calories": 680,
+          "carbs": 38,
+          "fat": 36,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Bigfire",
+          "name": "Wood Fire Grilled Scallops",
+          "description": "Served over popcorn risotto and corn relish, topped with marcona almond gremolata",
+          "calories": 620,
+          "carbs": 54,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Bigfire",
+          "name": "Corn Bisque",
+          "description": "Smooth, creamy bisque made with corn relish, popcorn, and chives",
+          "calories": 320,
+          "carbs": 38,
+          "fat": 16,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "VIVO Italian Kitchen",
+          "name": "Halibut",
+          "description": "Light, fresh halibut prepared with Italian flair",
+          "calories": 480,
+          "carbs": 12,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "VIVO Italian Kitchen",
+          "name": "Pork Tenderloin",
+          "description": "Paired with creamy corn risotto",
+          "calories": 720,
+          "carbs": 58,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "VIVO Italian Kitchen",
+          "name": "Semi Freddo Strawberry Dessert",
+          "description": "Playful yet sophisticated Italian frozen dessert with strawberries",
+          "calories": 380,
+          "carbs": 48,
+          "fat": 18,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Antojitos Authentic Mexican Food",
+          "name": "Empanadas",
+          "description": "Masa turnovers filled with roasted corn, chorizo, Cotija and Menonita cheese served over jalapeño mayo and chili oil",
+          "calories": 580,
+          "carbs": 48,
+          "fat": 34,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Antojitos Authentic Mexican Food",
+          "name": "Queso Fundido",
+          "description": "Menonita cheese, chorizo, ancho spice, and flour tortilla",
+          "calories": 620,
+          "carbs": 42,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Antojitos Authentic Mexican Food",
+          "name": "Tableside Guacamole",
+          "description": "Avocado, tomato, garlic, red onion, green olives, cilantro served with tortilla chips",
+          "calories": 480,
+          "carbs": 38,
+          "fat": 34,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Antojitos Authentic Mexican Food",
+          "name": "Citrus Shrimp Tostada",
+          "description": "Citrus and ancho marinated shrimp, smashed avocado, cilantro coleslaw, pickled red onions, queso fresco",
+          "calories": 520,
+          "carbs": 42,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Antojitos Authentic Mexican Food",
+          "name": "Torta de Milanesa de Pollo",
+          "description": "Bolillo bread, refried beans, crispy fried chicken breast, guacamole, queso fresco, sliced Roma tomatoes, shredded lettuce, chipotle mayo, cilantro lime crema, pickled serrano peppers, roast corn summer slaw",
+          "calories": 980,
+          "carbs": 82,
+          "fat": 52,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Antojitos Authentic Mexican Food",
+          "name": "Camarones a la Diabla",
+          "description": "Grilled shrimp in chipotle tomato sauce, roast corn summer slaw, lime crema, sliced avocado, micro cilantro, house rice",
+          "calories": 720,
+          "carbs": 68,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Antojitos Authentic Mexican Food",
+          "name": "Pollo la Poblana",
+          "description": "Grilled airline chicken, creamy poblano sauce, roasted fingerling potatoes, roasted veggies, flour tortilla",
+          "calories": 840,
+          "carbs": 58,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "Antojitos Authentic Mexican Food",
+          "name": "Abuela's Cheesecake",
+          "description": "Cheesecake, Abuelita chocolate, mazapan crumble, goat milk cajeta, fresh berries",
+          "calories": 620,
+          "carbs": 68,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "NBC Sports Grill & Brew",
+          "name": "Loaded Pickle Popper",
+          "description": "Two smoked bacon wrapped half kosher dill pickles filled with pulled pork, jalapeño and BBQ cream cheese, served with BBQ ranch",
+          "calories": 720,
+          "carbs": 42,
+          "fat": 48,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "NBC Sports Grill & Brew",
+          "name": "Hawaiian BBQ Brisket Quesadilla",
+          "description": "House-smoked brisket, cheddar and jack cheeses, Hawaiian BBQ, pineapple salsa",
+          "calories": 920,
+          "carbs": 68,
+          "fat": 54,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Universal CityWalk",
+          "restaurant": "NBC Sports Grill & Brew",
+          "name": "Barn Burner Nachos",
+          "description": "House-made mesquite nachos topped with jalapeño gouda queso, cheddar jack, pico de gallo, chopped brisket and pulled pork, garnished with fresh sliced serrano peppers, micro cilantro",
+          "calories": 1180,
+          "carbs": 88,
+          "fat": 72,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        }
+      ]
+    },
+    {
+      "id": "seaworld",
+      "name": "SeaWorld Orlando",
+      "lands": [
+        "SeaWorld Orlando"
+      ],
+      "menuItems": [
+        {
+          "land": "SeaWorld Orlando",
+          "restaurant": "SeaWorld Orlando",
+          "name": "Bacon Cheeseburger Pretzel",
+          "description": "Pretzel twist stuffed with bacon and cheeseburger flavors at Mama's Pretzel Kitchen",
+          "calories": 680,
+          "carbs": 72,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "SeaWorld Orlando",
+          "restaurant": "SeaWorld Orlando",
+          "name": "Mama's Meatball Pretzel Twist",
+          "description": "Pretzel twist with meatball filling at Mama's Pretzel Kitchen",
+          "calories": 720,
+          "carbs": 78,
+          "fat": 34,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "SeaWorld Orlando",
+          "restaurant": "SeaWorld Orlando",
+          "name": "Cinnamon Sugar Pretzel Nuggets",
+          "description": "Bite-sized pretzel nuggets rolled in cinnamon sugar at Mama's Pretzel Kitchen",
+          "calories": 480,
+          "carbs": 82,
+          "fat": 12,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "SeaWorld Orlando",
+          "restaurant": "SeaWorld Orlando",
+          "name": "Altitude Burger",
+          "description": "One pound of fresh beef, topped with bacon, homemade chili, onion rings and special sauce at Altitude Burgers",
+          "calories": 1420,
+          "carbs": 88,
+          "fat": 92,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "SeaWorld Orlando",
+          "restaurant": "SeaWorld Orlando",
+          "name": "Blue Cheese Potato Twister",
+          "description": "Spiral-cut potato on a stick with blue cheese seasoning (Seven Seas Food Festival)",
+          "calories": 420,
+          "carbs": 52,
+          "fat": 20,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "SeaWorld Orlando",
+          "restaurant": "SeaWorld Orlando",
+          "name": "Flamin' Hot Corn Dog",
+          "description": "Corn dog with Flamin' Hot coating (Seven Seas Food Festival)",
+          "calories": 620,
+          "carbs": 68,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "SeaWorld Orlando",
+          "restaurant": "SeaWorld Orlando",
+          "name": "Old World Grilled Lamb Chop",
+          "description": "Grilled lamb chop with old world seasonings (Seven Seas Food Festival)",
+          "calories": 580,
+          "carbs": 8,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "SeaWorld Orlando",
+          "restaurant": "SeaWorld Orlando",
+          "name": "Veggie Samosas",
+          "description": "Fried pastries filled with spiced vegetables (Seven Seas Food Festival)",
+          "calories": 380,
+          "carbs": 48,
+          "fat": 18,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        }
+      ]
+    },
+    {
+      "id": "disney-resorts",
+      "name": "Disney Resorts",
+      "lands": [
+        "Disney Resort Pool Bars"
+      ],
+      "menuItems": []
+    },
+    {
+      "id": "walt-disney-world-parks",
+      "name": "Walt Disney World Parks",
+      "lands": [
+        "Disney Specialty Carts & Kiosks",
+        "Joffrey's Coffee Kiosks"
+      ],
+      "menuItems": [
+        {
+          "land": "Disney Parks",
+          "restaurant": "Disney Specialty Carts & Kiosks",
+          "name": "Pizza Planet Spring Rolls",
+          "description": "Two pepperoni pizza spring rolls served with marinara sauce at Toy Story Land's Popcorn and Snacks kiosk",
+          "calories": 580,
+          "carbs": 62,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Disney Specialty Carts & Kiosks",
+          "name": "Bouncin' Mini Churros",
+          "description": "Topped with Coca-Cola and bourbon candied bacon, sriracha aioli, and scallions (savory churros)",
+          "calories": 480,
+          "carbs": 58,
+          "fat": 24,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Disney Specialty Carts & Kiosks",
+          "name": "Gingerbread Churro",
+          "description": "Rolled in gingerbread sugar, drizzled with buttercream frosting topped with crushed gingerbread cookie crumbs (seasonal)",
+          "calories": 420,
+          "carbs": 62,
+          "fat": 16,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": true
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Disney Specialty Carts & Kiosks",
+          "name": "Maple Popcorn",
+          "description": "Maple-flavored popcorn available at Canada Pavilion cart in EPCOT",
+          "calories": 280,
+          "carbs": 48,
+          "fat": 8,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Disney Specialty Carts & Kiosks",
+          "name": "Buffalo Bleu Cheese Popcorn",
+          "description": "Buffalo and blue cheese flavored popcorn at EPCOT's Future World Gourmet Popcorn Cart",
+          "calories": 320,
+          "carbs": 42,
+          "fat": 14,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Disney Specialty Carts & Kiosks",
+          "name": "Sour Cream & Chive Popcorn",
+          "description": "Sour cream and chive flavored popcorn at EPCOT's Future World Gourmet Popcorn Cart",
+          "calories": 300,
+          "carbs": 44,
+          "fat": 12,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Disney Specialty Carts & Kiosks",
+          "name": "Rafiki Wildberry and Orange Float",
+          "description": "DOLE Whip creation at Warung Outpost with wildberry and orange flavors",
+          "calories": 280,
+          "carbs": 68,
+          "fat": 1,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Disney Specialty Carts & Kiosks",
+          "name": "DOLE Whip Sampler",
+          "description": "Pineapple, orange, watermelon, lime, and strawberry swirls at Swirls on the Water",
+          "calories": 320,
+          "carbs": 78,
+          "fat": 1,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Disney Specialty Carts & Kiosks",
+          "name": "DOLE Whip Mango and Chamoy Float",
+          "description": "DOLE Whip Mango, pineapple juice, chili lime seasoning, and chamoy (seasonal)",
+          "calories": 340,
+          "carbs": 82,
+          "fat": 1,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Joffrey's Coffee Kiosks",
+          "name": "Butterscotch Cookie Cold Brew",
+          "description": "Cold brew with cookie butter syrup and butterscotch syrup topped with whipped cream and sea salt caramel toffee sauce",
+          "calories": 380,
+          "carbs": 52,
+          "fat": 16,
+          "type": "drink",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Joffrey's Coffee Kiosks",
+          "name": "Fudge Brownie Cold Brew",
+          "description": "Cold brew with Irish cream syrup and dark chocolate sauce",
+          "calories": 340,
+          "carbs": 48,
+          "fat": 14,
+          "type": "drink",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Joffrey's Coffee Kiosks",
+          "name": "Crème Brûlée Cold Brew",
+          "description": "Cold brew with crème caramel syrup topped with whipped cream and caramel sauce",
+          "calories": 360,
+          "carbs": 50,
+          "fat": 15,
+          "type": "drink",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Joffrey's Coffee Kiosks",
+          "name": "Iced Strawberry Island Latte",
+          "description": "Espresso, milk, strawberry syrup, and coconut syrup topped with coconut whipped cream",
+          "calories": 320,
+          "carbs": 46,
+          "fat": 12,
+          "type": "drink",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Joffrey's Coffee Kiosks",
+          "name": "Pumpkin Patch Latte",
+          "description": "Made with pumpkin spice syrup and vanilla syrup, topped with pumpkin whipped cream and cinnamon (seasonal)",
+          "calories": 380,
+          "carbs": 54,
+          "fat": 14,
+          "type": "drink",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Disney Parks",
+          "restaurant": "Joffrey's Coffee Kiosks",
+          "name": "Salted Caramel Mudslide Cold Brew",
+          "description": "Caramel, chocolate and vanilla notes topped with sea salt caramel cold foam",
+          "calories": 350,
+          "carbs": 48,
+          "fat": 14,
+          "type": "drink",
+          "vegetarian": true,
+          "isFried": false
+        }
+      ]
+    }
+  ]
+}
