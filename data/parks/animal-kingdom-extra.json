@@ -1,0 +1,258 @@
+{
+  "parks": [
+    {
+      "id": "animal-kingdom-extra",
+      "name": "Disney's Animal Kingdom",
+      "subtitle": "Additional restaurants",
+      "lands": [
+        "Africa",
+        "Asia",
+        "Discovery Island",
+        "DinoLand U.S.A.",
+        "Pandora - The World of Avatar"
+      ],
+      "menuItems": [
+        {
+          "land": "Africa",
+          "restaurant": "Harambe Market",
+          "name": "Chicken and Shrimp Rice Bowl",
+          "description": "Rice Bowl topped with Grilled Chicken and Shrimp with African-inspired Spices and Vegetables.",
+          "calories": 650,
+          "carbs": 58,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Africa",
+          "restaurant": "Harambe Market",
+          "name": "Chicken Rice Bowl",
+          "description": "Rice Bowl topped with Grilled Chicken, African Spices, and Vegetables.",
+          "calories": 520,
+          "carbs": 55,
+          "fat": 14,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Africa",
+          "restaurant": "Harambe Market",
+          "name": "Beef and Lamb Kofta Pita",
+          "description": "Seasoned Beef and Lamb Kofta in Pita Bread with Vegetables and Sauce.",
+          "calories": 620,
+          "carbs": 48,
+          "fat": 30,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Africa",
+          "restaurant": "Harambe Market",
+          "name": "Chicken Caesar Salad",
+          "description": "Romaine Lettuce with Grilled Chicken, Caesar Dressing, Croutons, and Parmesan.",
+          "calories": 420,
+          "carbs": 16,
+          "fat": 26,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Africa",
+          "restaurant": "Harambe Market",
+          "name": "Impossible Kofta Pita",
+          "description": "Plant-based Impossible Kofta in Pita Bread with Vegetables and Sauce.",
+          "calories": 550,
+          "carbs": 52,
+          "fat": 24,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Asia",
+          "restaurant": "Yak & Yeti Restaurant",
+          "name": "Honey Chicken",
+          "description": "Crispy Tempura Chicken with Honey Sauce served with Steamed Rice and Stir-fried Vegetables.",
+          "calories": 850,
+          "carbs": 88,
+          "fat": 35,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Asia",
+          "restaurant": "Yak & Yeti Restaurant",
+          "name": "Korean BBQ Ribs",
+          "description": "Baby Back Ribs with Korean BBQ Sauce served with Stir-fried Vegetables and Jasmine Rice.",
+          "calories": 920,
+          "carbs": 62,
+          "fat": 48,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Asia",
+          "restaurant": "Yak & Yeti Restaurant",
+          "name": "Ahi Tuna Nachos",
+          "description": "Seared Ahi Tuna on Wonton Crisps with Wasabi Aioli, Sriracha, and Asian Slaw.",
+          "calories": 480,
+          "carbs": 35,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Asia",
+          "restaurant": "Yak & Yeti Restaurant",
+          "name": "Miso Salmon",
+          "description": "Miso-glazed Salmon served with Udon Noodles, Mushrooms, and Vegetables in a Ginger-Soy Broth.",
+          "calories": 580,
+          "carbs": 45,
+          "fat": 24,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Asia",
+          "restaurant": "Yak & Yeti Restaurant",
+          "name": "Crispy Wonton Shrimp",
+          "description": "Crispy Wonton Shrimp with a Sweet Chili Sauce.",
+          "calories": 520,
+          "carbs": 42,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Discovery Island",
+          "restaurant": "Rainforest Cafe",
+          "name": "Lava Nachos",
+          "description": "Seasoned Ground Beef, Mixed Cheese, Pico de Gallo, Sour Cream, Guacamole, and Jalapenos on Tortilla Chips.",
+          "calories": 1050,
+          "carbs": 78,
+          "fat": 62,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Discovery Island",
+          "restaurant": "Rainforest Cafe",
+          "name": "Amazon Grilled Chicken Salad",
+          "description": "Grilled Chicken Breast over Mixed Greens with Avocado, Tomatoes, Corn, Black Beans, and Cilantro-Lime Vinaigrette.",
+          "calories": 520,
+          "carbs": 28,
+          "fat": 26,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Discovery Island",
+          "restaurant": "Rainforest Cafe",
+          "name": "Safari Burger",
+          "description": "1/3 lb Angus Burger with Lettuce, Tomato, Onion, and Pickles on a Brioche Bun served with French Fries.",
+          "calories": 880,
+          "carbs": 60,
+          "fat": 48,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Discovery Island",
+          "restaurant": "Rainforest Cafe",
+          "name": "Mojo Bones (BBQ Ribs)",
+          "description": "St. Louis-style Pork Ribs with BBQ Sauce served with French Fries and Coleslaw.",
+          "calories": 950,
+          "carbs": 55,
+          "fat": 52,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "DinoLand U.S.A.",
+          "restaurant": "Restaurantosaurus",
+          "name": "1/3 lb Angus Bacon Cheeseburger",
+          "description": "Flame-broiled Angus Burger with Bacon and American Cheese on a Brioche Bun served with French Fries.",
+          "calories": 950,
+          "carbs": 60,
+          "fat": 55,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "DinoLand U.S.A.",
+          "restaurant": "Restaurantosaurus",
+          "name": "Chicken BLT Sandwich",
+          "description": "Grilled Chicken with Bacon, Lettuce, and Tomato on a Brioche Bun served with French Fries.",
+          "calories": 780,
+          "carbs": 55,
+          "fat": 38,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Discovery Island",
+          "restaurant": "Flame Tree Barbecue",
+          "name": "Smoked Half-Chicken",
+          "description": "Slow-smoked Half-Chicken with Barbecue Sauce served with Baked Beans and Coleslaw.",
+          "calories": 720,
+          "carbs": 35,
+          "fat": 35,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Discovery Island",
+          "restaurant": "Flame Tree Barbecue",
+          "name": "Watermelon Salad",
+          "description": "Fresh Watermelon with Feta, Mint, Arugula, and Balsamic Glaze.",
+          "calories": 280,
+          "carbs": 32,
+          "fat": 14,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Discovery Island",
+          "restaurant": "Pizzafari",
+          "name": "Caesar Salad with Chicken",
+          "description": "Romaine Lettuce with Grilled Chicken, Caesar Dressing, Croutons, and Parmesan.",
+          "calories": 420,
+          "carbs": 18,
+          "fat": 26,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Discovery Island",
+          "restaurant": "Pizzafari",
+          "name": "Pepperoni Pizza (Personal)",
+          "description": "Personal-sized Pepperoni Pizza.",
+          "calories": 680,
+          "carbs": 72,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        }
+      ]
+    }
+  ]
+}

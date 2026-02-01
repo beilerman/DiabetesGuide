@@ -1,0 +1,233 @@
+{
+  "parks": [
+    {
+      "id": "hollywood-studios-extra",
+      "name": "Disney's Hollywood Studios",
+      "subtitle": "Additional restaurants",
+      "lands": [
+        "Grand Avenue",
+        "Commissary Lane",
+        "Sunset Boulevard",
+        "Echo Lake"
+      ],
+      "menuItems": [
+        {
+          "land": "Grand Avenue",
+          "restaurant": "PizzeRizzo",
+          "name": "Pepperoni Pizza (Personal)",
+          "description": "Personal-sized Pepperoni Pizza served with a choice of Side.",
+          "calories": 680,
+          "carbs": 72,
+          "fat": 28,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Grand Avenue",
+          "restaurant": "PizzeRizzo",
+          "name": "Cheese Pizza (Personal)",
+          "description": "Personal-sized Cheese Pizza served with a choice of Side.",
+          "calories": 620,
+          "carbs": 70,
+          "fat": 24,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Grand Avenue",
+          "restaurant": "PizzeRizzo",
+          "name": "Meatball Sub",
+          "description": "Hoagie Roll stuffed with Seasoned Meatballs, Marinara Sauce, and Provolone Cheese.",
+          "calories": 750,
+          "carbs": 65,
+          "fat": 38,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Grand Avenue",
+          "restaurant": "PizzeRizzo",
+          "name": "Antipasto Salad",
+          "description": "Mixed Greens with Italian Meats, Olives, Pepperoncini, Tomatoes, and Italian Dressing.",
+          "calories": 420,
+          "carbs": 18,
+          "fat": 30,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Commissary Lane",
+          "restaurant": "Mama Melrose's Ristorante Italiano",
+          "name": "Spaghetti and Meatballs",
+          "description": "House-made Marinara garnished with Pecorino-Romano and Parsley.",
+          "calories": 780,
+          "carbs": 85,
+          "fat": 32,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Commissary Lane",
+          "restaurant": "Mama Melrose's Ristorante Italiano",
+          "name": "Chicken alla Parmigiana",
+          "description": "Oven-baked Breaded Chicken Breast with Marinara Sauce topped with Melted Mozzarella over Spaghetti.",
+          "calories": 920,
+          "carbs": 78,
+          "fat": 40,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Commissary Lane",
+          "restaurant": "Mama Melrose's Ristorante Italiano",
+          "name": "Margherita Pizza",
+          "description": "Fresh Mozzarella, Marinara Sauce, and Basil on a Flatbread.",
+          "calories": 650,
+          "carbs": 62,
+          "fat": 30,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Commissary Lane",
+          "restaurant": "Mama Melrose's Ristorante Italiano",
+          "name": "Fettuccine Alfredo with Shrimp",
+          "description": "Fettuccine Pasta with Cheese Sauce and Fresh Basil topped with Shrimp.",
+          "calories": 950,
+          "carbs": 80,
+          "fat": 52,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Commissary Lane",
+          "restaurant": "Mama Melrose's Ristorante Italiano",
+          "name": "Mama's Caesar Salad",
+          "description": "Fresh Romaine with House-made Caesar Dressing, Herbed Croutons, and Parmesan.",
+          "calories": 350,
+          "carbs": 16,
+          "fat": 26,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Echo Lake",
+          "restaurant": "Min and Bill's Dockside Diner",
+          "name": "Buffalo Chicken Loaded Fries",
+          "description": "Seasoned Fries topped with Buffalo Chicken, Blue Cheese Crumbles, and Ranch Drizzle.",
+          "calories": 850,
+          "carbs": 65,
+          "fat": 50,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Echo Lake",
+          "restaurant": "Min and Bill's Dockside Diner",
+          "name": "Philly Cheesesteak Loaded Fries",
+          "description": "Seasoned Fries topped with Shaved Beef, Peppers, Onions, and Cheese Sauce.",
+          "calories": 900,
+          "carbs": 68,
+          "fat": 52,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Sunset Boulevard",
+          "restaurant": "Rosie's All-American Cafe",
+          "name": "1/3 lb Angus Cheeseburger",
+          "description": "Flame-broiled Angus Burger with American Cheese on a Brioche Bun served with French Fries.",
+          "calories": 920,
+          "carbs": 60,
+          "fat": 52,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Sunset Boulevard",
+          "restaurant": "Rosie's All-American Cafe",
+          "name": "Chicken Strips with Fries",
+          "description": "Hand-breaded Chicken Strips served with French Fries.",
+          "calories": 750,
+          "carbs": 55,
+          "fat": 40,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Sunset Boulevard",
+          "restaurant": "Catalina Eddie's",
+          "name": "Pepperoni Pizza (Personal)",
+          "description": "Personal Pepperoni Pizza served with a Caesar Side Salad.",
+          "calories": 700,
+          "carbs": 72,
+          "fat": 30,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Sunset Boulevard",
+          "restaurant": "Fairfax Fare",
+          "name": "Empanada Platter",
+          "description": "Beef Empanadas served with Yellow Rice and Black Beans.",
+          "calories": 780,
+          "carbs": 72,
+          "fat": 35,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Sunset Boulevard",
+          "restaurant": "Fairfax Fare",
+          "name": "BBQ Chicken Leg",
+          "description": "Smoked Chicken Leg with Barbecue Sauce served with Corn on the Cob.",
+          "calories": 520,
+          "carbs": 28,
+          "fat": 22,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Echo Lake",
+          "restaurant": "Backlot Express",
+          "name": "Southwest Salad with Grilled Chicken",
+          "description": "Mixed Greens with Grilled Chicken, Black Beans, Corn, Tomatoes, Tortilla Strips, and Southwest Ranch Dressing.",
+          "calories": 480,
+          "carbs": 32,
+          "fat": 24,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Echo Lake",
+          "restaurant": "Backlot Express",
+          "name": "Cuban Sandwich",
+          "description": "Roasted Pork, Ham, Swiss Cheese, Pickles, and Mustard on Pressed Cuban Bread served with French Fries.",
+          "calories": 820,
+          "carbs": 62,
+          "fat": 42,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        }
+      ]
+    }
+  ]
+}
