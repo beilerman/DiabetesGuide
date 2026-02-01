@@ -1,0 +1,419 @@
+{
+  "metadata": {
+    "last_updated": "2026-02-01",
+    "sources": [
+      "disneyfoodblog.com",
+      "allears.net",
+      "touringplans.com",
+      "orlandoinformer.com",
+      "Disney park visitor forums and reviews",
+      "Nutritional testing (TouringPlans lab analysis)"
+    ],
+    "notes": "These multipliers are based on research comparing Disney/Orlando theme park portions to standard USDA serving sizes. Disney does not publish official nutritional information for most items, so these are research-based estimates.",
+    "general_findings": {
+      "cost_cutting_2026": "Some portion reductions noted in 2026 cost-cutting measures, but most items remain oversized",
+      "shareability": "Many single-serving items are actually shareable for 2 people",
+      "no_official_data": "Disney does not publish calorie counts publicly; binders available at quick service locations upon request",
+      "walking_compensation": "Guests walk 7-12 miles per day, increasing caloric needs significantly"
+    }
+  },
+  "categories": {
+    "burger_with_fries": {
+      "multiplier": 1.8,
+      "typical_cal_range": [900, 1200],
+      "notes": "Quick service burgers are typically 1/3 lb+ patties (often doubles with bacon), oversized brioche buns, large fry portions. Cheeseburgers with bacon range 800-1000 cal, fries add 350-400 cal. Table service burgers described as 'huge' and 'very substantial'.",
+      "confidence": "high",
+      "supporting_data": "Casey's Corner foot-long hot dogs $15-16, Sci-Fi burgers $25-26, portions described as 'straight up huge'"
+    },
+    "chicken_tenders_fries": {
+      "multiplier": 1.6,
+      "typical_cal_range": [750, 1000],
+      "notes": "Typical orders include 4 large chicken strips with generous fries underneath. Chicken nuggets come in 8-piece servings. Portions described as 'very generous' white meat chicken.",
+      "confidence": "high",
+      "supporting_data": "Columbia Harbour House and Backlot Express serve 4-piece strips with fries"
+    },
+    "pizza_personal": {
+      "multiplier": 1.5,
+      "typical_cal_range": [600, 900],
+      "notes": "Personal pizzas are 8-10 inch pies, not single slices. Mickey cheese pizza = ~600 cal full. Universal jumbo slice = 2-3 NYC slices or half a regular pizza for $9.99.",
+      "confidence": "medium",
+      "supporting_data": "Half Mickey cheese pizza = 300 cal per Disney data; full personal = 588-600+ cal"
+    },
+    "hot_dog_footlong": {
+      "multiplier": 2.0,
+      "typical_cal_range": [700, 950],
+      "notes": "Casey's Corner serves foot-long all-beef hot dogs, often loaded with toppings (pulled pork, chili-cheese, hash browns). Comes with fries or fruit. Standard hot dog is already oversized before toppings.",
+      "confidence": "high",
+      "supporting_data": "Chipotle BBQ Foot-long $16.49, Chili-Cheese Foot-long $15.49"
+    },
+    "sandwich_oversized": {
+      "multiplier": 1.7,
+      "typical_cal_range": [800, 1100],
+      "notes": "Sandwiches feature thick bread, generous fillings, plus sides. Lighthouse sandwich (hummus & broccoli slaw) was nearly 1000 cal and described as 'huge'. Ronto Wrap (pork, sausage, pita) has 'decent portions'.",
+      "confidence": "medium",
+      "supporting_data": "Lighthouse sandwich ~1000 cal, Ronto Wrap $14-16"
+    },
+    "entree_dinner_plate_table_service": {
+      "multiplier": 1.4,
+      "typical_cal_range": [850, 1400],
+      "notes": "Table service signature dining has more reasonable portions than quick service, but still generous. Fine dining restaurants (Tiffins, Jiko) serve appropriately portioned entrees. Quick service dinner plates pack the plate with multiple components.",
+      "confidence": "medium",
+      "supporting_data": "Tiffins Signature Burger $28 leaves guests 'very satisfied' with portion, quality, and taste"
+    },
+    "entree_dinner_plate_quick_service": {
+      "multiplier": 1.6,
+      "typical_cal_range": [900, 1300],
+      "notes": "Quick service entrees 'take up the whole plate'. Meals include protein, starch, vegetable. Pasta dishes fill entire plates. Chicken salads use 'two whole heads of lettuce'. Portions comparable to 1.5x normal restaurant servings.",
+      "confidence": "medium",
+      "supporting_data": "Forum reports of pasta 'taking up whole plate', oversized portions vs UK McDonald's medium meal"
+    },
+    "bbq_platter": {
+      "multiplier": 1.8,
+      "typical_cal_range": [1100, 1600],
+      "notes": "Flame Tree BBQ portions described as 'fairly large' and 'straight up huge'. Half-rack ribs with 2 sides. Ribs + Chicken + Pulled Pork Sampler is 'more than enough for two people' under $20. Guests suggest splitting platters.",
+      "confidence": "high",
+      "supporting_data": "Rib Dinner $16.49, Ribs/Chicken/Pork Sampler <$20 feeds 2 people"
+    },
+    "rice_bowl_asian": {
+      "multiplier": 1.5,
+      "typical_cal_range": [700, 1000],
+      "notes": "Satu'li Canteen bowls are customizable with healthy proteins and bases including romaine/kale. Create-Your-Own bowls are filling single servings. Smaller portions than BBQ but still substantial.",
+      "confidence": "medium",
+      "supporting_data": "Satu'li Canteen noted for reasonable portions; fish dishes tend smaller except 'whole fish'"
+    },
+    "nachos_loaded": {
+      "multiplier": 2.2,
+      "typical_cal_range": [900, 1500],
+      "notes": "Described as 'PACKED with so many fries/chips and tons of toppings'. Mole Chicken Nacho Fries bowl = huge shareable portion for $10.49. Loaded nachos typically 500-1500 cal range; Disney on higher end. Festival booth nachos are filling quick bites.",
+      "confidence": "high",
+      "supporting_data": "Daily Poutine Nacho Fries $10.49 'packed' with toppings; Totchos $10.49 = 552 cal but 'absolutely huge'"
+    },
+    "loaded_fries": {
+      "multiplier": 2.0,
+      "typical_cal_range": [800, 1200],
+      "notes": "Loaded fries are shareable portions or light meals when paired with drink. Chipotle BBQ Loaded Fries topped with pulled pork, slaw, BBQ sauce. Portions large enough for 2-3 people to share as side, or 1 person as meal.",
+      "confidence": "high",
+      "supporting_data": "$10 loaded fries 'changed my life', described as shareable or light lunch"
+    },
+    "salad_entree": {
+      "multiplier": 1.4,
+      "typical_cal_range": [500, 850],
+      "notes": "Entree salads with protein are very large - one grilled chicken salad had 'two whole heads of lettuce'. Power Greens Salad includes pulled chicken, citrus, vinaigrette. Satu'li bowls with romaine/kale base are substantial.",
+      "confidence": "medium",
+      "supporting_data": "Multiple reports of oversized salads; grilled chicken salad 'two whole heads of lettuce'"
+    },
+    "dessert_cupcake": {
+      "multiplier": 2.5,
+      "typical_cal_range": [900, 1200],
+      "notes": "Lab-tested Disney cupcake (Kylo Ren) = 8.9 oz and 1,072 calories. Standard cupcakes are 200-400 cal; jumbo typically 680-730 cal. Disney cupcakes are oversized with extra-thick frosting and elaborate decorations.",
+      "confidence": "very_high",
+      "supporting_data": "TouringPlans lab analysis: 8.9oz = 1,072 cal (verified scientific testing)"
+    },
+    "dessert_specialty": {
+      "multiplier": 2.0,
+      "typical_cal_range": [800, 1300],
+      "notes": "Specialty desserts (sundaes, treats, festival items) are oversized. Standard ice cream servings boosted with multiple toppings, sauces, extras. Not as extreme as cupcakes but significantly larger than typical restaurant desserts.",
+      "confidence": "medium",
+      "supporting_data": "Based on overall dessert sizing patterns and cupcake data"
+    },
+    "frozen_drink_nonalcoholic": {
+      "multiplier": 1.3,
+      "typical_cal_range": [350, 550],
+      "notes": "Frozen drinks, slushies, Dole Whips served in standard 16oz servings, occasionally larger. Dole Whip Float $5.99. Premium frozen drinks with multiple ingredients and toppings on higher end of calorie range.",
+      "confidence": "medium",
+      "supporting_data": "Dole Whip floats $5.99; various frozen specialty drinks available parkwide"
+    },
+    "cocktail_standard": {
+      "multiplier": 1.2,
+      "typical_cal_range": [200, 400],
+      "notes": "Standard cocktails use typical 1-1.5 oz spirit pours. La Cava del Tequila pours are 'legit' not watered down. Some premixed frozen drinks described as 'heavy' on alcohol (Frozen Coke with Jack). Quality varies by location.",
+      "confidence": "medium",
+      "supporting_data": "Recipe examples show 1-1.25oz pours; Splitsville offers 16oz glasses or 22oz tumblers"
+    },
+    "cocktail_frozen_specialty": {
+      "multiplier": 1.5,
+      "typical_cal_range": [400, 700],
+      "notes": "Frozen specialty cocktails in 16-22oz servings with premium ingredients, sugary mixes, whipped cream. Splitsville: 16oz for $16 or 22oz tumbler for $22. Higher sugar content than standard cocktails.",
+      "confidence": "medium",
+      "supporting_data": "Splitsville serves 16oz ($16) and 22oz ($22) cocktails with refills at 16oz price"
+    },
+    "appetizer_festival_booth": {
+      "multiplier": 1.3,
+      "typical_cal_range": [350, 600],
+      "notes": "EPCOT festival booth portions not large enough for full meal but 'more than filling as quick bites' at $10-15. Smaller than restaurant appetizers but substantial snacks. Good value for portion size.",
+      "confidence": "medium",
+      "supporting_data": "Festival booths $10-15 range, described as filling quick bites, not full meals"
+    },
+    "appetizer_restaurant": {
+      "multiplier": 1.5,
+      "typical_cal_range": [500, 900],
+      "notes": "Restaurant appetizers are shareable portions designed for 2-4 people. Larger than festival booth servings. Often enough to serve as entree when paired with salad.",
+      "confidence": "low",
+      "supporting_data": "Based on general Disney portion sizing patterns"
+    },
+    "breakfast_plate": {
+      "multiplier": 1.5,
+      "typical_cal_range": [700, 1100],
+      "notes": "Bounty Platter includes scrambled eggs, meat (bacon or sausage), potatoes, sometimes waffle/biscuit/fruit. 3 fluffy pancakes at Primo Piatto. Breakfast totchos 'enough for those who aren't huge breakfast eaters' $10.99. Mickey pancake with bacon/sausage $9.49.",
+      "confidence": "medium",
+      "supporting_data": "Bounty Platter has multiple components; breakfast totchos $10.99; Mickey pancake meal $9.49"
+    },
+    "soup_bread_bowl": {
+      "multiplier": 1.6,
+      "typical_cal_range": [575, 750],
+      "notes": "Bread bowl with clam chowder = 575 cal total (290 cal soup, 285 cal bread). Soup portion is ~1 cup (described as 'very small' vs huge bread). Bread bowl itself is substantial - 'huge loaf' with hollowed center.",
+      "confidence": "high",
+      "supporting_data": "Nutrition data: 575 cal total = 290 soup + 285 bread; ~1 cup soup portion"
+    },
+    "tacos_order": {
+      "multiplier": 1.4,
+      "typical_cal_range": [650, 900],
+      "notes": "Tacos typically served 3 per order at Disney. Trio of Street Tacos (beef, chicken, soy chorizo) with tomatillo sauce, onions, cilantro. QuesaBirria, Carne Asada, Pollo Asada available at Cocina Cucamonga. Three tacos for $18 standard pricing.",
+      "confidence": "medium",
+      "supporting_data": "Rancho del Zocalo Trio = 3 tacos; typical orders are 3 tacos for $18"
+    },
+    "burrito": {
+      "multiplier": 1.8,
+      "typical_cal_range": [900, 1400],
+      "notes": "Theme park burritos are oversized compared to standard restaurant servings. Typical large carne asada burrito can reach 1000-1400 cal. Disney/Universal Mexican locations serve substantial portions.",
+      "confidence": "medium",
+      "supporting_data": "General burrito sizing 900-1400 cal for large versions; theme park portions on larger end"
+    },
+    "pretzel_jumbo": {
+      "multiplier": 2.0,
+      "typical_cal_range": [900, 1100],
+      "notes": "Large soft Mickey pretzel weighs ~10.7 oz and contains approximately 1,000 calories. Standard/smaller Mickey pretzels are 330 cal. Homemade copycat recipes = 362 cal. The jumbo park pretzels are 3x the standard size.",
+      "confidence": "high",
+      "supporting_data": "Large Mickey pretzel ~10.7oz = ~1000 cal; standard Mickey pretzel = 330 cal"
+    },
+    "pretzel_standard": {
+      "multiplier": 1.3,
+      "typical_cal_range": [330, 450],
+      "notes": "Standard Mickey soft pretzels (not jumbo) are 330 calories. Served with cheese sauce (adds ~80-100 cal). Slightly larger than typical mall soft pretzels but not extreme.",
+      "confidence": "high",
+      "supporting_data": "Standard Mickey pretzel = 330 cal confirmed; cheese sauce additional"
+    },
+    "popcorn_bucket": {
+      "multiplier": 1.8,
+      "typical_cal_range": [550, 750],
+      "notes": "Popcorn bucket holds ~1.5 bags of microwave popcorn. Initial bucket $14.29 filled, refills $2. Large shareable portion. Standard popcorn snack without bucket costs ~$5.75.",
+      "confidence": "medium",
+      "supporting_data": "Bucket holds ~1.5 microwave bags; initial $14.29, refills $2, regular popcorn $5.75"
+    }
+  },
+  "specific_items": {
+    "Turkey Leg": {
+      "estimated_calories": 1093,
+      "weight": "1.5 lbs total (12-16 oz edible meat)",
+      "notes": "Official Disney data: 1,093 calories, 54g fat, 15g saturated fat, 5,284mg sodium (2 days worth), 150g protein. Some sources cite 720-1000 cal but 1,093 is most reliable.",
+      "confidence": "very_high",
+      "sources": ["Multiple Disney sources", "Dietetics With Driessens", "NYT 2013"]
+    },
+    "Mickey Pretzel (Jumbo)": {
+      "estimated_calories": 1000,
+      "weight": "~10.7 oz",
+      "notes": "Large soft pretzel sold at parks. Served with cheese sauce (add 80-100 cal). Not the mini snack-size pretzels (120 cal per 25 pieces).",
+      "confidence": "high",
+      "sources": ["Multiple forum reports", "Nutrition databases"]
+    },
+    "Mickey Pretzel (Standard)": {
+      "estimated_calories": 330,
+      "weight": "~6 oz",
+      "notes": "Standard Mickey-shaped soft pretzel. Cheese sauce adds 80-100 calories.",
+      "confidence": "high",
+      "sources": ["Nutrition databases", "User reports"]
+    },
+    "Ohana Bread Pudding": {
+      "estimated_calories": 1055,
+      "weight": "Serves 2-5 people per portion",
+      "notes": "One serving = 1,055 cal, 143g carbs, 15g protein, 40g fat. Tambu Lounge serves 'HUGE piece' - one person can't finish half. One order enough for 5 people. Served with vanilla ice cream and bananas foster caramel sauce. $12-13.",
+      "confidence": "very_high",
+      "sources": ["Recipe nutritional analysis", "Multiple diner reports"]
+    },
+    "Beaches & Cream Kitchen Sink Sundae": {
+      "estimated_calories": 4500,
+      "servings": "4-6 people",
+      "notes": "8 scoops ice cream, every topping available, whole 14oz can whipped cream. Chocolate Lover's version estimated 5,000+ calories. Available in 3 versions: Original, Chocolate Lovers, Neapolitan.",
+      "confidence": "high",
+      "sources": ["Multiple estimates 4000-5000 cal range"]
+    },
+    "Casey's Corner Chipotle BBQ Foot-Long Hot Dog": {
+      "estimated_calories": 850,
+      "price": "$16.49",
+      "notes": "All-beef foot-long topped with pulled pork, slaw, chipotle BBQ sauce. Served with fries or fruit. Loaded toppings add significant calories beyond base hot dog.",
+      "confidence": "medium",
+      "sources": ["Menu data 2026"]
+    },
+    "Casey's Corner Chili-Cheese Foot-Long Hot Dog": {
+      "estimated_calories": 950,
+      "price": "$15.49",
+      "notes": "All-beef foot-long with chili and cheese. Served with fries or fruit.",
+      "confidence": "medium",
+      "sources": ["Menu data 2026"]
+    },
+    "Casey's Corner Loaded Hash Brown Hot Dog": {
+      "estimated_calories": 900,
+      "notes": "All-beef hot dog topped with hash browns, cheddar, bacon, chipotle ranch drizzle, crispy onions. Extremely loaded.",
+      "confidence": "medium",
+      "sources": ["Menu descriptions"]
+    },
+    "Flame Tree BBQ Ribs & Chicken Combo": {
+      "estimated_calories": 1300,
+      "price": "$15.49",
+      "notes": "Half-rack St. Louis ribs plus chicken, served with beans and coleslaw. Described as 'straight up huge', guests suggest splitting between couple.",
+      "confidence": "medium",
+      "sources": ["Menu data", "Multiple reviews"]
+    },
+    "Flame Tree BBQ Ribs/Chicken/Pork Sampler": {
+      "estimated_calories": 1550,
+      "price": "Under $20",
+      "notes": "St. Louis ribs, marinated chicken, smoked pulled pork with beans and coleslaw. Described as 'more than enough food for two people'. Very generous combo platter.",
+      "confidence": "medium",
+      "sources": ["Multiple reviews confirming feeds 2 people"]
+    },
+    "Woody's Lunch Box Totchos": {
+      "estimated_calories": 552,
+      "price": "$10.49",
+      "notes": "Potato barrels with beef & bean chili, shredded cheese, queso, tomatoes, corn chips, sour cream, green onions. 29g fat, 37g carbs, 8g fiber, 36g protein. Portion 'absolutely huge' and 'very filling' - some can't finish.",
+      "confidence": "very_high",
+      "sources": ["Official nutrition data", "Multiple portion size reports"]
+    },
+    "Docking Bay 7 Ronto Wrap": {
+      "estimated_calories": 750,
+      "price": "$13.99-$15.99",
+      "notes": "Roasted pork, grilled pork sausage, peppercorn sauce, tangy slaw in pita bread. Served with yuca fries topped with aioli. Described as 'decent portions'. Available after 3pm.",
+      "confidence": "low",
+      "sources": ["Menu data", "Reviews noting decent portions"]
+    },
+    "Mole Chicken Nacho Fries (Daily Poutine)": {
+      "estimated_calories": 1100,
+      "price": "$10.49",
+      "notes": "Fries topped with mole chicken, white queso, pickled onions, pico de gallo, sour cream. Bowl 'PACKED with so many fries and tons of toppings'. Shareable portion.",
+      "confidence": "medium",
+      "sources": ["Disney Food Blog review"]
+    },
+    "Disney Cupcake (Specialty Character)": {
+      "estimated_calories": 1072,
+      "weight": "8.9 oz (252g)",
+      "notes": "Lab-tested Kylo Ren cupcake. Oversized with extra-thick frosting and decorations. Standard cupcakes 200-400 cal; Disney's are 2.5-3x larger. No official Disney data published.",
+      "confidence": "very_high",
+      "sources": ["TouringPlans laboratory analysis (scientific testing)"]
+    },
+    "Lighthouse Sandwich (Columbia Harbour House)": {
+      "estimated_calories": 980,
+      "notes": "Hummus and broccoli slaw sandwich. Described as 'almost 1,000 calories' and 'huge' portion.",
+      "confidence": "medium",
+      "sources": ["Calorie tracking forum reports"]
+    },
+    "Clam Chowder Bread Bowl": {
+      "estimated_calories": 575,
+      "breakdown": "290 cal soup + 285 cal bread",
+      "notes": "Approximately 1 cup of soup in hollowed bread bowl. Soup portion described as 'very small' compared to huge bread loaf. Bread bowl itself is substantial.",
+      "confidence": "high",
+      "sources": ["Nutrition data from reviews"]
+    },
+    "Tiffins Signature Burger": {
+      "estimated_calories": 1100,
+      "price": "$28",
+      "notes": "In-house burger blend, aged cheddar, demi-glace, Parker House roll, served with seasoned waffle fries. Leaves guests 'very satisfied' with taste, portion, and quality.",
+      "confidence": "medium",
+      "sources": ["Reviews and menu data"]
+    },
+    "Sci-Fi Dine-In Burgers": {
+      "estimated_calories": 1150,
+      "price": "$25-$26",
+      "notes": "Described as 'huge' and 'very substantial'. Multiple varieties (Classic American, BBQ, Cyborg-er, Feature Film) all $25-26. Served on brioche buns with fries. Restaurant 'does not concern itself with calories'.",
+      "confidence": "medium",
+      "sources": ["Multiple reviews describing as 'big burger'"]
+    },
+    "Universal Pizza Jumbo Slice": {
+      "estimated_calories": 650,
+      "price": "$9.99",
+      "notes": "Equivalent to 2-3 NYC dollar slices or half of regular 8-10 inch pizza. Significantly larger than standard slice.",
+      "confidence": "medium",
+      "sources": ["Universal Orlando portion descriptions"]
+    },
+    "Dole Whip Float": {
+      "estimated_calories": 420,
+      "price": "$5.99",
+      "notes": "Soft-serve pineapple Dole Whip with juice float. Standard 16oz serving. Lower calorie than many frozen treats due to no dairy.",
+      "confidence": "medium",
+      "sources": ["Menu pricing and standard serving size"]
+    },
+    "Satu'li Bowl (Create Your Own)": {
+      "estimated_calories": 650,
+      "notes": "Customizable bowl with choice of protein (chicken, beef, tofu, fish), base (rice, quinoa, romaine/kale salad), and sauce. Noted for reasonable portions compared to other quick service locations.",
+      "confidence": "low",
+      "sources": ["Menu descriptions and portion comparisons"]
+    },
+    "Primo Piatto Pancakes (3-Stack)": {
+      "estimated_calories": 720,
+      "notes": "Three fluffy house-made pancakes filled with fresh blueberries. Generous breakfast portion.",
+      "confidence": "low",
+      "sources": ["Menu descriptions"]
+    },
+    "Mickey Pancake Breakfast": {
+      "estimated_calories": 550,
+      "price": "$9.49",
+      "notes": "Mickey-shaped pancake with berry compote and choice of bacon or sausage. Single pancake plus protein.",
+      "confidence": "low",
+      "sources": ["Menu data"]
+    },
+    "Breakfast Totchos (Kusafiri)": {
+      "estimated_calories": 850,
+      "price": "$10.99",
+      "notes": "Crispy tater tots topped with creamy eggs, cheese sauce, bacon, cheese curds. Described as 'enough for those who aren't huge breakfast eaters'.",
+      "confidence": "low",
+      "sources": ["Menu and reviews"]
+    },
+    "Bounty Platter (Breakfast)": {
+      "estimated_calories": 1050,
+      "notes": "Scrambled eggs, meat (sausage or bacon), potatoes (tots or hash), sometimes includes waffle, biscuit or fruit. Multiple-component breakfast plate.",
+      "confidence": "low",
+      "sources": ["Menu descriptions"]
+    },
+    "Chicken Strips (4-piece with Fries)": {
+      "estimated_calories": 850,
+      "notes": "Standard quick service order at Columbia Harbour House, Backlot Express. 4 large chicken strips, generous fries underneath. Described as 'very generous' portions.",
+      "confidence": "medium",
+      "sources": ["Menu data and portion reports"]
+    },
+    "Rancho del Zocalo Trio of Street Tacos": {
+      "estimated_calories": 720,
+      "notes": "One beef taco, one chicken taco, one soy chorizo con papa taco in corn tortillas with tomatillo sauce, onions, cilantro. Three tacos per order.",
+      "confidence": "low",
+      "sources": ["Menu descriptions"]
+    }
+  },
+  "multiplier_usage_guide": {
+    "how_to_apply": "Multiply the base USDA calorie estimate by the category multiplier to estimate actual theme park portion calories",
+    "example": "Standard burger with fries = 650 cal USDA. Theme park burger: 650 × 1.8 = 1,170 cal estimated",
+    "confidence_levels": {
+      "very_high": "Based on laboratory testing or official published data",
+      "high": "Based on multiple consistent reports, menu data, and reliable sources",
+      "medium": "Based on reviews, forum reports, and menu descriptions",
+      "low": "Estimated based on category patterns and limited data"
+    },
+    "when_to_use_specific_items": "Use specific item data when exact menu match exists. Otherwise, use category multipliers.",
+    "adjustment_for_2026_cost_cutting": "Some locations have reduced portions slightly in 2026, but most items remain oversized. If user reports smaller portions, consider reducing multiplier by 0.1-0.2",
+    "sharing_guidance": "Many single-serving items (burgers, loaded fries, nachos, BBQ platters) are actually shareable for 2 people. When shared, divide estimated calories by 2."
+  },
+  "research_limitations": {
+    "no_official_data": "Disney and Universal do not publish nutritional information for most menu items",
+    "lab_testing_limited": "Only one item (Disney cupcake) has been scientifically lab-tested for calories",
+    "variability": "Portion sizes can vary by location, time of day, cast member, and seasonal menu changes",
+    "cost_cutting_impact": "2026 cost-cutting measures may have reduced some portions; ongoing monitoring needed",
+    "price_not_portion": "High prices don't always correlate with huge portions (e.g., fine dining has reasonable portions)",
+    "guest_reports_subjective": "Forum reports of 'huge' or 'small' are subjective and vary by individual appetite"
+  },
+  "special_considerations": {
+    "kids_meals": "Kids meals are smaller but still 'filling' according to reports - estimate 0.6-0.7x adult portions",
+    "table_service_vs_quick_service": "Table service signature dining has more reasonable portions (1.2-1.4x) vs quick service (1.5-2.0x)",
+    "festival_booths": "EPCOT festival booths are smaller than restaurant portions but still substantial (1.3x multiplier)",
+    "sides_substitution": "Can substitute fries for fruit, veggies, or green beans at most locations - reduces meal calories by 300-400",
+    "bread_bowl_ratio": "Bread bowls: bread is 50% of calories (285 cal), soup is 50% (290 cal)",
+    "loaded_items": "Items described as 'loaded' or with multiple toppings have highest multipliers (2.0-2.2x)",
+    "shareability_indicators": "Items described as 'shareable', 'enough for two', 'huge' are 1.8x+ multipliers",
+    "walking_calories": "Guests burn 1500-2500+ extra calories from park walking (7-12 miles/day) - not a portion multiplier but important context"
+  }
+}
