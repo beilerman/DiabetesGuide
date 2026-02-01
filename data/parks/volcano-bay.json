@@ -1,0 +1,269 @@
+{
+  "parks": [
+    {
+      "id": "volcano-bay",
+      "name": "Universal's Volcano Bay",
+      "subtitle": "Your Guide to a Carb-Conscious Day at the Water Park",
+      "lands": [
+        "Krakatau",
+        "Wave Village",
+        "River Village",
+        "Rainforest Village"
+      ],
+      "menuItems": [
+        {
+          "land": "Wave Village",
+          "restaurant": "Kohola Reef Restaurant & Social Club",
+          "name": "Kohola Chicken Sandwich",
+          "description": "Tandoori marinated chicken, cucumber mango basil slaw, with avocado mayo on a toasted Hawaiian style bun.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Wave Village",
+          "restaurant": "Kohola Reef Restaurant & Social Club",
+          "name": "Smoked Hawaiian Ribs",
+          "description": "Sticky and sweet slow smoked honey glazed ribs served with french fries, sweet plantains and cucumber mango basil slaw.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Wave Village",
+          "restaurant": "Kohola Reef Restaurant & Social Club",
+          "name": "Reka Burger",
+          "description": "Pepper Jack cheese, bacon, caramelized onions, topped with bread and butter pickles and BBQ sauce, on a King's Hawaiian Roll.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Wave Village",
+          "restaurant": "Kohola Reef Restaurant & Social Club",
+          "name": "Hawaiian Longboard Pizza",
+          "description": "Topped with sweet caramelized pineapple, savory diced ham, and spicy pickled jalapeños.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Wave Village",
+          "restaurant": "Kohola Reef Restaurant & Social Club",
+          "name": "Jerk Shrimp Mac and Cheese",
+          "description": "Jamaican jerk-spiced pan-seared shrimp tossed with pasta shells in a creamy white cheddar cheese sauce.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Rainforest Village",
+          "restaurant": "Whakawaiwai Eats",
+          "name": "Island BBQ Chicken Pizza",
+          "description": "12-inch flatbread with mango BBQ sauce drizzled on top of diced chicken.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Rainforest Village",
+          "restaurant": "Whakawaiwai Eats",
+          "name": "Quinoa Edamame Burger",
+          "description": "Plant-based quinoa and edamame patty on a toasted bun with fresh toppings.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Rainforest Village",
+          "restaurant": "Whakawaiwai Eats",
+          "name": "Bacon Cheeseburger",
+          "description": "Beef patty with bacon, American cheese, lettuce, tomato, and pickles.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Rainforest Village",
+          "restaurant": "Whakawaiwai Eats",
+          "name": "Chicken Teriyaki Rice Bowl",
+          "description": "Teriyaki chicken over coconut jasmine rice with ginger soy dressed mixed greens, wakame seaweed, pickled cucumber and edamame salad.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Rainforest Village",
+          "restaurant": "Whakawaiwai Eats",
+          "name": "Shrimp Rice Bowl",
+          "description": "Seasoned shrimp over coconut jasmine rice with ginger soy dressed mixed greens, wakame seaweed, pickled cucumber and edamame salad.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Rainforest Village",
+          "restaurant": "Whakawaiwai Eats",
+          "name": "Chick'n Katsu Rice Bowl",
+          "description": "Breaded and fried chicken cutlet over coconut jasmine rice with ginger soy dressed mixed greens, wakame seaweed, pickled cucumber and edamame salad.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "Rainforest Village",
+          "restaurant": "Whakawaiwai Eats",
+          "name": "Chicken Tenders",
+          "description": "Breaded and fried chicken tenders served with fries.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": true
+        },
+        {
+          "land": "River Village",
+          "restaurant": "Bambu",
+          "name": "Tropical Burger",
+          "description": "Beef patty with tropical toppings on a toasted bun, served with fries.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "River Village",
+          "restaurant": "Bambu",
+          "name": "Pretzel Dog",
+          "description": "All-beef hot dog wrapped in soft pretzel dough.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "River Village",
+          "restaurant": "Bambu",
+          "name": "Fresh Fruit Salad",
+          "description": "Seasonal fresh fruit medley.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Krakatau",
+          "restaurant": "The Feasting Frog",
+          "name": "Poke Poke Bowl",
+          "description": "Fresh diced ahi tuna with rice, edamame, seaweed salad, and a sesame soy dressing.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Krakatau",
+          "restaurant": "The Feasting Frog",
+          "name": "Taco Sampler",
+          "description": "Assorted tacos with a variety of fillings and fresh toppings.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": false,
+          "isFried": false
+        },
+        {
+          "land": "Krakatau",
+          "restaurant": "The Feasting Frog",
+          "name": "Nachos",
+          "description": "Tortilla chips topped with cheese sauce, jalapeños, pico de gallo, and sour cream.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Wave Village",
+          "restaurant": "Dancing Dragons Boat Bar",
+          "name": "Volcano Boba",
+          "description": "Pineapple juice, coconut water, and blue curacao with mango boba pearls.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "drink",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Wave Village",
+          "restaurant": "Kohola Reef Restaurant & Social Club",
+          "name": "Volcano Lava Chocolate Cake",
+          "description": "Chocolate cake that erupts with molten chocolate, inspired by the park's Krakatau volcano.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        },
+        {
+          "land": "Wave Village",
+          "restaurant": "Kohola Reef Restaurant & Social Club",
+          "name": "Waturi Fusion Ice Cream",
+          "description": "Colorful swirls of banana, blue raspberry, strawberry and orange ice cream flavors.",
+          "calories": 0,
+          "carbs": 0,
+          "fat": 0,
+          "type": "food",
+          "vegetarian": true,
+          "isFried": false
+        }
+      ]
+    }
+  ]
+}
