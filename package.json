@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "seed": "tsx scripts/seed.ts",
     "enrich:allergens": "tsx scripts/enrich-allergens.ts",
-    "enrich:nutrition": "tsx scripts/enrich-nutrition.ts"
+    "enrich:nutrition": "tsx scripts/enrich-nutrition.ts",
+    "import:all": "tsx scripts/import-all.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",
