@@ -1,7 +1,7 @@
 import * as cheerio from 'cheerio'
 import { writeFileSync, mkdirSync, existsSync } from 'fs'
 import { dirname, resolve } from 'path'
-import { fileURLToPath } from 'url'
+import { fileURLToPath, pathToFileURL } from 'url'
 import type { ScrapeResult, ScrapedRestaurant } from './types.js'
 import { inferCategory, delay } from './utils.js'
 
@@ -43,6 +43,7 @@ async function fetchPage(url: string): Promise<string> {
 function parseRestaurantIndex(html: string): RestaurantLink[] {
   const $ = cheerio.load(html)
   const links: RestaurantLink[] = []
+  const seen = new Set<string>()
 
   // AllEars lists restaurants in sections by land
   // Look for h2/h3 headers followed by restaurant links
@@ -66,7 +67,9 @@ function parseRestaurantIndex(html: string): RestaurantLink[] {
       const name = $(link).text().trim()
 
       // AllEars restaurant menu URLs typically contain "menu" and the restaurant name
-      if (href.includes('allears.net') && href.includes('menu') && name) {
+      // Deduplicate by URL to avoid processing the same restaurant multiple times
+      if (href.includes('allears.net') && href.includes('menu') && name && !seen.has(href)) {
+        seen.add(href)
         links.push({
           name,
           url: href,
@@ -207,7 +210,7 @@ export async function scrapeAllEars(): Promise<ScrapeResult> {
 }
 
 // CLI entry point
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   scrapeAllEars()
     .then(result => {
       const outputDir = resolve(__dirname, '../../data/scraped')
