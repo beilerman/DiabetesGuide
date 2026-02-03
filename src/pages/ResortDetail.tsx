@@ -8,7 +8,7 @@ import { getResortById, getParksForCategory } from '../lib/resort-config'
 export default function ResortDetail() {
   const { resortId } = useParams<{ resortId: string }>()
   const resort = getResortById(resortId || '')
-  const { data: parks } = useParks()
+  const { data: parks, isLoading, error } = useParks()
 
   if (!resort) {
     return (
@@ -41,22 +41,50 @@ export default function ResortDetail() {
         <p className="text-white/70 mt-1">{resort.location}</p>
       </div>
 
-      {/* Category cards grid */}
-      <div className="grid grid-cols-2 gap-4">
-        {resort.categories.map(category => {
-          const categoryParks = parks ? getParksForCategory(parks, resort, category.id) : []
-          return (
-            <CategoryCard
+      {/* Error state */}
+      {error && (
+        <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-center">
+          <p className="text-red-700">Unable to load venues. Please try again later.</p>
+        </div>
+      )}
+
+      {/* Loading state */}
+      {isLoading && (
+        <div className="grid grid-cols-2 gap-4">
+          {resort.categories.map(category => (
+            <div
               key={category.id}
-              category={category}
-              resortId={resort.id}
-              theme={resort.theme}
-              venueCount={categoryParks.length}
-              itemCount={0}
-            />
-          )
-        })}
-      </div>
+              className="rounded-2xl overflow-hidden border border-stone-200 animate-pulse"
+            >
+              <div className="p-5">
+                <div className="h-8 w-8 bg-stone-200 rounded mb-2" />
+                <div className="h-5 w-24 bg-stone-200 rounded mb-2" />
+                <div className="h-4 w-16 bg-stone-200 rounded" />
+              </div>
+              <div className="h-1 bg-stone-200" />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Category cards grid */}
+      {!isLoading && !error && (
+        <div className="grid grid-cols-2 gap-4">
+          {resort.categories.map(category => {
+            const categoryParks = parks ? getParksForCategory(parks, resort, category.id) : []
+            return (
+              <CategoryCard
+                key={category.id}
+                category={category}
+                resortId={resort.id}
+                theme={resort.theme}
+                venueCount={categoryParks.length}
+                itemCount={0}
+              />
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

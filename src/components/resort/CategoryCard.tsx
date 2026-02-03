@@ -24,8 +24,8 @@ export function CategoryCard({ category, resortId, theme, venueCount, itemCount 
           {venueCount > 0 && (
             <span>{venueCount} {venueCount === 1 ? 'venue' : 'venues'}</span>
           )}
-          {venueCount > 0 && <span className="text-stone-400">·</span>}
-          <span>{itemCount} items</span>
+          {venueCount > 0 && itemCount > 0 && <span className="text-stone-400">·</span>}
+          {itemCount > 0 && <span>{itemCount} items</span>}
         </div>
       </div>
       {/* Bottom accent bar */}
