@@ -24,3 +24,7 @@ dist-ssr
 *.sln
 *.sw?
 .worktrees/
+
+# Menu sync data (large JSON files)
+data/scraped/
+data/approved/
