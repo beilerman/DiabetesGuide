@@ -159,8 +159,8 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = process.argv.slice(2)
   const approveAll = args.includes('--all')
 
-  const pendingDir = resolve(__dirname, 'data/pending')
-  const approvedDir = resolve(__dirname, 'data/approved')
+  const pendingDir = resolve(__dirname, '../data/pending')
+  const approvedDir = resolve(__dirname, '../data/approved')
 
   if (!existsSync(pendingDir)) {
     console.error('No pending data found.')
