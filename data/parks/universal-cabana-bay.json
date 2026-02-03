@@ -1,0 +1,203 @@
+{
+  "parks": [{
+    "id": "universal-cabana-bay",
+    "name": "Universal Cabana Bay Beach Resort",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Cabana Bay Beach Resort"],
+    "menuItems": [
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Bayliner Diner",
+        "name": "Pepperoni Pizza",
+        "description": "Personal pepperoni pizza with mozzarella and marinara",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Bayliner Diner",
+        "name": "Classic Cheeseburger",
+        "description": "Grilled beef patty with American cheese, lettuce, tomato, and pickles",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Bayliner Diner",
+        "name": "Spaghetti and Meatballs",
+        "description": "Spaghetti with marinara sauce and beef meatballs",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Bayliner Diner",
+        "name": "Rotisserie Chicken",
+        "description": "Slow-roasted half chicken with mashed potatoes and green beans",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Bayliner Diner",
+        "name": "Garden Salad",
+        "description": "Mixed greens with tomatoes, cucumbers, carrots, and choice of dressing",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Galaxy Bowl Restaurant",
+        "name": "Galaxy Burger",
+        "description": "Angus beef burger with pepper jack, bacon, and onion rings",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Galaxy Bowl Restaurant",
+        "name": "Boneless Wings",
+        "description": "Breaded boneless chicken bites with choice of buffalo or BBQ sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Galaxy Bowl Restaurant",
+        "name": "Loaded Nachos",
+        "description": "Tortilla chips with queso, jalapenos, pico de gallo, and sour cream",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": true
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Atomic Tonic",
+        "name": "Chicken Caesar Wrap",
+        "description": "Grilled chicken with romaine, Parmesan, and Caesar dressing in a flour tortilla",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Atomic Tonic",
+        "name": "Turkey Club Sandwich",
+        "description": "Sliced turkey, bacon, lettuce, tomato, and mayo on toasted bread",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Atomic Tonic",
+        "name": "Atomic Punch",
+        "description": "Tropical rum cocktail with pineapple, coconut, and grenadine",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Hideaway Bar & Grill",
+        "name": "Grilled Chicken Sandwich",
+        "description": "Grilled chicken breast with lettuce and tomato on a brioche bun",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Hideaway Bar & Grill",
+        "name": "Piña Colada",
+        "description": "Frozen piña colada with coconut cream and pineapple",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Swizzle Lounge",
+        "name": "Retro Cocktail",
+        "description": "Signature retro-themed craft cocktail",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Shakes Malt Shoppe",
+        "name": "Classic Milkshake",
+        "description": "Hand-spun milkshake in chocolate, vanilla, or strawberry",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Shakes Malt Shoppe",
+        "name": "Ice Cream Sundae",
+        "description": "Scoops of ice cream with hot fudge, whipped cream, and cherry",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Starbucks",
+        "name": "Caramel Frappuccino",
+        "description": "Blended coffee with caramel syrup, milk, and whipped cream",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false,
+        "isChain": true
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Starbucks",
+        "name": "Butter Croissant",
+        "description": "Flaky butter croissant baked fresh daily",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false,
+        "isChain": true
+      },
+      {
+        "land": "Cabana Bay Beach Resort",
+        "restaurant": "Starbucks",
+        "name": "Iced Caffe Latte",
+        "description": "Espresso with cold milk poured over ice",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false,
+        "isChain": true
+      }
+    ]
+  }]
+}

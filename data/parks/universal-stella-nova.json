@@ -1,0 +1,110 @@
+{
+  "parks": [{
+    "id": "universal-stella-nova",
+    "name": "Universal Stella Nova Resort",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Stella Nova Resort"],
+    "menuItems": [
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Cosmos Cafe and Market",
+        "name": "Smash Burger",
+        "description": "Double smashed beef patties with cheddar, pickles, and special sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Cosmos Cafe and Market",
+        "name": "Pressed Cuban Panini",
+        "description": "Ham, roasted pork, Swiss cheese, pickles, and mustard on pressed bread",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Cosmos Cafe and Market",
+        "name": "Crispy Fried Chicken",
+        "description": "Southern-style fried chicken with coleslaw and biscuit",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Cosmos Cafe and Market",
+        "name": "Penne Marinara",
+        "description": "Penne pasta with house-made marinara sauce and garlic bread",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Galaxy Bar and Grill",
+        "name": "Grilled Chicken Sandwich",
+        "description": "Grilled chicken breast with lettuce, tomato, and garlic aioli",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Galaxy Bar and Grill",
+        "name": "Cheese Quesadilla",
+        "description": "Grilled flour tortilla with melted cheddar and pepper jack",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Galaxy Bar and Grill",
+        "name": "Frozen Cosmo Colada",
+        "description": "Blended pina colada with a cosmic blue swirl",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Nova Bar",
+        "name": "Nebula Negroni",
+        "description": "Gin, Campari, and sweet vermouth with a color-changing twist",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Nova Bar",
+        "name": "Stardust Margarita",
+        "description": "Tequila, lime, and agave with edible glitter rim",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Stella Nova Resort",
+        "restaurant": "Nova Bar",
+        "name": "Stellar Cheese Board",
+        "description": "Selection of artisan cheeses with crackers, fruit, and honey",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      }
+    ]
+  }]
+}

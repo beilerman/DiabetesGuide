@@ -1,0 +1,190 @@
+{
+  "parks": [{
+    "id": "universal-royal-pacific",
+    "name": "Universal Royal Pacific Resort",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Royal Pacific Resort"],
+    "menuItems": [
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Islands Dining Room",
+        "name": "Pad Thai",
+        "description": "Rice noodles with shrimp, egg, bean sprouts, peanuts, and tamarind sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Islands Dining Room",
+        "name": "Teriyaki Salmon",
+        "description": "Grilled Atlantic salmon glazed with teriyaki sauce and steamed rice",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Islands Dining Room",
+        "name": "California Roll",
+        "description": "Crab, avocado, and cucumber roll with soy sauce and wasabi",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Islands Dining Room",
+        "name": "Vegetable Fried Rice",
+        "description": "Wok-fried jasmine rice with mixed vegetables, egg, and soy sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": true
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Jake's American Bar",
+        "name": "Jake's Burger",
+        "description": "Half-pound Angus beef burger with cheddar, bacon, lettuce, and tomato",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Jake's American Bar",
+        "name": "Honey Garlic Wings",
+        "description": "Crispy fried chicken wings tossed in honey garlic sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Jake's American Bar",
+        "name": "Fish and Chips",
+        "description": "Beer-battered cod with fries, coleslaw, and tartar sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Orchid Court Sushi Bar",
+        "name": "Spicy Tuna Roll",
+        "description": "Fresh tuna with spicy mayo, cucumber, and sesame seeds",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Orchid Court Sushi Bar",
+        "name": "Salmon Sashimi",
+        "description": "Thinly sliced fresh Atlantic salmon served with wasabi and pickled ginger",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Orchid Court Sushi Bar",
+        "name": "Hot Sake",
+        "description": "Warmed premium Japanese sake",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Bula Bar & Grille",
+        "name": "Grilled Fish Tacos",
+        "description": "Seasoned grilled fish with mango salsa, cabbage slaw, and chipotle aioli",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Bula Bar & Grille",
+        "name": "Poolside Cheeseburger",
+        "description": "Grilled beef burger with American cheese, pickles, and fries",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Bula Bar & Grille",
+        "name": "Tropical Hurricane",
+        "description": "Rum punch with passion fruit, orange juice, and grenadine",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Wantilan Luau",
+        "name": "Kalua Pork",
+        "description": "Slow-roasted kalua pork from the Polynesian dinner show buffet",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Wantilan Luau",
+        "name": "Huli Huli Chicken",
+        "description": "Hawaiian-style grilled chicken with sweet soy glaze",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Wantilan Luau",
+        "name": "Mai Tai",
+        "description": "Classic Mai Tai with rum, lime, and orgeat syrup",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Tuk Tuk Market",
+        "name": "Breakfast Sandwich",
+        "description": "Egg, cheese, and sausage on a croissant",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Royal Pacific Resort",
+        "restaurant": "Tuk Tuk Market",
+        "name": "Fresh Fruit Cup",
+        "description": "Seasonal fresh fruit in a grab-and-go cup",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      }
+    ]
+  }]
+}

@@ -1,0 +1,150 @@
+{
+  "parks": [{
+    "id": "universal-hard-rock",
+    "name": "Universal Hard Rock Hotel",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Hard Rock Hotel"],
+    "menuItems": [
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "The Kitchen",
+        "name": "Classic Smash Burger",
+        "description": "Double smashed beef patties with American cheese, lettuce, tomato, and special sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "The Kitchen",
+        "name": "Crispy Buffalo Wings",
+        "description": "Fried chicken wings tossed in buffalo sauce with celery and blue cheese",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "The Kitchen",
+        "name": "Penne Bolognese",
+        "description": "Penne pasta with slow-simmered beef and pork Bolognese sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "The Kitchen",
+        "name": "Grilled NY Strip Steak",
+        "description": "12 oz New York strip with garlic mashed potatoes and seasonal vegetables",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "The Palm",
+        "name": "Prime NY Strip",
+        "description": "USDA Prime 14 oz New York strip steak with classic steakhouse sides",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "The Palm",
+        "name": "Whole Lobster",
+        "description": "Steamed whole Maine lobster with drawn butter",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "The Palm",
+        "name": "Jumbo Lump Crab Cake",
+        "description": "Pan-seared jumbo lump crab cake with remoulade sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "The Palm",
+        "name": "Jumbo Shrimp Cocktail",
+        "description": "Chilled jumbo shrimp with cocktail sauce and lemon",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "Emack & Bolio's",
+        "name": "Ice Cream Sundae",
+        "description": "Two scoops of premium ice cream with hot fudge, whipped cream, and a cherry",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "Emack & Bolio's",
+        "name": "Waffle Cone",
+        "description": "Fresh-made waffle cone with choice of ice cream flavors",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "Emack & Bolio's",
+        "name": "Iced Coffee",
+        "description": "Cold brewed coffee served over ice",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "BeachClub",
+        "name": "Fish Tacos",
+        "description": "Grilled mahi-mahi tacos with cabbage slaw, pico de gallo, and lime crema",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "BeachClub",
+        "name": "Loaded Nachos",
+        "description": "Tortilla chips with queso, jalapenos, sour cream, and guacamole",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": true
+      },
+      {
+        "land": "Hard Rock Hotel",
+        "restaurant": "BeachClub",
+        "name": "Frozen Margarita",
+        "description": "Blended tequila margarita with lime and salt rim",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      }
+    ]
+  }]
+}

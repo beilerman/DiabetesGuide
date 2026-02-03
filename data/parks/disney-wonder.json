@@ -1,0 +1,34 @@
+{
+  "parks": [{
+    "id": "disney-wonder",
+    "name": "Disney Wonder",
+    "subtitle": "Disney Cruise Line",
+    "lands": ["Rotational Dining", "Quick Service", "Specialty Dining", "Bars & Lounges"],
+    "menuItems": [
+      {"land": "Rotational Dining", "restaurant": "Tiana's Place", "name": "Seafood Gumbo", "description": "Traditional Louisiana gumbo with shrimp, crab, and andouille sausage", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Tiana's Place", "name": "Jambalaya", "description": "Cajun rice with chicken, shrimp, and sausage", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Tiana's Place", "name": "Beignets", "description": "Warm fried dough dusted with powdered sugar", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": true},
+      {"land": "Rotational Dining", "restaurant": "Tiana's Place", "name": "Blackened Catfish", "description": "Cajun-spiced catfish with remoulade sauce", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Tiana's Place", "name": "Bananas Foster", "description": "Caramelized bananas flambéed in rum sauce", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Triton's", "name": "Filet Mignon", "description": "Grilled beef tenderloin with béarnaise sauce", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Triton's", "name": "Roasted Duck Breast", "description": "Pan-seared duck with cherry reduction", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Triton's", "name": "Lobster Tail", "description": "Broiled lobster tail with drawn butter", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Triton's", "name": "Chocolate Soufflé", "description": "Warm chocolate soufflé with vanilla crème anglaise", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Animator's Palate", "name": "Sushi Platter", "description": "Assorted nigiri and maki rolls", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Animator's Palate", "name": "Stir-Fried Noodles", "description": "Wok-tossed noodles with vegetables and soy glaze", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Animator's Palate", "name": "Grilled Chicken Breast", "description": "Herb-marinated chicken with seasonal vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Animator's Palate", "name": "Teriyaki Salmon", "description": "Glazed salmon fillet with steamed rice", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Cabanas", "name": "Carved Turkey", "description": "Roasted turkey breast carved to order", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Cabanas", "name": "Pasta Station", "description": "Made-to-order pasta with choice of sauce", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Cabanas", "name": "Fresh Salad Bar", "description": "Assorted greens, toppings, and dressings", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Cabanas", "name": "Assorted Desserts", "description": "Rotating selection of cakes, tarts, and pastries", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Pinocchio's Pizzeria", "name": "Cheese Pizza", "description": "Classic cheese pizza by the slice", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Pinocchio's Pizzeria", "name": "Pepperoni Pizza", "description": "Pizza topped with pepperoni", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Pinocchio's Pizzeria", "name": "Veggie Pizza", "description": "Pizza with roasted vegetables and cheese", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo", "name": "Osso Buco", "description": "Braised veal shank in white wine and vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo", "name": "Mushroom Risotto", "description": "Arborio rice with porcini mushrooms and Parmesan", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo", "name": "Tiramisu", "description": "Classic layered espresso and mascarpone dessert", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo", "name": "Chicken Parmesan", "description": "Breaded chicken cutlet with marinara and mozzarella", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": true}
+    ]
+  }]
+}

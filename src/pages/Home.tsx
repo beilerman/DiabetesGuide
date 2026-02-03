@@ -1,32 +1,153 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useParks } from '../lib/queries'
+import type { Park } from '../lib/types'
 
 // Park emoji mapping based on park name patterns
 function getParkEmoji(parkName: string): string {
   const name = parkName.toLowerCase()
-  if (name.includes('magic kingdom') || name.includes('disneyland')) return '🏰'
+  if (name.includes('magic kingdom') || name.includes('disneyland park')) return '🏰'
   if (name.includes('epcot')) return '🌐'
   if (name.includes('hollywood') || name.includes('studios')) return '🎬'
-  if (name.includes('animal kingdom')) return '🦁'
+  if (name.includes('animal kingdom') && !name.includes('lodge')) return '🦁'
+  if (name.includes('cruise') || name.includes('disney magic') || name.includes('disney wonder') || name.includes('disney dream') || name.includes('disney fantasy') || name.includes('disney wish') || name.includes('disney treasure')) return '🚢'
+  if (name.includes('aulani')) return '🌺'
+  if (name.includes('resort') || name.includes('hotel') || name.includes('lodge')) return '🏨'
+  if (name.includes('epic universe')) return '🌌'
   if (name.includes('universal')) return '🎢'
   if (name.includes('islands')) return '🏝️'
-  if (name.includes('water') || name.includes('aquatica') || name.includes('blizzard') || name.includes('typhoon')) return '🌊'
+  if (name.includes('water') || name.includes('aquatica') || name.includes('blizzard') || name.includes('typhoon') || name.includes('volcano')) return '🌊'
   if (name.includes('adventure') || name.includes('busch')) return '🎪'
   if (name.includes('legoland')) return '🧱'
+  if (name.includes('springs') || name.includes('downtown disney')) return '🛍️'
   return '🎡'
 }
 
 // Park color based on type
 function getParkColor(parkName: string): string {
   const name = parkName.toLowerCase()
-  if (name.includes('magic kingdom') || name.includes('disneyland')) return 'border-l-purple-500'
+  if (name.includes('magic kingdom') || name.includes('disneyland park')) return 'border-l-purple-500'
   if (name.includes('epcot')) return 'border-l-blue-500'
   if (name.includes('hollywood') || name.includes('studios')) return 'border-l-red-500'
-  if (name.includes('animal kingdom')) return 'border-l-green-500'
+  if (name.includes('animal kingdom') && !name.includes('lodge')) return 'border-l-green-500'
+  if (name.includes('cruise') || name.includes('disney magic') || name.includes('disney wonder') || name.includes('disney dream') || name.includes('disney fantasy') || name.includes('disney wish') || name.includes('disney treasure')) return 'border-l-sky-500'
+  if (name.includes('aulani')) return 'border-l-orange-500'
+  if (name.includes('resort') || name.includes('hotel') || name.includes('lodge')) return 'border-l-amber-500'
+  if (name.includes('epic universe')) return 'border-l-violet-500'
   if (name.includes('universal')) return 'border-l-indigo-500'
   if (name.includes('islands')) return 'border-l-cyan-500'
-  if (name.includes('water')) return 'border-l-sky-400'
+  if (name.includes('water') || name.includes('volcano')) return 'border-l-sky-400'
+  if (name.includes('springs') || name.includes('downtown disney')) return 'border-l-pink-500'
   return 'border-l-teal-500'
+}
+
+// Group parks by destination
+interface ParkGroupData {
+  label: string
+  parks: Park[]
+}
+
+function groupParks(parks: Park[]): ParkGroupData[] {
+  const groups: Record<string, Park[]> = {}
+  const order = [
+    'Walt Disney World',
+    'Disneyland Resort',
+    'Disney Cruise Line',
+    'Universal Orlando Resort',
+    'Universal Hollywood',
+    'Other Destinations',
+  ]
+
+  for (const park of parks) {
+    const loc = park.location || 'Other'
+    const name = park.name.toLowerCase()
+
+    let group: string
+    if (/disney (magic|wonder|dream|fantasy|wish|treasure)/.test(name)) {
+      group = 'Disney Cruise Line'
+    } else if (loc === 'Aulani Resort') {
+      group = 'Other Destinations'
+    } else if (loc === 'Walt Disney World') {
+      group = 'Walt Disney World'
+    } else if (loc === 'Disneyland Resort') {
+      group = 'Disneyland Resort'
+    } else if (loc === 'Universal Orlando Resort') {
+      group = 'Universal Orlando Resort'
+    } else if (loc === 'Universal Hollywood') {
+      group = 'Universal Hollywood'
+    } else {
+      group = 'Other Destinations'
+    }
+
+    if (!groups[group]) groups[group] = []
+    groups[group].push(park)
+  }
+
+  return order
+    .filter(g => groups[g] && groups[g].length > 0)
+    .map(g => ({ label: g, parks: groups[g] }))
+}
+
+// Collapsible park group
+function ParkGroup({ group }: { group: ParkGroupData }) {
+  const storageKey = `dg_group_${group.label}`
+  const [expanded, setExpanded] = useState(() => {
+    const stored = localStorage.getItem(storageKey)
+    return stored !== null ? stored === 'true' : true
+  })
+
+  useEffect(() => {
+    localStorage.setItem(storageKey, String(expanded))
+  }, [expanded, storageKey])
+
+  return (
+    <div>
+      <button
+        onClick={() => setExpanded(e => !e)}
+        className="flex items-center gap-2 w-full text-left mb-3"
+        aria-expanded={expanded}
+      >
+        <svg
+          className={`w-5 h-5 text-stone-400 transition-transform ${expanded ? 'rotate-90' : ''}`}
+          fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"
+        >
+          <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <h3 className="text-lg font-bold text-stone-800">{group.label}</h3>
+        <span className="text-sm text-stone-400 font-normal">({group.parks.length})</span>
+      </button>
+      {expanded && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {group.parks.map(park => (
+            <Link
+              key={park.id}
+              to={`/park/${park.id}`}
+              className={`rounded-2xl border-l-4 border-t border-r border-b border-stone-200 bg-white p-6 shadow-sm hover:shadow-lg transition-all ${getParkColor(park.name)}`}
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-4xl flex-shrink-0" role="img" aria-label="Park icon">
+                  {getParkEmoji(park.name)}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-lg font-semibold text-stone-900 mb-1 line-clamp-2">{park.name}</h2>
+                  <p className="text-sm text-stone-500 flex items-center gap-1">
+                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                      <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span className="truncate">{park.location}</span>
+                  </p>
+                </div>
+                <svg className="w-5 h-5 text-stone-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }
 
 // Skeleton card component
@@ -153,34 +274,11 @@ export default function Home() {
           </div>
         )}
 
-        {/* Parks grid */}
+        {/* Grouped parks */}
         {parks && parks.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {parks.map(park => (
-              <Link
-                key={park.id}
-                to={`/park/${park.id}`}
-                className={`rounded-2xl border-l-4 border-t border-r border-b border-stone-200 bg-white p-6 shadow-sm hover:shadow-lg transition-all ${getParkColor(park.name)}`}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="text-4xl flex-shrink-0" role="img" aria-label="Park icon">
-                    {getParkEmoji(park.name)}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h2 className="text-lg font-semibold text-stone-900 mb-1 line-clamp-2">{park.name}</h2>
-                    <p className="text-sm text-stone-500 flex items-center gap-1">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                        <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                      </svg>
-                      <span className="truncate">{park.location}</span>
-                    </p>
-                  </div>
-                  <svg className="w-5 h-5 text-stone-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-              </Link>
+          <div className="space-y-6">
+            {groupParks(parks).map(group => (
+              <ParkGroup key={group.label} group={group} />
             ))}
           </div>
         )}

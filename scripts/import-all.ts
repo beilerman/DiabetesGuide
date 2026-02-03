@@ -46,12 +46,23 @@ function inferCategory(item: RawItem): string {
 
 function inferLocation(parkName: string): string {
   const n = parkName.toLowerCase()
+  if (/aulani/.test(n)) return 'Aulani Resort'
+  if (/disney (magic|wonder|dream|fantasy|wish|treasure)/.test(n)) return 'Disney Cruise Line'
   if (/downtown disney|disneyland/.test(n)) return 'Disneyland Resort'
   if (/disney|magic kingdom|epcot|hollywood studios|animal kingdom/.test(n)) return 'Walt Disney World'
+  if (/epic universe/.test(n)) return 'Universal Orlando Resort'
+  if (/universal.*(hollywood|studios hollywood)/.test(n)) return 'Universal Hollywood'
   if (/universal|islands of adventure|volcano bay/.test(n)) return 'Universal Orlando Resort'
   if (/seaworld/.test(n)) return 'SeaWorld Parks'
   if (/busch gardens/.test(n)) return 'SeaWorld Parks'
   return 'Other'
+}
+
+function inferTimezone(parkName: string): string {
+  const n = parkName.toLowerCase()
+  if (/aulani/.test(n)) return 'Pacific/Honolulu'
+  if (/disneyland|downtown disney|hollywood/.test(n)) return 'America/Los_Angeles'
+  return 'America/New_York'
 }
 
 async function importAll() {
@@ -85,7 +96,7 @@ async function importAll() {
       } else {
         const { data: newPark, error: parkErr } = await supabase
           .from('parks')
-          .insert({ name: park.name, location: inferLocation(park.name), timezone: 'America/New_York' })
+          .insert({ name: park.name, location: inferLocation(park.name), timezone: inferTimezone(park.name) })
           .select('id')
           .single()
         if (parkErr) { console.error('  Park insert error:', parkErr); continue }

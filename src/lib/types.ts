@@ -51,6 +51,7 @@ export interface NutritionalData {
   sodium: number | null
   cholesterol: number | null
   source: 'official' | 'crowdsourced' | 'api_lookup'
+  source_detail: string | null
   confidence_score: number
   created_at: string
 }

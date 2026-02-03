@@ -1,0 +1,120 @@
+{
+  "parks": [{
+    "id": "universal-aventura",
+    "name": "Universal Aventura Hotel",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Aventura Hotel"],
+    "menuItems": [
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "Urban Pantry",
+        "name": "Chicken Teriyaki Bowl",
+        "description": "Wok-tossed chicken with vegetables, teriyaki sauce, and steamed rice",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "Urban Pantry",
+        "name": "Rotisserie Chicken",
+        "description": "Herb-roasted half chicken with roasted potatoes and vegetables",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "Urban Pantry",
+        "name": "Spicy Tuna Roll",
+        "description": "Fresh tuna with spicy mayo and cucumber in seasoned rice",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "Urban Pantry",
+        "name": "Margherita Pizza",
+        "description": "Fresh mozzarella, tomato sauce, and basil on thin crust",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "Urban Pantry",
+        "name": "Classic Cheeseburger",
+        "description": "Angus beef patty with cheddar, lettuce, tomato, and pickles",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "Bar 17 Bistro",
+        "name": "Pork Belly Bao Buns",
+        "description": "Steamed bao buns with braised pork belly, pickled vegetables, and hoisin",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "Bar 17 Bistro",
+        "name": "Bibimbap",
+        "description": "Korean rice bowl with beef, vegetables, gochujang, and a fried egg",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "Bar 17 Bistro",
+        "name": "Korean Fried Chicken",
+        "description": "Crispy double-fried chicken with gochujang glaze and pickled daikon",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "barVentura",
+        "name": "Edamame",
+        "description": "Steamed edamame with sea salt",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "barVentura",
+        "name": "Craft Old Fashioned",
+        "description": "Bourbon with muddled orange, cherry, and aromatic bitters",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Aventura Hotel",
+        "restaurant": "barVentura",
+        "name": "Crispy Spring Rolls",
+        "description": "Vegetable spring rolls with sweet chili dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": true
+      }
+    ]
+  }]
+}

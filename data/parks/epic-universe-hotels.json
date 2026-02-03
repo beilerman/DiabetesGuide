@@ -1,0 +1,150 @@
+{
+  "parks": [{
+    "id": "epic-universe-hotels",
+    "name": "Epic Universe Hotels",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Universal Helios Grand Hotel"],
+    "menuItems": [
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Flora Taverna",
+        "name": "Lamb Gyro Platter",
+        "description": "Seasoned lamb with tzatziki, tomatoes, onions, and warm pita bread",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Flora Taverna",
+        "name": "Grilled Branzino",
+        "description": "Whole grilled Mediterranean sea bass with lemon, herbs, and roasted potatoes",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Flora Taverna",
+        "name": "Margherita Pizza",
+        "description": "Wood-fired pizza with fresh mozzarella, San Marzano tomatoes, and basil",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Flora Taverna",
+        "name": "Breakfast Buffet",
+        "description": "Full breakfast spread with eggs, pastries, fruit, and Mediterranean items",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Aurora Market",
+        "name": "Caprese Panini",
+        "description": "Fresh mozzarella, tomato, basil, and balsamic on pressed ciabatta",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Aurora Market",
+        "name": "Mediterranean Wrap",
+        "description": "Grilled chicken, hummus, cucumber, tomato, and feta in a flour wrap",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Aurora Market",
+        "name": "Gelato",
+        "description": "Artisan Italian gelato in assorted seasonal flavors",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Aurora Market",
+        "name": "Espresso",
+        "description": "Double shot of freshly pulled espresso",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Bar Helios",
+        "name": "Patatas Bravas",
+        "description": "Crispy fried potatoes with spicy tomato aioli and garlic sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": true
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Bar Helios",
+        "name": "Grilled Shrimp Skewers",
+        "description": "Garlic and herb marinated shrimp with lemon and chimichurri",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Bar Helios",
+        "name": "Helios Spritz",
+        "description": "Aperol spritz with prosecco, soda, and a blood orange garnish",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Lotus Lagoon",
+        "name": "Grilled Chicken Flatbread",
+        "description": "Grilled chicken with roasted peppers, feta, and herb oil on flatbread",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Lotus Lagoon",
+        "name": "Poolside Burger",
+        "description": "Grilled beef burger with feta, arugula, and sun-dried tomato aioli",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Universal Helios Grand Hotel",
+        "restaurant": "Lotus Lagoon",
+        "name": "Mediterranean Sunset",
+        "description": "Tequila, blood orange, pomegranate, and lime with a salted rim",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      }
+    ]
+  }]
+}
