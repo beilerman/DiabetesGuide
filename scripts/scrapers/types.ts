@@ -10,7 +10,7 @@ export interface ScrapedItem {
   itemName: string
   description?: string
   price?: number
-  category?: 'entree' | 'appetizer' | 'dessert' | 'beverage' | 'side' | 'snack'
+  category?: 'entree' | 'dessert' | 'beverage' | 'side' | 'snack'
   scrapedAt: Date
   confidence: number // 0-100 based on source reliability
 }

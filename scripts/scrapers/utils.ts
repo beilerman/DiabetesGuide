@@ -30,9 +30,10 @@ export function inferCategory(name: string): ScrapedItem['category'] | undefined
 
   // Desserts
   if (/\b(cookie|cake|brownie|sundae|ice cream|gelato|mousse|pudding|churro|funnel|waffle|donut|cupcake|pie|tart|cobbler|crisp)\b/.test(n)) {
-    // Exclude savory items with "crispy"
-    if (/crispy/.test(n)) return undefined
-    return 'dessert'
+    // Exclude savory items with "crispy" - let them fall through to other categories
+    if (!/crispy/.test(n)) {
+      return 'dessert'
+    }
   }
 
   // Sides
@@ -40,13 +41,8 @@ export function inferCategory(name: string): ScrapedItem['category'] | undefined
     return 'side'
   }
 
-  // Appetizers
-  if (/\b(appetizer|starter|sampler|dip|wings|nachos|pretzel|popcorn)\b/.test(n)) {
-    return 'appetizer'
-  }
-
   // Snacks (smaller items, often portable)
-  if (/\b(snack|popcorn|churro|pretzel|corn dog|turkey leg)\b/.test(n)) {
+  if (/\b(snack|popcorn|churro|pretzel|corn dog|turkey leg|wings|nachos|dip)\b/.test(n)) {
     return 'snack'
   }
 
