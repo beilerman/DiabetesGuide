@@ -1,6 +1,7 @@
 // src/pages/Home.tsx
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { useParks } from '../lib/queries'
+import { useParks, useAllRestaurants, useMenuItemCounts } from '../lib/queries'
 import { ResortCard } from '../components/resort/ResortCard'
 import { RESORT_CONFIG, getParksForResort } from '../lib/resort-config'
 
@@ -14,6 +15,33 @@ function SkeletonCard() {
 
 export default function Home() {
   const { data: parks, isLoading, error } = useParks()
+  const { data: allRestaurants } = useAllRestaurants()
+  const { data: menuItemCounts } = useMenuItemCounts()
+
+  // Compute counts per resort
+  const resortCounts = useMemo(() => {
+    if (!parks || !allRestaurants || !menuItemCounts) return new Map()
+
+    const counts = new Map<string, { restaurants: number; items: number }>()
+
+    for (const resort of RESORT_CONFIG) {
+      const resortParks = getParksForResort(parks, resort)
+      const parkIds = new Set(resortParks.map(p => p.id))
+
+      // Count restaurants in this resort's parks
+      const restaurantCount = allRestaurants.filter(r => parkIds.has(r.park_id)).length
+
+      // Count menu items in this resort's parks
+      let itemCount = 0
+      for (const parkId of parkIds) {
+        itemCount += menuItemCounts.get(parkId) || 0
+      }
+
+      counts.set(resort.id, { restaurants: restaurantCount, items: itemCount })
+    }
+
+    return counts
+  }, [parks, allRestaurants, menuItemCounts])
 
   return (
     <div className="space-y-8">
@@ -113,13 +141,14 @@ export default function Home() {
             {RESORT_CONFIG.map(resort => {
               const resortParks = getParksForResort(parks, resort)
               if (resortParks.length === 0) return null
+              const counts = resortCounts.get(resort.id)
               return (
                 <ResortCard
                   key={resort.id}
                   resort={resort}
                   parkCount={resortParks.length}
-                  venueCount={resort.categories.length}
-                  itemCount={0}
+                  venueCount={counts?.restaurants ?? 0}
+                  itemCount={counts?.items ?? 0}
                 />
               )
             })}

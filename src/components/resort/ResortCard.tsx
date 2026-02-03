@@ -35,11 +35,15 @@ export function ResortCard({ resort, parkCount, venueCount, itemCount }: Props) 
             {venueCount > 0 && (
               <>
                 <span className="text-white/40">·</span>
-                <span>{venueCount} Venues</span>
+                <span>{venueCount} {venueCount === 1 ? 'Restaurant' : 'Restaurants'}</span>
               </>
             )}
-            <span className="text-white/40">·</span>
-            <span>{itemCount} Items</span>
+            {itemCount > 0 && (
+              <>
+                <span className="text-white/40">·</span>
+                <span>{itemCount.toLocaleString()} Items</span>
+              </>
+            )}
           </div>
         </div>
       </div>

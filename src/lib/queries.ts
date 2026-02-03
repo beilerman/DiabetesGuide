@@ -119,3 +119,40 @@ export function useMenuItemCount(parkId: string | undefined) {
     enabled: !!parkId,
   })
 }
+
+/** Get all restaurants (for counting) */
+export function useAllRestaurants() {
+  return useQuery({
+    queryKey: ['allRestaurants'],
+    queryFn: async (): Promise<Restaurant[]> => {
+      const { data, error } = await supabase
+        .from('restaurants')
+        .select('*')
+      if (error) throw error
+      return data as Restaurant[]
+    },
+  })
+}
+
+/** Get all menu items count per park */
+export function useMenuItemCounts() {
+  return useQuery({
+    queryKey: ['menuItemCounts'],
+    queryFn: async (): Promise<Map<string, number>> => {
+      const { data, error } = await supabase
+        .from('menu_items')
+        .select('restaurant:restaurants!inner(park_id)')
+      if (error) throw error
+      const counts = new Map<string, number>()
+      for (const item of data || []) {
+        // Supabase returns nested relation as object with park_id
+        const restaurant = item.restaurant as unknown as { park_id: string } | null
+        const parkId = restaurant?.park_id
+        if (parkId) {
+          counts.set(parkId, (counts.get(parkId) || 0) + 1)
+        }
+      }
+      return counts
+    },
+  })
+}

@@ -1,6 +1,7 @@
 // src/pages/ResortDetail.tsx
+import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
-import { useParks } from '../lib/queries'
+import { useParks, useMenuItemCounts } from '../lib/queries'
 import { Breadcrumb } from '../components/ui/Breadcrumb'
 import { CategoryCard } from '../components/resort/CategoryCard'
 import { getResortById, getParksForCategory } from '../lib/resort-config'
@@ -9,6 +10,28 @@ export default function ResortDetail() {
   const { resortId } = useParams<{ resortId: string }>()
   const resort = getResortById(resortId || '')
   const { data: parks, isLoading, error } = useParks()
+  const { data: menuItemCounts } = useMenuItemCounts()
+
+  // Compute item counts per category
+  const categoryCounts = useMemo(() => {
+    if (!parks || !resort || !menuItemCounts) return new Map()
+
+    const counts = new Map<string, number>()
+
+    for (const category of resort.categories) {
+      const categoryParks = getParksForCategory(parks, resort, category.id)
+      const parkIds = new Set(categoryParks.map(p => p.id))
+
+      let itemCount = 0
+      for (const parkId of parkIds) {
+        itemCount += menuItemCounts.get(parkId) || 0
+      }
+
+      counts.set(category.id, itemCount)
+    }
+
+    return counts
+  }, [parks, resort, menuItemCounts])
 
   if (!resort) {
     return (
@@ -79,7 +102,7 @@ export default function ResortDetail() {
                 resortId={resort.id}
                 theme={resort.theme}
                 venueCount={categoryParks.length}
-                itemCount={0}
+                itemCount={categoryCounts.get(category.id) ?? 0}
               />
             )
           })}
