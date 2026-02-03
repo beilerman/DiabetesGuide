@@ -76,9 +76,23 @@ function computeConfidence(usdaCals: number | null, storedCals: number): number 
 
 async function enrich() {
   // Fetch all menu items joined with nutritional_data
-  const { data: rows, error } = await supabase
-    .from('menu_items')
-    .select('id, name, nutritional_data(id, calories, carbs, fat, sugar, protein, fiber, sodium, cholesterol)')
+  // Fetch all items in batches to avoid Supabase 1000-row default limit
+  let allRows: any[] = []
+  let from = 0
+  const batchSize = 1000
+  while (true) {
+    const { data: batch, error: batchErr } = await supabase
+      .from('menu_items')
+      .select('id, name, description, nutritional_data(id, calories, carbs, fat, sugar, protein, fiber, sodium, cholesterol)')
+      .range(from, from + batchSize - 1)
+    if (batchErr) { console.error('Failed to fetch:', batchErr); process.exit(1) }
+    if (!batch?.length) break
+    allRows = allRows.concat(batch)
+    if (batch.length < batchSize) break
+    from += batchSize
+  }
+  const rows = allRows
+  const error = null
 
   if (error) {
     console.error('Failed to fetch menu items:', error)
@@ -107,12 +121,13 @@ async function enrich() {
       continue
     }
 
-    // Skip if already enriched
+    // Skip if already enriched AND has non-zero calories
     if (
       nutData.sugar != null &&
       nutData.protein != null &&
       nutData.fiber != null &&
-      nutData.sodium != null
+      nutData.sodium != null &&
+      (nutData.calories ?? 0) > 0
     ) {
       skipped++
       if ((skipped + enriched + failed) % 10 === 0) {
@@ -121,16 +136,26 @@ async function enrich() {
       continue
     }
 
-    // Search USDA
+    // Search USDA — try name, simplified name, then description
     let food = await searchUSDA(row.name)
     await delay(200)
+
+    // Reject zero-calorie USDA matches (bad match like a spice/condiment)
+    if (food && (getNutrient(food, NUTRIENT_IDS.calories) ?? 0) === 0) food = null
 
     if (!food) {
       const simplified = simplifyName(row.name)
       if (simplified !== row.name) {
         food = await searchUSDA(simplified)
         await delay(200)
+        if (food && (getNutrient(food, NUTRIENT_IDS.calories) ?? 0) === 0) food = null
       }
+    }
+
+    if (!food && row.description) {
+      food = await searchUSDA(row.description)
+      await delay(200)
+      if (food && (getNutrient(food, NUTRIENT_IDS.calories) ?? 0) === 0) food = null
     }
 
     if (!food) {
