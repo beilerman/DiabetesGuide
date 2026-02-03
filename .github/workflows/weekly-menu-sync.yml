@@ -1,0 +1,55 @@
+name: Weekly Menu Sync
+
+on:
+  schedule:
+    # Run every Sunday at 11 PM ET (4 AM UTC Monday)
+    - cron: '0 4 * * 1'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run AllEars scraper
+        run: npm run scrape:allears
+
+      - name: Merge with database
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run sync:merge
+
+      - name: Estimate nutrition
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run sync:estimate
+
+      - name: Generate diff report
+        run: npm run sync:report
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: menu-sync-report-${{ github.run_id }}
+          path: data/pending/report-*.md
+          retention-days: 30
+
+      - name: Commit pending data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/pending/ data/scraped/
+          git commit -m "chore: weekly menu sync data [skip ci]" || echo "No changes to commit"
+          git push
