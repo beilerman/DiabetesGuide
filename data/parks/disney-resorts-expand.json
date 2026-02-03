@@ -16,7 +16,15 @@
       "Swan & Dolphin Resort",
       "Fort Wilderness Resort",
       "Saratoga Springs Resort",
-      "Old Key West Resort"
+      "Old Key West Resort",
+      "Contemporary Resort",
+      "Grand Floridian Resort",
+      "Polynesian Village Resort",
+      "Animal Kingdom Lodge",
+      "BoardWalk Resort",
+      "Beach & Yacht Club Resort",
+      "Wilderness Lodge",
+      "Four Seasons Resort"
     ],
     "menuItems": [
       {
@@ -1492,6 +1500,756 @@
         "carbs": null,
         "fat": null,
         "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Contemporary Resort",
+        "restaurant": "Steakhouse 71",
+        "name": "Filet Mignon",
+        "description": "Center-cut filet mignon with roasted potatoes and seasonal vegetables",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Contemporary Resort",
+        "restaurant": "Steakhouse 71",
+        "name": "Bone-In Pork Chop",
+        "description": "Grilled bone-in pork chop with apple chutney and mashed sweet potatoes",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Contemporary Resort",
+        "restaurant": "Steakhouse 71",
+        "name": "Wedge Salad",
+        "description": "Iceberg wedge with blue cheese crumbles, bacon, tomatoes, and blue cheese dressing",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Contemporary Resort",
+        "restaurant": "Steakhouse 71",
+        "name": "Key Lime Pie",
+        "description": "Classic key lime pie with graham cracker crust and whipped cream",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Contemporary Resort",
+        "restaurant": "Steakhouse 71",
+        "name": "Old Fashioned",
+        "description": "Bourbon, Demerara sugar, Angostura bitters, and orange peel",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Contemporary Resort",
+        "restaurant": "Outer Rim",
+        "name": "Galactic Margarita",
+        "description": "Tequila, lime, triple sec, and blue curacao with a salted rim",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Contemporary Resort",
+        "restaurant": "Outer Rim",
+        "name": "Chicken Wings",
+        "description": "Crispy fried chicken wings with choice of buffalo or BBQ sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Contemporary Resort",
+        "restaurant": "Outer Rim",
+        "name": "Loaded Nachos",
+        "description": "Tortilla chips with queso, pico de gallo, jalapenos, sour cream, and guacamole",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": true
+      },
+      {
+        "land": "Grand Floridian Resort",
+        "restaurant": "Gasparilla Island Grill",
+        "name": "Pepperoni Pizza",
+        "description": "Flatbread pizza with marinara, mozzarella, and pepperoni",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Grand Floridian Resort",
+        "restaurant": "Gasparilla Island Grill",
+        "name": "Chicken Nuggets with Fries",
+        "description": "Breaded chicken nuggets served with french fries and dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Grand Floridian Resort",
+        "restaurant": "Gasparilla Island Grill",
+        "name": "Angus Cheeseburger",
+        "description": "Angus beef patty with American cheese, lettuce, tomato, and pickles on a brioche bun",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Grand Floridian Resort",
+        "restaurant": "Gasparilla Island Grill",
+        "name": "Caesar Salad",
+        "description": "Romaine lettuce, parmesan, croutons, and Caesar dressing",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Grand Floridian Resort",
+        "restaurant": "Enchanted Rose Lounge",
+        "name": "Enchanted Rose Cocktail",
+        "description": "Gin, rose water, elderflower liqueur, lemon, and sparkling wine",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Grand Floridian Resort",
+        "restaurant": "Enchanted Rose Lounge",
+        "name": "Charcuterie Board",
+        "description": "Cured meats, artisanal cheeses, olives, marcona almonds, and crostini",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Grand Floridian Resort",
+        "restaurant": "Enchanted Rose Lounge",
+        "name": "Mushroom Flatbread",
+        "description": "Wild mushrooms, truffle cream, fontina cheese, and fresh herbs on flatbread",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Polynesian Village Resort",
+        "restaurant": "Pineapple Lanai",
+        "name": "Classic Dole Whip",
+        "description": "Soft-serve pineapple Dole Whip in a cup",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Polynesian Village Resort",
+        "restaurant": "Pineapple Lanai",
+        "name": "Dole Whip Float",
+        "description": "Pineapple Dole Whip served in pineapple juice",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Polynesian Village Resort",
+        "restaurant": "Pineapple Lanai",
+        "name": "Pineapple Upside Down Cake",
+        "description": "Warm pineapple upside down cake with caramelized pineapple and cherry",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Polynesian Village Resort",
+        "restaurant": "Trader Sam's Grog Grotto",
+        "name": "Krakatoa Punch",
+        "description": "Plantation dark rum, passion fruit, orange, and lime juices with falernum",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Polynesian Village Resort",
+        "restaurant": "Trader Sam's Grog Grotto",
+        "name": "Nautilus",
+        "description": "Dark rum, lime, passion fruit puree, and ginger beer in a souvenir mug",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Polynesian Village Resort",
+        "restaurant": "Trader Sam's Grog Grotto",
+        "name": "Ahi Tuna Nachos",
+        "description": "Wonton chips topped with seared ahi tuna, wasabi aioli, and pickled ginger",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Polynesian Village Resort",
+        "restaurant": "Trader Sam's Grog Grotto",
+        "name": "Pork Dumplings",
+        "description": "Pan-seared pork dumplings with soy-ginger dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Animal Kingdom Lodge",
+        "restaurant": "Victoria Falls Lounge",
+        "name": "South African Wine Flight",
+        "description": "Tasting flight of three South African wines",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Animal Kingdom Lodge",
+        "restaurant": "Victoria Falls Lounge",
+        "name": "Malva Pudding",
+        "description": "Traditional South African sponge pudding with apricot jam and cream",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Animal Kingdom Lodge",
+        "restaurant": "Victoria Falls Lounge",
+        "name": "Safari Amber Ale",
+        "description": "House-brewed amber ale with caramel malt and citrus hops",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Animal Kingdom Lodge",
+        "restaurant": "Victoria Falls Lounge",
+        "name": "Hummus and Flatbread",
+        "description": "House-made hummus with warm flatbread, olives, and roasted peppers",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "The Cake Bake Shop",
+        "name": "Triple Layer Chocolate Cake",
+        "description": "Three layers of rich chocolate cake with chocolate buttercream and ganache",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "The Cake Bake Shop",
+        "name": "Tea Sandwiches",
+        "description": "Assortment of finger sandwiches including cucumber, egg salad, and smoked salmon",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "The Cake Bake Shop",
+        "name": "Champagne Glass",
+        "description": "Glass of sparkling champagne",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "The Cake Bake Shop",
+        "name": "Earl Grey Lavender Cake",
+        "description": "Delicate Earl Grey tea cake with lavender buttercream and edible flowers",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "Big River Grille & Brewing Works",
+        "name": "Brewpub Burger",
+        "description": "Half-pound Angus burger with cheddar, bacon, lettuce, and tomato on a brioche bun",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "Big River Grille & Brewing Works",
+        "name": "Fish and Chips",
+        "description": "Beer-battered Atlantic cod with fries, coleslaw, and tartar sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "Big River Grille & Brewing Works",
+        "name": "Rocket Red Ale",
+        "description": "House-brewed red ale with toasted malt and a smooth finish",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "Big River Grille & Brewing Works",
+        "name": "Onion Rings",
+        "description": "Beer-battered onion rings with ranch dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": true
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "BoardWalk Pizza Window",
+        "name": "Cheese Pizza Slice",
+        "description": "Large slice of New York-style cheese pizza",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "BoardWalk Pizza Window",
+        "name": "Pepperoni Pizza Slice",
+        "description": "Large slice of New York-style pepperoni pizza",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "BoardWalk Pizza Window",
+        "name": "Sausage Pizza Slice",
+        "description": "Large slice with Italian sausage, marinara, and mozzarella",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "BoardWalk Deli",
+        "name": "Italian Sub",
+        "description": "Ham, salami, capicola, provolone, lettuce, tomato, and Italian dressing on a sub roll",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "BoardWalk Deli",
+        "name": "Turkey Club Sandwich",
+        "description": "Sliced turkey, bacon, lettuce, tomato, and mayo on toasted sourdough",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "BoardWalk Deli",
+        "name": "Garden Salad",
+        "description": "Mixed greens with tomatoes, cucumbers, carrots, and choice of dressing",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "Blue Ribbon Corn Dogs",
+        "name": "Classic Corn Dog",
+        "description": "Hand-dipped corn dog fried golden brown",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "BoardWalk Resort",
+        "restaurant": "Blue Ribbon Corn Dogs",
+        "name": "Cheese Corn Dog",
+        "description": "Hand-dipped corn dog stuffed with cheddar cheese",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Beach & Yacht Club Resort",
+        "restaurant": "Hurricane Hanna's",
+        "name": "Angus Cheeseburger",
+        "description": "Angus beef patty with American cheese, lettuce, tomato, and pickles",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Beach & Yacht Club Resort",
+        "restaurant": "Hurricane Hanna's",
+        "name": "Chicken Strips with Fries",
+        "description": "Breaded chicken tenders served with french fries and dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Beach & Yacht Club Resort",
+        "restaurant": "Hurricane Hanna's",
+        "name": "Frozen Strawberry Daiquiri",
+        "description": "Frozen blended strawberry daiquiri with rum",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Wilderness Lodge",
+        "restaurant": "Roaring Fork",
+        "name": "Bacon Egg and Cheese Sandwich",
+        "description": "Scrambled eggs, bacon, and American cheese on a toasted croissant",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Wilderness Lodge",
+        "restaurant": "Roaring Fork",
+        "name": "Angus Cheeseburger",
+        "description": "Angus beef patty with cheddar, lettuce, tomato, and pickles on a brioche bun",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Wilderness Lodge",
+        "restaurant": "Roaring Fork",
+        "name": "BBQ Chicken Flatbread",
+        "description": "Flatbread with BBQ chicken, red onion, cilantro, and mozzarella",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Wilderness Lodge",
+        "restaurant": "Territory Lounge",
+        "name": "Wilderness Craft Beer Flight",
+        "description": "Flight of four rotating craft beers from Pacific Northwest breweries",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Wilderness Lodge",
+        "restaurant": "Territory Lounge",
+        "name": "Warm Pretzel with Beer Cheese",
+        "description": "Jumbo soft pretzel with warm beer cheese dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Wilderness Lodge",
+        "restaurant": "Territory Lounge",
+        "name": "Smoked Brisket Sliders",
+        "description": "Mini smoked brisket sandwiches with pickled onions and BBQ sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Coronado Springs Resort",
+        "restaurant": "El Mercado de Coronado",
+        "name": "Street Tacos",
+        "description": "Three corn tortilla tacos with choice of carne asada, chicken, or carnitas with cilantro and onion",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Coronado Springs Resort",
+        "restaurant": "El Mercado de Coronado",
+        "name": "Angus Cheeseburger",
+        "description": "Angus beef patty with American cheese, lettuce, tomato, and fries",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Coronado Springs Resort",
+        "restaurant": "El Mercado de Coronado",
+        "name": "Chicken Pasta Bake",
+        "description": "Penne pasta with grilled chicken, marinara, and melted mozzarella",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Coronado Springs Resort",
+        "restaurant": "El Mercado de Coronado",
+        "name": "Chicken Rice Bowl",
+        "description": "Grilled chicken over cilantro lime rice with black beans, corn, and pico de gallo",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Coronado Springs Resort",
+        "restaurant": "Barcelona Lounge",
+        "name": "Spanish Latte",
+        "description": "Espresso with sweetened condensed milk and steamed milk",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Coronado Springs Resort",
+        "restaurant": "Barcelona Lounge",
+        "name": "Aperol Spritz",
+        "description": "Aperol, prosecco, and soda water with an orange slice",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Coronado Springs Resort",
+        "restaurant": "Barcelona Lounge",
+        "name": "Chocolate Croissant",
+        "description": "Buttery flaky croissant filled with dark chocolate",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Caribbean Beach Resort",
+        "restaurant": "Spyglass Grill",
+        "name": "Beef Burrito",
+        "description": "Flour tortilla stuffed with seasoned beef, rice, beans, cheese, and pico de gallo",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Caribbean Beach Resort",
+        "restaurant": "Spyglass Grill",
+        "name": "Chicken Rice Bowl",
+        "description": "Jerk-spiced chicken over rice with black beans, corn, and mango salsa",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Caribbean Beach Resort",
+        "restaurant": "Spyglass Grill",
+        "name": "Loaded Nachos",
+        "description": "Tortilla chips with queso, seasoned beef, pico de gallo, and sour cream",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Capa Steakhouse",
+        "name": "Wagyu Beef",
+        "description": "Grilled Japanese-style wagyu beef with roasted garlic and chimichurri",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Capa Steakhouse",
+        "name": "Grilled Octopus",
+        "description": "Charred Spanish octopus with fingerling potatoes, olives, and smoked paprika",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Capa Steakhouse",
+        "name": "Seafood Paella",
+        "description": "Traditional Spanish paella with shrimp, mussels, clams, chorizo, and saffron rice",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Capa Steakhouse",
+        "name": "Red Sangria",
+        "description": "Spanish red wine with brandy, fresh fruit, and orange juice",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Ravello",
+        "name": "Handmade Pappardelle",
+        "description": "Fresh pappardelle pasta with wild boar ragu and pecorino romano",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Ravello",
+        "name": "Veal Milanese",
+        "description": "Breaded veal cutlet with arugula, cherry tomatoes, and lemon",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Ravello",
+        "name": "Tiramisu",
+        "description": "Classic tiramisu with mascarpone cream, espresso-soaked ladyfingers, and cocoa",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Plancha",
+        "name": "Cubano Sandwich",
+        "description": "Roasted pork, ham, Swiss cheese, pickles, and mustard on pressed Cuban bread",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Plancha",
+        "name": "Ham Croquetas",
+        "description": "Crispy fried ham and bechamel croquettes with mojo dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Plancha",
+        "name": "Beef Empanadas",
+        "description": "Flaky pastry filled with seasoned ground beef, olives, and sofrito",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "Plancha",
+        "name": "Classic Mojito",
+        "description": "White rum, fresh lime, mint, sugar, and soda water",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "PB&G",
+        "name": "Fried Chicken Sandwich",
+        "description": "Buttermilk fried chicken breast with pickles and spicy mayo on a brioche bun",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "PB&G",
+        "name": "Shrimp Po'Boy",
+        "description": "Fried shrimp with lettuce, tomato, and remoulade on a hoagie roll",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Four Seasons Resort",
+        "restaurant": "PB&G",
+        "name": "Fresh-Squeezed Lemonade",
+        "description": "House-made lemonade with fresh-squeezed lemons and cane sugar",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
         "vegetarian": true,
         "isFried": false
       }
