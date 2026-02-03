@@ -11,7 +11,13 @@
     "seed": "tsx scripts/seed.ts",
     "enrich:allergens": "tsx scripts/enrich-allergens.ts",
     "enrich:nutrition": "tsx scripts/enrich-nutrition.ts",
-    "import:all": "tsx scripts/import-all.ts"
+    "import:all": "tsx scripts/import-all.ts",
+    "scrape:allears": "tsx scripts/scrapers/allears.ts",
+    "sync:merge": "tsx scripts/sync/merge.ts",
+    "sync:estimate": "tsx scripts/sync/estimate-nutrition.ts",
+    "sync:report": "tsx scripts/sync/generate-diff.ts",
+    "sync:approve": "tsx scripts/approve.ts --all",
+    "sync:full": "npm run scrape:allears && npm run sync:merge && npm run sync:estimate && npm run sync:report"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",
