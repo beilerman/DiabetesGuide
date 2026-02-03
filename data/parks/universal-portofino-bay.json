@@ -1,0 +1,160 @@
+{
+  "parks": [{
+    "id": "universal-portofino-bay",
+    "name": "Universal Portofino Bay Hotel",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Portofino Bay Hotel"],
+    "menuItems": [
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Bice Ristorante",
+        "name": "Osso Buco Milanese",
+        "description": "Braised veal shank with saffron risotto and gremolata",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Bice Ristorante",
+        "name": "Wild Mushroom Risotto",
+        "description": "Arborio rice with porcini, shiitake, and Parmigiano-Reggiano",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Bice Ristorante",
+        "name": "Branzino al Forno",
+        "description": "Oven-roasted Mediterranean sea bass with lemon, capers, and olive oil",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Bice Ristorante",
+        "name": "Tiramisu",
+        "description": "Classic Italian layered dessert with espresso-soaked ladyfingers and mascarpone",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Mama Della's Ristorante",
+        "name": "Chicken Parmigiana",
+        "description": "Breaded chicken breast topped with marinara and melted mozzarella",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Mama Della's Ristorante",
+        "name": "Classic Lasagna",
+        "description": "Layers of pasta, meat ragu, ricotta, and mozzarella",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Mama Della's Ristorante",
+        "name": "Spaghetti and Meatballs",
+        "description": "House-made beef and pork meatballs with marinara over spaghetti",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Mama Della's Ristorante",
+        "name": "Eggplant Parmigiana",
+        "description": "Breaded eggplant layered with marinara and mozzarella",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": true
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Trattoria del Porto",
+        "name": "Penne alla Vodka",
+        "description": "Penne pasta in creamy tomato vodka sauce with basil",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Trattoria del Porto",
+        "name": "Antipasto Platter",
+        "description": "Cured meats, marinated vegetables, olives, and fresh mozzarella",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Trattoria del Porto",
+        "name": "Grilled Salmon",
+        "description": "Atlantic salmon with roasted vegetables and lemon butter sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Sal's Market Deli",
+        "name": "Pepperoni Pizza",
+        "description": "Personal pizza with pepperoni, mozzarella, and marinara",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Sal's Market Deli",
+        "name": "Italian Sub",
+        "description": "Salami, capicola, ham, provolone, lettuce, tomato, and Italian dressing",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Sal's Market Deli",
+        "name": "Caesar Salad",
+        "description": "Romaine lettuce with Caesar dressing, croutons, and Parmesan",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Portofino Bay Hotel",
+        "restaurant": "Sal's Market Deli",
+        "name": "Gelato",
+        "description": "Italian-style gelato in assorted flavors",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      }
+    ]
+  }]
+}

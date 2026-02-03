@@ -1,0 +1,36 @@
+{
+  "parks": [{
+    "id": "disney-dream",
+    "name": "Disney Dream",
+    "subtitle": "Disney Cruise Line",
+    "lands": ["Rotational Dining", "Quick Service", "Specialty Dining", "Bars & Lounges"],
+    "menuItems": [
+      {"land": "Rotational Dining", "restaurant": "Royal Palace", "name": "Filet Mignon", "description": "Grilled beef tenderloin with truffle butter", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Royal Palace", "name": "Roasted Duck Breast", "description": "Pan-seared duck with orange glaze", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Royal Palace", "name": "Lobster Tail", "description": "Butter-poached lobster tail with asparagus", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Royal Palace", "name": "Grand Marnier Soufflé", "description": "Light orange-flavored soufflé", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Enchanted Garden", "name": "Grilled Ribeye Steak", "description": "Herb-seasoned ribeye with roasted potatoes", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Enchanted Garden", "name": "Pan-Seared Salmon", "description": "Atlantic salmon with seasonal vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Enchanted Garden", "name": "Roasted Chicken", "description": "Herb-roasted half chicken with pan gravy", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Enchanted Garden", "name": "Chocolate Mousse", "description": "Rich dark chocolate mousse with whipped cream", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Animator's Palate", "name": "Sushi Platter", "description": "Assorted nigiri and maki rolls", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Animator's Palate", "name": "Stir-Fried Noodles", "description": "Wok-tossed noodles with vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Animator's Palate", "name": "Grilled Chicken Breast", "description": "Herb-marinated chicken with seasonal vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Cabanas", "name": "Carved Roast Beef", "description": "Slow-roasted beef carved to order", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Cabanas", "name": "Pasta Station", "description": "Made-to-order pasta with choice of sauce", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Cabanas", "name": "Fresh Salad Bar", "description": "Assorted greens, toppings, and dressings", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Cabanas", "name": "Assorted Desserts", "description": "Rotating selection of cakes, tarts, and pastries", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Flo's Café", "name": "Cheese Pizza", "description": "Classic cheese pizza by the slice", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Flo's Café", "name": "Cheeseburger", "description": "Grilled beef burger with lettuce, tomato, and cheese", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Flo's Café", "name": "Chicken Caesar Wrap", "description": "Grilled chicken with romaine and Caesar dressing in a tortilla", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Flo's Café", "name": "French Fries", "description": "Crispy golden french fries", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": true},
+      {"land": "Specialty Dining", "restaurant": "Palo", "name": "Osso Buco", "description": "Braised veal shank in white wine and vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo", "name": "Mushroom Risotto", "description": "Arborio rice with porcini mushrooms and Parmesan", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo", "name": "Tiramisu", "description": "Classic layered espresso and mascarpone dessert", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Remy", "name": "Dover Sole Meunière", "description": "Pan-fried sole in brown butter and lemon", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Remy", "name": "Rack of Lamb", "description": "Herb-crusted lamb rack with Provençal vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Remy", "name": "Ratatouille", "description": "Layered Provençal vegetables with herb coulis", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Remy", "name": "Crème Brûlée", "description": "Classic vanilla custard with caramelized sugar", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false}
+    ]
+  }]
+}

@@ -1,0 +1,110 @@
+{
+  "parks": [{
+    "id": "universal-terra-luna",
+    "name": "Universal Terra Luna Resort",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Terra Luna Resort"],
+    "menuItems": [
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Omega Cafe and Market",
+        "name": "Classic Cheeseburger",
+        "description": "Angus beef patty with American cheese, lettuce, tomato, and pickles",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Omega Cafe and Market",
+        "name": "Turkey Avocado Panini",
+        "description": "Sliced turkey, avocado, bacon, and Swiss cheese on pressed ciabatta",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Omega Cafe and Market",
+        "name": "Crispy Fried Chicken",
+        "description": "Buttermilk-brined fried chicken with mashed potatoes and gravy",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Omega Cafe and Market",
+        "name": "Baked Ziti",
+        "description": "Ziti pasta baked with marinara, ricotta, and mozzarella",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Moonrise Bar and Grill",
+        "name": "Steak Quesadilla",
+        "description": "Grilled steak with peppers, onions, and melted cheese in a flour tortilla",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Moonrise Bar and Grill",
+        "name": "Poolside Burger",
+        "description": "Grilled burger with pepper jack, jalapenos, and chipotle mayo",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Moonrise Bar and Grill",
+        "name": "Southwest Salad",
+        "description": "Mixed greens with black beans, corn, avocado, and lime vinaigrette",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Luna Bar",
+        "name": "Moonlight Mojito",
+        "description": "White rum, fresh mint, lime, and soda with a lavender twist",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Luna Bar",
+        "name": "Craft IPA Flight",
+        "description": "Four-pour flight of rotating craft IPAs",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Terra Luna Resort",
+        "restaurant": "Luna Bar",
+        "name": "Charcuterie Board",
+        "description": "Cured meats, cheeses, olives, nuts, and artisan bread",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      }
+    ]
+  }]
+}

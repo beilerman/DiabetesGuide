@@ -1,0 +1,110 @@
+{
+  "parks": [{
+    "id": "universal-endless-summer-dockside",
+    "name": "Universal Endless Summer Resort - Dockside Inn",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Dockside Inn and Suites"],
+    "menuItems": [
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "Pier 8 Market",
+        "name": "Pepperoni Pizza",
+        "description": "Personal pizza with pepperoni, mozzarella, and marinara",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "Pier 8 Market",
+        "name": "Double Cheeseburger",
+        "description": "Two beef patties with American cheese, lettuce, tomato, and pickles",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "Pier 8 Market",
+        "name": "Crispy Chicken Tenders",
+        "description": "Breaded chicken tenders with fries and honey mustard",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "Pier 8 Market",
+        "name": "Fettuccine Alfredo",
+        "description": "Fettuccine pasta in creamy Parmesan Alfredo sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "The Oasis Beach Bar",
+        "name": "Frozen Daiquiri",
+        "description": "Blended rum daiquiri with strawberry or mango",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "The Oasis Beach Bar",
+        "name": "Loaded Hot Dog",
+        "description": "All-beef hot dog with chili, cheese, and onions",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "The Oasis Beach Bar",
+        "name": "Draft Beer",
+        "description": "Selection of domestic and craft draft beers",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "Wave Maker's Pool Bar",
+        "name": "Frozen Blue Lagoon",
+        "description": "Blended blue curacao cocktail with vodka and lemonade",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "Wave Maker's Pool Bar",
+        "name": "Tropical Punch",
+        "description": "Rum punch with pineapple, orange, and passion fruit juices",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Dockside Inn and Suites",
+        "restaurant": "Wave Maker's Pool Bar",
+        "name": "Chicken Wings",
+        "description": "Crispy fried wings with choice of buffalo or garlic Parmesan sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      }
+    ]
+  }]
+}

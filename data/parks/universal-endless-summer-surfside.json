@@ -1,0 +1,80 @@
+{
+  "parks": [{
+    "id": "universal-endless-summer-surfside",
+    "name": "Universal Endless Summer Resort - Surfside Inn",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Surfside Inn and Suites"],
+    "menuItems": [
+      {
+        "land": "Surfside Inn and Suites",
+        "restaurant": "Beach Break Cafe",
+        "name": "Cheese Pizza",
+        "description": "Personal pizza with mozzarella and marinara sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Surfside Inn and Suites",
+        "restaurant": "Beach Break Cafe",
+        "name": "BBQ Bacon Cheeseburger",
+        "description": "Beef patty with cheddar, bacon, BBQ sauce, and onion rings",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Surfside Inn and Suites",
+        "restaurant": "Beach Break Cafe",
+        "name": "Rotisserie Chicken Platter",
+        "description": "Herb-roasted chicken with mashed potatoes and corn",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Surfside Inn and Suites",
+        "restaurant": "Beach Break Cafe",
+        "name": "Beef Tacos",
+        "description": "Seasoned ground beef tacos with lettuce, cheese, and salsa",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Surfside Inn and Suites",
+        "restaurant": "Sand Bar",
+        "name": "Frozen Pina Colada",
+        "description": "Blended rum with pineapple and coconut cream",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Surfside Inn and Suites",
+        "restaurant": "Sand Bar",
+        "name": "Chicken Quesadilla",
+        "description": "Grilled flour tortilla with chicken, cheese, peppers, and sour cream",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Surfside Inn and Suites",
+        "restaurant": "Sand Bar",
+        "name": "Soft Pretzel",
+        "description": "Warm soft pretzel with beer cheese dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      }
+    ]
+  }]
+}

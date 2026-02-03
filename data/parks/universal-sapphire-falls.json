@@ -1,0 +1,140 @@
+{
+  "parks": [{
+    "id": "universal-sapphire-falls",
+    "name": "Universal Sapphire Falls Resort",
+    "subtitle": "Universal Orlando Resort",
+    "lands": ["Sapphire Falls Resort"],
+    "menuItems": [
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Amatista Cookhouse",
+        "name": "Jerk Chicken",
+        "description": "Caribbean-spiced grilled chicken with rice and beans and plantains",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Amatista Cookhouse",
+        "name": "Grilled Mahi-Mahi",
+        "description": "Fresh mahi-mahi with mango salsa, coconut rice, and seasonal vegetables",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Amatista Cookhouse",
+        "name": "Rum Cake",
+        "description": "Warm Caribbean rum cake with vanilla ice cream and caramel drizzle",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Amatista Cookhouse",
+        "name": "Coconut Shrimp",
+        "description": "Crispy coconut-crusted shrimp with sweet chili dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Strong Water Tavern",
+        "name": "Citrus Ceviche",
+        "description": "Fresh fish marinated in citrus with red onion, cilantro, and avocado",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Strong Water Tavern",
+        "name": "Beef Empanadas",
+        "description": "Crispy pastry filled with seasoned ground beef, olives, and sofrito",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Strong Water Tavern",
+        "name": "Rum Flight",
+        "description": "Selection of four premium Caribbean rums with tasting notes",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "New Dutch Trading Co.",
+        "name": "Cuban Sandwich",
+        "description": "Pressed ham, roasted pork, Swiss cheese, pickles, and mustard on Cuban bread",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "New Dutch Trading Co.",
+        "name": "Guava Pastry",
+        "description": "Flaky pastry filled with guava paste and cream cheese",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "New Dutch Trading Co.",
+        "name": "Fresh Fruit Cup",
+        "description": "Seasonal fresh-cut tropical fruits",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": true,
+        "isFried": false
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Drhum Club Kantine",
+        "name": "Jerk Chicken Skewers",
+        "description": "Grilled jerk-seasoned chicken skewers with pineapple dipping sauce",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": false
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Drhum Club Kantine",
+        "name": "Caribbean Nachos",
+        "description": "Tortilla chips with black beans, queso, pico de gallo, and jerk pulled pork",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "food",
+        "vegetarian": false,
+        "isFried": true
+      },
+      {
+        "land": "Sapphire Falls Resort",
+        "restaurant": "Drhum Club Kantine",
+        "name": "Sapphire Sunset",
+        "description": "Blue curacao cocktail with rum, pineapple juice, and coconut cream",
+        "calories": null, "carbs": null, "fat": null,
+        "type": "drink",
+        "vegetarian": true,
+        "isFried": false
+      }
+    ]
+  }]
+}

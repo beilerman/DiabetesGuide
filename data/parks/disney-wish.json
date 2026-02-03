@@ -1,0 +1,38 @@
+{
+  "parks": [{
+    "id": "disney-wish",
+    "name": "Disney Wish",
+    "subtitle": "Disney Cruise Line",
+    "lands": ["Rotational Dining", "Quick Service", "Specialty Dining", "Bars & Lounges"],
+    "menuItems": [
+      {"land": "Rotational Dining", "restaurant": "1923", "name": "Pan-Seared Sea Bass", "description": "Chilean sea bass with citrus beurre blanc", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "1923", "name": "Grilled Filet Mignon", "description": "Beef tenderloin with California red wine reduction", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "1923", "name": "Roasted Chicken", "description": "Free-range chicken with herb jus and seasonal vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "1923", "name": "Meyer Lemon Tart", "description": "Tangy lemon custard tart with meringue", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Worlds of Marvel", "name": "Korean Short Ribs", "description": "Braised short ribs with gochujang glaze", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Worlds of Marvel", "name": "Butter Chicken", "description": "Tender chicken in creamy tomato curry sauce", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Worlds of Marvel", "name": "Pan-Seared Salmon", "description": "Salmon fillet with miso glaze and bok choy", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Worlds of Marvel", "name": "Sticky Toffee Pudding", "description": "Warm date cake with toffee sauce and vanilla ice cream", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Arendelle", "name": "Norwegian Salmon", "description": "Roasted salmon with dill cream sauce and root vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Arendelle", "name": "Braised Lamb Shank", "description": "Slow-braised lamb with Scandinavian spices", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Arendelle", "name": "Mushroom Strudel", "description": "Wild mushroom and herb strudel with cream sauce", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Rotational Dining", "restaurant": "Arendelle", "name": "Kransekake", "description": "Traditional Scandinavian almond ring cake", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Marceline Market", "name": "Carved Meats", "description": "Rotating selection of carved roast meats", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Marceline Market", "name": "Pasta Station", "description": "Made-to-order pasta with choice of sauce", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Marceline Market", "name": "Fresh Salad Bar", "description": "Assorted greens, toppings, and dressings", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Marceline Market", "name": "Assorted Desserts", "description": "Rotating selection of cakes, tarts, and pastries", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Mickey's Festival of Foods", "name": "BBQ Pulled Pork Sandwich", "description": "Slow-smoked pulled pork with barbecue sauce", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Mickey's Festival of Foods", "name": "Cheese Pizza", "description": "Classic cheese pizza by the slice", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Mickey's Festival of Foods", "name": "Street Tacos", "description": "Seasoned meat tacos with fresh salsa and toppings", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Quick Service", "restaurant": "Mickey's Festival of Foods", "name": "Soft Serve Ice Cream", "description": "Vanilla, chocolate, or swirl soft serve", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo Steakhouse", "name": "Prime Ribeye", "description": "Dry-aged ribeye steak with bone marrow butter", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo Steakhouse", "name": "Porterhouse for Two", "description": "Large-format steak with roasted garlic and herbs", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo Steakhouse", "name": "Lobster Tail", "description": "Butter-poached lobster tail with drawn butter", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Palo Steakhouse", "name": "Tiramisu", "description": "Classic layered espresso and mascarpone dessert", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Enchanté", "name": "Dover Sole", "description": "Pan-seared Dover sole with brown butter and capers", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Enchanté", "name": "Rack of Lamb", "description": "Herb-crusted lamb with Provençal vegetables", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Enchanté", "name": "Lobster Thermidor", "description": "Lobster in creamy cognac sauce gratinéed", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": false, "isFried": false},
+      {"land": "Specialty Dining", "restaurant": "Enchanté", "name": "Chocolate Soufflé", "description": "Warm chocolate soufflé with crème anglaise", "calories": null, "carbs": null, "fat": null, "type": "food", "vegetarian": true, "isFried": false}
+    ]
+  }]
+}
