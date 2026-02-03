@@ -85,3 +85,37 @@ export function useSearch(searchQuery: string) {
     enabled: searchQuery.trim().length > 1,
   })
 }
+
+/** Get restaurant count for a specific park */
+export function useRestaurantCount(parkId: string | undefined) {
+  return useQuery({
+    queryKey: ['restaurantCount', parkId],
+    queryFn: async (): Promise<number> => {
+      if (!parkId) return 0
+      const { count, error } = await supabase
+        .from('restaurants')
+        .select('*', { count: 'exact', head: true })
+        .eq('park_id', parkId)
+      if (error) throw error
+      return count ?? 0
+    },
+    enabled: !!parkId,
+  })
+}
+
+/** Get menu item count for a specific park (client-side from cached data) */
+export function useMenuItemCount(parkId: string | undefined) {
+  return useQuery({
+    queryKey: ['menuItemCount', parkId],
+    queryFn: async (): Promise<number> => {
+      if (!parkId) return 0
+      const { count, error } = await supabase
+        .from('menu_items')
+        .select('*, restaurant:restaurants!inner(park_id)', { count: 'exact', head: true })
+        .eq('restaurant.park_id', parkId)
+      if (error) throw error
+      return count ?? 0
+    },
+    enabled: !!parkId,
+  })
+}
