@@ -33,7 +33,7 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 | `restaurants` | park_id (FK), name, land, cuisine_type, hours (JSONB), lat/lon | ~355 restaurants |
 | `menu_items` | restaurant_id (FK), name, description, price, category (enum), is_seasonal, is_fried, is_vegetarian | ~1551 items |
 | `nutritional_data` | menu_item_id (FK), calories/carbs/fat/sugar/protein/fiber/sodium/cholesterol (all INTEGER), source (enum), confidence_score | One row per item |
-| `allergens` | menu_item_id (FK), allergen_type (TEXT), severity (enum: contains/may_contain) | ~800 records |
+| `allergens` | menu_item_id (FK), allergen_type (TEXT), severity (enum: contains/may_contain) | ~1098 records |
 
 **Enums:** `menu_category` (entree/snack/beverage/dessert/side), `nutrition_source` (official/crowdsourced/api_lookup), `allergen_severity` (contains/may_contain)
 
@@ -60,7 +60,7 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 | `additional-dining-1.json` | ~50 | Disney Springs, resort dining, snack carts |
 | `additional-dining-2.json` | ~112 | Victoria & Albert's, CityWalk, Disney Springs bakeries, more parks |
 | `disney-springs.json` | 281 | Disney Springs (54 restaurants across Marketplace, Landing, Town Center, West Side) |
-| `downtown-disney.json` | 231 | Downtown Disney District at Disneyland Resort (21 restaurants) |
+| `downtown-disney.json` | 231 | Downtown Disney District at Disneyland Resort (21 restaurants). Note: major renovation renamed Catal→Paseo, Uva Bar→Centrico, Tortilla Jo's→Arthur & Sons (coming), La Brea→Porto's (coming) |
 
 ### Scripts (all in `scripts/`, run with `npx tsx`)
 
@@ -112,7 +112,7 @@ npx tsx scripts/fix-audit-findings.ts
 npx tsx scripts/fix-remaining.ts
 ```
 
-**Total corrections applied:** 573 fixes across all data quality scripts.
+**Total corrections applied:** 864 fixes across all data quality scripts (573 original + 291 from Disney Springs/Downtown Disney batch).
 
 ## Data Quality & Audit
 
@@ -359,6 +359,39 @@ Always shown with "Educational tool only — not medical advice" disclaimer.
 
 **Solution:** Use inline bash syntax: `SUPABASE_URL="..." npx tsx scripts/script.ts`. Always write proper `.ts` files and run with `npx tsx` rather than inline `node -e`.
 
+### Loading .env.local in Bash
+**Problem:** `source .env.local` doesn't work because the `KEY=value` format without `export` doesn't set environment variables for child processes.
+
+**Solution:** Use `export $(grep -v '^#' .env.local | xargs)` to load all variables from `.env.local` into the current shell session.
+
+### inferLocation() Pattern Ordering Bug
+**Problem:** `inferLocation()` in `import-all.ts` mapped "Downtown Disney District" to "Walt Disney World" because the general `/disney/` regex matched before the specific `/downtown disney|disneyland/` pattern.
+
+**Solution:** The specific `/downtown disney|disneyland/` pattern MUST come before the general `/disney/` pattern. Order matters — more specific patterns first:
+```typescript
+if (/downtown disney|disneyland/.test(n)) return 'Disneyland Resort'
+if (/disney|magic kingdom|epcot|hollywood studios|animal kingdom/.test(n)) return 'Walt Disney World'
+```
+**Lesson:** When adding new parks to `inferLocation()`, always check if the new name substring-matches an existing broader pattern.
+
+## Chain Restaurant Nutrition Sources
+
+Several chain restaurants at Disney Springs and Downtown Disney publish official nutrition data that could replace USDA estimates:
+
+| Chain | Source | Parks Present |
+|-------|--------|--------------|
+| Earl of Sandwich | Official PDF on website | Disney Springs |
+| Blaze Pizza | Official website nutrition page | Disney Springs, Downtown Disney |
+| Chicken Guy! | Official website | Disney Springs |
+| Wetzel's Pretzels | Official PDF | Disney Springs, Downtown Disney |
+| Jamba | Official website | Disney Springs, Downtown Disney |
+| Starbucks | Official website | Both (already widely available) |
+| Sprinkles | Official website | Disney Springs |
+| Salt & Straw | No published data | Disney Springs |
+| Din Tai Fung | No published data | Downtown Disney |
+
+These could be used to upgrade `confidence_score` from 50-60 (USDA estimate) to 85-90 (chain official).
+
 ## Known Issues / Future Work
 
 - Supabase `.eq()` on nested joined tables is silently ignored — use client-side filtering
@@ -368,6 +401,7 @@ Always shown with "Educational tool only — not medical advice" disclaimer.
 - No food photos (gradient placeholders currently used)
 - Favorites page not yet implemented (bottom nav links to Browse)
 - "More" page not yet implemented (settings, accessibility controls, packing list, guides)
+- Could replace USDA estimates with chain-official nutrition data for 9+ chains (see Chain Restaurant Nutrition Sources above)
 - Could add Nutritionix API as fallback for items USDA can't match
 - Some parks have sparse data coverage (Walt Disney World Parks had 100% missing sugar/protein/sodium, now estimated)
 - `inferCategory` in `seed.ts` has a "crisp" substring match that miscategorizes "Crispy" savory items as desserts — fixed in DB but the seed script still has the bug

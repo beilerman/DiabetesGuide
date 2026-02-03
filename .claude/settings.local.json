@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\ndocs: add resort hierarchy UI redesign plan\n\nReorganizes navigation from flat park list to 4-level hierarchy:\nResort → Category \\(parks/hotels/other\\) → Venue → Menu Items.\nIncludes themed visual system, data mapping approach, and route structure.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(npm run build:*)"
+    ]
+  }
+}

@@ -1,0 +1,4474 @@
+{
+  "summary": {
+    "totalItems": 2148,
+    "totalFlags": 446,
+    "highSeverity": 67,
+    "mediumSeverity": 356,
+    "lowSeverity": 23
+  },
+  "flags": [
+    {
+      "item": "The Nautilus",
+      "restaurant": "Trader Sam's Grog Grotto",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "HIGH",
+      "issue": "caloric-math",
+      "details": "Calculated=842 vs Stated=516 (63% diff). CALCULATED > STATED (possible data entry error or missing macro)",
+      "currentValue": "516 cal",
+      "suggestedValue": "~842 cal from macros"
+    },
+    {
+      "item": "Outpost Puff",
+      "restaurant": "Docking Bay 7",
+      "park": "Disney's Hollywood Studios",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "tea: 450 cal exceeds plausible range [0-200] for theme park portion.",
+      "currentValue": "450 cal",
+      "suggestedValue": "Expected ≤200 cal"
+    },
+    {
+      "item": "Bavarian Pretzel",
+      "restaurant": "BaseLine Tap House",
+      "park": "Disney's Hollywood Studios",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "beer: 510 cal exceeds plausible range [100-300] for theme park portion.",
+      "currentValue": "510 cal",
+      "suggestedValue": "Expected ≤300 cal"
+    },
+    {
+      "item": "Beef and Lamb Kofta Pita",
+      "restaurant": "Harambe Market",
+      "park": "Disney's Animal Kingdom",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "bread: 754 cal exceeds plausible range [150-500] for theme park portion.",
+      "currentValue": "754 cal",
+      "suggestedValue": "Expected ≤500 cal"
+    },
+    {
+      "item": "Zambia Sampler",
+      "restaurant": "Zambia Smokehouse",
+      "park": "Busch Gardens Tampa Bay",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "fries: 1383 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1383 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Beef, Lamb & Guinness Stew",
+      "restaurant": "Leaky Cauldron",
+      "park": "Universal Studios Florida",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "bread: 900 cal exceeds plausible range [150-500] for theme park portion.",
+      "currentValue": "900 cal",
+      "suggestedValue": "Expected ≤500 cal"
+    },
+    {
+      "item": "Mel's Famous Burger",
+      "restaurant": "Mel's Drive-In",
+      "park": "Universal Studios Florida",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "fries: 1091 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1091 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Grilled Cheese Sandwich and Tomato Soup",
+      "restaurant": "Gasparilla Island Grill",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "soup: 850 cal exceeds plausible range [150-500] for theme park portion.",
+      "currentValue": "850 cal",
+      "suggestedValue": "Expected ≤500 cal"
+    },
+    {
+      "item": "Oak-Grilled Filet Mignon",
+      "restaurant": "Jiko",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "wine: 935 cal exceeds plausible range [100-200] for theme park portion.",
+      "currentValue": "935 cal",
+      "suggestedValue": "Expected ≤200 cal"
+    },
+    {
+      "item": "Shrimp Cocktail",
+      "restaurant": "Flying Fish",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "wine: 489 cal exceeds plausible range [100-200] for theme park portion.",
+      "currentValue": "489 cal",
+      "suggestedValue": "Expected ≤200 cal"
+    },
+    {
+      "item": "Holiday Pot Roast Hot Dog",
+      "restaurant": "Casey's Corner",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "beer: 680 cal exceeds plausible range [100-300] for theme park portion.",
+      "currentValue": "680 cal",
+      "suggestedValue": "Expected ≤300 cal"
+    },
+    {
+      "item": "Holiday Pot Roast Loaded French Fries",
+      "restaurant": "Casey's Corner",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "beer: 518 cal exceeds plausible range [100-300] for theme park portion.",
+      "currentValue": "518 cal",
+      "suggestedValue": "Expected ≤300 cal"
+    },
+    {
+      "item": "French Onion Soup au Gratin",
+      "restaurant": "Be Our Guest Restaurant",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "wine: 403 cal exceeds plausible range [100-200] for theme park portion.",
+      "currentValue": "403 cal",
+      "suggestedValue": "Expected ≤200 cal"
+    },
+    {
+      "item": "Thruster Roasted Bantha Flatbread",
+      "restaurant": "Oga's Cantina",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "bread: 845 cal exceeds plausible range [150-500] for theme park portion.",
+      "currentValue": "845 cal",
+      "suggestedValue": "Expected ≤500 cal"
+    },
+    {
+      "item": "Bone-In Short Rib",
+      "restaurant": "Bigfire",
+      "park": "Universal CityWalk",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "bread: 1000 cal exceeds plausible range [150-500] for theme park portion.",
+      "currentValue": "1000 cal",
+      "suggestedValue": "Expected ≤500 cal"
+    },
+    {
+      "item": "Rolling Boulder Meatballs",
+      "restaurant": "Jock Lindsey's Hangar Bar",
+      "park": "Disney Springs",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "bread: 845 cal exceeds plausible range [150-500] for theme park portion.",
+      "currentValue": "845 cal",
+      "suggestedValue": "Expected ≤500 cal"
+    },
+    {
+      "item": "City Works Burger",
+      "restaurant": "City Works Eatery",
+      "park": "Disney Springs",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "fries: 1073 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1073 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Burgers",
+      "restaurant": "Splitsville Luxury Lanes",
+      "park": "Disney Springs",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "fries: 1073 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1073 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Brewed Coffee",
+      "restaurant": "Starbucks",
+      "park": "Downtown Disney District",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "below-range",
+      "details": "coffee: 2 cal is below plausible range [5-500] for theme park portion.",
+      "currentValue": "2 cal",
+      "suggestedValue": "Expected ≥5 cal"
+    },
+    {
+      "item": "Carne Asada Tacos",
+      "restaurant": "Centrico",
+      "park": "Downtown Disney District",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "below-range",
+      "details": "steak: 180 cal is below plausible range [400-1200] for theme park portion.",
+      "currentValue": "180 cal",
+      "suggestedValue": "Expected ≥400 cal"
+    },
+    {
+      "item": "Filet Mignon",
+      "restaurant": "Royal Court",
+      "park": "Disney Fantasy",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "wine: 653 cal exceeds plausible range [100-200] for theme park portion.",
+      "currentValue": "653 cal",
+      "suggestedValue": "Expected ≤200 cal"
+    },
+    {
+      "item": "Grilled NY Strip Steak",
+      "restaurant": "The Turf Club Bar and Grill",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "wine: 713 cal exceeds plausible range [100-200] for theme park portion.",
+      "currentValue": "713 cal",
+      "suggestedValue": "Expected ≤200 cal"
+    },
+    {
+      "item": "Chicken Piccata",
+      "restaurant": "Il Mulino",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "wine: 975 cal exceeds plausible range [100-200] for theme park portion.",
+      "currentValue": "975 cal",
+      "suggestedValue": "Expected ≤200 cal"
+    },
+    {
+      "item": "Enchanted Rose Cocktail",
+      "restaurant": "Enchanted Rose Lounge",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "below-range",
+      "details": "cocktail: 74 cal is below plausible range [150-500] for theme park portion.",
+      "currentValue": "74 cal",
+      "suggestedValue": "Expected ≥150 cal"
+    },
+    {
+      "item": "Tea Sandwiches",
+      "restaurant": "The Cake Bake Shop",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "tea: 763 cal exceeds plausible range [0-200] for theme park portion.",
+      "currentValue": "763 cal",
+      "suggestedValue": "Expected ≤200 cal"
+    },
+    {
+      "item": "Earl Grey Lavender Cake",
+      "restaurant": "The Cake Bake Shop",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "above-range",
+      "details": "tea: 480 cal exceeds plausible range [0-200] for theme park portion.",
+      "currentValue": "480 cal",
+      "suggestedValue": "Expected ≤200 cal"
+    },
+    {
+      "item": "Iced Coffee",
+      "restaurant": "Emack & Bolio's",
+      "park": "Universal Hard Rock Hotel",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "below-range",
+      "details": "coffee: 2 cal is below plausible range [5-500] for theme park portion.",
+      "currentValue": "2 cal",
+      "suggestedValue": "Expected ≥5 cal"
+    },
+    {
+      "item": "Enchanted Rose Cocktail",
+      "restaurant": "Broken Spell Lounge",
+      "park": "Disneyland Resort Hotels",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "below-range",
+      "details": "cocktail: 74 cal is below plausible range [150-500] for theme park portion.",
+      "currentValue": "74 cal",
+      "suggestedValue": "Expected ≥150 cal"
+    },
+    {
+      "item": "Citrus Ceviche",
+      "restaurant": "Strong Water Tavern",
+      "park": "Universal Sapphire Falls Resort",
+      "pass": 2,
+      "severity": "HIGH",
+      "issue": "below-range",
+      "details": "seafood: 62 cal is below plausible range [200-800] for theme park portion.",
+      "currentValue": "62 cal",
+      "suggestedValue": "Expected ≥200 cal"
+    },
+    {
+      "item": "BBQ Brisket Melt",
+      "restaurant": "Woody's Lunch Box",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "6 different items share identical profile (cal=585, carbs=22, fat=31, protein=48): BBQ Brisket Melt, Rodizio-style Grilled Beef Skewer, Beef Wagyu Don, Surf & Turf, The Original 1762..."
+    },
+    {
+      "item": "Chicken and Waffle Bowl",
+      "restaurant": "Fairfax Fare",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "14 different items share identical profile (cal=633, carbs=28, fat=26, protein=59): Chicken and Waffle Bowl, A Sampling of Mom's Favorite Recipes, Aunt Liz's Golden Fried Chicken, Honey Sesame Chicken (with rice), Buffalo Chicken Chips..."
+    },
+    {
+      "item": "Fried Herb and Garlic Cheese",
+      "restaurant": "50's Prime Time Café",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=358, carbs=54, fat=10, protein=10): Fried Herb and Garlic Cheese, Curry-spiced Fried Cheese, Fried Cinnamon Roll Bites, Holiday Ravioli"
+    },
+    {
+      "item": "Shakin' Jamaican Cold Brew (Large)",
+      "restaurant": "Joffrey's Coffee at Pixar Place",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=30, carbs=2, fat=1, protein=1): Shakin' Jamaican Cold Brew (Large), Cold Brew (Grande), Vanilla Sweet Cream Cold Brew — Grande (16 oz), Salted Caramel Mudslide Cold Brew"
+    },
+    {
+      "item": "Grilled Chicken Citrus Salad",
+      "restaurant": "Sci-Fi Dine-In Theater",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "11 different items share identical profile (cal=338, carbs=25, fat=17, protein=19): Grilled Chicken Citrus Salad, Caesar Salad with Chicken, Chicken Caesar Salad, Amazon Grilled Chicken Salad, Caesar Salad with Chicken..."
+    },
+    {
+      "item": "1/2 Chicken Dinner",
+      "restaurant": "Flame Tree Barbecue",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "10 different items share identical profile (cal=431, carbs=19, fat=18, protein=41): 1/2 Chicken Dinner, Smoked Half-Chicken, Brick Lemon-Herb Half Chicken, Popcorn, Popcorn Chicken and Waffles, Art's Famous Fried Chicken Dinner..."
+    },
+    {
+      "item": "Customized Bowl: Slow-Roasted Beef on Red & Sweet Potato Hash with No Sauce",
+      "restaurant": "Satu'li Canteen",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "8 different items share identical profile (cal=715, carbs=26, fat=37, protein=58): Customized Bowl: Slow-Roasted Beef on Red & Sweet Potato Hash with No Sauce, Mongolian Beef, Beijing Zhajiang Noodles, New England Slider, Flauta de Barbacoa..."
+    },
+    {
+      "item": "Shrimp & Grits",
+      "restaurant": "Tiffins Restaurant",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "8 different items share identical profile (cal=468, carbs=26, fat=20, protein=41): Shrimp & Grits, Trio Platter, Fried Shrimp Platter, Orange-Sesame Tempura Shrimp, Firecracker Shrimp..."
+    },
+    {
+      "item": "Chicken Rice Bowl",
+      "restaurant": "Harambe Market",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=518, carbs=59, fat=14, protein=29): Chicken Rice Bowl, Mongolian Beef Bowl, Chicken Rice Bowl, Chicken Teriyaki Bowl"
+    },
+    {
+      "item": "Honey Chicken",
+      "restaurant": "Yak & Yeti Restaurant",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "10 different items share identical profile (cal=518, carbs=23, fat=22, protein=49): Honey Chicken, Chicken Cutlet Curry, Asian BBQ Chicken, Yoshi Mushroom Alfredo, Hawaiian BBQ..."
+    },
+    {
+      "item": "Watermelon Salad",
+      "restaurant": "Flame Tree Barbecue",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "17 different items share identical profile (cal=488, carbs=36, fat=25, protein=27): Watermelon Salad, House Salad with Smoked Chicken, Mama's Caesar Salad, Caesar Salad, Classic Ranch Salad with Grilled Chicken..."
+    },
+    {
+      "item": "Oak-grilled Rotisserie Chicken",
+      "restaurant": "Sunshine Seasons",
+      "park": "EPCOT",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "33 different items share identical profile (cal=748, carbs=33, fat=31, protein=70): Oak-grilled Rotisserie Chicken, BBQ Chicken Leg, Rotisserie Smoked Chicken, Rotisserie Chicken, Waffle with Sweet-and-Spicy Maple Chicken..."
+    },
+    {
+      "item": "Empanadas con Queso",
+      "restaurant": "La Cantina de San Angel",
+      "park": "EPCOT",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=330, carbs=66, fat=3, protein=7): Empanadas con Queso, Vegetable Stir Fry with Fried Rice, Mickey Krispy Treat, Arancini Siciliani"
+    },
+    {
+      "item": "Chicken alla Parmigiana",
+      "restaurant": "Mama Melrose's Ristorante Italiano",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "6 different items share identical profile (cal=675, carbs=76, fat=26, protein=29): Chicken alla Parmigiana, Prehistoric Pasta, Lasagna al Forno, Chicken Pesto Pasta, Chicken Pasta Bake..."
+    },
+    {
+      "item": "Shrimp Rice Bowl",
+      "restaurant": "Whakawaiwai Eats",
+      "park": "Universal's Volcano Bay",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "21 different items share identical profile (cal=553, carbs=31, fat=23, protein=48): Shrimp Rice Bowl, Peel-and-Eat Shrimp, New England Steam Boil, Bouillabaisse, Shrimp and Grits..."
+    },
+    {
+      "item": "Vegetable Flatbread",
+      "restaurant": "Contempo Cafe",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "24 different items share identical profile (cal=423, carbs=64, fat=12, protein=12): Vegetable Flatbread, Avocado Toast, Tonga Toast, Indian-Style Bread Service (with 3 accompaniments), Heritage Skillet..."
+    },
+    {
+      "item": "Grilled Peel-and-Eat Shrimp",
+      "restaurant": "Ohana",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=489, carbs=28, fat=21, protein=43): Grilled Peel-and-Eat Shrimp, Shrimp Cocktail, Chilled Jumbo Shrimp, Jumbo Shrimp Cocktail"
+    },
+    {
+      "item": "Mojo Chicken Bowl",
+      "restaurant": "Gasparilla Island Grill",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "8 different items share identical profile (cal=748, carbs=85, fat=21, protein=42): Mojo Chicken Bowl, Spicy Korean Chicken Bowl, Hawaiian Rice Bowl, Beef Bowl, Chicken Bowl..."
+    },
+    {
+      "item": "Teriyaki Chicken Bun",
+      "restaurant": "Japan",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=315, carbs=32, fat=11, protein=18): Teriyaki Chicken Bun, Char Siu Pork Bun, Wagyu Bun, Korean Barbecue Oyster Mushroom Bao Bun"
+    },
+    {
+      "item": "Tostada de Carnitas",
+      "restaurant": "Mexico",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=633, carbs=28, fat=30, protein=47): Tostada de Carnitas, Pork Schnitzel, BBQ Char Siu Pork Fried Rice, Ohana Breakfast Skillet"
+    },
+    {
+      "item": "Shrimp Cacio Pepe Pasta",
+      "restaurant": "Primavera Kitchen",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "29 different items share identical profile (cal=975, carbs=109, fat=38, protein=42): Shrimp Cacio Pepe Pasta, Shrimp Penne Vodka, Pastalaya, Planet Earth Pasta, Penne alla Vodka..."
+    },
+    {
+      "item": "Tamal de Pollo con Mole",
+      "restaurant": "Las Posadas Holiday Kitchen",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "5 different items share identical profile (cal=228, carbs=29, fat=0, protein=5): Tamal de Pollo con Mole, Passion Fruit Paleta, Christmas-style Chicken Tamale, Nordic Harvest Salad, Draft Beer"
+    },
+    {
+      "item": "Beef Bourguignon",
+      "restaurant": "Yukon Holiday Kitchen",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "6 different items share identical profile (cal=845, carbs=31, fat=44, protein=69): Beef Bourguignon, Braised Beef Tajine, Thruster Roasted Bantha Flatbread, Rolling Boulder Meatballs, Noodles with Beef..."
+    },
+    {
+      "item": "Kālua Pork",
+      "restaurant": "Mele Kalikimaka",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "10 different items share identical profile (cal=748, carbs=33, fat=35, protein=56): Kālua Pork, Jerret de Porc Braise au Miel, Pineapple-glazed Pork Belly, Bacon & Eggs Appetizer, Happabore Sampler..."
+    },
+    {
+      "item": "Steakhouse Lobster Caesar Salad",
+      "restaurant": "The Artist's Table",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "14 different items share identical profile (cal=943, carbs=20, fat=49, protein=88): Steakhouse Lobster Caesar Salad, Slow Rotation Short Rib, Primal Steak, 16oz NY Strip, Black Truffle Steak Tartare..."
+    },
+    {
+      "item": "Sopa Azteca",
+      "restaurant": "San Angel Inn",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "6 different items share identical profile (cal=410, carbs=39, fat=16, protein=21): Sopa Azteca, Canadian Cheddar Cheese Soup, Super Mushroom Soup, Tomato Soup, Gazpacho..."
+    },
+    {
+      "item": "Moroccan Short Rib Tagine",
+      "restaurant": "Tiffins Restaurant",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "14 different items share identical profile (cal=653, carbs=14, fat=34, protein=61): Moroccan Short Rib Tagine, Skirt Steak Frites, Argentine Skirt Steak, Churasco, Grilled Hanger Steak..."
+    },
+    {
+      "item": "Thawfest Platter",
+      "restaurant": "Mead Hall",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=473, carbs=18, fat=23, protein=41): Thawfest Platter, Grilled Salmon, Teriyaki Salmon, Teriyaki Salmon"
+    },
+    {
+      "item": "Amazon Burger",
+      "restaurant": "Rainforest Cafe",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=619, carbs=54, fat=31, protein=35): Amazon Burger, Kids Jazz Kitchen Smash Cheeseburger, Brewpub Burger, Jake's Burger"
+    },
+    {
+      "item": "Chicken Caesar Wrap",
+      "restaurant": "Earl of Sandwich",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "6 different items share identical profile (cal=563, carbs=57, fat=22, protein=32): Chicken Caesar Wrap, Spam Musubi, Chicken Caesar Wrap, Chicken Caesar Wrap, Chicken Caesar Wrap..."
+    },
+    {
+      "item": "Filet Mignon",
+      "restaurant": "The BOATHOUSE",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "4 different items share identical profile (cal=544, carbs=11, fat=29, protein=51): Filet Mignon, Prime NY Strip, Kids Grilled Filet Mignon, Prime NY Strip"
+    },
+    {
+      "item": "Fish & Chips",
+      "restaurant": "Raglan Road Irish Pub",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "7 different items share identical profile (cal=963, carbs=97, fat=48, protein=48): Fish & Chips, Fish & Chips, Fish & Chips, Fish & Chips, Fish & Chips..."
+    },
+    {
+      "item": "Churros",
+      "restaurant": "Frontera Cocina",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "5 different items share identical profile (cal=461, carbs=54, fat=24, protein=7): Churros, Churros con Chocolate, Classic Churro, Specialty Churro, Churros with Chocolate"
+    },
+    {
+      "item": "Veggie Burger",
+      "restaurant": "D-Luxe Burger",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "15 different items share identical profile (cal=1073, carbs=94, fat=53, protein=60): Veggie Burger, City Works Burger, Burgers, Bayou Bacon Smash Burger, Ballast Point Burger..."
+    },
+    {
+      "item": "Wings",
+      "restaurant": "City Works Eatery",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "6 different items share identical profile (cal=825, carbs=31, fat=51, protein=62): Wings, Chicken Wings, Tiki Wings, Boneless Wings, Chicken Wings..."
+    },
+    {
+      "item": "Nachos",
+      "restaurant": "City Works Eatery",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "6 different items share identical profile (cal=1093, carbs=109, fat=55, protein=36): Nachos, Loaded Nachos, Loaded Nachos, Loaded Nachos, Loaded Nachos..."
+    },
+    {
+      "item": "Lobster Tail",
+      "restaurant": "Royal Palace",
+      "park": "Disney Dream",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "8 different items share identical profile (cal=650, carbs=14, fat=31, protein=69): Lobster Tail, Lobster Tail, Raw Bar Tower, Lobster Tail, Lobster Bisque..."
+    },
+    {
+      "item": "Black Cod",
+      "restaurant": "Animator's Palate",
+      "park": "Disney Magic",
+      "pass": 3,
+      "severity": "HIGH",
+      "issue": "duplicate-profile",
+      "details": "5 different items share identical profile (cal=650, carbs=25, fat=27, protein=61): Black Cod, Pan-Seared Sea Bass, Branzino al Forno, Pan-Seared Sea Bass, Grilled Mahi-Mahi"
+    },
+    {
+      "item": "Jedi Mind Trick",
+      "restaurant": "Oga's Cantina",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=104 vs Stated=175 (41% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "175 cal",
+      "suggestedValue": "~104 cal from macros"
+    },
+    {
+      "item": "Cliff Dweller",
+      "restaurant": "Oga's Cantina",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=104 vs Stated=172 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "172 cal",
+      "suggestedValue": "~104 cal from macros"
+    },
+    {
+      "item": "Rex's Romaine and Kale Salad",
+      "restaurant": "Roundup Rodeo BBQ",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=104 vs Stated=175 (41% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "175 cal",
+      "suggestedValue": "~104 cal from macros"
+    },
+    {
+      "item": "Grandpa Jean's Chicken Pot Pie",
+      "restaurant": "50's Prime Time Café",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 7% protein calories. Expected >20%.",
+      "currentValue": "8g protein (7%)"
+    },
+    {
+      "item": "The Tune-In PBJ Cocktail",
+      "restaurant": "Tune-In Lounge",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=223 vs Stated=315 (29% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "315 cal",
+      "suggestedValue": "~223 cal from macros"
+    },
+    {
+      "item": "Soft-serve Waffle Cone",
+      "restaurant": "Epic Eats",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 71mg sodium at 340 cal. Theme park food typically >400mg.",
+      "currentValue": "71mg sodium"
+    },
+    {
+      "item": "Craft Beer (16 oz)",
+      "restaurant": "BaseLine Tap House",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=80 vs Stated=250 (68% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "250 cal",
+      "suggestedValue": "~80 cal from macros"
+    },
+    {
+      "item": "Mediterranean Salad with Chicken",
+      "restaurant": "ABC Commissary",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=108 vs Stated=182 (41% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "182 cal",
+      "suggestedValue": "~108 cal from macros"
+    },
+    {
+      "item": "Pan-seared Salmon",
+      "restaurant": "Sci-Fi Dine-In Theater",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 13% protein calories. Expected >20%.",
+      "currentValue": "17g protein (13%)"
+    },
+    {
+      "item": "Safari Amber (draft)",
+      "restaurant": "Dawa Bar",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=112 vs Stated=187 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "187 cal",
+      "suggestedValue": "~112 cal from macros"
+    },
+    {
+      "item": "Spit-Roasted Herb Chicken",
+      "restaurant": "Tusker House (Buffet) — Lunch/Dinner — Carving",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 22mg sodium at 556 cal. Theme park food typically >400mg.",
+      "currentValue": "22mg sodium"
+    },
+    {
+      "item": "Soft-Serve Waffle Cone (twist)",
+      "restaurant": "Anandapur Ice Cream Truck",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 60mg sodium at 340 cal. Theme park food typically >400mg.",
+      "currentValue": "60mg sodium"
+    },
+    {
+      "item": "Kona Longboard Island Lager",
+      "restaurant": "Warung Outpost",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=52 vs Stated=150 (65% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "150 cal",
+      "suggestedValue": "~52 cal from macros"
+    },
+    {
+      "item": "Sierra Nevada Pale Ale",
+      "restaurant": "Warung Outpost",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=64 vs Stated=175 (63% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "175 cal",
+      "suggestedValue": "~64 cal from macros"
+    },
+    {
+      "item": "Maharaja Lime Margarita (frozen)",
+      "restaurant": "Warung Outpost",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=219 vs Stated=309 (29% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "309 cal",
+      "suggestedValue": "~219 cal from macros"
+    },
+    {
+      "item": "1/3 lb Angus Cheeseburger",
+      "restaurant": "Restaurantosaurus",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 53mg sodium at 1020 cal. Theme park food typically >400mg.",
+      "currentValue": "53mg sodium"
+    },
+    {
+      "item": "St. Louis Rib Dinner",
+      "restaurant": "Flame Tree Barbecue",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 94mg sodium at 1764 cal. Theme park food typically >400mg.",
+      "currentValue": "94mg sodium"
+    },
+    {
+      "item": "Kungaloosh Spiced Excursion Ale (draft)",
+      "restaurant": "Nomad Lounge",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=80 vs Stated=200 (60% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "200 cal",
+      "suggestedValue": "~80 cal from macros"
+    },
+    {
+      "item": "Ahi Tuna Nachos",
+      "restaurant": "Yak & Yeti Restaurant",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 10% protein calories. Expected >20%.",
+      "currentValue": "24g protein (10%)"
+    },
+    {
+      "item": "Mojo Bones (BBQ Ribs)",
+      "restaurant": "Rainforest Cafe",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 53mg sodium at 1020 cal. Theme park food typically >400mg.",
+      "currentValue": "53mg sodium"
+    },
+    {
+      "item": "Draft Beer Flight",
+      "restaurant": "Springs Taproom",
+      "park": "Busch Gardens Tampa Bay",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=80 vs Stated=131 (39% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "131 cal",
+      "suggestedValue": "~80 cal from macros"
+    },
+    {
+      "item": "Empanadas con Queso",
+      "restaurant": "La Cantina de San Angel",
+      "park": "EPCOT",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 8% fat calories. Expected >25%.",
+      "currentValue": "3g fat (8%)"
+    },
+    {
+      "item": "Antipasto Salad",
+      "restaurant": "PizzeRizzo",
+      "park": "Disney's Hollywood Studios",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=120 vs Stated=198 (39% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "198 cal",
+      "suggestedValue": "~120 cal from macros"
+    },
+    {
+      "item": "Smoked Chicken Salad",
+      "restaurant": "Three Broomsticks",
+      "park": "Universal's Islands of Adventure",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=124 vs Stated=203 (39% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "203 cal",
+      "suggestedValue": "~124 cal from macros"
+    },
+    {
+      "item": "The Black Truffle Wagyu Burger",
+      "restaurant": "Black Tap Craft Burgers & Shakes",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 77mg sodium at 1100 cal. Theme park food typically >400mg.",
+      "currentValue": "77mg sodium"
+    },
+    {
+      "item": "Maple-Mustard Glazed Salmon",
+      "restaurant": "Columbia Harbour House",
+      "park": "Magic Kingdom Park",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 15% protein calories. Expected >20%.",
+      "currentValue": "25g protein (15%)"
+    },
+    {
+      "item": "The Champ Wagyu Burger",
+      "restaurant": "Black Tap Craft Burgers & Shakes",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 75mg sodium at 1078 cal. Theme park food typically >400mg.",
+      "currentValue": "75mg sodium"
+    },
+    {
+      "item": "The Wagyu Steakhouse Burger",
+      "restaurant": "Black Tap Craft Burgers & Shakes",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 11% protein calories. Expected >20%.",
+      "currentValue": "29g protein (11%)"
+    },
+    {
+      "item": "The Wagyu Steakhouse Burger",
+      "restaurant": "Black Tap Craft Burgers & Shakes",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 77mg sodium at 1100 cal. Theme park food typically >400mg.",
+      "currentValue": "77mg sodium"
+    },
+    {
+      "item": "Gnocchi with Braised Lamb Shoulder",
+      "restaurant": "Topolino's Terrace",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=124 vs Stated=208 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "208 cal",
+      "suggestedValue": "~124 cal from macros"
+    },
+    {
+      "item": "Ohana Noodles",
+      "restaurant": "Ohana",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 147mg sodium at 1200 cal. Theme park food typically >400mg.",
+      "currentValue": "147mg sodium"
+    },
+    {
+      "item": "20-oz Bone-In Black Angus Ribeye",
+      "restaurant": "Kona Cafe",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 49mg sodium at 935 cal. Theme park food typically >400mg.",
+      "currentValue": "49mg sodium"
+    },
+    {
+      "item": "Samaki Upma Peri Peri",
+      "restaurant": "Sanaa",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 11% protein calories. Expected >20%.",
+      "currentValue": "6g protein (11%)"
+    },
+    {
+      "item": "16-oz Rib-Eye Steak",
+      "restaurant": "Yachtsman Steakhouse",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 89mg sodium at 935 cal. Theme park food typically >400mg.",
+      "currentValue": "89mg sodium"
+    },
+    {
+      "item": "Red Wine-braised Beef Cheeks",
+      "restaurant": "Topolino's Terrace",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=40 vs Stated=150 (73% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "150 cal",
+      "suggestedValue": "~40 cal from macros"
+    },
+    {
+      "item": "Cioppino",
+      "restaurant": "The Boathouse",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 2% protein calories. Expected >20%.",
+      "currentValue": "7g protein (2%)"
+    },
+    {
+      "item": "Paella Valenciana",
+      "restaurant": "Jaleo",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=128 vs Stated=214 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "214 cal",
+      "suggestedValue": "~128 cal from macros"
+    },
+    {
+      "item": "Paella Valenciana",
+      "restaurant": "Jaleo",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 9% protein calories. Expected >20%.",
+      "currentValue": "5g protein (9%)"
+    },
+    {
+      "item": "Smoked Corned Beef",
+      "restaurant": "Flavors From Fire",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=132 vs Stated=219 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "219 cal",
+      "suggestedValue": "~132 cal from macros"
+    },
+    {
+      "item": "Crème Brûlée Vanille",
+      "restaurant": "France",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 112mg sodium at 1335 cal. Theme park food typically >400mg.",
+      "currentValue": "112mg sodium"
+    },
+    {
+      "item": "Chicken Sugo Rigatoni",
+      "restaurant": "Topolino's Terrace",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=40 vs Stated=147 (73% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "147 cal",
+      "suggestedValue": "~40 cal from macros"
+    },
+    {
+      "item": "Roasted Atlantic Salmon",
+      "restaurant": "Raglan Road",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 59mg sodium at 680 cal. Theme park food typically >400mg.",
+      "currentValue": "59mg sodium"
+    },
+    {
+      "item": "10 oz Sirloin Steak",
+      "restaurant": "Raglan Road",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 13% protein calories. Expected >20%.",
+      "currentValue": "31g protein (13%)"
+    },
+    {
+      "item": "Jamón Ibérico",
+      "restaurant": "Jaleo",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 45mg sodium at 1200 cal. Theme park food typically >400mg.",
+      "currentValue": "45mg sodium"
+    },
+    {
+      "item": "Spanish Sangria",
+      "restaurant": "Jaleo",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=40 vs Stated=150 (73% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "150 cal",
+      "suggestedValue": "~40 cal from macros"
+    },
+    {
+      "item": "Beer-braised Beef",
+      "restaurant": "Belgium",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=132 vs Stated=224 (41% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "224 cal",
+      "suggestedValue": "~132 cal from macros"
+    },
+    {
+      "item": "Trio de Pintxos",
+      "restaurant": "Spain",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 23mg sodium at 1466 cal. Theme park food typically >400mg.",
+      "currentValue": "23mg sodium"
+    },
+    {
+      "item": "Caramel Apple",
+      "restaurant": "Disney Wonderful World of Sweets",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 76mg sodium at 437 cal. Theme park food typically >400mg.",
+      "currentValue": "76mg sodium"
+    },
+    {
+      "item": "House Bread Arrabbiata",
+      "restaurant": "Naples Ristorante e Bar",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=163 vs Stated=234 (30% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "234 cal",
+      "suggestedValue": "~163 cal from macros"
+    },
+    {
+      "item": "Arancini Siciliani",
+      "restaurant": "Naples Ristorante e Bar",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 8% fat calories. Expected >25%.",
+      "currentValue": "3g fat (8%)"
+    },
+    {
+      "item": "Blackened Catfish",
+      "restaurant": "American Holiday Table",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 14% protein calories. Expected >20%.",
+      "currentValue": "30g protein (14%)"
+    },
+    {
+      "item": "Smoked Salmon Potato Latke",
+      "restaurant": "L'Chaim! Holiday Kitchen",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 10% protein calories. Expected >20%.",
+      "currentValue": "18g protein (10%)"
+    },
+    {
+      "item": "Tamal de Pollo con Mole",
+      "restaurant": "Las Posadas Holiday Kitchen",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=136 vs Stated=228 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "228 cal",
+      "suggestedValue": "~136 cal from macros"
+    },
+    {
+      "item": "Tamal de Pollo con Mole",
+      "restaurant": "Las Posadas Holiday Kitchen",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 9% protein calories. Expected >20%.",
+      "currentValue": "5g protein (9%)"
+    },
+    {
+      "item": "Smoked Salmon on Sesame Brioche",
+      "restaurant": "Le Marche De Noel",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 10% protein calories. Expected >20%.",
+      "currentValue": "18g protein (10%)"
+    },
+    {
+      "item": "Passion Fruit Paleta",
+      "restaurant": "El Artista Hambriento",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=136 vs Stated=228 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "228 cal",
+      "suggestedValue": "~136 cal from macros"
+    },
+    {
+      "item": "Cajun Crawfish and Sausage BOOtine",
+      "restaurant": "Golden Oak Outpost",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 10% protein calories. Expected >20%.",
+      "currentValue": "17g protein (10%)"
+    },
+    {
+      "item": "Mummy Treat",
+      "restaurant": "Cheshire Café",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 116mg sodium at 1357 cal. Theme park food typically >400mg.",
+      "currentValue": "116mg sodium"
+    },
+    {
+      "item": "Mozzarella Fritta",
+      "restaurant": "L'Arte di Mangiare — Italy",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=112 vs Stated=193 (42% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "193 cal",
+      "suggestedValue": "~112 cal from macros"
+    },
+    {
+      "item": "Mozzarella Fritta",
+      "restaurant": "L'Arte di Mangiare — Italy",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 0% fat calories. Expected >25%.",
+      "currentValue": "0g fat (0%)"
+    },
+    {
+      "item": "Buffalo Chicken Hand Pie",
+      "restaurant": "The Friar's Nook",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 6% protein calories. Expected >20%.",
+      "currentValue": "9g protein (6%)"
+    },
+    {
+      "item": "Ursula Cone",
+      "restaurant": "Storybook Treats",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 29mg sodium at 1264 cal. Theme park food typically >400mg.",
+      "currentValue": "29mg sodium"
+    },
+    {
+      "item": "Christmas-style Chicken Tamale",
+      "restaurant": "Pecos Bill Tall Tale Inn & Cafe",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=136 vs Stated=228 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "228 cal",
+      "suggestedValue": "~136 cal from macros"
+    },
+    {
+      "item": "Christmas-style Chicken Tamale",
+      "restaurant": "Pecos Bill Tall Tale Inn & Cafe",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 9% protein calories. Expected >20%.",
+      "currentValue": "5g protein (9%)"
+    },
+    {
+      "item": "Pan-Roasted Arctic Char",
+      "restaurant": "Be Our Guest Restaurant",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 20mg sodium at 1200 cal. Theme park food typically >400mg.",
+      "currentValue": "20mg sodium"
+    },
+    {
+      "item": "Taiyaki",
+      "restaurant": "Goshiki — Japan",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 7% protein calories. Expected >20%.",
+      "currentValue": "6g protein (7%)"
+    },
+    {
+      "item": "Endive and Walnut Salad",
+      "restaurant": "Be Our Guest Restaurant",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=40 vs Stated=156 (74% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "156 cal",
+      "suggestedValue": "~40 cal from macros"
+    },
+    {
+      "item": "Slow-braised Beef",
+      "restaurant": "Cinderella's Royal Table",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=44 vs Stated=160 (73% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "160 cal",
+      "suggestedValue": "~44 cal from macros"
+    },
+    {
+      "item": "Marinated Grilled Chicken",
+      "restaurant": "Cinderella's Royal Table",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=44 vs Stated=165 (73% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "165 cal",
+      "suggestedValue": "~44 cal from macros"
+    },
+    {
+      "item": "Space Glazed Duck Breast",
+      "restaurant": "Space 220",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 57mg sodium at 1639 cal. Theme park food typically >400mg.",
+      "currentValue": "57mg sodium"
+    },
+    {
+      "item": "Canadian Cove P.E.I. Mussels",
+      "restaurant": "Le Cellier Steakhouse",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 139mg sodium at 1200 cal. Theme park food typically >400mg.",
+      "currentValue": "139mg sodium"
+    },
+    {
+      "item": "Maple Crème Brûlée",
+      "restaurant": "Le Cellier Steakhouse",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 5mg sodium at 1200 cal. Theme park food typically >400mg.",
+      "currentValue": "5mg sodium"
+    },
+    {
+      "item": "Whole-Fried Fish",
+      "restaurant": "Tiffins Restaurant",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 9% fat calories. Expected >25%.",
+      "currentValue": "3g fat (9%)"
+    },
+    {
+      "item": "Sea Salt Turtle Crème Brûlée",
+      "restaurant": "Steakhouse 71",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 124mg sodium at 1200 cal. Theme park food typically >400mg.",
+      "currentValue": "124mg sodium"
+    },
+    {
+      "item": "Butter-Poached Florida Cobia",
+      "restaurant": "Citricos",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 2% protein calories. Expected >20%.",
+      "currentValue": "5g protein (2%)"
+    },
+    {
+      "item": "Butter-Poached Florida Cobia",
+      "restaurant": "Citricos",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 52mg sodium at 1200 cal. Theme park food typically >400mg.",
+      "currentValue": "52mg sodium"
+    },
+    {
+      "item": "Nordic Harvest Salad",
+      "restaurant": "Mead Hall",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=136 vs Stated=228 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "228 cal",
+      "suggestedValue": "~136 cal from macros"
+    },
+    {
+      "item": "Atlantic Sea Bass",
+      "restaurant": "Atlantic",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 68mg sodium at 680 cal. Theme park food typically >400mg.",
+      "currentValue": "68mg sodium"
+    },
+    {
+      "item": "Butterbeer Crêpes",
+      "restaurant": "Café L'air De La Sirène",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 147mg sodium at 343 cal. Theme park food typically >400mg.",
+      "currentValue": "147mg sodium"
+    },
+    {
+      "item": "Whole-Fried Sustainable Fish",
+      "restaurant": "Tiffins",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 8% fat calories. Expected >25%.",
+      "currentValue": "3g fat (8%)"
+    },
+    {
+      "item": "Royal Belgian Caviar with Cauliflower Panna Cotta",
+      "restaurant": "Victoria & Albert's",
+      "park": "Disney's Grand Floridian Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 105mg sodium at 308 cal. Theme park food typically >400mg.",
+      "currentValue": "105mg sodium"
+    },
+    {
+      "item": "Wagyu A-5 Miyazaki",
+      "restaurant": "Victoria & Albert's",
+      "park": "Disney's Grand Floridian Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 37mg sodium at 870 cal. Theme park food typically >400mg.",
+      "currentValue": "37mg sodium"
+    },
+    {
+      "item": "New Zealand Langoustine Tart",
+      "restaurant": "Victoria & Albert's",
+      "park": "Disney's Grand Floridian Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 130mg sodium at 392 cal. Theme park food typically >400mg.",
+      "currentValue": "130mg sodium"
+    },
+    {
+      "item": "Slow-Roasted Pork Belly BLT",
+      "restaurant": "Flying Fish",
+      "park": "Disney's BoardWalk",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 13% protein calories. Expected >20%.",
+      "currentValue": "27g protein (13%)"
+    },
+    {
+      "item": "Chilean Sea Bass",
+      "restaurant": "Flying Fish",
+      "park": "Disney's BoardWalk",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 12% protein calories. Expected >20%.",
+      "currentValue": "15g protein (12%)"
+    },
+    {
+      "item": "Chilean Sea Bass",
+      "restaurant": "Flying Fish",
+      "park": "Disney's BoardWalk",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 109mg sodium at 486 cal. Theme park food typically >400mg.",
+      "currentValue": "109mg sodium"
+    },
+    {
+      "item": "Seafood Trofie Pasta",
+      "restaurant": "Flying Fish",
+      "park": "Disney's BoardWalk",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 0mg sodium at 1000 cal. Theme park food typically >400mg.",
+      "currentValue": "0mg sodium"
+    },
+    {
+      "item": "Bacon Maple Bar",
+      "restaurant": "Voodoo Doughnut",
+      "park": "Universal CityWalk",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 11mg sodium at 720 cal. Theme park food typically >400mg.",
+      "currentValue": "11mg sodium"
+    },
+    {
+      "item": "Miami Viceberry",
+      "restaurant": "Voodoo Doughnut",
+      "park": "Universal CityWalk",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 25mg sodium at 525 cal. Theme park food typically >400mg.",
+      "currentValue": "25mg sodium"
+    },
+    {
+      "item": "Grape Ape",
+      "restaurant": "Voodoo Doughnut",
+      "park": "Universal CityWalk",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 8mg sodium at 510 cal. Theme park food typically >400mg.",
+      "currentValue": "8mg sodium"
+    },
+    {
+      "item": "Customized Bowl: Chili-Spiced Crispy Fried Tofu on Mixed Greens Salad with Charred Green Onion Vinaigrette",
+      "restaurant": "Satu'li Canteen",
+      "park": "Disney's Animal Kingdom",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 42mg sodium at 600 cal. Theme park food typically >400mg.",
+      "currentValue": "42mg sodium"
+    },
+    {
+      "item": "Steakhouse 71 Onion Rings",
+      "restaurant": "Steakhouse 71",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 5% protein calories. Expected >20%.",
+      "currentValue": "8g protein (5%)"
+    },
+    {
+      "item": "Wild Mushrooms Arancini",
+      "restaurant": "Citricos",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=44 vs Stated=165 (73% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "165 cal",
+      "suggestedValue": "~44 cal from macros"
+    },
+    {
+      "item": "Wild Mushrooms Arancini",
+      "restaurant": "Citricos",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 0% fat calories. Expected >25%.",
+      "currentValue": "0g fat (0%)"
+    },
+    {
+      "item": "Volcano Chicken",
+      "restaurant": "Rainforest Cafe",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 14% protein calories. Expected >20%.",
+      "currentValue": "16g protein (14%)"
+    },
+    {
+      "item": "Lava Flow",
+      "restaurant": "Rainforest Cafe",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=223 vs Stated=315 (29% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "315 cal",
+      "suggestedValue": "~223 cal from macros"
+    },
+    {
+      "item": "Tuna Melt",
+      "restaurant": "Earl of Sandwich",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 15% protein calories. Expected >20%.",
+      "currentValue": "14g protein (15%)"
+    },
+    {
+      "item": "Candy Bag",
+      "restaurant": "Goofy's Candy Company",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 122mg sodium at 462 cal. Theme park food typically >400mg.",
+      "currentValue": "122mg sodium"
+    },
+    {
+      "item": "Dan Dan Noodles",
+      "restaurant": "Morimoto Asia",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 10% protein calories. Expected >20%.",
+      "currentValue": "9g protein (10%)"
+    },
+    {
+      "item": "Dragon Roll",
+      "restaurant": "Morimoto Asia",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 14% protein calories. Expected >20%.",
+      "currentValue": "9g protein (14%)"
+    },
+    {
+      "item": "DB Clothesline Candied Bacon",
+      "restaurant": "The Edison",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 100mg sodium at 343 cal. Theme park food typically >400mg.",
+      "currentValue": "100mg sodium"
+    },
+    {
+      "item": "Hovito Mojito",
+      "restaurant": "Jock Lindsey's Hangar Bar",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=231 vs Stated=328 (30% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "328 cal",
+      "suggestedValue": "~231 cal from macros"
+    },
+    {
+      "item": "Classic Margarita",
+      "restaurant": "Dockside Margaritas",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=96 vs Stated=180 (47% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "180 cal",
+      "suggestedValue": "~96 cal from macros"
+    },
+    {
+      "item": "Frozen Margarita",
+      "restaurant": "Dockside Margaritas",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=96 vs Stated=176 (45% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "176 cal",
+      "suggestedValue": "~96 cal from macros"
+    },
+    {
+      "item": "S'mores",
+      "restaurant": "The Ganachery",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 100mg sodium at 475 cal. Theme park food typically >400mg.",
+      "currentValue": "100mg sodium"
+    },
+    {
+      "item": "Gelato Sandwich",
+      "restaurant": "Vivoli il Gelato",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 91mg sodium at 400 cal. Theme park food typically >400mg.",
+      "currentValue": "91mg sodium"
+    },
+    {
+      "item": "Classic Poutine",
+      "restaurant": "Daily Poutine",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 17% fat calories. Expected >25%.",
+      "currentValue": "7g fat (17%)"
+    },
+    {
+      "item": "Italian Poutine",
+      "restaurant": "Daily Poutine",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 17% fat calories. Expected >25%.",
+      "currentValue": "7g fat (17%)"
+    },
+    {
+      "item": "Korean BBQ Poutine",
+      "restaurant": "Daily Poutine",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 17% fat calories. Expected >25%.",
+      "currentValue": "7g fat (17%)"
+    },
+    {
+      "item": "Latin Poutine",
+      "restaurant": "Daily Poutine",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 16% fat calories. Expected >25%.",
+      "currentValue": "7g fat (16%)"
+    },
+    {
+      "item": "Fudge",
+      "restaurant": "Candy Cauldron",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 46mg sodium at 396 cal. Theme park food typically >400mg.",
+      "currentValue": "46mg sodium"
+    },
+    {
+      "item": "Buffalo Wings",
+      "restaurant": "Planet Hollywood Observatory",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 18% fat calories. Expected >25%.",
+      "currentValue": "10g fat (18%)"
+    },
+    {
+      "item": "World Famous Chicken Crunch",
+      "restaurant": "Planet Hollywood Observatory",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 14% fat calories. Expected >25%.",
+      "currentValue": "6g fat (14%)"
+    },
+    {
+      "item": "Build-Your-Own Pizza",
+      "restaurant": "Blaze Pizza",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 86mg sodium at 371 cal. Theme park food typically >400mg.",
+      "currentValue": "86mg sodium"
+    },
+    {
+      "item": "Macarons",
+      "restaurant": "Amorette's Patisserie",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 80mg sodium at 467 cal. Theme park food typically >400mg.",
+      "currentValue": "80mg sodium"
+    },
+    {
+      "item": "Paella Valenciana",
+      "restaurant": "Jaleo by Jose Andres",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 10% protein calories. Expected >20%.",
+      "currentValue": "7g protein (10%)"
+    },
+    {
+      "item": "Nashville Hot Chicken",
+      "restaurant": "City Works Eatery",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 13% protein calories. Expected >20%.",
+      "currentValue": "9g protein (13%)"
+    },
+    {
+      "item": "Fruity Pebbles Donut",
+      "restaurant": "Everglazed Donuts & Cold Brew",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 9% fat calories. Expected >25%.",
+      "currentValue": "4g fat (9%)"
+    },
+    {
+      "item": "Fried Chicken BLT Po-Boy",
+      "restaurant": "Jazz Kitchen Coastal Grill & Patio",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 10% fat calories. Expected >25%.",
+      "currentValue": "3g fat (10%)"
+    },
+    {
+      "item": "Fried Chicken BLT Po-Boy",
+      "restaurant": "Jazz Kitchen Coastal Grill & Patio",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 13% protein calories. Expected >20%.",
+      "currentValue": "9g protein (13%)"
+    },
+    {
+      "item": "Fish N Chips",
+      "restaurant": "Splitsville Luxury Lanes",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 0% fat calories. Expected >25%.",
+      "currentValue": "0g fat (0%)"
+    },
+    {
+      "item": "Short Rib",
+      "restaurant": "Paseo",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 141mg sodium at 450 cal. Theme park food typically >400mg.",
+      "currentValue": "141mg sodium"
+    },
+    {
+      "item": "Crispy Fried Chicken",
+      "restaurant": "The Edison",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 0% fat calories. Expected >25%.",
+      "currentValue": "0g fat (0%)"
+    },
+    {
+      "item": "Blue Hawaii",
+      "restaurant": "The 'Olelo Room",
+      "park": "Aulani, A Disney Resort & Spa",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=235 vs Stated=337 (30% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "337 cal",
+      "suggestedValue": "~235 cal from macros"
+    },
+    {
+      "item": "Pina Colada",
+      "restaurant": "Off the Hook",
+      "park": "Aulani, A Disney Resort & Spa",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=94 vs Stated=151 (38% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "151 cal",
+      "suggestedValue": "~94 cal from macros"
+    },
+    {
+      "item": "Blue Hawaii Cocktail",
+      "restaurant": "Wailana Pool Bar",
+      "park": "Aulani, A Disney Resort & Spa",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=166 vs Stated=236 (30% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "236 cal",
+      "suggestedValue": "~166 cal from macros"
+    },
+    {
+      "item": "Mushroom Risotto",
+      "restaurant": "Palo",
+      "park": "Disney Dream",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 22mg sodium at 356 cal. Theme park food typically >400mg.",
+      "currentValue": "22mg sodium"
+    },
+    {
+      "item": "Dover Sole Meunière",
+      "restaurant": "Remy",
+      "park": "Disney Dream",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=20 vs Stated=90 (78% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "90 cal",
+      "suggestedValue": "~20 cal from macros"
+    },
+    {
+      "item": "Mai Tai",
+      "restaurant": "Off the Hook",
+      "park": "Aulani, A Disney Resort & Spa",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=64 vs Stated=149 (57% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "149 cal",
+      "suggestedValue": "~64 cal from macros"
+    },
+    {
+      "item": "Rum Runner Cocktail",
+      "restaurant": "Sebastian's Bistro",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=247 vs Stated=356 (31% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "356 cal",
+      "suggestedValue": "~247 cal from macros"
+    },
+    {
+      "item": "Maine Lobster Pot Pie",
+      "restaurant": "Bourbon Steak by Michael Mina",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=347 vs Stated=271 (28% diff). CALCULATED > STATED (possible data entry error or missing macro)",
+      "currentValue": "271 cal",
+      "suggestedValue": "~347 cal from macros"
+    },
+    {
+      "item": "Mushroom Risotto",
+      "restaurant": "Palo",
+      "park": "Disney Fantasy",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 22mg sodium at 356 cal. Theme park food typically >400mg.",
+      "currentValue": "22mg sodium"
+    },
+    {
+      "item": "Dover Sole Meunière",
+      "restaurant": "Remy",
+      "park": "Disney Fantasy",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=24 vs Stated=99 (76% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "99 cal",
+      "suggestedValue": "~24 cal from macros"
+    },
+    {
+      "item": "Caribbean Coconut Shrimp",
+      "restaurant": "Sebastian's Bistro",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=304 vs Stated=234 (30% diff). CALCULATED > STATED (possible data entry error or missing macro)",
+      "currentValue": "234 cal",
+      "suggestedValue": "~304 cal from macros"
+    },
+    {
+      "item": "Duck Fat Fries",
+      "restaurant": "Bourbon Steak by Michael Mina",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 0% fat calories. Expected >25%.",
+      "currentValue": "0g fat (0%)"
+    },
+    {
+      "item": "Spanish Sangria",
+      "restaurant": "Toledo - Tapas, Steak & Seafood",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=28 vs Stated=83 (66% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "83 cal",
+      "suggestedValue": "~28 cal from macros"
+    },
+    {
+      "item": "Guacamole and Chips",
+      "restaurant": "Maya Grill",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=207 vs Stated=116 (78% diff). CALCULATED > STATED (possible data entry error or missing macro)",
+      "currentValue": "116 cal",
+      "suggestedValue": "~207 cal from macros"
+    },
+    {
+      "item": "Japanese A5 Wagyu",
+      "restaurant": "Bourbon Steak by Michael Mina",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 31mg sodium at 378 cal. Theme park food typically >400mg.",
+      "currentValue": "31mg sodium"
+    },
+    {
+      "item": "Tableside Guacamole",
+      "restaurant": "Rosa Mexicano",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=207 vs Stated=116 (78% diff). CALCULATED > STATED (possible data entry error or missing macro)",
+      "currentValue": "116 cal",
+      "suggestedValue": "~207 cal from macros"
+    },
+    {
+      "item": "Krakatoa Punch",
+      "restaurant": "Trader Sam's Grog Grotto",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=48 vs Stated=120 (60% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "120 cal",
+      "suggestedValue": "~48 cal from macros"
+    },
+    {
+      "item": "Mushroom Risotto",
+      "restaurant": "Palo",
+      "park": "Disney Magic",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 22mg sodium at 356 cal. Theme park food typically >400mg.",
+      "currentValue": "22mg sodium"
+    },
+    {
+      "item": "Dragon Roll",
+      "restaurant": "Kimonos",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 14% protein calories. Expected >20%.",
+      "currentValue": "9g protein (14%)"
+    },
+    {
+      "item": "Classic Cheeseburger and Fries",
+      "restaurant": "The Fountain",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 5% fat calories. Expected >25%.",
+      "currentValue": "3g fat (5%)"
+    },
+    {
+      "item": "Conch Fritters",
+      "restaurant": "Olivia's Cafe",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 16% fat calories. Expected >25%.",
+      "currentValue": "3g fat (16%)"
+    },
+    {
+      "item": "Galactic Margarita",
+      "restaurant": "Outer Rim",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=96 vs Stated=180 (47% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "180 cal",
+      "suggestedValue": "~96 cal from macros"
+    },
+    {
+      "item": "Frozen Pomegranate Margarita",
+      "restaurant": "Rosa Mexicano",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=100 vs Stated=187 (47% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "187 cal",
+      "suggestedValue": "~100 cal from macros"
+    },
+    {
+      "item": "Sangria",
+      "restaurant": "Hoop-Dee-Doo Musical Revue",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=44 vs Stated=174 (75% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "174 cal",
+      "suggestedValue": "~44 cal from macros"
+    },
+    {
+      "item": "Ahi Tuna Nachos",
+      "restaurant": "Trader Sam's Grog Grotto",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-protein",
+      "details": "Meat item but only 13% protein calories. Expected >20%.",
+      "currentValue": "33g protein (13%)"
+    },
+    {
+      "item": "South African Wine Flight",
+      "restaurant": "Victoria Falls Lounge",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=32 vs Stated=113 (72% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "113 cal",
+      "suggestedValue": "~32 cal from macros"
+    },
+    {
+      "item": "Champagne Glass",
+      "restaurant": "The Cake Bake Shop",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=48 vs Stated=118 (59% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "118 cal",
+      "suggestedValue": "~48 cal from macros"
+    },
+    {
+      "item": "Rocket Red Ale",
+      "restaurant": "Big River Grille & Brewing Works",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=28 vs Stated=83 (66% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "83 cal",
+      "suggestedValue": "~28 cal from macros"
+    },
+    {
+      "item": "Frozen Strawberry Daiquiri",
+      "restaurant": "Hurricane Hanna's",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=72 vs Stated=127 (43% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "127 cal",
+      "suggestedValue": "~72 cal from macros"
+    },
+    {
+      "item": "Aperol Spritz",
+      "restaurant": "Barcelona Lounge",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=48 vs Stated=183 (74% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "183 cal",
+      "suggestedValue": "~48 cal from macros"
+    },
+    {
+      "item": "Red Sangria",
+      "restaurant": "Capa Steakhouse",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=28 vs Stated=85 (67% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "85 cal",
+      "suggestedValue": "~28 cal from macros"
+    },
+    {
+      "item": "Classic Mojito",
+      "restaurant": "Plancha",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=255 vs Stated=365 (30% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "365 cal",
+      "suggestedValue": "~255 cal from macros"
+    },
+    {
+      "item": "Braised Lamb Shank",
+      "restaurant": "Arendelle",
+      "park": "Disney Wish",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 116mg sodium at 400 cal. Theme park food typically >400mg.",
+      "currentValue": "116mg sodium"
+    },
+    {
+      "item": "Pina Colada",
+      "restaurant": "Small Bytes",
+      "park": "Disneyland Resort Hotels",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=94 vs Stated=148 (36% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "148 cal",
+      "suggestedValue": "~94 cal from macros"
+    },
+    {
+      "item": "Draft Beer",
+      "restaurant": "The Oasis Beach Bar",
+      "park": "Universal Endless Summer Resort - Dockside Inn",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=136 vs Stated=228 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "228 cal",
+      "suggestedValue": "~136 cal from macros"
+    },
+    {
+      "item": "Frozen Pina Colada",
+      "restaurant": "Sand Bar",
+      "park": "Universal Endless Summer Resort - Surfside Inn",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=94 vs Stated=151 (38% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "151 cal",
+      "suggestedValue": "~94 cal from macros"
+    },
+    {
+      "item": "Roasted Duck Breast",
+      "restaurant": "Napa Rose",
+      "park": "Disneyland Resort Hotels",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=48 vs Stated=188 (74% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "188 cal",
+      "suggestedValue": "~48 cal from macros"
+    },
+    {
+      "item": "Craftsman Mule",
+      "restaurant": "GCH Craftsman Bar",
+      "park": "Disneyland Resort Hotels",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=36 vs Stated=91 (60% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "91 cal",
+      "suggestedValue": "~36 cal from macros"
+    },
+    {
+      "item": "Chips and Guacamole",
+      "restaurant": "Small Bytes",
+      "park": "Disneyland Resort Hotels",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=207 vs Stated=116 (78% diff). CALCULATED > STATED (possible data entry error or missing macro)",
+      "currentValue": "116 cal",
+      "suggestedValue": "~207 cal from macros"
+    },
+    {
+      "item": "Helios Spritz",
+      "restaurant": "Bar Helios",
+      "park": "Epic Universe Hotels",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=52 vs Stated=192 (73% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "192 cal",
+      "suggestedValue": "~52 cal from macros"
+    },
+    {
+      "item": "Mushroom Risotto",
+      "restaurant": "Palo",
+      "park": "Disney Wonder",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "low-sodium-savory",
+      "details": "Savory item with only 22mg sodium at 356 cal. Theme park food typically >400mg.",
+      "currentValue": "22mg sodium"
+    },
+    {
+      "item": "Krakatoa Punch",
+      "restaurant": "Trader Sam's Enchanted Tiki Bar",
+      "park": "Disneyland Resort Hotels",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=72 vs Stated=180 (60% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "180 cal",
+      "suggestedValue": "~72 cal from macros"
+    },
+    {
+      "item": "Frozen Daiquiri",
+      "restaurant": "The Oasis Beach Bar",
+      "park": "Universal Endless Summer Resort - Dockside Inn",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=72 vs Stated=124 (42% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "124 cal",
+      "suggestedValue": "~72 cal from macros"
+    },
+    {
+      "item": "Frozen Margarita",
+      "restaurant": "BeachClub",
+      "park": "Universal Hard Rock Hotel",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=104 vs Stated=193 (46% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "193 cal",
+      "suggestedValue": "~104 cal from macros"
+    },
+    {
+      "item": "Dover Sole",
+      "restaurant": "Enchanté",
+      "park": "Disney Treasure",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=20 vs Stated=90 (78% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "90 cal",
+      "suggestedValue": "~20 cal from macros"
+    },
+    {
+      "item": "Dover Sole",
+      "restaurant": "Enchanté",
+      "park": "Disney Wish",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=20 vs Stated=94 (79% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "94 cal",
+      "suggestedValue": "~20 cal from macros"
+    },
+    {
+      "item": "Frozen Margarita",
+      "restaurant": "Small Bytes",
+      "park": "Disneyland Resort Hotels",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=104 vs Stated=198 (47% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "198 cal",
+      "suggestedValue": "~104 cal from macros"
+    },
+    {
+      "item": "Atomic Punch",
+      "restaurant": "Atomic Tonic",
+      "park": "Universal Cabana Bay Beach Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=72 vs Stated=176 (59% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "176 cal",
+      "suggestedValue": "~72 cal from macros"
+    },
+    {
+      "item": "Piña Colada",
+      "restaurant": "Hideaway Bar & Grill",
+      "park": "Universal Cabana Bay Beach Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=98 vs Stated=157 (38% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "157 cal",
+      "suggestedValue": "~98 cal from macros"
+    },
+    {
+      "item": "Vegetable Fried Rice",
+      "restaurant": "Islands Dining Room",
+      "park": "Universal Royal Pacific Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 9% fat calories. Expected >25%.",
+      "currentValue": "2g fat (9%)"
+    },
+    {
+      "item": "Tropical Hurricane",
+      "restaurant": "Bula Bar & Grille",
+      "park": "Universal Royal Pacific Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=268 vs Stated=375 (29% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "375 cal",
+      "suggestedValue": "~268 cal from macros"
+    },
+    {
+      "item": "Mai Tai",
+      "restaurant": "Wantilan Luau",
+      "park": "Universal Royal Pacific Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=64 vs Stated=149 (57% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "149 cal",
+      "suggestedValue": "~64 cal from macros"
+    },
+    {
+      "item": "Crispy Fried Chicken",
+      "restaurant": "Cosmos Cafe and Market",
+      "park": "Universal Stella Nova Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 0% fat calories. Expected >25%.",
+      "currentValue": "0g fat (0%)"
+    },
+    {
+      "item": "Frozen Cosmo Colada",
+      "restaurant": "Galaxy Bar and Grill",
+      "park": "Universal Stella Nova Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=98 vs Stated=162 (40% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "162 cal",
+      "suggestedValue": "~98 cal from macros"
+    },
+    {
+      "item": "Stardust Margarita",
+      "restaurant": "Nova Bar",
+      "park": "Universal Stella Nova Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=108 vs Stated=203 (47% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "203 cal",
+      "suggestedValue": "~108 cal from macros"
+    },
+    {
+      "item": "Crispy Fried Chicken",
+      "restaurant": "Omega Cafe and Market",
+      "park": "Universal Terra Luna Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "macro-ratio-fried",
+      "details": "Fried item but only 0% fat calories. Expected >25%.",
+      "currentValue": "0g fat (0%)"
+    },
+    {
+      "item": "Moonlight Mojito",
+      "restaurant": "Luna Bar",
+      "park": "Universal Terra Luna Resort",
+      "pass": 1,
+      "severity": "MEDIUM",
+      "issue": "caloric-math",
+      "details": "Calculated=166 vs Stated=236 (30% diff). CALCULATED < STATED (possible alcohol calories or missing macros)",
+      "currentValue": "236 cal",
+      "suggestedValue": "~166 cal from macros"
+    },
+    {
+      "item": "Angus Bacon Cheeseburger",
+      "restaurant": "Rosie's All-American",
+      "park": "Disney's Hollywood Studios",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Plant-based Burger",
+      "restaurant": "Rosie's All-American",
+      "park": "Disney's Hollywood Studios",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Bacon Cheeseburger",
+      "restaurant": "Backlot Express",
+      "park": "Disney's Hollywood Studios",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "California Burger (Plant-based)",
+      "restaurant": "ABC Commissary",
+      "park": "Disney's Hollywood Studios",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "salad: 1020 cal exceeds plausible range [100-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Drive-In BBQ Burger",
+      "restaurant": "Sci-Fi Dine-In Theater",
+      "park": "Disney's Hollywood Studios",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Ice Cream Cookie Sandwich",
+      "restaurant": "Dino-Bite Snacks",
+      "park": "Disney's Animal Kingdom",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "cookie: 850 cal exceeds plausible range [200-600] for theme park portion.",
+      "currentValue": "850 cal",
+      "suggestedValue": "Expected ≤600 cal"
+    },
+    {
+      "item": "1/3 lb Angus Cheeseburger",
+      "restaurant": "Restaurantosaurus",
+      "park": "Disney's Animal Kingdom",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Mojo Bones (BBQ Ribs)",
+      "restaurant": "Rainforest Cafe",
+      "park": "Disney's Animal Kingdom",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "1/3 lb Angus Bacon Cheeseburger",
+      "restaurant": "Restaurantosaurus",
+      "park": "Disney's Animal Kingdom",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Bacon Cheeseburger",
+      "restaurant": "Zagora Cafe",
+      "park": "Busch Gardens Tampa Bay",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "French Bistro Burger",
+      "restaurant": "Connections Cafe & Eatery",
+      "park": "EPCOT",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Safari Burger",
+      "restaurant": "Rainforest Cafe",
+      "park": "Disney's Animal Kingdom",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Plant-Based Burger",
+      "restaurant": "Zagora Cafe",
+      "park": "Busch Gardens Tampa Bay",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1000 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1000 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "1/3 lb Angus Cheeseburger",
+      "restaurant": "Rosie's All-American Cafe",
+      "park": "Disney's Hollywood Studios",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Fish and Chips",
+      "restaurant": "Comic Strip Cafe",
+      "park": "Universal's Islands of Adventure",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 935 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "935 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Vegan Burger",
+      "restaurant": "Wimpy's",
+      "park": "Universal's Islands of Adventure",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "1/3 lb Angus Bacon Cheeseburger",
+      "restaurant": "Cosmic Ray's Starlight Cafe",
+      "park": "Magic Kingdom Park",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Double Cheeseburger",
+      "restaurant": "The Burger Digs",
+      "park": "Universal's Islands of Adventure",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Cheeseburger",
+      "restaurant": "Captain America Diner",
+      "park": "Universal's Islands of Adventure",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Wimpy's Cheeseburger",
+      "restaurant": "Wimpy's",
+      "park": "Universal's Islands of Adventure",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1000 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1000 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Bacon Queso Burger",
+      "restaurant": "Lakeside Grill",
+      "park": "SeaWorld Orlando",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Fish and Chips",
+      "restaurant": "Seafire Grill",
+      "park": "SeaWorld Orlando",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 935 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "935 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Bacon Cheeseburger Pretzel",
+      "restaurant": "Mama's Pretzel Kitchen",
+      "park": "SeaWorld Orlando",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "pretzel: 1020 cal exceeds plausible range [300-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Clogger Burger",
+      "restaurant": "Krusty Burger",
+      "park": "Universal Studios Florida",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1000 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1000 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Krusty Burger",
+      "restaurant": "Krusty Burger",
+      "park": "Universal Studios Florida",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Big Bopper Burger",
+      "restaurant": "Mel's Drive-In",
+      "park": "Universal Studios Florida",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Smoked Hawaiian Ribs",
+      "restaurant": "Kohola Reef Restaurant & Social Club",
+      "park": "Universal's Volcano Bay",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Classic Cheeseburger",
+      "restaurant": "Richter's Burger Co.",
+      "park": "Universal Studios Florida",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Tropical Burger",
+      "restaurant": "Bambu",
+      "park": "Universal's Volcano Bay",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Artisan Burger",
+      "restaurant": "Gasparilla Island Grill",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Cioppino",
+      "restaurant": "The Boathouse",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "seafood: 1200 cal exceeds plausible range [200-800] for theme park portion.",
+      "currentValue": "1200 cal",
+      "suggestedValue": "Expected ≤800 cal"
+    },
+    {
+      "item": "Steakhouse Lobster Caesar Salad",
+      "restaurant": "The Artist's Table",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "salad: 943 cal exceeds plausible range [100-700] for theme park portion.",
+      "currentValue": "943 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Canadian Cheddar Cheese Soup",
+      "restaurant": "Le Cellier Steakhouse",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "beer: 410 cal exceeds plausible range [100-300] for theme park portion.",
+      "currentValue": "410 cal",
+      "suggestedValue": "Expected ≤300 cal"
+    },
+    {
+      "item": "Butter-Poached Florida Cobia",
+      "restaurant": "Citricos",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "seafood: 1200 cal exceeds plausible range [200-800] for theme park portion.",
+      "currentValue": "1200 cal",
+      "suggestedValue": "Expected ≤800 cal"
+    },
+    {
+      "item": "Mario Burger",
+      "restaurant": "Toadstool Cafe",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Luigi Burger",
+      "restaurant": "Toadstool Cafe",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Das Burger",
+      "restaurant": "Das Stakehaus",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1020 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1020 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Atlantic Filet Mignon",
+      "restaurant": "Atlantic",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "salad: 935 cal exceeds plausible range [100-700] for theme park portion.",
+      "currentValue": "935 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Mediterranean Lamb Flatbread",
+      "restaurant": "Mythos Restaurant",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "bread: 676 cal exceeds plausible range [150-500] for theme park portion.",
+      "currentValue": "676 cal",
+      "suggestedValue": "Expected ≤500 cal"
+    },
+    {
+      "item": "Fork, Knife, & Spoon Grilled Cheese",
+      "restaurant": "Mythos Restaurant",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "soup: 688 cal exceeds plausible range [150-500] for theme park portion.",
+      "currentValue": "688 cal",
+      "suggestedValue": "Expected ≤500 cal"
+    },
+    {
+      "item": "Pizza Planet Spring Rolls",
+      "restaurant": "Disney Specialty Carts & Kiosks",
+      "park": "Walt Disney World Parks",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "egg_roll: 580 cal exceeds plausible range [150-400] for theme park portion.",
+      "currentValue": "580 cal",
+      "suggestedValue": "Expected ≤400 cal"
+    },
+    {
+      "item": "Mojo Bones",
+      "restaurant": "Rainforest Cafe",
+      "park": "Disney Springs",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 980 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "980 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Classic Burger",
+      "restaurant": "D-Luxe Burger",
+      "park": "Disney Springs",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 1007 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "1007 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Fish & Chips",
+      "restaurant": "City Works Eatery",
+      "park": "Disney Springs",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 963 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "963 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Fish & Chips",
+      "restaurant": "Splitsville Luxury Lanes",
+      "park": "Disney Springs",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 963 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "963 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Chicken Mushroom Steamed Buns",
+      "restaurant": "Din Tai Fung",
+      "park": "Downtown Disney District",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "chicken: 200 cal is below plausible range [300-900] for theme park portion.",
+      "currentValue": "200 cal",
+      "suggestedValue": "Expected ≥300 cal"
+    },
+    {
+      "item": "Kids Quesadillas",
+      "restaurant": "Centrico",
+      "park": "Downtown Disney District",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "quesadilla: 215 cal is below plausible range [350-800] for theme park portion.",
+      "currentValue": "215 cal",
+      "suggestedValue": "Expected ≥350 cal"
+    },
+    {
+      "item": "Grilled Catch of the Day",
+      "restaurant": "'AMA'AMA",
+      "park": "Aulani, A Disney Resort & Spa",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "seafood: 108 cal is below plausible range [200-800] for theme park portion.",
+      "currentValue": "108 cal",
+      "suggestedValue": "Expected ≥200 cal"
+    },
+    {
+      "item": "Sushi Platter",
+      "restaurant": "Animator's Palate",
+      "park": "Disney Dream",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "bread: 94 cal is below plausible range [150-500] for theme park portion.",
+      "currentValue": "94 cal",
+      "suggestedValue": "Expected ≥150 cal"
+    },
+    {
+      "item": "Sushi Platter",
+      "restaurant": "Animator's Palate",
+      "park": "Disney Magic",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "bread: 94 cal is below plausible range [150-500] for theme park portion.",
+      "currentValue": "94 cal",
+      "suggestedValue": "Expected ≥150 cal"
+    },
+    {
+      "item": "Sushi Platter",
+      "restaurant": "Animator's Palate",
+      "park": "Disney Fantasy",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "bread: 94 cal is below plausible range [150-500] for theme park portion.",
+      "currentValue": "94 cal",
+      "suggestedValue": "Expected ≥150 cal"
+    },
+    {
+      "item": "Rotisserie Chicken Platter",
+      "restaurant": "Everything POP Shopping & Dining",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "chicken: 193 cal is below plausible range [300-900] for theme park portion.",
+      "currentValue": "193 cal",
+      "suggestedValue": "Expected ≥300 cal"
+    },
+    {
+      "item": "Pork Dumplings",
+      "restaurant": "Trader Sam's Grog Grotto",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "pork: 200 cal is below plausible range [300-900] for theme park portion.",
+      "currentValue": "200 cal",
+      "suggestedValue": "Expected ≥300 cal"
+    },
+    {
+      "item": "Fish and Chips",
+      "restaurant": "Big River Grille & Brewing Works",
+      "park": "Walt Disney World Resorts",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 963 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "963 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Sushi Platter",
+      "restaurant": "Animator's Palate",
+      "park": "Disney Wonder",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "bread: 94 cal is below plausible range [150-500] for theme park portion.",
+      "currentValue": "94 cal",
+      "suggestedValue": "Expected ≥150 cal"
+    },
+    {
+      "item": "Jumbo Lump Crab Cake",
+      "restaurant": "The Palm",
+      "park": "Universal Hard Rock Hotel",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "cake: 188 cal is below plausible range [300-800] for theme park portion.",
+      "currentValue": "188 cal",
+      "suggestedValue": "Expected ≥300 cal"
+    },
+    {
+      "item": "Fish and Chips",
+      "restaurant": "Jake's American Bar",
+      "park": "Universal Royal Pacific Resort",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "above-range",
+      "details": "fries: 963 cal exceeds plausible range [200-700] for theme park portion.",
+      "currentValue": "963 cal",
+      "suggestedValue": "Expected ≤700 cal"
+    },
+    {
+      "item": "Steak Quesadilla",
+      "restaurant": "Moonrise Bar and Grill",
+      "park": "Universal Terra Luna Resort",
+      "pass": 2,
+      "severity": "MEDIUM",
+      "issue": "below-range",
+      "details": "steak: 258 cal is below plausible range [400-1200] for theme park portion.",
+      "currentValue": "258 cal",
+      "suggestedValue": "Expected ≥400 cal"
+    },
+    {
+      "item": "Andoan Fruit with Muja Sauce",
+      "restaurant": "Ronto Roasters",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=165, carbs=36, fat=1, protein=2): Andoan Fruit with Muja Sauce, Frushi"
+    },
+    {
+      "item": "Felucian Kefta and Hummus Garden Spread",
+      "restaurant": "Docking Bay 7",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=375, carbs=30, fat=19, protein=14): Felucian Kefta and Hummus Garden Spread, Indian-Style Bread Service (with all 9 accompaniments)"
+    },
+    {
+      "item": "Outpost Puff",
+      "restaurant": "Docking Bay 7",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=450, carbs=51, fat=20, protein=10): Outpost Puff, Heirloom Beet Salad"
+    },
+    {
+      "item": "Fuzzy Tauntaun",
+      "restaurant": "Oga's Cantina",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=165, carbs=38, fat=0, protein=1): Fuzzy Tauntaun, Dagobah Slug Slinger"
+    },
+    {
+      "item": "Jedi Mind Trick",
+      "restaurant": "Oga's Cantina",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=175, carbs=22, fat=0, protein=4): Jedi Mind Trick, Rex's Romaine and Kale Salad"
+    },
+    {
+      "item": "Happabore Sampler",
+      "restaurant": "Oga's Cantina",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=575, carbs=25, fat=27, protein=43): Happabore Sampler, Cousin Megan's Traditional Meatloaf"
+    },
+    {
+      "item": "Batuu Bits",
+      "restaurant": "Oga's Cantina",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=500, carbs=63, fat=22, protein=8): Batuu Bits, Shepherd's Pie (Plant-based)"
+    },
+    {
+      "item": "Breakfast Bowl",
+      "restaurant": "Woody's Lunch Box",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=650, carbs=24, fat=34, protein=53): Breakfast Bowl, Beef Brisket (4 oz serving)"
+    },
+    {
+      "item": "Tomato-Basil Soup",
+      "restaurant": "Woody's Lunch Box",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=315, carbs=30, fat=12, protein=16): Tomato-Basil Soup, Grand Floridian Strawberry Soup"
+    },
+    {
+      "item": "Bo's Lemon and Blueberry Cheesecake",
+      "restaurant": "Roundup Rodeo BBQ",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=550, carbs=48, fat=31, protein=14): Bo's Lemon and Blueberry Cheesecake, Blueberry-Goat Cheese Cheesecake"
+    },
+    {
+      "item": "Hand-scooped Ice Cream Cup",
+      "restaurant": "Hollywood Scoops",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=400, carbs=45, fat=18, protein=9): Hand-scooped Ice Cream Cup, Mickey Premium Ice Cream Bar"
+    },
+    {
+      "item": "Pastries (Assorted)",
+      "restaurant": "Tower of Terror Coffee",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=325, carbs=49, fat=9, protein=9): Pastries (Assorted), California Cheese and Charcuterie Plate"
+    },
+    {
+      "item": "Frozen Coca-Cola",
+      "restaurant": "Sunshine Day Bar",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=150, carbs=36, fat=0, protein=0): Frozen Coca-Cola, Annapurna Zing"
+    },
+    {
+      "item": "Character Breakfast Buffet Plate",
+      "restaurant": "Hollywood & Vine",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=600, carbs=83, fat=20, protein=17): Character Breakfast Buffet Plate, Mickey Waffles"
+    },
+    {
+      "item": "Character Lunch/Dinner Buffet Plate",
+      "restaurant": "Hollywood & Vine",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=375, carbs=28, fat=19, protein=21): Character Lunch/Dinner Buffet Plate, Our Famous Cobb Salad"
+    },
+    {
+      "item": "The Tune-In PBJ Cocktail",
+      "restaurant": "Tune-In Lounge",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=315, carbs=47, fat=3, protein=2): The Tune-In PBJ Cocktail, Lava Flow"
+    },
+    {
+      "item": "Teriyaki Tofu Bowl",
+      "restaurant": "Backlot Express",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=575, carbs=65, fat=16, protein=32): Teriyaki Tofu Bowl, Customized Bowl: Slow-Roasted Beef on Rice & Black Beans with Charred Green Onion Vinaigrette"
+    },
+    {
+      "item": "Free-Range Chicken",
+      "restaurant": "The Hollywood Brown Derby",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=525, carbs=66, fat=23, protein=9): Free-Range Chicken, Volcano Lava Chocolate Cake"
+    },
+    {
+      "item": "Crab Louie",
+      "restaurant": "The Hollywood Brown Derby Lounge",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=425, carbs=7, fat=18, protein=50): Crab Louie, Uni Tomato Bisque"
+    },
+    {
+      "item": "Shrimp Tacos",
+      "restaurant": "ABC Commissary",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=315, carbs=32, fat=12, protein=18): Shrimp Tacos, Birria Tacos"
+    },
+    {
+      "item": "Pork Carnitas Tacos",
+      "restaurant": "ABC Commissary",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=236, carbs=24, fat=9, protein=14): Pork Carnitas Tacos, Mini Street Tacos"
+    },
+    {
+      "item": "Oreo Cookie Shake",
+      "restaurant": "Sci-Fi Dine-In Theater",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=400, carbs=55, fat=17, protein=6): Oreo Cookie Shake, Minnie Witch Hat"
+    },
+    {
+      "item": "Patriot's Platter - Turkey",
+      "restaurant": "Liberty Tree Tavern",
+      "park": "Magic Kingdom Park",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=235, carbs=25, fat=10, protein=13): Patriot's Platter - Turkey, Texas Brisket Platter"
+    },
+    {
+      "item": "Grilled Corn on the Cob (plain)",
+      "restaurant": "Harambe Fruit Market",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=210, carbs=33, fat=5, protein=6): Grilled Corn on the Cob (plain), Samaki Upma Peri Peri"
+    },
+    {
+      "item": "Chicken Dumplings (Ponzu)",
+      "restaurant": "Mr. Kamal's",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=350, carbs=35, fat=12, protein=20): Chicken Dumplings (Ponzu), Chicken Dumplings"
+    },
+    {
+      "item": "Brewed Coffee (Pike Place) — Tall (12 oz)",
+      "restaurant": "Creature Comforts (Starbucks)",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=4, carbs=0, fat=0, protein=0): Brewed Coffee (Pike Place) — Tall (12 oz), Cold Brew (unsweetened) — Tall (12 oz)"
+    },
+    {
+      "item": "Chicken and Shrimp Rice Bowl",
+      "restaurant": "Harambe Market",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=383, carbs=22, fat=16, protein=33): Chicken and Shrimp Rice Bowl, Shrimp Salad, Grilled Bushberry-spiced Shrimp Skewer"
+    },
+    {
+      "item": "Customized Bowl: Chili-Spiced Crispy Fried Tofu on Red & Sweet Potato Hash with Charred Green Onion Vinaigrette",
+      "restaurant": "Satu'li Canteen",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=500, carbs=41, fat=21, protein=31): Customized Bowl: Chili-Spiced Crispy Fried Tofu on Red & Sweet Potato Hash with Charred Green Onion Vinaigrette, Plate of Impossible Bites"
+    },
+    {
+      "item": "Tuna Poke Bowl",
+      "restaurant": "Nomad Lounge",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=500, carbs=19, fat=21, protein=47): Tuna Poke Bowl, Kahuna Tuna Sushi Roll"
+    },
+    {
+      "item": "Kids Bowl: Chicken with Rice",
+      "restaurant": "Satu'li Canteen",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=431, carbs=49, fat=12, protein=24): Kids Bowl: Chicken with Rice, Lakeside Rice Bowl, Morimoto Buri-Bop"
+    },
+    {
+      "item": "Plant-Based Burger",
+      "restaurant": "Dragon Fire Grill & Pub",
+      "park": "Busch Gardens Tampa Bay",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=1020, carbs=142, fat=23, protein=58): Plant-Based Burger, Vegan Burger"
+    },
+    {
+      "item": "Classic Bacon Cheddar Dog",
+      "restaurant": "Dragon Dog",
+      "park": "Busch Gardens Tampa Bay",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=500, carbs=50, fat=22, protein=19): Classic Bacon Cheddar Dog, Pretzel Dog with Beer Cheese"
+    },
+    {
+      "item": "Margherita Pizza",
+      "restaurant": "Mama Melrose's Ristorante Italiano",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=540, carbs=61, fat=21, protein=23): Margherita Pizza, Vegetarian Calzone"
+    },
+    {
+      "item": "Philly Cheesesteak Loaded Fries",
+      "restaurant": "Min and Bill's Dockside Diner",
+      "park": "Disney's Hollywood Studios",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=725, carbs=15, fat=38, protein=68): Philly Cheesesteak Loaded Fries, Kona-braised Short Rib"
+    },
+    {
+      "item": "Smoked Chicken",
+      "restaurant": "Zambia Smokehouse",
+      "park": "Busch Gardens Tampa Bay",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=450, carbs=56, fat=20, protein=28): Smoked Chicken, Hawaiian Reuben"
+    },
+    {
+      "item": "The Black Truffle Wagyu Burger",
+      "restaurant": "Black Tap Craft Burgers & Shakes",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=1100, carbs=53, fat=82, protein=29): The Black Truffle Wagyu Burger, The Wagyu Steakhouse Burger"
+    },
+    {
+      "item": "Crispy Buffalo Wings",
+      "restaurant": "Seafire Grill",
+      "park": "SeaWorld Orlando",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=750, carbs=28, fat=46, protein=56): Crispy Buffalo Wings, Korean BBQ Wings"
+    },
+    {
+      "item": "Butterbeer",
+      "restaurant": "Three Broomsticks",
+      "park": "Universal's Islands of Adventure",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=350, carbs=63, fat=6, protein=4): Butterbeer, Butterbeer Potted Cream"
+    },
+    {
+      "item": "Lobster Roll",
+      "restaurant": "Columbia Harbour House",
+      "park": "Magic Kingdom Park",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=500, carbs=11, fat=24, protein=53): Lobster Roll, Twin Cold Water Lobster Tails"
+    },
+    {
+      "item": "Chicken Parmigiana",
+      "restaurant": "Louie's Italian Restaurant",
+      "park": "Universal Studios Florida",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=825, carbs=92, fat=32, protein=35): Chicken Parmigiana, Chicken Parmigiana, Veal Parmigiana"
+    },
+    {
+      "item": "Island BBQ Chicken Pizza",
+      "restaurant": "Whakawaiwai Eats",
+      "park": "Universal's Volcano Bay",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=594, carbs=67, fat=23, protein=25): Island BBQ Chicken Pizza, Pizza e Cioccolato"
+    },
+    {
+      "item": "Chocolate Classic Shake",
+      "restaurant": "Black Tap Craft Burgers & Shakes",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=700, carbs=88, fat=31, protein=15): Chocolate Classic Shake, Strawberry Classic Shake"
+    },
+    {
+      "item": "Chick'n Katsu Rice Bowl",
+      "restaurant": "Whakawaiwai Eats",
+      "park": "Universal's Volcano Bay",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=633, carbs=72, fat=18, protein=35): Chick'n Katsu Rice Bowl, Beef & Egg Bowl, Bibimbap"
+    },
+    {
+      "item": "Four-Cheese Patty Melt",
+      "restaurant": "Contempo Cafe",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=743, carbs=65, fat=37, protein=41): Four-Cheese Patty Melt, Craftsman Burger, Hawaiian Burger"
+    },
+    {
+      "item": "Seasonal Buttermilk Pancakes",
+      "restaurant": "Grand Floridian Cafe",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=600, carbs=83, fat=20, protein=17): Seasonal Buttermilk Pancakes, Buttermilk Pancakes"
+    },
+    {
+      "item": "Grilled Chicken with Polynesian Chimichurri",
+      "restaurant": "Ohana",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=661, carbs=29, fat=28, protein=62): Grilled Chicken with Polynesian Chimichurri, All-You-Can-Eat Fried Chicken, Korean Fried Chicken"
+    },
+    {
+      "item": "Grilled Steak",
+      "restaurant": "Ohana",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=834, carbs=17, fat=44, protein=78): Grilled Steak, Porterhouse for Two, Porterhouse for Two"
+    },
+    {
+      "item": "Zebra Domes",
+      "restaurant": "Boma",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=405, carbs=46, fat=18, protein=9): Zebra Domes, Traditional English Breakfast"
+    },
+    {
+      "item": "Carnivore Skillet",
+      "restaurant": "Whispering Canyon Cafe",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=1000, carbs=50, fat=56, protein=69): Carnivore Skillet, Morimoto Spare Ribs"
+    },
+    {
+      "item": "Red Wine-braised Beef Cheeks",
+      "restaurant": "Topolino's Terrace",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=150, carbs=9, fat=0, protein=1): Red Wine-braised Beef Cheeks, Spanish Sangria"
+    },
+    {
+      "item": "Baked Stuffed Shrimp",
+      "restaurant": "The Boathouse",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=489, carbs=8, fat=21, protein=57): Baked Stuffed Shrimp, Jumbo Lump Crabmeat Cocktail"
+    },
+    {
+      "item": "Lamb Gyro",
+      "restaurant": "Greece",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=650, carbs=19, fat=34, protein=57): Lamb Gyro, Lamb Bobotie"
+    },
+    {
+      "item": "Country Fried Steak",
+      "restaurant": "Chef Art Smith's Homecomin'",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=798, carbs=17, fat=42, protein=75): Country Fried Steak, Hibachi Steak & Shrimp"
+    },
+    {
+      "item": "Steamed Maine Lobster",
+      "restaurant": "The Boathouse",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=450, carbs=10, fat=22, protein=48): Steamed Maine Lobster, Whole Lobster"
+    },
+    {
+      "item": "Lemon-Poppy Seed Cake",
+      "restaurant": "Earth Eats",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=394, carbs=50, fat=17, protein=7): Lemon-Poppy Seed Cake, Pineapple Upside Down Ice Cream"
+    },
+    {
+      "item": "Cubanito",
+      "restaurant": "Florida Fresh",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=625, carbs=63, fat=24, protein=35): Cubanito, Baguette de Dinde"
+    },
+    {
+      "item": "Peppercorn-crusted Striploin",
+      "restaurant": "The Artist's Table",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=189, carbs=30, fat=5, protein=5): Peppercorn-crusted Striploin, Beach Oysters"
+    },
+    {
+      "item": "Carne Asada Loaded Fries",
+      "restaurant": "Pecos Bill Tall Tale Inn & Cafe",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=518, carbs=64, fat=23, protein=9): Carne Asada Loaded Fries, Holiday Pot Roast Loaded French Fries"
+    },
+    {
+      "item": "Snowflake Ornament",
+      "restaurant": "Pinocchio Village Haus",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=585, carbs=66, fat=26, protein=13): Snowflake Ornament, Candy Corn Verrine"
+    },
+    {
+      "item": "Dark Chocolate Torte",
+      "restaurant": "The Artist's Table",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=683, carbs=86, fat=30, protein=12): Dark Chocolate Torte, Mt. Beanpole Cake"
+    },
+    {
+      "item": "Tostada de Cangrejo",
+      "restaurant": "El Artista Hambriento",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=468, carbs=8, fat=20, protein=55): Tostada de Cangrejo, Crab Rangoon Dip"
+    },
+    {
+      "item": "Beignets from Beyond",
+      "restaurant": "Golden Oak Outpost",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=300, carbs=41, fat=13, protein=5): Beignets from Beyond, Festive Beignets, Coffee Cake Cookie"
+    },
+    {
+      "item": "Marinated Grilled Chicken",
+      "restaurant": "Cinderella's Royal Table",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=165, carbs=10, fat=0, protein=1): Marinated Grilled Chicken, Wild Mushrooms Arancini"
+    },
+    {
+      "item": "Super Mushroom Pizza Bowl",
+      "restaurant": "Toadstool Cafe",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=702, carbs=79, fat=27, protein=30): Super Mushroom Pizza Bowl, Green Stripe, Pizza Margherita"
+    },
+    {
+      "item": "Oaxacan Pork Duo",
+      "restaurant": "Tiffins",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=518, carbs=23, fat=24, protein=39): Oaxacan Pork Duo, Baked Beans"
+    },
+    {
+      "item": "All-American Bacon Double Cheeseburgooshi",
+      "restaurant": "The Cowfish Sushi Burger Bar",
+      "park": "Universal CityWalk",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=625, carbs=63, fat=24, protein=35): All-American Bacon Double Cheeseburgooshi, Bacon-Wrapped Meatloaf"
+    },
+    {
+      "item": "Extinction Burger",
+      "restaurant": "T-REX",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=949, carbs=83, fat=47, protein=53): Extinction Burger, Classic Smash Burger, Smash Burger"
+    },
+    {
+      "item": "Chocolate Extinction",
+      "restaurant": "T-REX",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=413, carbs=51, fat=23, protein=5): Chocolate Extinction, Chocolate Soufflé"
+    },
+    {
+      "item": "Hot Fudge Sundae",
+      "restaurant": "Ghirardelli Soda Fountain & Chocolate Shop",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=600, carbs=83, fat=23, protein=11): Hot Fudge Sundae, Earthquake Sundae"
+    },
+    {
+      "item": "Dole Whip",
+      "restaurant": "Swirls on the Water",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=200, carbs=29, fat=8, protein=2): Dole Whip, Dole Whip Swirl"
+    },
+    {
+      "item": "Classic Churro",
+      "restaurant": "Sunshine Churros",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=419, carbs=49, fat=22, protein=6): Classic Churro, Churro Sundae"
+    },
+    {
+      "item": "Calamari Fritti",
+      "restaurant": "Maria & Enzo's Ristorante",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=257, carbs=15, fat=14, protein=15): Calamari Fritti, Crispy Calamari, Crispy Calamari"
+    },
+    {
+      "item": "Classic Margarita",
+      "restaurant": "Dockside Margaritas",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=180, carbs=24, fat=0, protein=0): Classic Margarita, Galactic Margarita"
+    },
+    {
+      "item": "Pistachio Toffee Chocolate Chip Cookie",
+      "restaurant": "Gideon's Bakehouse",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=369, carbs=49, fat=19, protein=4): Pistachio Toffee Chocolate Chip Cookie, Triple Chocolate Chip Cookie, Banana Bread Chocolate Chip Cookie"
+    },
+    {
+      "item": "Classic Poutine",
+      "restaurant": "Daily Poutine",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=379, carbs=69, fat=7, protein=10): Classic Poutine, Korean BBQ Poutine"
+    },
+    {
+      "item": "Baby Back Ribs",
+      "restaurant": "The Polite Pig",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=750, carbs=38, fat=42, protein=52): Baby Back Ribs, BBQ Ribs Half Rack"
+    },
+    {
+      "item": "Southern Burger",
+      "restaurant": "D-Luxe Burger",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=908, carbs=79, fat=45, protein=51): Southern Burger, Foghorn Burger, Loco Moco"
+    },
+    {
+      "item": "Meat Eater",
+      "restaurant": "Blaze Pizza",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=202, carbs=7, fat=11, protein=17): Meat Eater, Carved Meats"
+    },
+    {
+      "item": "Loaded Barbacoa Fries",
+      "restaurant": "4 Rivers Cantina Barbacoa Food Truck",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=269, carbs=16, fat=15, protein=16): Loaded Barbacoa Fries, Loaded Fries"
+    },
+    {
+      "item": "Barbacoa Burrito",
+      "restaurant": "4 Rivers Cantina Barbacoa Food Truck",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=805, carbs=91, fat=29, protein=40): Barbacoa Burrito, Burrito Norteno"
+    },
+    {
+      "item": "Spicy Grilled Chicken Mac & Cheese",
+      "restaurant": "Jazz Kitchen Coastal Grill & Patio",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=630, carbs=63, fat=32, protein=27): Spicy Grilled Chicken Mac & Cheese, Mac and Cheese"
+    },
+    {
+      "item": "Kids Penne Pasta and Meatballs",
+      "restaurant": "Jazz Kitchen Coastal Grill & Patio",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=563, carbs=63, fat=22, protein=24): Kids Penne Pasta and Meatballs, Garden Vegetable Pasta"
+    },
+    {
+      "item": "Beignets",
+      "restaurant": "Jazz Kitchen Coastal Grill & Patio",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=417, carbs=54, fat=20, protein=5): Beignets, Dip Drizzle & Sprinkle Glazed Beignets"
+    },
+    {
+      "item": "Smoothie",
+      "restaurant": "Jamba",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=375, carbs=68, fat=6, protein=11): Smoothie, Island Fruit Smoothie"
+    },
+    {
+      "item": "Brewed Coffee",
+      "restaurant": "Starbucks",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=2, carbs=0, fat=0, protein=0): Brewed Coffee, Iced Coffee"
+    },
+    {
+      "item": "Latte",
+      "restaurant": "Starbucks",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=212, carbs=23, fat=9, protein=12): Latte, Spanish Latte, Latte"
+    },
+    {
+      "item": "Chocolate Buns",
+      "restaurant": "Din Tai Fung",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=246, carbs=36, fat=7, protein=10): Chocolate Buns, Pork Belly Bao Buns"
+    },
+    {
+      "item": "Avocado Flatbread",
+      "restaurant": "Centrico",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=412, carbs=75, fat=8, protein=10): Avocado Flatbread, Cheese Flatbread Pizza"
+    },
+    {
+      "item": "Original Fried Chicken Sandwich",
+      "restaurant": "GG's Chicken Shop",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=440, carbs=44, fat=20, protein=22): Original Fried Chicken Sandwich, Fried Chicken Sandwich"
+    },
+    {
+      "item": "Sweet & Spicy Chicken Sandwich",
+      "restaurant": "GG's Chicken Shop",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=309, carbs=30, fat=14, protein=13): Sweet & Spicy Chicken Sandwich, Ranch Chicken Sandwich"
+    },
+    {
+      "item": "Pina Colada",
+      "restaurant": "Off the Hook",
+      "park": "Aulani, A Disney Resort & Spa",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=151, carbs=19, fat=2, protein=0): Pina Colada, Frozen Pina Colada"
+    },
+    {
+      "item": "Blue Hawaii Cocktail",
+      "restaurant": "Wailana Pool Bar",
+      "park": "Aulani, A Disney Resort & Spa",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=236, carbs=35, fat=2, protein=2): Blue Hawaii Cocktail, Moonlight Mojito"
+    },
+    {
+      "item": "Corn Dog",
+      "restaurant": "Mama's Snack Stop",
+      "park": "Aulani, A Disney Resort & Spa",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=275, carbs=30, fat=13, protein=10): Corn Dog, Classic Corn Dog"
+    },
+    {
+      "item": "Dover Sole Meunière",
+      "restaurant": "Remy",
+      "park": "Disney Dream",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=90, carbs=0, fat=0, protein=5): Dover Sole Meunière, Dover Sole"
+    },
+    {
+      "item": "Mickey Beignets",
+      "restaurant": "Scat Cat's Club Cafe",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=459, carbs=59, fat=22, protein=6): Mickey Beignets, Beignets"
+    },
+    {
+      "item": "Mint Julep",
+      "restaurant": "The Turf Club Bar and Grill",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=24, carbs=6, fat=0, protein=0): Mint Julep, Old Fashioned, Mina's Classic Old Fashioned"
+    },
+    {
+      "item": "Grilled Mahi-Mahi",
+      "restaurant": "Olivia's Cafe",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=450, carbs=17, fat=19, protein=42): Grilled Mahi-Mahi, Grilled Branzino"
+    },
+    {
+      "item": "Charcuterie Board",
+      "restaurant": "Enchanted Rose Lounge",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=321, carbs=0, fat=21, protein=29): Charcuterie Board, Cheese and Charcuterie Board"
+    },
+    {
+      "item": "Rotisserie Chicken Dinner",
+      "restaurant": "Intermission Food Court",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=257, carbs=1, fat=18, protein=23): Rotisserie Chicken Dinner, Rotisserie Chicken Platter"
+    },
+    {
+      "item": "Guacamole and Chips",
+      "restaurant": "Maya Grill",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "3 different items share identical profile (cal=116, carbs=25, fat=11, protein=2): Guacamole and Chips, Tableside Guacamole, Chips and Guacamole"
+    },
+    {
+      "item": "Prime Bone-In Ribeye",
+      "restaurant": "Bourbon Steak by Michael Mina",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=450, carbs=0, fat=34, protein=37): Prime Bone-In Ribeye, Prime Ribeye"
+    },
+    {
+      "item": "Poolside Cheeseburger",
+      "restaurant": "Bula Bar & Grille",
+      "park": "Universal Royal Pacific Resort",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "duplicate-profile",
+      "details": "2 different items share identical profile (cal=375, carbs=33, fat=19, protein=21): Poolside Cheeseburger, Poolside Burger"
+    },
+    {
+      "item": "Eggs Benedict",
+      "restaurant": "1900 Park Fare",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 2633 cal is 5.7 std devs from mean (714±336)."
+    },
+    {
+      "item": "Paella",
+      "restaurant": "Cape May Cafe",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 2633 cal is 5.7 std devs from mean (714±336)."
+    },
+    {
+      "item": "Carved Pit Ham",
+      "restaurant": "Chef Mickey's",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 2010 cal is 3.9 std devs from mean (714±336)."
+    },
+    {
+      "item": "Bobotie",
+      "restaurant": "Boma",
+      "park": "Walt Disney World Resorts",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 1967 cal is 3.7 std devs from mean (714±336)."
+    },
+    {
+      "item": "Astro Deviled Eggs",
+      "restaurant": "Space 220 Lounge",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 1925 cal is 3.6 std devs from mean (714±336)."
+    },
+    {
+      "item": "Duck Confit Gnocchis",
+      "restaurant": "Fleur de Lys",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 1838 cal is 3.3 std devs from mean (714±336)."
+    },
+    {
+      "item": "Roasted Turkey",
+      "restaurant": "Le Marche De Noel",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 1802 cal is 3.2 std devs from mean (714±336)."
+    },
+    {
+      "item": "St. Louis Rib Dinner",
+      "restaurant": "Flame Tree Barbecue",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 1764 cal is 3.1 std devs from mean (714±336)."
+    },
+    {
+      "item": "Polenta Pasticciata",
+      "restaurant": "L'Arte di Mangiare — Italy",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 1729 cal is 3.0 std devs from mean (714±336)."
+    },
+    {
+      "item": "Salsiccia e Peperoni",
+      "restaurant": "Tuscany Holiday Kitchen",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "entree category: 1729 cal is 3.0 std devs from mean (714±336)."
+    },
+    {
+      "item": "Steakhouse Lobster Caesar Salad",
+      "restaurant": "The Artist's Table",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "side category: 943 cal is 3.4 std devs from mean (392±164)."
+    },
+    {
+      "item": "Ugly Sweater Shake",
+      "restaurant": "The Friar's Nook",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "beverage category: 749 cal is 3.2 std devs from mean (229±163)."
+    },
+    {
+      "item": "The CakeShake",
+      "restaurant": "Black Tap Craft Burgers & Shakes",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "beverage category: 743 cal is 3.1 std devs from mean (229±163)."
+    },
+    {
+      "item": "Classic Milkshake",
+      "restaurant": "Shakes Malt Shoppe",
+      "park": "Universal Cabana Bay Beach Resort",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "beverage category: 728 cal is 3.1 std devs from mean (229±163)."
+    },
+    {
+      "item": "Overnight Oats",
+      "restaurant": "Kusafiri Coffee Shop & Bakery",
+      "park": "Disney's Animal Kingdom",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "snack category: 1558 cal is 3.6 std devs from mean (527±287)."
+    },
+    {
+      "item": "Assorted Pastries",
+      "restaurant": "Kayla's Cake",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "MEDIUM",
+      "issue": "statistical-outlier",
+      "details": "snack category: 1530 cal is 3.5 std devs from mean (527±287)."
+    },
+    {
+      "item": "Crab Cakes",
+      "restaurant": "The Boathouse",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 7% carb calories. Expected >35%.",
+      "currentValue": "7g carbs (7%)"
+    },
+    {
+      "item": "Lump Crab Cake",
+      "restaurant": "Coastal Eats",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 7% carb calories. Expected >35%.",
+      "currentValue": "8g carbs (7%)"
+    },
+    {
+      "item": "Figment Fantasy Cake",
+      "restaurant": "Figment's Inspiration Station",
+      "park": "Walt Disney World Festivals & Events",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 15% carb calories. Expected >35%.",
+      "currentValue": "28g carbs (15%)"
+    },
+    {
+      "item": "Steakhouse 71 Signature Chocolate Cake",
+      "restaurant": "Steakhouse 71",
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 8% carb calories. Expected >35%.",
+      "currentValue": "15g carbs (8%)"
+    },
+    {
+      "item": "Crispy Potstickers",
+      "restaurant": "Morimoto Asia",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 17% carb calories. Expected >35%.",
+      "currentValue": "25g carbs (17%)"
+    },
+    {
+      "item": "Mousse Cake",
+      "restaurant": "Amorette's Patisserie",
+      "park": "Disney Springs",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 30% carb calories. Expected >35%.",
+      "currentValue": "26g carbs (30%)"
+    },
+    {
+      "item": "Crispy Calamari",
+      "restaurant": "Jazz Kitchen Coastal Grill & Patio",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 23% carb calories. Expected >35%.",
+      "currentValue": "15g carbs (23%)"
+    },
+    {
+      "item": "Pan-Fried Crab Cakes",
+      "restaurant": "Jazz Kitchen Coastal Grill & Patio",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 7% carb calories. Expected >35%.",
+      "currentValue": "4g carbs (7%)"
+    },
+    {
+      "item": "Chocolate Mousse",
+      "restaurant": "Ballast Point Brewing Co.",
+      "park": "Downtown Disney District",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 28% carb calories. Expected >35%.",
+      "currentValue": "19g carbs (28%)"
+    },
+    {
+      "item": "Macadamia Nut Pancakes",
+      "restaurant": "Makahiki",
+      "park": "Aulani, A Disney Resort & Spa",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 8% carb calories. Expected >35%.",
+      "currentValue": "14g carbs (8%)"
+    },
+    {
+      "item": "Chocolate Mousse",
+      "restaurant": "Enchanted Garden",
+      "park": "Disney Dream",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 28% carb calories. Expected >35%.",
+      "currentValue": "19g carbs (28%)"
+    },
+    {
+      "item": "Chocolate Mousse Cake",
+      "restaurant": "The Artist's Palette",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 29% carb calories. Expected >35%.",
+      "currentValue": "25g carbs (29%)"
+    },
+    {
+      "item": "Crispy Calamari",
+      "restaurant": "The Turf Club Bar and Grill",
+      "park": "Walt Disney World Resorts",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 23% carb calories. Expected >35%.",
+      "currentValue": "15g carbs (23%)"
+    },
+    {
+      "item": "Crispy Buffalo Wings",
+      "restaurant": "The Kitchen",
+      "park": "Universal Hard Rock Hotel",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 15% carb calories. Expected >35%.",
+      "currentValue": "31g carbs (15%)"
+    },
+    {
+      "item": "Crispy Chicken Tenders",
+      "restaurant": "Pier 8 Market",
+      "park": "Universal Endless Summer Resort - Dockside Inn",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 25% carb calories. Expected >35%.",
+      "currentValue": "28g carbs (25%)"
+    },
+    {
+      "item": "Crispy Calamari",
+      "restaurant": "GCH Craftsman Bar",
+      "park": "Disneyland Resort Hotels",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 25% carb calories. Expected >35%.",
+      "currentValue": "11g carbs (25%)"
+    },
+    {
+      "item": "Jumbo Lump Crab Cake",
+      "restaurant": "The Palm",
+      "park": "Universal Hard Rock Hotel",
+      "pass": 1,
+      "severity": "LOW",
+      "issue": "macro-ratio-dessert",
+      "details": "Dessert but only 9% carb calories. Expected >35%.",
+      "currentValue": "4g carbs (9%)"
+    },
+    {
+      "item": "Crispy Mac & Cheese Bites",
+      "restaurant": "Wine Bar George",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "LOW",
+      "issue": "round-numbers",
+      "details": "All values divisible by 10: cal=500, carbs=50, fat=30, protein=20. May be rough estimate."
+    },
+    {
+      "item": "Tacos al Pastor",
+      "restaurant": "Frontera Cocina",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "LOW",
+      "issue": "round-numbers",
+      "details": "All values divisible by 10: cal=300, carbs=60, fat=0, protein=20. May be rough estimate."
+    },
+    {
+      "item": "Tacos Al Pastor",
+      "restaurant": "Centrico",
+      "park": "Downtown Disney District",
+      "pass": 3,
+      "severity": "LOW",
+      "issue": "round-numbers",
+      "details": "All values divisible by 10: cal=300, carbs=60, fat=0, protein=20. May be rough estimate."
+    },
+    {
+      "item": "Crispy Fried Chicken",
+      "restaurant": "The Edison",
+      "park": "Disney Springs",
+      "pass": 3,
+      "severity": "LOW",
+      "issue": "round-numbers",
+      "details": "All values divisible by 10: cal=300, carbs=70, fat=0, protein=20. May be rough estimate."
+    },
+    {
+      "item": "Crispy Fried Chicken",
+      "restaurant": "Cosmos Cafe and Market",
+      "park": "Universal Stella Nova Resort",
+      "pass": 3,
+      "severity": "LOW",
+      "issue": "round-numbers",
+      "details": "All values divisible by 10: cal=300, carbs=70, fat=0, protein=20. May be rough estimate."
+    },
+    {
+      "item": "Crispy Fried Chicken",
+      "restaurant": "Omega Cafe and Market",
+      "park": "Universal Terra Luna Resort",
+      "pass": 3,
+      "severity": "LOW",
+      "issue": "round-numbers",
+      "details": "All values divisible by 10: cal=300, carbs=70, fat=0, protein=20. May be rough estimate."
+    }
+  ]
+}
