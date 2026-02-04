@@ -3,7 +3,7 @@
  */
 
 export interface ScrapedItem {
-  source: 'allears' | 'dfb' | 'official' | 'touringplans' | 'yelp'
+  source: 'allears' | 'dfb' | 'official' | 'touringplans' | 'universal' | 'yelp'
   parkName: string
   restaurantName: string
   landName?: string

@@ -19,6 +19,7 @@ const supabase = createClient(url, key)
 // Source priority for conflict resolution (higher = more trusted)
 const SOURCE_PRIORITY: Record<ScrapedItem['source'], number> = {
   official: 100,
+  universal: 90, // Official Universal JSON endpoints
   allears: 80,
   touringplans: 70,
   dfb: 60,
