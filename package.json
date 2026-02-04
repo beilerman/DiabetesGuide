@@ -13,6 +13,7 @@
     "enrich:nutrition": "tsx scripts/enrich-nutrition.ts",
     "import:all": "tsx scripts/import-all.ts",
     "scrape:allears": "tsx scripts/scrapers/allears.ts",
+    "scrape:allears-puppeteer": "tsx scripts/scrapers/allears-puppeteer.ts",
     "scrape:touringplans": "tsx scripts/scrapers/touringplans.ts",
     "scrape:universal": "tsx scripts/scrapers/universal.ts",
     "sync:merge": "tsx scripts/sync/merge.ts",
