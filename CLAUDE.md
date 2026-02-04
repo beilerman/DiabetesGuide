@@ -80,6 +80,30 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 | `fix-audit-findings.ts` | Fix systemic issues found by audit (over-multiplied items, missing micros, low protein) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `fix-remaining.ts` | Targeted fixes for 15 specific items still flagged after bulk fixes | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 
+### Menu Sync Scrapers (in `scripts/scrapers/`)
+
+| Script | Source | Items | Notes |
+|--------|--------|-------|-------|
+| `universal.ts` | universalorlando.com | 2,747 | Official JSON endpoints from USF, IOA, Volcano Bay, CityWalk, Epic Universe. Supports both K2 (older) and GDS (Epic Universe) CMS formats. |
+| `touringplans.ts` | touringplans.com | ~100 | Puppeteer-based, limited data (section overviews only). |
+| `allears.ts` | allears.net | 0 | Blocked by Cloudflare, not currently functional. |
+
+### Menu Sync Pipeline
+
+```bash
+# Run full sync (scrape Universal → merge → estimate nutrition → report)
+npm run sync:full
+
+# Or run steps individually:
+npm run scrape:universal       # Scrape Universal parks to data/scraped/
+npm run sync:merge            # Cross-reference with Supabase, find new items
+npm run sync:estimate         # Estimate nutrition for new items via keyword similarity
+npm run sync:report           # Generate diff report in data/pending/
+npm run sync:approve          # Import approved items to Supabase
+```
+
+The sync pipeline runs weekly via GitHub Actions (`.github/workflows/weekly-menu-sync.yml`).
+
 ### Data Pipeline Execution Order
 
 ```bash
