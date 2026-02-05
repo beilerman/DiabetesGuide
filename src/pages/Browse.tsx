@@ -87,7 +87,8 @@ function EmptyState({ hasFilters }: { hasFilters: boolean }) {
 
 export default function Browse() {
   const [searchParams] = useSearchParams()
-  const [filters, setFilters] = useState<Filters>(defaultFilters)
+  const initialSort = (searchParams.get('sort') || 'name') as Filters['sort']
+  const [filters, setFilters] = useState<Filters>({ ...defaultFilters, sort: initialSort })
   const [parkId, setParkId] = useState<string | undefined>(searchParams.get('park') || undefined)
   const { data: parks } = useParks()
   const { data: items, isLoading } = useMenuItems(parkId)

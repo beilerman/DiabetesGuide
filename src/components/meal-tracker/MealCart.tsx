@@ -10,7 +10,7 @@ export function MealCart() {
   if (items.length === 0) return null
 
   return (
-    <div className="fixed bottom-4 right-4 w-80 rounded-xl border bg-white p-4 shadow-lg z-50">
+    <div className="fixed bottom-20 right-4 w-80 rounded-xl border bg-white p-4 shadow-lg z-50">
       <div className="flex items-center justify-between mb-2">
         <h3 className="font-semibold">Meal Tracker ({items.length})</h3>
         <button onClick={clear} className="text-xs text-red-600 hover:underline">Clear</button>

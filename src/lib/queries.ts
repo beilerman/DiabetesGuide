@@ -42,7 +42,32 @@ export function useMenuItems(parkId?: string) {
   return useQuery({
     queryKey: ['menuItems', parkId],
     queryFn: async (): Promise<MenuItemWithNutrition[]> => {
-      const query = supabase
+      if (parkId) {
+        // Fetch restaurant IDs for this park, then fetch their menu items
+        const { data: restaurants, error: restErr } = await supabase
+          .from('restaurants')
+          .select('id')
+          .eq('park_id', parkId)
+        if (restErr) throw restErr
+        const restaurantIds = (restaurants || []).map(r => r.id)
+        if (restaurantIds.length === 0) return []
+
+        const { data, error } = await supabase
+          .from('menu_items')
+          .select(`
+            *,
+            nutritional_data (*),
+            allergens (*),
+            restaurant:restaurants (*, park:parks (*))
+          `)
+          .in('restaurant_id', restaurantIds)
+          .order('name')
+        if (error) throw error
+        return data as MenuItemWithNutrition[]
+      }
+
+      // No park selected: fetch with a reasonable limit for the "All Parks" view
+      const { data, error } = await supabase
         .from('menu_items')
         .select(`
           *,
@@ -51,12 +76,9 @@ export function useMenuItems(parkId?: string) {
           restaurant:restaurants (*, park:parks (*))
         `)
         .order('name')
-
-      const { data, error } = await query.limit(500)
+        .limit(1000)
       if (error) throw error
-      return (data as MenuItemWithNutrition[]).filter(
-        item => !parkId || item.restaurant?.park_id === parkId
-      )
+      return data as MenuItemWithNutrition[]
     },
     enabled: true,
   })
@@ -103,16 +125,25 @@ export function useRestaurantCount(parkId: string | undefined) {
   })
 }
 
-/** Get menu item count for a specific park (client-side from cached data) */
+/** Get menu item count for a specific park */
 export function useMenuItemCount(parkId: string | undefined) {
   return useQuery({
     queryKey: ['menuItemCount', parkId],
     queryFn: async (): Promise<number> => {
       if (!parkId) return 0
+      // Nested .eq() on joined tables is silently ignored by Supabase,
+      // so fetch restaurant IDs first, then count menu items via .in()
+      const { data: restaurants, error: restErr } = await supabase
+        .from('restaurants')
+        .select('id')
+        .eq('park_id', parkId)
+      if (restErr) throw restErr
+      const restaurantIds = (restaurants || []).map(r => r.id)
+      if (restaurantIds.length === 0) return 0
       const { count, error } = await supabase
         .from('menu_items')
-        .select('*, restaurant:restaurants!inner(park_id)', { count: 'exact', head: true })
-        .eq('restaurant.park_id', parkId)
+        .select('*', { count: 'exact', head: true })
+        .in('restaurant_id', restaurantIds)
       if (error) throw error
       return count ?? 0
     },
@@ -139,18 +170,29 @@ export function useMenuItemCounts() {
   return useQuery({
     queryKey: ['menuItemCounts'],
     queryFn: async (): Promise<Map<string, number>> => {
-      const { data, error } = await supabase
-        .from('menu_items')
-        .select('restaurant:restaurants!inner(park_id)')
-      if (error) throw error
+      // Fetch all restaurants (lightweight: just id + park_id)
+      const { data: restaurants, error: restErr } = await supabase
+        .from('restaurants')
+        .select('id, park_id')
+      if (restErr) throw restErr
+
+      // Group restaurant IDs by park
+      const parkRestaurants = new Map<string, string[]>()
+      for (const r of restaurants || []) {
+        const list = parkRestaurants.get(r.park_id) || []
+        list.push(r.id)
+        parkRestaurants.set(r.park_id, list)
+      }
+
+      // Count menu items per park using head: true (no data transfer)
       const counts = new Map<string, number>()
-      for (const item of data || []) {
-        // Supabase returns nested relation as object with park_id
-        const restaurant = item.restaurant as unknown as { park_id: string } | null
-        const parkId = restaurant?.park_id
-        if (parkId) {
-          counts.set(parkId, (counts.get(parkId) || 0) + 1)
-        }
+      for (const [parkId, rIds] of parkRestaurants) {
+        const { count, error } = await supabase
+          .from('menu_items')
+          .select('*', { count: 'exact', head: true })
+          .in('restaurant_id', rIds)
+        if (error) throw error
+        counts.set(parkId, count ?? 0)
       }
       return counts
     },

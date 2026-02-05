@@ -210,6 +210,46 @@ export const RESORT_CONFIG: ResortConfig[] = [
       },
     ],
   },
+  {
+    id: 'dollywood',
+    name: 'Dollywood',
+    location: 'Pigeon Forge, Tennessee',
+    icon: '🦅',
+    theme: {
+      primary: '#B45309',
+      secondary: '#D97706',
+      accent: '#FEF3C7',
+      gradient: 'linear-gradient(135deg, #B45309, #D97706)',
+    },
+    categories: [
+      {
+        id: 'theme-park',
+        label: 'Theme Park',
+        icon: '🎢',
+        matchParkNames: ['Dollywood'],
+      },
+    ],
+  },
+  {
+    id: 'kings-island',
+    name: 'Kings Island',
+    location: 'Mason, Ohio',
+    icon: '👑',
+    theme: {
+      primary: '#DC2626',
+      secondary: '#F97316',
+      accent: '#FEE2E2',
+      gradient: 'linear-gradient(135deg, #DC2626, #F97316)',
+    },
+    categories: [
+      {
+        id: 'theme-park',
+        label: 'Theme Park',
+        icon: '🎢',
+        matchParkNames: ['Kings Island'],
+      },
+    ],
+  },
 ]
 
 /** Find which resort a park belongs to based on park name or location */

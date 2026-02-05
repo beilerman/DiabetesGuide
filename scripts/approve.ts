@@ -33,6 +33,8 @@ function inferLocation(parkName: string): string {
   if (/universal|islands of adventure|volcano bay/.test(n)) return 'Universal Orlando Resort'
   if (/seaworld/.test(n)) return 'SeaWorld Parks'
   if (/busch gardens/.test(n)) return 'SeaWorld Parks'
+  if (/dollywood/.test(n)) return 'Dollywood'
+  if (/kings island/.test(n)) return 'Kings Island'
   return 'Other'
 }
 
@@ -40,6 +42,7 @@ function inferTimezone(parkName: string): string {
   const n = parkName.toLowerCase()
   if (/aulani/.test(n)) return 'Pacific/Honolulu'
   if (/disneyland|downtown disney|hollywood/.test(n)) return 'America/Los_Angeles'
+  // Dollywood (Pigeon Forge, TN) and Kings Island (Mason, OH) are both Eastern
   return 'America/New_York'
 }
 
@@ -48,9 +51,9 @@ async function findOrCreatePark(parkName: string): Promise<string> {
     .from('parks')
     .select('id')
     .ilike('name', `%${parkName}%`)
-    .single()
+    .limit(1)
 
-  if (existing) return existing.id
+  if (existing && existing.length > 0) return existing[0].id
 
   const { data: newPark, error } = await supabase
     .from('parks')
@@ -76,9 +79,9 @@ async function findOrCreateRestaurant(
     .select('id')
     .eq('park_id', parkId)
     .ilike('name', restaurantName)
-    .single()
+    .limit(1)
 
-  if (existing) return existing.id
+  if (existing && existing.length > 0) return existing[0].id
 
   const { data: newRest, error } = await supabase
     .from('restaurants')
