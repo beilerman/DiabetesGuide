@@ -20,23 +20,42 @@ interface RestaurantRow {
   park_id: string
 }
 
+// Known name variants → canonical name they should merge into.
+// The canonical name MUST match an existing park row's name exactly.
+const NAME_ALIASES: Record<string, string> = {
+  'hollywood studios': "disney's hollywood studios",
+  'magic kingdom': 'magic kingdom park',
+  'universal volcano bay': "universal's volcano bay",
+}
+
+/** Paginate through all rows of a table to bypass the 1000-row default limit */
+async function fetchAll<T>(table: string, select: string): Promise<T[]> {
+  const PAGE = 1000
+  const all: T[] = []
+  let offset = 0
+  while (true) {
+    const { data, error } = await supabase
+      .from(table)
+      .select(select)
+      .range(offset, offset + PAGE - 1)
+    if (error) throw error
+    all.push(...(data as T[]))
+    if (data.length < PAGE) break
+    offset += PAGE
+  }
+  return all
+}
+
 async function main() {
-  console.log('=== Park Deduplication Cleanup ===\n')
+  console.log('=== Park Deduplication Cleanup (Pass 2) ===\n')
 
-  // 1. Fetch all parks
-  const { data: allParks, error: parkErr } = await supabase
-    .from('parks')
-    .select('id, name, created_at')
-    .order('created_at')
-  if (parkErr) throw parkErr
-
+  // 1. Fetch ALL parks (paginated)
+  const allParks = await fetchAll<ParkRow>('parks', 'id, name, created_at')
   console.log(`Total parks in DB: ${allParks.length}`)
 
-  // 2. Fetch all restaurants (to count per park)
-  const { data: allRestaurants, error: restErr } = await supabase
-    .from('restaurants')
-    .select('id, park_id')
-  if (restErr) throw restErr
+  // 2. Fetch ALL restaurants (paginated)
+  const allRestaurants = await fetchAll<RestaurantRow>('restaurants', 'id, park_id')
+  console.log(`Total restaurants in DB: ${allRestaurants.length}`)
 
   const restaurantsByPark = new Map<string, RestaurantRow[]>()
   for (const r of allRestaurants) {
@@ -45,10 +64,11 @@ async function main() {
     restaurantsByPark.set(r.park_id, list)
   }
 
-  // 3. Group parks by normalized name
+  // 3. Group parks by normalized name, applying aliases
   const groups = new Map<string, ParkRow[]>()
   for (const park of allParks) {
-    const normalized = park.name.toLowerCase().trim()
+    const lower = park.name.toLowerCase().trim()
+    const normalized = NAME_ALIASES[lower] || lower
     const list = groups.get(normalized) || []
     list.push(park)
     groups.set(normalized, list)
@@ -63,7 +83,7 @@ async function main() {
   let deleted = 0
 
   for (const [name, parks] of duplicateGroups) {
-    // Pick canonical: the one with most restaurants, ties broken by oldest created_at
+    // Pick canonical: most restaurants, then oldest created_at
     const sorted = parks.sort((a, b) => {
       const aCount = restaurantsByPark.get(a.id)?.length || 0
       const bCount = restaurantsByPark.get(b.id)?.length || 0
@@ -75,12 +95,12 @@ async function main() {
     const duplicates = sorted.slice(1)
     const canonicalRestCount = restaurantsByPark.get(canonical.id)?.length || 0
 
-    console.log(`"${name}" — keeping ${canonical.id} (${canonicalRestCount} restaurants), removing ${duplicates.length} duplicates`)
+    console.log(`"${name}" — keeping "${canonical.name}" ${canonical.id} (${canonicalRestCount} rests), removing ${duplicates.length} dupes`)
 
+    // Process in batches to avoid request limits
     for (const dup of duplicates) {
       const dupRestaurants = restaurantsByPark.get(dup.id) || []
 
-      // Reassign restaurants from duplicate to canonical
       if (dupRestaurants.length > 0) {
         const dupIds = dupRestaurants.map(r => r.id)
         const { error: updateErr } = await supabase
@@ -88,14 +108,12 @@ async function main() {
           .update({ park_id: canonical.id })
           .in('id', dupIds)
         if (updateErr) {
-          console.error(`  Error reassigning restaurants from ${dup.id}: ${updateErr.message}`)
+          console.error(`  Error reassigning from ${dup.id}: ${updateErr.message}`)
           continue
         }
         reassigned += dupRestaurants.length
-        console.log(`  Reassigned ${dupRestaurants.length} restaurants from ${dup.id}`)
       }
 
-      // Delete the orphaned duplicate park
       const { error: delErr } = await supabase
         .from('parks')
         .delete()
@@ -108,18 +126,10 @@ async function main() {
     }
   }
 
-  // 4. Clean up parks with 0 restaurants (empty shells that aren't canonical)
+  // 4. Clean up any remaining parks with 0 restaurants
   console.log('\n--- Checking for empty parks (0 restaurants) ---')
-  const { data: remainingParks, error: remErr } = await supabase
-    .from('parks')
-    .select('id, name')
-  if (remErr) throw remErr
-
-  // Refresh restaurant counts
-  const { data: freshRests, error: freshErr } = await supabase
-    .from('restaurants')
-    .select('id, park_id')
-  if (freshErr) throw freshErr
+  const remainingParks = await fetchAll<{ id: string; name: string }>('parks', 'id, name')
+  const freshRests = await fetchAll<RestaurantRow>('restaurants', 'id, park_id')
 
   const freshCounts = new Map<string, number>()
   for (const r of freshRests) {
@@ -128,8 +138,7 @@ async function main() {
 
   let emptyDeleted = 0
   for (const park of remainingParks) {
-    const count = freshCounts.get(park.id) || 0
-    if (count === 0) {
+    if ((freshCounts.get(park.id) || 0) === 0) {
       console.log(`  Deleting empty park: "${park.name}" (${park.id})`)
       const { error: delErr } = await supabase
         .from('parks')
@@ -143,11 +152,14 @@ async function main() {
     }
   }
 
+  // 5. Final count
+  const finalParks = await fetchAll<{ id: string }>('parks', 'id')
+
   console.log('\n=== Summary ===')
   console.log(`Restaurants reassigned: ${reassigned}`)
   console.log(`Duplicate parks deleted: ${deleted}`)
   console.log(`Empty parks deleted: ${emptyDeleted}`)
-  console.log(`Parks remaining: ${remainingParks.length - emptyDeleted}`)
+  console.log(`Parks remaining: ${finalParks.length}`)
 }
 
 main().catch(err => {
