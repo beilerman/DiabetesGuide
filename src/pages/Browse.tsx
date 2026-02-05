@@ -54,7 +54,7 @@ export default function Browse() {
   const [filters, setFilters] = useState<Filters>({ ...DEFAULT_FILTERS, sort: initialSort })
   const [parkId, setParkId] = useState<string | undefined>(searchParams.get('park') || undefined)
   const { data: parks } = useParks()
-  const { data: items, isLoading } = useMenuItems(parkId)
+  const { data: items, isLoading, error } = useMenuItems(parkId)
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
 
@@ -110,7 +110,23 @@ export default function Browse() {
           </div>
         )}
 
-        {isLoading ? (
+        {error ? (
+          <div className="col-span-full text-center py-12 px-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-rose-100 rounded-full mb-4">
+              <svg className="w-8 h-8 text-rose-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold text-stone-900 mb-2">Failed to load menu items</h3>
+            <p className="text-stone-600 mb-4">There was an error loading the data. Please try again.</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        ) : isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[...Array(6)].map((_, i) => (
               <SkeletonCard key={i} />

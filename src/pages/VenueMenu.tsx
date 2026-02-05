@@ -20,7 +20,7 @@ export default function VenueMenu() {
   const category = resort?.categories.find(c => c.id === categoryId)
   const { data: parks } = useParks()
   const park = parks?.find(p => p.id === parkId)
-  const { data: items, isLoading } = useMenuItems(parkId)
+  const { data: items, isLoading, error } = useMenuItems(parkId)
   const { data: restaurants } = useRestaurants(parkId)
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS)
   const { addItem } = useMealCart()
@@ -79,7 +79,20 @@ export default function VenueMenu() {
       <FilterBar filters={filters} onChange={setFilters} />
 
       {/* Restaurant groups */}
-      {isLoading ? (
+      {error ? (
+        <div className="text-center py-12 px-4">
+          <div className="rounded-xl bg-red-50 border border-red-200 p-4">
+            <p className="text-red-700 font-medium">Failed to load menu items</p>
+            <p className="text-red-600 text-sm mt-1">There was an error loading the data. Please try again.</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="mt-3 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-sm"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+      ) : isLoading ? (
         <div className="space-y-4">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="rounded-2xl bg-white shadow-sm p-6 animate-pulse">

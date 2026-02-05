@@ -5,7 +5,7 @@ import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 
 export default function Favorites() {
-  const { data: items, isLoading } = useMenuItems()
+  const { data: items, isLoading, error } = useMenuItems()
   const { addItem } = useMealCart()
   const { favorites, isFavorite, toggle } = useFavorites()
 
@@ -23,7 +23,20 @@ export default function Favorites() {
         </p>
       </div>
 
-      {isLoading ? (
+      {error ? (
+        <div className="text-center py-12 px-4">
+          <div className="rounded-xl bg-red-50 border border-red-200 p-4">
+            <p className="text-red-700 font-medium">Failed to load favorites</p>
+            <p className="text-red-600 text-sm mt-1">There was an error loading the data. Please try again.</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="mt-3 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-sm"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+      ) : isLoading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="rounded-2xl bg-white shadow-md overflow-hidden animate-pulse">
