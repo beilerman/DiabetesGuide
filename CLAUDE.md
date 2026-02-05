@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Theme park diabetes food guide — a mobile-first React SPA that helps people with diabetes find and track nutritional info for food at Orlando theme parks. Consolidated from three earlier repos (`disney-diabetes-guide`, `wdwdiabetes`, `park-nutrition-mvp`).
+Theme park diabetes food guide — a mobile-first React SPA that helps people with diabetes find and track nutritional info for food at theme parks across the US. Covers Walt Disney World, Universal Orlando, SeaWorld, Busch Gardens, Dollywood, and Kings Island. Consolidated from three earlier repos (`disney-diabetes-guide`, `wdwdiabetes`, `park-nutrition-mvp`).
 
 **Live URL:** Deployed on Vercel (static SPA)
 **Repo:** https://github.com/beilerman/DiabetesGuide
@@ -29,11 +29,11 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 
 | Table | Key Columns | Notes |
 |-------|------------|-------|
-| `parks` | name, location, timezone, first_aid_locations (JSONB) | 24 parks total |
-| `restaurants` | park_id (FK), name, land, cuisine_type, hours (JSONB), lat/lon | ~355 restaurants |
-| `menu_items` | restaurant_id (FK), name, description, price, category (enum), is_seasonal, is_fried, is_vegetarian | ~1551 items |
+| `parks` | name, location, timezone, first_aid_locations (JSONB) | 26 parks total |
+| `restaurants` | park_id (FK), name, land, cuisine_type, hours (JSONB), lat/lon | ~600+ restaurants |
+| `menu_items` | restaurant_id (FK), name, description, price, category (enum), is_seasonal, is_fried, is_vegetarian | ~11,069 items |
 | `nutritional_data` | menu_item_id (FK), calories/carbs/fat/sugar/protein/fiber/sodium/cholesterol (all INTEGER), source (enum), confidence_score | One row per item |
-| `allergens` | menu_item_id (FK), allergen_type (TEXT), severity (enum: contains/may_contain) | ~1098 records |
+| `allergens` | menu_item_id (FK), allergen_type (TEXT), severity (enum: contains/may_contain) | ~1,200+ records |
 
 **Enums:** `menu_category` (entree/snack/beverage/dessert/side), `nutrition_source` (official/crowdsourced/api_lookup), `allergen_severity` (contains/may_contain)
 
@@ -75,7 +75,7 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 | `get-unmatched.ts` | List items missing nutrition data | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `fix-data-anomalies.ts` | Fix surface-level data issues (sugar>carbs, wrong categories, wrong vegetarian flags, extreme values) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `fix-false-positives.ts` | Correct items incorrectly modified by fix-data-anomalies (Coffee Cake Cookie, BBQ Jackfruit, DOLE Whip) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
-| `audit-dump.ts` | Export all ~1042 items with nutrition to `audit-dump.json` for analysis | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `audit-dump.ts` | Export all items with nutrition to `audit-dump.json` for analysis | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `audit-nutrition.ts` | 3-pass automated audit (internal consistency, external plausibility, systematic patterns) | None (reads `audit-dump.json`) |
 | `fix-audit-findings.ts` | Fix systemic issues found by audit (over-multiplied items, missing micros, low protein) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `fix-remaining.ts` | Targeted fixes for 15 specific items still flagged after bulk fixes | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
@@ -84,9 +84,12 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 
 | Script | Source | Items | Notes |
 |--------|--------|-------|-------|
+| `allears-puppeteer.ts` | allears.net | 5,725 | Puppeteer scraper for Disney World (5 parks: MK, EPCOT, HS, AK, Disney Springs). Uses `.menuItems__item` selectors. URL pattern: `/dining/menu/search/all/[park]/all/all/`. 244 restaurants. |
 | `universal.ts` | universalorlando.com | 2,747 | Official JSON endpoints from USF, IOA, Volcano Bay, CityWalk, Epic Universe. Supports both K2 (older) and GDS (Epic Universe) CMS formats. |
+| `dollywood.ts` | dollywood.com | 446 | Puppeteer scraper for Dollywood (32 restaurants across 10 lands). Parses Bootstrap collapse accordions. Captures dietary icons (gf, v, vg). No prices published. |
+| `kings-island.ts` | sixflags.com/kingsisland | 158 | Intercepts Algolia API credentials from Next.js site, queries restaurant listing directly. Includes KNOWN_MENUS dictionary for 38 restaurants (Panda Express, Skyline Chili, LaRosa's, etc.). 40 restaurants. |
 | `touringplans.ts` | touringplans.com | ~100 | Puppeteer-based, limited data (section overviews only). |
-| `allears.ts` | allears.net | 0 | Blocked by Cloudflare, not currently functional. |
+| `allears.ts` | allears.net | 0 | Blocked by Cloudflare, not currently functional. Replaced by `allears-puppeteer.ts`. |
 
 ### Menu Sync Pipeline
 
@@ -95,11 +98,18 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 npm run sync:full
 
 # Or run steps individually:
-npm run scrape:universal       # Scrape Universal parks to data/scraped/
-npm run sync:merge            # Cross-reference with Supabase, find new items
-npm run sync:estimate         # Estimate nutrition for new items via keyword similarity
-npm run sync:report           # Generate diff report in data/pending/
-npm run sync:approve          # Import approved items to Supabase
+npm run scrape:allears-puppeteer  # Scrape Disney World parks via AllEars
+npm run scrape:universal          # Scrape Universal parks to data/scraped/
+npm run scrape:dollywood          # Scrape Dollywood
+npm run scrape:kings-island       # Scrape Kings Island
+npm run sync:merge                # Cross-reference with Supabase, find new items
+npm run sync:estimate             # Estimate nutrition for new items via keyword similarity
+npm run sync:report               # Generate diff report in data/pending/
+npm run sync:approve              # Import approved items to Supabase
+
+# After approve, run enrichment pipeline:
+# enrich-nutrition.ts → adjust-portions.ts → enrich-allergens.ts
+# Then audit: audit-dump.ts → audit-nutrition.ts → fix-audit-findings.ts → fix-remaining.ts
 ```
 
 The sync pipeline runs weekly via GitHub Actions (`.github/workflows/weekly-menu-sync.yml`).
@@ -136,7 +146,7 @@ npx tsx scripts/fix-audit-findings.ts
 npx tsx scripts/fix-remaining.ts
 ```
 
-**Total corrections applied:** 864 fixes across all data quality scripts (573 original + 291 from Disney Springs/Downtown Disney batch).
+**Total corrections applied:** ~1,118 fixes across all data quality scripts (573 original + 291 Disney Springs/Downtown Disney + 254 AllEars/Dollywood/Kings Island batch).
 
 ## Data Quality & Audit
 
@@ -384,9 +394,13 @@ Always shown with "Educational tool only — not medical advice" disclaimer.
 **Solution:** Use inline bash syntax: `SUPABASE_URL="..." npx tsx scripts/script.ts`. Always write proper `.ts` files and run with `npx tsx` rather than inline `node -e`.
 
 ### Loading .env.local in Bash
-**Problem:** `source .env.local` doesn't work because the `KEY=value` format without `export` doesn't set environment variables for child processes.
+**Problem:** `source .env.local` doesn't work because the `KEY=value` format without `export` doesn't set environment variables for child processes. Also `export $(grep -v '^#' .env.local | xargs)` and `eval $(grep ...)` don't reliably work in Git Bash on Windows.
 
-**Solution:** Use `export $(grep -v '^#' .env.local | xargs)` to load all variables from `.env.local` into the current shell session.
+**Solution:** Use inline variable assignment per command:
+```bash
+SUPABASE_URL=$(grep '^SUPABASE_URL=' .env.local | cut -d'=' -f2) SUPABASE_SERVICE_ROLE_KEY=$(grep '^SUPABASE_SERVICE_ROLE_KEY=' .env.local | cut -d'=' -f2) USDA_API_KEY=$(grep '^USDA_API_KEY=' .env.local | cut -d'=' -f2) npx tsx scripts/script.ts
+```
+This is the most reliable approach across all shells on Windows.
 
 ### inferLocation() Pattern Ordering Bug
 **Problem:** `inferLocation()` in `import-all.ts` mapped "Downtown Disney District" to "Walt Disney World" because the general `/disney/` regex matched before the specific `/downtown disney|disneyland/` pattern.
@@ -421,7 +435,7 @@ These could be used to upgrade `confidence_score` from 50-60 (USDA estimate) to 
 - Supabase `.eq()` on nested joined tables is silently ignored — use client-side filtering
 - Allergen data is inferred from keywords, not confirmed by parks — marked as `may_contain`
 - Nutrition data is estimated from USDA matches with portion multipliers — not official park data
-- ~342 audit flags remain (43 HIGH, mostly alcoholic drinks and regex false positives — see `audit-report.json`)
+- ~913 audit flags remain (162 HIGH, 227 MEDIUM, 524 LOW — mostly alcoholic drinks, regex false positives, and items needing USDA matches — see `audit-report.json`)
 - No food photos (gradient placeholders currently used)
 - Favorites page not yet implemented (bottom nav links to Browse)
 - "More" page not yet implemented (settings, accessibility controls, packing list, guides)
@@ -429,3 +443,30 @@ These could be used to upgrade `confidence_score` from 50-60 (USDA estimate) to 
 - Could add Nutritionix API as fallback for items USDA can't match
 - Some parks have sparse data coverage (Walt Disney World Parks had 100% missing sugar/protein/sodium, now estimated)
 - `inferCategory` in `seed.ts` has a "crisp" substring match that miscategorizes "Crispy" savory items as desserts — fixed in DB but the seed script still has the bug
+- ~8,900 items have no USDA match (theme-park-specific names) — could add Nutritionix API or manual entry
+- Kings Island scraper relies on KNOWN_MENUS dictionary — needs updating when menus change
+- Dollywood doesn't publish prices online — price field is null for all Dollywood items
+
+## Scraper Architecture Notes
+
+### AllEars Puppeteer (`allears-puppeteer.ts`)
+- URL pattern: `https://allears.net/dining/menu/search/all/[park-slug]/all/all/`
+- Restaurant listing uses `.fsearch_subrendergroup` (land headers) and `.dining-card-slide` (restaurant cards)
+- Menu items use `.menuItems__item` with `.item-title`, `.item-description`, `.item-price`
+- De-duplicates restaurants by URL slug (same restaurant may appear under multiple meal types)
+- Uses `domcontentloaded` + retry for speed (AllEars pages are slow)
+
+### Kings Island (`kings-island.ts`)
+- Site is Next.js + Sanity CMS + Algolia search at sixflags.com/kingsisland
+- Intercepts Algolia API credentials by evaluating `window.__NEXT_DATA__` on the dining page
+- Queries Algolia directly for full restaurant list (faster than DOM pagination)
+- KNOWN_MENUS dictionary has specific items for 38 restaurants (chains + signature spots)
+- Falls back to description parsing via regex for restaurants not in KNOWN_MENUS
+
+### Dollywood (`dollywood.ts`)
+- Official site at dollywood.com/themepark/dining/
+- Restaurant listing extracted from "More Details" links on dining index page
+- Individual pages use Bootstrap collapse accordions — scraper force-expands via `classList.add('show')`
+- Items parsed from structured `.col-9.text-left` (name) and `.col-3.text-right` (price) columns
+- Captures dietary icons from `.dietary-icon` spans (gf=gluten-free, v=vegetarian, vg=vegan)
+- Category mapped from accordion section names (e.g., "Beverages" → beverage, "Sweet Tastes" → dessert)
