@@ -1,6 +1,6 @@
 // src/pages/VenueList.tsx
 import { useParams } from 'react-router-dom'
-import { useParks, useRestaurants } from '../lib/queries'
+import { useParks, useRestaurants, useMenuItemCount } from '../lib/queries'
 import { Breadcrumb } from '../components/ui/Breadcrumb'
 import { VenueCard } from '../components/resort/VenueCard'
 import { getResortById, getParksForCategory } from '../lib/resort-config'
@@ -102,7 +102,7 @@ export default function VenueList() {
   )
 }
 
-/** Wrapper that loads restaurant data for a single venue card */
+/** Wrapper that loads restaurant and item count data for a single venue card */
 function VenueCardWithData({ parkId, parkName, resortId, categoryId, theme }: {
   parkId: string
   parkName: string
@@ -111,6 +111,7 @@ function VenueCardWithData({ parkId, parkName, resortId, categoryId, theme }: {
   theme: ResortTheme
 }) {
   const { data: restaurants } = useRestaurants(parkId)
+  const { data: itemCount } = useMenuItemCount(parkId)
 
   // Extract unique lands from restaurants
   const lands = [...new Set((restaurants ?? []).map(r => r.land).filter(Boolean) as string[])]
@@ -124,7 +125,7 @@ function VenueCardWithData({ parkId, parkName, resortId, categoryId, theme }: {
       theme={theme}
       lands={lands}
       restaurantCount={restaurants?.length ?? 0}
-      itemCount={0}
+      itemCount={itemCount ?? 0}
     />
   )
 }

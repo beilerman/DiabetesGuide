@@ -9,45 +9,8 @@ import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { getParkEmoji } from '../components/resort/VenueCard'
 import { getResortById } from '../lib/resort-config'
+import { applyFilters, DEFAULT_FILTERS } from '../lib/filters'
 import type { Filters, MenuItemWithNutrition } from '../lib/types'
-
-const defaultFilters: Filters = {
-  search: '', maxCarbs: null, category: null,
-  vegetarianOnly: false, hideFried: false, hideDrinks: false, sort: 'name',
-}
-
-function applyFilters(items: MenuItemWithNutrition[], filters: Filters): MenuItemWithNutrition[] {
-  let result = items
-
-  if (filters.search) {
-    const q = filters.search.toLowerCase()
-    result = result.filter(i =>
-      i.name.toLowerCase().includes(q) ||
-      (i.description?.toLowerCase().includes(q)) ||
-      (i.restaurant?.name.toLowerCase().includes(q))
-    )
-  }
-  if (filters.maxCarbs != null) {
-    result = result.filter(i => (i.nutritional_data?.[0]?.carbs ?? 0) <= filters.maxCarbs!)
-  }
-  if (filters.category) {
-    result = result.filter(i => i.category === filters.category)
-  }
-  if (filters.vegetarianOnly) result = result.filter(i => i.is_vegetarian)
-  if (filters.hideFried) result = result.filter(i => !i.is_fried)
-  if (filters.hideDrinks) result = result.filter(i => i.category !== 'beverage')
-
-  const sortFns: Record<string, (a: MenuItemWithNutrition, b: MenuItemWithNutrition) => number> = {
-    name: (a, b) => a.name.localeCompare(b.name),
-    carbsAsc: (a, b) => (a.nutritional_data?.[0]?.carbs ?? 0) - (b.nutritional_data?.[0]?.carbs ?? 0),
-    carbsDesc: (a, b) => (b.nutritional_data?.[0]?.carbs ?? 0) - (a.nutritional_data?.[0]?.carbs ?? 0),
-    caloriesAsc: (a, b) => (a.nutritional_data?.[0]?.calories ?? 0) - (b.nutritional_data?.[0]?.calories ?? 0),
-    caloriesDesc: (a, b) => (b.nutritional_data?.[0]?.calories ?? 0) - (a.nutritional_data?.[0]?.calories ?? 0),
-  }
-  result = [...result].sort(sortFns[filters.sort] || sortFns.name)
-
-  return result
-}
 
 export default function VenueMenu() {
   const { resortId, categoryId, parkId } = useParams<{
@@ -59,7 +22,7 @@ export default function VenueMenu() {
   const park = parks?.find(p => p.id === parkId)
   const { data: items, isLoading } = useMenuItems(parkId)
   const { data: restaurants } = useRestaurants(parkId)
-  const [filters, setFilters] = useState<Filters>(defaultFilters)
+  const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS)
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
 

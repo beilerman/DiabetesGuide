@@ -1,4 +1,4 @@
-import type { Filters } from '../../lib/types'
+import type { Filters, MenuItem } from '../../lib/types'
 
 interface Props {
   filters: Filters
@@ -31,7 +31,7 @@ export function FilterBar({ filters, onChange }: Props) {
     })
   }
 
-  const categories: Array<{ value: string; label: string; icon: string }> = [
+  const categories: Array<{ value: MenuItem['category']; label: string; icon: string }> = [
     { value: 'entree', label: 'Entree', icon: '🍽️' },
     { value: 'snack', label: 'Snack', icon: '🥨' },
     { value: 'beverage', label: 'Beverage', icon: '🥤' },
@@ -109,7 +109,7 @@ export function FilterBar({ filters, onChange }: Props) {
             {categories.map(cat => (
               <button
                 key={cat.value}
-                onClick={() => set('category', cat.value as any)}
+                onClick={() => set('category', cat.value)}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                   filters.category === cat.value
                     ? 'bg-teal-600 text-white shadow-md'
@@ -139,6 +139,11 @@ export function FilterBar({ filters, onChange }: Props) {
                   const value = Number(e.target.value)
                   set('maxCarbs', value === 150 ? null : value)
                 }}
+                aria-label="Maximum carbs filter"
+                aria-valuemin={0}
+                aria-valuemax={150}
+                aria-valuenow={filters.maxCarbs ?? 150}
+                aria-valuetext={`${filters.maxCarbs ?? 150} grams`}
                 className="flex-1 h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer slider-thumb:bg-teal-600"
                 style={{
                   background: `linear-gradient(to right, #0d9488 0%, #0d9488 ${((filters.maxCarbs ?? 150) / 150) * 100}%, #e7e5e4 ${((filters.maxCarbs ?? 150) / 150) * 100}%, #e7e5e4 100%)`
