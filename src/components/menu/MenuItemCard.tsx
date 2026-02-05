@@ -14,13 +14,14 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite }
   const [addingToMeal, setAddingToMeal] = useState(false)
 
   const nd = item.nutritional_data?.[0]
-  const carbs = nd?.carbs ?? 0
-  const calories = nd?.calories ?? 0
-  const fat = nd?.fat ?? 0
-  const sugar = nd?.sugar ?? 0
-  const protein = nd?.protein
-  const fiber = nd?.fiber
-  const sodium = nd?.sodium
+  const hasNutrition = !!nd
+  const carbs = nd?.carbs ?? null
+  const calories = nd?.calories ?? null
+  const fat = nd?.fat ?? null
+  const sugar = nd?.sugar ?? null
+  const protein = nd?.protein ?? null
+  const fiber = nd?.fiber ?? null
+  const sodium = nd?.sodium ?? null
 
   const categoryColors: Record<string, string> = {
     entree: 'bg-teal-500',
@@ -43,7 +44,7 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite }
 
   const handleAddToMeal = () => {
     setAddingToMeal(true)
-    onAddToMeal({ id: item.id, name: item.name, carbs, calories, fat })
+    onAddToMeal({ id: item.id, name: item.name, carbs: carbs ?? 0, calories: calories ?? 0, fat: fat ?? 0 })
     setTimeout(() => setAddingToMeal(false), 600)
   }
 
@@ -101,33 +102,41 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite }
 
         {/* Primary nutrition row - CARBS (largest), Calories, Sugar */}
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          <NutritionBadge
-            label="Carbs"
-            value={carbs}
-            unit="g"
-            size="lg"
-            colorFn={carbColor}
-          />
-          <NutritionBadge
-            label="Cal"
-            value={calories}
-            unit=""
-            size="md"
-            colorFn={calorieColor}
-          />
-          {sugar > 0 && (
-            <NutritionBadge
-              label="Sugar"
-              value={sugar}
-              unit="g"
-              size="md"
-              colorFn={sugarColor}
-            />
+          {hasNutrition ? (
+            <>
+              <NutritionBadge
+                label="Carbs"
+                value={carbs ?? 0}
+                unit="g"
+                size="lg"
+                colorFn={carbColor}
+              />
+              <NutritionBadge
+                label="Cal"
+                value={calories ?? 0}
+                unit=""
+                size="md"
+                colorFn={calorieColor}
+              />
+              {sugar != null && sugar > 0 && (
+                <NutritionBadge
+                  label="Sugar"
+                  value={sugar}
+                  unit="g"
+                  size="md"
+                  colorFn={sugarColor}
+                />
+              )}
+            </>
+          ) : (
+            <span className="inline-flex items-center gap-1 rounded-full border px-4 py-2 text-base font-semibold bg-stone-100 text-stone-500 border-stone-200">
+              No nutrition data
+            </span>
           )}
         </div>
 
         {/* Secondary nutrition row - smaller metrics */}
-        {!expanded && (protein != null || fat != null || fiber != null || sodium != null) && (
+        {hasNutrition && !expanded && (protein != null || fat != null || fiber != null || sodium != null) && (
           <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-600">
             {protein != null && <span>Protein: {protein}g</span>}
             {fat != null && <span>Fat: {fat}g</span>}
@@ -160,7 +169,7 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite }
         )}
 
         {/* Expand/collapse button */}
-        {(protein != null || fiber != null || sodium != null || nd?.cholesterol != null) && (
+        {hasNutrition && (protein != null || fiber != null || sodium != null || nd?.cholesterol != null) && (
           <button
             onClick={() => setExpanded(!expanded)}
             className="mt-2 text-xs text-teal-600 hover:text-teal-700 font-medium"
