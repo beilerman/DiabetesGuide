@@ -5,45 +5,8 @@ import { FilterBar } from '../components/filters/FilterBar'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
-import type { Filters, MenuItemWithNutrition } from '../lib/types'
-
-const defaultFilters: Filters = {
-  search: '', maxCarbs: null, category: null,
-  vegetarianOnly: false, hideFried: false, hideDrinks: false, sort: 'name',
-}
-
-function applyFilters(items: MenuItemWithNutrition[], filters: Filters): MenuItemWithNutrition[] {
-  let result = items
-
-  if (filters.search) {
-    const q = filters.search.toLowerCase()
-    result = result.filter(i =>
-      i.name.toLowerCase().includes(q) ||
-      (i.description?.toLowerCase().includes(q)) ||
-      (i.restaurant?.name.toLowerCase().includes(q))
-    )
-  }
-  if (filters.maxCarbs != null) {
-    result = result.filter(i => (i.nutritional_data?.[0]?.carbs ?? 0) <= filters.maxCarbs!)
-  }
-  if (filters.category) {
-    result = result.filter(i => i.category === filters.category)
-  }
-  if (filters.vegetarianOnly) result = result.filter(i => i.is_vegetarian)
-  if (filters.hideFried) result = result.filter(i => !i.is_fried)
-  if (filters.hideDrinks) result = result.filter(i => i.category !== 'beverage')
-
-  const sortFns: Record<string, (a: MenuItemWithNutrition, b: MenuItemWithNutrition) => number> = {
-    name: (a, b) => a.name.localeCompare(b.name),
-    carbsAsc: (a, b) => (a.nutritional_data?.[0]?.carbs ?? 0) - (b.nutritional_data?.[0]?.carbs ?? 0),
-    carbsDesc: (a, b) => (b.nutritional_data?.[0]?.carbs ?? 0) - (a.nutritional_data?.[0]?.carbs ?? 0),
-    caloriesAsc: (a, b) => (a.nutritional_data?.[0]?.calories ?? 0) - (b.nutritional_data?.[0]?.calories ?? 0),
-    caloriesDesc: (a, b) => (b.nutritional_data?.[0]?.calories ?? 0) - (a.nutritional_data?.[0]?.calories ?? 0),
-  }
-  result = [...result].sort(sortFns[filters.sort] || sortFns.name)
-
-  return result
-}
+import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
+import type { Filters } from '../lib/types'
 
 function SkeletonCard() {
   return (
@@ -88,7 +51,7 @@ function EmptyState({ hasFilters }: { hasFilters: boolean }) {
 export default function Browse() {
   const [searchParams] = useSearchParams()
   const initialSort = (searchParams.get('sort') || 'name') as Filters['sort']
-  const [filters, setFilters] = useState<Filters>({ ...defaultFilters, sort: initialSort })
+  const [filters, setFilters] = useState<Filters>({ ...DEFAULT_FILTERS, sort: initialSort })
   const [parkId, setParkId] = useState<string | undefined>(searchParams.get('park') || undefined)
   const { data: parks } = useParks()
   const { data: items, isLoading } = useMenuItems(parkId)
@@ -99,14 +62,6 @@ export default function Browse() {
 
   const totalItems = items?.length ?? 0
   const filteredCount = filtered.length
-
-  const hasActiveFilters =
-    filters.search !== '' ||
-    filters.maxCarbs != null ||
-    filters.category != null ||
-    filters.vegetarianOnly ||
-    filters.hideFried ||
-    filters.hideDrinks
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -149,7 +104,7 @@ export default function Browse() {
       <div className="px-4 py-4">
         {/* Result count */}
         {!isLoading && totalItems > 0 && (
-          <div className="mb-4 text-sm text-gray-600">
+          <div className="mb-4 text-sm text-gray-600" aria-live="polite">
             Showing <span className="font-semibold text-gray-900">{filteredCount}</span> of{' '}
             <span className="font-semibold text-gray-900">{totalItems}</span> items
           </div>
@@ -172,7 +127,7 @@ export default function Browse() {
                 onToggleFavorite={toggle}
               />
             ))}
-            {filtered.length === 0 && <EmptyState hasFilters={hasActiveFilters} />}
+            {filtered.length === 0 && <EmptyState hasFilters={hasActiveFilters(filters)} />}
           </div>
         )}
       </div>

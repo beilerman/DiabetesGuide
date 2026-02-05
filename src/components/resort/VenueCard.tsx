@@ -2,24 +2,29 @@
 import { Link } from 'react-router-dom'
 import type { ResortTheme } from '../../lib/resort-config'
 
-// Park emoji mapping (extracted from old Home.tsx)
+// Park emoji mapping - ordered from most specific to most general to avoid substring false matches
+const PARK_EMOJI_RULES: ReadonlyArray<{ match: RegExp; emoji: string }> = [
+  { match: /magic kingdom|disneyland park/i, emoji: '🏰' },
+  { match: /epcot/i, emoji: '🌐' },
+  { match: /hollywood|studios/i, emoji: '🎬' },
+  { match: /animal kingdom(?!.*lodge)/i, emoji: '🦁' },
+  { match: /cruise|disney magic|disney wonder|disney dream|disney fantasy|disney wish|disney treasure/i, emoji: '🚢' },
+  { match: /aulani/i, emoji: '🌺' },
+  { match: /resort|hotel|lodge/i, emoji: '🏨' },
+  { match: /epic universe/i, emoji: '🌌' },
+  { match: /universal/i, emoji: '🎢' },
+  { match: /islands/i, emoji: '🏝️' },
+  { match: /water|aquatica|blizzard|typhoon|volcano/i, emoji: '🌊' },
+  { match: /adventure|busch/i, emoji: '🎪' },
+  { match: /legoland/i, emoji: '🧱' },
+  { match: /springs|downtown disney/i, emoji: '🛍️' },
+  { match: /seaworld/i, emoji: '🐬' },
+]
+
 export function getParkEmoji(parkName: string): string {
-  const name = parkName.toLowerCase()
-  if (name.includes('magic kingdom') || name.includes('disneyland park')) return '🏰'
-  if (name.includes('epcot')) return '🌐'
-  if (name.includes('hollywood') || name.includes('studios')) return '🎬'
-  if (name.includes('animal kingdom') && !name.includes('lodge')) return '🦁'
-  if (name.includes('cruise') || name.includes('disney magic') || name.includes('disney wonder') || name.includes('disney dream') || name.includes('disney fantasy') || name.includes('disney wish') || name.includes('disney treasure')) return '🚢'
-  if (name.includes('aulani')) return '🌺'
-  if (name.includes('resort') || name.includes('hotel') || name.includes('lodge')) return '🏨'
-  if (name.includes('epic universe')) return '🌌'
-  if (name.includes('universal')) return '🎢'
-  if (name.includes('islands')) return '🏝️'
-  if (name.includes('water') || name.includes('aquatica') || name.includes('blizzard') || name.includes('typhoon') || name.includes('volcano')) return '🌊'
-  if (name.includes('adventure') || name.includes('busch')) return '🎪'
-  if (name.includes('legoland')) return '🧱'
-  if (name.includes('springs') || name.includes('downtown disney')) return '🛍️'
-  if (name.includes('seaworld')) return '🐬'
+  for (const { match, emoji } of PARK_EMOJI_RULES) {
+    if (match.test(parkName)) return emoji
+  }
   return '🎡'
 }
 
