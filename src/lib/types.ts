@@ -86,5 +86,8 @@ export interface Filters {
   vegetarianOnly: boolean
   hideFried: boolean
   hideDrinks: boolean
-  sort: 'name' | 'carbsAsc' | 'carbsDesc' | 'caloriesAsc' | 'caloriesDesc'
+  hideAlcohol: boolean
+  gradeFilter: import('./grade').Grade[] | null
+  allergenFree: string[]
+  sort: 'name' | 'carbsAsc' | 'carbsDesc' | 'caloriesAsc' | 'caloriesDesc' | 'grade'
 }

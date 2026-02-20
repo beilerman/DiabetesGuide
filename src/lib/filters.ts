@@ -1,5 +1,6 @@
 import type { Filters, MenuItemWithNutrition } from './types'
 import { getNutrition } from './nutrition'
+import { computeScore, computeGrade } from './grade'
 
 export const DEFAULT_FILTERS: Filters = {
   search: '',
@@ -8,7 +9,25 @@ export const DEFAULT_FILTERS: Filters = {
   vegetarianOnly: false,
   hideFried: false,
   hideDrinks: false,
+  hideAlcohol: false,
+  gradeFilter: null,
+  allergenFree: [],
   sort: 'name',
+}
+
+function getItemScore(item: MenuItemWithNutrition): number | null {
+  const n = getNutrition(item)
+  if (!n) return null
+  return computeScore({
+    calories: n.calories,
+    carbs: n.carbs,
+    fat: n.fat,
+    protein: n.protein,
+    sugar: n.sugar,
+    fiber: n.fiber,
+    sodium: n.sodium,
+    alcoholGrams: n.alcohol_grams,
+  })
 }
 
 export function applyFilters(
@@ -54,6 +73,33 @@ export function applyFilters(
   if (filters.hideFried) result = result.filter((i) => !i.is_fried)
   if (filters.hideDrinks) result = result.filter((i) => i.category !== 'beverage')
 
+  // New: hide alcohol
+  if (filters.hideAlcohol) {
+    result = result.filter((i) => {
+      const alc = getNutrition(i)?.alcohol_grams
+      return alc == null || alc === 0
+    })
+  }
+
+  // New: grade filter
+  if (filters.gradeFilter && filters.gradeFilter.length > 0) {
+    result = result.filter((i) => {
+      const score = getItemScore(i)
+      const grade = computeGrade(score)
+      return grade != null && filters.gradeFilter!.includes(grade)
+    })
+  }
+
+  // New: allergen-free filter
+  if (filters.allergenFree.length > 0) {
+    result = result.filter((i) => {
+      const itemAllergens = i.allergens.map(a => a.allergen_type.toLowerCase())
+      return !filters.allergenFree.some(excluded =>
+        itemAllergens.includes(excluded.toLowerCase())
+      )
+    })
+  }
+
   const sortFns: Record<
     string,
     (a: MenuItemWithNutrition, b: MenuItemWithNutrition) => number
@@ -67,6 +113,8 @@ export function applyFilters(
       compareNullableNumber(getNutrition(a)?.calories, getNutrition(b)?.calories, 'asc'),
     caloriesDesc: (a, b) =>
       compareNullableNumber(getNutrition(a)?.calories, getNutrition(b)?.calories, 'desc'),
+    grade: (a, b) =>
+      compareNullableNumber(getItemScore(a), getItemScore(b), 'desc'),
   }
   result = [...result].sort(sortFns[filters.sort] || sortFns.name)
 
@@ -80,6 +128,9 @@ export function hasActiveFilters(filters: Filters): boolean {
     filters.category != null ||
     filters.vegetarianOnly ||
     filters.hideFried ||
-    filters.hideDrinks
+    filters.hideDrinks ||
+    filters.hideAlcohol ||
+    (filters.gradeFilter != null && filters.gradeFilter.length > 0) ||
+    filters.allergenFree.length > 0
   )
 }

@@ -27,6 +27,9 @@ export function FilterBar({ filters, onChange }: Props) {
       vegetarianOnly: false,
       hideFried: false,
       hideDrinks: false,
+      hideAlcohol: false,
+      gradeFilter: null,
+      allergenFree: [],
       sort: filters.sort,
     })
   }
