@@ -7,7 +7,7 @@ import { RestaurantGroup } from '../components/menu/RestaurantGroup'
 import { FilterBar } from '../components/filters/FilterBar'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
-import { getParkEmoji } from '../components/resort/VenueCard'
+import { getParkEmoji } from '../components/resort/park-emoji'
 import { getResortById } from '../lib/resort-config'
 import { applyFilters, DEFAULT_FILTERS } from '../lib/filters'
 import type { Filters, MenuItemWithNutrition } from '../lib/types'
@@ -25,19 +25,24 @@ export default function VenueMenu() {
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS)
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
+  const isSeasonalCategory = !!category?.seasonalFilter
 
-  const filtered = useMemo(() => applyFilters(items ?? [], filters), [items, filters])
+  const filtered = useMemo(() => {
+    const base = applyFilters(items ?? [], filters)
+    return isSeasonalCategory ? base.filter(item => item.is_seasonal) : base
+  }, [items, filters, isSeasonalCategory])
 
   // Group filtered items by restaurant
   const groupedByRestaurant = useMemo(() => {
-    const groups: Map<string, { name: string; land: string | null; items: MenuItemWithNutrition[] }> = new Map()
+    const groups: Map<string, { key: string; name: string; land: string | null; items: MenuItemWithNutrition[] }> = new Map()
     for (const item of filtered) {
+      const rKey = item.restaurant?.id || item.restaurant?.name || 'unknown'
       const rName = item.restaurant?.name || 'Unknown'
       const rLand = item.restaurant?.land || null
-      if (!groups.has(rName)) {
-        groups.set(rName, { name: rName, land: rLand, items: [] })
+      if (!groups.has(rKey)) {
+        groups.set(rKey, { key: rKey, name: rName, land: rLand, items: [] })
       }
-      groups.get(rName)!.items.push(item)
+      groups.get(rKey)!.items.push(item)
     }
     return [...groups.values()]
   }, [filtered])
@@ -92,7 +97,7 @@ export default function VenueMenu() {
         <div className="space-y-4">
           {groupedByRestaurant.map((group, i) => (
             <RestaurantGroup
-              key={group.name}
+              key={group.key}
               restaurantName={group.name}
               land={group.land}
               items={group.items}

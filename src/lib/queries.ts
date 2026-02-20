@@ -2,8 +2,45 @@ import { useQuery } from '@tanstack/react-query'
 import { supabase } from './supabase'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
 
+const MENU_ITEMS_SELECT = `
+  *,
+  nutritional_data (*),
+  allergens (*),
+  restaurant:restaurants (*, park:parks (*))
+`
+
 function escapeSearch(q: string): string {
   return q.replace(/\\/g, '\\\\').replace(/[%_]/g, '\\$&').replace(/[,().'"]/g, '')
+}
+
+async function fetchAllMenuItems(restaurantIds?: string[], maxItems?: number): Promise<MenuItemWithNutrition[]> {
+  const batchSize = 1000
+  const cap = maxItems ?? Infinity
+  let from = 0
+  let allItems: MenuItemWithNutrition[] = []
+
+  while (allItems.length < cap) {
+    let query = supabase
+      .from('menu_items')
+      .select(MENU_ITEMS_SELECT)
+      .order('name')
+      .order('id')
+      .range(from, from + batchSize - 1)
+
+    if (restaurantIds && restaurantIds.length > 0) {
+      query = query.in('restaurant_id', restaurantIds)
+    }
+
+    const { data, error } = await query
+    if (error) throw error
+
+    if (!data || data.length === 0) break
+    allItems = allItems.concat(data as MenuItemWithNutrition[])
+    if (data.length < batchSize) break
+    from += batchSize
+  }
+
+  return maxItems ? allItems.slice(0, maxItems) : allItems
 }
 
 export function useParks() {
@@ -52,33 +89,12 @@ export function useMenuItems(parkId?: string) {
         const restaurantIds = (restaurants || []).map(r => r.id)
         if (restaurantIds.length === 0) return []
 
-        const { data, error } = await supabase
-          .from('menu_items')
-          .select(`
-            *,
-            nutritional_data (*),
-            allergens (*),
-            restaurant:restaurants (*, park:parks (*))
-          `)
-          .in('restaurant_id', restaurantIds)
-          .order('name')
-        if (error) throw error
-        return data as MenuItemWithNutrition[]
+        return fetchAllMenuItems(restaurantIds)
       }
 
-      // No park selected: fetch with a reasonable limit for the "All Parks" view
-      const { data, error } = await supabase
-        .from('menu_items')
-        .select(`
-          *,
-          nutritional_data (*),
-          allergens (*),
-          restaurant:restaurants (*, park:parks (*))
-        `)
-        .order('name')
-        .limit(1000)
-      if (error) throw error
-      return data as MenuItemWithNutrition[]
+      // Cap "All Parks" to 3000 items to avoid 10+ sequential API calls on mobile.
+      // Per-park views fetch all items since each park has at most ~1000.
+      return fetchAllMenuItems(undefined, 3000)
     },
     enabled: true,
   })
@@ -92,12 +108,7 @@ export function useSearch(searchQuery: string) {
       const escaped = escapeSearch(searchQuery.trim())
       const { data, error } = await supabase
         .from('menu_items')
-        .select(`
-          *,
-          nutritional_data (*),
-          allergens (*),
-          restaurant:restaurants (*, park:parks (*))
-        `)
+        .select(MENU_ITEMS_SELECT)
         .or(`name.ilike.%${escaped}%,description.ilike.%${escaped}%`)
         .order('name')
         .limit(50)

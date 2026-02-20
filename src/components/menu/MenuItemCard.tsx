@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { MenuItemWithNutrition, MealItem } from '../../lib/types'
-import { carbColor, sugarColor, calorieColor, sodiumColor, NutritionBadge } from './NutritionBadge'
+import { NutritionBadge } from './NutritionBadge'
+import { carbColor, sugarColor, calorieColor, sodiumColor, alcoholColor } from './nutrition-colors'
 
 interface Props {
   item: MenuItemWithNutrition
@@ -22,6 +23,7 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite }
   const protein = nd?.protein ?? null
   const fiber = nd?.fiber ?? null
   const sodium = nd?.sodium ?? null
+  const alcoholGrams = nd?.alcohol_grams ?? null
 
   const categoryColors: Record<string, string> = {
     entree: 'bg-teal-500',
@@ -127,6 +129,15 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite }
                   colorFn={sugarColor}
                 />
               )}
+              {alcoholGrams != null && alcoholGrams > 0 && (
+                <NutritionBadge
+                  label="Alcohol"
+                  value={alcoholGrams}
+                  unit="g"
+                  size="md"
+                  colorFn={alcoholColor}
+                />
+              )}
             </>
           ) : (
             <span className="inline-flex items-center gap-1 rounded-full border px-4 py-2 text-base font-semibold bg-stone-100 text-stone-500 border-stone-200">
@@ -165,6 +176,11 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite }
                 <NutritionBadge label="Cholesterol" value={nd.cholesterol} unit="mg" size="sm" />
               )}
             </div>
+            {alcoholGrams != null && alcoholGrams > 0 && (
+              <p className="mt-2 text-xs text-purple-700">
+                ~{(alcoholGrams / 14).toFixed(1)} standard drinks (14g = 1 drink)
+              </p>
+            )}
           </div>
         )}
 

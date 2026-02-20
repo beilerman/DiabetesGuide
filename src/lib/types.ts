@@ -50,6 +50,7 @@ export interface NutritionalData {
   fiber: number | null
   sodium: number | null
   cholesterol: number | null
+  alcohol_grams: number | null
   source: 'official' | 'crowdsourced' | 'api_lookup'
   source_detail: string | null
   confidence_score: number

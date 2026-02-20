@@ -26,6 +26,7 @@ export function CategoryCard({ category, resortId, theme, venueCount, itemCount 
           )}
           {venueCount > 0 && itemCount > 0 && <span className="text-stone-400">·</span>}
           {itemCount > 0 && <span>{itemCount} items</span>}
+          {category.seasonalFilter && <span className="italic text-stone-500">Seasonal</span>}
         </div>
       </div>
       {/* Bottom accent bar */}

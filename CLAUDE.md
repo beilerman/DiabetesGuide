@@ -22,6 +22,7 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 - **Anon key:** In `.env.local` as `VITE_SUPABASE_ANON_KEY`
 - **Service role key:** In `.env.local` as `SUPABASE_SERVICE_ROLE_KEY` (for scripts only)
 - **USDA API key:** In `.env.local` as `USDA_API_KEY`
+- **Groq API key:** In `.env.local` as `GROQ_API_KEY` (for AI nutrition estimation, get from https://console.groq.com/keys - free tier: 14,400 req/day)
 
 ## Database Schema
 
@@ -29,11 +30,11 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 
 | Table | Key Columns | Notes |
 |-------|------------|-------|
-| `parks` | name, location, timezone, first_aid_locations (JSONB) | 26 parks total |
-| `restaurants` | park_id (FK), name, land, cuisine_type, hours (JSONB), lat/lon | ~600+ restaurants |
-| `menu_items` | restaurant_id (FK), name, description, price, category (enum), is_seasonal, is_fried, is_vegetarian | ~11,069 items |
-| `nutritional_data` | menu_item_id (FK), calories/carbs/fat/sugar/protein/fiber/sodium/cholesterol (all INTEGER), source (enum), confidence_score | One row per item |
-| `allergens` | menu_item_id (FK), allergen_type (TEXT), severity (enum: contains/may_contain) | ~1,200+ records |
+| `parks` | name, location, timezone, first_aid_locations (JSONB) | 41 parks total |
+| `restaurants` | park_id (FK), name, land, cuisine_type, hours (JSONB), lat/lon | 1,152 restaurants |
+| `menu_items` | restaurant_id (FK), name, description, price, category (enum), is_seasonal, is_fried, is_vegetarian | 9,261 items |
+| `nutritional_data` | menu_item_id (FK), calories/carbs/fat/sugar/protein/fiber/sodium/cholesterol (all INTEGER), source (enum), confidence_score | 9,261 rows (79% with actual values) |
+| `allergens` | menu_item_id (FK), allergen_type (TEXT), severity (enum: contains/may_contain) | 1,430 records |
 
 **Enums:** `menu_category` (entree/snack/beverage/dessert/side), `nutrition_source` (official/crowdsourced/api_lookup), `allergen_severity` (contains/may_contain)
 
@@ -79,12 +80,19 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 | `audit-nutrition.ts` | 3-pass automated audit (internal consistency, external plausibility, systematic patterns) | None (reads `audit-dump.json`) |
 | `fix-audit-findings.ts` | Fix systemic issues found by audit (over-multiplied items, missing micros, low protein) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `fix-remaining.ts` | Targeted fixes for 15 specific items still flagged after bulk fixes | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `enrich-from-allears.ts` | Match scraped AllEars data to DB items, add descriptions and photo_urls | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `enrich-from-dfb.ts` | Match scraped DFB photos to DB items using keyword extraction from filenames | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `estimate-nutrition-ai.ts` | Use Groq AI (Llama 3.3 70B) to estimate nutrition for items with descriptions but no nutrition | + GROQ_API_KEY |
+| `estimate-nutrition-keywords.ts` | Keyword-based nutrition estimation for common items (chips, fries, ice cream, etc.) without needing AI | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `check-nutrition-quality.ts` | Report on nutrition data coverage and quality (items with calories, sources, etc.) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `check-null-nutrition.ts` | List items with null calories, categorized by food type and description availability | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 
 ### Menu Sync Scrapers (in `scripts/scrapers/`)
 
 | Script | Source | Items | Notes |
 |--------|--------|-------|-------|
-| `allears-puppeteer.ts` | allears.net | 5,725 | Puppeteer scraper for Disney World (5 parks: MK, EPCOT, HS, AK, Disney Springs). Uses `.menuItems__item` selectors. URL pattern: `/dining/menu/search/all/[park]/all/all/`. 244 restaurants. |
+| `allears-puppeteer.ts` | allears.net | 5,725 | Puppeteer scraper for Disney World (5 parks: MK, EPCOT, HS, AK, Disney Springs). Uses `.menuItems__item` selectors. URL pattern: `/dining/menu/search/all/[park]/all/all/`. 244 restaurants. Extracts photo_url from menu item images. Currently blocked by Cloudflare. |
+| `dfb-puppeteer.ts` | disneyfoodblog.com | ~200 | Puppeteer scraper for Disney Food Blog review pages. Extracts food photos from review articles. Image URLs parsed from wp-content/uploads paths. Photo filenames contain item/restaurant keywords for fuzzy matching. |
 | `universal.ts` | universalorlando.com | 2,747 | Official JSON endpoints from USF, IOA, Volcano Bay, CityWalk, Epic Universe. Supports both K2 (older) and GDS (Epic Universe) CMS formats. |
 | `dollywood.ts` | dollywood.com | 446 | Puppeteer scraper for Dollywood (32 restaurants across 10 lands). Parses Bootstrap collapse accordions. Captures dietary icons (gf, v, vg). No prices published. |
 | `kings-island.ts` | sixflags.com/kingsisland | 158 | Intercepts Algolia API credentials from Next.js site, queries restaurant listing directly. Includes KNOWN_MENUS dictionary for 38 restaurants (Panda Express, Skyline Chili, LaRosa's, etc.). 40 restaurants. |
@@ -110,6 +118,12 @@ npm run sync:approve              # Import approved items to Supabase
 # After approve, run enrichment pipeline:
 # enrich-nutrition.ts → adjust-portions.ts → enrich-allergens.ts
 # Then audit: audit-dump.ts → audit-nutrition.ts → fix-audit-findings.ts → fix-remaining.ts
+
+# Enrich with AllEars descriptions and photos:
+npm run enrich:allears             # Match scraped data to DB, add descriptions/photos
+
+# AI nutrition estimation (for items with descriptions but no nutrition):
+npm run estimate:ai                # Uses Groq AI to estimate nutrition from descriptions
 ```
 
 The sync pipeline runs weekly via GitHub Actions (`.github/workflows/weekly-menu-sync.yml`).
@@ -144,6 +158,13 @@ npx tsx scripts/audit-dump.ts
 npx tsx scripts/audit-nutrition.ts       # reads audit-dump.json, writes audit-report.json
 npx tsx scripts/fix-audit-findings.ts
 npx tsx scripts/fix-remaining.ts
+
+# 9. Enrich with AllEars descriptions and photos (after scraping)
+npx tsx scripts/enrich-from-allears.ts
+
+# 10. AI nutrition estimation (for items with descriptions but no nutrition)
+# Requires GROQ_API_KEY in env
+npx tsx scripts/estimate-nutrition-ai.ts
 ```
 
 **Total corrections applied:** ~1,118 fixes across all data quality scripts (573 original + 291 Disney Springs/Downtown Disney + 254 AllEars/Dollywood/Kings Island batch).
@@ -191,7 +212,21 @@ Alcoholic drinks legitimately show caloric math gaps because the P*4+C*4+F*9 for
 | 70 | Original import data (source: official) |
 | 50-60 | Good USDA match (source: api_lookup) |
 | 40-45 | Fixed by audit scripts (data was corrected) |
-| 30 | Estimated micros (sugar/protein/sodium filled from food type heuristics) |
+| 35 | AI-estimated via Groq (source: crowdsourced) |
+| 30 | Keyword-based estimate (source: crowdsourced) |
+
+### Current Nutrition Data Coverage (as of Feb 2026)
+
+| Metric | Count | Percentage |
+|--------|-------|------------|
+| Total items | 9,261 | 100% |
+| With calories > 0 | 7,303 | 79% |
+| With null/zero calories | 1,958 | 21% |
+| AI-estimated (Groq) | 1,315 | 14% |
+| Keyword-estimated | ~550 | 6% |
+| USDA API matches | 7,368 | 80% |
+
+Items with null calories are mostly legitimate zero-calorie items (water, black coffee, tea) or items needing AI estimation when rate limits allow.
 
 ### Data Quality Regex Gotchas
 
@@ -278,6 +313,8 @@ src/
 
 - **No auth** — everything in localStorage (`dg_meal_cart`, `dg_favorites`, `dg_preferences`, `dg_checklist`)
 - **Client-side filtering** — `useMemo` in Browse.tsx, not Supabase queries (Supabase nested `.eq()` on joined tables doesn't work)
+- **Script-only packages** (`puppeteer`, `cheerio`, `groq-sdk`, `@google/generative-ai`) belong in `devDependencies`, not `dependencies` — they inflate production analysis
+- **"All Parks" query cap** — `fetchAllMenuItems()` is capped at 3000 items to limit API round-trips on mobile; per-park views are unbounded
 - **Supabase nested selects:** `restaurant:restaurants (*, park:parks (*))` syntax
 - **URL params:** Meal tracker passes carbs to Insulin Helper via `?carbs=X`
 - **ESM modules:** Scripts use `import { dirname } from 'path'; import { fileURLToPath } from 'url'; const __dirname = dirname(fileURLToPath(import.meta.url))` — no bare `__dirname`
@@ -309,6 +346,7 @@ src/
 | Sugar | <10g | 10-25g | >25g |
 | Calories | <400 | 400-700 | >700 |
 | Sodium | <500mg | 500-1000mg | >1000mg |
+| Alcohol | ≤14g (1 drink) | 15-28g (2 drinks) | >28g |
 
 ### Mobile Navigation
 - Bottom tab bar (5 tabs) below md breakpoint — research shows 40% faster task completion vs hamburger
@@ -412,6 +450,45 @@ if (/disney|magic kingdom|epcot|hollywood studios|animal kingdom/.test(n)) retur
 ```
 **Lesson:** When adding new parks to `inferLocation()`, always check if the new name substring-matches an existing broader pattern.
 
+### AllEars Scraper Blocked by Cloudflare
+**Problem:** The AllEars Puppeteer scraper started getting 403 Forbidden and timeout errors. Cloudflare bot detection blocks automated requests.
+
+**Status:** Currently non-functional. The `allears-puppeteer.ts` scraper works when Cloudflare isn't blocking, but protection seems to activate after a few requests.
+
+**Workaround:** Use Disney Food Blog (`dfb-puppeteer.ts`) instead for photos. DFB doesn't have the same level of bot protection.
+
+### Gemini API Free Tier Rate Limits (Deprecated)
+**Problem:** The Gemini free tier has aggressive rate limits. Running the AI nutrition estimation script quickly exhausts the daily quota (~50 requests/day), even with delays between requests.
+
+**Solution:** Switched to **Groq API** which offers 14,400 requests/day on free tier (vs Gemini's ~50/day).
+
+### Groq API Setup
+- Get free API key from https://console.groq.com/keys
+- Free tier: 14,400 requests/day, 30 requests/minute
+- Uses `llama-3.3-70b-versatile` model for nutrition estimation
+- Script processes 15 items per batch with 2.5s delay (~24 req/min)
+- Full estimation of ~2,200 items takes ~6 minutes
+
+### DFB Photo Matching Is Fuzzy
+**Problem:** Disney Food Blog image filenames contain keywords but don't cleanly map to menu item names. Example filename: `2024-wdw-mk-pecos-bill-rice-bowl-pinto-beans-700x525.jpg` needs to match DB item `Rice Bowl`.
+
+**Solution:** Extract keywords from filenames by:
+1. Remove date prefixes (2024, 2025, etc.)
+2. Remove location words (wdw, mk, magic, kingdom, epcot, etc.)
+3. Remove common words (menu, review, new, restaurant, etc.)
+4. Require at least 2 exact keyword matches against item name
+5. Score by matches / sqrt(item_word_count) to favor shorter, more specific names
+
+**Limitations:**
+- Only ~30% of scraped photos match to DB items
+- Some false positives when generic words match (e.g., "ice cream" matching wrong items)
+- Photos with restaurant-only keywords (no food names) can't be matched
+
+**Lesson:** Fuzzy matching from filenames works but has low yield. For better photo coverage, consider:
+- Manual photo URL entry for popular items
+- Scraping sites with structured item-to-photo relationships
+- Using image recognition to match photos to item descriptions
+
 ## Chain Restaurant Nutrition Sources
 
 Several chain restaurants at Disney Springs and Downtown Disney publish official nutrition data that could replace USDA estimates:
@@ -432,11 +509,12 @@ These could be used to upgrade `confidence_score` from 50-60 (USDA estimate) to 
 
 ## Known Issues / Future Work
 
+- `.gitattributes` normalizes line endings (`* text=auto`) — don't remove this file
 - Supabase `.eq()` on nested joined tables is silently ignored — use client-side filtering
 - Allergen data is inferred from keywords, not confirmed by parks — marked as `may_contain`
 - Nutrition data is estimated from USDA matches with portion multipliers — not official park data
 - ~913 audit flags remain (162 HIGH, 227 MEDIUM, 524 LOW — mostly alcoholic drinks, regex false positives, and items needing USDA matches — see `audit-report.json`)
-- No food photos (gradient placeholders currently used)
+- ~61 items have photos from DFB scraping (~1% coverage) — need more photo sources or manual entry
 - Favorites page not yet implemented (bottom nav links to Browse)
 - "More" page not yet implemented (settings, accessibility controls, packing list, guides)
 - Could replace USDA estimates with chain-official nutrition data for 9+ chains (see Chain Restaurant Nutrition Sources above)
@@ -446,6 +524,8 @@ These could be used to upgrade `confidence_score` from 50-60 (USDA estimate) to 
 - ~8,900 items have no USDA match (theme-park-specific names) — could add Nutritionix API or manual entry
 - Kings Island scraper relies on KNOWN_MENUS dictionary — needs updating when menus change
 - Dollywood doesn't publish prices online — price field is null for all Dollywood items
+- AI nutrition estimation (`estimate-nutrition-ai.ts`) requires GROQ_API_KEY (free tier: 14,400 req/day)
+- ~2,200 items have descriptions but no nutrition — run `npm run estimate:ai` with Groq API key to estimate
 
 ## Scraper Architecture Notes
 
@@ -470,3 +550,13 @@ These could be used to upgrade `confidence_score` from 50-60 (USDA estimate) to 
 - Items parsed from structured `.col-9.text-left` (name) and `.col-3.text-right` (price) columns
 - Captures dietary icons from `.dietary-icon` spans (gf=gluten-free, v=vegetarian, vg=vegan)
 - Category mapped from accordion section names (e.g., "Beverages" → beverage, "Sweet Tastes" → dessert)
+
+### Disney Food Blog (`dfb-puppeteer.ts`)
+- Scrapes food photos from review articles on disneyfoodblog.com
+- Image URL pattern: `https://www.disneyfoodblog.com/wp-content/uploads/YYYY/MM/[descriptive-filename]-700x525.jpg`
+- Filenames contain keywords like park, restaurant, and item names separated by hyphens
+- Scrolls page to trigger lazy-loaded images before extraction
+- Filters out non-food images (exterior, interior, sign, logo, atmosphere, character)
+- `enrich-from-dfb.ts` matches photos to DB by extracting keywords from filenames
+- Limited matching accuracy (~30%) due to inconsistent filename conventions
+- Best results from individual restaurant review pages (e.g., `/sleepy-hollow-refreshments/`)

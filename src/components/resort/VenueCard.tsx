@@ -1,32 +1,6 @@
-// src/components/resort/VenueCard.tsx
 import { Link } from 'react-router-dom'
 import type { ResortTheme } from '../../lib/resort-config'
-
-// Park emoji mapping - ordered from most specific to most general to avoid substring false matches
-const PARK_EMOJI_RULES: ReadonlyArray<{ match: RegExp; emoji: string }> = [
-  { match: /magic kingdom|disneyland park/i, emoji: '🏰' },
-  { match: /epcot/i, emoji: '🌐' },
-  { match: /hollywood|studios/i, emoji: '🎬' },
-  { match: /animal kingdom(?!.*lodge)/i, emoji: '🦁' },
-  { match: /cruise|disney magic|disney wonder|disney dream|disney fantasy|disney wish|disney treasure/i, emoji: '🚢' },
-  { match: /aulani/i, emoji: '🌺' },
-  { match: /resort|hotel|lodge/i, emoji: '🏨' },
-  { match: /epic universe/i, emoji: '🌌' },
-  { match: /universal/i, emoji: '🎢' },
-  { match: /islands/i, emoji: '🏝️' },
-  { match: /water|aquatica|blizzard|typhoon|volcano/i, emoji: '🌊' },
-  { match: /adventure|busch/i, emoji: '🎪' },
-  { match: /legoland/i, emoji: '🧱' },
-  { match: /springs|downtown disney/i, emoji: '🛍️' },
-  { match: /seaworld/i, emoji: '🐬' },
-]
-
-export function getParkEmoji(parkName: string): string {
-  for (const { match, emoji } of PARK_EMOJI_RULES) {
-    if (match.test(parkName)) return emoji
-  }
-  return '🎡'
-}
+import { getParkEmoji } from './park-emoji'
 
 interface Props {
   parkId: string
@@ -63,12 +37,12 @@ export function VenueCard({
         )}
         <div className="flex items-center gap-2 mt-1.5 text-sm text-stone-600">
           <span>{restaurantCount} {restaurantCount === 1 ? 'restaurant' : 'restaurants'}</span>
-          <span className="text-stone-400">·</span>
+          <span className="text-stone-400">|</span>
           <span>{itemCount} items</span>
         </div>
       </div>
       <svg className="w-5 h-5 text-stone-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </Link>
   )

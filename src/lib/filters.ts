@@ -17,6 +17,19 @@ export function applyFilters(
 ): MenuItemWithNutrition[] {
   let result = items
 
+  const compareNullableNumber = (
+    a: number | null | undefined,
+    b: number | null | undefined,
+    direction: 'asc' | 'desc',
+  ): number => {
+    const aMissing = a == null
+    const bMissing = b == null
+    if (aMissing && bMissing) return 0
+    if (aMissing) return 1
+    if (bMissing) return -1
+    return direction === 'asc' ? a - b : b - a
+  }
+
   if (filters.search) {
     const q = filters.search.toLowerCase()
     result = result.filter(
@@ -28,7 +41,10 @@ export function applyFilters(
   }
   if (filters.maxCarbs != null) {
     result = result.filter(
-      (i) => (getNutrition(i)?.carbs ?? 0) <= filters.maxCarbs!,
+      (i) => {
+        const carbs = getNutrition(i)?.carbs
+        return carbs != null && carbs <= filters.maxCarbs!
+      },
     )
   }
   if (filters.category) {
@@ -44,13 +60,13 @@ export function applyFilters(
   > = {
     name: (a, b) => a.name.localeCompare(b.name),
     carbsAsc: (a, b) =>
-      (getNutrition(a)?.carbs ?? 0) - (getNutrition(b)?.carbs ?? 0),
+      compareNullableNumber(getNutrition(a)?.carbs, getNutrition(b)?.carbs, 'asc'),
     carbsDesc: (a, b) =>
-      (getNutrition(b)?.carbs ?? 0) - (getNutrition(a)?.carbs ?? 0),
+      compareNullableNumber(getNutrition(a)?.carbs, getNutrition(b)?.carbs, 'desc'),
     caloriesAsc: (a, b) =>
-      (getNutrition(a)?.calories ?? 0) - (getNutrition(b)?.calories ?? 0),
+      compareNullableNumber(getNutrition(a)?.calories, getNutrition(b)?.calories, 'asc'),
     caloriesDesc: (a, b) =>
-      (getNutrition(b)?.calories ?? 0) - (getNutrition(a)?.calories ?? 0),
+      compareNullableNumber(getNutrition(a)?.calories, getNutrition(b)?.calories, 'desc'),
   }
   result = [...result].sort(sortFns[filters.sort] || sortFns.name)
 

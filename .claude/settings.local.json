@@ -7,7 +7,13 @@
       "Bash(git rev-parse:*)",
       "Bash(npm run build:*)",
       "Bash(start:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "WebFetch(domain:www.disneyfoodblog.com)",
+      "Bash(npm run scrape:dfb:*)",
+      "WebFetch(domain:console.groq.com)",
+      "Bash(grep:*)"
     ]
   }
 }

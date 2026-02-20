@@ -287,7 +287,9 @@ export function getParksForCategory(
   categoryId: string
 ): Park[] {
   const category = resort.categories.find(c => c.id === categoryId)
-  if (!category || !category.matchParkNames) return []
+  if (!category) return []
+  if (category.seasonalFilter) return getParksForResort(parks, resort)
+  if (!category.matchParkNames) return []
   return parks.filter(park =>
     category.matchParkNames!.some(pattern =>
       park.name.toLowerCase().includes(pattern.toLowerCase())

@@ -19,6 +19,12 @@ export default function ResortDetail() {
     const counts = new Map<string, number>()
 
     for (const category of resort.categories) {
+      // Seasonal categories are filtered at the menu level; avoid showing a misleading aggregate count.
+      if (category.seasonalFilter) {
+        counts.set(category.id, 0)
+        continue
+      }
+
       const categoryParks = getParksForCategory(parks, resort, category.id)
       const parkIds = new Set(categoryParks.map(p => p.id))
 

@@ -3,18 +3,20 @@ import { useSearchParams } from 'react-router-dom'
 
 export default function InsulinHelper() {
   const [searchParams] = useSearchParams()
+  const initialCarbs = Number(searchParams.get('carbs'))
 
   const [bg, setBg] = useState<number | ''>('')
   const [target, setTarget] = useState<number>(120)
   const [carbs, setCarbs] = useState<number | ''>(
-    searchParams.get('carbs') ? Number(searchParams.get('carbs')) : ''
+    Number.isFinite(initialCarbs) ? initialCarbs : ''
   )
   const [icr, setIcr] = useState<number | ''>('')
   const [cf, setCf] = useState<number | ''>('')
   const [activity, setActivity] = useState<'none' | 'mod' | 'high'>('none')
 
   const result = useMemo(() => {
-    if (!carbs || !icr || !bg) return null
+    if (carbs === '' || icr === '' || bg === '') return null
+    if (Number(icr) <= 0) return null
 
     const carbBolus = Number(carbs) / Number(icr)
     const cfVal = Number(cf)
