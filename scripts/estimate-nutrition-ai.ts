@@ -1,11 +1,15 @@
 /**
- * Estimate nutrition for menu items using Groq AI (Llama 3.3 70B).
+ * Estimate nutrition for menu items using AI models.
  * Processes items that have descriptions but missing nutrition data.
  *
+ * Model fallback chain: Groq (remote) → Ollama (local)
+ *
  * Groq free tier: 14,400 requests/day, 30 requests/minute
- * Much more generous than Gemini's free tier!
+ * Ollama: unlimited local inference (install from https://ollama.com)
  *
  * Usage: npx tsx scripts/estimate-nutrition-ai.ts
+ *        npx tsx scripts/estimate-nutrition-ai.ts --model=ollama   # force local model
+ *        npx tsx scripts/estimate-nutrition-ai.ts --ollama-model=llama3.2  # specify Ollama model
  */
 
 import { createClient } from '@supabase/supabase-js'
@@ -18,7 +22,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // Load .env.local
 const envPath = resolve(__dirname, '..', '.env.local')
-const envContent = readFileSync(envPath, 'utf-8')
+let envContent = ''
+try { envContent = readFileSync(envPath, 'utf-8') } catch { /* ok if missing */ }
 const envVars: Record<string, string> = {}
 envContent.split('\n').forEach(line => {
   const trimmed = line.trim()
@@ -28,22 +33,70 @@ envContent.split('\n').forEach(line => {
   }
 })
 
-const url = envVars['SUPABASE_URL'] || process.env.SUPABASE_URL
+const url = envVars['SUPABASE_URL'] || envVars['VITE_SUPABASE_URL'] || process.env.SUPABASE_URL
 const key = envVars['SUPABASE_SERVICE_ROLE_KEY'] || process.env.SUPABASE_SERVICE_ROLE_KEY
 const groqKey = envVars['GROQ_API_KEY'] || process.env.GROQ_API_KEY
+
+// CLI flags
+const forceModel = process.argv.find(a => a.startsWith('--model='))?.split('=')[1]
+const ollamaModelArg = process.argv.find(a => a.startsWith('--ollama-model='))?.split('=')[1]
+const OLLAMA_URL = envVars['OLLAMA_URL'] || process.env.OLLAMA_URL || 'http://localhost:11434'
+const OLLAMA_MODEL = ollamaModelArg || envVars['OLLAMA_MODEL'] || process.env.OLLAMA_MODEL || 'llama3.2'
 
 if (!url || !key) {
   console.error('Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in env')
   process.exit(1)
 }
-if (!groqKey) {
-  console.error('Set GROQ_API_KEY in env')
-  console.error('Get one from: https://console.groq.com/keys')
-  process.exit(1)
-}
 
 const supabase = createClient(url, key)
-const groq = new Groq({ apiKey: groqKey })
+
+// Groq client (may be null if no API key)
+let groq: Groq | null = null
+if (groqKey && forceModel !== 'ollama') {
+  groq = new Groq({ apiKey: groqKey })
+}
+
+/**
+ * Check if Ollama is running locally
+ */
+async function isOllamaAvailable(): Promise<boolean> {
+  try {
+    const res = await fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(3000) })
+    return res.ok
+  } catch {
+    return false
+  }
+}
+
+/**
+ * Call Ollama's local API (OpenAI-compatible chat endpoint)
+ */
+async function callOllama(systemPrompt: string, userPrompt: string): Promise<string> {
+  const res = await fetch(`${OLLAMA_URL}/api/chat`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: OLLAMA_MODEL,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userPrompt },
+      ],
+      stream: false,
+      options: { temperature: 0.3 },
+    }),
+  })
+
+  if (!res.ok) {
+    const text = await res.text()
+    throw new Error(`Ollama error ${res.status}: ${text}`)
+  }
+
+  const json = await res.json() as { message?: { content?: string } }
+  return json.message?.content || ''
+}
+
+// Track which model is being used for logging
+let activeModel: 'groq' | 'ollama' = groq ? 'groq' : 'ollama'
 
 // Validation ranges for nutrition values (per serving)
 const VALID_RANGES = {
@@ -147,35 +200,56 @@ ${itemList}`
 }
 
 /**
- * Call Groq API to estimate nutrition for a batch of items with retry logic
+ * Call the active AI model (Groq or Ollama) and parse the response
+ */
+async function callModel(systemPrompt: string, userPrompt: string): Promise<string> {
+  if (activeModel === 'groq' && groq) {
+    const completion = await groq.chat.completions.create({
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userPrompt },
+      ],
+      model: 'llama-3.3-70b-versatile',
+      temperature: 0.3,
+      max_tokens: 2048,
+    })
+    return completion.choices[0]?.message?.content || ''
+  }
+
+  // Ollama fallback
+  return callOllama(systemPrompt, userPrompt)
+}
+
+/**
+ * Try to fall back from Groq to Ollama when Groq is unavailable
+ */
+async function fallbackToOllama(): Promise<boolean> {
+  if (activeModel === 'ollama') return true // already using it
+  if (!(await isOllamaAvailable())) {
+    console.error('  Ollama not available at ' + OLLAMA_URL)
+    console.error('  Install from https://ollama.com and run: ollama pull ' + OLLAMA_MODEL)
+    return false
+  }
+  console.log(`  Falling back to Ollama (${OLLAMA_MODEL}) at ${OLLAMA_URL}`)
+  activeModel = 'ollama'
+  return true
+}
+
+/**
+ * Estimate nutrition for a batch of items with retry logic and model fallback
  */
 async function estimateBatch(items: MenuItem[], retryCount = 0): Promise<Map<string, NutritionEstimate>> {
   const MAX_RETRIES = 3
-  const prompt = buildPrompt(items)
+  const systemPrompt = 'You are a nutrition expert. Always respond with valid JSON only, no markdown formatting.'
+  const userPrompt = buildPrompt(items)
 
   try {
-    const completion = await groq.chat.completions.create({
-      messages: [
-        {
-          role: 'system',
-          content: 'You are a nutrition expert. Always respond with valid JSON only, no markdown formatting.'
-        },
-        {
-          role: 'user',
-          content: prompt
-        }
-      ],
-      model: 'llama-3.3-70b-versatile',
-      temperature: 0.3, // Lower temperature for more consistent estimates
-      max_tokens: 2048,
-    })
-
-    const text = completion.choices[0]?.message?.content || ''
+    const text = await callModel(systemPrompt, userPrompt)
 
     // Extract JSON from response
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     if (!jsonMatch) {
-      console.error('No JSON found in Groq response:', text.slice(0, 200))
+      console.error(`No JSON found in ${activeModel} response:`, text.slice(0, 200))
       return new Map()
     }
 
@@ -206,19 +280,40 @@ async function estimateBatch(items: MenuItem[], retryCount = 0): Promise<Map<str
 
     return estimates
   } catch (err: any) {
-    // Handle rate limiting with exponential backoff
-    if (err?.status === 429 && retryCount < MAX_RETRIES) {
-      const backoffMs = Math.pow(2, retryCount + 1) * 15000 // 30s, 60s, 120s - much longer waits
-      console.log(`  Rate limited, waiting ${backoffMs / 1000}s before retry ${retryCount + 1}/${MAX_RETRIES}...`)
-      await delay(backoffMs)
+    // Handle Groq rate limiting — try Ollama fallback
+    if (activeModel === 'groq' && (err?.status === 429 || err?.message?.includes('quota'))) {
+      if (retryCount < MAX_RETRIES) {
+        const backoffMs = Math.pow(2, retryCount + 1) * 15000
+        console.log(`  Groq rate limited, waiting ${backoffMs / 1000}s before retry ${retryCount + 1}/${MAX_RETRIES}...`)
+        await delay(backoffMs)
+        return estimateBatch(items, retryCount + 1)
+      }
+
+      // Groq exhausted — try Ollama
+      console.log('  Groq rate limit exhausted after retries, trying Ollama fallback...')
+      if (await fallbackToOllama()) {
+        return estimateBatch(items, 0) // reset retry count for new model
+      }
+      console.error('  No models available, skipping batch')
+      return new Map()
+    }
+
+    // Handle Groq connection/auth errors — try Ollama
+    if (activeModel === 'groq' && (err?.status === 401 || err?.status === 403 || err?.code === 'ECONNREFUSED')) {
+      console.log(`  Groq unavailable (${err?.status || err?.code}), trying Ollama fallback...`)
+      if (await fallbackToOllama()) {
+        return estimateBatch(items, 0)
+      }
+    }
+
+    // Handle Ollama errors
+    if (activeModel === 'ollama' && retryCount < 2) {
+      console.log(`  Ollama error, retrying (${retryCount + 1}/2)...`)
+      await delay(2000)
       return estimateBatch(items, retryCount + 1)
     }
 
-    if (err?.status === 429) {
-      console.error('  Rate limit exceeded after retries, skipping batch')
-    } else {
-      console.error('Failed to call Groq:', err?.message || err)
-    }
+    console.error(`Failed to call ${activeModel}:`, err?.message || err)
     return new Map()
   }
 }
@@ -272,6 +367,26 @@ async function fetchItemsNeedingNutrition(): Promise<MenuItem[]> {
 }
 
 async function estimateNutritionAI() {
+  // Determine available models
+  if (forceModel === 'ollama' || !groq) {
+    if (!groq && forceModel !== 'ollama') {
+      console.log('No GROQ_API_KEY set, checking for local Ollama...')
+    }
+    if (await isOllamaAvailable()) {
+      activeModel = 'ollama'
+      console.log(`Using Ollama (${OLLAMA_MODEL}) at ${OLLAMA_URL}`)
+    } else if (!groq) {
+      console.error('No AI models available.')
+      console.error('Either set GROQ_API_KEY in .env.local or install Ollama: https://ollama.com')
+      process.exit(1)
+    } else {
+      console.log('Ollama not available, using Groq')
+      activeModel = 'groq'
+    }
+  } else {
+    console.log('Using Groq (llama-3.3-70b-versatile) with Ollama fallback')
+  }
+
   let items = await fetchItemsNeedingNutrition()
 
   if (items.length === 0) {
@@ -320,6 +435,9 @@ async function estimateNutritionAI() {
           ? item.nutritional_data[0]
           : item.nutritional_data
 
+        // Groq (70B) gets higher confidence than local models
+        const confidenceScore = activeModel === 'groq' ? 35 : 30
+
         if (nutData?.id) {
           // Update existing record
           const { error } = await supabase
@@ -333,7 +451,7 @@ async function estimateNutritionAI() {
               fiber: estimate.fiber,
               sodium: estimate.sodium,
               source: 'crowdsourced',
-              confidence_score: 35,
+              confidence_score: confidenceScore,
             })
             .eq('id', nutData.id)
 
@@ -357,7 +475,7 @@ async function estimateNutritionAI() {
               fiber: estimate.fiber,
               sodium: estimate.sodium,
               source: 'crowdsourced',
-              confidence_score: 35,
+              confidence_score: confidenceScore,
             })
 
           if (error) {
@@ -383,6 +501,7 @@ async function estimateNutritionAI() {
 
   console.log('')
   console.log('=== AI Nutrition Estimation Complete ===')
+  console.log(`Model used: ${activeModel}${activeModel === 'ollama' ? ` (${OLLAMA_MODEL})` : ' (llama-3.3-70b-versatile)'}`)
   console.log(`Items processed: ${items.length}`)
   console.log(`Successfully estimated: ${totalEstimated}`)
   console.log(`New records inserted: ${totalInserted}`)

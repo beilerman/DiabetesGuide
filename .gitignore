@@ -28,3 +28,12 @@ dist-ssr
 # Menu sync data (large JSON files)
 data/scraped/
 data/approved/
+
+# Temp working data and outputs
+data/*.json
+!data/source.json
+!data/portion-multipliers.json
+data/pending/
+output/
+supabase/.temp/
+FA2026.json

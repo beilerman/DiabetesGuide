@@ -11,6 +11,7 @@ export interface ScrapedItem {
   description?: string
   price?: number
   category?: 'entree' | 'dessert' | 'beverage' | 'side' | 'snack'
+  photoUrl?: string
   scrapedAt: Date
   confidence: number // 0-100 based on source reliability
 }
@@ -22,6 +23,7 @@ export interface ScrapedRestaurant {
   landName?: string
   cuisineType?: string
   items: Omit<ScrapedItem, 'source' | 'parkName' | 'restaurantName' | 'landName' | 'scrapedAt' | 'confidence'>[]
+  restaurantPhotoUrl?: string
   scrapedAt: Date
 }
 

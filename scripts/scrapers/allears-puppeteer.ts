@@ -54,14 +54,13 @@ async function getRestaurantLinks(page: puppeteer.Page, parkUrl: string): Promis
           // Clean up restaurant name - remove meal type suffix like "- Lunch/Dinner"
           name = name.replace(/\s*-\s*(Snacks|All-Day|Breakfast|Lunch|Dinner|Lunch\/Dinner|Children's.*|Brunch)$/i, '').trim()
 
-          // Create a unique key based on base restaurant URL (without meal type)
-          const urlParts = href.split('/')
-          const mealType = urlParts[urlParts.length - 2] // e.g., "snacks", "lunch-dinner"
-          const restaurantSlug = urlParts[urlParts.length - 3] // e.g., "aloha-isle"
-          const baseUrl = href.replace(/\/[^/]+\/$/, '/') // Remove meal type from URL
+          // Deduplicate by restaurant base URL (drops trailing meal-type segment)
+          const restaurantKey = href
+            .replace(/\/[^/]+\/?$/, '')
+            .toLowerCase()
 
-          if (name && href.includes('/dining/menu/') && !seen.has(restaurantSlug)) {
-            seen.add(restaurantSlug)
+          if (name && href.includes('/dining/menu/') && !seen.has(restaurantKey)) {
+            seen.add(restaurantKey)
             results.push({
               name,
               url: href, // Keep one menu URL to scrape
@@ -85,7 +84,7 @@ async function getMenuItems(page: puppeteer.Page, menuUrl: string): Promise<Scra
   // Use domcontentloaded for faster loading, shorter timeout
   try {
     await page.goto(menuUrl, { waitUntil: 'domcontentloaded', timeout: 30000 })
-  } catch (err) {
+  } catch {
     // Retry once with longer timeout
     try {
       await page.goto(menuUrl, { waitUntil: 'domcontentloaded', timeout: 45000 })
@@ -99,8 +98,40 @@ async function getMenuItems(page: puppeteer.Page, menuUrl: string): Promise<Scra
 
   // Extract menu items
   const items = await page.evaluate(() => {
-    const menuItems: { itemName: string; description?: string; price?: number }[] = []
+    const menuItems: { itemName: string; description?: string; price?: number; photoUrl?: string }[] = []
     const seen = new Set<string>()
+    const toPhotoUrl = (imgEl: HTMLImageElement | null): string | undefined => {
+      if (!imgEl) return undefined
+
+      const rawSrc =
+        imgEl.getAttribute('data-src') ||
+        imgEl.getAttribute('data-lazy-src') ||
+        imgEl.getAttribute('src') ||
+        ''
+
+      if (!rawSrc || rawSrc.startsWith('data:')) return undefined
+
+      let absoluteUrl = rawSrc
+      if (rawSrc.startsWith('//')) {
+        absoluteUrl = `https:${rawSrc}`
+      } else if (!/^https?:\/\//i.test(rawSrc)) {
+        try {
+          absoluteUrl = new URL(rawSrc, window.location.href).href
+        } catch {
+          return undefined
+        }
+      }
+
+      const lower = absoluteUrl.toLowerCase()
+      const hasImageHint =
+        /\.(jpg|jpeg|png|webp|gif|avif)(\?|#|$)/i.test(absoluteUrl) ||
+        lower.includes('/wp-content/')
+
+      if (!hasImageHint) return undefined
+      if (lower.includes('placeholder') || lower.includes('icon') || lower.includes('avatar')) return undefined
+
+      return absoluteUrl
+    }
 
     // AllEars uses .menuItems__item divs with .item-title, .item-description, .item-price
     document.querySelectorAll('.menuItems__item').forEach(el => {
@@ -118,6 +149,9 @@ async function getMenuItems(page: puppeteer.Page, menuUrl: string): Promise<Scra
       const description = descEl?.textContent?.trim()
       const priceText = priceEl?.textContent?.trim() || ''
 
+      // Try to find photo URL - look for img in item card or nearby
+      const photoUrl = toPhotoUrl(el.querySelector('img') as HTMLImageElement | null)
+
       if (itemName && itemName.length > 2 && !seen.has(itemName.toLowerCase())) {
         seen.add(itemName.toLowerCase())
 
@@ -134,6 +168,7 @@ async function getMenuItems(page: puppeteer.Page, menuUrl: string): Promise<Scra
           itemName,
           description: description || undefined,
           price,
+          photoUrl,
         })
       }
     })
@@ -146,6 +181,9 @@ async function getMenuItems(page: puppeteer.Page, menuUrl: string): Promise<Scra
           const itemName = cells[0]?.textContent?.trim() || ''
           const description = cells.length >= 2 ? cells[1]?.textContent?.trim() : undefined
           const priceText = cells.length >= 3 ? cells[cells.length - 1]?.textContent?.trim() : ''
+
+          // Try to find photo in table row
+          const photoUrl = toPhotoUrl(row.querySelector('img') as HTMLImageElement | null)
 
           if (itemName && itemName.length > 2 && !seen.has(itemName.toLowerCase())) {
             // Skip header rows
@@ -170,6 +208,7 @@ async function getMenuItems(page: puppeteer.Page, menuUrl: string): Promise<Scra
               itemName,
               description: description || undefined,
               price,
+              photoUrl,
             })
           }
         }
@@ -179,9 +218,12 @@ async function getMenuItems(page: puppeteer.Page, menuUrl: string): Promise<Scra
     return menuItems
   })
 
-  // Add category inference
+  // Add category inference - spread item to preserve photoUrl
   return items.map(item => ({
-    ...item,
+    itemName: item.itemName,
+    description: item.description,
+    price: item.price,
+    photoUrl: item.photoUrl,
     category: inferCategory(item.itemName),
   }))
 }
@@ -282,7 +324,10 @@ export async function scrapeAllEarsPuppeteer(): Promise<ScrapeResult> {
 }
 
 // CLI entry point
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+const isDirectRun = typeof process.argv[1] === 'string' &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+
+if (isDirectRun) {
   scrapeAllEarsPuppeteer()
     .then(result => {
       const outputDir = resolve(__dirname, '../../data/scraped')
