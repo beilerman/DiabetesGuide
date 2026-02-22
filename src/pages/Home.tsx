@@ -1,47 +1,67 @@
-// src/pages/Home.tsx
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { useParks, useAllRestaurants, useMenuItemCounts } from '../lib/queries'
-import { ResortCard } from '../components/resort/ResortCard'
-import { RESORT_CONFIG, getParksForResort } from '../lib/resort-config'
+import { useParks, useMenuItemCounts } from '../lib/queries'
+import { findResortForPark } from '../lib/resort-config'
+import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
+import type { Park } from '../lib/types'
 
 function SkeletonCard() {
   return (
     <div className="rounded-2xl overflow-hidden shadow-md animate-pulse">
-      <div className="h-44 bg-gradient-to-br from-stone-200 to-stone-300" />
+      <div className="h-28 bg-gradient-to-br from-stone-200 to-stone-300" />
     </div>
+  )
+}
+
+function ParkCard({ park, itemCount }: { park: Park; itemCount: number }) {
+  const resort = findResortForPark(park)
+  const theme = resort ? getThemeForResort(resort.id) : DEFAULT_THEME
+
+  return (
+    <Link
+      to={`/park/${park.id}`}
+      className="block rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-200"
+    >
+      <div
+        className="relative px-4 py-5 text-white"
+        style={{ background: theme.gradient }}
+      >
+        <div className="flex items-center gap-3">
+          <span className="text-3xl">{theme.icon}</span>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-base font-bold truncate">{park.name}</h3>
+            {resort && (
+              <p className="text-white/70 text-xs">{resort.location}</p>
+            )}
+          </div>
+        </div>
+        <div className="mt-2 flex items-center gap-3 text-xs text-white/80">
+          <span>{itemCount} items</span>
+        </div>
+      </div>
+    </Link>
   )
 }
 
 export default function Home() {
   const { data: parks, isLoading, error } = useParks()
-  const { data: allRestaurants } = useAllRestaurants()
   const { data: menuItemCounts } = useMenuItemCounts()
 
-  // Compute counts per resort
-  const resortCounts = useMemo(() => {
-    if (!parks || !allRestaurants || !menuItemCounts) return new Map()
-
-    const counts = new Map<string, { restaurants: number; items: number }>()
-
-    for (const resort of RESORT_CONFIG) {
-      const resortParks = getParksForResort(parks, resort)
-      const parkIds = new Set(resortParks.map(p => p.id))
-
-      // Count restaurants in this resort's parks
-      const restaurantCount = allRestaurants.filter(r => parkIds.has(r.park_id)).length
-
-      // Count menu items in this resort's parks
-      let itemCount = 0
-      for (const parkId of parkIds) {
-        itemCount += menuItemCounts.get(parkId) || 0
-      }
-
-      counts.set(resort.id, { restaurants: restaurantCount, items: itemCount })
-    }
-
-    return counts
-  }, [parks, allRestaurants, menuItemCounts])
+  // Sort parks by item count (most items first), then alphabetically
+  const sortedParks = useMemo(() => {
+    if (!parks) return []
+    return [...parks]
+      .filter(p => {
+        const count = menuItemCounts?.get(p.id) ?? 0
+        return count > 0
+      })
+      .sort((a, b) => {
+        const countA = menuItemCounts?.get(a.id) ?? 0
+        const countB = menuItemCounts?.get(b.id) ?? 0
+        if (countB !== countA) return countB - countA
+        return a.name.localeCompare(b.name)
+      })
+  }, [parks, menuItemCounts])
 
   return (
     <div className="space-y-8">
@@ -62,7 +82,7 @@ export default function Home() {
       {/* Quick action buttons */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <Link
-          to="/browse?sort=carbsAsc"
+          to="/browse?sort=grade"
           className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 hover:border-emerald-300 hover:shadow-md transition-all"
         >
           <div className="flex-shrink-0 w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
@@ -71,13 +91,13 @@ export default function Home() {
             </svg>
           </div>
           <div className="flex-1 min-w-0">
-            <div className="font-semibold text-emerald-900">Low Carb Picks</div>
-            <div className="text-xs text-emerald-700">Browse healthiest options</div>
+            <div className="font-semibold text-emerald-900">Top Rated</div>
+            <div className="text-xs text-emerald-700">A &amp; B graded items</div>
           </div>
         </Link>
 
         <Link
-          to="/browse"
+          to="/search"
           className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-200 hover:border-teal-300 hover:shadow-md transition-all"
         >
           <div className="flex-shrink-0 w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center">
@@ -86,8 +106,8 @@ export default function Home() {
             </svg>
           </div>
           <div className="flex-1 min-w-0">
-            <div className="font-semibold text-teal-900">Browse All</div>
-            <div className="text-xs text-teal-700">Search all menu items</div>
+            <div className="font-semibold text-teal-900">Search All</div>
+            <div className="text-xs text-teal-700">Find any menu item</div>
           </div>
         </Link>
 
@@ -108,13 +128,13 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* Resort cards section */}
+      {/* Park picker grid */}
       <div>
-        <h2 className="text-2xl font-bold text-stone-900 mb-4">Choose a Destination</h2>
+        <h2 className="text-2xl font-bold text-stone-900 mb-4">Choose a Park</h2>
 
         {isLoading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[...Array(4)].map((_, i) => <SkeletonCard key={i} />)}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[...Array(6)].map((_, i) => <SkeletonCard key={i} />)}
           </div>
         )}
 
@@ -136,22 +156,15 @@ export default function Home() {
           </div>
         )}
 
-        {parks && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {RESORT_CONFIG.map(resort => {
-              const resortParks = getParksForResort(parks, resort)
-              if (resortParks.length === 0) return null
-              const counts = resortCounts.get(resort.id)
-              return (
-                <ResortCard
-                  key={resort.id}
-                  resort={resort}
-                  parkCount={resortParks.length}
-                  venueCount={counts?.restaurants ?? 0}
-                  itemCount={counts?.items ?? 0}
-                />
-              )
-            })}
+        {sortedParks.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {sortedParks.map(park => (
+              <ParkCard
+                key={park.id}
+                park={park}
+                itemCount={menuItemCounts?.get(park.id) ?? 0}
+              />
+            ))}
           </div>
         )}
       </div>
