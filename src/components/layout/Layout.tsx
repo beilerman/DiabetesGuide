@@ -1,10 +1,16 @@
+import { useState } from 'react'
 import { Outlet, useLocation, Link } from 'react-router-dom'
 import { Header } from './Header'
 import { useMealCart } from '../../hooks/useMealCart'
+import { ComparisonTray } from '../compare/ComparisonTray'
+import { ComparisonModal } from '../compare/ComparisonModal'
+import { useCompare } from '../../hooks/useCompare'
 
 export function Layout() {
   const location = useLocation()
   const { totalItemCount } = useMealCart()
+  const { compareCount } = useCompare()
+  const [showCompareModal, setShowCompareModal] = useState(false)
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/' || location.pathname.startsWith('/park/') || location.pathname.startsWith('/resort')
@@ -20,9 +26,12 @@ export function Layout() {
         Skip to main content
       </a>
       <Header />
-      <main id="main-content" className="mx-auto max-w-7xl px-4 py-6 pb-24 md:pb-6">
+      <main id="main-content" className={`mx-auto max-w-7xl px-4 py-6 md:pb-6 ${compareCount > 0 ? 'pb-36' : 'pb-24'}`}>
         <Outlet />
       </main>
+
+      <ComparisonTray onOpenModal={() => setShowCompareModal(true)} />
+      {showCompareModal && <ComparisonModal onClose={() => setShowCompareModal(false)} />}
 
       {/* Bottom navigation for mobile */}
       <nav aria-label="Main navigation" className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 shadow-lg z-40" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}>

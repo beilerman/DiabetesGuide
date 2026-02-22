@@ -6,6 +6,7 @@ import type { MenuItemWithNutrition } from '../lib/types'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
+import { useCompare } from '../hooks/useCompare'
 
 const RECENT_KEY = 'dg_recent_searches'
 const MAX_RECENT = 5
@@ -31,6 +32,7 @@ export default function Search() {
   const [expandedItem, setExpandedItem] = useState<MenuItemWithNutrition | null>(null)
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
+  const { addToCompare } = useCompare()
   const [recentSearches, setRecentSearches] = useState(getRecentSearches)
   const { data: parks } = useParks()
   const { data: items, isLoading: itemsLoading } = useMenuItems(parkId)
@@ -126,6 +128,7 @@ export default function Search() {
               onAddToMeal={addItem}
               isFavorite={isFavorite(expandedItem.id)}
               onToggleFavorite={toggle}
+              onCompare={addToCompare}
             />
           </div>
         )}

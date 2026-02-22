@@ -3,13 +3,13 @@ import { useParams, Link } from 'react-router-dom'
 import { useParks, useMenuItems, useRestaurants } from '../lib/queries'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { FilterBar } from '../components/filters/FilterBar'
-import { GradeBadge } from '../components/menu/GradeBadge'
+import { DiabetesFriendlyPicks } from '../components/park/DiabetesFriendlyPicks'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
+import { useCompare } from '../hooks/useCompare'
 import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
 import { findResortForPark } from '../lib/resort-config'
 import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
-import { getGradeForItem } from '../lib/grade'
 import type { Filters, MenuItemWithNutrition } from '../lib/types'
 
 function SkeletonCard() {
@@ -34,6 +34,7 @@ export default function ParkDetail() {
   const { data: restaurants } = useRestaurants(parkId)
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
+  const { addToCompare } = useCompare()
   const [filters, setFilters] = useState<Filters>({ ...DEFAULT_FILTERS })
   const [viewMode, setViewMode] = useState<'all' | 'byLand'>('all')
 
@@ -42,30 +43,6 @@ export default function ParkDetail() {
   const theme = resort ? getThemeForResort(resort.id) : DEFAULT_THEME
 
   const filtered = useMemo(() => applyFilters(items ?? [], filters), [items, filters])
-
-  // Top picks: best-graded items
-  const topPicks = useMemo(() => {
-    if (!items) return []
-    const graded = items
-      .map(item => {
-        const nd = item.nutritional_data?.[0]
-        const { grade, score } = getGradeForItem({
-          calories: nd?.calories ?? null,
-          carbs: nd?.carbs ?? null,
-          fat: nd?.fat ?? null,
-          protein: nd?.protein ?? null,
-          sugar: nd?.sugar ?? null,
-          fiber: nd?.fiber ?? null,
-          sodium: nd?.sodium ?? null,
-          alcoholGrams: nd?.alcohol_grams ?? null,
-        })
-        return { item, grade, score }
-      })
-      .filter(g => g.grade === 'A' || g.grade === 'B')
-      .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
-      .slice(0, 10)
-    return graded
-  }, [items])
 
   // Group items by land
   const landGroups = useMemo(() => {
@@ -122,33 +99,8 @@ export default function ParkDetail() {
       </div>
 
       {/* Diabetes-Friendly Picks carousel */}
-      {topPicks.length > 0 && (
-        <div className="px-4 py-4">
-          <h2 className="text-lg font-bold text-stone-900 mb-3">Diabetes-Friendly Picks</h2>
-          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-            {topPicks.map(({ item, grade }) => (
-              <div
-                key={item.id}
-                className="flex-shrink-0 w-52 rounded-xl bg-white border border-stone-200 shadow-sm p-3"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <GradeBadge grade={grade} size="sm" themeColor={theme.primary} />
-                  <span className="text-sm font-semibold text-stone-900 truncate">{item.name}</span>
-                </div>
-                <div className="flex items-center justify-between text-xs text-stone-600">
-                  <span className="truncate">{item.restaurant?.name}</span>
-                  <span className="font-bold text-stone-900">{item.nutritional_data?.[0]?.carbs ?? '?'}g carbs</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <Link
-            to={`/browse?park=${parkId}&sort=grade`}
-            className="inline-block mt-2 text-xs text-teal-600 hover:text-teal-700 font-medium"
-          >
-            See all A &amp; B rated items →
-          </Link>
-        </div>
+      {items && parkId && (
+        <DiabetesFriendlyPicks items={items} themeColor={theme.primary} parkId={parkId} />
       )}
 
       {/* Filter bar */}
@@ -206,6 +158,7 @@ export default function ParkDetail() {
                       onAddToMeal={addItem}
                       isFavorite={isFavorite(item.id)}
                       onToggleFavorite={toggle}
+                      onCompare={addToCompare}
                       themeColor={theme.primary}
                     />
                   ))}

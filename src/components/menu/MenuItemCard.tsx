@@ -6,6 +6,7 @@ import { GradeBadge } from './GradeBadge'
 import { DotMeter } from './DotMeter'
 import { AnnotationBadge } from './AnnotationBadge'
 import { NutritionBadge } from './NutritionBadge'
+import { BetterChoices } from './BetterChoices'
 import { sodiumColor, alcoholColor } from './nutrition-colors'
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
   isFavorite: boolean
   onToggleFavorite: (id: string) => void
   onCompare?: (item: MenuItemWithNutrition) => void
+  siblingItems?: MenuItemWithNutrition[]
   themeColor?: string
 }
 
@@ -60,7 +62,7 @@ const categoryColors: Record<string, string> = {
   side: 'bg-emerald-100 text-emerald-700',
 }
 
-export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, themeColor }: Props) {
+export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, siblingItems, themeColor }: Props) {
   const [expanded, setExpanded] = useState(false)
   const [addingToMeal, setAddingToMeal] = useState(false)
 
@@ -307,6 +309,11 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
             {/* Description */}
             {item.description && (
               <p className="text-xs text-stone-600 italic">{item.description}</p>
+            )}
+
+            {/* Better choices */}
+            {siblingItems && siblingItems.length > 0 && (
+              <BetterChoices currentItem={item} siblingItems={siblingItems} />
             )}
           </div>
         )}

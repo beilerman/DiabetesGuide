@@ -3,11 +3,13 @@ import { useMenuItems } from '../lib/queries'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
+import { useCompare } from '../hooks/useCompare'
 
 export default function Favorites() {
   const { data: items, isLoading } = useMenuItems()
   const { addItem } = useMealCart()
   const { favorites, isFavorite, toggle } = useFavorites()
+  const { addToCompare } = useCompare()
 
   const favoriteItems = useMemo(() => {
     if (!items) return []
@@ -44,6 +46,7 @@ export default function Favorites() {
               onAddToMeal={addItem}
               isFavorite={isFavorite(item.id)}
               onToggleFavorite={toggle}
+              onCompare={addToCompare}
             />
           ))}
         </div>
