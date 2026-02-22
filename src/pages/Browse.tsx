@@ -5,6 +5,7 @@ import { FilterBar } from '../components/filters/FilterBar'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
+import { useCompare } from '../hooks/useCompare'
 import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
 import type { Filters } from '../lib/types'
 
@@ -57,6 +58,7 @@ export default function Browse() {
   const { data: items, isLoading } = useMenuItems(parkId)
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
+  const { addToCompare } = useCompare()
 
   const filtered = useMemo(() => applyFilters(items ?? [], filters), [items, filters])
 
@@ -125,6 +127,7 @@ export default function Browse() {
                 onAddToMeal={addItem}
                 isFavorite={isFavorite(item.id)}
                 onToggleFavorite={toggle}
+                onCompare={addToCompare}
               />
             ))}
             {filtered.length === 0 && <EmptyState hasFilters={hasActiveFilters(filters)} />}

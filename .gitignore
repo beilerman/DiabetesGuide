@@ -37,3 +37,4 @@ data/pending/
 output/
 supabase/.temp/
 FA2026.json
+.vercel

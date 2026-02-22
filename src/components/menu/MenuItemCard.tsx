@@ -1,16 +1,68 @@
 import { useState } from 'react'
 import type { MenuItemWithNutrition, MealItem } from '../../lib/types'
+import { getGradeForItem } from '../../lib/grade'
+import { getDiabetesAnnotations } from '../../lib/annotations'
+import { GradeBadge } from './GradeBadge'
+import { DotMeter } from './DotMeter'
+import { AnnotationBadge } from './AnnotationBadge'
 import { NutritionBadge } from './NutritionBadge'
-import { carbColor, sugarColor, calorieColor, sodiumColor, alcoholColor } from './nutrition-colors'
+import { BetterChoices } from './BetterChoices'
+import { sodiumColor, alcoholColor } from './nutrition-colors'
 
 interface Props {
   item: MenuItemWithNutrition
   onAddToMeal: (item: MealItem) => void
   isFavorite: boolean
   onToggleFavorite: (id: string) => void
+  onCompare?: (item: MenuItemWithNutrition) => void
+  siblingItems?: MenuItemWithNutrition[]
+  themeColor?: string
 }
 
-export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite }: Props) {
+function carbDots(v: number): 'green' | 'amber' | 'rose' {
+  if (v <= 30) return 'green'
+  if (v <= 60) return 'amber'
+  return 'rose'
+}
+
+function calDots(v: number): 'green' | 'amber' | 'rose' {
+  if (v < 400) return 'green'
+  if (v <= 700) return 'amber'
+  return 'rose'
+}
+
+function sugarDots(v: number): 'green' | 'amber' | 'rose' {
+  if (v < 10) return 'green'
+  if (v <= 25) return 'amber'
+  return 'rose'
+}
+
+function proteinDots(v: number): 'green' | 'amber' | 'rose' {
+  if (v >= 20) return 'green'
+  if (v >= 10) return 'amber'
+  return 'rose'
+}
+
+const allergenIcons: Record<string, string> = {
+  milk: '\uD83E\uDD5B',
+  eggs: '\uD83E\uDD5A',
+  fish: '\uD83D\uDC1F',
+  shellfish: '\uD83E\uDD90',
+  tree_nuts: '\uD83C\uDF30',
+  peanuts: '\uD83E\uDD5C',
+  wheat: '\uD83C\uDF3E',
+  soybeans: '\uD83E\uDED8',
+}
+
+const categoryColors: Record<string, string> = {
+  entree: 'bg-teal-100 text-teal-700',
+  snack: 'bg-amber-100 text-amber-700',
+  beverage: 'bg-blue-100 text-blue-700',
+  dessert: 'bg-rose-100 text-rose-700',
+  side: 'bg-emerald-100 text-emerald-700',
+}
+
+export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, siblingItems, themeColor }: Props) {
   const [expanded, setExpanded] = useState(false)
   const [addingToMeal, setAddingToMeal] = useState(false)
 
@@ -24,241 +76,298 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite }
   const fiber = nd?.fiber ?? null
   const sodium = nd?.sodium ?? null
   const alcoholGrams = nd?.alcohol_grams ?? null
+  const netCarbs = carbs != null && fiber != null ? Math.max(0, carbs - fiber) : carbs
 
-  const categoryColors: Record<string, string> = {
-    entree: 'bg-teal-500',
-    snack: 'bg-amber-500',
-    beverage: 'bg-blue-500',
-    dessert: 'bg-rose-500',
-    side: 'bg-emerald-500',
-  }
+  const { grade, colors: gradeColors } = getGradeForItem({
+    calories, carbs, fat, protein, sugar, fiber, sodium,
+    alcoholGrams,
+  })
 
-  const allergenIcons: Record<string, string> = {
-    milk: '🥛',
-    eggs: '🥚',
-    fish: '🐟',
-    shellfish: '🦐',
-    tree_nuts: '🌰',
-    peanuts: '🥜',
-    wheat: '🌾',
-    soybeans: '🫘',
-  }
+  const annotations = getDiabetesAnnotations({
+    calories, carbs, sugar, fat, protein, fiber, sodium,
+    alcoholGrams: alcoholGrams ?? 0,
+    category: item.category,
+    isFried: item.is_fried,
+  })
+  const topAnnotation = annotations[0] ?? null
 
   const handleAddToMeal = () => {
     setAddingToMeal(true)
-    onAddToMeal({ id: item.id, name: item.name, carbs: carbs ?? 0, calories: calories ?? 0, fat: fat ?? 0 })
+    onAddToMeal({
+      id: item.id,
+      name: item.name,
+      carbs: carbs ?? 0,
+      calories: calories ?? 0,
+      fat: fat ?? 0,
+      protein: protein ?? 0,
+      sugar: sugar ?? 0,
+      fiber: fiber ?? 0,
+      sodium: sodium ?? 0,
+      restaurant: item.restaurant?.name,
+      parkName: item.restaurant?.park?.name,
+    })
     setTimeout(() => setAddingToMeal(false), 600)
   }
 
+  const borderColor = themeColor ?? '#0d9488'
+
   return (
-    <div className="rounded-2xl bg-white shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      {/* Gradient placeholder background */}
-      <div className="relative h-32 bg-gradient-to-br from-teal-400/20 to-emerald-400/20">
-        {/* Category badge overlay */}
-        <div className="absolute top-2 right-2">
-          <span className={`${categoryColors[item.category]} text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md uppercase tracking-wide`}>
-            {item.category}
-          </span>
+    <div
+      className="rounded-2xl bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
+      style={{ borderLeft: `3px solid ${borderColor}` }}
+    >
+      <div className="p-4">
+        {/* Top row: Grade badge + name + favorite */}
+        <div className="flex items-start gap-3">
+          <GradeBadge grade={grade} size="lg" themeColor={themeColor} />
+
+          <div className="flex-1 min-w-0">
+            <div className="flex items-start justify-between gap-2">
+              <h3 className="text-base font-semibold text-stone-900 leading-tight">{item.name}</h3>
+              <button
+                onClick={() => onToggleFavorite(item.id)}
+                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone-100 transition-colors"
+                aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+              >
+                <svg
+                  className={`w-5 h-5 ${isFavorite ? 'fill-rose-500 stroke-rose-500' : 'fill-none stroke-stone-400'}`}
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Restaurant + category */}
+            <div className="mt-0.5 flex items-center gap-2 text-xs text-stone-500">
+              {item.restaurant && (
+                <span className="truncate">{item.restaurant.name}</span>
+              )}
+              <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider ${categoryColors[item.category] ?? 'bg-stone-100 text-stone-600'}`}>
+                {item.category}
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Favorite button */}
-        <button
-          onClick={() => onToggleFavorite(item.id)}
-          className="absolute bottom-2 right-2 w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-lg hover:scale-110 transition-transform duration-200"
-          aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-        >
-          <svg
-            className={`w-7 h-7 transition-colors duration-200 ${isFavorite ? 'fill-rose-500 stroke-rose-500' : 'fill-none stroke-gray-400'}`}
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-            />
-          </svg>
-        </button>
-      </div>
+        {/* Hero nutrition row */}
+        {hasNutrition ? (
+          <div className="mt-3 flex items-end gap-4">
+            {/* Carbs hero */}
+            <div className="flex flex-col items-center">
+              <span className="text-2xl font-bold text-stone-900">{carbs ?? 0}<span className="text-sm font-normal text-stone-500">g</span></span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wide">Carbs</span>
+              <DotMeter value={carbs ?? 0} max={80} colorFn={carbDots} label="Carbs" />
+            </div>
 
-      <div className="p-4">
-        {/* Food name */}
-        <h3 className="text-lg font-semibold text-gray-900 leading-tight">{item.name}</h3>
+            {/* Net carbs */}
+            {fiber != null && fiber > 0 && netCarbs !== carbs && (
+              <div className="flex flex-col items-center">
+                <span className="text-lg font-semibold text-teal-700">{netCarbs}<span className="text-xs font-normal text-teal-600">g</span></span>
+                <span className="text-[10px] text-teal-600 uppercase tracking-wide">Net</span>
+              </div>
+            )}
 
-        {/* Restaurant/location */}
-        {item.restaurant && (
-          <div className="mt-1 flex items-center gap-1 text-sm text-gray-600">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>{item.restaurant.name}</span>
-            {item.restaurant.land && <span className="text-gray-400">• {item.restaurant.land}</span>}
+            {/* Cal */}
+            <div className="flex flex-col items-center">
+              <span className="text-lg font-semibold text-stone-700">{calories ?? 0}</span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wide">Cal</span>
+              <DotMeter value={calories ?? 0} max={1000} colorFn={calDots} label="Calories" />
+            </div>
+
+            {/* Sugar */}
+            {sugar != null && sugar > 0 && (
+              <div className="flex flex-col items-center">
+                <span className="text-lg font-semibold text-stone-700">{sugar}<span className="text-xs font-normal text-stone-500">g</span></span>
+                <span className="text-[10px] text-stone-500 uppercase tracking-wide">Sugar</span>
+                <DotMeter value={sugar} max={50} colorFn={sugarDots} label="Sugar" />
+              </div>
+            )}
+
+            {/* Protein */}
+            {protein != null && protein > 0 && (
+              <div className="flex flex-col items-center">
+                <span className="text-lg font-semibold text-stone-700">{protein}<span className="text-xs font-normal text-stone-500">g</span></span>
+                <span className="text-[10px] text-stone-500 uppercase tracking-wide">Protein</span>
+                <DotMeter value={protein} max={50} colorFn={proteinDots} label="Protein" />
+              </div>
+            )}
+
+            {/* Alcohol */}
+            {alcoholGrams != null && alcoholGrams > 0 && (
+              <div className="flex flex-col items-center">
+                <span className="text-lg font-semibold text-purple-700">{alcoholGrams}<span className="text-xs font-normal text-purple-500">g</span></span>
+                <span className="text-[10px] text-purple-500 uppercase tracking-wide">Alcohol</span>
+              </div>
+            )}
           </div>
-        )}
-
-        {/* Description */}
-        {item.description && (
-          <p className="mt-2 text-sm text-gray-600 line-clamp-2">{item.description}</p>
-        )}
-
-        {/* Primary nutrition row - CARBS (largest), Calories, Sugar */}
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          {hasNutrition ? (
-            <>
-              <NutritionBadge
-                label="Carbs"
-                value={carbs ?? 0}
-                unit="g"
-                size="lg"
-                colorFn={carbColor}
-              />
-              <NutritionBadge
-                label="Cal"
-                value={calories ?? 0}
-                unit=""
-                size="md"
-                colorFn={calorieColor}
-              />
-              {sugar != null && sugar > 0 && (
-                <NutritionBadge
-                  label="Sugar"
-                  value={sugar}
-                  unit="g"
-                  size="md"
-                  colorFn={sugarColor}
-                />
-              )}
-              {alcoholGrams != null && alcoholGrams > 0 && (
-                <NutritionBadge
-                  label="Alcohol"
-                  value={alcoholGrams}
-                  unit="g"
-                  size="md"
-                  colorFn={alcoholColor}
-                />
-              )}
-            </>
-          ) : (
-            <span className="inline-flex items-center gap-1 rounded-full border px-4 py-2 text-base font-semibold bg-stone-100 text-stone-500 border-stone-200">
+        ) : (
+          <div className="mt-3">
+            <span className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm bg-stone-100 text-stone-500 border border-stone-200">
               No nutrition data
             </span>
-          )}
-        </div>
-
-        {/* Secondary nutrition row - smaller metrics */}
-        {hasNutrition && !expanded && (protein != null || fat != null || fiber != null || sodium != null) && (
-          <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-600">
-            {protein != null && <span>Protein: {protein}g</span>}
-            {fat != null && <span>Fat: {fat}g</span>}
-            {fiber != null && <span>Fiber: {fiber}g</span>}
-            {sodium != null && <span>Sodium: {sodium}mg</span>}
           </div>
         )}
 
-        {/* Expanded nutrition details */}
-        {expanded && (
-          <div className="mt-3 p-3 bg-stone-50 rounded-xl space-y-2">
-            <div className="grid grid-cols-2 gap-2 text-sm">
-              {protein != null && (
-                <NutritionBadge label="Protein" value={protein} unit="g" size="sm" />
-              )}
-              {fat != null && (
-                <NutritionBadge label="Fat" value={fat} unit="g" size="sm" />
-              )}
-              {fiber != null && (
-                <NutritionBadge label="Fiber" value={fiber} unit="g" size="sm" />
-              )}
-              {sodium != null && (
-                <NutritionBadge label="Sodium" value={sodium} unit="mg" size="sm" colorFn={sodiumColor} />
-              )}
-              {nd?.cholesterol != null && (
-                <NutritionBadge label="Cholesterol" value={nd.cholesterol} unit="mg" size="sm" />
-              )}
-            </div>
-            {alcoholGrams != null && alcoholGrams > 0 && (
-              <p className="mt-2 text-xs text-purple-700">
-                ~{(alcoholGrams / 14).toFixed(1)} standard drinks (14g = 1 drink)
-              </p>
+        {/* Top annotation */}
+        {topAnnotation && (
+          <div className="mt-2">
+            <AnnotationBadge annotation={topAnnotation} />
+          </div>
+        )}
+
+        {/* Grade label */}
+        {gradeColors && (
+          <div className="mt-2 text-xs font-medium" style={{ color: gradeColors.bg }}>
+            {gradeColors.label}
+          </div>
+        )}
+
+        {/* Tags row */}
+        {(item.is_vegetarian || item.is_fried || item.is_seasonal) && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {item.is_vegetarian && (
+              <span className="px-2 py-0.5 bg-green-50 border border-green-200 text-green-700 text-[11px] rounded-full font-medium">
+                Vegetarian
+              </span>
+            )}
+            {item.is_fried && (
+              <span className="px-2 py-0.5 bg-orange-50 border border-orange-200 text-orange-700 text-[11px] rounded-full font-medium">
+                Fried
+              </span>
+            )}
+            {item.is_seasonal && (
+              <span className="px-2 py-0.5 bg-purple-50 border border-purple-200 text-purple-700 text-[11px] rounded-full font-medium">
+                Seasonal
+              </span>
             )}
           </div>
         )}
 
-        {/* Expand/collapse button */}
-        {hasNutrition && (protein != null || fiber != null || sodium != null || nd?.cholesterol != null) && (
+        {/* Expanded state */}
+        {expanded && hasNutrition && (
+          <div className="mt-3 p-3 bg-stone-50 rounded-xl space-y-3">
+            {/* Full nutrition grid */}
+            <div className="grid grid-cols-2 gap-2">
+              {protein != null && <NutritionBadge label="Protein" value={protein} unit="g" size="sm" />}
+              {fat != null && <NutritionBadge label="Fat" value={fat} unit="g" size="sm" />}
+              {fiber != null && <NutritionBadge label="Fiber" value={fiber} unit="g" size="sm" />}
+              {sodium != null && <NutritionBadge label="Sodium" value={sodium} unit="mg" size="sm" colorFn={sodiumColor} />}
+              {nd?.cholesterol != null && <NutritionBadge label="Cholesterol" value={nd.cholesterol} unit="mg" size="sm" />}
+              {alcoholGrams != null && alcoholGrams > 0 && (
+                <NutritionBadge label="Alcohol" value={alcoholGrams} unit="g" size="sm" colorFn={alcoholColor} />
+              )}
+            </div>
+
+            {/* Alcohol standard drinks */}
+            {alcoholGrams != null && alcoholGrams > 0 && (
+              <p className="text-xs text-purple-700">
+                ~{(alcoholGrams / 14).toFixed(1)} standard drinks (14g = 1 drink)
+              </p>
+            )}
+
+            {/* Allergens */}
+            {item.allergens && item.allergens.length > 0 && (
+              <div>
+                <div className="text-xs font-medium text-stone-600 mb-1">Allergens</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {item.allergens.map((allergen) => (
+                    <span
+                      key={allergen.id}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-50 border border-amber-200 text-amber-800 text-[11px] rounded-full"
+                    >
+                      <span>{allergenIcons[allergen.allergen_type] || '\u26A0\uFE0F'}</span>
+                      <span className="capitalize">{allergen.allergen_type.replace('_', ' ')}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* All annotations */}
+            {annotations.length > 1 && (
+              <div className="space-y-1">
+                <div className="text-xs font-medium text-stone-600 mb-1">Diabetes notes</div>
+                {annotations.slice(1).map((a, i) => (
+                  <AnnotationBadge key={i} annotation={a} />
+                ))}
+              </div>
+            )}
+
+            {/* Confidence */}
+            {nd?.confidence_score != null && (
+              <div className="text-[11px] text-stone-400">
+                Data confidence: {nd.confidence_score}% &middot; Source: {nd.source}
+              </div>
+            )}
+
+            {/* Description */}
+            {item.description && (
+              <p className="text-xs text-stone-600 italic">{item.description}</p>
+            )}
+
+            {/* Better choices */}
+            {siblingItems && siblingItems.length > 0 && (
+              <BetterChoices currentItem={item} siblingItems={siblingItems} />
+            )}
+          </div>
+        )}
+
+        {/* Expand toggle */}
+        {hasNutrition && (
           <button
             onClick={() => setExpanded(!expanded)}
             className="mt-2 text-xs text-teal-600 hover:text-teal-700 font-medium"
           >
-            {expanded ? '▼ Show less' : '▶ Full nutrition details'}
+            {expanded ? 'Show less' : 'More details'}
           </button>
         )}
 
-        {/* Allergen tags */}
-        {item.allergens && item.allergens.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
-            {item.allergens.map((allergen) => (
-              <span
-                key={allergen.id}
-                className="inline-flex items-center gap-1 px-2 py-1 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-full"
-              >
-                <span>{allergenIcons[allergen.allergen_type] || '⚠️'}</span>
-                <span className="capitalize">{allergen.allergen_type.replace('_', ' ')}</span>
-              </span>
-            ))}
-          </div>
-        )}
+        {/* Action buttons */}
+        <div className="mt-3 flex gap-2">
+          <button
+            className={`flex-1 h-10 flex items-center justify-center gap-1.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+              addingToMeal
+                ? 'bg-green-500 text-white'
+                : 'bg-teal-600 hover:bg-teal-700 text-white shadow-sm'
+            }`}
+            onClick={handleAddToMeal}
+          >
+            {addingToMeal ? (
+              <>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                </svg>
+                Added
+              </>
+            ) : (
+              <>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                </svg>
+                Add to Meal
+              </>
+            )}
+          </button>
 
-        {/* Special badges */}
-        <div className="mt-3 flex flex-wrap gap-2">
-          {item.is_vegetarian && (
-            <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-50 border border-green-200 text-green-700 text-xs rounded-full font-medium">
-              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
+          {onCompare && (
+            <button
+              className="h-10 px-3 flex items-center justify-center gap-1.5 rounded-xl text-sm font-medium border border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors"
+              onClick={() => onCompare(item)}
+              aria-label={`Compare ${item.name}`}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
-              Vegetarian
-            </span>
-          )}
-          {item.is_fried && (
-            <span className="inline-flex items-center gap-1 px-2 py-1 bg-orange-50 border border-orange-200 text-orange-700 text-xs rounded-full font-medium">
-              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" />
-              </svg>
-              Fried
-            </span>
-          )}
-          {item.is_seasonal && (
-            <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-50 border border-purple-200 text-purple-700 text-xs rounded-full font-medium">
-              ✨ Seasonal
-            </span>
+              Compare
+            </button>
           )}
         </div>
-
-        {/* Add to Meal button */}
-        <button
-          className={`mt-4 w-full h-12 flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 ${
-            addingToMeal
-              ? 'bg-green-500 text-white'
-              : 'bg-teal-600 hover:bg-teal-700 text-white shadow-md hover:shadow-lg'
-          }`}
-          onClick={handleAddToMeal}
-        >
-          {addingToMeal ? (
-            <>
-              <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-              </svg>
-              Added!
-            </>
-          ) : (
-            <>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
-              </svg>
-              Add to Meal
-            </>
-          )}
-        </button>
       </div>
     </div>
   )

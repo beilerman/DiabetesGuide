@@ -77,6 +77,40 @@ export interface MealItem {
   carbs: number
   calories: number
   fat: number
+  protein: number
+  sugar: number
+  fiber: number
+  sodium: number
+  restaurant?: string
+  parkName?: string
+}
+
+export interface MealData {
+  name: string
+  parkId: string | null
+  items: MealItem[]
+}
+
+export interface MealCartState {
+  activeMealId: string
+  meals: Record<string, MealData>
+}
+
+export interface TripMealSlot {
+  name: string
+  items: MealItem[]
+}
+
+export interface TripDay {
+  parkId: string | null
+  meals: TripMealSlot[]
+}
+
+export interface TripPlan {
+  resortId: string
+  days: TripDay[]
+  carbGoalPerMeal: number
+  mealsPerDay: number
 }
 
 export interface Filters {
@@ -86,5 +120,8 @@ export interface Filters {
   vegetarianOnly: boolean
   hideFried: boolean
   hideDrinks: boolean
-  sort: 'name' | 'carbsAsc' | 'carbsDesc' | 'caloriesAsc' | 'caloriesDesc'
+  hideAlcohol: boolean
+  gradeFilter: import('./grade').Grade[] | null
+  allergenFree: string[]
+  sort: 'name' | 'carbsAsc' | 'carbsDesc' | 'caloriesAsc' | 'caloriesDesc' | 'grade'
 }
