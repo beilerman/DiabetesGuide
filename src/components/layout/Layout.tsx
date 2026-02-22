@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Outlet, useLocation, Link } from 'react-router-dom'
 import { Header } from './Header'
+import { OfflineBanner } from './OfflineBanner'
 import { useMealCart } from '../../hooks/useMealCart'
 import { ComparisonTray } from '../compare/ComparisonTray'
 import { ComparisonModal } from '../compare/ComparisonModal'
@@ -26,6 +27,7 @@ export function Layout() {
         Skip to main content
       </a>
       <Header />
+      <OfflineBanner />
       <main id="main-content" className={`mx-auto max-w-7xl px-4 py-6 md:pb-6 ${compareCount > 0 ? 'pb-36' : 'pb-24'}`}>
         <Outlet />
       </main>
