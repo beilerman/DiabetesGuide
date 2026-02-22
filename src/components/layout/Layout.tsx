@@ -79,7 +79,7 @@ export function Layout() {
 
           {/* Plan */}
           <Link
-            to="/favorites"
+            to="/plan"
             className={`flex flex-col items-center justify-center gap-1 ${isActive('/favorites') || isActive('/plan') ? 'text-teal-600' : 'text-stone-500'}`}
           >
             <svg

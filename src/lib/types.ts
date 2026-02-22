@@ -96,6 +96,23 @@ export interface MealCartState {
   meals: Record<string, MealData>
 }
 
+export interface TripMealSlot {
+  name: string
+  items: MealItem[]
+}
+
+export interface TripDay {
+  parkId: string | null
+  meals: TripMealSlot[]
+}
+
+export interface TripPlan {
+  resortId: string
+  days: TripDay[]
+  carbGoalPerMeal: number
+  mealsPerDay: number
+}
+
 export interface Filters {
   search: string
   maxCarbs: number | null
