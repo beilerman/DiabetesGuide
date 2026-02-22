@@ -77,6 +77,23 @@ export interface MealItem {
   carbs: number
   calories: number
   fat: number
+  protein: number
+  sugar: number
+  fiber: number
+  sodium: number
+  restaurant?: string
+  parkName?: string
+}
+
+export interface MealData {
+  name: string
+  parkId: string | null
+  items: MealItem[]
+}
+
+export interface MealCartState {
+  activeMealId: string
+  meals: Record<string, MealData>
 }
 
 export interface Filters {

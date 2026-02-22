@@ -91,7 +91,19 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
 
   const handleAddToMeal = () => {
     setAddingToMeal(true)
-    onAddToMeal({ id: item.id, name: item.name, carbs: carbs ?? 0, calories: calories ?? 0, fat: fat ?? 0 })
+    onAddToMeal({
+      id: item.id,
+      name: item.name,
+      carbs: carbs ?? 0,
+      calories: calories ?? 0,
+      fat: fat ?? 0,
+      protein: protein ?? 0,
+      sugar: sugar ?? 0,
+      fiber: fiber ?? 0,
+      sodium: sodium ?? 0,
+      restaurant: item.restaurant?.name,
+      parkName: item.restaurant?.park?.name,
+    })
     setTimeout(() => setAddingToMeal(false), 600)
   }
 

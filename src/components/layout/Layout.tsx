@@ -1,11 +1,10 @@
 import { Outlet, useLocation, Link } from 'react-router-dom'
 import { Header } from './Header'
-import { MealCart } from '../meal-tracker/MealCart'
 import { useMealCart } from '../../hooks/useMealCart'
 
 export function Layout() {
   const location = useLocation()
-  const { items } = useMealCart()
+  const { totalItemCount } = useMealCart()
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/' || location.pathname.startsWith('/park/') || location.pathname.startsWith('/resort')
@@ -24,7 +23,6 @@ export function Layout() {
       <main id="main-content" className="mx-auto max-w-7xl px-4 py-6 pb-24 md:pb-6">
         <Outlet />
       </main>
-      <MealCart />
 
       {/* Bottom navigation for mobile */}
       <nav aria-label="Main navigation" className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 shadow-lg z-40" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}>
@@ -53,17 +51,17 @@ export function Layout() {
 
           {/* Meal */}
           <Link
-            to="/insulin"
-            className={`flex flex-col items-center justify-center gap-1 relative ${isActive('/insulin') || isActive('/meal') ? 'text-teal-600' : 'text-stone-500'}`}
+            to="/meal"
+            className={`flex flex-col items-center justify-center gap-1 relative ${isActive('/meal') || isActive('/insulin') ? 'text-teal-600' : 'text-stone-500'}`}
           >
             <div className="relative">
-              <svg className="w-6 h-6" fill={isActive('/insulin') || isActive('/meal') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill={isActive('/meal') || isActive('/insulin') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <rect x="3" y="3" width="18" height="18" rx="2"/>
                 <circle cx="12" cy="12" r="3"/>
               </svg>
-              {items.length > 0 && (
+              {totalItemCount > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-teal-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                  {items.length > 9 ? '9+' : items.length}
+                  {totalItemCount > 9 ? '9+' : totalItemCount}
                 </span>
               )}
             </div>
