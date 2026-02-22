@@ -20,6 +20,12 @@ const menuItems = [
     label: 'Park Day Tips',
     description: 'Managing diabetes at theme parks',
   },
+  {
+    to: '/settings',
+    icon: '⚙️',
+    label: 'Settings',
+    description: 'Text size, contrast, carb goal',
+  },
 ]
 
 export default function MoreMenu() {

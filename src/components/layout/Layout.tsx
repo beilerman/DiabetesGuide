@@ -41,9 +41,10 @@ export function Layout() {
           {/* Parks */}
           <Link
             to="/"
+            aria-current={isActive('/') ? 'page' : undefined}
             className={`flex flex-col items-center justify-center gap-1 ${isActive('/') ? 'text-teal-600' : 'text-stone-500'}`}
           >
-            <svg className="w-6 h-6" fill={isActive('/') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" aria-hidden="true" fill={isActive('/') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <span className="text-xs font-medium">Parks</span>
@@ -52,9 +53,10 @@ export function Layout() {
           {/* Search */}
           <Link
             to="/search"
+            aria-current={isActive('/search') || isActive('/browse') ? 'page' : undefined}
             className={`flex flex-col items-center justify-center gap-1 ${isActive('/search') || isActive('/browse') ? 'text-teal-600' : 'text-stone-500'}`}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <span className="text-xs font-medium">Search</span>
@@ -63,10 +65,11 @@ export function Layout() {
           {/* Meal */}
           <Link
             to="/meal"
+            aria-current={isActive('/meal') || isActive('/insulin') ? 'page' : undefined}
             className={`flex flex-col items-center justify-center gap-1 relative ${isActive('/meal') || isActive('/insulin') ? 'text-teal-600' : 'text-stone-500'}`}
           >
             <div className="relative">
-              <svg className="w-6 h-6" fill={isActive('/meal') || isActive('/insulin') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" aria-hidden="true" fill={isActive('/meal') || isActive('/insulin') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <rect x="3" y="3" width="18" height="18" rx="2"/>
                 <circle cx="12" cy="12" r="3"/>
               </svg>
@@ -82,10 +85,12 @@ export function Layout() {
           {/* Plan */}
           <Link
             to="/plan"
+            aria-current={isActive('/favorites') || isActive('/plan') ? 'page' : undefined}
             className={`flex flex-col items-center justify-center gap-1 ${isActive('/favorites') || isActive('/plan') ? 'text-teal-600' : 'text-stone-500'}`}
           >
             <svg
               className="w-6 h-6"
+              aria-hidden="true"
               fill={isActive('/favorites') || isActive('/plan') ? 'currentColor' : 'none'}
               stroke="currentColor"
               strokeWidth="2"
@@ -99,9 +104,10 @@ export function Layout() {
           {/* More */}
           <Link
             to="/more"
-            className={`flex flex-col items-center justify-center gap-1 ${isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') ? 'text-teal-600' : 'text-stone-500'}`}
+            aria-current={isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') ? 'page' : undefined}
+            className={`flex flex-col items-center justify-center gap-1 ${isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') ? 'text-teal-600' : 'text-stone-500'}`}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="12" cy="6" r="2"/>
               <circle cx="12" cy="12" r="2"/>
               <circle cx="12" cy="18" r="2"/>
