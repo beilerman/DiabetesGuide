@@ -1,0 +1,27 @@
+{
+  "parks": [
+    {
+      "id": "disney-springs",
+      "name": "Disney Springs",
+      "subtitle": "Jamba Smoothies & Bowls (Feb 2026)",
+      "menuItems": [
+        {
+          "land": "Marketplace",
+          "restaurant": "Jamba",
+          "name": "Mango-A-Go-Go, Medium",
+          "description": "Mango smoothie",
+          "price": 7.50,
+          "category": "beverage"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Jamba",
+          "name": "Acai Primo Bowl",
+          "description": "Acai bowl with toppings",
+          "price": 9.50,
+          "category": "entree"
+        }
+      ]
+    }
+  ]
+}

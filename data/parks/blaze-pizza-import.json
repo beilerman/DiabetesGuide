@@ -1,0 +1,44 @@
+{
+  "parks": [
+    {
+      "id": "disney-springs",
+      "name": "Disney Springs",
+      "subtitle": "Blaze Pizza - Official nutrition data",
+      "menuItems": [
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Art Lover Pizza, 11\"", "description": "Artichokes, mozzarella, feta, garlic, red sauce", "category": "entree", "price": 10.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "BBQ Chicken Pizza, 11\"", "description": "BBQ sauce, chicken, red onion, banana peppers, mozzarella", "category": "entree", "price": 11.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Carnivore Pizza, 11\"", "description": "Pepperoni, Italian sausage, meatballs, bacon, red sauce, mozzarella", "category": "entree", "price": 12.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Four Cheese Pizza, 11\"", "description": "Mozzarella, gorgonzola, ricotta, parmesan, red sauce", "category": "entree", "price": 10.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Green Stripe Pizza, 11\"", "description": "Vegan cheese, mushrooms, red onion, arugula, red sauce", "category": "entree", "price": 11.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Keto Pizza, 11\"", "description": "Cauliflower crust, mozzarella, ovalini, cherry tomatoes, pesto", "category": "entree", "price": 12.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Margherita Pizza, 11\"", "description": "Mozzarella, cherry tomatoes, basil, red sauce", "category": "entree", "price": 10.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Meat Eater Pizza, 11\"", "description": "Pepperoni, Italian sausage, meatballs, red sauce, mozzarella", "category": "entree", "price": 12.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Pepperoni Pizza, 11\"", "description": "Pepperoni, red sauce, mozzarella", "category": "entree", "price": 11.45},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Simple Pie Pizza, 11\"", "description": "Red sauce, mozzarella, basil", "category": "entree", "price": 9.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "The Link Pizza, 11\"", "description": "Italian sausage, peppers, onions, red sauce, mozzarella", "category": "entree", "price": 11.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Veg Out Pizza, 11\"", "description": "Mushrooms, red onion, arugula, mozzarella, red sauce", "category": "entree", "price": 10.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "White Top Pizza, 11\"", "description": "White cream sauce, mozzarella, ricotta, garlic", "category": "entree", "price": 10.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "BLT Cobb Salad", "description": "Bacon, tomatoes, hard-boiled egg, blue cheese, romaine", "category": "entree", "price": 9.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Classic Caesar Salad", "description": "Romaine, parmesan, croutons, Caesar dressing", "category": "entree", "price": 8.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Fresh Berry Salad", "description": "Mixed greens, strawberries, goat cheese, balsamic", "category": "entree", "price": 9.45},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Cheesy Bread", "description": "Dough topped with cheese and garlic", "category": "side", "price": 6.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Dough Knots", "description": "Twisted dough with olive oil and sea salt", "category": "side", "price": 4.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Garlic Dough Knots", "description": "Dough knots with roasted garlic and parmesan", "category": "side", "price": 5.45},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Fast Fire'd Meatballs", "description": "Italian meatballs in red sauce with cheese", "category": "snack", "price": 5.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Chocolate Brownie", "description": "Rich chocolate brownie", "category": "dessert", "price": 3.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "S'more Pie", "description": "Graham cracker, chocolate, marshmallow", "category": "dessert", "price": 4.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Cinnamon Sugar Dough Knots", "description": "Dough knots tossed in cinnamon sugar", "category": "dessert", "price": 5.45},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Coca-Cola, 16oz", "description": "Fountain Coca-Cola", "category": "beverage", "price": 2.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Sprite, 16oz", "description": "Fountain Sprite", "category": "beverage", "price": 2.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Minute Maid Lemonade, 16oz", "description": "Fountain lemonade", "category": "beverage", "price": 2.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Barq's Root Beer, 16oz", "description": "Fountain root beer", "category": "beverage", "price": 2.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Diet Coke, 16oz", "description": "Fountain Diet Coke", "category": "beverage", "price": 2.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Coke Zero, 16oz", "description": "Fountain Coke Zero", "category": "beverage", "price": 2.95},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Unsweetened Iced Tea, 16oz", "description": "Fresh brewed unsweetened tea", "category": "beverage", "price": 2.75},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Sweet Tea, 16oz", "description": "Fresh brewed sweet tea", "category": "beverage", "price": 2.75},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Blood Orange Lemonade, 16oz", "description": "Blood orange flavored lemonade", "category": "beverage", "price": 3.25},
+        {"land": "Town Center", "restaurant": "Blaze Pizza", "name": "Aguas Frescas (Agua de Jamaica), 16oz", "description": "Hibiscus water", "category": "beverage", "price": 3.25}
+      ]
+    }
+  ]
+}

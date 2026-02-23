@@ -1,0 +1,45 @@
+{
+  "chain_name": "Blaze Pizza",
+  "restaurant_names": ["Blaze Pizza"],
+  "park_name": "Disney Springs",
+  "source_url": "https://www.nutritionix.com/blaze-pizza/menu/premium — Nutritionix official partner data",
+  "items": [
+    {"name": "Art Lover Pizza, 11\"", "category": "entree", "calories": 780, "carbs": 96, "fat": 24, "protein": 36, "sugar": 6, "fiber": 6, "sodium": 1500},
+    {"name": "BBQ Chicken Pizza, 11\"", "category": "entree", "calories": 1020, "carbs": 114, "fat": 36, "protein": 54, "sugar": 18, "fiber": 6, "sodium": 2100},
+    {"name": "Carnivore Pizza, 11\"", "category": "entree", "calories": 1140, "carbs": 108, "fat": 54, "protein": 60, "sugar": 18, "fiber": 3, "sodium": 3300},
+    {"name": "Four Cheese Pizza, 11\"", "category": "entree", "calories": 1020, "carbs": 90, "fat": 54, "protein": 42, "sugar": 6, "fiber": 3, "sodium": 1680},
+    {"name": "Green Stripe Pizza, 11\"", "category": "entree", "calories": 840, "carbs": 102, "fat": 30, "protein": 42, "sugar": 12, "fiber": 9, "sodium": 1620},
+    {"name": "Keto Pizza, 11\"", "category": "entree", "calories": 900, "carbs": 24, "fat": 48, "protein": 84, "sugar": 12, "fiber": 6, "sodium": 1620},
+    {"name": "Margherita Pizza, 11\"", "category": "entree", "calories": 900, "carbs": 96, "fat": 42, "protein": 36, "sugar": 6, "fiber": 6, "sodium": 1620},
+    {"name": "Meat Eater Pizza, 11\"", "category": "entree", "calories": 1140, "carbs": 102, "fat": 54, "protein": 60, "sugar": 12, "fiber": 6, "sodium": 3180},
+    {"name": "Pepperoni Pizza, 11\"", "category": "entree", "calories": 1020, "carbs": 96, "fat": 48, "protein": 48, "sugar": 6, "fiber": 6, "sodium": 2220},
+    {"name": "Simple Pie Pizza, 11\"", "category": "entree", "calories": 660, "carbs": 90, "fat": 18, "protein": 30, "sugar": 3, "fiber": 3, "sodium": 1440},
+    {"name": "The Link Pizza, 11\"", "category": "entree", "calories": 1080, "carbs": 102, "fat": 48, "protein": 54, "sugar": 12, "fiber": 6, "sodium": 2760},
+    {"name": "Veg Out Pizza, 11\"", "category": "entree", "calories": 840, "carbs": 102, "fat": 30, "protein": 42, "sugar": 12, "fiber": 9, "sodium": 1620},
+    {"name": "White Top Pizza, 11\"", "category": "entree", "calories": 960, "carbs": 96, "fat": 42, "protein": 48, "sugar": 6, "fiber": 6, "sodium": 1860},
+
+    {"name": "BLT Cobb Salad", "category": "entree", "calories": 440, "carbs": 12, "fat": 37, "protein": 18, "sugar": 4, "fiber": 4, "sodium": 1210},
+    {"name": "Classic Caesar Salad", "category": "entree", "calories": 500, "carbs": 27, "fat": 37, "protein": 20, "sugar": 3, "fiber": 3, "sodium": 990},
+    {"name": "Fresh Berry Salad", "category": "entree", "calories": 300, "carbs": 21, "fat": 20, "protein": 10, "sugar": 14, "fiber": 5, "sodium": 550},
+
+    {"name": "Cheesy Bread", "category": "side", "calories": 790, "carbs": 100, "fat": 28, "protein": 30, "sugar": 6, "fiber": 4, "sodium": 1520},
+    {"name": "Dough Knots", "category": "side", "calories": 404, "carbs": 54, "fat": 14, "protein": 12, "sugar": 6, "fiber": 2, "sodium": 760},
+    {"name": "Garlic Dough Knots", "category": "side", "calories": 424, "carbs": 54, "fat": 16, "protein": 12, "sugar": 6, "fiber": 2, "sodium": 840},
+    {"name": "Fast Fire'd Meatballs", "category": "snack", "calories": 470, "carbs": 20, "fat": 31, "protein": 22, "sugar": 8, "fiber": 2, "sodium": 1180},
+
+    {"name": "Chocolate Brownie", "category": "dessert", "calories": 380, "carbs": 46, "fat": 21, "protein": 4, "sugar": 32, "fiber": 2, "sodium": 180},
+    {"name": "S'more Pie", "category": "dessert", "calories": 649, "carbs": 89, "fat": 29, "protein": 7, "sugar": 52, "fiber": 3, "sodium": 340},
+    {"name": "Cinnamon Sugar Dough Knots", "category": "dessert", "calories": 430, "carbs": 62, "fat": 14, "protein": 12, "sugar": 18, "fiber": 2, "sodium": 760},
+
+    {"name": "Coca-Cola, 16oz", "category": "beverage", "calories": 190, "carbs": 52, "fat": 0, "protein": 0, "sugar": 52, "fiber": 0, "sodium": 55},
+    {"name": "Sprite, 16oz", "category": "beverage", "calories": 190, "carbs": 51, "fat": 0, "protein": 0, "sugar": 51, "fiber": 0, "sodium": 55},
+    {"name": "Minute Maid Lemonade, 16oz", "category": "beverage", "calories": 150, "carbs": 40, "fat": 0, "protein": 0, "sugar": 36, "fiber": 0, "sodium": 25},
+    {"name": "Barq's Root Beer, 16oz", "category": "beverage", "calories": 223, "carbs": 61, "fat": 0, "protein": 0, "sugar": 61, "fiber": 0, "sodium": 62},
+    {"name": "Diet Coke, 16oz", "category": "beverage", "calories": 0, "carbs": 0, "fat": 0, "protein": 0, "sugar": 0, "fiber": 0, "sodium": 47},
+    {"name": "Coke Zero, 16oz", "category": "beverage", "calories": 0, "carbs": 0, "fat": 0, "protein": 0, "sugar": 0, "fiber": 0, "sodium": 47},
+    {"name": "Unsweetened Iced Tea, 16oz", "category": "beverage", "calories": 0, "carbs": 0, "fat": 0, "protein": 0, "sugar": 0, "fiber": 0, "sodium": 10},
+    {"name": "Sweet Tea, 16oz", "category": "beverage", "calories": 150, "carbs": 38, "fat": 0, "protein": 0, "sugar": 38, "fiber": 0, "sodium": 10},
+    {"name": "Blood Orange Lemonade, 16oz", "category": "beverage", "calories": 180, "carbs": 47, "fat": 0, "protein": 0, "sugar": 42, "fiber": 0, "sodium": 25},
+    {"name": "Aguas Frescas (Agua de Jamaica), 16oz", "category": "beverage", "calories": 100, "carbs": 25, "fat": 0, "protein": 0, "sugar": 24, "fiber": 0, "sodium": 15}
+  ]
+}

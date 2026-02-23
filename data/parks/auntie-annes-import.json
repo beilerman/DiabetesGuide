@@ -1,0 +1,35 @@
+{
+  "parks": [
+    {
+      "id": "disney-springs",
+      "name": "Disney Springs",
+      "subtitle": "Auntie Anne's Pretzels (Feb 2026)",
+      "menuItems": [
+        {
+          "land": "Marketplace",
+          "restaurant": "Auntie Anne's",
+          "name": "Original Pretzel",
+          "description": "Classic soft pretzel",
+          "price": 5.50,
+          "category": "snack"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Auntie Anne's",
+          "name": "Cinnamon Sugar Pretzel",
+          "description": "Soft pretzel with cinnamon sugar coating",
+          "price": 5.50,
+          "category": "snack"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Auntie Anne's",
+          "name": "Pretzel Dog",
+          "description": "Hot dog wrapped in pretzel dough",
+          "price": 6.50,
+          "category": "entree"
+        }
+      ]
+    }
+  ]
+}

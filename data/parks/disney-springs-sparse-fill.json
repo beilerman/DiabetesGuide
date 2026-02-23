@@ -1,0 +1,1377 @@
+{
+  "parks": [
+    {
+      "id": "disney-springs",
+      "name": "Disney Springs",
+      "subtitle": "Sparse restaurant fill - 6 restaurants expanded (Feb 2026)",
+      "lands": [
+        "Marketplace",
+        "The Landing",
+        "West Side",
+        "Town Center"
+      ],
+      "menuItems": [
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Werther's Original Caramel Butter Bar",
+          "description": "Werther's Original Caramel layered into Buttery Shortbread",
+          "price": 5.79,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Werther's Original Caramel Pecan Cluster",
+          "description": "Werther's Original Caramel layered with Roasted Salted Pecans and Milk Chocolate",
+          "price": 5.79,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Werther's Original Caramel Strawberry Butter Bar",
+          "description": "Chopped Strawberries and Strawberry-flavored Werther's Original Caramel layered into Buttery Shortbread",
+          "price": 5.79,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Mickey Apple Pie Caramel Apple",
+          "description": "Apple dipped in caramel with apple pie toppings",
+          "price": 14.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Mickey Caramel Apple with M&M'S Milk Chocolate Minis",
+          "description": "Mickey-shaped apple with caramel and M&M's",
+          "price": 14.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Pink Minnie Caramel Apple with M&M'S",
+          "description": "Pink-themed Minnie caramel apple with M&M's",
+          "price": 14.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Classic Mickey Caramel Apple with M&M'S",
+          "description": "Classic Mickey-themed caramel apple with M&M's",
+          "price": 14.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Classic Minnie Caramel Apple with M&M'S",
+          "description": "Classic Minnie-themed caramel apple with M&M's",
+          "price": 14.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Winnie the Pooh Caramel Apple",
+          "description": "Winnie the Pooh-themed caramel apple",
+          "price": 14.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Werther's Original Caramel Apple with Chopped Peanuts",
+          "description": "Caramel apple with chopped peanuts",
+          "price": 8.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Cherry Candy Apple",
+          "description": "Apple with cherry candy coating",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Werther's Original Caramel Apple",
+          "description": "Classic caramel apple with Werther's caramel",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Mickey Strawberry Cookie Sandwich with SKITTLES",
+          "description": "Strawberry cookie sandwich with SKITTLES",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Peanut Butter & Jelly Cookie Pie with M&M'S",
+          "description": "Cookie pie with PB&J and M&M's",
+          "price": 7.79,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Dark Chocolatey Dipped Strawberries",
+          "description": "Fresh strawberries dipped in dark chocolate",
+          "price": 6.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Milk Chocolatey Dipped Strawberries",
+          "description": "Fresh strawberries dipped in milk chocolate",
+          "price": 6.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Blue Cotton Candy",
+          "description": "Blue-colored cotton candy",
+          "price": 5.49,
+          "category": "snack"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Pink Cotton Candy",
+          "description": "Pink-colored cotton candy",
+          "price": 5.49,
+          "category": "snack"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Minnie Strawberry Cereal Treat with M&M'S",
+          "description": "Strawberry-flavored Minnie cereal treat with M&M's",
+          "price": 8.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Classic Mickey Cereal Treat with M&M'S",
+          "description": "Classic Mickey cereal treat with M&M's",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Classic Minnie Cereal Treat with M&M'S",
+          "description": "Classic Minnie cereal treat with M&M's",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Mickey Cereal Treat with M&M'S Milk Chocolate Minis",
+          "description": "Mickey cereal treat with M&M's Minis",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "S'Mores Cereal Treat Bar",
+          "description": "Cereal treat bar with s'mores flavoring",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Mickey Valentine Vanilla Cupcake",
+          "description": "Valentine-themed Mickey vanilla cupcake",
+          "price": 5.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Minnie Valentine Chocolate Cupcake",
+          "description": "Valentine-themed Minnie chocolate cupcake",
+          "price": 5.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Goofy Vanilla Cupcake",
+          "description": "Goofy-themed vanilla cupcake",
+          "price": 5.99,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Chocolate Fudge",
+          "description": "Classic chocolate fudge",
+          "price": 5.79,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Cookies and Cream Fudge",
+          "description": "Fudge with cookies and cream flavor",
+          "price": 5.79,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Peanut Butter and Chocolate Fudge",
+          "description": "Fudge with peanut butter and chocolate",
+          "price": 5.79,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Pink Minnie Marshmallow with M&M'S",
+          "description": "Pink Minnie-themed marshmallow treat with M&M's",
+          "price": 7.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Banana S'more",
+          "description": "S'more with banana flavoring",
+          "price": 6.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Peanut Butter & Jelly S'more",
+          "description": "S'more with PB&J flavor",
+          "price": 6.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Winnie the Pooh Marshmallow Wand",
+          "description": "Winnie the Pooh-themed marshmallow wand",
+          "price": 6.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Tigger Tail Marshmallow Wand",
+          "description": "Tigger-themed marshmallow wand",
+          "price": 6.49,
+          "category": "dessert"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Smartwater",
+          "description": "Premium bottled water",
+          "price": 6.25,
+          "category": "beverage"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "POWERADE Fruit Punch",
+          "description": "Fruit punch sports drink",
+          "price": 5.5,
+          "category": "beverage"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "POWERADE Lemon Lime",
+          "description": "Lemon lime sports drink",
+          "price": 5.5,
+          "category": "beverage"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "POWERADE Mountain Berry Blue",
+          "description": "Mountain berry blue sports drink",
+          "price": 5.5,
+          "category": "beverage"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Vitaminwater power-c",
+          "description": "Vitamin-enhanced water",
+          "price": 5.5,
+          "category": "beverage"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Coca-Cola Cherry",
+          "description": "Cherry-flavored Coca-Cola",
+          "price": 5.5,
+          "category": "beverage"
+        },
+        {
+          "land": "Marketplace",
+          "restaurant": "Goofy's Candy Company",
+          "name": "Gold Peak Sweet Tea",
+          "description": "Bottled sweet tea",
+          "price": 5.5,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Not-So-Classic Mickey Caramel Apple",
+          "description": "Granny Smith Apple with Marshmallow Ears, Werther's Original Caramel, Dark Chocolatey Coating, Black Sanding Sugar, Milk Chocolate Candies",
+          "price": 13.99,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Not-So-Classic Minnie Caramel Apple",
+          "description": "Granny Smith Apple with Marshmallow Ears, Werther's Original Caramel, Milk Chocolatey Coating, Purple Sanding Sugar, Black Bow",
+          "price": 13.99,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Mickey Caramel Apple with Chocolate Candies",
+          "description": "Granny Smith Apple with Marshmallow Ears, Werther's Original Caramel, Milk Chocolatey Coating, M&M's Candies",
+          "price": 13.99,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Evil Queen Caramel Apple",
+          "description": "Granny Smith Apple, Werther's Original Caramel, Dark Chocolatey Coating, Fondant Face, Yellow Crown",
+          "price": 13.99,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Cauldron Caramel Apple",
+          "description": "Granny Smith Apple, Werther's Original Caramel, Green Chocolatey Coating, Marshmallows, Candies, Sprinkles",
+          "price": 13.99,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Caramel 'Poison' Apple",
+          "description": "Granny Smith Apple, Werther's Original Caramel, White Chocolatey Coating, White Chocolate Skull",
+          "price": 12.99,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Candy 'Poison' Apple",
+          "description": "Red Delicious Apple, Cherry Candy Coating, Green Chocolate Skull",
+          "price": 10.99,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Werther's Original Caramel Liquor Flight",
+          "description": "Four Werther's Original Caramel Mini Squares with Liqueur Flavors (Brandy, Irish Cream, Rum, Whiskey)",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Werther's Original Caramel Apple Butter Bar",
+          "description": "Werther's Original Caramel Apple Butter with Oats and Caramel",
+          "price": 5.79,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Mickey Mint Chocolate Chip Cookie Sandwich",
+          "description": "Two Chocolate Cookies with Mint Chocolate Chip Buttercream Frosting",
+          "price": 7.79,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Large Mickey Pineapple Cookie",
+          "description": "Pineapple Cookie with Icing Design",
+          "price": 6.99,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "'Poison' Apple Cookie",
+          "description": "Sugar Cookie with Poison Apple Design",
+          "price": 6.99,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Apple Pie Cookie",
+          "description": "Apple-flavored Cookie with Cinnamon Sugar",
+          "price": 5.49,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Mickey Sugar Cookie",
+          "description": "Sugar Cookie with Pastel Coating and Sprinkles",
+          "price": 5.49,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Mickey Crisped Rice Cereal Treat",
+          "description": "Milk Chocolatey Coating, Graham Cracker Crumbs, Mini Marshmallows, Mickey Chocolate Chips",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Not-So-Classic Minnie Cereal Treat",
+          "description": "White Chocolatey Coating, Purple Sanding Sugar, M&M's, Black Chocolate Bow",
+          "price": 7.99,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Apple Pie Fudge Pie",
+          "description": "Mini Apple-flavored Fudge Pie with Apple Pieces and Cinnamon Sugar Topping in Graham Cracker Crust",
+          "price": 6.99,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Peanut Butter Fudge Pie",
+          "description": "Peanut Butter Fudge in Graham Cracker Crust",
+          "price": 6.99,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Chocolate Peanut Butter Fudge Pie",
+          "description": "Chocolate and Peanut Butter Swirled Fudge in Graham Cracker Crust",
+          "price": 6.99,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Frozen Glacier (Non-Alcoholic)",
+          "description": "Frozen slush beverage (various flavors)",
+          "price": 5.99,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Frozen Glacier (Alcoholic)",
+          "description": "Frozen slush with choice of Rum, Tequila, Vodka, Whiskey, or Cinnamon Whiskey",
+          "price": 13.5,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Coca-Cola Bottle",
+          "description": "Coca-Cola Bottle",
+          "price": 5.29,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Coca-Cola Zero Sugar Bottle",
+          "description": "Coca-Cola Zero Sugar Bottle",
+          "price": 5.29,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Diet Coke Bottle",
+          "description": "Diet Coke Bottle",
+          "price": 5.29,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "Sprite Bottle",
+          "description": "Sprite Bottle",
+          "price": 5.29,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Candy Cauldron",
+          "name": "DASANI Bottled Water",
+          "description": "DASANI Bottled Water",
+          "price": 4,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Orange Ganache Square",
+          "description": "Artisan chocolate ganache with orange flavor",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Caramel Fleur de Sel Ganache Square",
+          "description": "Salted caramel ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Coffee Ganache Square",
+          "description": "Coffee-flavored ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Chipotle Ganache Square",
+          "description": "Spicy chipotle ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Cinnamon Ganache Square",
+          "description": "Cinnamon-flavored ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Egyptian Sea Salt Ganache Square",
+          "description": "Dark chocolate with Egyptian sea salt",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Gianduja Italian Hazelnut Ganache Square",
+          "description": "Italian hazelnut ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Coconut Ganache Square",
+          "description": "Coconut-flavored ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Raspberry Ganache Square",
+          "description": "Raspberry ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Passion Fruit Ganache Square",
+          "description": "Passion fruit ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Milk Chocolate Ganache Square",
+          "description": "Classic milk chocolate ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Vanilla Ganache Square",
+          "description": "Vanilla ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Dark Chocolate 65% Ganache Square",
+          "description": "65% dark chocolate ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Peanut Butter Ganache Square",
+          "description": "Peanut butter ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Mint Ganache Square",
+          "description": "Mint-flavored ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Pistachio Ganache Square",
+          "description": "Pistachio ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Mango Curry Ganache Square",
+          "description": "Mango curry ganache (specialty flavor)",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "10-Year Tawny Port Ganache Square",
+          "description": "Port wine ganache",
+          "price": 3,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Box of Six Ganache Squares",
+          "description": "Six artisan ganache squares",
+          "price": 16,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Box of Nine Ganache Squares",
+          "description": "Nine artisan ganache squares",
+          "price": 22,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Box of Sixteen Ganache Squares",
+          "description": "Sixteen artisan ganache squares",
+          "price": 38,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Minnie Ganache Pop",
+          "description": "Cookies and Cream pop enrobed in dark chocolate",
+          "price": 8,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Mickey Ganache Pop",
+          "description": "Milk chocolate ganache enrobed in milk chocolate",
+          "price": 7.5,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Soulful New York Cheesecake Pop",
+          "description": "Cheesecake ganache layered with graham cracker ganache enrobed in 65% dark chocolate",
+          "price": 8,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Mickey Mouse Chocolate Bar",
+          "description": "Simple milk chocolate bar (8 squares)",
+          "price": 8,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Minnie Mouse Chocolate Bar",
+          "description": "Pink chocolate with dried strawberries (8 squares)",
+          "price": 8,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Pluto Chocolate Bar",
+          "description": "Chocolate with peanut butter (8 squares)",
+          "price": 8,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Goofy Chocolate Bar",
+          "description": "Dark chocolate with popping candy (8 squares)",
+          "price": 8,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Aulani Hawaii Chocolate Bar",
+          "description": "White chocolate with coconut flakes and pineapple (8 squares)",
+          "price": 8,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Made-To-Order Artisan S'mores",
+          "description": "House-made marshmallow and chocolate ganache s'mores",
+          "price": 9,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Milk Chocolate Marshmallows",
+          "description": "House-made vanilla bean marshmallows enrobed in milk chocolate",
+          "price": 9,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Chocolate-Peppermint Marshmallows",
+          "description": "House-made marshmallows with peppermint flavor",
+          "price": 10,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Chocolate Piñatas",
+          "description": "Seasonal chocolate shell filled with treats",
+          "price": 35,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Crispy Chocolate Pearls (White Chocolate)",
+          "description": "Crispy pearls coated in white chocolate",
+          "price": 6.5,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Crispy Chocolate Pearls (Milk Chocolate)",
+          "description": "Crispy pearls coated in milk chocolate",
+          "price": 6.5,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Crispy Chocolate Pearls (Dark Chocolate)",
+          "description": "Crispy pearls coated in dark chocolate",
+          "price": 6.5,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Crispy Chocolate Pearls (Caramel)",
+          "description": "Crispy pearls coated in caramel chocolate",
+          "price": 6.5,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Crispy Chocolate Pearls (Strawberry)",
+          "description": "Crispy pearls coated in strawberry chocolate",
+          "price": 6.5,
+          "category": "snack"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Chocolate Lollipops",
+          "description": "Artisan chocolate lollipops",
+          "price": 6,
+          "category": "dessert"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Malted Chocolate Chiller",
+          "description": "Cold chocolate beverage",
+          "price": 7.25,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Hot Ganache (Standard)",
+          "description": "Hot ganache made with milk, dark, and caramel chocolates blended with cream and vanilla",
+          "price": 8,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Hot Ganache with Bailey's",
+          "description": "Hot ganache served with Bailey's Original Irish Cream Liqueur",
+          "price": 12,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Rosa Regale (Glass)",
+          "description": "Sparkling red wine",
+          "price": 17,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Rosa Regale with Ganache Square Pairing",
+          "description": "Glass of Rosa Regale paired with a ganache square",
+          "price": 20,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "The Ganachery",
+          "name": "Rosa Regale (Bottle)",
+          "description": "Full bottle of sparkling red wine",
+          "price": 67,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Strawberry Fields Mimosa",
+          "description": "Dingle Irish Vodka, Luxardo Apertivo, lemon sour, house-made strawberry puree, Prosecco",
+          "price": 17,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Arthur's Old Fashioned",
+          "description": "Tullamore Dew 12 Irish Whiskey, Guinness simple syrup, orange bitters, Guinness cured bacon",
+          "price": 17,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Strawberry & Cucumber Mojito",
+          "description": "Bacardi Gold Rum, strawberry puree, muddled cucumber & mint, lime sour, ginger ale",
+          "price": 17,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Iced Irish",
+          "description": "Bushmills Original Irish Whiskey, butterscotch, Baileys Salted Caramel, cold brew coffee, whipped cream",
+          "price": 16,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Wild Rosey",
+          "description": "Glendalough Wild Rose Gin, Rockeys Botanical Liqueur, homemade rosemary syrup, lemon Pellegrino, Fever Tree premium tonic",
+          "price": 16,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "The Pale Lass",
+          "description": "Cazodores reposado tequila, Italicus liquor, hibiscus water, lemon sour, honey, topped with sparkling Fever Tree grapefruit soda",
+          "price": 16,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "New York by Nature",
+          "description": "Teeling's small batch Irish Whiskey, passionfruit puree, house-made demerara brown sugar, lemon sour, topped with Petite Sirah red wine",
+          "price": 16,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Irish Espresso Martini",
+          "description": "Slane Irish whiskey, J.F. Hadens espresso liqueur, Guinness simple syrup, chilled espresso",
+          "price": 16,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Not So Wild Rosey",
+          "description": "Seedlip Garden 108 non-alcoholic spirit, homemade rosemary syrup, lemon Pellegrino, Fever Tree premium tonic",
+          "price": 10,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "City Beautiful IPA",
+          "description": "Orange Blossom, Orlando FL - American IPA, 6.4% ABV",
+          "price": 10,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Space Cowboi Hazy Double IPA",
+          "description": "Crooked Can, Winter Garden FL - Hazy Double IPA, 8.5% ABV",
+          "price": 12,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Allagash White",
+          "description": "Allagash, Maine - Belgian-Style Wheat Ale, 5% ABV",
+          "price": 10,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Sullivan's Black Marble Stout",
+          "description": "Kilkenny, Ireland - 5.1% ABV",
+          "price": 10,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "De Cider No. 2",
+          "description": "Cider",
+          "price": 11,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Prosecco Cavit Lunetta Italy 187ml",
+          "description": "187ml bottle",
+          "price": 14,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Sauvignon Blanc",
+          "description": "White wine",
+          "price": 12,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Pinot Grigio",
+          "description": "White wine",
+          "price": 12,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Pinot Noir",
+          "description": "Red wine",
+          "price": 13,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Heineken 0.0",
+          "description": "Non-alcoholic beer",
+          "price": 8,
+          "category": "beverage"
+        },
+        {
+          "land": "The Landing",
+          "restaurant": "Paddy's Bar - Pub/Lounge",
+          "name": "Guinness 0.0",
+          "description": "Non-alcoholic Guinness",
+          "price": 8,
+          "category": "beverage"
+        },
+        {
+          "land": "West Side",
+          "restaurant": "Cilantro Urban Eatery",
+          "name": "Arepa Encantada",
+          "description": "Two South American gluten-free white corn cakes stuffed with mozzarella cheese and cilantro-avocado mayo dip",
+          "price": 10,
+          "category": "entree"
+        },
+        {
+          "land": "West Side",
+          "restaurant": "Cilantro Urban Eatery",
+          "name": "Pabellon-Ropa Vieja",
+          "description": "Venezuelan national dish with shredded flank steak braised in tomato juice, onions and peppers with white rice, black beans and sweet plantains",
+          "price": 16,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "eet Bread Service with Pimento Whipped Paneer",
+          "description": "Naan varieties, paneer cheese, vegetable sticks, chutneys",
+          "price": 19.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Tandoori Chicken Poutine",
+          "description": "Chaat masala fries, tandoori chicken, white cheddar curds, rich tomato butter sauce",
+          "price": 15.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "D.I.Y. Pani Puri (7 pcs.)",
+          "description": "Semolina puffs, beans, potatoes, tamarind, date chutney, mint water",
+          "price": 12.95,
+          "category": "snack"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Walking Taco",
+          "description": "Frito chips, spicy pork chili, Indian pico, tamarind chutney, cotija cheese",
+          "price": 12.95,
+          "category": "snack"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Samosas",
+          "description": "Potato & pea pastry, tamarind and mint chutneys",
+          "price": 11.95,
+          "category": "snack"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Crispy Flounder Sandwich",
+          "description": "Deep fried flounder with santra BBQ sauce, tikka butter",
+          "price": 16,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Chicken Tikka Naan Pizza",
+          "description": "Chicken kabab, tomato butter sauce, cheeses",
+          "price": 16.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Bhunna Paneer Flatbread",
+          "description": "Paneer curry flatbread",
+          "price": 16.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Beer Cheese Flatbread",
+          "description": "Beer cheese flatbread",
+          "price": 16.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Spicy Green Chili Naan",
+          "description": "Chilies, cilantro, clarified butter",
+          "price": 6.95,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Enchanted Noodles",
+          "description": "Lo-mein, peas, carrots, umami glaze",
+          "price": 14,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Monster Mein",
+          "description": "Lo-mein, vegetables, lava garlic umami sauce",
+          "price": 15,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Street Style Puffed Rice Salad",
+          "description": "Crispy rice, mango, strawberry, potato, chutneys",
+          "price": 12.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Samosa Chopped Salad",
+          "description": "Mixed greens, vegetables, mini samosa croutons, vinaigrette",
+          "price": 15.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Salad Enhancement",
+          "description": "Add: Tandoori chicken, paneer tikka, shrimp, or cauliflower",
+          "price": 8,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Build Your Own Bowl",
+          "description": "Choose base (cumin basmati rice, turmeric cauliflower rice, or fresh greens), kabab (tandoori chicken, paneer tikka, basil cilantro shrimp, or roasted cauliflower), and sauce (tikka, moilee, or bhunna)",
+          "price": 19.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Side Curry",
+          "description": "Side curry portion",
+          "price": 9.95,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Masala Fries",
+          "description": "Masala-spiced fries",
+          "price": 6.95,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Desi Salad",
+          "description": "Indian-style salad",
+          "price": 5.95,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Side Rice",
+          "description": "Side rice portion",
+          "price": 3.95,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Yogurt Raita",
+          "description": "Yogurt raita",
+          "price": 2.95,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Chopped Green Chilies",
+          "description": "Chopped green chilies",
+          "price": 2.95,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Mint Chutney",
+          "description": "Mint chutney",
+          "price": 1.95,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Tamarind Chutney",
+          "description": "Tamarind chutney",
+          "price": 1.95,
+          "category": "side"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Lil' Naan Pizza",
+          "description": "Kids naan pizza",
+          "price": 9.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Lil' Sliders",
+          "description": "Beef sliders with cheese",
+          "price": 9.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Crispy Chicken Fingers",
+          "description": "Crispy chicken fingers",
+          "price": 9.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "DIY PB&J",
+          "description": "DIY peanut butter & jelly",
+          "price": 9.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Veggie Skewer",
+          "description": "Vegetable skewer",
+          "price": 9.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Shrimp Skewer",
+          "description": "Shrimp skewer",
+          "price": 9.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Mac and Cheese",
+          "description": "Mac and cheese",
+          "price": 9.95,
+          "category": "entree"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Gulab Jamun Cheesecake",
+          "description": "NY-style cheesecake, gulab jamun, strawberries, saffron, cardamom",
+          "price": 11.95,
+          "category": "dessert"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Seasonal Dessert",
+          "description": "Seasonal dessert offering",
+          "price": 11.95,
+          "category": "dessert"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Monster Mash-Tini",
+          "description": "Frozen green appletini with vodka, caramel drizzle",
+          "price": 14,
+          "category": "beverage"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Mango Yogurt Lassi",
+          "description": "Mango yogurt lassi",
+          "price": 5.95,
+          "category": "beverage"
+        },
+        {
+          "land": "Town Center",
+          "restaurant": "eet by Maneet Chauhan",
+          "name": "Apple Juice",
+          "description": "Apple juice",
+          "price": 3.95,
+          "category": "beverage"
+        }
+      ]
+    }
+  ]
+}

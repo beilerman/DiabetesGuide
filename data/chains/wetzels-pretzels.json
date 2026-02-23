@@ -1,0 +1,128 @@
+{
+  "chain_name": "Wetzel's Pretzels",
+  "restaurant_names": ["Wetzel's Pretzels"],
+  "park_name": "Disney Springs",
+  "source_url": "https://www.fatsecret.com, https://www.mynetdiary.com — Third-party nutrition databases (official PDF not extractable, confidence reduced to 70)",
+  "items": [
+    {
+      "name": "Original Pretzel (with butter, salted)",
+      "category": "snack",
+      "calories": 470,
+      "carbs": 83,
+      "fat": 8,
+      "protein": 13,
+      "sugar": 3,
+      "fiber": 4,
+      "sodium": 900,
+      "price": null
+    },
+    {
+      "name": "Original Pretzel (no butter, salted)",
+      "category": "snack",
+      "calories": 400,
+      "carbs": 83,
+      "fat": 0,
+      "protein": 13,
+      "sugar": 3,
+      "fiber": 4,
+      "sodium": 900,
+      "price": null
+    },
+    {
+      "name": "Cheese Meltdown Pretzel",
+      "category": "snack",
+      "calories": 540,
+      "carbs": 84,
+      "fat": 13,
+      "protein": 17,
+      "sugar": null,
+      "fiber": null,
+      "sodium": 710,
+      "price": null
+    },
+    {
+      "name": "Almond Crunch Pretzel",
+      "category": "snack",
+      "calories": 500,
+      "carbs": 88,
+      "fat": 9,
+      "protein": 13,
+      "sugar": null,
+      "fiber": null,
+      "sodium": 510,
+      "price": null
+    },
+    {
+      "name": "Sinful Cinnamon Pretzel",
+      "category": "snack",
+      "calories": 490,
+      "carbs": 90,
+      "fat": 9,
+      "protein": 12,
+      "sugar": null,
+      "fiber": null,
+      "sodium": 510,
+      "price": null
+    },
+    {
+      "name": "Pepperoni Twist Pretzel",
+      "category": "snack",
+      "calories": 550,
+      "carbs": 75,
+      "fat": 18,
+      "protein": 18,
+      "sugar": null,
+      "fiber": null,
+      "sodium": 950,
+      "price": null
+    },
+    {
+      "name": "Jalaroni Pretzel",
+      "category": "snack",
+      "calories": 590,
+      "carbs": 45,
+      "fat": 17,
+      "protein": 18,
+      "sugar": null,
+      "fiber": null,
+      "sodium": 1130,
+      "price": null
+    },
+    {
+      "name": "Jalapeño Cheese Pretzel",
+      "category": "snack",
+      "calories": 560,
+      "carbs": 84,
+      "fat": 15,
+      "protein": 17,
+      "sugar": null,
+      "fiber": null,
+      "sodium": null,
+      "price": null
+    },
+    {
+      "name": "Wetzel Dog",
+      "category": "entree",
+      "calories": 450,
+      "carbs": 35,
+      "fat": 27,
+      "protein": 17,
+      "sugar": null,
+      "fiber": null,
+      "sodium": null,
+      "price": null
+    },
+    {
+      "name": "Pretzel Bites",
+      "category": "snack",
+      "calories": 450,
+      "carbs": 80,
+      "fat": 11,
+      "protein": 9,
+      "sugar": null,
+      "fiber": null,
+      "sodium": null,
+      "price": null
+    }
+  ]
+}
