@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 
 const sb = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!)
-const DRY_RUN = process.argv.includes('--dry-run')
+const DRY_RUN = !process.argv.includes('--apply')
 
 // ── Types ────────────────────────────────────────────────────────────────
 
@@ -94,32 +94,106 @@ function expectedMinCalFromDesc(
   return base
 }
 
-// ── Detection: should this item be fixed? ────────────────────────────────
+// ── Minimum calorie thresholds per dish type (for name-based detection) ───
+// If an item's name matches a dish profile and calories are below minCal,
+// it's flagged regardless of description content.
+const DISH_MIN_CAL: Record<string, number> = {
+  kids_meal: 150,
+  wings: 300,
+  nachos: 350,
+  bbq_platter: 500,
+  burger: 350,
+  sandwich: 300,
+  pasta: 350,
+  noodle_bowl: 300,
+  pizza: 300,
+  taco: 200,
+  soup: 150,
+  fried_entree: 300,
+  grilled_entree: 300,
+  salad: 200,
+  sushi_roll: 150,
+  poke_bowl: 250,
+  breakfast: 300,
+  appetizer: 150,
+  dessert: 150,
+  side: 100,
+  generic_entree: 300,
+}
 
-function shouldFix(item: Item, nd: NutRow): { expected: number; severity: string } | null {
+// Beverage detection for items miscategorized as food
+function isLikelyDrink(item: Item): boolean {
+  const n = item.name.toLowerCase()
+  if (item.category === 'beverage') return true
+  // Alcoholic drinks
+  if (/\b(beer|ale|lager|ipa|pilsner|stout|porter|wine|cocktail|margarita|mojito|daiquiri|martini|sangria|spritz|mule|bellini|mimosa|sour|fizz|highball|toddy|negroni|paloma|sazerac|flight)\b/i.test(n) &&
+      !/cake|cookie|brownie|sauce|batter|bread|ice cream/i.test(n)) return true
+  // Spirit names
+  if (/\b(tequila|mezcal|vodka|bourbon|whisky|whiskey|scotch|rum|gin|brandy|sake|soju)\b/i.test(n) &&
+      !/sauce|glaze|cake|braised/i.test(n)) return true
+  // Specific wine varietals
+  if (/\b(chardonnay|cabernet|merlot|pinot|riesling|prosecco|champagne|rosé|shiraz|malbec)\b/i.test(n)) return true
+  // Non-alcoholic drinks
+  if (/\b(cold brew|espresso|latte|cappuccino|americano|smoothie|milkshake|juice|soda|lemonade|tea\b|matcha|refresher|slush)\b/i.test(n) &&
+      !/cake|cookie|crust|sauce/i.test(n)) return true
+  // Beer brands
+  if (/\b(modelo|corona|heineken|budweiser|stella|yuengling|peroni|strongbow|blue moon|high noon)\b/i.test(n)) return true
+  return false
+}
+
+// ── Detection: should this item be fixed? ────────────────────────────────
+// Dual approach: name-based profile detection + description-based ingredient detection
+
+function shouldFix(item: Item, nd: NutRow): { expected: number; severity: string; method: string } | null {
   if (!nd.calories || nd.calories <= 0) return null
-  if (!item.description || item.description.length < 15) return null
 
   // Skip high-confidence official data
   if ((nd.confidence_score ?? 0) >= 80 && nd.source === 'official') return null
 
-  // Skip prix fixe / tasting menu / buffet items (too variable)
+  // Skip beverages
+  if (isLikelyDrink(item)) return null
+
+  // Skip prix fixe / tasting menu / buffet / topping / add-on items
   const n = item.name.toLowerCase()
   if (/prix fixe|tasting menu|buffet|all.you.can/i.test(n)) return null
+  if (/^(topping|add-on|side of|extra|garnish|dipping sauce|dressing)/i.test(n)) return null
+  // Skip generic menu section headers
+  if (/^(sides|drinks|desserts|appetizers|entrees|beverages|salads|soups|specials)$/i.test(n.trim())) return null
+  // Skip items named "Salad Enhancement", "Add Protein", etc.
+  if (/^(salad enhancement|add protein|add .* to)/i.test(n)) return null
 
-  const { fatHits, carbHits, proteinHits } = countIngredientHits(item.description!)
-  const totalHits = fatHits.length + carbHits.length + proteinHits.length
-  if (totalHits < 2) return null
-
-  const expectedMin = expectedMinCalFromDesc(fatHits, carbHits, proteinHits, item.category)
   const cal = nd.calories
 
-  if (cal < expectedMin * 0.4) {
-    return { expected: expectedMin, severity: 'CRITICAL' }
+  // ── Method 1: Name-based profile detection ─────────────────────────
+  // If the item name clearly identifies a dish type, check against minimum
+  const profile = detectDishType(item)
+  const minCal = DISH_MIN_CAL[profile.type] ?? 200
+
+  // Only use name-based detection for specific dish profiles
+  // Generic fallbacks (generic_entree, appetizer, dessert, side) are too broad
+  const isSpecificProfile = !['generic_entree', 'appetizer', 'dessert', 'side'].includes(profile.type)
+
+  if (isSpecificProfile && cal < minCal) {
+    const severity = cal < minCal * 0.5 ? 'CRITICAL' : 'SIGNIFICANT'
+    return { expected: profile.baseCal, severity, method: `name:${profile.type}` }
   }
-  if (cal < expectedMin * 0.6) {
-    return { expected: expectedMin, severity: 'SIGNIFICANT' }
+
+  // ── Method 2: Description-based ingredient detection ───────────────
+  const desc = item.description
+  if (desc && desc.length >= 15) {
+    const { fatHits, carbHits, proteinHits } = countIngredientHits(desc)
+    const totalHits = fatHits.length + carbHits.length + proteinHits.length
+    if (totalHits >= 2) {
+      const expectedMin = expectedMinCalFromDesc(fatHits, carbHits, proteinHits, item.category)
+      if (cal < expectedMin * 0.5) {
+        return { expected: expectedMin, severity: 'CRITICAL', method: 'desc' }
+      }
+      if (cal < expectedMin * 0.7) {
+        return { expected: expectedMin, severity: 'SIGNIFICANT', method: 'desc' }
+      }
+    }
   }
+
   return null
 }
 
@@ -182,7 +256,10 @@ function detectDishType(item: Item): DishProfile {
     return findProfile('bbq_platter')
   if (/burger|cheeseburger/i.test(n)) return findProfile('burger')
   // "wrap" must be a standalone word, not part of "wrapped"
-  if (/sandwich|sub\b|po.boy|panini|\bwrap\b|hoagie/i.test(n)) return findProfile('sandwich')
+  // Exclude cookie/ice cream sandwiches (desserts) and restaurant name matches (Earl of Sandwich Chips)
+  if (/sandwich|sub\b|po.boy|panini|\bwrap\b|hoagie/i.test(n) &&
+      !/cookie sandwich|ice cream sandwich|chips|chip\b|make any/i.test(n))
+    return findProfile('sandwich')
   if (/pasta|paccheri|penne|spaghetti|fettuccine|gnocchi|mac.*cheese|alfredo/i.test(n))
     return findProfile('pasta')
   if (/pad thai|ramen|pho|noodle|lo mein|stir.fry|fried rice/i.test(n))
@@ -192,19 +269,29 @@ function detectDishType(item: Item): DishProfile {
   // "chili" only matches soup when not paired with fries/dog/burger/nachos
   if (/soup|chowder|gumbo|bisque/i.test(n)) return findProfile('soup')
   if (/\bchili\b/i.test(n) && !/fries|tots|dog|burger|nachos|cheese fries/i.test(n)) return findProfile('soup')
-  if (/salad|slaw/i.test(n) && item.category === 'entree') return findProfile('salad')
+  // Salad — exclude fruit salads (legitimately low cal) and simple side salads
+  if (/salad|slaw/i.test(n) && item.category === 'entree' &&
+      !/fruit salad|tropical salad|side salad|house salad|green salad|garden salad|mixed green/i.test(n))
+    return findProfile('salad')
   // Exclude cinnamon/cinnabon rolls from sushi detection
   if ((/\broll\b|sushi|maki/i.test(n)) && !/cinnamon|cinnabon/i.test(n)) return findProfile('sushi_roll')
   if (/poke|bowl/i.test(n) && /chicken|beef|fish|shrimp|salmon|tuna|pork/i.test(both))
     return findProfile('poke_bowl')
-  if (/breakfast|brunch|pancake|waffle|biscuit|omelet|benedict/i.test(n))
+  if (/breakfast|brunch|pancake|biscuit|omelet|benedict/i.test(n))
+    return findProfile('breakfast')
+  // Waffle matches breakfast ONLY if not a cone/bowl/bubble waffle (those are desserts)
+  if (/waffle/i.test(n) && !/cone|bowl|sundae|bubble waffle/i.test(n))
     return findProfile('breakfast')
 
-  // Cooking method based
-  if (/fried|crispy|battered|tempura|breaded/i.test(n) && item.category === 'entree')
-    return findProfile('fried_entree')
-  if (/grilled|roasted|braised/i.test(n) && item.category === 'entree')
-    return findProfile('grilled_entree')
+  // Cooking method based — require the item to contain a protein source (not just a vegetable/starch)
+  const hasProteinInName = /chicken|beef|steak|pork|lamb|duck|turkey|shrimp|fish|salmon|tuna|mahi|cod|grouper|tilapia|lobster|crab|scallop|mussel|rib\b|brisket|short rib|filet|fillet|chop\b|loin|tenderloin|meatball|sausage|calamari|octopus/i.test(n)
+  if (hasProteinInName) {
+    if (/fried|crispy|battered|tempura|breaded/i.test(n) && item.category === 'entree' &&
+        !/^(fried ricotta|crispy calamari|crispy spring roll|pan.fried potsticker)/i.test(n))
+      return findProfile('fried_entree')
+    if (/grilled|roasted|braised|seared/i.test(n) && item.category === 'entree')
+      return findProfile('grilled_entree')
+  }
 
   // Category fallbacks
   if (item.category === 'snack') return findProfile('appetizer')
@@ -364,6 +451,7 @@ interface Fix {
   park: string
   dishType: string
   severity: string
+  method: string
   nutId: string
   oldCal: number
   newCal: number
@@ -386,7 +474,7 @@ interface Fix {
 }
 
 async function main() {
-  console.log(`${DRY_RUN ? '🔍 DRY RUN' : '🔧 LIVE RUN'} — Fix description-nutrition mismatches\n`)
+  console.log(DRY_RUN ? '=== DRY RUN (use --apply to write) ===' : '=== APPLYING DESCRIPTION-BASED FIXES ===')
   console.log('Fetching all menu items...')
   const items = await fetchAll()
   console.log(`Fetched ${items.length} items\n`)
@@ -417,6 +505,7 @@ async function main() {
       park: r?.park?.name ?? '?',
       dishType: est.dishType,
       severity: detection.severity,
+      method: detection.method,
       nutId: nd.id,
       oldCal: nd.calories ?? 0,
       newCal: est.calories,
@@ -463,10 +552,10 @@ async function main() {
         const typeCount = group.filter(g => g.dishType === currentType).length
         console.log(`\n  [${currentType.toUpperCase().replace(/_/g, ' ')}] (${typeCount})`)
       }
-      console.log(`  ${f.itemName}`)
+      console.log(`  ${f.itemName}  [${f.method}]`)
       console.log(`    ${f.restaurant} @ ${f.park}`)
-      console.log(`    "${f.description.slice(0, 140)}${f.description.length > 140 ? '...' : ''}"`)
-      console.log(`    ingredients: ${f.ingredients.join(', ') || '(base only)'}`)
+      if (f.description) console.log(`    "${f.description.slice(0, 140)}${f.description.length > 140 ? '...' : ''}"`)
+      if (f.ingredients.length) console.log(`    ingredients: ${f.ingredients.join(', ')}`)
       console.log(`    cal: ${f.oldCal} → ${f.newCal}  |  fat: ${f.oldFat ?? '?'} → ${f.newFat}g  |  carbs: ${f.oldCarbs ?? '?'} → ${f.newCarbs}g  |  pro: ${f.oldProtein ?? '?'} → ${f.newProtein}g`)
     }
   }
@@ -478,12 +567,19 @@ async function main() {
   const bySeverity: Record<string, number> = {}
   const byType: Record<string, number> = {}
   const byPark: Record<string, number> = {}
+  const byMethod: Record<string, number> = {}
   let totalCalDelta = 0
   for (const f of fixes) {
     bySeverity[f.severity] = (bySeverity[f.severity] ?? 0) + 1
     byType[f.dishType] = (byType[f.dishType] ?? 0) + 1
     byPark[f.park] = (byPark[f.park] ?? 0) + 1
+    byMethod[f.method] = (byMethod[f.method] ?? 0) + 1
     totalCalDelta += (f.newCal - f.oldCal)
+  }
+
+  console.log('\nBy detection method:')
+  for (const [m, count] of Object.entries(byMethod).sort((a, b) => b[1] - a[1])) {
+    console.log(`  ${m.padEnd(25)} ${count}`)
   }
 
   console.log('\nBy severity:')
@@ -539,7 +635,7 @@ async function main() {
     }
     console.log(`\nApplied ${applied}/${fixes.length} fixes`)
   } else if (DRY_RUN) {
-    console.log('\n(Dry run — no changes applied. Remove --dry-run to apply.)')
+    console.log('\n  Run with --apply to write changes')
   }
 }
 
