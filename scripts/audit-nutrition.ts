@@ -213,7 +213,8 @@ const profiles: FoodProfile[] = [
   { pattern: /caesar salad/i, calRange: [300, 700], carbRange: [15, 40], fatRange: [20, 45], proteinRange: [15, 40], label: 'caesar salad' },
   { pattern: /brownie/i, calRange: [300, 800], carbRange: [40, 100], fatRange: [15, 45], proteinRange: [3, 12], label: 'brownie' },
   { pattern: /milkshake|shake/i, calRange: [400, 1100], carbRange: [50, 130], fatRange: [15, 50], proteinRange: [8, 20], label: 'milkshake' },
-  { pattern: /latte|cold brew|cappuccino/i, calRange: [5, 500], carbRange: [0, 60], fatRange: [0, 20], proteinRange: [0, 15], label: 'coffee drink' },
+  { pattern: /platter|combo|feast|sampler/i, calRange: [600, 1800], carbRange: [40, 200], fatRange: [20, 80], proteinRange: [25, 120], label: 'platter/combo' },
+  { pattern: /\blatte\b|cold brew|\bcappuccino\b/i, calRange: [5, 500], carbRange: [0, 60], fatRange: [0, 20], proteinRange: [0, 15], label: 'coffee drink' },
   { pattern: /\bbeer\b(?!.*(?:butter|batter|brined|braised|cheese|glazed|marinated|infused|float|root))/i, calRange: [100, 350], carbRange: [5, 30], fatRange: [0, 2], proteinRange: [0, 5], label: 'beer' },
   { pattern: /\bwine\b(?!.*(?:braised|reduction|sauce|vinaigrette|marinated|glazed|infused|cupcake|cake|country|bar))/i, calRange: [100, 250], carbRange: [2, 15], fatRange: [0, 1], proteinRange: [0, 2], label: 'wine' },
   { pattern: /margarita|mojito|sangria|(?<!shrimp |fruit |prawn |seafood )cocktail/i, calRange: [150, 500], carbRange: [15, 60], fatRange: [0, 5], proteinRange: [0, 3], label: 'cocktail' },
@@ -224,8 +225,8 @@ const profiles: FoodProfile[] = [
   { pattern: /cookie/i, calRange: [200, 1000], carbRange: [25, 120], fatRange: [10, 50], proteinRange: [2, 15], label: 'cookie' },
   { pattern: /wrap|burrito/i, calRange: [350, 1000], carbRange: [30, 80], fatRange: [15, 50], proteinRange: [15, 45], label: 'wrap/burrito' },
   { pattern: /sandwich|panini|sub/i, calRange: [350, 1200], carbRange: [30, 80], fatRange: [15, 55], proteinRange: [15, 50], label: 'sandwich' },
-  { pattern: /steak|filet|ribeye|rib.eye|prime rib/i, calRange: [400, 1200], carbRange: [0, 30], fatRange: [20, 65], proteinRange: [30, 80], label: 'steak' },
-  { pattern: /salmon|sea bass|fish(?!.*finger)/i, calRange: [300, 900], carbRange: [5, 40], fatRange: [15, 50], proteinRange: [25, 60], label: 'fish entree' },
+  { pattern: /(?<!cheese)steak(?! dog)|filet|ribeye|rib.eye|prime rib/i, calRange: [400, 1200], carbRange: [0, 60], fatRange: [20, 65], proteinRange: [30, 80], label: 'steak' },
+  { pattern: /salmon|sea bass|fish(?!.*finger)/i, calRange: [300, 900], carbRange: [5, 80], fatRange: [10, 50], proteinRange: [15, 60], label: 'fish entree' },
 ]
 
 for (const item of items) {
