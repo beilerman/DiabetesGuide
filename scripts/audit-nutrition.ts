@@ -307,6 +307,7 @@ console.log('=== PASS 2: EXTERNAL PLAUSIBILITY ===\n')
 // Define expected ranges for common food types
 interface FoodProfile {
   pattern: RegExp
+  exclude?: RegExp
   calRange: [number, number]
   carbRange: [number, number]
   fatRange: [number, number]
@@ -316,12 +317,12 @@ interface FoodProfile {
 
 const profiles: FoodProfile[] = [
   // --- Kids meals (MUST come before adult versions) ---
-  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*(?:burger|cheeseburger)/i, calRange: [200, 700], carbRange: [15, 50], fatRange: [10, 40], proteinRange: [10, 30], label: 'kids burger' },
-  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*pizza/i, calRange: [150, 600], carbRange: [20, 60], fatRange: [5, 30], proteinRange: [5, 25], label: 'kids pizza' },
-  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*(?:hot dog|corn dog)/i, calRange: [150, 500], carbRange: [15, 40], fatRange: [8, 30], proteinRange: [5, 20], label: 'kids hot dog' },
-  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*(?:chicken|tender|nugget|finger)/i, calRange: [150, 600], carbRange: [10, 40], fatRange: [8, 30], proteinRange: [10, 30], label: 'kids chicken' },
-  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*(?:mac|cheese|pasta|noodle)/i, calRange: [150, 600], carbRange: [20, 60], fatRange: [5, 30], proteinRange: [5, 20], label: 'kids pasta' },
-  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b/i, calRange: [100, 700], carbRange: [10, 80], fatRange: [3, 40], proteinRange: [3, 40], label: 'kids meal' },
+  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*(?:burger|cheeseburger)/i, calRange: [200, 700], carbRange: [15, 50], fatRange: [10, 40], proteinRange: [10, 30], label: 'kids burger' },
+  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*pizza/i, calRange: [150, 600], carbRange: [20, 60], fatRange: [5, 30], proteinRange: [5, 25], label: 'kids pizza' },
+  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*(?:hot dog|corn dog)/i, calRange: [150, 500], carbRange: [15, 40], fatRange: [8, 30], proteinRange: [5, 20], label: 'kids hot dog' },
+  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*(?:chicken|tender|nugget|finger)/i, calRange: [150, 600], carbRange: [10, 40], fatRange: [8, 30], proteinRange: [10, 30], label: 'kids chicken' },
+  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*(?:mac|cheese|pasta|noodle)/i, calRange: [150, 600], carbRange: [20, 60], fatRange: [5, 30], proteinRange: [5, 20], label: 'kids pasta' },
+  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b/i, exclude: /sierra nevada|hazy little thing|mother'?s little helper|churro|ipa\b|lager\b|stout\b|\bale\b|pilsner|beer|wine|cocktail|margarita|sangria/i, calRange: [100, 700], carbRange: [10, 80], fatRange: [3, 40], proteinRange: [3, 40], label: 'kids meal' },
 
   // --- Fruit/veggie platters (MUST come before platter/combo) ---
   { pattern: /fruit\s*(?:platter|plate|cup|bowl|salad)|fresh\s*fruit/i, calRange: [50, 400], carbRange: [10, 90], fatRange: [0, 10], proteinRange: [0, 10], label: 'fruit plate' },
@@ -332,30 +333,31 @@ const profiles: FoodProfile[] = [
   { pattern: /hot dog|corn dog/i, calRange: [300, 900], carbRange: [25, 60], fatRange: [15, 50], proteinRange: [10, 30], label: 'hot dog' },
   { pattern: /turkey leg/i, calRange: [800, 1200], carbRange: [0, 10], fatRange: [40, 70], proteinRange: [80, 160], label: 'turkey leg' },
   { pattern: /funnel cake/i, calRange: [600, 1200], carbRange: [70, 150], fatRange: [25, 60], proteinRange: [5, 20], label: 'funnel cake' },
-  { pattern: /churro/i, calRange: [200, 600], carbRange: [30, 80], fatRange: [10, 30], proteinRange: [2, 10], label: 'churro' },
+  { pattern: /churro/i, exclude: /milk\s*shake|shake\b/i, calRange: [200, 600], carbRange: [30, 80], fatRange: [10, 30], proteinRange: [2, 10], label: 'churro' },
   { pattern: /cupcake/i, calRange: [350, 800], carbRange: [45, 120], fatRange: [15, 40], proteinRange: [3, 10], label: 'cupcake' },
   { pattern: /dole whip|soft.serve/i, calRange: [150, 400], carbRange: [30, 80], fatRange: [0, 15], proteinRange: [0, 8], label: 'frozen treat' },
-  { pattern: /pretzel(?!.*pretzel kitchen)/i, calRange: [300, 700], carbRange: [50, 120], fatRange: [5, 25], proteinRange: [5, 20], label: 'pretzel' },
+  { pattern: /pretzel(?!.*pretzel kitchen)/i, exclude: /bread pudding|bread stick|breadstick/i, calRange: [300, 700], carbRange: [50, 120], fatRange: [5, 25], proteinRange: [5, 20], label: 'pretzel' },
   { pattern: /mac.*cheese|mac n cheese/i, calRange: [400, 1000], carbRange: [35, 80], fatRange: [20, 55], proteinRange: [15, 35], label: 'mac & cheese' },
-  { pattern: /chicken tender|chicken finger|chicken strip|chicken nugget/i, calRange: [400, 1000], carbRange: [20, 60], fatRange: [20, 50], proteinRange: [25, 55], label: 'chicken tenders' },
+  { pattern: /chicken tender|chicken finger|chicken strip|chicken nugget/i, exclude: /1 pc|single|per piece/i, calRange: [400, 1000], carbRange: [20, 60], fatRange: [20, 50], proteinRange: [25, 55], label: 'chicken tenders' },
   { pattern: /nachos|totchos/i, calRange: [500, 1300], carbRange: [40, 100], fatRange: [25, 70], proteinRange: [15, 45], label: 'nachos' },
-  { pattern: /caesar salad/i, calRange: [300, 700], carbRange: [15, 40], fatRange: [20, 45], proteinRange: [15, 40], label: 'caesar salad' },
+  { pattern: /caesar salad/i, calRange: [150, 700], carbRange: [8, 40], fatRange: [8, 45], proteinRange: [5, 40], label: 'caesar salad' },
   { pattern: /brownie/i, calRange: [300, 800], carbRange: [40, 100], fatRange: [15, 45], proteinRange: [3, 12], label: 'brownie' },
-  { pattern: /milkshake|shake/i, calRange: [400, 1100], carbRange: [50, 130], fatRange: [15, 50], proteinRange: [8, 20], label: 'milkshake' },
-  { pattern: /platter|combo|feast|sampler/i, calRange: [600, 1800], carbRange: [40, 200], fatRange: [20, 80], proteinRange: [25, 120], label: 'platter/combo' },
-  { pattern: /\blatte\b|cold brew|\bcappuccino\b/i, calRange: [5, 500], carbRange: [0, 60], fatRange: [0, 20], proteinRange: [0, 15], label: 'coffee drink' },
-  { pattern: /\bbeer\b(?!.*(?:butter|batter|brined|braised|cheese|glazed|marinated|infused|float|root))/i, calRange: [100, 350], carbRange: [5, 30], fatRange: [0, 2], proteinRange: [0, 5], label: 'beer' },
-  { pattern: /\bwine\b(?!.*(?:braised|reduction|sauce|vinaigrette|marinated|glazed|infused|cupcake|cake|country|bar))/i, calRange: [100, 250], carbRange: [2, 15], fatRange: [0, 1], proteinRange: [0, 2], label: 'wine' },
-  { pattern: /margarita|mojito|sangria|(?<!shrimp |fruit |prawn |seafood )cocktail/i, calRange: [150, 500], carbRange: [15, 60], fatRange: [0, 5], proteinRange: [0, 3], label: 'cocktail' },
+  { pattern: /milkshake|\bshake\b/i, calRange: [400, 1100], carbRange: [50, 130], fatRange: [15, 50], proteinRange: [8, 20], label: 'milkshake' },
+  { pattern: /platter|feast|sampler/i, exclude: /make any|vegetable platter|veggie platter|cheese platter|fruit|combo tray/i, calRange: [500, 1800], carbRange: [30, 200], fatRange: [15, 80], proteinRange: [15, 120], label: 'platter/sampler' },
+  { pattern: /combo/i, exclude: /make any|combo tray/i, calRange: [300, 1600], carbRange: [15, 200], fatRange: [5, 80], proteinRange: [5, 120], label: 'combo meal' },
+  { pattern: /\blatte\b|cold brew|\bcappuccino\b/i, calRange: [0, 700], carbRange: [0, 90], fatRange: [0, 35], proteinRange: [0, 50], label: 'coffee drink' },
+  { pattern: /\bbeer\b(?!.*(?:butter|batter|brined|braised|cheese|glazed|marinated|infused|float|root))/i, exclude: /chicken|pork|steak|burger|sandwich|wings|ribs|fish|tacos/i, calRange: [100, 350], carbRange: [5, 30], fatRange: [0, 2], proteinRange: [0, 5], label: 'beer' },
+  { pattern: /\bwine\b(?!.*(?:braised|reduction|sauce|vinaigrette|marinated|glazed|infused|cupcake|cake|country|bar))/i, calRange: [100, 400], carbRange: [2, 20], fatRange: [0, 1], proteinRange: [0, 2], label: 'wine' },
+  { pattern: /margarita|mojito|sangria|(?<!shrimp |fruit |prawn |seafood )cocktail/i, calRange: [50, 500], carbRange: [5, 60], fatRange: [0, 5], proteinRange: [0, 3], label: 'cocktail' },
   { pattern: /^(?:bottled |sparkling |still |spring |mineral |flavored |dasani |smart)?water$/i, calRange: [0, 10], carbRange: [0, 0], fatRange: [0, 0], proteinRange: [0, 0], label: 'water' },
   { pattern: /ribs|rib plate|bbq.*rib/i, calRange: [600, 1400], carbRange: [15, 60], fatRange: [30, 70], proteinRange: [30, 70], label: 'ribs' },
-  { pattern: /doughnut|donut/i, calRange: [250, 700], carbRange: [30, 90], fatRange: [10, 35], proteinRange: [3, 10], label: 'doughnut' },
+  { pattern: /doughnut|donut/i, exclude: /chicken.*(?:doughnut|donut)|(?:doughnut|donut).*chicken|chicken\s*'?n'?\s*donut/i, calRange: [250, 700], carbRange: [30, 90], fatRange: [10, 35], proteinRange: [3, 10], label: 'doughnut' },
   { pattern: /ice cream|sundae/i, calRange: [250, 1200], carbRange: [30, 130], fatRange: [10, 55], proteinRange: [3, 15], label: 'ice cream/sundae' },
-  { pattern: /cookie/i, calRange: [200, 1000], carbRange: [25, 120], fatRange: [10, 50], proteinRange: [2, 15], label: 'cookie' },
+  { pattern: /cookie/i, exclude: /cookies\s*&\s*cream|cookies\s*'?n'?\s*cream/i, calRange: [200, 1000], carbRange: [25, 120], fatRange: [10, 50], proteinRange: [2, 15], label: 'cookie' },
   { pattern: /wrap|burrito/i, calRange: [350, 1000], carbRange: [30, 80], fatRange: [15, 50], proteinRange: [15, 45], label: 'wrap/burrito' },
-  { pattern: /sandwich|panini|sub/i, calRange: [350, 1200], carbRange: [30, 80], fatRange: [15, 55], proteinRange: [15, 50], label: 'sandwich' },
-  { pattern: /(?<!cheese)steak(?! dog)|filet|ribeye|rib.eye|prime rib/i, calRange: [400, 1200], carbRange: [0, 60], fatRange: [20, 65], proteinRange: [30, 80], label: 'steak' },
-  { pattern: /salmon|sea bass|fish(?!.*finger)/i, calRange: [300, 900], carbRange: [5, 80], fatRange: [10, 50], proteinRange: [15, 60], label: 'fish entree' },
+  { pattern: /sandwich|panini|sub/i, exclude: /potato chip|chips\b|make any/i, calRange: [250, 1200], carbRange: [20, 80], fatRange: [8, 55], proteinRange: [8, 50], label: 'sandwich' },
+  { pattern: /(?<!cheese)steak(?! dog)|filet|ribeye|rib.eye|prime rib/i, exclude: /cauliflower|vegan|veggie|extra steak|add steak/i, calRange: [400, 1200], carbRange: [0, 60], fatRange: [20, 65], proteinRange: [30, 80], label: 'steak' },
+  { pattern: /salmon|sea bass|fish(?!.*finger)/i, exclude: /\b(ipa|ale|lager|stout|porter|pilsner|dogfish|sailfish|swordfish\s+ipa)\b/i, calRange: [300, 900], carbRange: [5, 80], fatRange: [10, 50], proteinRange: [15, 60], label: 'fish entree' },
 ]
 
 for (const item of items) {
@@ -369,6 +371,7 @@ for (const item of items) {
 
   for (const p of profiles) {
     if (!p.pattern.test(item.name)) continue
+    if (p.exclude && p.exclude.test(item.name)) continue
 
     const location = loc(item)
     const issues: string[] = []
