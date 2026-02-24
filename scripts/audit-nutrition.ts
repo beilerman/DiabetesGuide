@@ -52,6 +52,99 @@ function pctCal(macro_g: number, calPerG: number, totalCal: number): number {
   return (macro_g * calPerG / totalCal) * 100
 }
 
+// Detect alcoholic beverages — these legitimately have caloric math gaps
+// because alcohol provides 7 cal/g not captured by P*4+C*4+F*9
+function isLikelyAlcoholic(name: string, category: string, item: Item): boolean {
+  const nm = name.toLowerCase()
+  const rName = ((item.restaurant as any)?.name ?? '').toLowerCase()
+
+  // --- Patterns that work regardless of category ---
+
+  // Beer brands (comprehensive list)
+  if (/\b(modelo|corona|heineken|budweiser|stella artois|yuengling|samuel adams|peroni|chimay|coors|blue moon|strongbow|schöfferhofer|warsteiner|kronenbourg|amstel|beck|dos equis|pacifico|negra modelo|lagunitas|goose island|cigar city|funky buddha|terrapin|sweetwater|dogfish|sierra nevada|new belgium|fat tire|blue point|high noon|allagash|ommegang|delirium|duvel|crooked can|duff|kirin|estrella|coedo|new holland|bud light|safari amber|rochefort|trappist)\b/i.test(nm) && !/batter|bread|sauce|braise|glaze|crust|rub|marinate|infuse/i.test(nm)) return true
+
+  // Beer styles (regardless of category)
+  if (/\b(ipa|pilsner|lager|stout|porter|hefeweizen|shandy|gose|pale ale|wheat beer|draft beer|craft beer|on tap|saison|draft\b|draught)\b/i.test(nm) && !/batter|bread|sauce|braise|glaze|ginger ale|beer.batter/i.test(nm)) return true
+
+  // Cocktail names (regardless of category)
+  if (/\b(martini|margarita|mojito|daiquiri|paloma|negroni|spritz|mule|bellini|mimosa|sangria|old fashioned|mai tai|piña colada|cosmopolitan|manhattan|sidecar|highball|toddy|boulevardier|sazerac|aperol|bloody mary|gimlet|cosmo.politan|long island iced tea|rita\b)\b/i.test(nm) && !/burger|chicken|pork|steak|fries|sandwich|doughnut|donut|cake\b|cookie/i.test(nm)) return true
+
+  // Spirit names (regardless of category)
+  if (/\b(tequila|mezcal|vodka|bourbon|whisky|whiskey|scotch|rum|gin\b|brandy|cognac|sake\b|soju|amarula|liqueur|fernet)\b/i.test(nm) && !/batter|sauce|braise|glaze|crust|rub|marinate|infuse|vodka sauce|alla vodka|rum cake|bourbon glaze|whiskey sauce|beer.batter/i.test(nm)) return true
+
+  // Wine varietals & terms (regardless of category)
+  if (/\b(pinot|cabernet|chardonnay|merlot|riesling|sauvignon blanc|prosecco|champagne|rosé|shiraz|malbec|tempranillo|grenache|zinfandel|chianti|barolo|rioja|chablis|chenin blanc|brut|wines?\s+by\s+the)\b/i.test(nm) && !/sauce|braise|reduction|glaze|braised|rubbed|marinate|infuse|cupcake|cake/i.test(nm)) return true
+
+  // Generic alcoholic patterns
+  if (/\b(beer|wine|cocktail)\b/i.test(nm) && !/root beer|ginger beer|butter.?beer|beer.?batter|beer.?bread|beer.?cheese|wine.?sauce|wine.?braised|wine.?reduction|wine.?vinaigrette|wine.?bar|wine.?country/i.test(nm)) return true
+
+  // "Draft" or "on tap" or "pilsner" as standalone drink
+  if (/\b(draft|seasonal draft|honey pilsner|pilsner)\b/i.test(nm) && !/draft pick|draft house/i.test(nm) && (category === 'beverage' || /bar|pub|lounge|tap|grill|brew/i.test(rName))) return true
+
+  // Names ending in "brew" are typically beer/cocktail
+  if (/\bbrew\b/i.test(nm) && !/brew pub|brewery|brewed chicken|home.?brew/i.test(nm)) return true
+
+  // "Canned beers" / "craft beers" / "bottled beers" patterns
+  if (/\b(canned|craft|bottled|domestic|imported|draft)\s+(beer|ale|lager|wine)s?\b/i.test(nm)) return true
+
+  // Theme park specific alcoholic drinks
+  if (/\b(fire whiskey|wizard'?s brew|grog|mead|butterbeer)\b/i.test(nm) && !/fudge|cake|ice cream|potted cream/i.test(nm)) return true
+
+  // --- Bar/lounge restaurant detection ---
+  // Items at bars/lounges/pubs with low fat content are almost certainly drinks
+  const isBarRestaurant = /\b(bar|pub|lounge|cantina|tavern|grog|brew|tap\s*house|tiki|wine bar|tonic|cocktail|astropub|watering hole|saloon|speakeasy)\b/i.test(rName)
+  if (isBarRestaurant) {
+    const nd = n(item)
+    const fat = nd?.fat ?? 0
+    // Low-fat items at bars are drinks (food at bars has fat from cooking)
+    if (fat < 5) return true
+    // "Punch" at a bar is always alcoholic
+    if (/punch/i.test(nm)) return true
+    // "Flight" at a bar = tasting flight
+    if (/flight/i.test(nm) && !/chicken flight/i.test(nm)) return true
+  }
+
+  // "Frozen" + bar context or alcohol-sounding name
+  if (/frozen\s+(flight|slush|punch)/i.test(nm)) return true
+
+  // Category is beverage + has caloric gap pattern (low macros but stated calories)
+  // This catches creatively-named drinks at non-bar restaurants
+  if (category === 'beverage') {
+    const nd = n(item)
+    const fat = nd?.fat ?? 0
+    const protein = nd?.protein ?? 0
+    // Very low fat+protein with moderate calories = likely alcoholic
+    if (fat <= 1 && protein <= 2 && (nd?.calories ?? 0) > 100) return true
+  }
+
+  // Any item with fat=0 and a large caloric gap (ratio > 2.0) is almost certainly a drink.
+  // Real food always has some fat from cooking. The caloric gap = alcohol calories.
+  {
+    const nd = n(item)
+    const fat = nd?.fat ?? 0
+    const protein = nd?.protein ?? 0
+    const cal = nd?.calories ?? 0
+    const estCal = (protein * 4) + ((nd?.carbs ?? 0) * 4) + (fat * 9)
+    // Very low fat + protein with any caloric gap
+    if (fat === 0 && protein <= 2 && cal > 100 && estCal > 0 && cal / estCal > 1.5) return true
+    // Fat=0 with large caloric gap — even with moderate protein (cream liqueurs, protein-enriched drinks)
+    // Real food always has some fat; fat=0 + caloric gap = almost certainly a drink
+    if (fat === 0 && protein <= 15 && cal > 100 && estCal > 0 && cal / estCal > 2.0) return true
+  }
+
+  return false
+}
+
+// Detect items that are dessert-like even if categorized as "entree"
+function isDessertLike(name: string): boolean {
+  return /ice cream|sundae|cake\b|cookie\b|brownie|cupcake|cheesecake|pie\b|cobbler|pudding|mousse|tart\b|crème brûlée|churro|dole whip|sorbet|gelato|fudge|candy|chocolate\b|macarons?|tiramisu|panna cotta|waffle cone|funnel cake|beignet/i.test(name)
+}
+
+// Detect kids meals
+function isKidsMeal(name: string): boolean {
+  return /\b(kid|child|jr\b|junior|little|mini|small)\b/i.test(name) || /^kids?\s/i.test(name)
+}
+
 // ============================================================
 // PASS 1: INTERNAL CONSISTENCY
 // ============================================================
@@ -76,23 +169,44 @@ for (const item of items) {
   const estCal = protein * 4 + carbs * 4 + fat * 9
   if (cal > 50 && estCal > 50) {
     const ratio = cal / estCal
+    const isAlcohol = isLikelyAlcoholic(name, item.category, item)
     if (ratio < 0.5 || ratio > 2.0) {
-      // Extreme mismatch
-      flags.push({
-        item: name, location, pass: 1, category: 'caloric-math',
-        severity: 'HIGH',
-        issue: `Extreme caloric math mismatch: stated ${cal} cal vs calculated ${estCal} (ratio ${ratio.toFixed(2)})`,
-        current: `cal=${cal}, P=${protein}g, C=${carbs}g, F=${fat}g`,
-        suggested: `Recalculate: either cal should be ~${estCal} or macros need adjustment`
-      })
+      // For alcoholic drinks, the gap is expected (alcohol = 7 cal/g) — downgrade to LOW
+      if (isAlcohol && ratio > 1.0) {
+        flags.push({
+          item: name, location, pass: 1, category: 'caloric-math',
+          severity: 'LOW',
+          issue: `Alcoholic drink caloric gap: stated ${cal} cal vs macro-calculated ${estCal} (ratio ${ratio.toFixed(2)}) — alcohol calories (7 cal/g) explain the difference`,
+          current: `cal=${cal}, P=${protein}g, C=${carbs}g, F=${fat}g`,
+          suggested: `Expected for alcoholic beverages — no action needed`
+        })
+      } else {
+        flags.push({
+          item: name, location, pass: 1, category: 'caloric-math',
+          severity: 'HIGH',
+          issue: `Extreme caloric math mismatch: stated ${cal} cal vs calculated ${estCal} (ratio ${ratio.toFixed(2)})`,
+          current: `cal=${cal}, P=${protein}g, C=${carbs}g, F=${fat}g`,
+          suggested: `Recalculate: either cal should be ~${estCal} or macros need adjustment`
+        })
+      }
     } else if (ratio < 0.75 || ratio > 1.35) {
-      flags.push({
-        item: name, location, pass: 1, category: 'caloric-math',
-        severity: 'MEDIUM',
-        issue: `Caloric math off by ${Math.abs(Math.round((1 - ratio) * 100))}%: stated ${cal} vs calculated ${estCal}`,
-        current: `cal=${cal}, P=${protein}g, C=${carbs}g, F=${fat}g`,
-        suggested: `Verify macros sum to stated calories`
-      })
+      if (isAlcohol && ratio > 1.0) {
+        flags.push({
+          item: name, location, pass: 1, category: 'caloric-math',
+          severity: 'LOW',
+          issue: `Alcoholic drink caloric gap (${Math.abs(Math.round((1 - ratio) * 100))}%): stated ${cal} vs calculated ${estCal} — alcohol calories explain the difference`,
+          current: `cal=${cal}, P=${protein}g, C=${carbs}g, F=${fat}g`,
+          suggested: `Expected for alcoholic beverages — no action needed`
+        })
+      } else {
+        flags.push({
+          item: name, location, pass: 1, category: 'caloric-math',
+          severity: 'MEDIUM',
+          issue: `Caloric math off by ${Math.abs(Math.round((1 - ratio) * 100))}%: stated ${cal} vs calculated ${estCal}`,
+          current: `cal=${cal}, P=${protein}g, C=${carbs}g, F=${fat}g`,
+          suggested: `Verify macros sum to stated calories`
+        })
+      }
     }
   }
 
@@ -138,8 +252,11 @@ for (const item of items) {
 
   // 1C: Sodium plausibility
   if (cal > 200) {
-    // Savory entrees with very low sodium
-    if (item.category === 'entree' && sodium > 0 && sodium < 200) {
+    // Savory entrees with very low sodium — exclude dessert-like items and fruit plates
+    if (item.category === 'entree' && sodium > 0 && sodium < 200
+      && !isDessertLike(name)
+      && !/fruit|smoothie|juice|tea\b|coffee|water|milk|açaí|acai/i.test(nameLower)
+      && !/salad.*fruit|fruit.*salad|fresh fruit/i.test(nameLower)) {
       flags.push({
         item: name, location, pass: 1, category: 'sodium',
         severity: 'LOW',
@@ -198,6 +315,18 @@ interface FoodProfile {
 }
 
 const profiles: FoodProfile[] = [
+  // --- Kids meals (MUST come before adult versions) ---
+  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*(?:burger|cheeseburger)/i, calRange: [200, 700], carbRange: [15, 50], fatRange: [10, 40], proteinRange: [10, 30], label: 'kids burger' },
+  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*pizza/i, calRange: [150, 600], carbRange: [20, 60], fatRange: [5, 30], proteinRange: [5, 25], label: 'kids pizza' },
+  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*(?:hot dog|corn dog)/i, calRange: [150, 500], carbRange: [15, 40], fatRange: [8, 30], proteinRange: [5, 20], label: 'kids hot dog' },
+  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*(?:chicken|tender|nugget|finger)/i, calRange: [150, 600], carbRange: [10, 40], fatRange: [8, 30], proteinRange: [10, 30], label: 'kids chicken' },
+  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b.*(?:mac|cheese|pasta|noodle)/i, calRange: [150, 600], carbRange: [20, 60], fatRange: [5, 30], proteinRange: [5, 20], label: 'kids pasta' },
+  { pattern: /\b(kid|child|jr\b|junior|little|mini)\b/i, calRange: [100, 700], carbRange: [10, 80], fatRange: [3, 40], proteinRange: [3, 40], label: 'kids meal' },
+
+  // --- Fruit/veggie platters (MUST come before platter/combo) ---
+  { pattern: /fruit\s*(?:platter|plate|cup|bowl|salad)|fresh\s*fruit/i, calRange: [50, 400], carbRange: [10, 90], fatRange: [0, 10], proteinRange: [0, 10], label: 'fruit plate' },
+
+  // --- Adult food profiles ---
   { pattern: /cheeseburger|hamburger|burger(?!.*impossible)/i, calRange: [500, 1400], carbRange: [30, 80], fatRange: [25, 70], proteinRange: [20, 60], label: 'burger' },
   { pattern: /cheese pizza|pepperoni pizza|pizza/i, calRange: [400, 1200], carbRange: [40, 100], fatRange: [15, 50], proteinRange: [15, 45], label: 'pizza' },
   { pattern: /hot dog|corn dog/i, calRange: [300, 900], carbRange: [25, 60], fatRange: [15, 50], proteinRange: [10, 30], label: 'hot dog' },
@@ -296,21 +425,35 @@ for (const item of items) {
 }
 
 // 3B: Duplicate nutritional profiles
+// Skip generic beverages and common items that legitimately share profiles
+function isGenericBeverage(name: string, category: string): boolean {
+  if (category === 'beverage') {
+    // Generic beer/wine/soda/water listings that legitimately share nutrition across restaurants
+    if (/^(draft |bottled |canned )?(beer|ale|lager|wine|prosecco|champagne|soda|pop|water|juice|milk|coffee|tea|iced tea|lemonade)s?$/i.test(name.trim())) return true
+    if (/^(domestic|imported|craft|premium|house) (beer|wine|red|white)s?$/i.test(name.trim())) return true
+    if (/^(coca.cola|pepsi|sprite|dr.pepper|fanta|mountain dew|dasani|aquafina|smartwater|powerade|gatorade|minute maid|tropicana)/i.test(name.trim())) return true
+  }
+  return false
+}
+
 const profileMap = new Map<string, Item[]>()
 for (const item of items) {
   const nd = n(item)
   if (!nd || !nd.calories) continue
+  // Skip generic beverages — they legitimately share profiles
+  if (isGenericBeverage(item.name, item.category)) continue
   const key = `${nd.calories}|${nd.carbs}|${nd.fat}|${nd.protein}`
   if (!profileMap.has(key)) profileMap.set(key, [])
   profileMap.get(key)!.push(item)
 }
 
 for (const [key, dupes] of profileMap) {
-  if (dupes.length < 2) continue
+  // Require 3+ different items sharing a profile (not just 2)
+  if (dupes.length < 3) continue
   // Check if the items are actually different foods (not variants of same dish)
   const names = dupes.map(d => d.name.toLowerCase().replace(/customized bowl:?\s*/g, '').trim())
   const uniqueRoots = new Set(names.map(n => n.split(' ').slice(0, 3).join(' ')))
-  if (uniqueRoots.size > 1) {
+  if (uniqueRoots.size > 2) {
     // Actually different foods with identical nutrition
     const [cal, carbs, fat, protein] = key.split('|')
     for (const d of dupes) {
