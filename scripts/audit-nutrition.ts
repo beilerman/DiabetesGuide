@@ -214,10 +214,10 @@ const profiles: FoodProfile[] = [
   { pattern: /brownie/i, calRange: [300, 800], carbRange: [40, 100], fatRange: [15, 45], proteinRange: [3, 12], label: 'brownie' },
   { pattern: /milkshake|shake/i, calRange: [400, 1100], carbRange: [50, 130], fatRange: [15, 50], proteinRange: [8, 20], label: 'milkshake' },
   { pattern: /latte|cold brew|cappuccino/i, calRange: [5, 500], carbRange: [0, 60], fatRange: [0, 20], proteinRange: [0, 15], label: 'coffee drink' },
-  { pattern: /beer(?!.*butter)/i, calRange: [100, 350], carbRange: [5, 30], fatRange: [0, 2], proteinRange: [0, 5], label: 'beer' },
-  { pattern: /wine/i, calRange: [100, 250], carbRange: [2, 15], fatRange: [0, 1], proteinRange: [0, 2], label: 'wine' },
-  { pattern: /margarita|cocktail|mojito|sangria/i, calRange: [150, 500], carbRange: [15, 60], fatRange: [0, 5], proteinRange: [0, 3], label: 'cocktail' },
-  { pattern: /water(?!.*melon)/i, calRange: [0, 10], carbRange: [0, 0], fatRange: [0, 0], proteinRange: [0, 0], label: 'water' },
+  { pattern: /\bbeer\b(?!.*(?:butter|batter|brined|braised|cheese|glazed|marinated|infused|float|root))/i, calRange: [100, 350], carbRange: [5, 30], fatRange: [0, 2], proteinRange: [0, 5], label: 'beer' },
+  { pattern: /\bwine\b(?!.*(?:braised|reduction|sauce|vinaigrette|marinated|glazed|infused|cupcake|cake|country|bar))/i, calRange: [100, 250], carbRange: [2, 15], fatRange: [0, 1], proteinRange: [0, 2], label: 'wine' },
+  { pattern: /margarita|mojito|sangria|(?<!shrimp |fruit |prawn |seafood )cocktail/i, calRange: [150, 500], carbRange: [15, 60], fatRange: [0, 5], proteinRange: [0, 3], label: 'cocktail' },
+  { pattern: /^(?:bottled |sparkling |still |spring |mineral |flavored |dasani |smart)?water$/i, calRange: [0, 10], carbRange: [0, 0], fatRange: [0, 0], proteinRange: [0, 0], label: 'water' },
   { pattern: /ribs|rib plate|bbq.*rib/i, calRange: [600, 1400], carbRange: [15, 60], fatRange: [30, 70], proteinRange: [30, 70], label: 'ribs' },
   { pattern: /doughnut|donut/i, calRange: [250, 700], carbRange: [30, 90], fatRange: [10, 35], proteinRange: [3, 10], label: 'doughnut' },
   { pattern: /ice cream|sundae/i, calRange: [250, 1200], carbRange: [30, 130], fatRange: [10, 55], proteinRange: [3, 15], label: 'ice cream/sundae' },
@@ -358,7 +358,7 @@ for (const cat of categories) {
     for (const item of catItems) {
       const cal = n(item)!.calories!
       const nameLower = item.name.toLowerCase()
-      if (/water/.test(nameLower) && cal > 20) {
+      if (/\bwater\b/.test(nameLower) && !/watermelon|waterfront|cold water|water chestnut|waterfall|water park/.test(nameLower) && cal > 20) {
         flags.push({
           item: item.name, location: loc(item), pass: 3, category: 'category-ranking',
           severity: 'MEDIUM',
