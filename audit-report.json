@@ -1,355 +1,5 @@
 [
   {
-    "item": "High Noon",
-    "location": "The Watering Hole (Universal's Islands of Adventure)",
-    "pass": 1,
-    "category": "caloric-math",
-    "severity": "HIGH",
-    "issue": "Extreme caloric math mismatch: stated 100 cal vs calculated 214 (ratio 0.47)",
-    "current": "cal=100, P=10g, C=3g, F=18g",
-    "suggested": "Recalculate: either cal should be ~214 or macros need adjustment"
-  },
-  {
-    "item": "Honey Pilsner- NOT sold in Magic Kingdom",
-    "location": "Ice Cream/Treat Carts (EPCOT)",
-    "pass": 1,
-    "category": "caloric-math",
-    "severity": "HIGH",
-    "issue": "Extreme caloric math mismatch: stated 165 cal vs calculated 460 (ratio 0.36)",
-    "current": "cal=165, P=1g, C=15g, F=44g",
-    "suggested": "Recalculate: either cal should be ~460 or macros need adjustment"
-  },
-  {
-    "item": "Kids Bowl: Chicken with Rice",
-    "location": "Satu'li Canteen (Disney's Animal Kingdom)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 946 well above expected 150-600 for kids chicken; carbs 108g above expected 10-40g for kids chicken; protein 52g above expected 10-30g for kids chicken",
-    "current": "cal=946, C=108g, F=27g, P=52g",
-    "suggested": "Expected for kids chicken: cal 150-600, C 10-40g, F 8-30g, P 10-30g"
-  },
-  {
-    "item": "Kids Chicken Tenders",
-    "location": "Black Tap Craft Burgers & Shakes (Downtown Disney District)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 765 well above expected 150-600 for kids chicken",
-    "current": "cal=765, C=46g, F=40g, P=19g",
-    "suggested": "Expected for kids chicken: cal 150-600, C 10-40g, F 8-30g, P 10-30g"
-  },
-  {
-    "item": "Kids Grilled Cheese",
-    "location": "Black Tap Craft Burgers & Shakes (Downtown Disney District)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 1131 well above expected 150-600 for kids pasta; carbs 157g above expected 20-60g for kids pasta; protein 39g above expected 5-20g for kids pasta",
-    "current": "cal=1131, C=157g, F=39g, P=39g",
-    "suggested": "Expected for kids pasta: cal 150-600, C 20-60g, F 5-30g, P 5-20g"
-  },
-  {
-    "item": "Kids Hot Dog",
-    "location": "Black Tap Craft Burgers & Shakes (Downtown Disney District)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 680 well above expected 150-500 for kids hot dog",
-    "current": "cal=680, C=40g, F=42g, P=20g",
-    "suggested": "Expected for kids hot dog: cal 150-500, C 15-40g, F 8-30g, P 5-20g"
-  },
-  {
-    "item": "Traditional Gyro Platter",
-    "location": "Fire Eater's Grill (Universal's Islands of Adventure)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 184 well below expected 500-1800 for platter/sampler; fat 7g below expected 15-80g for platter/sampler",
-    "current": "cal=184, C=19g, F=7g, P=11g",
-    "suggested": "Expected for platter/sampler: cal 500-1800, C 30-200g, F 15-80g, P 15-120g"
-  },
-  {
-    "item": "Pan-seared Sustainable Fish",
-    "location": "Sebastian's Bistro (Walt Disney World Resorts)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 187 well below expected 300-900 for fish entree",
-    "current": "cal=187, C=7g, F=9g, P=17g",
-    "suggested": "Expected for fish entree: cal 300-900, C 5-80g, F 10-50g, P 15-60g"
-  },
-  {
-    "item": "Blackened Catfish",
-    "location": "Tiana's Place (Disney Wonder)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 152 well below expected 300-900 for fish entree",
-    "current": "cal=152, C=6g, F=8g, P=13g",
-    "suggested": "Expected for fish entree: cal 300-900, C 5-80g, F 10-50g, P 15-60g"
-  },
-  {
-    "item": "Antipasto Platter",
-    "location": "Trattoria del Porto (Universal Portofino Bay Hotel)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 291 well below expected 500-1800 for platter/sampler",
-    "current": "cal=291, C=18g, F=16g, P=20g",
-    "suggested": "Expected for platter/sampler: cal 500-1800, C 30-200g, F 15-80g, P 15-120g"
-  },
-  {
-    "item": "Wilson's Reuben Platter ",
-    "location": "Blondie's (Universal's Islands of Adventure)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 282 well below expected 500-1800 for platter/sampler; carbs 16g below expected 30-200g for platter/sampler",
-    "current": "cal=282, C=16g, F=19g, P=10g",
-    "suggested": "Expected for platter/sampler: cal 500-1800, C 30-200g, F 15-80g, P 15-120g"
-  },
-  {
-    "item": "Chicken Parmesan Combo ",
-    "location": "Cafe 4 (Universal's Islands of Adventure)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 204 well below expected 300-1600 for combo meal",
-    "current": "cal=204, C=11g, F=11g, P=16g",
-    "suggested": "Expected for combo meal: cal 300-1600, C 15-200g, F 5-80g, P 5-120g"
-  },
-  {
-    "item": "Jumbo Veggie Slice Platter",
-    "location": "Cafe 4 (Universal's Islands of Adventure)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 116 well below expected 500-1800 for platter/sampler; carbs 7g below expected 30-200g for platter/sampler; protein 2g below expected 15-120g for platter/sampler",
-    "current": "cal=116, C=7g, F=10g, P=2g",
-    "suggested": "Expected for platter/sampler: cal 500-1800, C 30-200g, F 15-80g, P 15-120g"
-  },
-  {
-    "item": "Jumbo Veggie Slice Combo",
-    "location": "Cafe 4 (Universal's Islands of Adventure)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 224 well below expected 300-1600 for combo meal",
-    "current": "cal=224, C=31g, F=5g, P=13g",
-    "suggested": "Expected for combo meal: cal 300-1600, C 15-200g, F 5-80g, P 5-120g"
-  },
-  {
-    "item": "Chili Cheese Dog Combo ",
-    "location": "Fire Eater's Grill (Universal's Islands of Adventure)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 202 well below expected 300-1600 for combo meal; carbs 7g below expected 15-200g for combo meal",
-    "current": "cal=202, C=7g, F=15g, P=10g",
-    "suggested": "Expected for combo meal: cal 300-1600, C 15-200g, F 5-80g, P 5-120g"
-  },
-  {
-    "item": "Chili Cheese Dog Platter",
-    "location": "Fire Eater's Grill (Universal's Islands of Adventure)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 202 well below expected 500-1800 for platter/sampler; carbs 7g below expected 30-200g for platter/sampler",
-    "current": "cal=202, C=7g, F=15g, P=10g",
-    "suggested": "Expected for platter/sampler: cal 500-1800, C 30-200g, F 15-80g, P 15-120g"
-  },
-  {
-    "item": "Supersaurus Sampler",
-    "location": "T-REX (Disney Springs)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 250 well below expected 500-1800 for platter/sampler; carbs 8g below expected 30-200g for platter/sampler",
-    "current": "cal=250, C=8g, F=18g, P=14g",
-    "suggested": "Expected for platter/sampler: cal 500-1800, C 30-200g, F 15-80g, P 15-120g"
-  },
-  {
-    "item": "Fish & Chips (1140 cal.)",
-    "location": "Lone Palm Airport (Universal's Volcano Bay)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 1388 well above expected 300-900 for fish entree; carbs 121g above expected 5-80g for fish entree; protein 94g above expected 15-60g for fish entree",
-    "current": "cal=1388, C=121g, F=59g, P=94g",
-    "suggested": "Expected for fish entree: cal 300-900, C 5-80g, F 10-50g, P 15-60g"
-  },
-  {
-    "item": "Soft Churned Ice Cream",
-    "location": "Blue Ribbon Cones (Dollywood)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 180 well below expected 250-1200 for ice cream/sundae",
-    "current": "cal=180, C=29g, F=5g, P=5g",
-    "suggested": "Expected for ice cream/sundae: cal 250-1200, C 30-130g, F 10-55g, P 3-15g"
-  },
-  {
-    "item": "Pomegranate Dole Whip ",
-    "location": "Thunder Falls Terrace (Universal's Islands of Adventure)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 102 well below expected 150-400 for frozen treat; carbs 15g below expected 30-80g for frozen treat",
-    "current": "cal=102, C=15g, F=4g, P=1g",
-    "suggested": "Expected for frozen treat: cal 150-400, C 30-80g, F 0-15g, P 0-8g"
-  },
-  {
-    "item": "Funnel Cake Toppings",
-    "location": "Crossroads Funnel Cakes (Dollywood)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 353 well below expected 600-1200 for funnel cake",
-    "current": "cal=353, C=43g, F=17g, P=8g",
-    "suggested": "Expected for funnel cake: cal 600-1200, C 70-150g, F 25-60g, P 5-20g"
-  },
-  {
-    "item": "Kid's Fruit Cup",
-    "location": "Chicken Guy! (Disney Springs)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 70 well below expected 100-700 for kids meal; protein 1g below expected 3-40g for kids meal",
-    "current": "cal=70, C=15g, F=0g, P=1g",
-    "suggested": "Expected for kids meal: cal 100-700, C 10-80g, F 3-40g, P 3-40g"
-  },
-  {
-    "item": "Imperial Sampler",
-    "location": "Rose and Crown Pub (EPCOT)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 240 well below expected 500-1800 for platter/sampler",
-    "current": "cal=240, C=60g, F=0g, P=12g",
-    "suggested": "Expected for platter/sampler: cal 500-1800, C 30-200g, F 15-80g, P 15-120g"
-  },
-  {
-    "item": "Bouncin' Mini Churros",
-    "location": "Ice Cold Hydraulics (Disney's Hollywood Studios)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 1000 well above expected 200-600 for churro; fat 50g above expected 10-30g for churro",
-    "current": "cal=1000, C=100g, F=50g, P=10g",
-    "suggested": "Expected for churro: cal 200-600, C 30-80g, F 10-30g, P 2-10g"
-  },
-  {
-    "item": "Mini Churros",
-    "location": "Ice Cold Hydraulics (Disney's Hollywood Studios)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 800 well above expected 200-600 for churro",
-    "current": "cal=800, C=80g, F=40g, P=5g",
-    "suggested": "Expected for churro: cal 200-600, C 30-80g, F 10-30g, P 2-10g"
-  },
-  {
-    "item": "Chocolate Ice Cream Crepe",
-    "location": "Crepes A Emporter (EPCOT)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 170 well below expected 250-1200 for ice cream/sundae",
-    "current": "cal=170, C=23g, F=7g, P=5g",
-    "suggested": "Expected for ice cream/sundae: cal 250-1200, C 30-130g, F 10-55g, P 3-15g"
-  },
-  {
-    "item": "Family Churros",
-    "location": "Eight Spoon Café (Disney's Animal Kingdom)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 1200 well above expected 200-600 for churro; carbs 180g above expected 30-80g for churro; fat 60g above expected 10-30g for churro",
-    "current": "cal=1200, C=180g, F=60g, P=10g",
-    "suggested": "Expected for churro: cal 200-600, C 30-80g, F 10-30g, P 2-10g"
-  },
-  {
-    "item": "Baked Macaroni & Cheese with Pulled Pork",
-    "location": "Flame Tree Barbecue (Disney's Animal Kingdom)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 1400 well above expected 400-1000 for mac & cheese; fat 90g above expected 20-55g for mac & cheese; protein 88g above expected 15-35g for mac & cheese",
-    "current": "cal=1400, C=60g, F=90g, P=88g",
-    "suggested": "Expected for mac & cheese: cal 400-1000, C 35-80g, F 20-55g, P 15-35g"
-  },
-  {
-    "item": "Famous Fish N' Chips",
-    "location": "Cookes of Dublin (Disney Springs)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 1200 well above expected 300-900 for fish entree; fat 80g above expected 10-50g for fish entree",
-    "current": "cal=1200, C=80g, F=80g, P=40g",
-    "suggested": "Expected for fish entree: cal 300-900, C 5-80g, F 10-50g, P 15-60g"
-  },
-  {
-    "item": "Air Pirate's Cargo Loaded Pretzel",
-    "location": "Jock Lindsey's Hangar Bar (Disney Springs)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 1200 well above expected 300-700 for pretzel; fat 70g above expected 5-25g for pretzel",
-    "current": "cal=1200, C=80g, F=70g, P=30g",
-    "suggested": "Expected for pretzel: cal 300-700, C 50-120g, F 5-25g, P 5-20g"
-  },
-  {
-    "item": "Halibut Fish & Chips",
-    "location": "STK Orlando (Disney Springs)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 1263 well above expected 300-900 for fish entree",
-    "current": "cal=1263, C=111g, F=53g, P=85g",
-    "suggested": "Expected for fish entree: cal 300-900, C 5-80g, F 10-50g, P 15-60g"
-  },
-  {
-    "item": "Southern-style Chicken Tenders Platter",
-    "location": "AMC Fork and Screen Theatres (Disney Springs)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 1400 well above expected 400-1000 for chicken tenders; carbs 122g above expected 20-60g for chicken tenders; protein 95g above expected 25-55g for chicken tenders",
-    "current": "cal=1400, C=122g, F=59g, P=95g",
-    "suggested": "Expected for chicken tenders: cal 400-1000, C 20-60g, F 20-50g, P 25-55g"
-  },
-  {
-    "item": "Kids Cheeseburger",
-    "location": "Yak and Yeti Restaurant (Disney's Animal Kingdom)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 900 well above expected 200-700 for kids burger",
-    "current": "cal=900, C=50g, F=50g, P=45g",
-    "suggested": "Expected for kids burger: cal 200-700, C 15-50g, F 10-40g, P 10-30g"
-  },
-  {
-    "item": "Kids Cheese Pizza",
-    "location": "Dockside Pizza Co. (SeaWorld Orlando)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 850 well above expected 150-600 for kids pizza",
-    "current": "cal=850, C=78g, F=32g, P=32g",
-    "suggested": "Expected for kids pizza: cal 150-600, C 20-60g, F 5-30g, P 5-25g"
-  },
-  {
-    "item": "Dole Whip Pineapple Sorbet ",
-    "location": "Wimpy's (Universal's Islands of Adventure)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "HIGH",
-    "issue": "cal 102 well below expected 150-400 for frozen treat; carbs 12g below expected 30-80g for frozen treat",
-    "current": "cal=102, C=12g, F=5g, P=1g",
-    "suggested": "Expected for frozen treat: cal 150-400, C 30-80g, F 0-15g, P 0-8g"
-  },
-  {
     "item": "Rex's Romaine and Kale Salad",
     "location": "Roundup Rodeo BBQ (Disney's Hollywood Studios)",
     "pass": 1,
@@ -1555,9 +1205,9 @@
     "pass": 2,
     "category": "plausibility",
     "severity": "MEDIUM",
-    "issue": "carbs 136g above expected 5-80g for fish entree; protein 7g below expected 15-60g for fish entree",
+    "issue": "protein 7g below expected 25-100g for fish & chips",
     "current": "cal=650, C=136g, F=22g, P=7g",
-    "suggested": "Expected for fish entree: cal 300-900, C 5-80g, F 10-50g, P 15-60g"
+    "suggested": "Expected for fish & chips: cal 700-1400, C 60-130g, F 30-80g, P 25-100g"
   },
   {
     "item": "Cheesy Crunch Pretzel Dog",
@@ -1798,16 +1448,6 @@
     "issue": "carbs 108g above expected 15-60g for ribs",
     "current": "cal=1238, C=108g, F=52g, P=84g",
     "suggested": "Expected for ribs: cal 600-1400, C 15-60g, F 30-70g, P 30-70g"
-  },
-  {
-    "item": "Irish Fish & Chips",
-    "location": "Finnegan's Bar & Grill (Universal Studios Florida)",
-    "pass": 2,
-    "category": "plausibility",
-    "severity": "MEDIUM",
-    "issue": "protein 6g below expected 15-60g for fish entree",
-    "current": "cal=301, C=51g, F=9g, P=6g",
-    "suggested": "Expected for fish entree: cal 300-900, C 5-80g, F 10-50g, P 15-60g"
   },
   {
     "item": "Pretzel Sticks ",
@@ -2788,6 +2428,16 @@
     "issue": "protein 11g above expected 0-3g for cocktail",
     "current": "cal=140, C=39g, F=0g, P=11g",
     "suggested": "Expected for cocktail: cal 50-500, C 5-60g, F 0-5g, P 0-3g"
+  },
+  {
+    "item": "Southern-style Chicken Tenders Platter",
+    "location": "AMC Fork and Screen Theatres (Disney Springs)",
+    "pass": 2,
+    "category": "plausibility",
+    "severity": "MEDIUM",
+    "issue": "carbs 85g above expected 20-60g for chicken tenders",
+    "current": "cal=1100, C=85g, F=55g, P=50g",
+    "suggested": "Expected for chicken tenders: cal 400-1000, C 20-60g, F 20-50g, P 25-55g"
   },
   {
     "item": "Red Sangria",
@@ -5300,6 +4950,16 @@
     "suggested": "Expected for alcoholic beverages — no action needed"
   },
   {
+    "item": "Honey Pilsner- NOT sold in Magic Kingdom",
+    "location": "Ice Cream/Treat Carts (EPCOT)",
+    "pass": 1,
+    "category": "caloric-math",
+    "severity": "LOW",
+    "issue": "Alcoholic drink caloric gap: stated 165 cal vs macro-calculated 60 (ratio 2.75) — alcohol calories (7 cal/g) explain the difference",
+    "current": "cal=165, P=2g, C=13g, F=0g",
+    "suggested": "Expected for alcoholic beverages — no action needed"
+  },
+  {
     "item": "Belgian White Ale- NOT sold in Magic Kingdom",
     "location": "Ice Cream/Treat Carts (EPCOT)",
     "pass": 1,
@@ -6200,6 +5860,26 @@
     "suggested": "Expected for alcoholic beverages — no action needed"
   },
   {
+    "item": "Imperial Sampler",
+    "location": "Rose and Crown Pub (EPCOT)",
+    "pass": 1,
+    "category": "caloric-math",
+    "severity": "LOW",
+    "issue": "Alcoholic drink caloric gap: stated 320 cal vs macro-calculated 132 (ratio 2.42) — alcohol calories (7 cal/g) explain the difference",
+    "current": "cal=320, P=3g, C=30g, F=0g",
+    "suggested": "Expected for alcoholic beverages — no action needed"
+  },
+  {
+    "item": "Imperial Sampler",
+    "location": "Rose and Crown Pub (EPCOT)",
+    "pass": 1,
+    "category": "sodium",
+    "severity": "LOW",
+    "issue": "Savory entree with only 20mg sodium — suspiciously low for theme park food",
+    "current": "sodium=20mg",
+    "suggested": "Typical theme park entree: 800-2000mg sodium"
+  },
+  {
     "item": "BrewDog Punk IPA",
     "location": "Rose and Crown Beer Garden (EPCOT)",
     "pass": 1,
@@ -6598,16 +6278,6 @@
     "issue": "Savory entree with only 100mg sodium — suspiciously low for theme park food",
     "current": "sodium=100mg",
     "suggested": "Typical theme park entree: 800-2000mg sodium"
-  },
-  {
-    "item": "Honey Pilsner- NOT sold in Magic Kingdom",
-    "location": "Ice Cream/Treat Carts (Disney's Hollywood Studios)",
-    "pass": 1,
-    "category": "caloric-math",
-    "severity": "LOW",
-    "issue": "Alcoholic drink caloric gap: stated 165 cal vs macro-calculated 64 (ratio 2.58) — alcohol calories (7 cal/g) explain the difference",
-    "current": "cal=165, P=1g, C=15g, F=0g",
-    "suggested": "Expected for alcoholic beverages — no action needed"
   },
   {
     "item": "Heineken",
@@ -11080,6 +10750,16 @@
     "suggested": "Flag as estimate — confidence should be low"
   },
   {
+    "item": "Supersaurus Sampler",
+    "location": "T-REX (Disney Springs)",
+    "pass": 3,
+    "category": "round-numbers",
+    "severity": "LOW",
+    "issue": "All macros are very round numbers — likely estimated, not measured",
+    "current": "cal=1800, C=120g, F=100g, P=80g",
+    "suggested": "Flag as estimate — confidence should be low"
+  },
+  {
     "item": "Sunset Isle Salmon",
     "location": "T-REX (Disney Springs)",
     "pass": 3,
@@ -12077,16 +11757,6 @@
     "severity": "LOW",
     "issue": "All macros are very round numbers — likely estimated, not measured",
     "current": "cal=400, C=60g, F=10g, P=10g",
-    "suggested": "Flag as estimate — confidence should be low"
-  },
-  {
-    "item": "Bouncin' Mini Churros",
-    "location": "Ice Cold Hydraulics (Disney's Hollywood Studios)",
-    "pass": 3,
-    "category": "round-numbers",
-    "severity": "LOW",
-    "issue": "All macros are very round numbers — likely estimated, not measured",
-    "current": "cal=1000, C=100g, F=50g, P=10g",
     "suggested": "Flag as estimate — confidence should be low"
   },
   {
@@ -22915,7 +22585,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, BBQ Chicken Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, BBQ Chicken Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -22925,7 +22595,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -22935,7 +22605,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -22945,7 +22615,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -22955,7 +22625,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -22965,7 +22635,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -22975,7 +22645,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -22985,7 +22655,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -22995,7 +22665,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -23005,7 +22675,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -23015,7 +22685,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -23025,17 +22695,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
-    "current": "cal=850, C=78g, F=32g, P=32g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Kids Cheese Pizza",
-    "location": "Dockside Pizza Co. (SeaWorld Orlando)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 15 other different item(s): Margherita Pizza, Margherita Pizza",
+    "issue": "Shares identical nutrition profile with 13 other different item(s): Margherita Pizza, Margherita Pizza",
     "current": "cal=850, C=78g, F=32g, P=32g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -29865,17 +29525,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 8 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
-    "current": "cal=180, C=29g, F=5g, P=5g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Soft Churned Ice Cream",
-    "location": "Blue Ribbon Cones (Dollywood)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 8 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
+    "issue": "Shares identical nutrition profile with 7 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
     "current": "cal=180, C=29g, F=5g, P=5g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -29885,7 +29535,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 8 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
+    "issue": "Shares identical nutrition profile with 7 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
     "current": "cal=180, C=29g, F=5g, P=5g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -29895,7 +29545,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 8 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
+    "issue": "Shares identical nutrition profile with 7 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
     "current": "cal=180, C=29g, F=5g, P=5g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -29905,7 +29555,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 8 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
+    "issue": "Shares identical nutrition profile with 7 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
     "current": "cal=180, C=29g, F=5g, P=5g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -29915,7 +29565,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 8 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
+    "issue": "Shares identical nutrition profile with 7 other different item(s): Soft Serve Ice Cream, Soft Serve Ice Cream",
     "current": "cal=180, C=29g, F=5g, P=5g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33575,7 +33225,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Cobb, Heart of Romaine Caesar",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Cobb, Heart of Romaine Caesar",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33585,7 +33235,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Heart of Romaine Caesar",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Heart of Romaine Caesar",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33595,7 +33245,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Cobb",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33605,7 +33255,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Cobb",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33615,7 +33265,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Cobb",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33625,7 +33275,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Cobb",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33635,7 +33285,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Cobb",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33645,17 +33295,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
-    "current": "cal=1400, C=122g, F=59g, P=95g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Southern-style Chicken Tenders Platter",
-    "location": "AMC Fork and Screen Theatres (Disney Springs)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Cobb",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33665,7 +33305,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Cobb",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33675,7 +33315,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Cobb",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -33685,7 +33325,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 11 other different item(s): Chile Relleno, Cobb",
+    "issue": "Shares identical nutrition profile with 10 other different item(s): Chile Relleno, Cobb",
     "current": "cal=1400, C=122g, F=59g, P=95g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -34670,36 +34310,6 @@
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
   {
-    "item": "Wilson's Reuben Platter ",
-    "location": "Blondie's (Universal's Islands of Adventure)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 2 other different item(s): Wilson's Reuben Combo , Red Reuben",
-    "current": "cal=282, C=16g, F=19g, P=10g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Wilson's Reuben Combo ",
-    "location": "Blondie's (Universal's Islands of Adventure)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 2 other different item(s): Wilson's Reuben Platter , Red Reuben",
-    "current": "cal=282, C=16g, F=19g, P=10g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Red Reuben",
-    "location": "Toothsome Chocolate Emporium (Universal CityWalk)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 2 other different item(s): Wilson's Reuben Platter , Wilson's Reuben Combo ",
-    "current": "cal=282, C=16g, F=19g, P=10g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
     "item": "Chicken Fingers",
     "location": "Bigfire (Universal CityWalk)",
     "pass": 3,
@@ -34995,7 +34605,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 4 other different item(s): Burrata Caprese, Supersaurus Sampler",
+    "issue": "Shares identical nutrition profile with 3 other different item(s): Burrata Caprese, Mozzarella Caprese",
     "current": "cal=250, C=8g, F=18g, P=14g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -35005,17 +34615,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 4 other different item(s): Caprese Salad, Supersaurus Sampler",
-    "current": "cal=250, C=8g, F=18g, P=14g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Supersaurus Sampler",
-    "location": "T-REX (Disney Springs)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 4 other different item(s): Caprese Salad, Burrata Caprese",
+    "issue": "Shares identical nutrition profile with 3 other different item(s): Caprese Salad, Mozzarella Caprese",
     "current": "cal=250, C=8g, F=18g, P=14g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -35025,7 +34625,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 4 other different item(s): Caprese Salad, Burrata Caprese",
+    "issue": "Shares identical nutrition profile with 3 other different item(s): Caprese Salad, Burrata Caprese",
     "current": "cal=250, C=8g, F=18g, P=14g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -35035,7 +34635,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 4 other different item(s): Caprese Salad, Burrata Caprese",
+    "issue": "Shares identical nutrition profile with 3 other different item(s): Caprese Salad, Burrata Caprese",
     "current": "cal=250, C=8g, F=18g, P=14g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -37007,36 +36607,6 @@
     "severity": "LOW",
     "issue": "Shares identical nutrition profile with 8 other different item(s): Churraffle Sundae, All-American Sundae",
     "current": "cal=500, C=60g, F=25g, P=7g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Irish Coffee",
-    "location": "Croissant Moon Bakery (Universal's Islands of Adventure)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 2 other different item(s): Irish Fish & Chips, Traditional Irish Crisps",
-    "current": "cal=301, C=51g, F=9g, P=6g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Irish Fish & Chips",
-    "location": "Finnegan's Bar & Grill (Universal Studios Florida)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 2 other different item(s): Irish Coffee, Traditional Irish Crisps",
-    "current": "cal=301, C=51g, F=9g, P=6g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Traditional Irish Crisps",
-    "location": "Finnegan's Bar & Grill (Universal Studios Florida)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 2 other different item(s): Irish Coffee, Irish Fish & Chips",
-    "current": "cal=301, C=51g, F=9g, P=6g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
   {
@@ -40425,7 +39995,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 5 other different item(s): Angus Bacon Cheeseburger, Bacon Cheeseburger",
+    "issue": "Shares identical nutrition profile with 2 other different item(s): Angus Bacon Cheeseburger, Bacon Cheeseburger",
     "current": "cal=900, C=50g, F=50g, P=45g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -40435,7 +40005,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 5 other different item(s): BBQ Bacon Cheeseburger, Bacon Cheeseburger",
+    "issue": "Shares identical nutrition profile with 2 other different item(s): BBQ Bacon Cheeseburger, Bacon Cheeseburger",
     "current": "cal=900, C=50g, F=50g, P=45g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
@@ -40445,17 +40015,7 @@
     "pass": 3,
     "category": "duplicate-profile",
     "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 5 other different item(s): BBQ Bacon Cheeseburger, Angus Bacon Cheeseburger",
-    "current": "cal=900, C=50g, F=50g, P=45g",
-    "suggested": "Verify — different foods shouldn't have identical macros"
-  },
-  {
-    "item": "Kids Cheeseburger",
-    "location": "Yak and Yeti Restaurant (Disney's Animal Kingdom)",
-    "pass": 3,
-    "category": "duplicate-profile",
-    "severity": "LOW",
-    "issue": "Shares identical nutrition profile with 5 other different item(s): BBQ Bacon Cheeseburger, Angus Bacon Cheeseburger",
+    "issue": "Shares identical nutrition profile with 2 other different item(s): BBQ Bacon Cheeseburger, Angus Bacon Cheeseburger",
     "current": "cal=900, C=50g, F=50g, P=45g",
     "suggested": "Verify — different foods shouldn't have identical macros"
   },
