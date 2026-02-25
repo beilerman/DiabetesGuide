@@ -67,16 +67,22 @@ function isLikelyAlcoholic(name: string, category: string, item: Item): boolean 
   if (/\b(ipa|pilsner|lager|stout|porter|hefeweizen|shandy|gose|pale ale|wheat beer|draft beer|craft beer|on tap|saison|draft\b|draught)\b/i.test(nm) && !/batter|bread|sauce|braise|glaze|ginger ale|beer.batter/i.test(nm)) return true
 
   // Cocktail names (regardless of category)
-  if (/\b(martini|margarita|mojito|daiquiri|paloma|negroni|spritz|mule|bellini|mimosa|sangria|old fashioned|mai tai|piña colada|cosmopolitan|manhattan|sidecar|highball|toddy|boulevardier|sazerac|aperol|bloody mary|gimlet|cosmo.politan|long island iced tea|rita\b)\b/i.test(nm) && !/burger|chicken|pork|steak|fries|sandwich|doughnut|donut|cake\b|cookie/i.test(nm)) return true
+  if (/\b(martini|margarita|mojito|daiquiri|paloma|negroni|spritz|mule|bellini|mimosa|sangria|old fashioned|mai tai|pi[ñn]a colada|cosmopolitan|manhattan|sidecar|highball|toddy|boulevardier|sazerac|aperol|bloody mar[yi]s?|gimlet|cosmo.politan|long island iced tea|rita\b|blue hawaii|blue lagoon)\b/i.test(nm) && !/burger|chicken|pork|steak|fries|sandwich|doughnut|donut|cake\b|cookie/i.test(nm)) return true
 
   // Spirit names (regardless of category)
-  if (/\b(tequila|mezcal|vodka|bourbon|whisky|whiskey|scotch|rum|gin\b|brandy|cognac|sake\b|soju|amarula|liqueur|fernet)\b/i.test(nm) && !/batter|sauce|braise|glaze|crust|rub|marinate|infuse|vodka sauce|alla vodka|rum cake|bourbon glaze|whiskey sauce|beer.batter/i.test(nm)) return true
+  if (/\b(tequila|mezcal|vodka|bourbon|whisky|whiskey|scotch|rum|gin\b|brandy|cognac|sake\b|soju|amarula|liqueur|liquor|fernet|jägermeister|jagermeister)\b/i.test(nm) && !/batter|sauce|braise|glaze|crust|rub|marinate|infuse|vodka sauce|alla vodka|rum cake|bourbon glaze|whiskey sauce|beer.batter/i.test(nm)) return true
 
   // Wine varietals & terms (regardless of category)
   if (/\b(pinot|cabernet|chardonnay|merlot|riesling|sauvignon blanc|prosecco|champagne|rosé|shiraz|malbec|tempranillo|grenache|zinfandel|chianti|barolo|rioja|chablis|chenin blanc|brut|wines?\s+by\s+the)\b/i.test(nm) && !/sauce|braise|reduction|glaze|braised|rubbed|marinate|infuse|cupcake|cake/i.test(nm)) return true
 
   // Generic alcoholic patterns
-  if (/\b(beer|wine|cocktail)\b/i.test(nm) && !/root beer|ginger beer|butter.?beer|beer.?batter|beer.?bread|beer.?cheese|wine.?sauce|wine.?braised|wine.?reduction|wine.?vinaigrette|wine.?bar|wine.?country/i.test(nm)) return true
+  if (/\b(beer|wine|cocktail|boozy)\b/i.test(nm) && !/root beer|ginger beer|butter.?beer|beer.?batter|beer.?bread|beer.?cheese|wine.?sauce|wine.?braised|wine.?reduction|wine.?vinaigrette|wine.?bar|wine.?country/i.test(nm)) return true
+
+  // Age-restricted items (21+) are always alcoholic
+  if (/\b21\+/.test(nm)) return true
+
+  // "Top Shelf" at bar/tequila/margarita restaurants
+  if (/\btop shelf\b/i.test(nm) && /bar|cantina|tequila|margarita|lounge|tavern|cava/i.test(rName)) return true
 
   // "Draft" or "on tap" or "pilsner" as standalone drink
   if (/\b(draft|seasonal draft|honey pilsner|pilsner)\b/i.test(nm) && !/draft pick|draft house/i.test(nm) && (category === 'beverage' || /bar|pub|lounge|tap|grill|brew/i.test(rName))) return true
@@ -92,7 +98,7 @@ function isLikelyAlcoholic(name: string, category: string, item: Item): boolean 
 
   // --- Bar/lounge restaurant detection ---
   // Items at bars/lounges/pubs with low fat content are almost certainly drinks
-  const isBarRestaurant = /\b(bar|pub|lounge|cantina|tavern|grog|brew|tap\s*house|tiki|wine bar|tonic|cocktail|astropub|watering hole|saloon|speakeasy)\b/i.test(rName)
+  const isBarRestaurant = /\b(bar|pub|lounge|cantina|tavern|grog|brew|tap\s*house|tiki|wine bar|tonic|cocktail|astropub|watering hole|saloon|speakeasy|cava|smoothie|joffrey|promenade|showcase)/i.test(rName)
   if (isBarRestaurant) {
     const nd = n(item)
     const fat = nd?.fat ?? 0
@@ -199,9 +205,12 @@ for (const item of items) {
           suggested: `Expected for alcoholic beverages — no action needed`
         })
       } else {
+        // Small items (<100 cal) with small absolute gap (<50 cal) are clinically insignificant
+        const absGap = Math.abs(cal - estCal)
+        const sev = (cal < 100 && absGap < 50) ? 'LOW' as const : 'MEDIUM' as const
         flags.push({
           item: name, location, pass: 1, category: 'caloric-math',
-          severity: 'MEDIUM',
+          severity: sev,
           issue: `Caloric math off by ${Math.abs(Math.round((1 - ratio) * 100))}%: stated ${cal} vs calculated ${estCal}`,
           current: `cal=${cal}, P=${protein}g, C=${carbs}g, F=${fat}g`,
           suggested: `Verify macros sum to stated calories`
@@ -321,24 +330,25 @@ const profiles: FoodProfile[] = [
   { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*pizza/i, calRange: [150, 600], carbRange: [20, 60], fatRange: [5, 30], proteinRange: [5, 25], label: 'kids pizza' },
   { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*(?:hot dog|corn dog)/i, calRange: [150, 500], carbRange: [15, 40], fatRange: [8, 30], proteinRange: [5, 20], label: 'kids hot dog' },
   { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*(?:chicken|tender|nugget|finger)/i, calRange: [150, 600], carbRange: [10, 40], fatRange: [8, 30], proteinRange: [10, 30], label: 'kids chicken' },
-  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*(?:mac|cheese|pasta|noodle)/i, calRange: [150, 600], carbRange: [20, 60], fatRange: [5, 30], proteinRange: [5, 20], label: 'kids pasta' },
-  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b/i, exclude: /sierra nevada|hazy little thing|mother'?s little helper|churro|ipa\b|lager\b|stout\b|\bale\b|pilsner|beer|wine|cocktail|margarita|sangria|fruit\s*cup/i, calRange: [100, 700], carbRange: [10, 80], fatRange: [3, 40], proteinRange: [3, 40], label: 'kids meal' },
+  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b.*(?:mac|cheese|pasta|noodle)/i, exclude: /babybel/i, calRange: [150, 600], carbRange: [20, 60], fatRange: [5, 30], proteinRange: [5, 20], label: 'kids pasta' },
+  { pattern: /\b(kids?|child|jr\b|junior|little|mini)\b/i, exclude: /sierra nevada|hazy little thing|mother'?s little helper|churro|ipa\b|lager\b|stout\b|\bale\b|pilsner|beer|wine|cocktail|margarita|sangria|fruit\s*cup|babybel/i, calRange: [100, 700], carbRange: [10, 80], fatRange: [3, 40], proteinRange: [3, 40], label: 'kids meal' },
 
   // --- Fruit/veggie platters (MUST come before platter/combo) ---
   { pattern: /fruit\s*(?:platter|plate|cup|bowl|salad)|fresh\s*fruit/i, calRange: [50, 400], carbRange: [10, 90], fatRange: [0, 10], proteinRange: [0, 10], label: 'fruit plate' },
 
   // --- Adult food profiles ---
   { pattern: /cheeseburger|hamburger|burger(?!.*impossible)/i, calRange: [500, 1400], carbRange: [30, 80], fatRange: [25, 70], proteinRange: [20, 60], label: 'burger' },
-  { pattern: /cheese pizza|pepperoni pizza|pizza/i, calRange: [400, 1200], carbRange: [40, 100], fatRange: [15, 50], proteinRange: [15, 45], label: 'pizza' },
+  { pattern: /\bwhole\b.*pizza/i, calRange: [1500, 3200], carbRange: [150, 350], fatRange: [60, 150], proteinRange: [60, 160], label: 'whole pizza' },
+  { pattern: /cheese pizza|pepperoni pizza|pizza/i, exclude: /cookie/i, calRange: [400, 1200], carbRange: [40, 100], fatRange: [15, 50], proteinRange: [15, 45], label: 'pizza' },
   { pattern: /hot dog|corn dog/i, calRange: [300, 900], carbRange: [25, 60], fatRange: [15, 50], proteinRange: [10, 30], label: 'hot dog' },
   { pattern: /turkey leg/i, calRange: [800, 1200], carbRange: [0, 10], fatRange: [40, 70], proteinRange: [80, 160], label: 'turkey leg' },
   { pattern: /funnel cake/i, exclude: /topping/i, calRange: [600, 1200], carbRange: [70, 150], fatRange: [25, 60], proteinRange: [5, 20], label: 'funnel cake' },
   { pattern: /churro/i, exclude: /milk\s*shake|shake\b|family/i, calRange: [200, 600], carbRange: [30, 80], fatRange: [10, 30], proteinRange: [2, 10], label: 'churro' },
-  { pattern: /cupcake/i, calRange: [350, 800], carbRange: [45, 120], fatRange: [15, 40], proteinRange: [3, 10], label: 'cupcake' },
+  { pattern: /cupcake/i, exclude: /cocktail/i, calRange: [350, 800], carbRange: [45, 120], fatRange: [15, 40], proteinRange: [3, 10], label: 'cupcake' },
   { pattern: /dole whip|soft.serve/i, calRange: [150, 400], carbRange: [30, 80], fatRange: [0, 15], proteinRange: [0, 8], label: 'frozen treat' },
-  { pattern: /pretzel(?!.*pretzel kitchen)/i, exclude: /bread pudding|bread stick|breadstick|loaded/i, calRange: [300, 700], carbRange: [50, 120], fatRange: [5, 25], proteinRange: [5, 20], label: 'pretzel' },
+  { pattern: /pretzel(?!.*pretzel kitchen)/i, exclude: /bread pudding|bread stick|breadstick|loaded/i, calRange: [300, 700], carbRange: [50, 120], fatRange: [1, 25], proteinRange: [5, 20], label: 'pretzel' },
   { pattern: /mac.*cheese|mac n cheese/i, calRange: [400, 1000], carbRange: [35, 80], fatRange: [20, 55], proteinRange: [15, 35], label: 'mac & cheese' },
-  { pattern: /chicken tender|chicken finger|chicken strip|chicken nugget/i, exclude: /1 pc|single|per piece/i, calRange: [400, 1000], carbRange: [20, 60], fatRange: [20, 50], proteinRange: [25, 55], label: 'chicken tenders' },
+  { pattern: /chicken tender|chicken finger|chicken strip|chicken nugget/i, exclude: /1 pc|single|per piece|grilled/i, calRange: [400, 1000], carbRange: [20, 60], fatRange: [20, 50], proteinRange: [25, 55], label: 'chicken tenders' },
   { pattern: /nachos|totchos/i, calRange: [500, 1300], carbRange: [40, 100], fatRange: [25, 70], proteinRange: [15, 45], label: 'nachos' },
   { pattern: /caesar salad/i, calRange: [150, 700], carbRange: [8, 40], fatRange: [8, 45], proteinRange: [5, 40], label: 'caesar salad' },
   { pattern: /brownie/i, calRange: [300, 800], carbRange: [40, 100], fatRange: [15, 45], proteinRange: [3, 12], label: 'brownie' },
@@ -346,17 +356,17 @@ const profiles: FoodProfile[] = [
   { pattern: /platter|feast|sampler/i, exclude: /make any|vegetable platter|veggie platter|cheese platter|fruit|combo tray|imperial sampler|beer sampler|wine sampler|flight/i, calRange: [500, 1800], carbRange: [30, 200], fatRange: [15, 80], proteinRange: [15, 120], label: 'platter/sampler' },
   { pattern: /combo/i, exclude: /make any|combo tray/i, calRange: [300, 1600], carbRange: [15, 200], fatRange: [5, 80], proteinRange: [5, 120], label: 'combo meal' },
   { pattern: /\blatte\b|cold brew|\bcappuccino\b/i, calRange: [0, 700], carbRange: [0, 90], fatRange: [0, 35], proteinRange: [0, 50], label: 'coffee drink' },
-  { pattern: /\bbeer\b(?!.*(?:butter|batter|brined|braised|cheese|glazed|marinated|infused|float|root))/i, exclude: /chicken|pork|steak|burger|sandwich|wings|ribs|fish|tacos/i, calRange: [100, 350], carbRange: [5, 30], fatRange: [0, 2], proteinRange: [0, 5], label: 'beer' },
+  { pattern: /\bbeer\b(?!.*(?:butter|batter|brined|braised|cheese|glazed|marinated|infused|float|root))/i, exclude: /chicken|pork|steak|burger|sandwich|wings|ribs|fish|tacos|root beer|barq/i, calRange: [100, 350], carbRange: [5, 30], fatRange: [0, 2], proteinRange: [0, 5], label: 'beer' },
   { pattern: /\bwine\b(?!.*(?:braised|reduction|sauce|vinaigrette|marinated|glazed|infused|cupcake|cake|country|bar))/i, calRange: [100, 400], carbRange: [2, 20], fatRange: [0, 1], proteinRange: [0, 2], label: 'wine' },
   { pattern: /margarita|mojito|sangria|(?<!shrimp |fruit |prawn |seafood )cocktail/i, calRange: [50, 500], carbRange: [5, 60], fatRange: [0, 5], proteinRange: [0, 3], label: 'cocktail' },
-  { pattern: /^(?:bottled |sparkling |still |spring |mineral |flavored |dasani |smart)?water$/i, calRange: [0, 10], carbRange: [0, 0], fatRange: [0, 0], proteinRange: [0, 0], label: 'water' },
+  { pattern: /^(?:bottled |sparkling |still |spring |mineral |flavored |dasani |smart|premium |tulum |coconut |vitamin )?water$/i, calRange: [0, 120], carbRange: [0, 30], fatRange: [0, 1], proteinRange: [0, 1], label: 'water' },
   { pattern: /ribs|rib plate|bbq.*rib/i, calRange: [600, 1400], carbRange: [15, 60], fatRange: [30, 70], proteinRange: [30, 70], label: 'ribs' },
   { pattern: /doughnut|donut/i, exclude: /chicken.*(?:doughnut|donut)|(?:doughnut|donut).*chicken|chicken\s*'?n'?\s*donut/i, calRange: [250, 700], carbRange: [30, 90], fatRange: [10, 35], proteinRange: [3, 10], label: 'doughnut' },
   { pattern: /ice cream|sundae/i, calRange: [250, 1200], carbRange: [30, 130], fatRange: [10, 55], proteinRange: [3, 15], label: 'ice cream/sundae' },
   { pattern: /cookie/i, exclude: /cookies\s*&\s*cream|cookies\s*'?n'?\s*cream/i, calRange: [200, 1000], carbRange: [25, 120], fatRange: [10, 50], proteinRange: [2, 15], label: 'cookie' },
   { pattern: /wrap|burrito/i, calRange: [350, 1000], carbRange: [30, 80], fatRange: [15, 50], proteinRange: [15, 45], label: 'wrap/burrito' },
   { pattern: /sandwich|panini|sub/i, exclude: /potato chip|chips\b|make any/i, calRange: [250, 1200], carbRange: [20, 80], fatRange: [8, 55], proteinRange: [8, 50], label: 'sandwich' },
-  { pattern: /(?<!cheese)steak(?! dog)|filet|ribeye|rib.eye|prime rib/i, exclude: /cauliflower|vegan|veggie|extra steak|add steak/i, calRange: [400, 1200], carbRange: [0, 60], fatRange: [20, 65], proteinRange: [30, 80], label: 'steak' },
+  { pattern: /(?<!cheese)steak(?! dog|house| fries| & egg)|filet(?! de saumon)|ribeye|rib.eye|prime rib/i, exclude: /cauliflower|vegan|veggie|extra steak|add steak|chocolate cake|steak fries|filet de saumon/i, calRange: [400, 1200], carbRange: [0, 60], fatRange: [20, 65], proteinRange: [30, 80], label: 'steak' },
   { pattern: /fish\s*(?:&|and|'?n'?)\s*chips/i, calRange: [700, 1400], carbRange: [60, 130], fatRange: [30, 80], proteinRange: [25, 100], label: 'fish & chips' },
   { pattern: /salmon|sea bass|fish(?!.*finger)/i, exclude: /\b(ipa|ale|lager|stout|porter|pilsner|dogfish|sailfish|swordfish\s+ipa)\b/i, calRange: [300, 900], carbRange: [5, 80], fatRange: [10, 50], proteinRange: [15, 60], label: 'fish entree' },
 ]
@@ -506,7 +516,7 @@ for (const cat of categories) {
     for (const item of catItems) {
       const cal = n(item)!.calories!
       const nameLower = item.name.toLowerCase()
-      if (/\bwater\b/.test(nameLower) && !/watermelon|waterfront|cold water|water chestnut|waterfall|water park/.test(nameLower) && cal > 20) {
+      if (/\bwater\b/.test(nameLower) && !/watermelon|waterfront|cold water|water chestnut|waterfall|water park|coconut\s*water|vitamin\s*water|flavored.*water|premium\s*water|tulum|moon on the/.test(nameLower) && cal > 20) {
         flags.push({
           item: item.name, location: loc(item), pass: 3, category: 'category-ranking',
           severity: 'MEDIUM',
