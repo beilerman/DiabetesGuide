@@ -12,30 +12,83 @@ function defaultState(): MealCartState {
   return { activeMealId: id, meals: { [id]: defaultMeal() } }
 }
 
+function safeNumber(value: unknown): number {
+  if (typeof value === 'number' && Number.isFinite(value)) return value
+  if (typeof value === 'string') {
+    const parsed = Number(value)
+    if (Number.isFinite(parsed)) return parsed
+  }
+  return 0
+}
+
+function sanitizeMealItem(raw: unknown): MealItem | null {
+  if (!raw || typeof raw !== 'object') return null
+  const item = raw as Partial<MealItem>
+  if (typeof item.id !== 'string' || typeof item.name !== 'string' || !item.name.trim()) return null
+  const carbs = safeNumber(item.carbs)
+  const calories = safeNumber(item.calories)
+  const fat = safeNumber(item.fat)
+  return {
+    id: item.id,
+    name: item.name,
+    carbs,
+    calories,
+    fat,
+    protein: safeNumber(item.protein),
+    sugar: safeNumber(item.sugar),
+    fiber: safeNumber(item.fiber),
+    sodium: safeNumber(item.sodium),
+    restaurant: typeof item.restaurant === 'string' ? item.restaurant : undefined,
+    parkName: typeof item.parkName === 'string' ? item.parkName : undefined,
+  }
+}
+
+function sanitizeMeal(raw: unknown): MealData | null {
+  if (!raw || typeof raw !== 'object') return null
+  const meal = raw as Partial<MealData>
+  const name = typeof meal.name === 'string' && meal.name.trim() ? meal.name : 'My Meal'
+  const parkId = typeof meal.parkId === 'string' ? meal.parkId : null
+  const rawItems = Array.isArray(meal.items) ? meal.items : []
+  const items = rawItems.map(sanitizeMealItem).filter((i): i is MealItem => i !== null)
+  return { name, parkId, items }
+}
+
+function normalizeStoredState(input: unknown): MealCartState | null {
+  if (Array.isArray(input)) {
+    const state = defaultState()
+    const meal = state.meals[state.activeMealId]
+    meal.items = input.map(sanitizeMealItem).filter((i): i is MealItem => i !== null)
+    return state
+  }
+
+  if (input && typeof input === 'object') {
+    const parsed = input as Partial<MealCartState> & { meals?: Record<string, unknown> }
+    if (parsed.meals && typeof parsed.meals === 'object') {
+      const meals: Record<string, MealData> = {}
+      for (const [id, mealData] of Object.entries(parsed.meals)) {
+        const sanitized = sanitizeMeal(mealData)
+        if (sanitized) meals[id] = sanitized
+      }
+      const mealIds = Object.keys(meals)
+      if (mealIds.length === 0) return null
+      const active = typeof parsed.activeMealId === 'string' && meals[parsed.activeMealId]
+        ? parsed.activeMealId
+        : mealIds[0]
+      return { activeMealId: active, meals }
+    }
+  }
+
+  return null
+}
+
 function readFromStorage(): MealCartState {
   if (typeof window === 'undefined') return defaultState()
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY)
     if (!raw) return defaultState()
     const parsed = JSON.parse(raw)
-    // Migrate from old format (plain MealItem array) to new MealCartState
-    if (Array.isArray(parsed)) {
-      const state = defaultState()
-      const meal = state.meals[state.activeMealId]
-      meal.items = (parsed as MealItem[]).map(item => ({
-        ...item,
-        protein: item.protein ?? 0,
-        sugar: item.sugar ?? 0,
-        fiber: item.fiber ?? 0,
-        sodium: item.sodium ?? 0,
-      }))
-      return state
-    }
-    // Validate shape
-    if (parsed.activeMealId && parsed.meals) {
-      return parsed as MealCartState
-    }
-    return defaultState()
+    const normalized = normalizeStoredState(parsed)
+    return normalized ?? defaultState()
   } catch {
     return defaultState()
   }
@@ -127,7 +180,9 @@ export function useMealCart() {
   const createMeal = useCallback((name: string, parkId: string | null = null) => {
     const id = crypto.randomUUID()
     const s = { ...sharedState }
-    s.meals = { ...s.meals, [id]: { name, parkId, items: [] } }
+    const safeName = name.trim() ? name : 'My Meal'
+    const safeParkId = typeof parkId === 'string' ? parkId : null
+    s.meals = { ...s.meals, [id]: { name: safeName, parkId: safeParkId, items: [] } }
     s.activeMealId = id
     setSharedState(s)
     return id
@@ -140,14 +195,16 @@ export function useMealCart() {
 
   const deleteMeal = useCallback((id: string) => {
     const s = { ...sharedState }
+    if (!s.meals[id]) return
     const mealIds = Object.keys(s.meals)
     if (mealIds.length <= 1) {
-      // Don't delete the last meal — just clear it
+      // Don't delete the last meal -- just clear it
       s.meals = { ...s.meals, [id]: { ...s.meals[id], items: [] } }
       setSharedState(s)
       return
     }
-    const { [id]: _, ...rest } = s.meals
+    const rest = { ...s.meals }
+    delete rest[id]
     s.meals = rest
     if (s.activeMealId === id) {
       s.activeMealId = Object.keys(rest)[0]
@@ -159,7 +216,8 @@ export function useMealCart() {
     const s = { ...sharedState }
     const meal = s.meals[id]
     if (!meal) return
-    s.meals = { ...s.meals, [id]: { ...meal, name } }
+    const nextName = name.trim() ? name : meal.name
+    s.meals = { ...s.meals, [id]: { ...meal, name: nextName } }
     setSharedState(s)
   }, [])
 
@@ -187,4 +245,14 @@ export function useMealCart() {
     deleteMeal,
     renameMeal,
   }
+}
+
+export function __resetMealCartState(state?: MealCartState) {
+  listeners.clear()
+  sharedState = state ?? defaultState()
+  writeToStorage(sharedState)
+}
+
+export function __normalizeStoredMealCart(raw: unknown) {
+  return normalizeStoredState(raw)
 }

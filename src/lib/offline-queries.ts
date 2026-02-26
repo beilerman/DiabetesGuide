@@ -19,34 +19,57 @@ const MENU_ITEMS_SELECT = `
   restaurant:restaurants (*, park:parks (*))
 `
 
-async function fetchAllMenuItemsOnline(restaurantIds?: string[], maxItems?: number): Promise<MenuItemWithNutrition[]> {
+type MenuItemsBatchFetcher = (args: {
+  from: number
+  to: number
+  restaurantIds?: string[]
+}) => Promise<MenuItemWithNutrition[]>
+
+export interface FetchMenuItemsOptions {
+  limit?: number
+  fetchPage?: MenuItemsBatchFetcher
+}
+
+async function fetchMenuItemsPage({ from, to, restaurantIds }: {
+  from: number
+  to: number
+  restaurantIds?: string[]
+}): Promise<MenuItemWithNutrition[]> {
+  let query = supabase
+    .from('menu_items')
+    .select(MENU_ITEMS_SELECT)
+    .order('name')
+    .order('id')
+    .range(from, to)
+
+  if (restaurantIds && restaurantIds.length > 0) {
+    query = query.in('restaurant_id', restaurantIds)
+  }
+
+  const { data, error } = await query
+  if (error) throw error
+  return (data ?? []) as MenuItemWithNutrition[]
+}
+
+async function fetchAllMenuItemsOnline(
+  restaurantIds?: string[],
+  maxItems?: number,
+  fetchPage: MenuItemsBatchFetcher = fetchMenuItemsPage,
+): Promise<MenuItemWithNutrition[]> {
   const batchSize = 1000
-  const cap = maxItems ?? Infinity
+  const cap = typeof maxItems === 'number' ? maxItems : Infinity
   let from = 0
-  let allItems: MenuItemWithNutrition[] = []
+  const allItems: MenuItemWithNutrition[] = []
 
   while (allItems.length < cap) {
-    let query = supabase
-      .from('menu_items')
-      .select(MENU_ITEMS_SELECT)
-      .order('name')
-      .order('id')
-      .range(from, from + batchSize - 1)
-
-    if (restaurantIds && restaurantIds.length > 0) {
-      query = query.in('restaurant_id', restaurantIds)
-    }
-
-    const { data, error } = await query
-    if (error) throw error
-
-    if (!data || data.length === 0) break
-    allItems = allItems.concat(data as MenuItemWithNutrition[])
-    if (data.length < batchSize) break
+    const batch = await fetchPage({ from, to: from + batchSize - 1, restaurantIds })
+    if (batch.length === 0) break
+    allItems.push(...batch)
+    if (batch.length < batchSize) break
     from += batchSize
   }
 
-  return maxItems ? allItems.slice(0, maxItems) : allItems
+  return Number.isFinite(cap) ? allItems.slice(0, cap) : allItems
 }
 
 function escapeSearch(q: string): string {
@@ -111,9 +134,13 @@ export async function fetchAllRestaurantsOffline(): Promise<Restaurant[]> {
 }
 
 /** Fetch menu items with offline fallback */
-export async function fetchMenuItemsOffline(parkId?: string): Promise<MenuItemWithNutrition[]> {
+export async function fetchMenuItemsOffline(
+  parkId?: string,
+  options?: FetchMenuItemsOptions,
+): Promise<MenuItemWithNutrition[]> {
   try {
     let items: MenuItemWithNutrition[]
+    const { limit, fetchPage } = options ?? {}
     if (parkId) {
       const { data: restaurants, error: restErr } = await supabase
         .from('restaurants')
@@ -122,9 +149,9 @@ export async function fetchMenuItemsOffline(parkId?: string): Promise<MenuItemWi
       if (restErr) throw restErr
       const restaurantIds = (restaurants || []).map(r => r.id)
       if (restaurantIds.length === 0) return []
-      items = await fetchAllMenuItemsOnline(restaurantIds)
+      items = await fetchAllMenuItemsOnline(restaurantIds, limit, fetchPage)
     } else {
-      items = await fetchAllMenuItemsOnline(undefined, 3000)
+      items = await fetchAllMenuItemsOnline(undefined, limit, fetchPage)
     }
     // Cache in background
     writeAllItems(items).catch(() => {})
