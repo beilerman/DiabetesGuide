@@ -1,0 +1,8 @@
+{
+  "mode": "daily",
+  "consecutiveCleanDays": 0,
+  "lastAudit": "",
+  "autoFixesApplied": 0,
+  "graduationThreshold": 14,
+  "history": []
+}

@@ -38,3 +38,10 @@ output/
 supabase/.temp/
 FA2026.json
 .vercel
+
+# Audit result files (large, regenerated daily)
+audit/accuracy-results.json
+audit/completeness-results.json
+audit/autofix-results.json
+audit/external-results.json
+audit/.tmp-report-body.md
