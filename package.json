@@ -58,6 +58,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "fake-indexeddb": "^6.2.5",
     "globals": "^16.5.0",
+    "googleapis": "^171.4.0",
     "groq-sdk": "^0.37.0",
     "jsdom": "^28.1.0",
     "jspdf": "^4.2.0",
