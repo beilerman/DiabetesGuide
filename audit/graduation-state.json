@@ -1,8 +1,16 @@
 {
   "mode": "daily",
   "consecutiveCleanDays": 0,
-  "lastAudit": "",
+  "lastAudit": "2026-02-26",
   "autoFixesApplied": 0,
   "graduationThreshold": 14,
-  "history": []
+  "history": [
+    {
+      "date": "2026-02-26",
+      "high": 607,
+      "medium": 377,
+      "low": 0,
+      "autoFixes": 0
+    }
+  ]
 }
