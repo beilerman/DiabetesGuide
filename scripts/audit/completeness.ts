@@ -2,10 +2,24 @@ import type { Item, AuditFinding, AuditPassResult } from './types.js'
 import { THRESHOLDS } from './thresholds.js'
 import { nd } from './utils.js'
 
+type ParkType = 'theme-park' | 'district' | 'cruise-ship' | 'water-park' | 'resort' | 'other'
+
+/** Classify a park by name to apply appropriate restaurant count thresholds. */
+export function inferParkType(name: string): ParkType {
+  const n = name.toLowerCase()
+  // Order matters: more specific patterns first
+  if (/disney (dream|fantasy|magic|treasure|wish|wonder)\b/.test(n)) return 'cruise-ship'
+  if (/typhoon lagoon|volcano bay|blizzard beach|aquatica/.test(n)) return 'water-park'
+  if (/disney springs|downtown disney|citywalk|universal citywalk/.test(n)) return 'district'
+  if (/resort|hotel|inn\b|lodge\b|floridian|contemporary|polynesian|wilderness|boardwalk|riviera|coronado|caribbean|saratoga|yacht|beach club|pop century|art of animation|all-star|swan|dolphin|aulani|portofino|sapphire|stella nova|terra luna|cabana bay|hard rock|aventura|endless summer|royal pacific|surfside/.test(n)) return 'resort'
+  if (/magic kingdom|epcot|hollywood studios|animal kingdom|universal studios|islands of adventure|epic universe|disneyland park|disney california|seaworld|busch gardens|dollywood|kings island/.test(n)) return 'theme-park'
+  return 'other'
+}
+
 /**
  * Completeness check pass.
  * Validates data coverage at the park and restaurant level:
- *   - parks with fewer than MIN_RESTAURANTS_PER_PARK restaurants
+ *   - parks with fewer than type-appropriate minimum restaurants
  *   - restaurants with fewer than MIN_ITEMS_PER_RESTAURANT items
  *   - parks with more than MAX_NULL_CALORIE_PCT% null-calorie items
  *   - items with confidence_score below MIN_CONFIDENCE_SCORE
@@ -37,17 +51,19 @@ export function checkCompleteness(items: Item[]): AuditPassResult {
   for (const [parkName, restMap] of parkMap) {
     totalRestaurants += restMap.size
 
-    // Check 1: sparse park (< MIN_RESTAURANTS_PER_PARK restaurants)
-    if (restMap.size < THRESHOLDS.MIN_RESTAURANTS_PER_PARK) {
+    // Check 1: sparse park (type-aware threshold)
+    const parkType = inferParkType(parkName)
+    const minRestaurants = THRESHOLDS.MIN_RESTAURANTS_BY_PARK_TYPE[parkType] ?? THRESHOLDS.MIN_RESTAURANTS_PER_PARK
+    if (restMap.size < minRestaurants) {
       findings.push({
         item: '',
         restaurant: '',
         park: parkName,
         checkName: 'sparse_park',
         severity: 'HIGH',
-        message: `Park has only ${restMap.size} restaurant(s), minimum is ${THRESHOLDS.MIN_RESTAURANTS_PER_PARK}`,
+        message: `Park (${parkType}) has only ${restMap.size} restaurant(s), minimum for ${parkType} is ${minRestaurants}`,
         currentValue: String(restMap.size),
-        suggestedValue: String(THRESHOLDS.MIN_RESTAURANTS_PER_PARK),
+        suggestedValue: String(minRestaurants),
         autoFixable: false,
       })
     }

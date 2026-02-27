@@ -59,17 +59,17 @@ describe('checkCompleteness', () => {
     expect(finding!.park).toBe('Good Park')
   })
 
-  it('flags parks with < 10 restaurants as HIGH', () => {
+  it('flags theme parks with < 10 restaurants as HIGH', () => {
     const items: Item[] = [
-      // "Tiny Park" with only 2 restaurants
-      ...makeItems('Tiny Park', 'Restaurant A', 5),
-      ...makeItems('Tiny Park', 'Restaurant B', 5),
+      // "Dollywood" (theme-park type) with only 2 restaurants
+      ...makeItems('Dollywood', 'Restaurant A', 5),
+      ...makeItems('Dollywood', 'Restaurant B', 5),
     ]
 
     const result = checkCompleteness(items)
 
     const finding = result.findings.find(
-      (f) => f.checkName === 'sparse_park' && f.park === 'Tiny Park',
+      (f) => f.checkName === 'sparse_park' && f.park === 'Dollywood',
     )
     expect(finding).toBeDefined()
     expect(finding!.severity).toBe('HIGH')
