@@ -116,6 +116,54 @@ describe('checkAccuracy', () => {
     expect(fix!.after).toBe(0)
   })
 
+  it('uses relaxed 30% threshold for beverages (not flagged at 25%)', () => {
+    // Latte: Atwater = 10*4 + 30*4 + 5*9 = 40+120+45 = 205
+    // calories = 260, deviation = |260-205|/205 * 100 = 26.8%
+    // 26.8% > 20% (food threshold) but < 30% (beverage threshold)
+    // Should NOT be flagged as MEDIUM because it's a beverage
+    const item = makeItem({
+      name: 'Vanilla Latte',
+      category: 'beverage',
+      nd: { calories: 260, carbs: 30, fat: 5, protein: 10 },
+    })
+    const result = checkAccuracy([item])
+
+    const atwaterFinding = result.findings.find((f) => f.checkName === 'atwater_deviation')
+    expect(atwaterFinding).toBeUndefined()
+  })
+
+  it('uses strict 20% threshold for food items (flagged at 25%)', () => {
+    // Burger: Atwater = 25*4 + 40*4 + 20*9 = 100+160+180 = 440
+    // calories = 560, deviation = |560-440|/440 * 100 = 27.3%
+    // 27.3% > 20% AND absDiff = 120 >= 30 → MEDIUM for food
+    const item = makeItem({
+      name: 'Cheeseburger',
+      category: 'entree',
+      nd: { calories: 560, carbs: 40, fat: 20, protein: 25 },
+    })
+    const result = checkAccuracy([item])
+
+    const finding = result.findings.find((f) => f.checkName === 'atwater_deviation')
+    expect(finding).toBeDefined()
+    expect(finding!.severity).toBe('MEDIUM')
+  })
+
+  it('detects beverages by name pattern even without beverage category', () => {
+    // Cold Brew Coffee categorized as "snack" but name pattern matches beverage
+    // Atwater = 1*4 + 15*4 + 0*9 = 64
+    // calories = 90, deviation = |90-64|/64 * 100 = 40.6%
+    // 40.6% > 30% (beverage threshold) AND absDiff = 26 < 30 → not flagged (abs too small)
+    const item = makeItem({
+      name: 'Cold Brew Coffee',
+      category: 'snack',
+      nd: { calories: 90, carbs: 15, fat: 0, protein: 1 },
+    })
+    const result = checkAccuracy([item])
+
+    const atwaterFinding = result.findings.find((f) => f.checkName === 'atwater_deviation')
+    expect(atwaterFinding).toBeUndefined()
+  })
+
   it('returns clean result for valid items', () => {
     // Default item: Atwater = 25*4 + 50*4 + 20*9 = 480 vs cal=500
     // deviation = |500-480|/480*100 = ~4.2% — well under 20% threshold

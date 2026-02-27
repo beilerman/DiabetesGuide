@@ -2,6 +2,9 @@ import type { Item, AuditFinding, AutoFix, AuditPassResult, Severity } from './t
 import { THRESHOLDS } from './thresholds.js'
 import { nd, loc, isLikelyAlcoholic } from './utils.js'
 
+const BEVERAGE_NAME_PATTERN =
+  /\b(latte|cappuccino|mocha|espresso|coffee|cold brew|tea|chai|juice|smoothie|milk|hot chocolate|cocoa|frappuccino|macchiato|americano)\b/i
+
 const FRIED_PASTRY_PATTERN =
   /\b(fried|crispy|pastry|pie|croissant|donut|doughnut|fritter|churro)\b/i
 
@@ -10,6 +13,12 @@ const MEAT_PATTERN =
 
 const MACRO_FIELDS = ['calories', 'carbs', 'fat', 'protein', 'sugar', 'fiber'] as const
 
+function isLikelyBeverage(item: Item): boolean {
+  if (item.category === 'beverage') return true
+  if (BEVERAGE_NAME_PATTERN.test(item.name)) return true
+  return false
+}
+
 /**
  * Pure accuracy check pass.
  * Validates internal consistency of nutrition data:
@@ -17,7 +26,7 @@ const MACRO_FIELDS = ['calories', 'carbs', 'fat', 'protein', 'sugar', 'fiber'] a
  *   - extreme sodium
  *   - negative macros
  *   - calorie range
- *   - Atwater factor deviation (skips alcoholic beverages)
+ *   - Atwater factor deviation (skips alcoholic beverages, relaxed for non-alcoholic beverages)
  *   - zero fat on fried items
  *   - zero protein on meat items
  */
@@ -183,10 +192,13 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
       if (estimate > 0) {
         const absDiff = Math.abs(n.calories - estimate)
         const deviation = absDiff / estimate * 100
+        const mediumPct = isLikelyBeverage(item)
+          ? THRESHOLDS.ATWATER_MEDIUM_PCT_BEVERAGE
+          : THRESHOLDS.ATWATER_MEDIUM_PCT
         let severity: Severity | null = null
         if (deviation > THRESHOLDS.ATWATER_HIGH_PCT && absDiff >= THRESHOLDS.ATWATER_MIN_ABS_CAL) {
           severity = 'HIGH'
-        } else if (deviation > THRESHOLDS.ATWATER_MEDIUM_PCT && absDiff >= THRESHOLDS.ATWATER_MIN_ABS_MEDIUM_CAL) {
+        } else if (deviation > mediumPct && absDiff >= THRESHOLDS.ATWATER_MIN_ABS_MEDIUM_CAL) {
           severity = 'MEDIUM'
         }
         if (severity) {
