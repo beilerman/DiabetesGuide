@@ -181,9 +181,10 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
     ) {
       const estimate = n.protein * 4 + n.carbs * 4 + n.fat * 9
       if (estimate > 0) {
-        const deviation = Math.abs(n.calories - estimate) / estimate * 100
+        const absDiff = Math.abs(n.calories - estimate)
+        const deviation = absDiff / estimate * 100
         let severity: Severity | null = null
-        if (deviation > THRESHOLDS.ATWATER_HIGH_PCT) {
+        if (deviation > THRESHOLDS.ATWATER_HIGH_PCT && absDiff >= THRESHOLDS.ATWATER_MIN_ABS_CAL) {
           severity = 'HIGH'
         } else if (deviation > THRESHOLDS.ATWATER_MEDIUM_PCT) {
           severity = 'MEDIUM'
