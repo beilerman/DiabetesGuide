@@ -34,6 +34,15 @@ data/*.json
 !data/source.json
 !data/portion-multipliers.json
 data/pending/
+
+# Curated supplement data (imported to Supabase, not needed in repo)
+data/chain-nutrition/
+data/chains/
+data/parks/*-missing*.json
+data/parks/*-expansion*.json
+data/parks/*-supplement*.json
+data/parks/*-final*.json
+data/parks/*-beverages*.json
 output/
 supabase/.temp/
 FA2026.json
