@@ -18,6 +18,13 @@
       "medium": 420,
       "low": 0,
       "autoFixes": 0
+    },
+    {
+      "date": "2026-02-27",
+      "high": 24,
+      "medium": 373,
+      "low": 0,
+      "autoFixes": 0
     }
   ]
 }

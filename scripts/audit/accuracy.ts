@@ -186,7 +186,7 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
         let severity: Severity | null = null
         if (deviation > THRESHOLDS.ATWATER_HIGH_PCT && absDiff >= THRESHOLDS.ATWATER_MIN_ABS_CAL) {
           severity = 'HIGH'
-        } else if (deviation > THRESHOLDS.ATWATER_MEDIUM_PCT) {
+        } else if (deviation > THRESHOLDS.ATWATER_MEDIUM_PCT && absDiff >= THRESHOLDS.ATWATER_MIN_ABS_MEDIUM_CAL) {
           severity = 'MEDIUM'
         }
         if (severity) {

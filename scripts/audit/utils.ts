@@ -125,11 +125,11 @@ const NEGATIVE_PATTERNS = /\b(batter(?:ed)?|bread(?:ed)?|sauce|glaze|glazed|crus
 // Definitive cocktail/spirit patterns override negatives (e.g., "Grapefruit Cake Martini")
 const DEFINITIVE_COCKTAIL = /\b(martinis?|margaritas?|mojitos?|daiquiris?|manhattans?|negronis?|cosmopolitans?|pi[nñ]a\s*coladas?|mai\s*tais?|long\s*islands?|espresso\s*martinis?|micheladas?|mules?|palomas?|mimosas?|bellinis?)\b/i
 
-const BEER_PATTERNS = /\b(beer|ale|lager|stout|ipa|pilsner|porter|hefeweizen|saison|gose|shandy|wheat\s*beer|pale\s*ale|draught|amber)\b/i
-const WINE_PATTERNS = /\b(wines?|merlot|chardonnay|cabernet|pinot|prosecco|champagne|riesling|moscato|sangria|ros[eé]|sauvignon|shiraz|tempranillo|grüner|glühwein|malbec|grillo|vermentino|regale|brut|froscato|froz[eé']|friezling|cavicchioli)\b/i
+const BEER_PATTERNS = /\b(beer|ale|lager|stout|ipa|pilsner|porter|hefeweizen|saison|gose|shandy|wheat\s*beer|pale\s*ale|draught|amber|apa)\b/i
+const WINE_PATTERNS = /\b(wines?|merlot|chardonnay|cabernet|pinot|prosecco|champagne|riesling|moscato|sangria|ros[eé]|sauvignon|shiraz|tempranillo|grüner|glühwein|malbec|grillo|vermentino|regale|brut|froscato|froz[eé']|friezling|cavicchioli|cotes\s*du\s*rhone)\b/i
 const COCKTAIL_PATTERNS = /\b(margaritas?|mojitos?|daiquiris?|martinis?|manhattans?|cosmopolitans?|old\s*fashioned|negronis?|palomas?|pi[nñ]a\s*coladas?|mai\s*tais?|long\s*island|mules?|sours?|sling|collins|julep|caipirinha|rickey|gimlet|highball|toddy|smash|swizzle|spritzer|espresso\s*martinis?|coladas?|mudslides?|micheladas?|mimosas?|bellinis?|bees?\s*knees|punch|cosmo|ritas?|lava\s*flow)\b/i
-const SPIRIT_PATTERNS = /\b(bourbon|whiskey|whisky|vodka|rum|tequila|gin|sake|mead|mezcal|absinthe|grappa|schnapps|amaretto|kahlua|bailey'?s|jägermeister|limoncello|amarula|cachaça|liqueur|malibu)\b/i
-const OTHER_ALCOHOL_PATTERNS = /\b(hard\s*cider|hard\s*seltzer|mimosas?|bellinis?|spritz|aperol|cocktail|on\s*the\s*rocks|neat|proof|abv|tipsy|boozy|spiked|spirited|with\s*alcohol|with\s*(?:rum|vodka|tequila|whiskey|bourbon|gin)|dole\s*whip\s*flight)\b/i
+const SPIRIT_PATTERNS = /\b(bourbon|whiskey|whisky|vodka|rum|tequila|gin|sake|mead|mezcal|absinthe|grappa|schnapps|amaretto|kahlua|bailey'?s|jägermeister|limoncello|amarula|cachaça|liqueur|malibu|raicilla|raclcilla|sotol)\b/i
+const OTHER_ALCOHOL_PATTERNS = /\b(hard\s*cider|hard\s*seltzer|hard\s*lemonade|mimosas?|bellinis?|spritz|aperol|cocktail|on\s*the\s*rocks|neat|proof|abv|tipsy|boozy|spiked|spirited|with\s*alcohol|with\s*(?:rum|vodka|tequila|whiskey|bourbon|gin)|dole\s*whip\s*flight)\b/i
 
 // Known brand beers (don't contain "beer" or "ale" in name)
 const BRAND_BEER = /\b(michelob\s*ultra|miller\s*lite|bud\s*light|modelo\s*especial|heineken|corona(?!\s*chicken)|stella\s*artois|yuengling|kronenbourg|delirium\s*tremens|dragon'?s?\s*milk|duvel|guinness|crooked\s*can|perrier[- ]jouët|pbr|pabst|dos\s*equis|blue\s*moon|sam\s*adams|samuel\s*adams|budweiser|coors|tecate|pacifico|lagunitas|sierra\s*nevada|fat\s*tire|shock\s*top|landshark|kona|red\s*stripe)\b/i
