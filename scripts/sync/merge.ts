@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'fs'
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, statSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import type { ScrapeResult, ScrapedRestaurant, ScrapedItem } from '../scrapers/types.js'
@@ -245,13 +245,28 @@ import { pathToFileURL } from 'url'
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const scrapedDir = resolve(__dirname, '../../data/scraped')
+  const maxAgeDays = parseInt(process.env.MERGE_MAX_AGE_DAYS || '7')
 
   if (!existsSync(scrapedDir)) {
     console.error('No scraped data found. Run scrapers first.')
     process.exit(1)
   }
 
-  const files = readdirSync(scrapedDir).filter(f => f.endsWith('.json'))
+  const cutoff = Date.now() - maxAgeDays * 24 * 60 * 60 * 1000
+  const allFiles = readdirSync(scrapedDir).filter(f => f.endsWith('.json'))
+
+  // Only read files from the last N days to avoid re-merging stale data
+  const files: string[] = []
+  for (const file of allFiles) {
+    const filePath = resolve(scrapedDir, file)
+    const stat = statSync(filePath)
+    if (stat.mtimeMs >= cutoff) {
+      files.push(file)
+    } else {
+      console.log(`  Skipping stale file: ${file}`)
+    }
+  }
+
   const scrapeResults: ScrapeResult[] = []
 
   for (const file of files) {
@@ -259,7 +274,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     scrapeResults.push(data)
   }
 
-  console.log(`Merging ${files.length} scrape results...`)
+  console.log(`Merging ${files.length} scrape results (${allFiles.length - files.length} stale files skipped)...`)
 
   mergeScrapedData(scrapeResults)
     .then(result => {

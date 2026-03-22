@@ -86,6 +86,7 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 | `estimate-nutrition-keywords.ts` | Keyword-based nutrition estimation for common items (chips, fries, ice cream, etc.) without needing AI | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `check-nutrition-quality.ts` | Report on nutrition data coverage and quality (items with calories, sources, etc.) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `check-null-nutrition.ts` | List items with null calories, categorized by food type and description availability | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `scrape-all.ts` | Orchestrator that runs all working scrapers (Universal, Dollywood, Kings Island, optionally DFB), cleans old files, reports results | None (scrapers load their own env) |
 
 ### Menu Sync Scrapers (in `scripts/scrapers/`)
 
@@ -102,18 +103,30 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 ### Menu Sync Pipeline
 
 ```bash
-# Run full sync (scrape Universal → merge → estimate nutrition → report)
+# Run full sync (all scrapers → merge → estimate nutrition → report)
 npm run sync:full
 
-# Or run steps individually:
-npm run scrape:allears-puppeteer  # Scrape Disney World parks via AllEars
+# Or run the scrape-all orchestrator directly:
+npm run scrape:all                 # Run all working scrapers (Universal, Dollywood, Kings Island)
+npm run scrape:all -- --skip-dfb   # Skip DFB photo scraper (faster, no Puppeteer needed)
+npm run scrape:all -- --clean-days=14  # Clean scraped files older than 14 days (default 30)
+
+# Or run individual scrapers:
 npm run scrape:universal          # Scrape Universal parks to data/scraped/
 npm run scrape:dollywood          # Scrape Dollywood
 npm run scrape:kings-island       # Scrape Kings Island
-npm run sync:merge                # Cross-reference with Supabase, find new items
+npm run scrape:dfb                # Scrape Disney Food Blog photos
+npm run scrape:allears-puppeteer  # Scrape Disney World parks via AllEars (BLOCKED by Cloudflare)
+
+# Sync pipeline steps:
+npm run sync:merge                # Cross-reference with Supabase, find new items (skips files >7 days old)
 npm run sync:estimate             # Estimate nutrition for new items via keyword similarity
 npm run sync:report               # Generate diff report in data/pending/
-npm run sync:approve              # Import approved items to Supabase
+
+# Approval:
+npm run sync:approve              # Import ALL pending items to Supabase (--all flag)
+npm run sync:approve -- --auto    # Import only high-confidence items (confidence ≥70, has nutrition)
+                                  # Low-confidence items stay in data/pending/ for manual review
 
 # After approve, run enrichment pipeline:
 # enrich-nutrition.ts → adjust-portions.ts → enrich-allergens.ts
@@ -127,6 +140,12 @@ npm run estimate:ai                # Uses Groq AI to estimate nutrition from des
 ```
 
 The sync pipeline runs weekly via GitHub Actions (`.github/workflows/weekly-menu-sync.yml`).
+
+**Weekly workflow:** Runs all working scrapers → merge → estimate → auto-approve high-confidence items. Low-confidence items are committed to `data/pending/` for manual review. AllEars is skipped (Cloudflare-blocked).
+
+**Duplicate protection:** `approve.ts` checks for normalized name matches within the same restaurant before inserting. Safe to run multiple times on the same data.
+
+**Stale file filtering:** `merge.ts` only reads scraped files from the last 7 days (configurable via `MERGE_MAX_AGE_DAYS` env var). Old files in `data/scraped/` are cleaned by `scrape-all.ts`.
 
 ### Data Pipeline Execution Order
 
