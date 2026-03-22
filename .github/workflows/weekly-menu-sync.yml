@@ -21,35 +21,62 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run AllEars scraper
-        run: npm run scrape:allears
+      - name: Install Puppeteer browser
+        run: npx puppeteer browsers install chromium
+
+      - name: Run all scrapers
+        run: npm run scrape:all -- --skip-dfb
+        continue-on-error: true
+
+      - name: Check scraped output
+        id: check_scraped
+        run: |
+          count=$(ls data/scraped/*.json 2>/dev/null | wc -l)
+          echo "file_count=$count" >> $GITHUB_OUTPUT
+          if [ "$count" -eq 0 ]; then
+            echo "::warning::No scraped files produced — all scrapers may have failed"
+          fi
 
       - name: Merge with database
+        if: steps.check_scraped.outputs.file_count != '0'
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: npm run sync:merge
 
       - name: Estimate nutrition
+        if: steps.check_scraped.outputs.file_count != '0'
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: npm run sync:estimate
 
       - name: Generate diff report
+        if: steps.check_scraped.outputs.file_count != '0'
         run: npm run sync:report
 
+      - name: Auto-approve high-confidence items
+        if: steps.check_scraped.outputs.file_count != '0'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run sync:approve -- --auto
+        continue-on-error: true
+
       - name: Upload report artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: menu-sync-report-${{ github.run_id }}
-          path: data/pending/report-*.md
+          path: |
+            data/pending/report-*.md
+            data/pending/report-*.json
           retention-days: 30
 
       - name: Commit pending data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/pending/ data/scraped/
+          git add data/pending/ data/scraped/ data/approved/
           git commit -m "chore: weekly menu sync data [skip ci]" || echo "No changes to commit"
           git push
