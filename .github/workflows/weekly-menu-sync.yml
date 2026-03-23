@@ -80,6 +80,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/pending/ data/scraped/ data/approved/
+          git add -f data/pending/ data/scraped/ data/approved/
           git commit -m "chore: weekly menu sync data [skip ci]" || echo "No changes to commit"
           git push

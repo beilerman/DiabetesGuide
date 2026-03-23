@@ -23,4 +23,10 @@ describe('weekly-menu-sync workflow', () => {
 
     expect(workflow).toMatch(/permissions:\s*\r?\n\s*contents:\s*write/)
   })
+
+  it('force-adds ignored generated data before committing', () => {
+    const workflow = readWorkflow()
+
+    expect(workflow).toContain('git add -f data/pending/ data/scraped/ data/approved/')
+  })
 })
