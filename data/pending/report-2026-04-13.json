@@ -1,0 +1,1402 @@
+{
+  "generatedAt": "2026-04-13T06:41:17.077Z",
+  "summary": {
+    "newItems": 50,
+    "updatedItems": 2853,
+    "flaggedRemovals": 0,
+    "conflicts": 7,
+    "coverageChange": "+50 items"
+  },
+  "newItemsByPark": {
+    "Universal Studios Florida": [
+      {
+        "restaurantName": "Leaky Cauldron",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Traditional Sausage Roll",
+        "description": "house-made rustic pork sausage wrapped in flaky pastry dough, chips, salad, and spicy mustard",
+        "price": 17.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Leaky Cauldron",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Fruit Trifle",
+        "price": 7.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Frying Dutchman",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Battered Fish and Shrimp Combo ",
+        "description": "fresh caught, hand-cut cod, breaded fried shrimp, crispy fries, served with a shake",
+        "price": 24.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Frying Dutchman",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Battered Fish and Shrimp Platter",
+        "description": "fresh caught, hand-cut cod, breaded fried shrimp, crispy fries",
+        "price": 18.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "Universal CityWalk": [
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Cheeseburger Empanada",
+        "description": "ground beef, pickle, onions, French fries stuffed in a crispy dough, special sauce",
+        "price": 14.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Southwest Eggrolls",
+        "description": "slow roasted chicken tinga, black beans, corn, tomatoes, cilantro and avocado crema",
+        "price": 13.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Brisket Queso & Chips",
+        "description": "jalapeño queso loaded with chopped brisket, cilantro, pico de gallo, crispy Tabasco® onions, serrano peppers",
+        "price": 16.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Wisconsin Smash*",
+        "description": "two butter seared all beef patties*, Wisconsin Cheddar cheese, onions, fried cheese curds, brioche bun",
+        "price": 21.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "NBC Classic Bacon Cheeseburger*",
+        "description": "applewood smoked bacon, American cheese, lettuce, tomatoes, pickles, onions, special sauce",
+        "price": 21.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Mushroom Truffle*",
+        "description": "sautéed shiitake & button mushrooms, beef burger*, Swiss cheese, arugula, truffle garlic aioli, oven roasted tomatoes, toasted brioche bun",
+        "price": 22.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Cedar Planked North Atlantic Salmon*",
+        "description": "served with grilled asparagus, olive tomato relish, Yukon gold mashed potatoes, lemon caper butter sauce",
+        "price": 32.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Seasonal Vegetables",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Hot Fudge Brownie",
+        "description": "chocolate chip brownies, vanilla ice cream, walnuts, fresh strawberries, hot fudge sauce, whipped cream",
+        "price": 10.95,
+        "category": "dessert",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Crinkle-Cut Fried Pickles",
+        "description": "crinkle-cut dill pickles, ranch dressing, horseradish aioli",
+        "price": 14,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Spicy Tuna Crispy Rice*",
+        "description": "crispy fried rice cakes topped with spicy tuna tartar\", avocado, chili crisp",
+        "price": 18,
+        "category": "side",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Miso Soup",
+        "description": "traditional miso soup with kombu and silken tofu",
+        "price": 9,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Chinese Chicken Salad Bowl",
+        "description": "grilled all-natural chicken breast, mixed greens, cilantro, green onion, peanuts, red bell pepper, mandarin oranges, snow peas, crispy wonton strips, peanut ranch vinaigrette",
+        "price": 23,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Goat in the Garden Salad Bowl",
+        "description": "arugula, spinach, basil, roasted walnuts, Asian pears, fresh strawberries, goat cheese, yuzu vinaigretteadd chicken +7",
+        "price": 18,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Pork Belly & Kimchi Fried Rice Bowl",
+        "description": "wok tossed fried rice, pork belly, kimchi, scallions, fried egg, oyster sauce and soy sauce",
+        "price": 25,
+        "category": "side",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Ultimate Spicy Tuna Roll*",
+        "description": "spicy tuna roll topped with premium sliced tuna*, spicy mayo, togarashi",
+        "price": 25,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Doug's Wagyu Beef Roll",
+        "description": "premium lump crab California roll, topped with thin sliced American wagyu NY strip steak*, unagi sauce, spicy mayo, scallion, masago, with a side of pounded ginger sauce",
+        "price": 30,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Two Piece Nigiri*",
+        "description": "2 pieces of your choice: premium tuna*, salmon*, yellowtail*, unagi*",
+        "price": 14,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Four Piece Nigiri*",
+        "description": "4 pieces of your choice: premium tuna*, salmon*, yellowtail*, unagi*",
+        "price": 25,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Nine Piece Sashimi Mix*",
+        "description": "chef’s mixed selection of premium tuna*, salmon*, yellowtail*, served over ice",
+        "price": 35,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Umi Tasting For Two*",
+        "description": "4 piece California roll, 4 piece ultimate tuna roll, 2 tuna nigiri*, 2 unagi nigiri*, 4 pieces of tempura shrimp, 6 slices assorted sashimi (hamachi*, tuna*, salmon*)",
+        "price": 65,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Salmon & Tuna \"Naked Roll\"*",
+        "description": "protein forward with avocado, cucumber, soy paper, ponzu dipping sauce",
+        "price": 23,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Specialty Bento Box*",
+        "description": "combo meal featuring both burger and sushi, mini-burger with American cheese, pickles, chopped red onion, sweet potato fries, Thai cucumbers, edamame, choice of a 4 piece specialty roll (Mark’s*, Firecracker*, or The Boss*) or 3 pieces of mixed nigiri (tuna*, salmon* and shrimp)",
+        "price": 26,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Korean Fried Chicken Sandwhich",
+        "description": "tossed in spicy kimchi butter sauce, crisp miso slaw, pickles, brioche bun",
+        "price": 24,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "The Fritos® Pie Burger*",
+        "description": "house-made chili, bacon, Cheddar cheese, pico de gallo, Fritos® corn chips, brioche bun",
+        "price": 23,
+        "category": "dessert",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Toothsome Totchos",
+        "description": "chorizo Mornay, Calabrian chili honey, green onion, roasted garlic aioli",
+        "price": 14.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Bacon & Brie Flatbread",
+        "description": "\"Too Chocolate Stout\" bacon jam, brie, shaved fennel celery salad, mustard aioli",
+        "price": 18.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Pepperoni Flatbread",
+        "description": "marinara, fresh mozzarella, parsley",
+        "price": 18.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Burrata & Tomato Flatbread",
+        "description": "burrata cheese, mozzarella spicy tomato marmalade, basil pesto, arugula",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Citrus Salmon Salad*",
+        "description": "grilled salmon*, sweet peppers, almonds, feta cheese, oranges, crispy potato sticks, citrus vinaigrette, blood orange oil",
+        "price": 28.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Chicken Caesar Salad",
+        "description": "grilled chicken, romaine hearts, Parmesan, croutons, Caesar dressing",
+        "price": 25.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Steak Au Poivre*",
+        "description": "12 oz. NY Strip*, smashed fingerling potatoes, herb & Parmesan butter, petite frisée salad, coco-brandy-peppercorn sauce",
+        "price": 49.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Chicken Alfredo",
+        "description": "Fettucini pasta, grilled chicken, creamy garlic cream sauce, Parmigiano Reggiano",
+        "price": 29.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Tour De France Burger*",
+        "description": "half pound house-made patty*, bib lettuce, tomato jam, truffle aioli, sunny-side up egg*, crispy onions, brie cheese, toasted brioche",
+        "price": 23.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "May Contain Bacon Burger*",
+        "description": "half pound house-made patty*, bibb lettuce, smokey thick cut bacon, grilled pork belly, bacon Cheddar cheese, \"Too Chocolate Stout\" bacon jam, pretzel bun",
+        "price": 25.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Cheddar Bacon Burger*",
+        "description": "half pound house-made patty*, bibb lettuce, tomato jam, signature sauce, brioche bun",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Tooth & Blue Burger",
+        "description": "Chuck® vegan steak, roasted portobello mushroom, vegan blue cheese, arugula, vegan roasted garlic aioli, tomato jam, ciabatta",
+        "price": 22.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Mac & Cheese",
+        "description": "elbow pasta, sharp Cheddar cheese, Alfredo sauce",
+        "price": 11.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Soda",
+        "description": "Coca-Cola®, Coke Zero®, Diet Coke®, Sprint®, Fanta Orange®, Minute Maid® Lemonade",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Hazelnut & Banana Crepes",
+        "description": "mascarpone, NUTELLA®, brûléed bananas, chopped hazelnuts, powdered sugar, chocolate whipped topping",
+        "price": 17,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "Universal Epic Universe": [
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Corn Chowder",
+        "description": "corn succotash, sweety drop peppers, chives",
+        "category": "side",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Add a Roasted Half Lobster to any entrée",
+        "description": "with herb butter",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "All-Natural Bone-in Chicken Breast",
+        "description": "<div xmlns=\"http://www.w3.org/1999/xhtml\">chicken confit stuffed pasta, baby turnips, fava beans, amazu foam, caramelized onion soubise</div>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Lion's Mane Steak",
+        "description": "grilled lion's mane mushroom, chimichurri, yuca fritters, asparagus, boniato purée",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Soda",
+        "description": "Coca-Cola<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Coke Zero<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Diet Coke<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Sprinte<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Fanta Orange<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Lemonade",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Frosty Moon",
+        "parkName": "Universal Epic Universe",
+        "itemName": "The Frosted Owl",
+        "description": "chocolate hazelnut and vanilla ice cream layered with marshmallow topping, graham crackers, and a toasted marshmallow, served in a souvenir owl cup",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ]
+  },
+  "needsReview": {
+    "priceConflicts": [],
+    "lowConfidence": [
+      {
+        "restaurantName": "Leaky Cauldron",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Traditional Sausage Roll",
+        "description": "house-made rustic pork sausage wrapped in flaky pastry dough, chips, salad, and spicy mustard",
+        "price": 17.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Leaky Cauldron",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Fruit Trifle",
+        "price": 7.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Cheeseburger Empanada",
+        "description": "ground beef, pickle, onions, French fries stuffed in a crispy dough, special sauce",
+        "price": 14.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Southwest Eggrolls",
+        "description": "slow roasted chicken tinga, black beans, corn, tomatoes, cilantro and avocado crema",
+        "price": 13.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Brisket Queso & Chips",
+        "description": "jalapeño queso loaded with chopped brisket, cilantro, pico de gallo, crispy Tabasco® onions, serrano peppers",
+        "price": 16.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Wisconsin Smash*",
+        "description": "two butter seared all beef patties*, Wisconsin Cheddar cheese, onions, fried cheese curds, brioche bun",
+        "price": 21.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "NBC Classic Bacon Cheeseburger*",
+        "description": "applewood smoked bacon, American cheese, lettuce, tomatoes, pickles, onions, special sauce",
+        "price": 21.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Mushroom Truffle*",
+        "description": "sautéed shiitake & button mushrooms, beef burger*, Swiss cheese, arugula, truffle garlic aioli, oven roasted tomatoes, toasted brioche bun",
+        "price": 22.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Cedar Planked North Atlantic Salmon*",
+        "description": "served with grilled asparagus, olive tomato relish, Yukon gold mashed potatoes, lemon caper butter sauce",
+        "price": 32.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Seasonal Vegetables",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "NBC Sports Grill & Brew",
+        "parkName": "Universal CityWalk",
+        "itemName": "Hot Fudge Brownie",
+        "description": "chocolate chip brownies, vanilla ice cream, walnuts, fresh strawberries, hot fudge sauce, whipped cream",
+        "price": 10.95,
+        "category": "dessert",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Crinkle-Cut Fried Pickles",
+        "description": "crinkle-cut dill pickles, ranch dressing, horseradish aioli",
+        "price": 14,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Spicy Tuna Crispy Rice*",
+        "description": "crispy fried rice cakes topped with spicy tuna tartar\", avocado, chili crisp",
+        "price": 18,
+        "category": "side",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Miso Soup",
+        "description": "traditional miso soup with kombu and silken tofu",
+        "price": 9,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Chinese Chicken Salad Bowl",
+        "description": "grilled all-natural chicken breast, mixed greens, cilantro, green onion, peanuts, red bell pepper, mandarin oranges, snow peas, crispy wonton strips, peanut ranch vinaigrette",
+        "price": 23,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Goat in the Garden Salad Bowl",
+        "description": "arugula, spinach, basil, roasted walnuts, Asian pears, fresh strawberries, goat cheese, yuzu vinaigretteadd chicken +7",
+        "price": 18,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Pork Belly & Kimchi Fried Rice Bowl",
+        "description": "wok tossed fried rice, pork belly, kimchi, scallions, fried egg, oyster sauce and soy sauce",
+        "price": 25,
+        "category": "side",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Ultimate Spicy Tuna Roll*",
+        "description": "spicy tuna roll topped with premium sliced tuna*, spicy mayo, togarashi",
+        "price": 25,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Doug's Wagyu Beef Roll",
+        "description": "premium lump crab California roll, topped with thin sliced American wagyu NY strip steak*, unagi sauce, spicy mayo, scallion, masago, with a side of pounded ginger sauce",
+        "price": 30,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Two Piece Nigiri*",
+        "description": "2 pieces of your choice: premium tuna*, salmon*, yellowtail*, unagi*",
+        "price": 14,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Four Piece Nigiri*",
+        "description": "4 pieces of your choice: premium tuna*, salmon*, yellowtail*, unagi*",
+        "price": 25,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Nine Piece Sashimi Mix*",
+        "description": "chef’s mixed selection of premium tuna*, salmon*, yellowtail*, served over ice",
+        "price": 35,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Umi Tasting For Two*",
+        "description": "4 piece California roll, 4 piece ultimate tuna roll, 2 tuna nigiri*, 2 unagi nigiri*, 4 pieces of tempura shrimp, 6 slices assorted sashimi (hamachi*, tuna*, salmon*)",
+        "price": 65,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Salmon & Tuna \"Naked Roll\"*",
+        "description": "protein forward with avocado, cucumber, soy paper, ponzu dipping sauce",
+        "price": 23,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Specialty Bento Box*",
+        "description": "combo meal featuring both burger and sushi, mini-burger with American cheese, pickles, chopped red onion, sweet potato fries, Thai cucumbers, edamame, choice of a 4 piece specialty roll (Mark’s*, Firecracker*, or The Boss*) or 3 pieces of mixed nigiri (tuna*, salmon* and shrimp)",
+        "price": 26,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Korean Fried Chicken Sandwhich",
+        "description": "tossed in spicy kimchi butter sauce, crisp miso slaw, pickles, brioche bun",
+        "price": 24,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "The Fritos® Pie Burger*",
+        "description": "house-made chili, bacon, Cheddar cheese, pico de gallo, Fritos® corn chips, brioche bun",
+        "price": 23,
+        "category": "dessert",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Frying Dutchman",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Battered Fish and Shrimp Combo ",
+        "description": "fresh caught, hand-cut cod, breaded fried shrimp, crispy fries, served with a shake",
+        "price": 24.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Frying Dutchman",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Battered Fish and Shrimp Platter",
+        "description": "fresh caught, hand-cut cod, breaded fried shrimp, crispy fries",
+        "price": 18.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Toothsome Totchos",
+        "description": "chorizo Mornay, Calabrian chili honey, green onion, roasted garlic aioli",
+        "price": 14.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Bacon & Brie Flatbread",
+        "description": "\"Too Chocolate Stout\" bacon jam, brie, shaved fennel celery salad, mustard aioli",
+        "price": 18.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Pepperoni Flatbread",
+        "description": "marinara, fresh mozzarella, parsley",
+        "price": 18.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Burrata & Tomato Flatbread",
+        "description": "burrata cheese, mozzarella spicy tomato marmalade, basil pesto, arugula",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Citrus Salmon Salad*",
+        "description": "grilled salmon*, sweet peppers, almonds, feta cheese, oranges, crispy potato sticks, citrus vinaigrette, blood orange oil",
+        "price": 28.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Chicken Caesar Salad",
+        "description": "grilled chicken, romaine hearts, Parmesan, croutons, Caesar dressing",
+        "price": 25.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Steak Au Poivre*",
+        "description": "12 oz. NY Strip*, smashed fingerling potatoes, herb & Parmesan butter, petite frisée salad, coco-brandy-peppercorn sauce",
+        "price": 49.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Chicken Alfredo",
+        "description": "Fettucini pasta, grilled chicken, creamy garlic cream sauce, Parmigiano Reggiano",
+        "price": 29.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Tour De France Burger*",
+        "description": "half pound house-made patty*, bib lettuce, tomato jam, truffle aioli, sunny-side up egg*, crispy onions, brie cheese, toasted brioche",
+        "price": 23.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "May Contain Bacon Burger*",
+        "description": "half pound house-made patty*, bibb lettuce, smokey thick cut bacon, grilled pork belly, bacon Cheddar cheese, \"Too Chocolate Stout\" bacon jam, pretzel bun",
+        "price": 25.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Cheddar Bacon Burger*",
+        "description": "half pound house-made patty*, bibb lettuce, tomato jam, signature sauce, brioche bun",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Tooth & Blue Burger",
+        "description": "Chuck® vegan steak, roasted portobello mushroom, vegan blue cheese, arugula, vegan roasted garlic aioli, tomato jam, ciabatta",
+        "price": 22.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Mac & Cheese",
+        "description": "elbow pasta, sharp Cheddar cheese, Alfredo sauce",
+        "price": 11.95,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Soda",
+        "description": "Coca-Cola®, Coke Zero®, Diet Coke®, Sprint®, Fanta Orange®, Minute Maid® Lemonade",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Hazelnut & Banana Crepes",
+        "description": "mascarpone, NUTELLA®, brûléed bananas, chopped hazelnuts, powdered sugar, chocolate whipped topping",
+        "price": 17,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Corn Chowder",
+        "description": "corn succotash, sweety drop peppers, chives",
+        "category": "side",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Add a Roasted Half Lobster to any entrée",
+        "description": "with herb butter",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "All-Natural Bone-in Chicken Breast",
+        "description": "<div xmlns=\"http://www.w3.org/1999/xhtml\">chicken confit stuffed pasta, baby turnips, fava beans, amazu foam, caramelized onion soubise</div>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Lion's Mane Steak",
+        "description": "grilled lion's mane mushroom, chimichurri, yuca fritters, asparagus, boniato purée",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Soda",
+        "description": "Coca-Cola<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Coke Zero<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Diet Coke<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Sprinte<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Fanta Orange<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Lemonade",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Frosty Moon",
+        "parkName": "Universal Epic Universe",
+        "itemName": "The Frosted Owl",
+        "description": "chocolate hazelnut and vanilla ice cream layered with marshmallow topping, graham crackers, and a toasted marshmallow, served in a souvenir owl cup",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "potentiallyDiscontinued": []
+  },
+  "approveAllUrl": "npx tsx scripts/approve.ts --all",
+  "reviewUrl": "npx tsx scripts/approve.ts --interactive"
+}
