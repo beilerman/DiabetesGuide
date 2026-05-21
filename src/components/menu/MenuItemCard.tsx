@@ -17,6 +17,12 @@ interface Props {
   onCompare?: (item: MenuItemWithNutrition) => void
   siblingItems?: MenuItemWithNutrition[]
   themeColor?: string
+  /**
+   * All locations offering this same item. When more than one is supplied
+   * the card shows a consolidated "available at N locations" view instead of
+   * a single restaurant name.
+   */
+  locations?: MenuItemWithNutrition[]
 }
 
 function carbDots(v: number): 'green' | 'amber' | 'rose' {
@@ -62,9 +68,13 @@ const categoryColors: Record<string, string> = {
   side: 'bg-emerald-100 text-emerald-700',
 }
 
-export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, siblingItems, themeColor }: Props) {
+export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, siblingItems, themeColor, locations }: Props) {
   const [expanded, setExpanded] = useState(false)
+  const [showLocations, setShowLocations] = useState(false)
   const [addingToMeal, setAddingToMeal] = useState(false)
+
+  const locationCount = locations?.length ?? 1
+  const isConsolidated = locationCount > 1
 
   const nd = item.nutritional_data?.[0]
   const hasNutrition = !!nd
@@ -143,10 +153,25 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
               </button>
             </div>
 
-            {/* Restaurant + category */}
+            {/* Restaurant / locations + category */}
             <div className="mt-0.5 flex items-center gap-2 text-xs text-stone-500">
-              {item.restaurant && (
-                <span className="truncate">{item.restaurant.name}</span>
+              {isConsolidated ? (
+                <button
+                  onClick={() => setShowLocations(v => !v)}
+                  className="inline-flex items-center gap-1 text-teal-600 hover:text-teal-700 font-medium"
+                  aria-expanded={showLocations}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <circle cx="12" cy="11" r="3" />
+                  </svg>
+                  Available at {locationCount} locations
+                  <svg className={`w-3 h-3 transition-transform ${showLocations ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              ) : (
+                item.restaurant && <span className="truncate">{item.restaurant.name}</span>
               )}
               <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider ${categoryColors[item.category] ?? 'bg-stone-100 text-stone-600'}`}>
                 {item.category}
@@ -154,6 +179,25 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
             </div>
           </div>
         </div>
+
+        {/* Consolidated location list */}
+        {isConsolidated && showLocations && locations && (
+          <div className="mt-2 rounded-xl border border-stone-200 bg-stone-50 overflow-hidden">
+            <p className="px-3 py-1.5 text-[11px] text-stone-500 bg-stone-100 border-b border-stone-200">
+              Same item and nutrition at every location below
+            </p>
+            <ul className="divide-y divide-stone-200 max-h-44 overflow-y-auto">
+              {locations.map(loc => (
+                <li key={loc.id} className="px-3 py-2 text-xs">
+                  <span className="font-medium text-stone-700">{loc.restaurant?.name ?? 'Unknown location'}</span>
+                  {loc.restaurant?.park && (
+                    <span className="text-stone-400"> · {loc.restaurant.park.name}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Hero nutrition row */}
         {hasNutrition ? (
