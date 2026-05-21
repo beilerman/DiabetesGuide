@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react'
 import { useMenuItems, useParks } from '../lib/queries'
 import { buildSearchIndex, searchItems } from '../lib/search-index'
+import { consolidateItems, type ConsolidatedItem } from '../lib/consolidate'
 import { SearchResultRow } from '../components/search/SearchResultRow'
-import type { MenuItemWithNutrition } from '../lib/types'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
@@ -29,7 +29,7 @@ function saveRecentSearch(query: string) {
 export default function Search() {
   const [query, setQuery] = useState('')
   const [parkId, setParkId] = useState<string | undefined>(undefined)
-  const [expandedItem, setExpandedItem] = useState<MenuItemWithNutrition | null>(null)
+  const [expandedItem, setExpandedItem] = useState<ConsolidatedItem | null>(null)
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
   const { addToCompare } = useCompare()
@@ -43,10 +43,11 @@ export default function Search() {
     return buildSearchIndex(items)
   }, [items])
 
-  // Search using Fuse.js
+  // Search using Fuse.js, then consolidate duplicate items across locations
   const results = useMemo(() => {
     if (!searchIndex || query.trim().length < 2) return null
-    return searchItems(searchIndex, query, 50)
+    const raw = searchItems(searchIndex, query, 300)
+    return consolidateItems(raw).slice(0, 50)
   }, [searchIndex, query])
 
   const handleSearch = (q: string) => {
@@ -124,9 +125,10 @@ export default function Search() {
               Back to results
             </button>
             <MenuItemCard
-              item={expandedItem}
+              item={expandedItem.item}
+              locations={expandedItem.locations}
               onAddToMeal={addItem}
-              isFavorite={isFavorite(expandedItem.id)}
+              isFavorite={isFavorite(expandedItem.item.id)}
               onToggleFavorite={toggle}
               onCompare={addToCompare}
             />
@@ -140,10 +142,10 @@ export default function Search() {
               <div>
                 <p className="text-sm text-stone-500 mb-2">{results.length} result{results.length !== 1 ? 's' : ''}</p>
                 <div className="bg-white rounded-xl border border-stone-200 divide-y divide-stone-100">
-                  {results.map(item => (
+                  {results.map(group => (
                     <SearchResultRow
-                      key={item.id}
-                      item={item}
+                      key={group.item.id}
+                      group={group}
                       onClick={setExpandedItem}
                     />
                   ))}

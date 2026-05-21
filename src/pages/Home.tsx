@@ -20,23 +20,28 @@ function ParkCard({ park, itemCount }: { park: Park; itemCount: number }) {
   return (
     <Link
       to={`/park/${park.id}`}
-      className="block rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-200"
+      className="group relative block rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-200 hover:-translate-y-0.5"
     >
       <div
-        className="relative px-4 py-5 text-white"
+        className="relative px-5 py-6 text-white"
         style={{ background: theme.gradient }}
       >
-        <div className="flex items-center gap-3">
-          <span className="text-3xl">{theme.icon}</span>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+        <div className="relative flex items-start gap-3">
+          <span className="text-4xl drop-shadow-sm" aria-hidden="true">{theme.icon}</span>
           <div className="flex-1 min-w-0">
-            <h3 className="text-base font-bold truncate">{park.name}</h3>
+            <h3 className="text-base font-bold leading-tight">{park.name}</h3>
             {resort && (
-              <p className="text-white/70 text-xs">{resort.location}</p>
+              <p className="text-white/75 text-xs mt-0.5">{resort.location}</p>
             )}
           </div>
         </div>
-        <div className="mt-2 flex items-center gap-3 text-xs text-white/80">
-          <span>{itemCount} items</span>
+        <div className="relative mt-4 flex items-center justify-between text-xs">
+          <span className="font-medium text-white/90">{itemCount.toLocaleString()} items</span>
+          <span className="inline-flex items-center gap-1 text-white/90 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+            Browse menus
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </span>
         </div>
       </div>
     </Link>
@@ -64,73 +69,51 @@ export default function Home() {
   }, [parks, menuItemCounts])
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       {/* Hero section */}
-      <div className="text-center space-y-4 py-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-2xl shadow-lg mb-4">
-          <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            <path d="M12 8v8m-4-4h8" strokeLinecap="round"/>
-          </svg>
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-600 via-teal-500 to-emerald-500 px-6 py-12 sm:px-10 sm:py-16 text-white shadow-xl">
+        <div className="absolute -top-16 -right-16 w-72 h-72 bg-white/10 rounded-full blur-3xl" aria-hidden="true" />
+        <div className="absolute -bottom-20 -left-10 w-72 h-72 bg-emerald-300/20 rounded-full blur-3xl" aria-hidden="true" />
+        <div className="relative max-w-2xl">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-teal-100 mb-3">Theme park diabetes companion</p>
+          <h1 className="text-3xl sm:text-5xl font-bold leading-tight">Eat with confidence at the parks.</h1>
+          <p className="mt-4 text-base sm:text-lg text-teal-50 max-w-xl">
+            Carb counts, ingredient flags, and meal tracking for thousands of theme-park menu items — built for people managing diabetes.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              to="/search"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-teal-700 font-semibold text-sm shadow-md hover:bg-teal-50 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Search items
+            </Link>
+            <Link
+              to="/browse?sort=grade"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-teal-700/40 text-white font-semibold text-sm border border-white/30 backdrop-blur hover:bg-teal-700/60 transition-colors"
+            >
+              Top rated
+            </Link>
+          </div>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold text-stone-900">DiabetesGuide</h1>
-        <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-          Find diabetes-friendly meals across theme parks with detailed nutritional information
-        </p>
-      </div>
+      </section>
 
-      {/* Quick action buttons */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <Link
-          to="/browse?sort=grade"
-          className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 hover:border-emerald-300 hover:shadow-md transition-all"
-        >
-          <div className="flex-shrink-0 w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="font-semibold text-emerald-900">Top Rated</div>
-            <div className="text-xs text-emerald-700">A &amp; B graded items</div>
-          </div>
-        </Link>
-
-        <Link
-          to="/search"
-          className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-200 hover:border-teal-300 hover:shadow-md transition-all"
-        >
-          <div className="flex-shrink-0 w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="font-semibold text-teal-900">Search All</div>
-            <div className="text-xs text-teal-700">Find any menu item</div>
-          </div>
-        </Link>
-
-        <Link
-          to="/insulin"
-          className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 hover:border-amber-300 hover:shadow-md transition-all"
-        >
-          <div className="flex-shrink-0 w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="font-semibold text-amber-900">Insulin Helper</div>
-            <div className="text-xs text-amber-700">Calculate dosage</div>
-          </div>
-        </Link>
+      {/* Quick stat / utility row */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <StatCard icon="🍽️" label="Menu items" value={menuItemCounts ? Array.from(menuItemCounts.values()).reduce((a, b) => a + b, 0).toLocaleString() : '—'} />
+        <StatCard icon="🎢" label="Parks" value={sortedParks.length} />
+        <StatCard icon="✓" label="Graded" value="A–F" />
+        <StatCard icon="📱" label="Works offline" value="Yes" />
       </div>
 
       {/* Park picker grid */}
       <div>
-        <h2 className="text-2xl font-bold text-stone-900 mb-4">Choose a Park</h2>
+        <div className="flex items-baseline justify-between mb-4">
+          <h2 className="text-2xl font-bold text-stone-900">Choose a park</h2>
+          <p className="text-sm text-stone-500 hidden sm:block">Sorted by menu coverage</p>
+        </div>
 
         {isLoading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -167,6 +150,23 @@ export default function Home() {
             ))}
           </div>
         )}
+      </div>
+
+      {/* Footer disclaimer */}
+      <div className="text-center text-xs text-stone-500 pt-4 pb-2 max-w-xl mx-auto">
+        Nutritional info is estimated and not verified by parks. Educational use only — not medical advice.
+      </div>
+    </div>
+  )
+}
+
+function StatCard({ icon, label, value }: { icon: string; label: string; value: string | number }) {
+  return (
+    <div className="rounded-2xl bg-white border border-stone-200 px-4 py-3 flex items-center gap-3">
+      <span className="text-xl" aria-hidden="true">{icon}</span>
+      <div className="min-w-0">
+        <p className="text-lg font-bold text-stone-900 leading-none">{value}</p>
+        <p className="text-xs text-stone-500 mt-0.5">{label}</p>
       </div>
     </div>
   )

@@ -7,6 +7,7 @@ import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
 import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
+import { consolidateItems } from '../lib/consolidate'
 import type { Filters } from '../lib/types'
 
 function SkeletonCard() {
@@ -61,9 +62,10 @@ export default function Browse() {
   const { addToCompare } = useCompare()
 
   const filtered = useMemo(() => applyFilters(items ?? [], filters), [items, filters])
+  const consolidated = useMemo(() => consolidateItems(filtered), [filtered])
 
   const totalItems = items?.length ?? 0
-  const filteredCount = filtered.length
+  const filteredCount = consolidated.length
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -107,8 +109,11 @@ export default function Browse() {
         {/* Result count */}
         {!isLoading && totalItems > 0 && (
           <div className="mb-4 text-sm text-gray-600" aria-live="polite">
-            Showing <span className="font-semibold text-gray-900">{filteredCount}</span> of{' '}
-            <span className="font-semibold text-gray-900">{totalItems}</span> items
+            Showing <span className="font-semibold text-gray-900">{filteredCount}</span>{' '}
+            unique item{filteredCount !== 1 ? 's' : ''}
+            {filtered.length > filteredCount && (
+              <span className="text-gray-500"> (duplicates across locations merged)</span>
+            )}
           </div>
         )}
 
@@ -120,17 +125,18 @@ export default function Browse() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filtered.map(item => (
+            {consolidated.map(group => (
               <MenuItemCard
-                key={item.id}
-                item={item}
+                key={group.item.id}
+                item={group.item}
+                locations={group.locations}
                 onAddToMeal={addItem}
-                isFavorite={isFavorite(item.id)}
+                isFavorite={isFavorite(group.item.id)}
                 onToggleFavorite={toggle}
                 onCompare={addToCompare}
               />
             ))}
-            {filtered.length === 0 && <EmptyState hasFilters={hasActiveFilters(filters)} />}
+            {consolidated.length === 0 && <EmptyState hasFilters={hasActiveFilters(filters)} />}
           </div>
         )}
       </div>

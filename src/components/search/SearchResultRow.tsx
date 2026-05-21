@@ -1,16 +1,18 @@
-import type { MenuItemWithNutrition } from '../../lib/types'
+import type { ConsolidatedItem } from '../../lib/consolidate'
 import { getGradeForItem } from '../../lib/grade'
 import { GradeBadge } from '../menu/GradeBadge'
 
 interface Props {
-  item: MenuItemWithNutrition
-  onClick: (item: MenuItemWithNutrition) => void
+  group: ConsolidatedItem
+  onClick: (group: ConsolidatedItem) => void
 }
 
-export function SearchResultRow({ item, onClick }: Props) {
+export function SearchResultRow({ group, onClick }: Props) {
+  const { item, locations } = group
   const nd = item.nutritional_data?.[0]
   const carbs = nd?.carbs ?? null
   const calories = nd?.calories ?? null
+  const locationCount = locations.length
 
   const { grade } = getGradeForItem({
     calories,
@@ -26,15 +28,21 @@ export function SearchResultRow({ item, onClick }: Props) {
   return (
     <button
       className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-stone-50 active:bg-stone-100 transition-colors text-left rounded-lg"
-      onClick={() => onClick(item)}
+      onClick={() => onClick(group)}
     >
       <GradeBadge grade={grade} size="sm" />
 
       <div className="flex-1 min-w-0">
         <div className="text-sm font-medium text-stone-900 truncate">{item.name}</div>
         <div className="text-xs text-stone-500 truncate">
-          {item.restaurant?.name}
-          {item.restaurant?.park && <span> &middot; {item.restaurant.park.name}</span>}
+          {locationCount > 1 ? (
+            <span className="text-teal-600 font-medium">Available at {locationCount} locations</span>
+          ) : (
+            <>
+              {item.restaurant?.name}
+              {item.restaurant?.park && <span> &middot; {item.restaurant.park.name}</span>}
+            </>
+          )}
         </div>
       </div>
 
