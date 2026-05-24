@@ -29,10 +29,15 @@ export function useRestaurants(parkId: string | undefined) {
   })
 }
 
-export function useMenuItems(parkId?: string) {
+interface UseMenuItemsOptions {
+  dedupe?: boolean
+}
+
+export function useMenuItems(parkId?: string, options?: UseMenuItemsOptions) {
+  const dedupe = options?.dedupe !== false
   return useQuery({
-    queryKey: ['menuItems', parkId],
-    queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsOffline(parkId),
+    queryKey: ['menuItems', parkId, dedupe],
+    queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsOffline(parkId, { dedupe }),
     enabled: true,
   })
 }

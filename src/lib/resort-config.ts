@@ -44,13 +44,19 @@ export const RESORT_CONFIG: ResortConfig[] = [
         id: 'theme-parks',
         label: 'Theme Parks',
         icon: '🎢',
-        matchParkNames: ['Magic Kingdom', 'EPCOT', 'Hollywood Studios', 'Animal Kingdom'],
+        matchParkNames: ['Magic Kingdom', 'EPCOT', 'Hollywood Studios', 'Animal Kingdom', 'Walt Disney World Parks'],
+      },
+      {
+        id: 'water-parks',
+        label: 'Water Parks',
+        icon: '🌊',
+        matchParkNames: ['Blizzard Beach', 'Typhoon Lagoon'],
       },
       {
         id: 'hotels',
         label: 'Resort Hotels',
         icon: '🏨',
-        matchParkNames: ['Walt Disney World Resort Hotels'],
+        matchParkNames: ['Walt Disney World Resort Hotels', 'Walt Disney World Resorts', "Disney's"],
       },
       {
         id: 'disney-springs',
@@ -62,6 +68,7 @@ export const RESORT_CONFIG: ResortConfig[] = [
         id: 'seasonal',
         label: 'Seasonal & Festivals',
         icon: '🎪',
+        matchParkNames: ['Walt Disney World Festivals', 'Festivals & Events', 'Festival'],
         seasonalFilter: true,
       },
     ],
@@ -133,6 +140,7 @@ export const RESORT_CONFIG: ResortConfig[] = [
         label: 'Resort Hotels',
         icon: '🏨',
         matchParkNames: [
+          'Epic Universe Hotels',
           'Universal Aventura Hotel',
           'Universal Cabana Bay',
           'Universal Hard Rock Hotel',
@@ -141,6 +149,8 @@ export const RESORT_CONFIG: ResortConfig[] = [
           'Universal Sapphire Falls',
           'Universal Endless Summer - Dockside',
           'Universal Endless Summer - Surfside',
+          'Universal Endless Summer Resort - Dockside',
+          'Universal Endless Summer Resort - Surfside',
           'Universal Stella Nova',
           'Universal Terra Luna',
         ],
@@ -269,15 +279,25 @@ export function findResortForPark(park: Park): ResortConfig | undefined {
 
 /** Find which category within a resort a park belongs to */
 export function findCategoryForPark(resort: ResortConfig, park: Park): ResortCategory | undefined {
-  for (const category of resort.categories) {
-    if (category.matchParkNames) {
-      const match = category.matchParkNames.some(pattern =>
-        park.name.toLowerCase().includes(pattern.toLowerCase())
-      )
-      if (match) return category
+  let bestMatch: { category: ResortCategory; patternLength: number; categoryIndex: number } | undefined
+  const parkName = park.name.toLowerCase()
+
+  resort.categories.forEach((category, categoryIndex) => {
+    for (const pattern of category.matchParkNames ?? []) {
+      if (parkName.includes(pattern.toLowerCase())) {
+        const patternLength = pattern.length
+        if (
+          !bestMatch ||
+          patternLength > bestMatch.patternLength ||
+          (patternLength === bestMatch.patternLength && categoryIndex < bestMatch.categoryIndex)
+        ) {
+          bestMatch = { category, patternLength, categoryIndex }
+        }
+      }
     }
-  }
-  return undefined
+  })
+
+  return bestMatch?.category
 }
 
 /** Get all parks that match a specific resort + category */

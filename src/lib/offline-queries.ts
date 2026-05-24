@@ -28,6 +28,7 @@ type MenuItemsBatchFetcher = (args: {
 
 export interface FetchMenuItemsOptions {
   limit?: number
+  dedupe?: boolean
   fetchPage?: MenuItemsBatchFetcher
 }
 
@@ -142,6 +143,7 @@ export async function fetchMenuItemsOffline(
   try {
     let items: MenuItemWithNutrition[]
     const { limit, fetchPage } = options ?? {}
+    const shouldDedupe = options?.dedupe !== false
     if (parkId) {
       const { data: restaurants, error: restErr } = await supabase
         .from('restaurants')
@@ -157,14 +159,15 @@ export async function fetchMenuItemsOffline(
     // Cache in background
     writeAllItems(items).catch(() => {})
     setLastSync(new Date().toISOString()).catch(() => {})
-    return dedupeMenuItems(items)
+    return shouldDedupe ? dedupeMenuItems(items) : items
   } catch {
+    const shouldDedupe = options?.dedupe !== false
     if (parkId) {
       const cached = await readItemsByPark(parkId)
-      if (cached.length > 0) return dedupeMenuItems(cached)
+      if (cached.length > 0) return shouldDedupe ? dedupeMenuItems(cached) : cached
     } else {
       const cached = await readAllItems()
-      if (cached.length > 0) return dedupeMenuItems(cached)
+      if (cached.length > 0) return shouldDedupe ? dedupeMenuItems(cached) : cached
     }
     throw new Error('No network and no cached menu data')
   }

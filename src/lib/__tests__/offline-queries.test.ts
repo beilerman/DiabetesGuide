@@ -115,6 +115,23 @@ describe('fetchMenuItemsOffline', () => {
     expect(items[0].availability_count).toBe(2)
     expect(items[0].availability_restaurants).toEqual(['Aloha Isle', 'Casey’s Corner'])
   })
+
+  it('can return raw restaurant-level rows when dedupe is disabled', async () => {
+    const dataset = [
+      makeItem('water-1', 'magic-kingdom'),
+      makeItem('water-2', 'magic-kingdom'),
+    ]
+    dataset[0].name = 'Bottled Water'
+    dataset[1].name = 'Bottled Water'
+    dataset[0].restaurant!.name = 'Aloha Isle'
+    dataset[1].restaurant!.name = 'Casey’s Corner'
+    const fetchPage = vi.fn(async ({ from, to }) => dataset.slice(from, Math.min(to + 1, dataset.length)))
+
+    const items = await fetchMenuItemsOffline(undefined, { fetchPage, dedupe: false })
+
+    expect(items.map(item => item.id)).toEqual(['water-1', 'water-2'])
+    expect(items[0].availability_count).toBeUndefined()
+  })
 })
 
 describe('searchMenuItemsOffline', () => {
