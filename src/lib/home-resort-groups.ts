@@ -104,16 +104,20 @@ function toResortGroup(group: MutableResortGroup): HomeResortGroup {
   }
 }
 
+export function hasUsableHomeItemCounts(itemCounts: Map<string, number> | undefined): boolean {
+  return itemCounts != null && [...itemCounts.values()].some(count => count > 0)
+}
+
 export function buildHomeResortGroups(
   parks: Park[],
   itemCounts?: Map<string, number>,
 ): HomeResortGroup[] {
-  const countsReady = itemCounts != null
+  const shouldFilterKnownEmptyParks = hasUsableHomeItemCounts(itemCounts)
   const groups = new Map<string, MutableResortGroup>()
 
   for (const park of parks) {
     const itemCount = itemCounts?.get(park.id) ?? 0
-    if (countsReady && itemCount <= 0) continue
+    if (shouldFilterKnownEmptyParks && itemCounts?.has(park.id) && itemCount <= 0) continue
 
     const resort = findResortForPark(park)
     const category = resort ? findCategoryForPark(resort, park) : undefined

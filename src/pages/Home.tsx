@@ -2,7 +2,12 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useParks, useMenuItemCounts } from '../lib/queries'
 import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
-import { buildHomeResortGroups, type HomeResortCategoryGroup, type HomeResortGroup } from '../lib/home-resort-groups'
+import {
+  buildHomeResortGroups,
+  hasUsableHomeItemCounts,
+  type HomeResortCategoryGroup,
+  type HomeResortGroup,
+} from '../lib/home-resort-groups'
 
 function SkeletonCard() {
   return (
@@ -15,7 +20,7 @@ function SkeletonCard() {
 export default function Home() {
   const { data: parks, isLoading, error } = useParks()
   const { data: menuItemCounts } = useMenuItemCounts()
-  const countsReady = menuItemCounts != null
+  const countsReady = hasUsableHomeItemCounts(menuItemCounts)
 
   const resortGroups = useMemo(() => {
     if (!parks) return []

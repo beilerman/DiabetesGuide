@@ -77,4 +77,17 @@ describe('buildHomeResortGroups', () => {
     expect(groups[0].itemCount).toBe(0)
     expect(groups[0].categories[0].itemCount).toBe(0)
   })
+
+  it('keeps destination cards visible when the count map is empty', () => {
+    const parks = [
+      makePark('magic-kingdom', 'Magic Kingdom Park'),
+      makePark('disneyland', 'Disneyland Park'),
+    ]
+
+    const groups = buildHomeResortGroups(parks, new Map())
+
+    expect(groups.map(group => group.name)).toEqual(['Walt Disney World', 'Disneyland Resort'])
+    expect(groups[0].categories.map(category => category.label)).toEqual(['Theme Parks'])
+    expect(groups[0].categories[0].parks.map(park => park.name)).toEqual(['Magic Kingdom Park'])
+  })
 })
