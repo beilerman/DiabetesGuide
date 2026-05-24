@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useMenuItems, useParks } from '../lib/queries'
 import { FilterBar } from '../components/filters/FilterBar'
@@ -7,6 +7,12 @@ import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
 import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
+import {
+  DEFAULT_VISIBLE_ITEMS,
+  getNextVisibleCount,
+  getVisibleItems,
+  hasMoreVisibleItems,
+} from '../lib/visible-items'
 import type { Filters } from '../lib/types'
 
 function SkeletonCard() {
@@ -54,16 +60,28 @@ export default function Browse() {
   const initialSort = (searchParams.get('sort') || 'name') as Filters['sort']
   const [filters, setFilters] = useState<Filters>({ ...DEFAULT_FILTERS, sort: initialSort })
   const [parkId, setParkId] = useState<string | undefined>(searchParams.get('park') || undefined)
+  const visibleResetKey = useMemo(
+    () => JSON.stringify({ filters, parkId: parkId ?? null }),
+    [filters, parkId],
+  )
+  const [visibleState, setVisibleState] = useState(() => ({
+    count: DEFAULT_VISIBLE_ITEMS,
+    key: visibleResetKey,
+  }))
   const { data: parks } = useParks()
   const { data: items, isLoading } = useMenuItems(parkId)
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
   const { addToCompare } = useCompare()
 
+  const visibleCount = visibleState.key === visibleResetKey ? visibleState.count : DEFAULT_VISIBLE_ITEMS
   const filtered = useMemo(() => applyFilters(items ?? [], filters), [items, filters])
+  const visibleItems = useMemo(() => getVisibleItems(filtered, visibleCount), [filtered, visibleCount])
 
   const totalItems = items?.length ?? 0
   const filteredCount = filtered.length
+  const visibleItemCount = visibleItems.length
+  const canLoadMore = hasMoreVisibleItems(filteredCount, visibleCount)
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -107,8 +125,12 @@ export default function Browse() {
         {/* Result count */}
         {!isLoading && totalItems > 0 && (
           <div className="mb-4 text-sm text-gray-600" aria-live="polite">
-            Showing <span className="font-semibold text-gray-900">{filteredCount}</span> of{' '}
-            <span className="font-semibold text-gray-900">{totalItems}</span> items
+            Showing <span className="font-semibold text-gray-900">{visibleItemCount}</span>
+            {filteredCount !== visibleItemCount && <> of <span className="font-semibold text-gray-900">{filteredCount}</span></>}
+            {' '}items
+            {filteredCount !== totalItems && (
+              <span className="text-gray-500"> from {totalItems} loaded</span>
+            )}
           </div>
         )}
 
@@ -119,19 +141,34 @@ export default function Browse() {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filtered.map(item => (
-              <MenuItemCard
-                key={item.id}
-                item={item}
-                onAddToMeal={addItem}
-                isFavorite={isFavorite(item.id)}
-                onToggleFavorite={toggle}
-                onCompare={addToCompare}
-              />
-            ))}
-            {filtered.length === 0 && <EmptyState hasFilters={hasActiveFilters(filters)} />}
-          </div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {visibleItems.map(item => (
+                <MenuItemCard
+                  key={item.id}
+                  item={item}
+                  onAddToMeal={addItem}
+                  isFavorite={isFavorite(item.id)}
+                  onToggleFavorite={toggle}
+                  onCompare={addToCompare}
+                />
+              ))}
+              {filtered.length === 0 && <EmptyState hasFilters={hasActiveFilters(filters)} />}
+            </div>
+            {canLoadMore && (
+              <div className="py-6 flex justify-center">
+                <button
+                  onClick={() => setVisibleState({
+                    count: getNextVisibleCount(visibleCount, filteredCount),
+                    key: visibleResetKey,
+                  })}
+                  className="px-5 py-2.5 rounded-xl bg-white border border-stone-300 text-sm font-semibold text-stone-700 hover:bg-stone-50 hover:border-teal-300 transition-colors"
+                >
+                  Load more items
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

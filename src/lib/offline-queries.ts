@@ -169,14 +169,61 @@ export async function fetchMenuItemsOffline(
   }
 }
 
-/** Search with offline fallback */
-export async function searchMenuItemsOffline(searchQuery: string): Promise<MenuItemWithNutrition[]> {
+/** Fetch a targeted set of menu items with offline fallback */
+export async function fetchMenuItemsByIdsOffline(ids: string[]): Promise<MenuItemWithNutrition[]> {
+  const uniqueIds = [...new Set(ids)].filter(Boolean)
+  if (uniqueIds.length === 0) return []
+
   try {
-    const escaped = escapeSearch(searchQuery.trim())
     const { data, error } = await supabase
       .from('menu_items')
       .select(MENU_ITEMS_SELECT)
+      .in('id', uniqueIds)
+      .order('name')
+    if (error) throw error
+    const items = (data ?? []) as MenuItemWithNutrition[]
+    writeAllItems(items).catch(() => {})
+    return items
+  } catch {
+    const cached = await readAllItems()
+    const wanted = new Set(uniqueIds)
+    return cached.filter(item => wanted.has(item.id))
+  }
+}
+
+function itemBelongsToPark(item: MenuItemWithNutrition, parkId: string | undefined): boolean {
+  if (!parkId) return true
+  return item.restaurant?.park?.id === parkId || item.restaurant?.park_id === parkId
+}
+
+/** Search with offline fallback */
+export async function searchMenuItemsOffline(
+  searchQuery: string,
+  parkId?: string,
+): Promise<MenuItemWithNutrition[]> {
+  try {
+    const escaped = escapeSearch(searchQuery.trim())
+    let restaurantIds: string[] | undefined
+    if (parkId) {
+      const { data: restaurants, error: restErr } = await supabase
+        .from('restaurants')
+        .select('id')
+        .eq('park_id', parkId)
+      if (restErr) throw restErr
+      restaurantIds = (restaurants || []).map(r => r.id)
+      if (restaurantIds.length === 0) return []
+    }
+
+    let query = supabase
+      .from('menu_items')
+      .select(MENU_ITEMS_SELECT)
       .or(`name.ilike.%${escaped}%,description.ilike.%${escaped}%`)
+
+    if (restaurantIds) {
+      query = query.in('restaurant_id', restaurantIds)
+    }
+
+    const { data, error } = await query
       .order('name')
       .limit(50)
     if (error) throw error
@@ -188,8 +235,9 @@ export async function searchMenuItemsOffline(searchQuery: string): Promise<MenuI
     if (!lower) return []
     return allCached
       .filter(item =>
-        item.name.toLowerCase().includes(lower) ||
-        (item.description && item.description.toLowerCase().includes(lower))
+        itemBelongsToPark(item, parkId) &&
+        (item.name.toLowerCase().includes(lower) ||
+        (item.description && item.description.toLowerCase().includes(lower)))
       )
       .slice(0, 50)
   }

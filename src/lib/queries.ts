@@ -4,6 +4,7 @@ import {
   fetchParksOffline,
   fetchRestaurantsOffline,
   fetchMenuItemsOffline,
+  fetchMenuItemsByIdsOffline,
   searchMenuItemsOffline,
   fetchAllRestaurantsOffline,
 } from './offline-queries'
@@ -36,14 +37,23 @@ export function useMenuItems(parkId?: string) {
   })
 }
 
-export function useSearch(searchQuery: string) {
+export function useFavoriteMenuItems(ids: string[]) {
   return useQuery({
-    queryKey: ['search', searchQuery],
+    queryKey: ['favoriteMenuItems', ids],
+    queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsByIdsOffline(ids),
+    enabled: ids.length > 0,
+  })
+}
+
+export function useSearch(searchQuery: string, parkId?: string) {
+  const trimmed = searchQuery.trim()
+  return useQuery({
+    queryKey: ['search', trimmed, parkId ?? null],
     queryFn: (): Promise<MenuItemWithNutrition[]> => {
-      if (!searchQuery.trim()) return Promise.resolve([])
-      return searchMenuItemsOffline(searchQuery)
+      if (!trimmed) return Promise.resolve([])
+      return searchMenuItemsOffline(trimmed, parkId)
     },
-    enabled: searchQuery.trim().length > 1,
+    enabled: trimmed.length > 1,
   })
 }
 

@@ -1,6 +1,5 @@
-import { useState, useMemo } from 'react'
-import { useMenuItems, useParks } from '../lib/queries'
-import { buildSearchIndex, searchItems } from '../lib/search-index'
+import { useDeferredValue, useState } from 'react'
+import { useParks, useSearch } from '../lib/queries'
 import { SearchResultRow } from '../components/search/SearchResultRow'
 import type { MenuItemWithNutrition } from '../lib/types'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
@@ -35,19 +34,11 @@ export default function Search() {
   const { addToCompare } = useCompare()
   const [recentSearches, setRecentSearches] = useState(getRecentSearches)
   const { data: parks } = useParks()
-  const { data: items, isLoading: itemsLoading } = useMenuItems(parkId)
-
-  // Build Fuse.js index when items change
-  const searchIndex = useMemo(() => {
-    if (!items || items.length === 0) return null
-    return buildSearchIndex(items)
-  }, [items])
-
-  // Search using Fuse.js
-  const results = useMemo(() => {
-    if (!searchIndex || query.trim().length < 2) return null
-    return searchItems(searchIndex, query, 50)
-  }, [searchIndex, query])
+  const deferredQuery = useDeferredValue(query)
+  const { data: searchResults, isFetching: searchLoading } = useSearch(deferredQuery, parkId)
+  const isSearching = query.trim().length >= 2
+  const isPendingQuery = query !== deferredQuery
+  const results = isSearching ? (searchResults ?? []) : null
 
   const handleSearch = (q: string) => {
     setQuery(q)
@@ -57,8 +48,6 @@ export default function Search() {
       setRecentSearches(getRecentSearches())
     }
   }
-
-  const isSearching = query.trim().length >= 2
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -76,7 +65,6 @@ export default function Search() {
             onChange={e => handleSearch(e.target.value)}
             placeholder="Search menu items..."
             className="w-full pl-10 pr-10 py-3 rounded-xl bg-stone-100 border border-stone-200 text-stone-900 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-            autoFocus
           />
           {query && (
             <button
@@ -104,8 +92,8 @@ export default function Search() {
               <option key={p.id} value={p.id}>{p.name}</option>
             ))}
           </select>
-          {itemsLoading && (
-            <span className="text-[10px] text-stone-400">Loading...</span>
+          {(searchLoading || isPendingQuery) && isSearching && (
+            <span className="text-[10px] text-stone-400">Searching...</span>
           )}
         </div>
       </div>
@@ -149,7 +137,7 @@ export default function Search() {
                   ))}
                 </div>
               </div>
-            ) : !itemsLoading ? (
+            ) : !(searchLoading || isPendingQuery) ? (
               <div className="text-center py-12">
                 <div className="text-5xl mb-3">🔍</div>
                 <p className="text-stone-600">No results for &ldquo;{query}&rdquo;</p>
