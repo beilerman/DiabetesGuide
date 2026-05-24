@@ -184,7 +184,8 @@ export async function searchMenuItemsOffline(searchQuery: string): Promise<MenuI
   } catch {
     // Offline search: filter cached items by name/description
     const allCached = await readAllItems()
-    const lower = searchQuery.toLowerCase()
+    const lower = searchQuery.trim().toLowerCase()
+    if (!lower) return []
     return allCached
       .filter(item =>
         item.name.toLowerCase().includes(lower) ||

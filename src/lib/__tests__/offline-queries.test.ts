@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { fetchMenuItemsOffline } from '../offline-queries'
+import { fetchMenuItemsOffline, searchMenuItemsOffline } from '../offline-queries'
 import type { MenuItemWithNutrition } from '../types'
 
 const supabaseMock = vi.hoisted(() => ({
@@ -69,5 +69,25 @@ describe('fetchMenuItemsOffline', () => {
 
     expect(items).toHaveLength(750)
     expect(items[items.length - 1].id).toBe('limited-749')
+  })
+})
+
+describe('searchMenuItemsOffline', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
+  it('trims whitespace before filtering cached items during offline fallback', async () => {
+    const cached = [
+      makeItem('turkey-leg'),
+      makeItem('fruit-cup'),
+    ]
+    cached[0].name = 'Turkey Leg'
+    cached[1].name = 'Fruit Cup'
+    offlineDbMocks.readAllItems.mockResolvedValueOnce(cached)
+
+    const results = await searchMenuItemsOffline('  turkey  ')
+
+    expect(results.map(item => item.id)).toEqual(['turkey-leg'])
   })
 })

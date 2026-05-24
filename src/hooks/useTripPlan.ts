@@ -11,16 +11,91 @@ function createMealSlots(mealsPerDay: number): TripMealSlot[] {
   }))
 }
 
+function safeNumber(value: unknown, fallback = 0): number {
+  if (typeof value === 'number' && Number.isFinite(value)) return value
+  if (typeof value === 'string') {
+    const parsed = Number(value)
+    if (Number.isFinite(parsed)) return parsed
+  }
+  return fallback
+}
+
+function safePositiveInteger(value: unknown, fallback: number): number {
+  return Math.max(1, Math.round(safeNumber(value, fallback)))
+}
+
+function sanitizeMealItem(raw: unknown): MealItem | null {
+  if (!raw || typeof raw !== 'object') return null
+  const item = raw as Partial<MealItem>
+  if (typeof item.id !== 'string' || typeof item.name !== 'string' || !item.name.trim()) return null
+  return {
+    id: item.id,
+    name: item.name,
+    carbs: safeNumber(item.carbs),
+    calories: safeNumber(item.calories),
+    fat: safeNumber(item.fat),
+    protein: safeNumber(item.protein),
+    sugar: safeNumber(item.sugar),
+    fiber: safeNumber(item.fiber),
+    sodium: safeNumber(item.sodium),
+    restaurant: typeof item.restaurant === 'string' ? item.restaurant : undefined,
+    parkName: typeof item.parkName === 'string' ? item.parkName : undefined,
+  }
+}
+
+function sanitizeMealSlot(raw: unknown, index: number): TripMealSlot | null {
+  if (!raw || typeof raw !== 'object') return null
+  const meal = raw as Partial<TripMealSlot>
+  const name = typeof meal.name === 'string' && meal.name.trim()
+    ? meal.name
+    : DEFAULT_MEAL_NAMES[index] ?? `Meal ${index + 1}`
+  const rawItems = Array.isArray(meal.items) ? meal.items : []
+  return {
+    name,
+    items: rawItems.map(sanitizeMealItem).filter((item): item is MealItem => item !== null),
+  }
+}
+
+function sanitizeDay(raw: unknown, mealsPerDay: number): TripDay | null {
+  if (!raw || typeof raw !== 'object') return null
+  const day = raw as Partial<TripDay>
+  const rawMeals = Array.isArray(day.meals) ? day.meals : []
+  const meals = rawMeals
+    .map((meal, index) => sanitizeMealSlot(meal, index))
+    .filter((meal): meal is TripMealSlot => meal !== null)
+  return {
+    parkId: typeof day.parkId === 'string' ? day.parkId : null,
+    meals: meals.length > 0 ? meals : createMealSlots(mealsPerDay),
+  }
+}
+
+function normalizeStoredTripPlan(input: unknown): TripPlan | null {
+  if (!input || typeof input !== 'object') return null
+  const plan = input as Partial<TripPlan>
+  if (typeof plan.resortId !== 'string' || !plan.resortId.trim()) return null
+  if (!Array.isArray(plan.days)) return null
+
+  const mealsPerDay = safePositiveInteger(plan.mealsPerDay, 3)
+  const days = plan.days
+    .map(day => sanitizeDay(day, mealsPerDay))
+    .filter((day): day is TripDay => day !== null)
+  if (days.length === 0) return null
+
+  return {
+    resortId: plan.resortId,
+    days,
+    carbGoalPerMeal: Math.max(0, safeNumber(plan.carbGoalPerMeal, 60)),
+    mealsPerDay,
+  }
+}
+
 function readFromStorage(): TripPlan | null {
   if (typeof window === 'undefined') return null
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY)
     if (!raw) return null
     const parsed = JSON.parse(raw)
-    if (parsed && parsed.resortId && Array.isArray(parsed.days)) {
-      return parsed as TripPlan
-    }
-    return null
+    return normalizeStoredTripPlan(parsed)
   } catch {
     return null
   }
@@ -35,10 +110,14 @@ function notify() {
 
 function writeToStorage(plan: TripPlan | null) {
   if (typeof window === 'undefined') return
-  if (plan === null) {
-    window.localStorage.removeItem(STORAGE_KEY)
-  } else {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(plan))
+  try {
+    if (plan === null) {
+      window.localStorage.removeItem(STORAGE_KEY)
+    } else {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(plan))
+    }
+  } catch {
+    // Keep the in-memory plan usable even when browser storage is unavailable.
   }
 }
 
@@ -63,13 +142,13 @@ function computeDayTotals(day: TripDay): DayTotals {
   const totals: DayTotals = { carbs: 0, calories: 0, protein: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, itemCount: 0 }
   for (const meal of day.meals) {
     for (const item of meal.items) {
-      totals.carbs += item.carbs
-      totals.calories += item.calories
-      totals.protein += item.protein
-      totals.fat += item.fat
-      totals.sugar += item.sugar
-      totals.fiber += item.fiber
-      totals.sodium += item.sodium
+      totals.carbs += safeNumber(item.carbs)
+      totals.calories += safeNumber(item.calories)
+      totals.protein += safeNumber(item.protein)
+      totals.fat += safeNumber(item.fat)
+      totals.sugar += safeNumber(item.sugar)
+      totals.fiber += safeNumber(item.fiber)
+      totals.sodium += safeNumber(item.sodium)
       totals.itemCount++
     }
   }
@@ -185,4 +264,14 @@ export function useTripPlan() {
     addDay,
     removeDay,
   }
+}
+
+export function __resetTripPlanState(state: TripPlan | null = null) {
+  listeners.clear()
+  sharedState = state
+  writeToStorage(sharedState)
+}
+
+export function __normalizeStoredTripPlan(raw: unknown) {
+  return normalizeStoredTripPlan(raw)
 }

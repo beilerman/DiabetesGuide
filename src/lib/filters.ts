@@ -49,8 +49,9 @@ export function applyFilters(
     return direction === 'asc' ? a - b : b - a
   }
 
-  if (filters.search) {
-    const q = filters.search.toLowerCase()
+  const search = filters.search.trim()
+  if (search) {
+    const q = search.toLowerCase()
     result = result.filter(
       (i) =>
         i.name.toLowerCase().includes(q) ||
@@ -123,7 +124,7 @@ export function applyFilters(
 
 export function hasActiveFilters(filters: Filters): boolean {
   return (
-    filters.search !== '' ||
+    filters.search.trim() !== '' ||
     filters.maxCarbs != null ||
     filters.category != null ||
     filters.vegetarianOnly ||
