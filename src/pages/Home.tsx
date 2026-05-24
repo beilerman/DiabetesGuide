@@ -1,9 +1,8 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useParks, useMenuItemCounts } from '../lib/queries'
-import { findResortForPark } from '../lib/resort-config'
 import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
-import type { Park } from '../lib/types'
+import { buildHomeResortGroups, type HomeResortCategoryGroup, type HomeResortGroup } from '../lib/home-resort-groups'
 
 function SkeletonCard() {
   return (
@@ -13,54 +12,14 @@ function SkeletonCard() {
   )
 }
 
-function ParkCard({ park, itemCount }: { park: Park; itemCount: number }) {
-  const resort = findResortForPark(park)
-  const theme = resort ? getThemeForResort(resort.id) : DEFAULT_THEME
-
-  return (
-    <Link
-      to={`/park/${park.id}`}
-      className="block rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-200"
-    >
-      <div
-        className="relative px-4 py-5 text-white"
-        style={{ background: theme.gradient }}
-      >
-        <div className="flex items-center gap-3">
-          <span className="text-3xl">{theme.icon}</span>
-          <div className="flex-1 min-w-0">
-            <h3 className="text-base font-bold truncate">{park.name}</h3>
-            {resort && (
-              <p className="text-white/70 text-xs">{resort.location}</p>
-            )}
-          </div>
-        </div>
-        <div className="mt-2 flex items-center gap-3 text-xs text-white/80">
-          <span>{itemCount} items</span>
-        </div>
-      </div>
-    </Link>
-  )
-}
-
 export default function Home() {
   const { data: parks, isLoading, error } = useParks()
   const { data: menuItemCounts } = useMenuItemCounts()
+  const countsReady = menuItemCounts != null
 
-  // Sort parks by item count (most items first), then alphabetically
-  const sortedParks = useMemo(() => {
+  const resortGroups = useMemo(() => {
     if (!parks) return []
-    return [...parks]
-      .filter(p => {
-        const count = menuItemCounts?.get(p.id) ?? 0
-        return count > 0
-      })
-      .sort((a, b) => {
-        const countA = menuItemCounts?.get(a.id) ?? 0
-        const countB = menuItemCounts?.get(b.id) ?? 0
-        if (countB !== countA) return countB - countA
-        return a.name.localeCompare(b.name)
-      })
+    return buildHomeResortGroups(parks, menuItemCounts)
   }, [parks, menuItemCounts])
 
   return (
@@ -128,12 +87,23 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* Park picker grid */}
+      {/* Resort picker */}
       <div>
-        <h2 className="text-2xl font-bold text-stone-900 mb-4">Choose a Park</h2>
+        <div className="mb-4 flex items-end justify-between gap-3">
+          <div>
+            <h2 className="text-2xl font-bold text-stone-900">Choose a Destination</h2>
+            <p className="mt-1 text-sm text-stone-600">Browse by resort, then park, hotel, land, and restaurant.</p>
+          </div>
+          <Link
+            to="/browse"
+            className="hidden sm:inline-flex rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-stone-700 hover:border-teal-300 hover:text-teal-700 transition-colors"
+          >
+            Browse all
+          </Link>
+        </div>
 
         {isLoading && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {[...Array(6)].map((_, i) => <SkeletonCard key={i} />)}
           </div>
         )}
@@ -156,18 +126,121 @@ export default function Home() {
           </div>
         )}
 
-        {sortedParks.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {sortedParks.map(park => (
-              <ParkCard
-                key={park.id}
-                park={park}
-                itemCount={menuItemCounts?.get(park.id) ?? 0}
+        {!isLoading && !error && resortGroups.length > 0 && (
+          <div className="space-y-7">
+            {resortGroups.map(group => (
+              <ResortDestinationSection
+                key={group.id}
+                group={group}
+                countsReady={countsReady}
               />
             ))}
           </div>
         )}
+
+        {!isLoading && !error && resortGroups.length === 0 && (
+          <div className="rounded-lg border border-stone-200 bg-white p-6 text-center">
+            <h3 className="font-semibold text-stone-900">No destinations found</h3>
+            <p className="mt-1 text-sm text-stone-600">Try browsing all menu items instead.</p>
+            <Link
+              to="/browse"
+              className="mt-4 inline-flex rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+            >
+              Browse all
+            </Link>
+          </div>
+        )}
       </div>
     </div>
+  )
+}
+
+function formatItems(count: number, countsReady: boolean): string {
+  if (!countsReady) return 'Loading items'
+  return `${count.toLocaleString()} ${count === 1 ? 'item' : 'items'}`
+}
+
+function formatLocations(count: number): string {
+  return `${count} ${count === 1 ? 'location' : 'locations'}`
+}
+
+function resortHref(group: HomeResortGroup): string {
+  return group.id === 'other' ? '/browse' : `/resort/${group.id}`
+}
+
+function categoryHref(group: HomeResortGroup, category: HomeResortCategoryGroup): string {
+  return group.id === 'other' ? '/browse' : `/resort/${group.id}/${category.id}`
+}
+
+function venuePreview(category: HomeResortCategoryGroup): string {
+  const visible = category.parks.slice(0, 3).map(park => park.name)
+  const remaining = category.parks.length - visible.length
+  return `${visible.join(', ')}${remaining > 0 ? ` + ${remaining} more` : ''}`
+}
+
+function ResortDestinationSection({
+  group,
+  countsReady,
+}: {
+  group: HomeResortGroup
+  countsReady: boolean
+}) {
+  const theme = group.id === 'other' ? DEFAULT_THEME : getThemeForResort(group.id)
+
+  return (
+    <section aria-labelledby={`home-resort-${group.id}`} className="border-t border-stone-200 pt-5">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex min-w-0 gap-3">
+          <div
+            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-2xl text-white"
+            style={{ background: theme.gradient }}
+            aria-hidden="true"
+          >
+            {group.icon || DEFAULT_THEME.icon}
+          </div>
+          <div className="min-w-0">
+            <h3 id={`home-resort-${group.id}`} className="text-xl font-bold text-stone-900">
+              {group.name}
+            </h3>
+            <p className="text-sm text-stone-600">{group.location}</p>
+            <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-xs font-medium text-stone-500">
+              <span>{formatLocations(group.locationCount)}</span>
+              <span>{formatItems(group.itemCount, countsReady)}</span>
+            </div>
+          </div>
+        </div>
+
+        <Link
+          to={resortHref(group)}
+          className="inline-flex h-9 items-center justify-center rounded-lg border border-stone-300 bg-white px-3 text-sm font-semibold text-stone-700 hover:border-teal-300 hover:text-teal-700 transition-colors"
+        >
+          Browse all
+        </Link>
+      </div>
+
+      <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {group.categories.map(category => (
+          <Link
+            key={category.id}
+            to={categoryHref(group, category)}
+            className="group flex min-h-24 gap-3 rounded-lg border border-stone-200 bg-white p-3 transition-colors hover:border-teal-300 hover:bg-teal-50/40"
+            style={{ borderLeftColor: theme.primary, borderLeftWidth: 4 }}
+          >
+            <span className="text-2xl" aria-hidden="true">{category.icon || group.icon || DEFAULT_THEME.icon}</span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold text-stone-900 group-hover:text-teal-800">{category.label}</span>
+              <span className="mt-0.5 block text-xs font-medium text-stone-500">
+                {formatLocations(category.locationCount)} | {formatItems(category.itemCount, countsReady)}
+              </span>
+              {category.parks.length > 0 && (
+                <span className="mt-1 block truncate text-xs text-stone-500" title={venuePreview(category)}>
+                  {venuePreview(category)}
+                </span>
+              )}
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
   )
 }
