@@ -77,6 +77,9 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
   const sodium = nd?.sodium ?? null
   const alcoholGrams = nd?.alcohol_grams ?? null
   const netCarbs = carbs != null && fiber != null ? Math.max(0, carbs - fiber) : carbs
+  const availabilityCount = item.availability_count ?? 1
+  const availabilityRestaurants = item.availability_restaurants ?? []
+  const hasMultipleLocations = availabilityCount > 1
 
   const { grade, colors: gradeColors } = getGradeForItem({
     calories, carbs, fat, protein, sugar, fiber, sodium,
@@ -103,7 +106,7 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
       sugar: sugar ?? 0,
       fiber: fiber ?? 0,
       sodium: sodium ?? 0,
-      restaurant: item.restaurant?.name,
+      restaurant: hasMultipleLocations ? `${availabilityCount} locations` : item.restaurant?.name,
       parkName: item.restaurant?.park?.name,
     })
     setTimeout(() => setAddingToMeal(false), 600)
@@ -145,8 +148,10 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
 
             {/* Restaurant + category */}
             <div className="mt-0.5 flex items-center gap-2 text-xs text-stone-500">
-              {item.restaurant && (
-                <span className="truncate">{item.restaurant.name}</span>
+              {(item.restaurant || hasMultipleLocations) && (
+                <span className="truncate" title={hasMultipleLocations ? availabilityRestaurants.join(', ') : item.restaurant?.name}>
+                  {hasMultipleLocations ? `${availabilityCount} locations` : item.restaurant?.name}
+                </span>
               )}
               <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider ${categoryColors[item.category] ?? 'bg-stone-100 text-stone-600'}`}>
                 {item.category}
@@ -309,6 +314,17 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
             {/* Description */}
             {item.description && (
               <p className="text-xs text-stone-600 italic">{item.description}</p>
+            )}
+
+            {/* Availability */}
+            {hasMultipleLocations && availabilityRestaurants.length > 0 && (
+              <div>
+                <div className="text-xs font-medium text-stone-600 mb-1">Available at</div>
+                <p className="text-xs text-stone-500">
+                  {availabilityRestaurants.slice(0, 6).join(', ')}
+                  {availabilityRestaurants.length > 6 && `, +${availabilityRestaurants.length - 6} more`}
+                </p>
+              </div>
             )}
 
             {/* Better choices */}

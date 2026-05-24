@@ -11,6 +11,8 @@ export function SearchResultRow({ item, onClick }: Props) {
   const nd = item.nutritional_data?.[0]
   const carbs = nd?.carbs ?? null
   const calories = nd?.calories ?? null
+  const availabilityCount = item.availability_count ?? 1
+  const hasMultipleLocations = availabilityCount > 1
 
   const { grade } = getGradeForItem({
     calories,
@@ -33,7 +35,7 @@ export function SearchResultRow({ item, onClick }: Props) {
       <div className="flex-1 min-w-0">
         <div className="text-sm font-medium text-stone-900 truncate">{item.name}</div>
         <div className="text-xs text-stone-500 truncate">
-          {item.restaurant?.name}
+          {hasMultipleLocations ? `${availabilityCount} locations` : item.restaurant?.name}
           {item.restaurant?.park && <span> &middot; {item.restaurant.park.name}</span>}
         </div>
       </div>

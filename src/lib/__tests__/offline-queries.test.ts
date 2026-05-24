@@ -81,7 +81,8 @@ describe('fetchMenuItemsOffline', () => {
     expect(items).toHaveLength(dataset.length)
     expect(items[items.length - 1].id).toBe('item-5199')
     expect(fetchPage).toHaveBeenCalledTimes(Math.ceil(dataset.length / 1000))
-    expect(offlineDbMocks.writeAllItems).toHaveBeenCalledWith(items)
+    expect(offlineDbMocks.writeAllItems).toHaveBeenCalledTimes(1)
+    expect(offlineDbMocks.writeAllItems.mock.calls[0][0]).toHaveLength(dataset.length)
   })
 
   it('respects an explicit limit override for diagnostics', async () => {
@@ -92,6 +93,27 @@ describe('fetchMenuItemsOffline', () => {
 
     expect(items).toHaveLength(750)
     expect(items[items.length - 1].id).toBe('limited-749')
+  })
+
+  it('collapses repeated same-name items in the same park before returning menu lists', async () => {
+    const dataset = [
+      makeItem('water-1', 'magic-kingdom'),
+      makeItem('water-2', 'magic-kingdom'),
+      makeItem('water-epcot', 'epcot'),
+    ]
+    dataset[0].name = 'Bottled Water'
+    dataset[1].name = 'Bottled Water'
+    dataset[2].name = 'Bottled Water'
+    dataset[0].restaurant!.name = 'Aloha Isle'
+    dataset[1].restaurant!.name = 'Casey’s Corner'
+    dataset[2].restaurant!.name = 'Refreshment Port'
+    const fetchPage = vi.fn(async ({ from, to }) => dataset.slice(from, Math.min(to + 1, dataset.length)))
+
+    const items = await fetchMenuItemsOffline(undefined, { fetchPage })
+
+    expect(items.map(item => item.id)).toEqual(['water-1', 'water-epcot'])
+    expect(items[0].availability_count).toBe(2)
+    expect(items[0].availability_restaurants).toEqual(['Aloha Isle', 'Casey’s Corner'])
   })
 })
 

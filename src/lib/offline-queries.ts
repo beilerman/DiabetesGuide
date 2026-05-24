@@ -10,6 +10,7 @@ import {
   readItemsByPark,
   setLastSync,
 } from './offline-db'
+import { dedupeMenuItems } from './menu-item-dedupe'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
 
 const MENU_ITEMS_SELECT = `
@@ -156,14 +157,14 @@ export async function fetchMenuItemsOffline(
     // Cache in background
     writeAllItems(items).catch(() => {})
     setLastSync(new Date().toISOString()).catch(() => {})
-    return items
+    return dedupeMenuItems(items)
   } catch {
     if (parkId) {
       const cached = await readItemsByPark(parkId)
-      if (cached.length > 0) return cached
+      if (cached.length > 0) return dedupeMenuItems(cached)
     } else {
       const cached = await readAllItems()
-      if (cached.length > 0) return cached
+      if (cached.length > 0) return dedupeMenuItems(cached)
     }
     throw new Error('No network and no cached menu data')
   }
@@ -225,20 +226,21 @@ export async function searchMenuItemsOffline(
 
     const { data, error } = await query
       .order('name')
-      .limit(50)
+      .limit(150)
     if (error) throw error
-    return data as MenuItemWithNutrition[]
+    return dedupeMenuItems(data as MenuItemWithNutrition[]).slice(0, 50)
   } catch {
     // Offline search: filter cached items by name/description
     const allCached = await readAllItems()
     const lower = searchQuery.trim().toLowerCase()
     if (!lower) return []
-    return allCached
+    const matches = allCached
       .filter(item =>
         itemBelongsToPark(item, parkId) &&
         (item.name.toLowerCase().includes(lower) ||
         (item.description && item.description.toLowerCase().includes(lower)))
       )
+    return dedupeMenuItems(matches)
       .slice(0, 50)
   }
 }
