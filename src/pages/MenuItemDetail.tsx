@@ -10,6 +10,7 @@ import { GradeBadge } from '../components/menu/GradeBadge'
 import { AnnotationBadge } from '../components/menu/AnnotationBadge'
 import { NutritionBadge } from '../components/menu/NutritionBadge'
 import { sodiumColor, alcoholColor } from '../components/menu/nutrition-colors'
+import { buildNutritionReportMailto, getNutritionTrust, type NutritionTrustSummary } from '../lib/nutrition-trust'
 
 const categoryLabels: Record<string, string> = {
   beverage: 'Beverage',
@@ -57,6 +58,7 @@ export default function MenuItemDetail() {
   const displayName = getMenuItemDisplayName(item)
   const displayCategory = getDisplayCategory(item)
   const nutrition = hasUsableNutrition(item) ? item.nutritional_data?.[0] : undefined
+  const trust = getNutritionTrust(nutrition)
   const carbs = nutrition?.carbs ?? null
   const calories = nutrition?.calories ?? null
   const fat = nutrition?.fat ?? null
@@ -105,8 +107,15 @@ export default function MenuItemDetail() {
       sodium: sodium ?? 0,
       restaurant: availabilityCount > 1 ? `${availabilityCount} locations` : item.restaurant?.name,
       parkName: item.restaurant?.park?.name,
+      nutritionConfidence: nutrition?.confidence_score,
+      nutritionSource: nutrition?.source,
+      nutritionSourceDetail: nutrition?.source_detail,
     })
   }
+  const reportHref = buildNutritionReportMailto(
+    item,
+    typeof window === 'undefined' ? undefined : window.location.href
+  )
 
   return (
     <div className="mx-auto max-w-4xl space-y-5">
@@ -152,8 +161,18 @@ export default function MenuItemDetail() {
                   {GRADE_CONFIG[grade!].label}
                 </p>
               )}
+              <div className="mt-3">
+                <TrustPill trust={trust} />
+              </div>
             </div>
           </div>
+
+          {trust.caution && (
+            <div className={`mt-4 rounded-lg border p-3 ${trust.level === 'low' || trust.level === 'unavailable' ? 'border-amber-300 bg-amber-50 text-amber-900' : 'border-teal-200 bg-teal-50 text-teal-900'}`}>
+              <p className="text-sm font-semibold">{trust.label}</p>
+              <p className="mt-1 text-sm">{trust.caution}</p>
+            </div>
+          )}
 
           <div className="mt-5 flex flex-wrap gap-2">
             <button
@@ -177,6 +196,12 @@ export default function MenuItemDetail() {
             >
               Compare
             </button>
+            <a
+              href={reportHref}
+              className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-900 hover:border-amber-400 hover:bg-amber-100"
+            >
+              Report nutrition issue
+            </a>
           </div>
         </div>
 
@@ -264,15 +289,44 @@ export default function MenuItemDetail() {
             {nutrition && (
               <section aria-labelledby="source-heading" className="rounded-lg bg-stone-50 p-3">
                 <h2 id="source-heading" className="text-sm font-bold text-stone-900">Data Source</h2>
-                <p className="mt-1 text-xs text-stone-600">
-                  {nutrition.source.replace('_', ' ')} | Confidence {nutrition.confidence_score}%
-                  {nutrition.source_detail ? ` | ${nutrition.source_detail}` : ''}
-                </p>
+                <dl className="mt-2 grid gap-1 text-xs text-stone-600">
+                  <SourceRow label="Source" value={trust.sourceLabel} />
+                  {trust.confidenceLabel && <SourceRow label="Confidence" value={trust.confidenceLabel} />}
+                  {trust.lastUpdatedLabel && <SourceRow label="Updated" value={trust.lastUpdatedLabel.replace('Last updated ', '')} />}
+                  {nutrition.source_detail && <SourceRow label="Detail" value={nutrition.source_detail} />}
+                </dl>
+                <Link to="/methodology" className="mt-3 inline-flex text-xs font-semibold text-teal-700 hover:text-teal-800">
+                  How nutrition data is sourced
+                </Link>
               </section>
             )}
           </aside>
         </div>
       </article>
+    </div>
+  )
+}
+
+function TrustPill({ trust }: { trust: NutritionTrustSummary }) {
+  const className = trust.level === 'verified'
+    ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
+    : trust.level === 'estimated'
+      ? 'border-teal-200 bg-teal-50 text-teal-800'
+      : 'border-amber-200 bg-amber-50 text-amber-800'
+
+  return (
+    <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${className}`}>
+      {trust.label}
+      {trust.confidenceLabel ? ` - ${trust.confidenceLabel}` : ''}
+    </span>
+  )
+}
+
+function SourceRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex justify-between gap-3">
+      <dt className="font-medium text-stone-500">{label}</dt>
+      <dd className="text-right text-stone-700">{value}</dd>
     </div>
   )
 }

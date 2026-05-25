@@ -26,6 +26,18 @@ const menuItems = [
     label: 'Settings',
     description: 'Text size, contrast, carb goal',
   },
+  {
+    to: '/methodology',
+    icon: 'i',
+    label: 'Data Sources',
+    description: 'Nutrition confidence and sourcing',
+  },
+  {
+    to: '/privacy',
+    icon: 'P',
+    label: 'Privacy',
+    description: 'Local storage and health data notes',
+  },
 ]
 
 export default function MoreMenu() {

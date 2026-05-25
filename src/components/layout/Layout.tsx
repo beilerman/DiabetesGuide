@@ -10,9 +10,12 @@ import { useCompare } from '../../hooks/useCompare'
 export function Layout() {
   const location = useLocation()
   const { totalItemCount } = useMealCart()
-  const { compareCount } = useCompare()
+  const { compareCount, compareItems } = useCompare()
   const [showCompareModal, setShowCompareModal] = useState(false)
+  const [dismissedCompareKey, setDismissedCompareKey] = useState<string | null>(null)
   const showCompareTray = location.pathname.startsWith('/browse') || location.pathname.startsWith('/item/')
+  const compareKey = compareItems.map(item => item.id).join('|')
+  const compareTrayVisible = showCompareTray && compareCount > 0 && compareKey !== dismissedCompareKey
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/' || location.pathname.startsWith('/park/') || location.pathname.startsWith('/resort')
@@ -36,7 +39,7 @@ export function Layout() {
       </a>
       <Header />
       <OfflineBanner />
-      <main id="main-content" className={`mx-auto max-w-7xl px-4 py-6 md:pb-6 ${showCompareTray && compareCount > 0 ? 'pb-36' : 'pb-24'}`}>
+      <main id="main-content" className={`mx-auto max-w-7xl px-4 py-6 md:pb-6 ${compareTrayVisible ? 'pb-40' : 'pb-24'}`}>
         <Outlet />
       </main>
 
@@ -46,12 +49,21 @@ export function Layout() {
           <p>
             <Link to="/guide" className="font-medium text-stone-700 hover:text-teal-700">About</Link>
             <span className="mx-2">|</span>
+            <Link to="/methodology" className="font-medium text-stone-700 hover:text-teal-700">Data Sources</Link>
+            <span className="mx-2">|</span>
+            <Link to="/privacy" className="font-medium text-stone-700 hover:text-teal-700">Privacy</Link>
+            <span className="mx-2">|</span>
             <a href="mailto:contact@diabetesguide.app" className="font-medium text-stone-700 hover:text-teal-700">Contact</a>
           </p>
         </div>
       </footer>
 
-      {showCompareTray && <ComparisonTray onOpenModal={() => setShowCompareModal(true)} />}
+      {compareTrayVisible && (
+        <ComparisonTray
+          onOpenModal={() => setShowCompareModal(true)}
+          onDismiss={() => setDismissedCompareKey(compareKey)}
+        />
+      )}
       {showCompareModal && <ComparisonModal onClose={() => setShowCompareModal(false)} />}
 
       {/* Bottom navigation for mobile */}
@@ -123,8 +135,8 @@ export function Layout() {
           {/* More */}
           <Link
             to="/more"
-            aria-current={isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin') ? 'page' : undefined}
-            className={navItemClass(isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin'))}
+            aria-current={isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin') || isActive('/methodology') || isActive('/privacy') ? 'page' : undefined}
+            className={navItemClass(isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin') || isActive('/methodology') || isActive('/privacy'))}
           >
             <svg className="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="12" cy="6" r="2"/>

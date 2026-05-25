@@ -19,6 +19,8 @@ const PackingList = lazy(() => import('./pages/PackingList'))
 const DiabetesGuide = lazy(() => import('./pages/DiabetesGuide'))
 const ParkAdvice = lazy(() => import('./pages/ParkAdvice'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const Methodology = lazy(() => import('./pages/Methodology'))
+const Privacy = lazy(() => import('./pages/Privacy'))
 
 // Legacy pages
 const ResortDetail = lazy(() => import('./pages/ResortDetail'))
@@ -52,6 +54,8 @@ export default function App() {
           <Route path="/insulin" element={<InsulinHelper />} />
           <Route path="/packing" element={<PackingList />} />
           <Route path="/guide" element={<DiabetesGuide />} />
+          <Route path="/methodology" element={<Methodology />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="/tips" element={<Navigate to="/advice" replace />} />
           <Route path="/advice" element={<ParkAdvice />} />
 
