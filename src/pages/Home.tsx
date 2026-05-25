@@ -86,8 +86,8 @@ export default function Home() {
             </svg>
           </div>
           <div className="flex-1 min-w-0">
-            <div className="font-semibold text-amber-900">Insulin Helper</div>
-            <div className="text-xs text-amber-700">Calculate dosage</div>
+            <div className="font-semibold text-amber-900">Carb Estimator</div>
+            <div className="text-xs text-amber-700">Estimate with guardrails</div>
           </div>
         </Link>
       </div>
@@ -161,8 +161,8 @@ export default function Home() {
 }
 
 function formatItems(count: number, countsReady: boolean): string {
-  if (!countsReady) return 'Item count syncing'
-  return `${count.toLocaleString()} ${count === 1 ? 'item' : 'items'}`
+  if (!countsReady) return 'Counts syncing'
+  return `${count.toLocaleString()} ${count === 1 ? 'menu record' : 'menu records'}`
 }
 
 function formatLocations(count: number): string {

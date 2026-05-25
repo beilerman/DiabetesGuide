@@ -174,3 +174,21 @@ export function useMenuItemCounts() {
     },
   })
 }
+
+export function useTotalMenuItemCount() {
+  return useQuery({
+    queryKey: ['totalMenuItemCount'],
+    queryFn: async (): Promise<number> => {
+      try {
+        const { count, error } = await supabase
+          .from('menu_items')
+          .select('*', { count: 'exact', head: true })
+        if (error) throw error
+        return count ?? 0
+      } catch {
+        const cached = await readAllItems()
+        return cached.length
+      }
+    },
+  })
+}

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { useMenuItems, useParks } from '../lib/queries'
+import { useMenuItems, useParks, useTotalMenuItemCount } from '../lib/queries'
 import { FilterBar } from '../components/filters/FilterBar'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { useMealCart } from '../hooks/useMealCart'
@@ -15,6 +15,7 @@ import {
   getVisibleItems,
   hasMoreVisibleItems,
 } from '../lib/visible-items'
+import { getBrowseSummary } from '../lib/browse-summary'
 import type { Filters } from '../lib/types'
 
 type BrowseViewMode = 'list' | 'location'
@@ -78,6 +79,7 @@ export default function Browse() {
   const { data: parks } = useParks()
   const parkOptions = useMemo(() => dedupeParksForDisplay(parks ?? []), [parks])
   const { data: items, isLoading } = useMenuItems(parkId, { dedupe: !isLocationView })
+  const { data: totalMenuRecordCount } = useTotalMenuItemCount()
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
   const { addToCompare } = useCompare()
@@ -110,6 +112,15 @@ export default function Browse() {
     ),
     [locationGroups],
   )
+  const browseSummary = getBrowseSummary({
+    isLocationView,
+    isAllParks: !parkId,
+    filteredCount,
+    visibleItemCount,
+    totalLoadedItems: totalItems,
+    totalMenuRecordCount,
+    locationRestaurantCount,
+  })
 
   const toggleRestaurant = (restaurantId: string) => {
     setExpandedRestaurants(current => {
@@ -132,6 +143,13 @@ export default function Browse() {
             Educational tool only - not medical advice. Nutrition values may be estimated or unavailable.
           </p>
         </div>
+        {!parkId && (
+          <div className="mb-4 rounded-lg border border-teal-200 bg-teal-50 px-3 py-2">
+            <p className="text-sm font-semibold text-teal-900">
+              All Parks shows a fast preview. Select a destination for complete park listings and faster filtering.
+            </p>
+          </div>
+        )}
 
         {/* Park selector - horizontal pill buttons */}
         <div className="flex items-center gap-2">
@@ -194,21 +212,11 @@ export default function Browse() {
       <div className="px-4 py-4">
         {/* Result count */}
         {!isLoading && totalItems > 0 && (
-          <div className="mb-4 text-sm text-gray-600" aria-live="polite">
-            {isLocationView ? (
-              <>
-                Showing <span className="font-semibold text-gray-900">{filteredCount}</span> items
-                <span className="text-gray-500"> across {locationRestaurantCount} restaurants</span>
-              </>
-            ) : (
-              <>
-                Showing <span className="font-semibold text-gray-900">{visibleItemCount}</span>
-                {filteredCount !== visibleItemCount && <> of <span className="font-semibold text-gray-900">{filteredCount}</span></>}
-                {' '}items
-                {filteredCount !== totalItems && (
-                  <span className="text-gray-500"> from {totalItems} loaded</span>
-                )}
-              </>
+          <div className="mb-4 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm text-gray-600" aria-live="polite">
+            <span className="font-semibold text-gray-900">{browseSummary.main}</span>
+            {browseSummary.detail && <span className="text-gray-500"> {browseSummary.detail}</span>}
+            {browseSummary.note && (
+              <span className="mt-1 block text-xs font-medium text-teal-700">{browseSummary.note}</span>
             )}
           </div>
         )}
@@ -216,7 +224,9 @@ export default function Browse() {
         {isLoading ? (
           <>
             <div className="mb-3 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-medium text-stone-600" role="status">
-              Loading menu items and restaurant groups...
+              {!parkId
+                ? 'Loading the All Parks preview and restaurant groups...'
+                : 'Loading complete destination listings and restaurant groups...'}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[...Array(6)].map((_, i) => (

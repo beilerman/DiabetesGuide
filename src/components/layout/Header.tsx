@@ -8,7 +8,7 @@ export function Header() {
     <>
       <Link to="/search" className="hover:text-teal-600 transition-colors">Search</Link>
       <Link to="/browse" className="hover:text-teal-600 transition-colors">Browse</Link>
-      <Link to="/insulin" className="hover:text-teal-600 transition-colors">Insulin Helper</Link>
+      <Link to="/insulin" className="hover:text-teal-600 transition-colors">Carb Estimator</Link>
       <Link to="/packing" className="hover:text-teal-600 transition-colors">Packing List</Link>
       <Link to="/guide" className="hover:text-teal-600 transition-colors">Guide</Link>
     </>
