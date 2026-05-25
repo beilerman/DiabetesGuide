@@ -3,7 +3,7 @@ import { parkAdvice } from '../data/park-advice'
 export default function ParkAdvice() {
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Park Day Advice</h1>
+      <h1 className="text-2xl font-bold mb-6">Park Day Tips</h1>
 
       <div className="space-y-6">
         {parkAdvice.map(section => (

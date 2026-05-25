@@ -3,6 +3,8 @@ import { useMealCart } from '../hooks/useMealCart'
 import { usePreferences } from '../hooks/usePreferences'
 import { GradeBadge } from '../components/menu/GradeBadge'
 import { computeScore, computeGrade, GRADE_CONFIG } from '../lib/grade'
+import { calculateInsulinDose, validateInsulinInputs, type ActivityLevel } from '../lib/insulin'
+import { cleanDisplayText } from '../lib/display'
 import type { Grade } from '../lib/grade'
 
 const INSULIN_SETTINGS_KEY = 'dg_insulin_settings'
@@ -39,7 +41,7 @@ export default function Meal() {
   const [insulinSettings, setInsulinSettings] = useState<InsulinSettings>(loadInsulinSettings)
   const [bg, setBg] = useState<number | ''>('')
   const [carbOverride, setCarbOverride] = useState<number | null>(null)
-  const [activity, setActivity] = useState<'none' | 'mod' | 'high'>('none')
+  const [activity, setActivity] = useState<ActivityLevel>('none')
 
   // Persist insulin settings
   useEffect(() => {
@@ -75,27 +77,16 @@ export default function Meal() {
     return { score, grade: computeGrade(score) }
   }, [items.length, totals])
 
-  // Insulin calculation
-  const insulinResult = useMemo(() => {
-    const { icr, cf, target } = insulinSettings
-    if (effectiveCarbs === 0 || icr === '' || bg === '') return null
-    if (Number(icr) <= 0) return null
-
-    const carbBolus = effectiveCarbs / Number(icr)
-    const cfVal = Number(cf)
-    const bgVal = Number(bg)
-    const correction = cfVal && bgVal !== target ? (bgVal - target) / cfVal : 0
-    const baseDose = carbBolus + correction
-    const adjPct = activity === 'mod' ? 0.25 : activity === 'high' ? 0.5 : 0
-    const suggested = Math.max(0, baseDose * (1 - adjPct))
-
-    return {
-      carbBolus: Math.round(carbBolus * 10) / 10,
-      correction: Math.round(correction * 10) / 10,
-      adjPct: Math.round(adjPct * 100),
-      suggested: Math.round(suggested * 10) / 10,
-    }
-  }, [effectiveCarbs, bg, insulinSettings, activity])
+  const insulinInputs = useMemo(() => ({
+    carbs: effectiveCarbs,
+    bloodGlucose: bg,
+    targetGlucose: insulinSettings.target,
+    insulinToCarbRatio: insulinSettings.icr,
+    correctionFactor: insulinSettings.cf,
+    activity,
+  }), [effectiveCarbs, bg, insulinSettings, activity])
+  const insulinValidation = useMemo(() => validateInsulinInputs(insulinInputs), [insulinInputs])
+  const insulinResult = useMemo(() => calculateInsulinDose(insulinInputs), [insulinInputs])
 
   // Carb goal progress
   const carbPct = carbGoal > 0 ? Math.min(100, Math.round((totals.carbs / carbGoal) * 100)) : 0
@@ -233,7 +224,7 @@ export default function Meal() {
                 <li key={`${item.id}-${i}`} className="flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm border border-stone-100">
                   <GradeBadge grade={itemGrade} size="sm" />
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium text-sm truncate">{item.name}</p>
+                    <p className="font-medium text-sm truncate">{cleanDisplayText(item.name) || item.name}</p>
                     {item.restaurant && (
                       <p className="text-xs text-stone-400 truncate">{item.restaurant}</p>
                     )}
@@ -308,11 +299,15 @@ export default function Meal() {
               label="Blood Glucose (mg/dL)"
               value={bg}
               onChange={setBg}
+              min={1}
+              step="any"
             />
             <NumField
               label="Target Glucose"
               value={insulinSettings.target}
               onChange={v => setInsulinSettings(s => ({ ...s, target: v || 120 }))}
+              min={1}
+              step="any"
             />
           </div>
 
@@ -323,6 +318,9 @@ export default function Meal() {
                 type="number"
                 className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
                 value={carbOverride ?? totals.carbs}
+                min={0}
+                step="any"
+                inputMode="decimal"
                 onChange={e => setCarbOverride(e.target.value === '' ? null : Number(e.target.value))}
               />
               {carbOverride !== null && (
@@ -344,11 +342,15 @@ export default function Meal() {
               label="Insulin-to-Carb Ratio (ICR)"
               value={insulinSettings.icr}
               onChange={v => setInsulinSettings(s => ({ ...s, icr: v }))}
+              min={0.1}
+              step="any"
             />
             <NumField
               label="Correction Factor"
               value={insulinSettings.cf}
               onChange={v => setInsulinSettings(s => ({ ...s, cf: v }))}
+              min={1}
+              step="any"
             />
           </div>
 
@@ -372,6 +374,17 @@ export default function Meal() {
             </div>
           </fieldset>
         </div>
+
+        {!insulinValidation.isValid && (
+          <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3">
+            <p className="text-sm font-semibold text-amber-900">Dose hidden until required values are valid.</p>
+            <ul className="mt-1 list-disc pl-5 text-xs text-amber-800">
+              {insulinValidation.messages.map(message => (
+                <li key={message}>{message}</li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {insulinResult && (
           <div className="mt-4 rounded-lg bg-teal-50 border border-teal-200 p-4 space-y-2">
@@ -403,10 +416,12 @@ function MacroBox({ label, value, highlight }: { label: string; value: string; h
   )
 }
 
-function NumField({ label, value, onChange }: {
+function NumField({ label, value, onChange, min, step }: {
   label: string
   value: number | ''
   onChange: (v: number | '') => void
+  min?: number
+  step?: number | 'any'
 }) {
   return (
     <label className="block">
@@ -415,6 +430,9 @@ function NumField({ label, value, onChange }: {
         type="number"
         className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
         value={value}
+        min={min}
+        step={step}
+        inputMode="decimal"
         onChange={e => onChange(e.target.value === '' ? '' : Number(e.target.value))}
       />
     </label>

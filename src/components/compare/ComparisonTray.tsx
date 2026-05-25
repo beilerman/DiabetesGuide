@@ -1,4 +1,5 @@
 import { useCompare } from '../../hooks/useCompare'
+import { cleanDisplayText } from '../../lib/display'
 
 interface Props {
   onOpenModal: () => void
@@ -19,7 +20,7 @@ export function ComparisonTray({ onOpenModal }: Props) {
               key={item.id}
               className="flex-shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 bg-stone-100 rounded-full text-sm"
             >
-              <span className="font-medium truncate max-w-[120px]">{item.name}</span>
+              <span className="font-medium truncate max-w-[120px]">{cleanDisplayText(item.name) || item.name}</span>
               <button
                 onClick={() => removeFromCompare(item.id)}
                 className="w-4 h-4 flex items-center justify-center rounded-full text-stone-400 hover:text-red-500 hover:bg-red-50"

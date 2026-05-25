@@ -161,7 +161,7 @@ export default function Home() {
 }
 
 function formatItems(count: number, countsReady: boolean): string {
-  if (!countsReady) return 'Loading items'
+  if (!countsReady) return 'Item count syncing'
   return `${count.toLocaleString()} ${count === 1 ? 'item' : 'items'}`
 }
 

@@ -11,6 +11,7 @@ import {
   setLastSync,
 } from './offline-db'
 import { dedupeMenuItems } from './menu-item-dedupe'
+import { getMenuItemDisplayName, isLikelyMenuSectionHeader } from './display'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
 
 const MENU_ITEMS_SELECT = `
@@ -19,6 +20,7 @@ const MENU_ITEMS_SELECT = `
   allergens (*),
   restaurant:restaurants (*, park:parks (*))
 `
+const DEFAULT_ALL_PARK_MENU_LIMIT = 3000
 
 type MenuItemsBatchFetcher = (args: {
   from: number
@@ -143,6 +145,7 @@ export async function fetchMenuItemsOffline(
   try {
     let items: MenuItemWithNutrition[]
     const { limit, fetchPage } = options ?? {}
+    const maxItems = limit ?? (parkId ? undefined : DEFAULT_ALL_PARK_MENU_LIMIT)
     const shouldDedupe = options?.dedupe !== false
     if (parkId) {
       const { data: restaurants, error: restErr } = await supabase
@@ -152,22 +155,29 @@ export async function fetchMenuItemsOffline(
       if (restErr) throw restErr
       const restaurantIds = (restaurants || []).map(r => r.id)
       if (restaurantIds.length === 0) return []
-      items = await fetchAllMenuItemsOnline(restaurantIds, limit, fetchPage)
+      items = await fetchAllMenuItemsOnline(restaurantIds, maxItems, fetchPage)
     } else {
-      items = await fetchAllMenuItemsOnline(undefined, limit, fetchPage)
+      items = await fetchAllMenuItemsOnline(undefined, maxItems, fetchPage)
     }
     // Cache in background
     writeAllItems(items).catch(() => {})
     setLastSync(new Date().toISOString()).catch(() => {})
-    return shouldDedupe ? dedupeMenuItems(items) : items
+    const displayable = items.filter(item => !isLikelyMenuSectionHeader(item.name))
+    return shouldDedupe ? dedupeMenuItems(displayable) : displayable
   } catch {
     const shouldDedupe = options?.dedupe !== false
     if (parkId) {
       const cached = await readItemsByPark(parkId)
-      if (cached.length > 0) return shouldDedupe ? dedupeMenuItems(cached) : cached
+      if (cached.length > 0) {
+        const displayable = cached.filter(item => !isLikelyMenuSectionHeader(item.name))
+        return shouldDedupe ? dedupeMenuItems(displayable) : displayable
+      }
     } else {
       const cached = await readAllItems()
-      if (cached.length > 0) return shouldDedupe ? dedupeMenuItems(cached) : cached
+      if (cached.length > 0) {
+        const displayable = cached.filter(item => !isLikelyMenuSectionHeader(item.name))
+        return shouldDedupe ? dedupeMenuItems(displayable) : displayable
+      }
     }
     throw new Error('No network and no cached menu data')
   }
@@ -231,7 +241,9 @@ export async function searchMenuItemsOffline(
       .order('name')
       .limit(150)
     if (error) throw error
-    return dedupeMenuItems(data as MenuItemWithNutrition[]).slice(0, 50)
+    return dedupeMenuItems(
+      (data as MenuItemWithNutrition[]).filter(item => !isLikelyMenuSectionHeader(item.name)),
+    ).slice(0, 50)
   } catch {
     // Offline search: filter cached items by name/description
     const allCached = await readAllItems()
@@ -240,7 +252,8 @@ export async function searchMenuItemsOffline(
     const matches = allCached
       .filter(item =>
         itemBelongsToPark(item, parkId) &&
-        (item.name.toLowerCase().includes(lower) ||
+        !isLikelyMenuSectionHeader(item.name) &&
+        (getMenuItemDisplayName(item).toLowerCase().includes(lower) ||
         (item.description && item.description.toLowerCase().includes(lower)))
       )
     return dedupeMenuItems(matches)

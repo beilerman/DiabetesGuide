@@ -1,4 +1,5 @@
 import { findCategoryForPark, findResortForPark, RESORT_CONFIG } from './resort-config'
+import { canonicalParkKey, getCanonicalParkName } from './park-display'
 import type { MenuItemWithNutrition, Park } from './types'
 
 export interface RestaurantLocationGroup {
@@ -187,8 +188,8 @@ export function groupMenuItemsByLocation(
   for (const item of items) {
     const park = parkFromItem(item, parksById)
     const location = locationMeta(park)
-    const venueName = park?.name ?? item.restaurant?.park?.name ?? 'Unknown Destination'
-    const venueId = park?.id ?? `venue-${slug(venueName)}`
+    const venueName = park ? getCanonicalParkName(park) : item.restaurant?.park?.name ?? 'Unknown Destination'
+    const venueId = park ? `venue-${slug(canonicalParkKey(park.name))}` : `venue-${slug(venueName)}`
     const areaName = item.restaurant?.land?.trim() || DEFAULT_AREA_NAME
     const areaId = `${venueId}:${slug(areaName)}`
     const restaurantName = item.restaurant?.name?.trim() || UNKNOWN_RESTAURANT_NAME

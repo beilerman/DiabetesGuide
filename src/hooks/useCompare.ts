@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { MenuItemWithNutrition } from '../lib/types'
+import { getDisplayCategory, getMenuItemDisplayName } from '../lib/display'
 
 const STORAGE_KEY = 'dg_compare'
 const MAX_ITEMS = 3
@@ -27,8 +28,8 @@ function toCompareItem(item: MenuItemWithNutrition): CompareItem {
   const nd = item.nutritional_data?.[0]
   return {
     id: item.id,
-    name: item.name,
-    category: item.category,
+    name: getMenuItemDisplayName(item),
+    category: getDisplayCategory(item),
     carbs: nd?.carbs ?? 0,
     calories: nd?.calories ?? 0,
     fat: nd?.fat ?? 0,

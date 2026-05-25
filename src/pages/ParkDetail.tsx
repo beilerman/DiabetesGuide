@@ -201,6 +201,7 @@ export default function ParkDetail() {
                   onAddToMeal={addItem}
                   isFavorite={isFavorite(item.id)}
                   onToggleFavorite={toggle}
+                  onCompare={addToCompare}
                   themeColor={theme.primary}
                 />
               ))}

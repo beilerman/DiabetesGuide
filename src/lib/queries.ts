@@ -50,6 +50,18 @@ export function useFavoriteMenuItems(ids: string[]) {
   })
 }
 
+export function useMenuItem(id: string | undefined) {
+  return useQuery({
+    queryKey: ['menuItem', id],
+    queryFn: async (): Promise<MenuItemWithNutrition | null> => {
+      if (!id) return null
+      const [item] = await fetchMenuItemsByIdsOffline([id])
+      return item ?? null
+    },
+    enabled: !!id,
+  })
+}
+
 export function useSearch(searchQuery: string, parkId?: string) {
   const trimmed = searchQuery.trim()
   return useQuery({

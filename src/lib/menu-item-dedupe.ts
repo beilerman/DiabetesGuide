@@ -1,14 +1,14 @@
 import type { MenuItemWithNutrition, NutritionalData } from './types'
+import { cleanDisplayText } from './display'
 
 function normalize(value: string | null | undefined): string {
-  return (value ?? '')
+  return cleanDisplayText(value)
     .normalize('NFKD')
     .toLowerCase()
-    .replace(/[’']s\b/g, '')
-    .replace(/[’']/g, '')
-    .replace(/®|™/g, '')
-    .replace(/\buniversal\s+s\b/g, 'universal')
-    .replace(/\bdisney\s+s\b/g, 'disney')
+    .replace(/[\u2019']s\b/g, '')
+    .replace(/[\u2019']/g, '')
+    .replace(/\buniversals\b/g, 'universal')
+    .replace(/\bdisneys\b/g, 'disney')
     .replace(/[^a-z0-9]+/g, ' ')
     .trim()
 }

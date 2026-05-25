@@ -72,17 +72,17 @@ describe('fetchMenuItemsOffline', () => {
     vi.clearAllMocks()
   })
 
-  it('fetches every batch when no global limit is provided', async () => {
+  it('caps the all-parks menu query by default', async () => {
     const dataset = Array.from({ length: 5200 }, (_, i) => makeItem(`item-${i}`))
     const fetchPage = vi.fn(async ({ from, to }) => dataset.slice(from, Math.min(to + 1, dataset.length)))
 
     const items = await fetchMenuItemsOffline(undefined, { fetchPage })
 
-    expect(items).toHaveLength(dataset.length)
-    expect(items[items.length - 1].id).toBe('item-5199')
-    expect(fetchPage).toHaveBeenCalledTimes(Math.ceil(dataset.length / 1000))
+    expect(items).toHaveLength(3000)
+    expect(items[items.length - 1].id).toBe('item-2999')
+    expect(fetchPage).toHaveBeenCalledTimes(3)
     expect(offlineDbMocks.writeAllItems).toHaveBeenCalledTimes(1)
-    expect(offlineDbMocks.writeAllItems.mock.calls[0][0]).toHaveLength(dataset.length)
+    expect(offlineDbMocks.writeAllItems.mock.calls[0][0]).toHaveLength(3000)
   })
 
   it('respects an explicit limit override for diagnostics', async () => {

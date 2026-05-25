@@ -1,6 +1,7 @@
 import type { Filters, MenuItemWithNutrition } from './types'
 import { getNutrition } from './nutrition'
 import { computeScore, computeGrade } from './grade'
+import { getDisplayCategory, getMenuItemDisplayName, isLikelyMenuSectionHeader } from './display'
 
 export const DEFAULT_FILTERS: Filters = {
   search: '',
@@ -34,7 +35,7 @@ export function applyFilters(
   items: MenuItemWithNutrition[],
   filters: Filters,
 ): MenuItemWithNutrition[] {
-  let result = items
+  let result = items.filter(item => !isLikelyMenuSectionHeader(item.name))
 
   const compareNullableNumber = (
     a: number | null | undefined,
@@ -54,7 +55,7 @@ export function applyFilters(
     const q = search.toLowerCase()
     result = result.filter(
       (i) =>
-        i.name.toLowerCase().includes(q) ||
+        getMenuItemDisplayName(i).toLowerCase().includes(q) ||
         i.description?.toLowerCase().includes(q) ||
         i.restaurant?.name.toLowerCase().includes(q),
     )
@@ -68,11 +69,11 @@ export function applyFilters(
     )
   }
   if (filters.category) {
-    result = result.filter((i) => i.category === filters.category)
+    result = result.filter((i) => getDisplayCategory(i) === filters.category)
   }
   if (filters.vegetarianOnly) result = result.filter((i) => i.is_vegetarian)
   if (filters.hideFried) result = result.filter((i) => !i.is_fried)
-  if (filters.hideDrinks) result = result.filter((i) => i.category !== 'beverage')
+  if (filters.hideDrinks) result = result.filter((i) => getDisplayCategory(i) !== 'beverage')
 
   // New: hide alcohol
   if (filters.hideAlcohol) {
@@ -105,7 +106,7 @@ export function applyFilters(
     string,
     (a: MenuItemWithNutrition, b: MenuItemWithNutrition) => number
   > = {
-    name: (a, b) => a.name.localeCompare(b.name),
+    name: (a, b) => getMenuItemDisplayName(a).localeCompare(getMenuItemDisplayName(b)),
     carbsAsc: (a, b) =>
       compareNullableNumber(getNutrition(a)?.carbs, getNutrition(b)?.carbs, 'asc'),
     carbsDesc: (a, b) =>

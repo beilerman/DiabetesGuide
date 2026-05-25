@@ -7,6 +7,7 @@ import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
 import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
+import { dedupeParksForDisplay } from '../lib/park-display'
 import { groupMenuItemsByLocation, type ResortLocationGroup, type RestaurantLocationGroup } from '../lib/menu-location-groups'
 import {
   DEFAULT_VISIBLE_ITEMS,
@@ -63,7 +64,7 @@ export default function Browse() {
   const initialSort = (searchParams.get('sort') || 'name') as Filters['sort']
   const [filters, setFilters] = useState<Filters>({ ...DEFAULT_FILTERS, sort: initialSort })
   const [parkId, setParkId] = useState<string | undefined>(searchParams.get('park') || undefined)
-  const [viewMode, setViewMode] = useState<BrowseViewMode>('list')
+  const [viewMode, setViewMode] = useState<BrowseViewMode>('location')
   const [expandedRestaurants, setExpandedRestaurants] = useState<Set<string>>(() => new Set())
   const isLocationView = viewMode === 'location'
   const visibleResetKey = useMemo(
@@ -75,6 +76,7 @@ export default function Browse() {
     key: visibleResetKey,
   }))
   const { data: parks } = useParks()
+  const parkOptions = useMemo(() => dedupeParksForDisplay(parks ?? []), [parks])
   const { data: items, isLoading } = useMenuItems(parkId, { dedupe: !isLocationView })
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
@@ -125,12 +127,18 @@ export default function Browse() {
     <div className="min-h-screen bg-stone-50">
       <div className="bg-white border-b border-stone-200 px-4 py-6">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Browse Menu</h1>
+        <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2">
+          <p className="text-sm font-semibold text-amber-900">
+            Educational tool only - not medical advice. Nutrition values may be estimated or unavailable.
+          </p>
+        </div>
 
         {/* Park selector - horizontal pill buttons */}
         <div className="flex items-center gap-2">
           <span className="text-sm font-medium text-gray-600 whitespace-nowrap">Park:</span>
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
             <button
+              type="button"
               onClick={() => setParkId(undefined)}
               className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                 parkId === undefined
@@ -138,11 +146,12 @@ export default function Browse() {
                   : 'bg-stone-100 text-gray-700 hover:bg-stone-200'
               }`}
             >
-              All Parks
+              All Parks{parkOptions.length > 0 ? ` (${parkOptions.length})` : ''}
             </button>
-            {parks?.map(p => (
+            {parkOptions.map(p => (
               <button
                 key={p.id}
+                type="button"
                 onClick={() => setParkId(p.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                   parkId === p.id
@@ -205,11 +214,16 @@ export default function Browse() {
         )}
 
         {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[...Array(6)].map((_, i) => (
-              <SkeletonCard key={i} />
-            ))}
-          </div>
+          <>
+            <div className="mb-3 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-medium text-stone-600" role="status">
+              Loading menu items and restaurant groups...
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[...Array(6)].map((_, i) => (
+                <SkeletonCard key={i} />
+              ))}
+            </div>
+          </>
         ) : isLocationView ? (
           filtered.length === 0 ? (
             <div className="grid grid-cols-1">

@@ -1,5 +1,6 @@
 import { useDeferredValue, useState } from 'react'
 import { useParks, useSearch } from '../lib/queries'
+import { dedupeParksForDisplay } from '../lib/park-display'
 import { SearchResultRow } from '../components/search/SearchResultRow'
 import type { MenuItemWithNutrition } from '../lib/types'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
@@ -34,6 +35,7 @@ export default function Search() {
   const { addToCompare } = useCompare()
   const [recentSearches, setRecentSearches] = useState(getRecentSearches)
   const { data: parks } = useParks()
+  const parkOptions = dedupeParksForDisplay(parks ?? [])
   const deferredQuery = useDeferredValue(query)
   const { data: searchResults, isFetching: searchLoading } = useSearch(deferredQuery, parkId)
   const isSearching = query.trim().length >= 2
@@ -87,8 +89,8 @@ export default function Search() {
             onChange={e => setParkId(e.target.value || undefined)}
             className="text-xs px-2 py-1.5 rounded-lg border border-stone-200 bg-white text-stone-700 focus:border-teal-500 focus:outline-none"
           >
-            <option value="">All Parks</option>
-            {parks?.map(p => (
+            <option value="">All Parks{parkOptions.length > 0 ? ` (${parkOptions.length})` : ''}</option>
+            {parkOptions.map(p => (
               <option key={p.id} value={p.id}>{p.name}</option>
             ))}
           </select>

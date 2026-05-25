@@ -9,6 +9,7 @@ import { useTripPlan } from '../hooks/useTripPlan'
 import type { DayTotals } from '../hooks/useTripPlan'
 import { computeScore, computeGrade } from '../lib/grade'
 import { RESORT_CONFIG, getParksForResort } from '../lib/resort-config'
+import { cleanDisplayText } from '../lib/display'
 // Lazy-load PDF export to keep main bundle small (~200KB for jsPDF)
 const lazyExportPdf = () => import('../lib/export-pdf').then(m => m.exportTripPlanPdf)
 import type { MealItem } from '../lib/types'
@@ -483,7 +484,7 @@ function DayCard({ day, dayIndex, dayTotals, carbGoalPerMeal, resortParks, canRe
                     return (
                       <li key={`${item.id}-${itemIndex}`} className="flex items-center gap-2 text-sm">
                         <GradeBadge grade={grade} size="sm" />
-                        <span className="flex-1 truncate text-stone-800">{item.name}</span>
+                        <span className="flex-1 truncate text-stone-800">{cleanDisplayText(item.name) || item.name}</span>
                         <span className="text-xs font-medium text-stone-500">{item.carbs}g</span>
                         <button
                           onClick={() => onRemoveItem(mealIndex, itemIndex)}
