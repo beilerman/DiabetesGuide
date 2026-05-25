@@ -1,0 +1,2348 @@
+{
+  "generatedAt": "2026-05-25T08:36:16.271Z",
+  "summary": {
+    "newItems": 93,
+    "updatedItems": 2910,
+    "flaggedRemovals": 0,
+    "conflicts": 17,
+    "coverageChange": "+93 items"
+  },
+  "newItemsByPark": {
+    "Universal CityWalk": [
+      {
+        "restaurantName": "Cold Stone Creamery",
+        "parkName": "Universal CityWalk",
+        "itemName": "2. CHOOSE MIX-INS",
+        "description": "1st Mix in - FREE\n\nAdditional Mix-ins (adds 5-190 cal. per serving) - $0.99",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Cold Stone Creamery",
+        "parkName": "Universal CityWalk",
+        "itemName": "Create Your Own - cal: 330-2150",
+        "description": "Includes your choice of Ice Cream flavor & 1 Mix-in (330-1390 / 540-2150 cal.)\n\nAdditional Mix-Ins (5-190 cal.) - $0.99",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Crinkle-Cut Fried Pickles",
+        "description": "crinkle-cut dill pickles, ranch dressing, horseradish aioli",
+        "price": 14,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "Universal Epic Universe": [
+      {
+        "restaurantName": "Cafe L'Air de la Sirene",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Crêpe Citronnée aux Chambord",
+        "description": "lemon cream cheese, Chambord sauce and fresh berries wrapped in a delicate crêpe",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Frank &amp; Friends Pretzel",
+        "description": "served with white cheese",
+        "category": "snack",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Monster<span style=\"font-size: 9.16667px;\" xmlns=\"http://www.w3.org/1999/xhtml\">®</span> Energy Drink",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Sweet &amp; Spicy Shrimp",
+        "description": "crispy shrimp, chili sauce, micro cilantro, sesame seeds",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Apple Cider &amp; Sweet Onion Bisque",
+        "description": "poured tableside with caramelized onions, apple cider, blue cheese croutons and chive oil",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Junior Sailor Mac &amp; Cheese",
+        "description": "golden creamy shells, fruit salad, cheese fish cracker",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Stone® Buenaveza Salt &amp; Lime Lager",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Cavicchioli<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 1928",
+        "description": "Prosecco, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Perrier-Jouët<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Grand Brut",
+        "description": "Champagne, France",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Vietti<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Moscato d’Asti",
+        "description": "Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Aviary<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+        "description": "California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Au Bon Climat<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+        "description": "Santa Barbara, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Patz &amp; Hall<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Dutton Ranch Chardonnay",
+        "description": "Russian River Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Yealands Estate<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Sauvignon Blanc",
+        "description": "Marlborough, New Zealand",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Banfi<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> San Angelo Pinot Grigio",
+        "description": "Toscana IGT, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Beni di Batasiolo<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "description": "Gavi DOCG, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Rodney Strong<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Rosé of Pinot Noir",
+        "description": "Sonoma Coast, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Knights Bridge<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Pont de Chevalier\" Chardonnay",
+        "description": "Knights Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Antinori Guado<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> al Tasso Vermentino",
+        "description": "Bolgheri DOC, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Umani Ronchi<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> CaSal di Serra",
+        "description": "Verdicchio dei Castelli di Jesi Classico Superiore, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Pewsey Vale<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Dry Riesling",
+        "description": "Eden Valley, Australia",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Laurenz V.<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Charming\" Grüner Veltliner",
+        "description": "Kamptal, Austria",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Sean Minor<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "description": "Paso Robles, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Beringer<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "description": "Knights Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Kenwood<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Six Ridges\" Pinot Noir",
+        "description": "Russian River Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Etude<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Pinot Noir",
+        "description": "Carneros, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Napa Cellars<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Merlot",
+        "description": "Napa Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Allegrini<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Palazzo della Torre",
+        "description": "Veronese IGT, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Daou<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"The Pessimist\" Red Blend",
+        "description": "Paso Robles, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Inglenook<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "description": "Napa Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Breca<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Old Vines Garnacha",
+        "description": "DO Calatayud, Spain",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Daou<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Reserve Cabernet Sauvignon",
+        "description": "Paso Robles, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Joseph Drouhin<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Chorey-lès-Beaune",
+        "description": "Burgundy, France",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Ruffino<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Modus\"",
+        "description": "Toscana IGT, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Bolla<sup xmlns=\"http://www.w3.org/1999/xhtml\">® </sup>Amarone della Valpolicella",
+        "description": "Classico DOCG, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Isole e Olena<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>Chianti",
+        "description": "Classico, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Santa<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Julia \"El Burro\" Natural Malbec",
+        "description": "Mendoza, Argentina",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Ferreira<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Ruby Port",
+        "description": "Douro, Portugal",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Bud Light<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Modelo Especial<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Crooked Can<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> High Stepper IPA",
+        "description": "a bold, hoppy beer with notes of citrus and pine, balanced by a smooth malt backbone",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Left Hand Brewing Co.<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Milk Stout",
+        "description": "smooth, creamy stout with rich notes of chocolate and coffee, with a touch of sweet cream richness on the finish",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Abita<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Amber Lager",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Strongbow<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Gold Apple Cider",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Crooked Can<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cloud Chaser Hefeweizen",
+        "description": "smooth and hazy wheat beer with mild notes of banana bread and clove. Light malt sweetness and a crisp refreshing finish",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "High Noon<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Wente<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Southern Hills Cabernet Sauvignon",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Rodney Strong<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Red Blend",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Yealands Estate<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Sauvignon Blanc",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Cavicchioli<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 1928 Prosecco",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "A to Z Wineworks<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Riesling",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Rodney Strong<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Rosé of Pinot Noir",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Orange Juice",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Apple Juice",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Mountain Berry Blast",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Fruit Punch",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Monster<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Energy Ultra Violet",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comet Dogs",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Orange Juice",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comet Dogs",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Apple Juice",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comet Dogs",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Mountain Berry Blast",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comet Dogs",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Fruit Punch",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Michelob Ultra<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "High Noon<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Miller Lite<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Modelo Especial<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Spellbound<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Noble Vines<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 446<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Crooked Can<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> High Stepper IPA",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Bud Light<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "New Belgium Brewing<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Fat Tire",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Elysian Brewing Co.<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Space Dust IPA",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Modelo Especial<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Michelob Ultra<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Miller Lite<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "High Noon<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Spellbound<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Noble Vines<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 446<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Cavicchioli<font size=\"1\" xmlns=\"http://www.w3.org/1999/xhtml\"><sup>®</sup> 1928 Prosecco</font>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Hooligan's Grog and Gruel",
+        "parkName": "Universal Epic Universe",
+        "itemName": "PB&amp;J - Pork, Bacon, and Jam",
+        "description": "creamy mac &amp; cheese with bbq harissa pulled pork, peanut bacon jam and parsley served in a crunchy cone",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Hooligan's Grog and Gruel",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Coca-Cola Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Souvenir Cup",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Hooligan's Grog and Gruel",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Extra day of refills for Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cup",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Frosty Moon",
+        "parkName": "Universal Epic Universe",
+        "itemName": "OREO<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Crumble",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "All-Natural Bone-in Chicken Breast",
+        "description": "<div xmlns=\"http://www.w3.org/1999/xhtml\">chicken confit stuffed pasta, baby turnips, fava beans, amazu foam, caramelized onion soubise</div>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Frankenstein Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Sipper",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Coca-Cola Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "description": "Single Serve only",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Icee<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Monster<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Energy Drink",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ]
+  },
+  "needsReview": {
+    "priceConflicts": [],
+    "lowConfidence": [
+      {
+        "restaurantName": "Cold Stone Creamery",
+        "parkName": "Universal CityWalk",
+        "itemName": "2. CHOOSE MIX-INS",
+        "description": "1st Mix in - FREE\n\nAdditional Mix-ins (adds 5-190 cal. per serving) - $0.99",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Cold Stone Creamery",
+        "parkName": "Universal CityWalk",
+        "itemName": "Create Your Own - cal: 330-2150",
+        "description": "Includes your choice of Ice Cream flavor & 1 Mix-in (330-1390 / 540-2150 cal.)\n\nAdditional Mix-Ins (5-190 cal.) - $0.99",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Cafe L'Air de la Sirene",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Crêpe Citronnée aux Chambord",
+        "description": "lemon cream cheese, Chambord sauce and fresh berries wrapped in a delicate crêpe",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Frank &amp; Friends Pretzel",
+        "description": "served with white cheese",
+        "category": "snack",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Monster<span style=\"font-size: 9.16667px;\" xmlns=\"http://www.w3.org/1999/xhtml\">®</span> Energy Drink",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Sweet &amp; Spicy Shrimp",
+        "description": "crispy shrimp, chili sauce, micro cilantro, sesame seeds",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Apple Cider &amp; Sweet Onion Bisque",
+        "description": "poured tableside with caramelized onions, apple cider, blue cheese croutons and chive oil",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Junior Sailor Mac &amp; Cheese",
+        "description": "golden creamy shells, fruit salad, cheese fish cracker",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Stone® Buenaveza Salt &amp; Lime Lager",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Cavicchioli<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 1928",
+        "description": "Prosecco, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Perrier-Jouët<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Grand Brut",
+        "description": "Champagne, France",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Vietti<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Moscato d’Asti",
+        "description": "Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Aviary<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+        "description": "California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Au Bon Climat<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+        "description": "Santa Barbara, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Patz &amp; Hall<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Dutton Ranch Chardonnay",
+        "description": "Russian River Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Yealands Estate<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Sauvignon Blanc",
+        "description": "Marlborough, New Zealand",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Banfi<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> San Angelo Pinot Grigio",
+        "description": "Toscana IGT, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Beni di Batasiolo<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "description": "Gavi DOCG, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Rodney Strong<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Rosé of Pinot Noir",
+        "description": "Sonoma Coast, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Knights Bridge<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Pont de Chevalier\" Chardonnay",
+        "description": "Knights Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Antinori Guado<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> al Tasso Vermentino",
+        "description": "Bolgheri DOC, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Umani Ronchi<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> CaSal di Serra",
+        "description": "Verdicchio dei Castelli di Jesi Classico Superiore, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Pewsey Vale<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Dry Riesling",
+        "description": "Eden Valley, Australia",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Laurenz V.<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Charming\" Grüner Veltliner",
+        "description": "Kamptal, Austria",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Sean Minor<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "description": "Paso Robles, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Beringer<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "description": "Knights Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Kenwood<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Six Ridges\" Pinot Noir",
+        "description": "Russian River Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Etude<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Pinot Noir",
+        "description": "Carneros, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Napa Cellars<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Merlot",
+        "description": "Napa Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Allegrini<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Palazzo della Torre",
+        "description": "Veronese IGT, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Daou<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"The Pessimist\" Red Blend",
+        "description": "Paso Robles, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Inglenook<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "description": "Napa Valley, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Breca<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Old Vines Garnacha",
+        "description": "DO Calatayud, Spain",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Daou<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Reserve Cabernet Sauvignon",
+        "description": "Paso Robles, California",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Joseph Drouhin<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>, Chorey-lès-Beaune",
+        "description": "Burgundy, France",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Ruffino<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Modus\"",
+        "description": "Toscana IGT, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Bolla<sup xmlns=\"http://www.w3.org/1999/xhtml\">® </sup>Amarone della Valpolicella",
+        "description": "Classico DOCG, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Isole e Olena<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>Chianti",
+        "description": "Classico, Italy",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Santa<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Julia \"El Burro\" Natural Malbec",
+        "description": "Mendoza, Argentina",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Ferreira<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Ruby Port",
+        "description": "Douro, Portugal",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Bud Light<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Modelo Especial<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Crooked Can<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> High Stepper IPA",
+        "description": "a bold, hoppy beer with notes of citrus and pine, balanced by a smooth malt backbone",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Left Hand Brewing Co.<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Milk Stout",
+        "description": "smooth, creamy stout with rich notes of chocolate and coffee, with a touch of sweet cream richness on the finish",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Abita<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Amber Lager",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Strongbow<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Gold Apple Cider",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Crooked Can<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cloud Chaser Hefeweizen",
+        "description": "smooth and hazy wheat beer with mild notes of banana bread and clove. Light malt sweetness and a crisp refreshing finish",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "High Noon<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Wente<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Southern Hills Cabernet Sauvignon",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Rodney Strong<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Red Blend",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Yealands Estate<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Sauvignon Blanc",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Cavicchioli<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 1928 Prosecco",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "A to Z Wineworks<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Riesling",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Plastered Owl",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Rodney Strong<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Rosé of Pinot Noir",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Orange Juice",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Apple Juice",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Mountain Berry Blast",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Fruit Punch",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Star Sui Bao",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Monster<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Energy Ultra Violet",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comet Dogs",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Orange Juice",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comet Dogs",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Minute Maid<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Apple Juice",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comet Dogs",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Mountain Berry Blast",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comet Dogs",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Fruit Punch",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Michelob Ultra<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "High Noon<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Miller Lite<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Modelo Especial<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Spellbound<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Noble Vines<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 446<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Crooked Can<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> High Stepper IPA",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Bud Light<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "New Belgium Brewing<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Fat Tire",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Elysian Brewing Co.<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Space Dust IPA",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Modelo Especial<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Michelob Ultra<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Miller Lite<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "High Noon<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Spellbound<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Noble Vines<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 446<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Zenith",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Cavicchioli<font size=\"1\" xmlns=\"http://www.w3.org/1999/xhtml\"><sup>®</sup> 1928 Prosecco</font>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Hooligan's Grog and Gruel",
+        "parkName": "Universal Epic Universe",
+        "itemName": "PB&amp;J - Pork, Bacon, and Jam",
+        "description": "creamy mac &amp; cheese with bbq harissa pulled pork, peanut bacon jam and parsley served in a crunchy cone",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Hooligan's Grog and Gruel",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Coca-Cola Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Souvenir Cup",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Hooligan's Grog and Gruel",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Extra day of refills for Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cup",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Frosty Moon",
+        "parkName": "Universal Epic Universe",
+        "itemName": "OREO<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Crumble",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "Crinkle-Cut Fried Pickles",
+        "description": "crinkle-cut dill pickles, ranch dressing, horseradish aioli",
+        "price": 14,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Atlantic",
+        "parkName": "Universal Epic Universe",
+        "itemName": "All-Natural Bone-in Chicken Breast",
+        "description": "<div xmlns=\"http://www.w3.org/1999/xhtml\">chicken confit stuffed pasta, baby turnips, fava beans, amazu foam, caramelized onion soubise</div>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Frankenstein Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Sipper",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Coca-Cola Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "description": "Single Serve only",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Icee<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "De Lacey's",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Monster<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Energy Drink",
+        "category": "beverage",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "potentiallyDiscontinued": []
+  },
+  "approveAllUrl": "npx tsx scripts/approve.ts --all",
+  "reviewUrl": "npx tsx scripts/approve.ts --interactive"
+}
