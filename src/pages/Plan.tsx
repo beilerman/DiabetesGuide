@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { useMenuItems, useParks } from '../lib/queries'
+import { useFavoriteMenuItems, useParks } from '../lib/queries'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { GradeBadge } from '../components/menu/GradeBadge'
 import { useMealCart } from '../hooks/useMealCart'
@@ -9,6 +9,7 @@ import { useTripPlan } from '../hooks/useTripPlan'
 import type { DayTotals } from '../hooks/useTripPlan'
 import { computeScore, computeGrade } from '../lib/grade'
 import { RESORT_CONFIG, getParksForResort } from '../lib/resort-config'
+import { cleanDisplayText } from '../lib/display'
 // Lazy-load PDF export to keep main bundle small (~200KB for jsPDF)
 const lazyExportPdf = () => import('../lib/export-pdf').then(m => m.exportTripPlanPdf)
 import type { MealItem } from '../lib/types'
@@ -52,17 +53,18 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
 // ─── Favorites Tab ───────────────────────────────────────────────────────────
 
 function FavoritesTab() {
-  const { data: items, isLoading } = useMenuItems()
   const { addItem } = useMealCart()
   const { favorites, isFavorite, toggle } = useFavorites()
   const { addToCompare } = useCompare()
   const { hasPlan, plan, addItemToSlot } = useTripPlan()
   const [sort, setSort] = useState<SortOption>('recent')
   const [addToDayModal, setAddToDayModal] = useState(false)
+  const favoriteIds = useMemo(() => [...favorites].sort(), [favorites])
+  const { data: items, isLoading } = useFavoriteMenuItems(favoriteIds)
 
   const favoriteItems = useMemo(() => {
     if (!items) return []
-    let filtered = items.filter(item => favorites.has(item.id))
+    let filtered = items
 
     switch (sort) {
       case 'grade':
@@ -84,7 +86,7 @@ function FavoritesTab() {
     }
 
     return filtered
-  }, [items, favorites, sort])
+  }, [items, sort])
 
   const handleAddAllToDay = (dayIndex: number) => {
     if (!plan) return
@@ -173,10 +175,13 @@ function FavoritesTab() {
 
       {/* Add all to day modal */}
       {addToDayModal && plan && (
-        <div
-          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center"
-          onClick={e => { if (e.target === e.currentTarget) setAddToDayModal(false) }}
-        >
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setAddToDayModal(false)}
+            aria-label="Close add favorites dialog"
+          />
           <div className="bg-white rounded-2xl p-6 mx-4 max-w-sm w-full shadow-2xl">
             <h3 className="font-bold text-lg mb-4">Add favorites to which day?</h3>
             <div className="space-y-2">
@@ -259,8 +264,9 @@ function TripPlanTab() {
 
       {/* Carb goal setting */}
       <div className="flex items-center gap-3 text-sm">
-        <label className="text-stone-600">Carb goal per meal:</label>
+        <label className="text-stone-600" htmlFor="trip-carb-goal">Carb goal per meal:</label>
         <input
+          id="trip-carb-goal"
           type="number"
           value={plan.carbGoalPerMeal}
           onChange={e => updateCarbGoal(Number(e.target.value) || 60)}
@@ -323,8 +329,9 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
 
       <div className="rounded-xl bg-white border border-stone-200 p-5 shadow-sm space-y-4">
         <div>
-          <label className="block text-sm font-medium text-stone-700 mb-1">Resort</label>
+          <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-resort">Resort</label>
           <select
+            id="trip-resort"
             value={resortId}
             onChange={e => setResortId(e.target.value)}
             className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
@@ -337,8 +344,9 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
 
         <div className="grid grid-cols-3 gap-3">
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1">Days</label>
+            <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-days">Days</label>
             <input
+              id="trip-days"
               type="number"
               value={numDays}
               onChange={e => setNumDays(Math.max(1, Math.min(14, Number(e.target.value))))}
@@ -348,8 +356,9 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1">Meals/Day</label>
+            <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-meals-per-day">Meals/Day</label>
             <input
+              id="trip-meals-per-day"
               type="number"
               value={mealsPerDay}
               onChange={e => setMealsPerDay(Math.max(1, Math.min(6, Number(e.target.value))))}
@@ -359,9 +368,10 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1">Carb Goal</label>
+            <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-setup-carb-goal">Carb Goal</label>
             <div className="flex items-center gap-1">
               <input
+                id="trip-setup-carb-goal"
                 type="number"
                 value={carbGoal}
                 onChange={e => setCarbGoal(Math.max(0, Number(e.target.value)))}
@@ -474,7 +484,7 @@ function DayCard({ day, dayIndex, dayTotals, carbGoalPerMeal, resortParks, canRe
                     return (
                       <li key={`${item.id}-${itemIndex}`} className="flex items-center gap-2 text-sm">
                         <GradeBadge grade={grade} size="sm" />
-                        <span className="flex-1 truncate text-stone-800">{item.name}</span>
+                        <span className="flex-1 truncate text-stone-800">{cleanDisplayText(item.name) || item.name}</span>
                         <span className="text-xs font-medium text-stone-500">{item.carbs}g</span>
                         <button
                           onClick={() => onRemoveItem(mealIndex, itemIndex)}

@@ -10,6 +10,8 @@ import {
   readItemsByPark,
   setLastSync,
 } from './offline-db'
+import { dedupeMenuItems } from './menu-item-dedupe'
+import { getMenuItemDisplayName, isLikelyMenuSectionHeader } from './display'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
 
 const MENU_ITEMS_SELECT = `
@@ -18,6 +20,7 @@ const MENU_ITEMS_SELECT = `
   allergens (*),
   restaurant:restaurants (*, park:parks (*))
 `
+const DEFAULT_ALL_PARK_MENU_LIMIT = 3000
 
 type MenuItemsBatchFetcher = (args: {
   from: number
@@ -27,6 +30,7 @@ type MenuItemsBatchFetcher = (args: {
 
 export interface FetchMenuItemsOptions {
   limit?: number
+  dedupe?: boolean
   fetchPage?: MenuItemsBatchFetcher
 }
 
@@ -141,6 +145,8 @@ export async function fetchMenuItemsOffline(
   try {
     let items: MenuItemWithNutrition[]
     const { limit, fetchPage } = options ?? {}
+    const maxItems = limit ?? (parkId ? undefined : DEFAULT_ALL_PARK_MENU_LIMIT)
+    const shouldDedupe = options?.dedupe !== false
     if (parkId) {
       const { data: restaurants, error: restErr } = await supabase
         .from('restaurants')
@@ -149,47 +155,108 @@ export async function fetchMenuItemsOffline(
       if (restErr) throw restErr
       const restaurantIds = (restaurants || []).map(r => r.id)
       if (restaurantIds.length === 0) return []
-      items = await fetchAllMenuItemsOnline(restaurantIds, limit, fetchPage)
+      items = await fetchAllMenuItemsOnline(restaurantIds, maxItems, fetchPage)
     } else {
-      items = await fetchAllMenuItemsOnline(undefined, limit, fetchPage)
+      items = await fetchAllMenuItemsOnline(undefined, maxItems, fetchPage)
     }
     // Cache in background
     writeAllItems(items).catch(() => {})
     setLastSync(new Date().toISOString()).catch(() => {})
-    return items
+    const displayable = items.filter(item => !isLikelyMenuSectionHeader(item.name))
+    return shouldDedupe ? dedupeMenuItems(displayable) : displayable
   } catch {
+    const shouldDedupe = options?.dedupe !== false
     if (parkId) {
       const cached = await readItemsByPark(parkId)
-      if (cached.length > 0) return cached
+      if (cached.length > 0) {
+        const displayable = cached.filter(item => !isLikelyMenuSectionHeader(item.name))
+        return shouldDedupe ? dedupeMenuItems(displayable) : displayable
+      }
     } else {
       const cached = await readAllItems()
-      if (cached.length > 0) return cached
+      if (cached.length > 0) {
+        const displayable = cached.filter(item => !isLikelyMenuSectionHeader(item.name))
+        return shouldDedupe ? dedupeMenuItems(displayable) : displayable
+      }
     }
     throw new Error('No network and no cached menu data')
   }
 }
 
-/** Search with offline fallback */
-export async function searchMenuItemsOffline(searchQuery: string): Promise<MenuItemWithNutrition[]> {
+/** Fetch a targeted set of menu items with offline fallback */
+export async function fetchMenuItemsByIdsOffline(ids: string[]): Promise<MenuItemWithNutrition[]> {
+  const uniqueIds = [...new Set(ids)].filter(Boolean)
+  if (uniqueIds.length === 0) return []
+
   try {
-    const escaped = escapeSearch(searchQuery.trim())
     const { data, error } = await supabase
       .from('menu_items')
       .select(MENU_ITEMS_SELECT)
-      .or(`name.ilike.%${escaped}%,description.ilike.%${escaped}%`)
+      .in('id', uniqueIds)
       .order('name')
-      .limit(50)
     if (error) throw error
-    return data as MenuItemWithNutrition[]
+    const items = (data ?? []) as MenuItemWithNutrition[]
+    writeAllItems(items).catch(() => {})
+    return items
+  } catch {
+    const cached = await readAllItems()
+    const wanted = new Set(uniqueIds)
+    return cached.filter(item => wanted.has(item.id))
+  }
+}
+
+function itemBelongsToPark(item: MenuItemWithNutrition, parkId: string | undefined): boolean {
+  if (!parkId) return true
+  return item.restaurant?.park?.id === parkId || item.restaurant?.park_id === parkId
+}
+
+/** Search with offline fallback */
+export async function searchMenuItemsOffline(
+  searchQuery: string,
+  parkId?: string,
+): Promise<MenuItemWithNutrition[]> {
+  try {
+    const escaped = escapeSearch(searchQuery.trim())
+    let restaurantIds: string[] | undefined
+    if (parkId) {
+      const { data: restaurants, error: restErr } = await supabase
+        .from('restaurants')
+        .select('id')
+        .eq('park_id', parkId)
+      if (restErr) throw restErr
+      restaurantIds = (restaurants || []).map(r => r.id)
+      if (restaurantIds.length === 0) return []
+    }
+
+    let query = supabase
+      .from('menu_items')
+      .select(MENU_ITEMS_SELECT)
+      .or(`name.ilike.%${escaped}%,description.ilike.%${escaped}%`)
+
+    if (restaurantIds) {
+      query = query.in('restaurant_id', restaurantIds)
+    }
+
+    const { data, error } = await query
+      .order('name')
+      .limit(150)
+    if (error) throw error
+    return dedupeMenuItems(
+      (data as MenuItemWithNutrition[]).filter(item => !isLikelyMenuSectionHeader(item.name)),
+    ).slice(0, 50)
   } catch {
     // Offline search: filter cached items by name/description
     const allCached = await readAllItems()
-    const lower = searchQuery.toLowerCase()
-    return allCached
+    const lower = searchQuery.trim().toLowerCase()
+    if (!lower) return []
+    const matches = allCached
       .filter(item =>
-        item.name.toLowerCase().includes(lower) ||
-        (item.description && item.description.toLowerCase().includes(lower))
+        itemBelongsToPark(item, parkId) &&
+        !isLikelyMenuSectionHeader(item.name) &&
+        (getMenuItemDisplayName(item).toLowerCase().includes(lower) ||
+        (item.description && item.description.toLowerCase().includes(lower)))
       )
+    return dedupeMenuItems(matches)
       .slice(0, 50)
   }
 }

@@ -8,6 +8,7 @@ import Home from './pages/Home'
 const ParkDetail = lazy(() => import('./pages/ParkDetail'))
 const Search = lazy(() => import('./pages/Search'))
 const Browse = lazy(() => import('./pages/Browse'))
+const MenuItemDetail = lazy(() => import('./pages/MenuItemDetail'))
 const Meal = lazy(() => import('./pages/Meal'))
 const Plan = lazy(() => import('./pages/Plan'))
 const Favorites = lazy(() => import('./pages/Favorites'))
@@ -17,6 +18,7 @@ const InsulinHelper = lazy(() => import('./pages/InsulinHelper'))
 const PackingList = lazy(() => import('./pages/PackingList'))
 const DiabetesGuide = lazy(() => import('./pages/DiabetesGuide'))
 const ParkAdvice = lazy(() => import('./pages/ParkAdvice'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 // Legacy pages
 const ResortDetail = lazy(() => import('./pages/ResortDetail'))
@@ -42,12 +44,15 @@ export default function App() {
           <Route path="/meal" element={<Meal />} />
           <Route path="/plan" element={<Plan />} />
           <Route path="/browse" element={<Browse />} />
+          <Route path="/item/:itemId" element={<MenuItemDetail />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/more" element={<MoreMenu />} />
+          <Route path="/more/settings" element={<Navigate to="/settings" replace />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/insulin" element={<InsulinHelper />} />
           <Route path="/packing" element={<PackingList />} />
           <Route path="/guide" element={<DiabetesGuide />} />
+          <Route path="/tips" element={<Navigate to="/advice" replace />} />
           <Route path="/advice" element={<ParkAdvice />} />
 
           {/* Legacy resort routes */}
@@ -55,7 +60,7 @@ export default function App() {
           <Route path="/resort/:resortId/:categoryId" element={<VenueList />} />
           <Route path="/resort/:resortId/:categoryId/:parkId" element={<VenueMenu />} />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>

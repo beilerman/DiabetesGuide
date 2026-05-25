@@ -1,20 +1,21 @@
 import { useMemo } from 'react'
-import { useMenuItems } from '../lib/queries'
+import { useFavoriteMenuItems } from '../lib/queries'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
 
 export default function Favorites() {
-  const { data: items, isLoading } = useMenuItems()
   const { addItem } = useMealCart()
   const { favorites, isFavorite, toggle } = useFavorites()
   const { addToCompare } = useCompare()
+  const favoriteIds = useMemo(() => [...favorites].sort(), [favorites])
+  const { data: items, isLoading } = useFavoriteMenuItems(favoriteIds)
 
   const favoriteItems = useMemo(() => {
     if (!items) return []
-    return items.filter(item => favorites.has(item.id))
-  }, [items, favorites])
+    return items
+  }, [items])
 
   return (
     <div className="space-y-6">

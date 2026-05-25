@@ -12,11 +12,19 @@ export function Layout() {
   const { totalItemCount } = useMealCart()
   const { compareCount } = useCompare()
   const [showCompareModal, setShowCompareModal] = useState(false)
+  const showCompareTray = location.pathname.startsWith('/browse') || location.pathname.startsWith('/item/')
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/' || location.pathname.startsWith('/park/') || location.pathname.startsWith('/resort')
     return location.pathname.startsWith(path)
   }
+
+  const navItemClass = (active: boolean) =>
+    `flex flex-col items-center justify-center gap-1 border-t-2 ${
+      active
+        ? 'border-teal-600 text-teal-700 font-semibold'
+        : 'border-transparent text-stone-500 font-medium'
+    }`
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -28,11 +36,22 @@ export function Layout() {
       </a>
       <Header />
       <OfflineBanner />
-      <main id="main-content" className={`mx-auto max-w-7xl px-4 py-6 md:pb-6 ${compareCount > 0 ? 'pb-36' : 'pb-24'}`}>
+      <main id="main-content" className={`mx-auto max-w-7xl px-4 py-6 md:pb-6 ${showCompareTray && compareCount > 0 ? 'pb-36' : 'pb-24'}`}>
         <Outlet />
       </main>
 
-      <ComparisonTray onOpenModal={() => setShowCompareModal(true)} />
+      <footer className="mx-auto max-w-7xl px-4 pb-28 pt-6 text-xs text-stone-500 md:pb-8">
+        <div className="border-t border-stone-200 pt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p>DiabetesGuide v1.0 - educational nutrition planning for theme park visits.</p>
+          <p>
+            <Link to="/guide" className="font-medium text-stone-700 hover:text-teal-700">About</Link>
+            <span className="mx-2">|</span>
+            <a href="mailto:contact@diabetesguide.app" className="font-medium text-stone-700 hover:text-teal-700">Contact</a>
+          </p>
+        </div>
+      </footer>
+
+      {showCompareTray && <ComparisonTray onOpenModal={() => setShowCompareModal(true)} />}
       {showCompareModal && <ComparisonModal onClose={() => setShowCompareModal(false)} />}
 
       {/* Bottom navigation for mobile */}
@@ -42,7 +61,7 @@ export function Layout() {
           <Link
             to="/"
             aria-current={isActive('/') ? 'page' : undefined}
-            className={`flex flex-col items-center justify-center gap-1 ${isActive('/') ? 'text-teal-600' : 'text-stone-500'}`}
+            className={navItemClass(isActive('/'))}
           >
             <svg className="w-6 h-6" aria-hidden="true" fill={isActive('/') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" strokeLinecap="round" strokeLinejoin="round"/>
@@ -54,7 +73,7 @@ export function Layout() {
           <Link
             to="/search"
             aria-current={isActive('/search') || isActive('/browse') ? 'page' : undefined}
-            className={`flex flex-col items-center justify-center gap-1 ${isActive('/search') || isActive('/browse') ? 'text-teal-600' : 'text-stone-500'}`}
+            className={navItemClass(isActive('/search') || isActive('/browse'))}
           >
             <svg className="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round"/>
@@ -66,7 +85,7 @@ export function Layout() {
           <Link
             to="/meal"
             aria-current={isActive('/meal') || isActive('/insulin') ? 'page' : undefined}
-            className={`flex flex-col items-center justify-center gap-1 relative ${isActive('/meal') || isActive('/insulin') ? 'text-teal-600' : 'text-stone-500'}`}
+            className={`${navItemClass(isActive('/meal') || isActive('/insulin'))} relative`}
           >
             <div className="relative">
               <svg className="w-6 h-6" aria-hidden="true" fill={isActive('/meal') || isActive('/insulin') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -86,7 +105,7 @@ export function Layout() {
           <Link
             to="/plan"
             aria-current={isActive('/favorites') || isActive('/plan') ? 'page' : undefined}
-            className={`flex flex-col items-center justify-center gap-1 ${isActive('/favorites') || isActive('/plan') ? 'text-teal-600' : 'text-stone-500'}`}
+            className={navItemClass(isActive('/favorites') || isActive('/plan'))}
           >
             <svg
               className="w-6 h-6"
@@ -105,7 +124,7 @@ export function Layout() {
           <Link
             to="/more"
             aria-current={isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') ? 'page' : undefined}
-            className={`flex flex-col items-center justify-center gap-1 ${isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') ? 'text-teal-600' : 'text-stone-500'}`}
+            className={navItemClass(isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings'))}
           >
             <svg className="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="12" cy="6" r="2"/>

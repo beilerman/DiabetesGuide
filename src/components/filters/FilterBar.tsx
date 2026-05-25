@@ -73,7 +73,7 @@ export function FilterBar({ filters, onChange }: Props) {
   ]
 
   return (
-    <div className="sticky top-0 z-40 bg-stone-50/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
+    <div className="bg-stone-50/95 border-b border-stone-200 shadow-sm">
       <div className="p-4 space-y-3">
         {/* Search input */}
         <div className="relative">

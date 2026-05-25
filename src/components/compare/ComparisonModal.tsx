@@ -4,6 +4,7 @@ import type { CompareItem } from '../../hooks/useCompare'
 import { GradeBadge } from '../menu/GradeBadge'
 import { computeScore, computeGrade, GRADE_CONFIG } from '../../lib/grade'
 import { useMealCart } from '../../hooks/useMealCart'
+import { cleanDisplayText } from '../../lib/display'
 
 interface Props {
   onClose: () => void
@@ -98,9 +99,10 @@ export function ComparisonModal({ onClose }: Props) {
   const colWidth = `${Math.floor(100 / compareItems.length)}%`
 
   const handleAddToMeal = (item: CompareItem) => {
+    const displayName = cleanDisplayText(item.name) || item.name
     addItem({
       id: item.id,
-      name: item.name,
+      name: displayName,
       carbs: item.carbs,
       calories: item.calories,
       fat: item.fat,
@@ -177,7 +179,7 @@ export function ComparisonModal({ onClose }: Props) {
               <div className="flex justify-center mb-2">
                 <GradeBadge grade={grades[i].grade} size="lg" />
               </div>
-              <p className="text-sm font-semibold text-stone-900 truncate">{item.name}</p>
+              <p className="text-sm font-semibold text-stone-900 truncate">{cleanDisplayText(item.name) || item.name}</p>
               <p className="text-xs text-stone-400 truncate">{item.restaurant}</p>
               {grades[i].grade && (
                 <p className="text-[10px] font-medium mt-1" style={{ color: GRADE_CONFIG[grades[i].grade!].bg }}>
@@ -203,7 +205,7 @@ export function ComparisonModal({ onClose }: Props) {
               onClick={() => handleAddToMeal(item)}
               className="flex-1 py-2 rounded-xl bg-teal-600 text-white text-sm font-semibold hover:bg-teal-700 transition-colors"
             >
-              Add {item.name.length > 15 ? item.name.slice(0, 15) + '...' : item.name}
+              Add {(cleanDisplayText(item.name) || item.name).length > 15 ? (cleanDisplayText(item.name) || item.name).slice(0, 15) + '...' : (cleanDisplayText(item.name) || item.name)}
             </button>
           ))}
         </div>

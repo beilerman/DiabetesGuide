@@ -69,6 +69,8 @@ export interface MenuItemWithNutrition extends MenuItem {
   nutritional_data: NutritionalData[]
   allergens: Allergen[]
   restaurant?: Restaurant & { park?: Park }
+  availability_count?: number
+  availability_restaurants?: string[]
 }
 
 export interface MealItem {

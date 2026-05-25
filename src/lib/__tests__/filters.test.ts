@@ -83,6 +83,20 @@ describe('applyFilters — allergen-free filter', () => {
   })
 })
 
+describe('applyFilters — search', () => {
+  it('trims surrounding whitespace from search terms', () => {
+    const items = [
+      makeItem({ id: 'match', name: 'Turkey Leg' }),
+      makeItem({ id: 'miss', name: 'Fruit Cup' }),
+    ]
+    const filters: Filters = { ...DEFAULT_FILTERS, search: '  turkey  ' }
+
+    const result = applyFilters(items, filters)
+
+    expect(result.map(i => i.id)).toEqual(['match'])
+  })
+})
+
 describe('applyFilters — alcohol-free toggle', () => {
   it('hides items with alcohol when hideAlcohol is true', () => {
     const items = [

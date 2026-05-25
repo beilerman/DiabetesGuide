@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useParks, useMenuItems, useRestaurants } from '../lib/queries'
 import { MenuItemCard } from '../components/menu/MenuItemCard'
@@ -8,6 +8,12 @@ import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
 import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
+import {
+  DEFAULT_VISIBLE_ITEMS,
+  getNextVisibleCount,
+  getVisibleItems,
+  hasMoreVisibleItems,
+} from '../lib/visible-items'
 import { findResortForPark } from '../lib/resort-config'
 import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
 import type { Filters, MenuItemWithNutrition } from '../lib/types'
@@ -37,18 +43,33 @@ export default function ParkDetail() {
   const { addToCompare } = useCompare()
   const [filters, setFilters] = useState<Filters>({ ...DEFAULT_FILTERS })
   const [viewMode, setViewMode] = useState<'all' | 'byLand'>('all')
+  const visibleResetKey = useMemo(
+    () => JSON.stringify({ filters, parkId: parkId ?? null, viewMode }),
+    [filters, parkId, viewMode],
+  )
+  const [visibleState, setVisibleState] = useState(() => ({
+    count: DEFAULT_VISIBLE_ITEMS,
+    key: visibleResetKey,
+  }))
 
   const park = parks?.find(p => p.id === parkId)
   const resort = park ? findResortForPark(park) : undefined
   const theme = resort ? getThemeForResort(resort.id) : DEFAULT_THEME
 
+  const visibleCount = visibleState.key === visibleResetKey ? visibleState.count : DEFAULT_VISIBLE_ITEMS
   const filtered = useMemo(() => applyFilters(items ?? [], filters), [items, filters])
+  const visibleItems = useMemo(() => getVisibleItems(filtered, visibleCount), [filtered, visibleCount])
+  const canLoadMore = hasMoreVisibleItems(filtered.length, visibleCount)
+  const showMoreItems = () => setVisibleState({
+    count: getNextVisibleCount(visibleCount, filtered.length),
+    key: visibleResetKey,
+  })
 
   // Group items by land
   const landGroups = useMemo(() => {
-    if (!restaurants || !filtered.length) return new Map<string, MenuItemWithNutrition[]>()
+    if (!restaurants || !visibleItems.length) return new Map<string, MenuItemWithNutrition[]>()
     const groups = new Map<string, MenuItemWithNutrition[]>()
-    for (const item of filtered) {
+    for (const item of visibleItems) {
       const rest = restaurants.find(r => r.id === item.restaurant_id)
       const land = rest?.land || 'Other Areas'
       const list = groups.get(land) || []
@@ -56,7 +77,7 @@ export default function ParkDetail() {
       groups.set(land, list)
     }
     return groups
-  }, [filtered, restaurants])
+  }, [visibleItems, restaurants])
 
   if (!park && !isLoading) {
     return (
@@ -111,8 +132,9 @@ export default function ParkDetail() {
         <div className="text-sm text-stone-600" aria-live="polite">
           {!isLoading && (
             <>
-              Showing <span className="font-semibold text-stone-900">{filtered.length}</span>
-              {hasActiveFilters(filters) && <> of {items?.length ?? 0}</>} items
+              Showing <span className="font-semibold text-stone-900">{visibleItems.length}</span>
+              {filtered.length !== visibleItems.length && <> of <span className="font-semibold text-stone-900">{filtered.length}</span></>}
+              {hasActiveFilters(filters) && <> matched from {items?.length ?? 0}</>} items
             </>
           )}
         </div>
@@ -139,55 +161,75 @@ export default function ParkDetail() {
             {[...Array(6)].map((_, i) => <SkeletonCard key={i} />)}
           </div>
         ) : viewMode === 'byLand' ? (
-          <div className="space-y-6">
-            {[...landGroups.entries()].map(([land, landItems]) => (
-              <div key={land}>
-                <h3 className="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2">
-                  <span
-                    className="w-1 h-5 rounded-full"
-                    style={{ backgroundColor: theme.primary }}
-                  />
-                  {land}
-                  <span className="text-sm font-normal text-stone-500">({landItems.length})</span>
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {landItems.map(item => (
-                    <MenuItemCard
-                      key={item.id}
-                      item={item}
-                      onAddToMeal={addItem}
-                      isFavorite={isFavorite(item.id)}
-                      onToggleFavorite={toggle}
-                      onCompare={addToCompare}
-                      themeColor={theme.primary}
+          <>
+            <div className="space-y-6">
+              {[...landGroups.entries()].map(([land, landItems]) => (
+                <div key={land}>
+                  <h3 className="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2">
+                    <span
+                      className="w-1 h-5 rounded-full"
+                      style={{ backgroundColor: theme.primary }}
                     />
-                  ))}
+                    {land}
+                    <span className="text-sm font-normal text-stone-500">({landItems.length})</span>
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {landItems.map(item => (
+                      <MenuItemCard
+                        key={item.id}
+                        item={item}
+                        onAddToMeal={addItem}
+                        isFavorite={isFavorite(item.id)}
+                        onToggleFavorite={toggle}
+                        onCompare={addToCompare}
+                        themeColor={theme.primary}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+            {canLoadMore && <LoadMoreButton onClick={showMoreItems} />}
+          </>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filtered.map(item => (
-              <MenuItemCard
-                key={item.id}
-                item={item}
-                onAddToMeal={addItem}
-                isFavorite={isFavorite(item.id)}
-                onToggleFavorite={toggle}
-                themeColor={theme.primary}
-              />
-            ))}
-            {filtered.length === 0 && (
-              <div className="col-span-full text-center py-16">
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {visibleItems.map(item => (
+                <MenuItemCard
+                  key={item.id}
+                  item={item}
+                  onAddToMeal={addItem}
+                  isFavorite={isFavorite(item.id)}
+                  onToggleFavorite={toggle}
+                  onCompare={addToCompare}
+                  themeColor={theme.primary}
+                />
+              ))}
+              {filtered.length === 0 && (
+                <div className="col-span-full text-center py-16">
                 <div className="text-5xl mb-4">🍽️</div>
-                <h3 className="text-lg font-semibold text-stone-800">No items match your filters</h3>
-                <p className="text-stone-600 text-sm mt-1">Try adjusting your filters</p>
-              </div>
-            )}
-          </div>
+                  <h3 className="text-lg font-semibold text-stone-800">No items match your filters</h3>
+                  <p className="text-stone-600 text-sm mt-1">Try adjusting your filters</p>
+                </div>
+              )}
+            </div>
+            {canLoadMore && <LoadMoreButton onClick={showMoreItems} />}
+          </>
         )}
       </div>
+    </div>
+  )
+}
+
+function LoadMoreButton({ onClick }: { onClick: () => void }) {
+  return (
+    <div className="py-6 flex justify-center">
+      <button
+        onClick={onClick}
+        className="px-5 py-2.5 rounded-xl bg-white border border-stone-300 text-sm font-semibold text-stone-700 hover:bg-stone-50 hover:border-teal-300 transition-colors"
+      >
+        Load more items
+      </button>
     </div>
   )
 }

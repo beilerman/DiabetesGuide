@@ -4,6 +4,7 @@ import {
   fetchParksOffline,
   fetchRestaurantsOffline,
   fetchMenuItemsOffline,
+  fetchMenuItemsByIdsOffline,
   searchMenuItemsOffline,
   fetchAllRestaurantsOffline,
 } from './offline-queries'
@@ -28,22 +29,48 @@ export function useRestaurants(parkId: string | undefined) {
   })
 }
 
-export function useMenuItems(parkId?: string) {
+interface UseMenuItemsOptions {
+  dedupe?: boolean
+}
+
+export function useMenuItems(parkId?: string, options?: UseMenuItemsOptions) {
+  const dedupe = options?.dedupe !== false
   return useQuery({
-    queryKey: ['menuItems', parkId],
-    queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsOffline(parkId),
+    queryKey: ['menuItems', parkId, dedupe],
+    queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsOffline(parkId, { dedupe }),
     enabled: true,
   })
 }
 
-export function useSearch(searchQuery: string) {
+export function useFavoriteMenuItems(ids: string[]) {
   return useQuery({
-    queryKey: ['search', searchQuery],
-    queryFn: (): Promise<MenuItemWithNutrition[]> => {
-      if (!searchQuery.trim()) return Promise.resolve([])
-      return searchMenuItemsOffline(searchQuery)
+    queryKey: ['favoriteMenuItems', ids],
+    queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsByIdsOffline(ids),
+    enabled: ids.length > 0,
+  })
+}
+
+export function useMenuItem(id: string | undefined) {
+  return useQuery({
+    queryKey: ['menuItem', id],
+    queryFn: async (): Promise<MenuItemWithNutrition | null> => {
+      if (!id) return null
+      const [item] = await fetchMenuItemsByIdsOffline([id])
+      return item ?? null
     },
-    enabled: searchQuery.trim().length > 1,
+    enabled: !!id,
+  })
+}
+
+export function useSearch(searchQuery: string, parkId?: string) {
+  const trimmed = searchQuery.trim()
+  return useQuery({
+    queryKey: ['search', trimmed, parkId ?? null],
+    queryFn: (): Promise<MenuItemWithNutrition[]> => {
+      if (!trimmed) return Promise.resolve([])
+      return searchMenuItemsOffline(trimmed, parkId)
+    },
+    enabled: trimmed.length > 1,
   })
 }
 
