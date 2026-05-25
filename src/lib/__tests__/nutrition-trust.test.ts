@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildNutritionReportMailto, getNutritionTrust } from '../nutrition-trust'
+import { buildNutritionReportMailto, getNutritionQualityWarnings, getNutritionTrust } from '../nutrition-trust'
 import type { MenuItemWithNutrition, NutritionalData } from '../types'
 
 function nutrition(overrides: Partial<NutritionalData>): NutritionalData {
@@ -58,6 +58,33 @@ describe('getNutritionTrust', () => {
       label: 'Nutrition unavailable',
       caution: 'This item should not be treated as zero-carb or zero-calorie.',
     })
+  })
+
+  it('keeps visible warnings for unusually high values', () => {
+    expect(getNutritionTrust(nutrition({ source: 'crowdsourced', confidence_score: 30, calories: 1100, protein: 140 })).qualityWarnings)
+      .toEqual(expect.arrayContaining(['Protein looks unusually high for a single menu item.']))
+  })
+})
+
+describe('getNutritionQualityWarnings', () => {
+  it('flags low-confidence zero-carb estimates with substantial calories', () => {
+    expect(getNutritionQualityWarnings(nutrition({
+      source: 'crowdsourced',
+      confidence_score: 30,
+      calories: 700,
+      carbs: 0,
+      fat: 45,
+      protein: 40,
+    }))).toContain('Zero-carb estimate is low-confidence for a substantial item.')
+  })
+
+  it('does not flag verified zero-carb water-style items', () => {
+    expect(getNutritionQualityWarnings(nutrition({
+      source: 'official',
+      confidence_score: 90,
+      calories: 0,
+      carbs: 0,
+    }))).toEqual([])
   })
 })
 

@@ -7,6 +7,7 @@ import { getDisplayCategory, getMenuItemDisplayName, hasUsableNutrition } from '
 import { GradeBadge } from './GradeBadge'
 import { DotMeter } from './DotMeter'
 import { AnnotationBadge } from './AnnotationBadge'
+import { getNutritionQualityWarnings } from '../../lib/nutrition-trust'
 
 interface Props {
   item: MenuItemWithNutrition
@@ -73,6 +74,7 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
   const availabilityRestaurants = item.availability_restaurants ?? []
   const hasMultipleLocations = availabilityCount > 1
   const isLowConfidenceNutrition = Boolean(nd && nd.confidence_score < 70)
+  const qualityWarnings = nd ? getNutritionQualityWarnings(nd) : []
 
   const { grade, colors: gradeColors } = getGradeForItem({
     calories, carbs, fat, protein, sugar, fiber, sodium,
@@ -257,6 +259,13 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
         {isLowConfidenceNutrition && nd && (
           <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-2 text-xs font-medium text-amber-800">
             Estimated nutrition - {nd.confidence_score}% confidence. Verify before dosing.
+            {qualityWarnings[0] && <span className="mt-1 block">{qualityWarnings[0]}</span>}
+          </div>
+        )}
+
+        {!isLowConfidenceNutrition && qualityWarnings.length > 0 && (
+          <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-2 text-xs font-medium text-amber-800">
+            Verify nutrition values: {qualityWarnings[0]}
           </div>
         )}
 

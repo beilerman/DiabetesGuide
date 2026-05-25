@@ -1,5 +1,5 @@
 import type { Grade, GradeColors } from '../../lib/grade'
-import { GRADE_CONFIG } from '../../lib/grade'
+import { GRADE_CONFIG, GRADE_RUBRIC_SUMMARY } from '../../lib/grade'
 
 interface Props {
   grade: Grade | null
@@ -23,6 +23,7 @@ export function GradeBadge({ grade, size = 'md', themeColor }: Props) {
       style={{ width: ring, height: ring }}
       role="img"
       aria-label={grade ? `Grade ${grade}: ${colors!.label}` : 'No grade available'}
+      title={grade ? `Grade ${grade}: ${colors!.label}. ${GRADE_RUBRIC_SUMMARY}` : 'No grade available. Nutrition is missing or unavailable.'}
     >
       {themeColor && (
         <div

@@ -16,26 +16,59 @@ function load(): Preferences {
   } catch { return defaults }
 }
 
+let currentPrefs = load()
+let lastStoredValue: string | null = null
+const listeners = new Set<(prefs: Preferences) => void>()
+
+function applyPreferenceEffects(prefs: Preferences) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs))
+  document.documentElement.style.fontSize = `${16 * prefs.fontScale}px`
+  document.body.classList.toggle('high-contrast', prefs.highContrast)
+}
+
+function getSnapshot(): Preferences {
+  const storedValue = localStorage.getItem(STORAGE_KEY)
+  if (storedValue !== lastStoredValue) {
+    currentPrefs = load()
+    lastStoredValue = storedValue
+  }
+  return currentPrefs
+}
+
+function commitPreferences(updater: (prefs: Preferences) => Preferences) {
+  currentPrefs = updater(getSnapshot())
+  lastStoredValue = JSON.stringify(currentPrefs)
+  applyPreferenceEffects(currentPrefs)
+  listeners.forEach(listener => listener(currentPrefs))
+}
+
 export function usePreferences() {
-  const [prefs, setPrefs] = useState<Preferences>(load)
+  const [prefs, setPrefs] = useState<Preferences>(getSnapshot)
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs))
-    document.documentElement.style.fontSize = `${16 * prefs.fontScale}px`
-    document.body.classList.toggle('high-contrast', prefs.highContrast)
-  }, [prefs])
+    const listener = (nextPrefs: Preferences) => setPrefs(nextPrefs)
+    listeners.add(listener)
+    applyPreferenceEffects(getSnapshot())
+    return () => {
+      listeners.delete(listener)
+    }
+  }, [])
 
   const setFontScale = useCallback((s: number) => {
-    setPrefs(p => ({ ...p, fontScale: Math.max(0.8, Math.min(1.6, s)) }))
+    commitPreferences(p => ({ ...p, fontScale: Math.max(0.8, Math.min(1.6, s)) }))
   }, [])
 
   const toggleContrast = useCallback(() => {
-    setPrefs(p => ({ ...p, highContrast: !p.highContrast }))
+    commitPreferences(p => ({ ...p, highContrast: !p.highContrast }))
   }, [])
 
   const setCarbGoal = useCallback((g: number) => {
-    setPrefs(p => ({ ...p, carbGoal: g }))
+    commitPreferences(p => ({ ...p, carbGoal: g }))
   }, [])
 
-  return { ...prefs, setFontScale, toggleContrast, setCarbGoal }
+  const resetPreferences = useCallback(() => {
+    commitPreferences(() => defaults)
+  }, [])
+
+  return { ...prefs, setFontScale, toggleContrast, setCarbGoal, resetPreferences }
 }

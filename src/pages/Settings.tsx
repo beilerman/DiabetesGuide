@@ -2,14 +2,33 @@ import { usePreferences } from '../hooks/usePreferences'
 import { clearOfflineData } from '../lib/offline-db'
 import { useState } from 'react'
 
-export default function Settings() {
-  const { fontScale, highContrast, carbGoal, setFontScale, toggleContrast, setCarbGoal } = usePreferences()
-  const [cleared, setCleared] = useState(false)
+const LOCAL_APP_STORAGE_KEYS = [
+  'dg_meal_cart',
+  'dg_favorites',
+  'dg_compare',
+  'dg_trip_plan',
+  'dg_checklist',
+  'dg_checklist_options',
+  'dg_recent_searches',
+  'dg_insulin_settings',
+  'dg_preferences',
+]
 
-  const handleClearCache = async () => {
+export default function Settings() {
+  const { fontScale, highContrast, carbGoal, setFontScale, toggleContrast, setCarbGoal, resetPreferences } = usePreferences()
+  const [cleared, setCleared] = useState(false)
+  const [showClearConfirm, setShowClearConfirm] = useState(false)
+  const [isClearing, setIsClearing] = useState(false)
+
+  const handleConfirmClear = async () => {
+    setIsClearing(true)
     await clearOfflineData()
-    localStorage.removeItem('dg_meal_cart')
-    localStorage.removeItem('dg_favorites')
+    for (const key of LOCAL_APP_STORAGE_KEYS) {
+      localStorage.removeItem(key)
+    }
+    resetPreferences()
+    setIsClearing(false)
+    setShowClearConfirm(false)
     setCleared(true)
     setTimeout(() => setCleared(false), 2000)
   }
@@ -63,11 +82,12 @@ export default function Settings() {
           {/* High Contrast */}
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-stone-700">High Contrast</p>
+              <p id="high-contrast-label" className="text-sm font-medium text-stone-700">High Contrast</p>
               <p className="text-xs text-stone-500">Increase color contrast for visibility</p>
             </div>
             <button
               role="switch"
+              aria-labelledby="high-contrast-label"
               aria-checked={highContrast}
               onClick={toggleContrast}
               className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors ${highContrast ? 'bg-teal-600' : 'bg-stone-300'}`}
@@ -115,7 +135,7 @@ export default function Settings() {
         <div className="rounded-2xl bg-white border border-stone-200 p-5">
           <p className="text-sm text-stone-600 mb-3">Clear cached offline data, meal history, and favorites.</p>
           <button
-            onClick={handleClearCache}
+            onClick={() => setShowClearConfirm(true)}
             className="px-4 py-2 rounded-xl bg-rose-50 text-rose-700 text-sm font-medium border border-rose-200 hover:bg-rose-100 active:bg-rose-200 transition-colors"
           >
             {cleared ? 'Cleared!' : 'Clear All App Data'}
@@ -132,6 +152,40 @@ export default function Settings() {
           <p className="text-xs text-stone-400">Not medical advice. Consult your healthcare provider.</p>
         </div>
       </section>
+
+      {showClearConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/40 px-4">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="clear-data-heading"
+            className="w-full max-w-md rounded-2xl border border-stone-200 bg-white p-5 shadow-xl"
+          >
+            <h2 id="clear-data-heading" className="text-lg font-semibold text-stone-900">Clear saved app data?</h2>
+            <p className="mt-2 text-sm text-stone-600">
+              This removes offline cache, meal items, favorites, compare items, trip plan, recent searches, checklist progress, and saved estimator settings from this device.
+            </p>
+            <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={() => setShowClearConfirm(false)}
+                disabled={isClearing}
+                className="rounded-xl border border-stone-200 px-4 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50 disabled:opacity-60"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleConfirmClear}
+                disabled={isClearing}
+                className="rounded-xl border border-rose-200 bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700 disabled:opacity-60"
+              >
+                {isClearing ? 'Clearing...' : 'Clear data'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -32,6 +32,7 @@ export function Header() {
           <button
             onClick={toggleContrast}
             aria-label={highContrast ? 'Disable high contrast' : 'Enable high contrast'}
+            aria-pressed={highContrast}
             className={`ml-2 w-8 h-8 rounded-lg flex items-center justify-center border transition-colors ${highContrast ? 'bg-teal-600 text-white border-teal-600' : 'border-stone-300 text-stone-500 hover:bg-stone-50'}`}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">

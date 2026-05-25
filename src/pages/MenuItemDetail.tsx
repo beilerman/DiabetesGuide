@@ -171,6 +171,11 @@ export default function MenuItemDetail() {
             <div className={`mt-4 rounded-lg border p-3 ${trust.level === 'low' || trust.level === 'unavailable' ? 'border-amber-300 bg-amber-50 text-amber-900' : 'border-teal-200 bg-teal-50 text-teal-900'}`}>
               <p className="text-sm font-semibold">{trust.label}</p>
               <p className="mt-1 text-sm">{trust.caution}</p>
+              {trust.qualityWarnings.length > 0 && (
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
+                  {trust.qualityWarnings.map(warning => <li key={warning}>{warning}</li>)}
+                </ul>
+              )}
             </div>
           )}
 

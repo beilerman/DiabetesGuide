@@ -1,12 +1,11 @@
 import { useState, useEffect, useMemo } from 'react'
 import { buildChecklist, type ChecklistOptions } from '../data/checklist'
+import { loadChecklistOptions, normalizeTripDays, saveChecklistOptions } from '../lib/packing-options'
 
 const LS_KEY = 'dg_checklist'
 
 export default function PackingList() {
-  const [opts, setOpts] = useState<ChecklistOptions>({
-    t1: true, t2: false, pump: false, cgm: false, child: false, tripDays: 3,
-  })
+  const [opts, setOpts] = useState<ChecklistOptions>(loadChecklistOptions)
 
   const sections = useMemo(() => buildChecklist(opts), [opts])
 
@@ -22,6 +21,10 @@ export default function PackingList() {
   useEffect(() => {
     localStorage.setItem(LS_KEY, JSON.stringify(checked))
   }, [checked])
+
+  useEffect(() => {
+    saveChecklistOptions(opts)
+  }, [opts])
 
   const toggle = (item: string) =>
     setChecked(prev => ({ ...prev, [item]: !prev[item] }))
@@ -47,9 +50,11 @@ export default function PackingList() {
             type="number"
             min={1}
             max={30}
+            step={1}
+            inputMode="numeric"
             className="w-16 rounded border px-2 py-1"
             value={opts.tripDays}
-            onChange={e => setOpts(p => ({ ...p, tripDays: Math.max(1, Number(e.target.value)) }))}
+            onChange={e => setOpts(p => ({ ...p, tripDays: normalizeTripDays(e.target.valueAsNumber) }))}
           />
         </label>
       </div>

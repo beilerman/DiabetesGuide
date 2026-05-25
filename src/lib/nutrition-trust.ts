@@ -10,6 +10,7 @@ export interface NutritionTrustSummary {
   confidenceLabel: string | null
   lastUpdatedLabel: string | null
   caution: string | null
+  qualityWarnings: string[]
 }
 
 const SOURCE_LABELS: Record<NutritionalData['source'], string> = {
@@ -39,6 +40,7 @@ export function getNutritionTrust(nutrition: NutritionalData | null | undefined)
       confidenceLabel: null,
       lastUpdatedLabel: null,
       caution: 'This item should not be treated as zero-carb or zero-calorie.',
+      qualityWarnings: [],
     }
   }
 
@@ -46,6 +48,7 @@ export function getNutritionTrust(nutrition: NutritionalData | null | undefined)
   const confidenceLabel = `${nutrition.confidence_score}% confidence`
   const updatedDate = formatDate(nutrition.created_at)
   const lastUpdatedLabel = updatedDate ? `Last updated ${updatedDate}` : null
+  const qualityWarnings = getNutritionQualityWarnings(nutrition)
 
   if (nutrition.confidence_score < 70) {
     return {
@@ -55,6 +58,7 @@ export function getNutritionTrust(nutrition: NutritionalData | null | undefined)
       confidenceLabel,
       lastUpdatedLabel,
       caution: 'Do not dose from this value without verifying it.',
+      qualityWarnings,
     }
   }
 
@@ -65,7 +69,8 @@ export function getNutritionTrust(nutrition: NutritionalData | null | undefined)
       sourceLabel,
       confidenceLabel,
       lastUpdatedLabel,
-      caution: null,
+      caution: qualityWarnings.length > 0 ? 'Some values look unusual for a single serving. Verify serving size before using them.' : null,
+      qualityWarnings,
     }
   }
 
@@ -75,8 +80,37 @@ export function getNutritionTrust(nutrition: NutritionalData | null | undefined)
     sourceLabel,
     confidenceLabel,
     lastUpdatedLabel,
-    caution: 'Verify carbs before dosing.',
+    caution: qualityWarnings.length > 0
+      ? 'Some estimated values look unusual. Verify carbs and serving size before dosing.'
+      : 'Verify carbs before dosing.',
+    qualityWarnings,
   }
+}
+
+export function getNutritionQualityWarnings(nutrition: NutritionalData): string[] {
+  const warnings: string[] = []
+
+  if ((nutrition.protein ?? 0) >= 120) {
+    warnings.push('Protein looks unusually high for a single menu item.')
+  }
+
+  if ((nutrition.calories ?? 0) >= 2000) {
+    warnings.push('Calories look unusually high for a single menu item.')
+  }
+
+  if ((nutrition.sodium ?? 0) >= 3000) {
+    warnings.push('Sodium looks unusually high for a single menu item.')
+  }
+
+  if (
+    nutrition.confidence_score < 70 &&
+    nutrition.carbs === 0 &&
+    (nutrition.calories ?? 0) >= 300
+  ) {
+    warnings.push('Zero-carb estimate is low-confidence for a substantial item.')
+  }
+
+  return warnings
 }
 
 export function buildNutritionReportMailto(item: MenuItemWithNutrition, pageUrl?: string): string {
