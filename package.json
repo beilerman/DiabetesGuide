@@ -37,6 +37,7 @@
     "audit:report": "tsx scripts/audit/report.ts",
     "audit:graduation": "tsx scripts/audit/graduation.ts",
     "audit:migrate": "tsx scripts/audit/migrate-constraints.ts",
+    "fix:public-qa-data": "tsx scripts/fix-public-qa-data.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },

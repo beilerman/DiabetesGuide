@@ -101,8 +101,21 @@ export function getDisplayCategory(item: MenuItemWithNutrition): MenuItem['categ
 
   const name = getMenuItemDisplayName(item).toLowerCase()
   const nutrition = getNutrition(item)
-  if ((nutrition?.alcohol_grams ?? 0) > 0) return 'beverage'
-  if (/\b(wine|cabernet|merlot|pinot|chardonnay|champagne|prosecco|sangria|beer|lager|ale|ipa|stout|porter|cider|cocktail|martini|margarita|mojito|old fashioned|soda|cola|coffee|latte|espresso|tea|lemonade)\b/.test(name)) {
+  if (/\b(mug|tote|shirt|gift card|keychain|ornament|lanyard)\b/.test(name)) return item.category
+
+  const hasFoodContext = /\b(pork|chicken|shrimp|crab(?:meat)?|lobster|mussels?|fish|salmon|tuna|steak|beef|turkey|dog|burger|fries|pasta|ravioli|gnocchi|flatbread|pizza|popcorn|potato|onion|rings?|pretzel|cheese|bisque|soup|chowder|pie|brownie|churro|cookie|cake|cupcake|cheesecake|pudding|ganache|chocolate|chocolat|fudge|caramel|cranachan|bananas?|bread|sandwich(?:es)?|wrap|salad|brine|battered|braised|glazed|rubbed|crusted|marinated|infused|sauce|reduction|compote|vinaigrette|soft-serve|ice cream|tiramisu|mousse|custard|sundae)\b/.test(name)
+
+  if ((nutrition?.alcohol_grams ?? 0) > 0 && !hasFoodContext) return 'beverage'
+
+  if (/\b(cabernet|merlot|pinot|chardonnay|champagne|prosecco|sangria|lager|ipa|stout|porter|cocktail|martini|margarita|mojito|soda|cola|coffee|latte|espresso|lemonade)\b/.test(name) && !hasFoodContext) {
+    return 'beverage'
+  }
+
+  if (/\b(beer|ale|cider|wine|tea)\b/.test(name) && !hasFoodContext) {
+    return 'beverage'
+  }
+
+  if (/\bold fashioned\b/.test(name) && !hasFoodContext) {
     return 'beverage'
   }
 

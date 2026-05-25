@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   cleanDisplayText,
+  getDisplayCategory,
   hasUsableNutrition,
   isLikelyMenuSectionHeader,
 } from '../display'
@@ -94,5 +95,56 @@ describe('hasUsableNutrition', () => {
         confidence_score: 90,
       })],
     }))).toBe(true)
+  })
+})
+
+describe('getDisplayCategory', () => {
+  it('reclassifies standalone alcoholic drinks as beverages', () => {
+    expect(getDisplayCategory(item({
+      name: 'Abita Amber Lager',
+      category: 'entree',
+    }))).toBe('beverage')
+  })
+
+  it('does not reclassify foods that contain drink words as ingredients', () => {
+    expect(getDisplayCategory(item({
+      name: 'Apple Cider & Sweet Onion Bisque',
+      category: 'entree',
+    }))).toBe('entree')
+    expect(getDisplayCategory(item({
+      name: 'Beer-battered Onion Rings',
+      category: 'side',
+    }))).toBe('side')
+    expect(getDisplayCategory(item({
+      name: 'Shrimp Cocktail',
+      category: 'snack',
+    }))).toBe('snack')
+    expect(getDisplayCategory(item({
+      name: 'Warm Pretzel with Beer Cheese',
+      category: 'snack',
+    }))).toBe('snack')
+    expect(getDisplayCategory(item({
+      name: 'Hot Fudge Bourbon Brownie',
+      category: 'dessert',
+      nutritional_data: [nutrition({ alcohol_grams: 4 })],
+    }))).toBe('dessert')
+    expect(getDisplayCategory(item({
+      name: 'Grape Soda Badge Cupcake',
+      category: 'dessert',
+    }))).toBe('dessert')
+    expect(getDisplayCategory(item({
+      name: 'Drunken Mussels',
+      category: 'entree',
+      nutritional_data: [nutrition({ alcohol_grams: 4 })],
+    }))).toBe('entree')
+    expect(getDisplayCategory(item({
+      name: 'Cranachan',
+      category: 'entree',
+      nutritional_data: [nutrition({ alcohol_grams: 2 })],
+    }))).toBe('entree')
+    expect(getDisplayCategory(item({
+      name: 'Pink Hole Coffee Mug',
+      category: 'dessert',
+    }))).toBe('dessert')
   })
 })
