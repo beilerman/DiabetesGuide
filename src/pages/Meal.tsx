@@ -3,7 +3,7 @@ import { useMealCart } from '../hooks/useMealCart'
 import { usePreferences } from '../hooks/usePreferences'
 import { GradeBadge } from '../components/menu/GradeBadge'
 import { computeScore, computeGrade, GRADE_CONFIG } from '../lib/grade'
-import { calculateInsulinDose, validateInsulinInputs, type ActivityLevel } from '../lib/insulin'
+import { INSULIN_LIMITS, calculateInsulinDose, validateInsulinInputs, type ActivityLevel } from '../lib/insulin'
 import { cleanDisplayText } from '../lib/display'
 import type { Grade } from '../lib/grade'
 
@@ -12,16 +12,27 @@ const INSULIN_SETTINGS_KEY = 'dg_insulin_settings'
 interface InsulinSettings {
   icr: number | ''
   cf: number | ''
-  target: number
+  target: number | ''
+  activeInsulin: number | ''
+  maxBolus: number | ''
+}
+
+const DEFAULT_INSULIN_SETTINGS: InsulinSettings = {
+  icr: '',
+  cf: '',
+  target: '',
+  activeInsulin: 0,
+  maxBolus: INSULIN_LIMITS.maxBolus.default,
 }
 
 function loadInsulinSettings(): InsulinSettings {
   try {
     const raw = localStorage.getItem(INSULIN_SETTINGS_KEY)
-    if (!raw) return { icr: '', cf: '', target: 120 }
-    return { icr: '', cf: '', target: 120, ...JSON.parse(raw) }
+    if (!raw) return DEFAULT_INSULIN_SETTINGS
+    const parsed = JSON.parse(raw) as Partial<InsulinSettings>
+    return { ...DEFAULT_INSULIN_SETTINGS, ...parsed }
   } catch {
-    return { icr: '', cf: '', target: 120 }
+    return DEFAULT_INSULIN_SETTINGS
   }
 }
 
@@ -61,6 +72,7 @@ export default function Meal() {
 
   const effectiveCarbs = carbOverride ?? totals.carbs
   const netCarbs = Math.max(0, totals.carbs - totals.fiber)
+  const lowConfidenceItems = items.filter(item => (item.nutritionConfidence ?? 100) < 70)
 
   // Meal composite grade
   const mealGradeResult = useMemo(() => {
@@ -83,6 +95,8 @@ export default function Meal() {
     targetGlucose: insulinSettings.target,
     insulinToCarbRatio: insulinSettings.icr,
     correctionFactor: insulinSettings.cf,
+    activeInsulin: insulinSettings.activeInsulin,
+    maxBolus: insulinSettings.maxBolus,
     activity,
   }), [effectiveCarbs, bg, insulinSettings, activity])
   const insulinValidation = useMemo(() => validateInsulinInputs(insulinInputs), [insulinInputs])
@@ -112,7 +126,7 @@ export default function Meal() {
       {/* Medical disclaimer */}
       <div className="rounded-lg bg-amber-50 border border-amber-300 p-3">
         <p className="text-sm font-semibold text-amber-800">
-          Educational tool only — not medical advice. Always consult your healthcare provider.
+          Educational estimator only - not medical advice. Use only ratios and limits from your care team.
         </p>
       </div>
 
@@ -228,6 +242,11 @@ export default function Meal() {
                     {item.restaurant && (
                       <p className="text-xs text-stone-400 truncate">{item.restaurant}</p>
                     )}
+                    {(item.nutritionConfidence ?? 100) < 70 && (
+                      <p className="text-xs font-medium text-amber-700 truncate">
+                        Estimated nutrition - verify before dosing
+                      </p>
+                    )}
                   </div>
                   <div className="text-right flex-shrink-0">
                     <p className="font-bold text-sm">{item.carbs}g</p>
@@ -248,6 +267,17 @@ export default function Meal() {
           </ul>
         )}
       </section>
+
+      {lowConfidenceItems.length > 0 && (
+        <div className="rounded-xl border border-amber-300 bg-amber-50 p-3">
+          <p className="text-sm font-semibold text-amber-900">
+            {lowConfidenceItems.length} meal item{lowConfidenceItems.length === 1 ? '' : 's'} use estimated or low-confidence nutrition.
+          </p>
+          <p className="mt-1 text-xs text-amber-800">
+            Verify carbs against the restaurant menu, packaging, or your own measurement before using this meal for an insulin estimate.
+          </p>
+        </div>
+      )}
 
       {/* Section 2: Meal Totals */}
       {items.length > 0 && (
@@ -291,7 +321,10 @@ export default function Meal() {
 
       {/* Section 3: Inline Insulin Calculator */}
       <section className="rounded-xl bg-white p-4 shadow-sm border border-stone-100" aria-label="Insulin calculator">
-        <h2 className="text-lg font-bold mb-4">Insulin Calculator</h2>
+        <h2 className="text-lg font-bold mb-1">Carb & Correction Estimator</h2>
+        <p className="text-xs text-stone-500 mb-4">
+          Meal carbs are filled in automatically. Dose output stays hidden for lows, invalid values, or blocked totals.
+        </p>
 
         <div className="space-y-3">
           <div className="grid grid-cols-2 gap-3">
@@ -299,15 +332,17 @@ export default function Meal() {
               label="Blood Glucose (mg/dL)"
               value={bg}
               onChange={setBg}
-              min={1}
-              step="any"
+              min={INSULIN_LIMITS.bloodGlucose.min}
+              max={INSULIN_LIMITS.bloodGlucose.max}
+              step={1}
             />
             <NumField
               label="Target Glucose"
               value={insulinSettings.target}
-              onChange={v => setInsulinSettings(s => ({ ...s, target: v || 120 }))}
-              min={1}
-              step="any"
+              onChange={v => setInsulinSettings(s => ({ ...s, target: v }))}
+              min={INSULIN_LIMITS.targetGlucose.min}
+              max={INSULIN_LIMITS.targetGlucose.max}
+              step={1}
             />
           </div>
 
@@ -318,8 +353,9 @@ export default function Meal() {
                 type="number"
                 className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
                 value={carbOverride ?? totals.carbs}
-                min={0}
-                step="any"
+                min={INSULIN_LIMITS.carbs.min}
+                max={INSULIN_LIMITS.carbs.max}
+                step={1}
                 inputMode="decimal"
                 onChange={e => setCarbOverride(e.target.value === '' ? null : Number(e.target.value))}
               />
@@ -342,22 +378,43 @@ export default function Meal() {
               label="Insulin-to-Carb Ratio (ICR)"
               value={insulinSettings.icr}
               onChange={v => setInsulinSettings(s => ({ ...s, icr: v }))}
-              min={0.1}
-              step="any"
+              min={INSULIN_LIMITS.insulinToCarbRatio.min}
+              max={INSULIN_LIMITS.insulinToCarbRatio.max}
+              step={0.5}
             />
             <NumField
               label="Correction Factor"
               value={insulinSettings.cf}
               onChange={v => setInsulinSettings(s => ({ ...s, cf: v }))}
-              min={1}
-              step="any"
+              min={INSULIN_LIMITS.correctionFactor.min}
+              max={INSULIN_LIMITS.correctionFactor.max}
+              step={1}
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <NumField
+              label="Active Insulin / IOB"
+              value={insulinSettings.activeInsulin}
+              onChange={v => setInsulinSettings(s => ({ ...s, activeInsulin: v }))}
+              min={INSULIN_LIMITS.activeInsulin.min}
+              max={INSULIN_LIMITS.activeInsulin.max}
+              step={0.1}
+            />
+            <NumField
+              label="Max Bolus Limit"
+              value={insulinSettings.maxBolus}
+              onChange={v => setInsulinSettings(s => ({ ...s, maxBolus: v }))}
+              min={INSULIN_LIMITS.maxBolus.min}
+              max={INSULIN_LIMITS.maxBolus.max}
+              step={0.5}
             />
           </div>
 
           <fieldset>
             <legend className="text-xs font-medium text-stone-600 mb-1">Activity Level</legend>
             <div className="flex gap-3">
-              {([['none', 'None'], ['mod', 'Moderate (-25%)'], ['high', 'High (-50%)']] as const).map(
+              {([['none', 'None'], ['mod', 'Moderate - carb bolus -25%'], ['high', 'High - carb bolus -50%']] as const).map(
                 ([val, label]) => (
                   <label key={val} className="flex items-center gap-1.5 text-sm cursor-pointer">
                     <input
@@ -375,7 +432,21 @@ export default function Meal() {
           </fieldset>
         </div>
 
-        {!insulinValidation.isValid && (
+        {insulinValidation.status === 'hypoglycemia' && (
+          <div className="mt-4 rounded-lg border border-red-300 bg-red-50 p-3" role="alert">
+            <p className="text-sm font-semibold text-red-900">Low blood glucose - no bolus estimate shown.</p>
+            <p className="mt-1 text-xs text-red-800">
+              Treat the low first with fast-acting carbohydrate, recheck, and follow your care plan.
+            </p>
+            <ul className="mt-1 list-disc pl-5 text-xs text-red-800">
+              {insulinValidation.messages.map(message => (
+                <li key={message}>{message}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {!insulinValidation.isValid && insulinValidation.status !== 'hypoglycemia' && (
           <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3">
             <p className="text-sm font-semibold text-amber-900">Dose hidden until required values are valid.</p>
             <ul className="mt-1 list-disc pl-5 text-xs text-amber-800">
@@ -387,17 +458,38 @@ export default function Meal() {
         )}
 
         {insulinResult && (
-          <div className="mt-4 rounded-lg bg-teal-50 border border-teal-200 p-4 space-y-2">
-            <h3 className="font-semibold text-teal-800 text-sm">Dose Breakdown</h3>
-            <ResultRow label="Carb Bolus" value={`${insulinResult.carbBolus} units`} />
-            <ResultRow label="Correction Dose" value={`${insulinResult.correction} units`} />
-            {insulinResult.adjPct > 0 && (
-              <ResultRow label="Activity Adjustment" value={`-${insulinResult.adjPct}%`} />
+          <div
+            className={`mt-4 rounded-lg border p-4 space-y-2 ${
+              insulinResult.status === 'blocked'
+                ? 'bg-red-50 border-red-300'
+                : insulinResult.status === 'warning'
+                  ? 'bg-amber-50 border-amber-300'
+                  : 'bg-teal-50 border-teal-200'
+            }`}
+            aria-live="polite"
+          >
+            <h3 className="font-semibold text-sm">Dose Breakdown</h3>
+            {insulinResult.messages.length > 0 && (
+              <ul className={`list-disc pl-5 text-xs ${insulinResult.status === 'blocked' ? 'text-red-800' : 'text-amber-800'}`}>
+                {insulinResult.messages.map(message => (
+                  <li key={message}>{message}</li>
+                ))}
+              </ul>
             )}
-            <div className="border-t border-teal-200 pt-2 mt-2">
-              <div className="flex justify-between font-bold text-teal-900">
+            <ResultRow label="Carb Bolus" value={`${insulinResult.carbBolus} units`} />
+            {insulinResult.adjPct > 0 && (
+              <ResultRow label="Carb Bolus After Activity" value={`${insulinResult.activityAdjustedCarbBolus} units`} />
+            )}
+            <ResultRow label="Correction Dose" value={`${insulinResult.correction} units`} />
+            <ResultRow label="Active Insulin Applied" value={`-${insulinResult.iobAdjustment} units`} />
+            <ResultRow label="Correction After IOB" value={`${insulinResult.correctionAfterIob} units`} />
+            {insulinResult.adjPct > 0 && (
+              <ResultRow label="Activity Adjustment" value={`-${insulinResult.adjPct}% of carb bolus`} />
+            )}
+            <div className="border-t border-current/20 pt-2 mt-2">
+              <div className="flex justify-between font-bold">
                 <span>Suggested Dose</span>
-                <span className="text-lg">{insulinResult.suggested} units</span>
+                <span className="text-lg">{insulinResult.suggested == null ? 'Blocked' : `${insulinResult.suggested} units`}</span>
               </div>
             </div>
           </div>
@@ -416,12 +508,13 @@ function MacroBox({ label, value, highlight }: { label: string; value: string; h
   )
 }
 
-function NumField({ label, value, onChange, min, step }: {
+function NumField({ label, value, onChange, min, max, step }: {
   label: string
   value: number | ''
   onChange: (v: number | '') => void
   min?: number
-  step?: number | 'any'
+  max?: number
+  step?: number
 }) {
   return (
     <label className="block">
@@ -431,6 +524,7 @@ function NumField({ label, value, onChange, min, step }: {
         className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
         value={value}
         min={min}
+        max={max}
         step={step}
         inputMode="decimal"
         onChange={e => onChange(e.target.value === '' ? '' : Number(e.target.value))}

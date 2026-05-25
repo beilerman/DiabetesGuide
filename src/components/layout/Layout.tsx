@@ -72,8 +72,8 @@ export function Layout() {
           {/* Search */}
           <Link
             to="/search"
-            aria-current={isActive('/search') || isActive('/browse') ? 'page' : undefined}
-            className={navItemClass(isActive('/search') || isActive('/browse'))}
+            aria-current={isActive('/search') ? 'page' : undefined}
+            className={navItemClass(isActive('/search'))}
           >
             <svg className="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round"/>
@@ -84,11 +84,11 @@ export function Layout() {
           {/* Meal */}
           <Link
             to="/meal"
-            aria-current={isActive('/meal') || isActive('/insulin') ? 'page' : undefined}
-            className={`${navItemClass(isActive('/meal') || isActive('/insulin'))} relative`}
+            aria-current={isActive('/meal') ? 'page' : undefined}
+            className={`${navItemClass(isActive('/meal'))} relative`}
           >
             <div className="relative">
-              <svg className="w-6 h-6" aria-hidden="true" fill={isActive('/meal') || isActive('/insulin') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" aria-hidden="true" fill={isActive('/meal') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <rect x="3" y="3" width="18" height="18" rx="2"/>
                 <circle cx="12" cy="12" r="3"/>
               </svg>
@@ -123,8 +123,8 @@ export function Layout() {
           {/* More */}
           <Link
             to="/more"
-            aria-current={isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') ? 'page' : undefined}
-            className={navItemClass(isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings'))}
+            aria-current={isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin') ? 'page' : undefined}
+            className={navItemClass(isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin'))}
           >
             <svg className="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="12" cy="6" r="2"/>

@@ -15,6 +15,9 @@ const mockItem: MealItem = {
   sodium: 15,
   restaurant: 'Aloha Isle',
   parkName: 'Magic Kingdom',
+  nutritionConfidence: 30,
+  nutritionSource: 'crowdsourced',
+  nutritionSourceDetail: 'Keyword estimate',
 }
 
 beforeEach(() => {
@@ -51,6 +54,18 @@ describe('useMealCart hook', () => {
     act(() => { result.current.clear() })
     expect(result.current.items).toHaveLength(0)
     expect(result.current.totalItemCount).toBe(0)
+  })
+
+  it('preserves nutrition confidence metadata when adding items', () => {
+    const { result } = renderHook(() => useMealCart())
+
+    act(() => { result.current.addItem(mockItem) })
+
+    expect(result.current.items[0]).toMatchObject({
+      nutritionConfidence: 30,
+      nutritionSource: 'crowdsourced',
+      nutritionSourceDetail: 'Keyword estimate',
+    })
   })
 
   it('creates new meals, switches between them, and ignores invalid switches', () => {
@@ -116,7 +131,7 @@ describe('useMealCart hook', () => {
 describe('__normalizeStoredMealCart', () => {
   it('migrates the legacy array format and normalizes macros', () => {
     const legacy: unknown[] = [
-      { id: 'a', name: 'Pretzel', carbs: 22, calories: '200', fat: 4, protein: undefined },
+      { id: 'a', name: 'Pretzel', carbs: 22, calories: '200', fat: 4, protein: undefined, nutritionConfidence: '35', nutritionSource: 'crowdsourced' },
       { id: 'b', name: 'Popcorn', carbs: '18', calories: 140, fat: 3, sugar: '5' },
     ]
 
@@ -126,7 +141,7 @@ describe('__normalizeStoredMealCart', () => {
 
     const meal = normalized.meals[normalized.activeMealId]
     expect(meal.items).toHaveLength(2)
-    expect(meal.items[0]).toMatchObject({ id: 'a', calories: 200, protein: 0 })
+    expect(meal.items[0]).toMatchObject({ id: 'a', calories: 200, protein: 0, nutritionConfidence: 35, nutritionSource: 'crowdsourced' })
     expect(meal.items[1]).toMatchObject({ id: 'b', carbs: 18, sugar: 5 })
   })
 

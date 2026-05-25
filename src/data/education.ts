@@ -30,8 +30,9 @@ export const type1Content: EducationSection[] = [
       'Rapid-acting insulin (Humalog, NovoLog) covers meals.',
       'Long-acting insulin (Lantus, Levemir) provides background coverage.',
       'Insulin pumps deliver rapid-acting insulin continuously.',
-      'Insulin must be stored properly — avoid extreme heat or cold.',
-      'Never skip insulin doses even if not eating.',
+      'Insulin must be stored properly - avoid extreme heat or cold.',
+      'Basal/background insulin is usually still needed even when not eating; meal and correction insulin depend on food, glucose, and your care plan.',
+      'Do not take meal or correction insulin during a low unless your clinician specifically instructed it.',
     ],
   },
   {
@@ -39,7 +40,7 @@ export const type1Content: EducationSection[] = [
     points: [
       'Hypoglycemia (low BG < 70 mg/dL): treat with 15g fast-acting carbs, recheck in 15 min.',
       'Hyperglycemia (high BG > 250 mg/dL): check for ketones, correct with insulin.',
-      'Diabetic ketoacidosis (DKA) is a life-threatening emergency — seek immediate medical help.',
+      'Diabetic ketoacidosis (DKA) is a life-threatening emergency - seek immediate medical help.',
       'Always carry fast-acting glucose and a glucagon emergency kit.',
       'Teach friends and family how to recognize and treat severe lows.',
     ],
@@ -47,8 +48,8 @@ export const type1Content: EducationSection[] = [
   {
     heading: 'At the Theme Park',
     points: [
-      'Heat can cause insulin to degrade — use a cooling case.',
-      'Walking all day lowers blood sugar — reduce bolus or carry extra snacks.',
+      'Heat can cause insulin to degrade - use a cooling case.',
+      'Walking all day can lower blood sugar - discuss activity dose adjustments with your care team and carry extra fast carbs.',
       'Adrenaline from thrill rides may spike blood sugar temporarily.',
       'Inform your group about where your supplies are and what to do in an emergency.',
       'First Aid stations can help with diabetes emergencies.',

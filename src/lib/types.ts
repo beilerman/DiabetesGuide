@@ -85,6 +85,9 @@ export interface MealItem {
   sodium: number
   restaurant?: string
   parkName?: string
+  nutritionConfidence?: number
+  nutritionSource?: NutritionalData['source']
+  nutritionSourceDetail?: string | null
 }
 
 export interface MealData {

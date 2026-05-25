@@ -72,6 +72,7 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
   const availabilityCount = item.availability_count ?? 1
   const availabilityRestaurants = item.availability_restaurants ?? []
   const hasMultipleLocations = availabilityCount > 1
+  const isLowConfidenceNutrition = Boolean(nd && nd.confidence_score < 70)
 
   const { grade, colors: gradeColors } = getGradeForItem({
     calories, carbs, fat, protein, sugar, fiber, sodium,
@@ -100,6 +101,9 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
       sodium: sodium ?? 0,
       restaurant: hasMultipleLocations ? `${availabilityCount} locations` : item.restaurant?.name,
       parkName: item.restaurant?.park?.name,
+      nutritionConfidence: nd?.confidence_score,
+      nutritionSource: nd?.source,
+      nutritionSourceDetail: nd?.source_detail,
     })
     setTimeout(() => setAddingToMeal(false), 600)
   }
@@ -247,6 +251,12 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
         {topAnnotation && (
           <div className="mt-2">
             <AnnotationBadge annotation={topAnnotation} />
+          </div>
+        )}
+
+        {isLowConfidenceNutrition && nd && (
+          <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-2 text-xs font-medium text-amber-800">
+            Estimated nutrition - {nd.confidence_score}% confidence. Verify before dosing.
           </div>
         )}
 

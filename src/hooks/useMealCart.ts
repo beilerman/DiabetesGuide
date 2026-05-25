@@ -21,6 +21,21 @@ function safeNumber(value: unknown): number {
   return 0
 }
 
+function optionalNumber(value: unknown): number | undefined {
+  if (typeof value === 'number' && Number.isFinite(value)) return value
+  if (typeof value === 'string') {
+    const parsed = Number(value)
+    if (Number.isFinite(parsed)) return parsed
+  }
+  return undefined
+}
+
+function safeNutritionSource(value: unknown): MealItem['nutritionSource'] | undefined {
+  return value === 'official' || value === 'crowdsourced' || value === 'api_lookup'
+    ? value
+    : undefined
+}
+
 function sanitizeMealItem(raw: unknown): MealItem | null {
   if (!raw || typeof raw !== 'object') return null
   const item = raw as Partial<MealItem>
@@ -28,6 +43,8 @@ function sanitizeMealItem(raw: unknown): MealItem | null {
   const carbs = safeNumber(item.carbs)
   const calories = safeNumber(item.calories)
   const fat = safeNumber(item.fat)
+  const nutritionConfidence = optionalNumber(item.nutritionConfidence)
+  const nutritionSource = safeNutritionSource(item.nutritionSource)
   return {
     id: item.id,
     name: item.name,
@@ -40,6 +57,9 @@ function sanitizeMealItem(raw: unknown): MealItem | null {
     sodium: safeNumber(item.sodium),
     restaurant: typeof item.restaurant === 'string' ? item.restaurant : undefined,
     parkName: typeof item.parkName === 'string' ? item.parkName : undefined,
+    nutritionConfidence,
+    nutritionSource,
+    nutritionSourceDetail: typeof item.nutritionSourceDetail === 'string' ? item.nutritionSourceDetail : null,
   }
 }
 
