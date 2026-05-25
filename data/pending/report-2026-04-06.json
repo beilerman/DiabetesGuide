@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-04-06T06:22:51.714Z",
+  "summary": {
+    "newItems": 1,
+    "updatedItems": 2851,
+    "flaggedRemovals": 0,
+    "conflicts": 3,
+    "coverageChange": "+1 items"
+  },
+  "newItemsByPark": {
+    "Universal CityWalk": [
+      {
+        "restaurantName": "Voodoo Doughnut",
+        "parkName": "Universal CityWalk",
+        "itemName": "Monster® Energy Voodoo Grape",
+        "description": "(150 cal.)",
+        "price": 5.75,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ]
+  },
+  "needsReview": {
+    "priceConflicts": [],
+    "lowConfidence": [
+      {
+        "restaurantName": "Voodoo Doughnut",
+        "parkName": "Universal CityWalk",
+        "itemName": "Monster® Energy Voodoo Grape",
+        "description": "(150 cal.)",
+        "price": 5.75,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "potentiallyDiscontinued": []
+  },
+  "approveAllUrl": "npx tsx scripts/approve.ts --all",
+  "reviewUrl": "npx tsx scripts/approve.ts --interactive"
+}

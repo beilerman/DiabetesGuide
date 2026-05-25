@@ -1,0 +1,130 @@
+{
+  "generatedAt": "2026-03-30T06:14:29.392Z",
+  "summary": {
+    "newItems": 4,
+    "updatedItems": 2847,
+    "flaggedRemovals": 0,
+    "conflicts": 3,
+    "coverageChange": "+4 items"
+  },
+  "newItemsByPark": {
+    "Islands of Adventure": [
+      {
+        "restaurantName": "Confisco Grille",
+        "parkName": "Islands of Adventure",
+        "itemName": "Confisco's Mini Sundae",
+        "description": "choice of chocolate or vanilla ice cream served with chocolate syrup, sprinkles, whipped cream and a cherry",
+        "price": 5.95,
+        "category": "dessert",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Moose Juice, Goose Juice",
+        "parkName": "Islands of Adventure",
+        "itemName": "Bavarian Pretzel with Tostitos® Nacho Cheese Sauce",
+        "price": 12.49,
+        "category": "snack",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Moose Juice, Goose Juice",
+        "parkName": "Islands of Adventure",
+        "itemName": "Fruit Bowl",
+        "price": 6.29,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "Universal Epic Universe": [
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Tikijito",
+        "description": "Cruzan<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Aged Light Rum, Bols<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Blue Curaçao, BG Reynolds<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> orgeat, lime juice, simple syrup, mint essence",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ]
+  },
+  "needsReview": {
+    "priceConflicts": [],
+    "lowConfidence": [
+      {
+        "restaurantName": "Confisco Grille",
+        "parkName": "Islands of Adventure",
+        "itemName": "Confisco's Mini Sundae",
+        "description": "choice of chocolate or vanilla ice cream served with chocolate syrup, sprinkles, whipped cream and a cherry",
+        "price": 5.95,
+        "category": "dessert",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Moose Juice, Goose Juice",
+        "parkName": "Islands of Adventure",
+        "itemName": "Bavarian Pretzel with Tostitos® Nacho Cheese Sauce",
+        "price": 12.49,
+        "category": "snack",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Moose Juice, Goose Juice",
+        "parkName": "Islands of Adventure",
+        "itemName": "Fruit Bowl",
+        "price": 6.29,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Celestiki",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Tikijito",
+        "description": "Cruzan<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Aged Light Rum, Bols<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Blue Curaçao, BG Reynolds<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> orgeat, lime juice, simple syrup, mint essence",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "potentiallyDiscontinued": []
+  },
+  "approveAllUrl": "npx tsx scripts/approve.ts --all",
+  "reviewUrl": "npx tsx scripts/approve.ts --interactive"
+}

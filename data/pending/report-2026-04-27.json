@@ -1,0 +1,978 @@
+{
+  "generatedAt": "2026-04-27T06:47:24.171Z",
+  "summary": {
+    "newItems": 35,
+    "updatedItems": 2917,
+    "flaggedRemovals": 0,
+    "conflicts": 16,
+    "coverageChange": "+35 items"
+  },
+  "newItemsByPark": {
+    "Universal Studios Florida": [
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Jumbo Con Carne Slice Platter",
+        "description": "mozzarella, Italian sausage, pepperoni, meatball, house made dough, served with a side Caesar salad",
+        "price": 19.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Jumbo Veggie Bianca Slice Platter",
+        "description": "spinach, garlic cream sauce, mozzarella, peppers, onions, grape tomatoes, ricotta, Parmesan, house made dough, served with a side Caesar salad",
+        "price": 19.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Jumbo Pepperoni Slice Platter",
+        "description": "mozzarella, pepperoni, tomato sauce, house made dough, served with a side Caesar salad",
+        "price": 17.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Jumbo Cheese Slice Platter",
+        "description": "mozzarella, tomato sauce, house made dough, served with a side Caesar salad",
+        "price": 16.39,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Spaghetti & Meatballs Platter ",
+        "description": "classic spaghetti topped with Italian meatballs and marinara sauce with a garlic knot and a side Caesar salad",
+        "price": 20.59,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Baked Meat Lasagna Combo ",
+        "description": "ground beef, layered pasta and house-made marinara with a garlic knot",
+        "price": 25.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Baked Meat Lasagna Platter ",
+        "description": "ground beef, layered pasta and house-made marinara with a garlic knot and a side Caesar salad",
+        "price": 20.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Baked Meat Lasagna ",
+        "description": "ground beef, layered pasta and house-made marinara with a garlic knot",
+        "price": 19.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Bechamel Ravioli Combo",
+        "description": "ravioli filled with creamy burrata cheese, tossed in Béchamel sauce, topped with Parmesan and basil pesto served with a garlic knot",
+        "price": 23.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Bechamel Ravioli Platter",
+        "description": "ravioli filled with creamy burrata cheese, tossed in Béchamel sauce, topped with Parmesan and basil pesto served with a garlic knot and a side Caesar salad",
+        "price": 18.59,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Bechamel Ravioli",
+        "description": "ravioli filled with creamy burrata cheese, tossed in Béchamel sauce, topped with Parmesan and basil pesto served with a garlic knot",
+        "price": 17.59,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Spaghetti with Sausage & Pepper Combo",
+        "description": "plant-based sausage crumbles, peppers, onions, Parmesan, spaghetti pasta, house-made marinara with a garlic knot and a single serve Coca-Cola Freestyle® cup",
+        "price": 22.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Spaghetti with Sausage & Pepper",
+        "description": "plant-based sausage crumbles, peppers, onions, Parmesan, spaghetti pasta, house-made marinara with a garlic knot",
+        "price": 17.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Meatball Sub Platter ",
+        "description": "meatballs, house-made marinara, Parmesan and provolone cheese served with a side Caesar salad",
+        "price": 20.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Antipasto Salad Combo",
+        "description": "salami, pepperoni, olives, grape tomatoes, ciliegine mozzarella, pepperoncini, Italian dressing, served with a garlic knot and a single serve Coca-Cola Freestyle® cup",
+        "price": 19.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Chicken Caesar Salad Combo",
+        "description": "chicken over crisp romaine, tossed with Caesar dressing, croutons and shredded Parmesan, with a garlic knot and a single serve Coca-Cola Freestyle® cup",
+        "price": 19.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "New York Style Cheesecake",
+        "description": "house-made berry compote",
+        "price": 6.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Maschio Prosecco",
+        "price": 14,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Mel's Famous Double Combo ",
+        "description": "double beef patty with American cheese, pickles, secret sauce, lettuce, tomato, on a toasted sesame bun",
+        "price": 25.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Mel's Famous Double Platter ",
+        "description": "double beef patty with American cheese, pickles, secret sauce, lettuce, tomato, on a toasted sesame bun",
+        "price": 21.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Chili Cheese Footlong Hot Dog Combo",
+        "description": "100% beef hot dog sliced, chopped onions, chili and cheese sauce",
+        "price": 18.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Chili Cheese Footlong Hot Dog Platter",
+        "description": "100% beef hot dog sliced, chopped onions, chili and cheese sauce",
+        "price": 14.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Impossible Burger Combo ",
+        "description": "Impossible® burger patty, American cheese, garlic aioli, pickles, lettuce, tomato, on a sesame seed bun",
+        "price": 20.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Impossible Burger Platter ",
+        "description": "Impossible® burger patty, American cheese, garlic aioli, pickles, lettuce, tomato, on a sesame seed bun",
+        "price": 15.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Side Salad ",
+        "price": 6.99,
+        "category": "side",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Chocolate S'mores ",
+        "description": "chocolate bundt cake, chocolate sauce, toasted marshmallows, graham cracker crumbs",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Strawberry Shortcake ",
+        "description": "vanilla bundt cake, strawberries, whipped cream",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Today Cafe",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Athletic Brewing Co.®",
+        "price": 10.75,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "Universal Epic Universe": [
+      {
+        "restaurantName": "Cafe L'Air de la Sirene",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Kronenbourg 1664® Lager",
+        "description": "golden pale lager brewed using the unique French Strisselspalt hop",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Das Stakehaus",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Wicked Weed® Brewing Freak of Nature Imperial IPA",
+        "description": "a big, bold Imperial IPA slightly bitter with hints of grapefruit, mango and pine with a full body and smooth mouthfeel",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Le Gobelet Noir",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Kronenbourg 1664® Lager",
+        "description": "golden pale lager brewed using the unique French Strisselspalt hop",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Moonshine",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Kronenbourg 1664®",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Burning Blade Tavern",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Wicked Weed® Brewing Freak of Nature Imperial IPA",
+        "description": "a big, bold Imperial IPA slightly bitter with hints of grapefruit, mango and pine with a full body and smooth mouthfeel",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Oak and Star Tavern",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL® Peach",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Meteor Astropub",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL® Peach",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ]
+  },
+  "needsReview": {
+    "priceConflicts": [],
+    "lowConfidence": [
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Jumbo Con Carne Slice Platter",
+        "description": "mozzarella, Italian sausage, pepperoni, meatball, house made dough, served with a side Caesar salad",
+        "price": 19.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Jumbo Veggie Bianca Slice Platter",
+        "description": "spinach, garlic cream sauce, mozzarella, peppers, onions, grape tomatoes, ricotta, Parmesan, house made dough, served with a side Caesar salad",
+        "price": 19.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Jumbo Pepperoni Slice Platter",
+        "description": "mozzarella, pepperoni, tomato sauce, house made dough, served with a side Caesar salad",
+        "price": 17.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Jumbo Cheese Slice Platter",
+        "description": "mozzarella, tomato sauce, house made dough, served with a side Caesar salad",
+        "price": 16.39,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Spaghetti & Meatballs Platter ",
+        "description": "classic spaghetti topped with Italian meatballs and marinara sauce with a garlic knot and a side Caesar salad",
+        "price": 20.59,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Baked Meat Lasagna Combo ",
+        "description": "ground beef, layered pasta and house-made marinara with a garlic knot",
+        "price": 25.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Baked Meat Lasagna Platter ",
+        "description": "ground beef, layered pasta and house-made marinara with a garlic knot and a side Caesar salad",
+        "price": 20.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Baked Meat Lasagna ",
+        "description": "ground beef, layered pasta and house-made marinara with a garlic knot",
+        "price": 19.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Bechamel Ravioli Combo",
+        "description": "ravioli filled with creamy burrata cheese, tossed in Béchamel sauce, topped with Parmesan and basil pesto served with a garlic knot",
+        "price": 23.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Bechamel Ravioli Platter",
+        "description": "ravioli filled with creamy burrata cheese, tossed in Béchamel sauce, topped with Parmesan and basil pesto served with a garlic knot and a side Caesar salad",
+        "price": 18.59,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Bechamel Ravioli",
+        "description": "ravioli filled with creamy burrata cheese, tossed in Béchamel sauce, topped with Parmesan and basil pesto served with a garlic knot",
+        "price": 17.59,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Spaghetti with Sausage & Pepper Combo",
+        "description": "plant-based sausage crumbles, peppers, onions, Parmesan, spaghetti pasta, house-made marinara with a garlic knot and a single serve Coca-Cola Freestyle® cup",
+        "price": 22.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Spaghetti with Sausage & Pepper",
+        "description": "plant-based sausage crumbles, peppers, onions, Parmesan, spaghetti pasta, house-made marinara with a garlic knot",
+        "price": 17.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Meatball Sub Platter ",
+        "description": "meatballs, house-made marinara, Parmesan and provolone cheese served with a side Caesar salad",
+        "price": 20.09,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Antipasto Salad Combo",
+        "description": "salami, pepperoni, olives, grape tomatoes, ciliegine mozzarella, pepperoncini, Italian dressing, served with a garlic knot and a single serve Coca-Cola Freestyle® cup",
+        "price": 19.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Chicken Caesar Salad Combo",
+        "description": "chicken over crisp romaine, tossed with Caesar dressing, croutons and shredded Parmesan, with a garlic knot and a single serve Coca-Cola Freestyle® cup",
+        "price": 19.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "New York Style Cheesecake",
+        "description": "house-made berry compote",
+        "price": 6.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Maschio Prosecco",
+        "price": 14,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Mel's Famous Double Combo ",
+        "description": "double beef patty with American cheese, pickles, secret sauce, lettuce, tomato, on a toasted sesame bun",
+        "price": 25.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Mel's Famous Double Platter ",
+        "description": "double beef patty with American cheese, pickles, secret sauce, lettuce, tomato, on a toasted sesame bun",
+        "price": 21.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Chili Cheese Footlong Hot Dog Combo",
+        "description": "100% beef hot dog sliced, chopped onions, chili and cheese sauce",
+        "price": 18.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Chili Cheese Footlong Hot Dog Platter",
+        "description": "100% beef hot dog sliced, chopped onions, chili and cheese sauce",
+        "price": 14.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Impossible Burger Combo ",
+        "description": "Impossible® burger patty, American cheese, garlic aioli, pickles, lettuce, tomato, on a sesame seed bun",
+        "price": 20.49,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Impossible Burger Platter ",
+        "description": "Impossible® burger patty, American cheese, garlic aioli, pickles, lettuce, tomato, on a sesame seed bun",
+        "price": 15.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Side Salad ",
+        "price": 6.99,
+        "category": "side",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Chocolate S'mores ",
+        "description": "chocolate bundt cake, chocolate sauce, toasted marshmallows, graham cracker crumbs",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Strawberry Shortcake ",
+        "description": "vanilla bundt cake, strawberries, whipped cream",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Today Cafe",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Athletic Brewing Co.®",
+        "price": 10.75,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Cafe L'Air de la Sirene",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Kronenbourg 1664® Lager",
+        "description": "golden pale lager brewed using the unique French Strisselspalt hop",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Das Stakehaus",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Wicked Weed® Brewing Freak of Nature Imperial IPA",
+        "description": "a big, bold Imperial IPA slightly bitter with hints of grapefruit, mango and pine with a full body and smooth mouthfeel",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Le Gobelet Noir",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Kronenbourg 1664® Lager",
+        "description": "golden pale lager brewed using the unique French Strisselspalt hop",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Bar Moonshine",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Kronenbourg 1664®",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Burning Blade Tavern",
+        "parkName": "Universal Epic Universe",
+        "itemName": "Wicked Weed® Brewing Freak of Nature Imperial IPA",
+        "description": "a big, bold Imperial IPA slightly bitter with hints of grapefruit, mango and pine with a full body and smooth mouthfeel",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Oak and Star Tavern",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL® Peach",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Meteor Astropub",
+        "parkName": "Universal Epic Universe",
+        "itemName": "NÜTRL® Peach",
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "potentiallyDiscontinued": []
+  },
+  "approveAllUrl": "npx tsx scripts/approve.ts --all",
+  "reviewUrl": "npx tsx scripts/approve.ts --interactive"
+}

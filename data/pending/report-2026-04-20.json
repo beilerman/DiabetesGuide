@@ -1,0 +1,446 @@
+{
+  "generatedAt": "2026-04-20T06:42:49.087Z",
+  "summary": {
+    "newItems": 15,
+    "updatedItems": 2902,
+    "flaggedRemovals": 0,
+    "conflicts": 7,
+    "coverageChange": "+15 items"
+  },
+  "newItemsByPark": {
+    "Universal CityWalk": [
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "**9 Piece Sashimi Mix",
+        "description": "chef's mixed selection of fresh tuna, salmon, and yellowtail, served over ice",
+        "price": 32,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Right Side Up",
+        "description": "vegan pineapple upside down cake, brown sugar, caramel, pineapple, oatmilk whipped topping",
+        "price": 20,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "Islands of Adventure": [
+      {
+        "restaurantName": "Blondie's",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Cafe 4",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Captain America Diner",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Circus McGurkus Cafe Stoo-pendous",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comic Strip Cafe",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Fire Eater's Grill",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Burger Digs",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Thunder Falls Terrace",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "Universal Studios Florida": [
+      {
+        "restaurantName": "Flaming Moe's",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Richter's Burger Co.",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Today Cafe",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ]
+  },
+  "needsReview": {
+    "priceConflicts": [],
+    "lowConfidence": [
+      {
+        "restaurantName": "The Cowfish",
+        "parkName": "Universal CityWalk",
+        "itemName": "**9 Piece Sashimi Mix",
+        "description": "chef's mixed selection of fresh tuna, salmon, and yellowtail, served over ice",
+        "price": 32,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Blondie's",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Cafe 4",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Captain America Diner",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Circus McGurkus Cafe Stoo-pendous",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Comic Strip Cafe",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Fire Eater's Grill",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Flaming Moe's",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Louie's Italian Restaurant",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Mel's Drive-In",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Richter's Burger Co.",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "The Burger Digs",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Thunder Falls Terrace",
+        "parkName": "Islands of Adventure",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Today Cafe",
+        "parkName": "Universal Studios Florida",
+        "itemName": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+        "description": "Enjoy more than 100 drink choices and refills thru the day* with the Coca-Cola Freestyle® souvenir cup.",
+        "price": 9.99,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      },
+      {
+        "restaurantName": "Toothsome Chocolate Emporium",
+        "parkName": "Universal CityWalk",
+        "itemName": "Right Side Up",
+        "description": "vegan pineapple upside down cake, brown sugar, caramel, pineapple, oatmilk whipped topping",
+        "price": 20,
+        "category": "entree",
+        "sources": [
+          "universal"
+        ],
+        "confidence": 90,
+        "isNew": true,
+        "needsManualNutrition": true
+      }
+    ],
+    "potentiallyDiscontinued": []
+  },
+  "approveAllUrl": "npx tsx scripts/approve.ts --all",
+  "reviewUrl": "npx tsx scripts/approve.ts --interactive"
+}
