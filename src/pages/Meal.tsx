@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { useMealCart } from '../hooks/useMealCart'
 import { usePreferences } from '../hooks/usePreferences'
 import { GradeBadge } from '../components/menu/GradeBadge'
@@ -47,11 +47,13 @@ export default function Meal() {
   const [nameInput, setNameInput] = useState(activeMealName)
   const [showNewMeal, setShowNewMeal] = useState(false)
   const [newMealName, setNewMealName] = useState('')
+  const newMealInputRef = useRef<HTMLInputElement>(null)
+  const renameInputRef = useRef<HTMLInputElement>(null)
 
   // Insulin calculator state
   const [insulinSettings, setInsulinSettings] = useState<InsulinSettings>(loadInsulinSettings)
   const [bg, setBg] = useState<number | ''>('')
-  const [carbOverride, setCarbOverride] = useState<number | null>(null)
+  const [carbOverride, setCarbOverride] = useState<{ mealId: string; value: number } | null>(null)
   const [activity, setActivity] = useState<ActivityLevel>('none')
 
   // Persist insulin settings
@@ -59,18 +61,16 @@ export default function Meal() {
     localStorage.setItem(INSULIN_SETTINGS_KEY, JSON.stringify(insulinSettings))
   }, [insulinSettings])
 
-  // Reset carb override when meal changes
   useEffect(() => {
-    setCarbOverride(null)
-  }, [activeMealId])
+    if (showNewMeal) newMealInputRef.current?.focus()
+  }, [showNewMeal])
 
-  // Sync name input when switching meals
   useEffect(() => {
-    setNameInput(activeMealName)
-    setEditingName(false)
-  }, [activeMealName])
+    if (editingName) renameInputRef.current?.focus()
+  }, [editingName])
 
-  const effectiveCarbs = carbOverride ?? totals.carbs
+  const activeCarbOverride = carbOverride?.mealId === activeMealId ? carbOverride.value : null
+  const effectiveCarbs = activeCarbOverride ?? totals.carbs
   const netCarbs = Math.max(0, totals.carbs - totals.fiber)
   const lowConfidenceItems = items.filter(item => (item.nutritionConfidence ?? 100) < 70)
 
@@ -121,6 +121,16 @@ export default function Meal() {
     }
   }
 
+  const handleSwitchMeal = (id: string) => {
+    setEditingName(false)
+    switchMeal(id)
+  }
+
+  const handleStartRename = () => {
+    setNameInput(activeMealName)
+    setEditingName(true)
+  }
+
   return (
     <div className="max-w-lg mx-auto space-y-6">
       {/* Medical disclaimer */}
@@ -136,7 +146,7 @@ export default function Meal() {
           {mealIds.map(id => (
             <button
               key={id}
-              onClick={() => switchMeal(id)}
+              onClick={() => handleSwitchMeal(id)}
               className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 id === activeMealId
                   ? 'bg-teal-600 text-white'
@@ -161,13 +171,13 @@ export default function Meal() {
         {showNewMeal && (
           <div className="mt-2 flex gap-2">
             <input
+              ref={newMealInputRef}
               type="text"
               value={newMealName}
               onChange={e => setNewMealName(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleCreateMeal()}
               placeholder="Meal name (e.g. EPCOT Lunch)"
               className="flex-1 rounded-lg border border-stone-300 px-3 py-1.5 text-sm"
-              autoFocus
             />
             <button onClick={handleCreateMeal} className="px-3 py-1.5 rounded-lg bg-teal-600 text-white text-sm font-medium">
               Add
@@ -184,22 +194,23 @@ export default function Meal() {
         <div className="flex items-center gap-2">
           {editingName ? (
             <input
+              ref={renameInputRef}
               type="text"
               value={nameInput}
               onChange={e => setNameInput(e.target.value)}
               onBlur={handleRename}
               onKeyDown={e => e.key === 'Enter' && handleRename()}
               className="text-xl font-bold border-b-2 border-teal-500 outline-none bg-transparent"
-              autoFocus
             />
           ) : (
-            <h1
-              className="text-xl font-bold cursor-pointer hover:text-teal-600"
-              onClick={() => setEditingName(true)}
+            <button
+              type="button"
+              className="text-left text-xl font-bold hover:text-teal-600"
+              onClick={handleStartRename}
               title="Click to rename"
             >
               {activeMealName}
-            </h1>
+            </button>
           )}
         </div>
         <div className="flex gap-2">
@@ -347,19 +358,20 @@ export default function Meal() {
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-stone-600 mb-1">Total Carbs (g)</label>
+            <label htmlFor="meal-total-carbs" className="block text-xs font-medium text-stone-600 mb-1">Total Carbs (g)</label>
             <div className="flex items-center gap-2">
               <input
+                id="meal-total-carbs"
                 type="number"
                 className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
-                value={carbOverride ?? totals.carbs}
+                value={activeCarbOverride ?? totals.carbs}
                 min={INSULIN_LIMITS.carbs.min}
                 max={INSULIN_LIMITS.carbs.max}
                 step={1}
                 inputMode="decimal"
-                onChange={e => setCarbOverride(e.target.value === '' ? null : Number(e.target.value))}
+                onChange={e => setCarbOverride(e.target.value === '' ? null : { mealId: activeMealId, value: Number(e.target.value) })}
               />
-              {carbOverride !== null && (
+              {activeCarbOverride !== null && (
                 <button
                   onClick={() => setCarbOverride(null)}
                   className="text-xs text-teal-600 hover:underline whitespace-nowrap"
@@ -368,7 +380,7 @@ export default function Meal() {
                 </button>
               )}
             </div>
-            {items.length > 0 && carbOverride === null && (
+            {items.length > 0 && activeCarbOverride === null && (
               <p className="text-xs text-stone-400 mt-0.5">Auto-populated from meal ({items.length} items)</p>
             )}
           </div>

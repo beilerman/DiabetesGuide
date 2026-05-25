@@ -213,6 +213,7 @@ function FavoritesTab() {
 function TripPlanTab() {
   const { plan, hasPlan, dayTotals, tripTotals, createPlan, assignPark, addItemToSlot, removeItemFromSlot, clearPlan, addDay, removeDay, updateCarbGoal } = useTripPlan()
   const { data: parks } = useParks()
+  const [showClearConfirm, setShowClearConfirm] = useState(false)
 
   if (!hasPlan || !plan) {
     return <TripSetupForm onCreatePlan={createPlan} />
@@ -254,7 +255,7 @@ function TripPlanTab() {
             + Day
           </button>
           <button
-            onClick={clearPlan}
+            onClick={() => setShowClearConfirm(true)}
             className="px-3 py-1.5 rounded-lg text-red-600 text-xs font-medium hover:bg-red-50"
           >
             Clear Plan
@@ -304,6 +305,47 @@ function TripPlanTab() {
             <SummaryBox label="Avg Carbs/Day" value={`${Math.round(tripTotals.carbs / plan.days.length)}g`} />
             <SummaryBox label="Avg Calories/Day" value={`${Math.round(tripTotals.calories / plan.days.length)}`} />
             <SummaryBox label="Avg Protein/Day" value={`${Math.round(tripTotals.protein / plan.days.length)}g`} />
+          </div>
+        </div>
+      )}
+
+      {showClearConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+          <button
+            type="button"
+            className="absolute inset-0 bg-stone-950/40"
+            onClick={() => setShowClearConfirm(false)}
+            aria-label="Cancel clear trip plan"
+          />
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="clear-trip-plan-heading"
+            className="relative z-10 w-full max-w-md rounded-2xl border border-stone-200 bg-white p-5 shadow-xl"
+          >
+            <h2 id="clear-trip-plan-heading" className="text-lg font-semibold text-stone-900">Clear trip plan?</h2>
+            <p className="mt-2 text-sm text-stone-600">
+              This removes all planned days, parks, meal slots, and items from this device.
+            </p>
+            <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={() => setShowClearConfirm(false)}
+                className="rounded-xl border border-stone-200 px-4 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  clearPlan()
+                  setShowClearConfirm(false)
+                }}
+                className="rounded-xl border border-red-200 bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+              >
+                Clear Trip Plan
+              </button>
+            </div>
           </div>
         </div>
       )}
