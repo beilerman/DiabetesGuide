@@ -100,7 +100,7 @@ describe('VenueList', () => {
 
     const card = screen.getByRole('link', { name: /magic kingdom park/i })
     expect(within(card).getByText(/2 restaurants/i)).toBeInTheDocument()
-    expect(within(card).getByText(/84 items/i)).toBeInTheDocument()
+    expect(within(card).getByText(/84 menu items/i)).toBeInTheDocument()
   })
 
   it('surfaces a count-specific error when venue count requests fail', () => {

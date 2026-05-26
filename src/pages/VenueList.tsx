@@ -29,7 +29,7 @@ export default function VenueList() {
   if (error) {
     return (
       <div className="text-center py-12 px-4 bg-red-50 border border-red-200 rounded-xl">
-        <p className="text-red-700">Failed to load venues. Please try again.</p>
+        <p className="text-red-700">Failed to load destinations. Please try again.</p>
       </div>
     )
   }
@@ -53,7 +53,7 @@ export default function VenueList() {
           <div>
             <h1 className="text-2xl font-bold text-stone-900">{category.label}</h1>
             <p className="text-sm text-stone-600">
-              {isLoading ? 'Loading...' : `${categoryParks.length} ${categoryParks.length === 1 ? 'venue' : 'venues'}`}
+              {isLoading ? 'Loading...' : `${categoryParks.length} ${categoryParks.length === 1 ? 'destination' : 'destinations'}`}
             </p>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function VenueList() {
       {!isLoading && categoryParks.length === 0 && (
         <div className="text-center py-12">
           <div className="text-5xl mb-4">🍽️</div>
-          <p className="text-stone-600">No venues found in this category.</p>
+          <p className="text-stone-600">No destinations found in this category.</p>
         </div>
       )}
     </div>

@@ -22,10 +22,10 @@ export function CategoryCard({ category, resortId, theme, venueCount, itemCount 
         <h3 className="text-lg font-bold text-stone-900">{category.label}</h3>
         <div className="flex items-center gap-2 mt-2 text-sm text-stone-600">
           {venueCount > 0 && (
-            <span>{venueCount} {venueCount === 1 ? 'venue' : 'venues'}</span>
+            <span>{venueCount} {venueCount === 1 ? 'destination' : 'destinations'}</span>
           )}
           {venueCount > 0 && itemCount > 0 && <span className="text-stone-400">·</span>}
-          {itemCount > 0 && <span>{itemCount} items</span>}
+          {itemCount > 0 && <span>{itemCount} menu items</span>}
           {category.seasonalFilter && <span className="italic text-stone-500">Seasonal</span>}
         </div>
       </div>

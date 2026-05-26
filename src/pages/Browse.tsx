@@ -54,7 +54,7 @@ function EmptyState({ hasFilters }: { hasFilters: boolean }) {
             <span className="text-sm text-teal-600 font-medium">Tip: Start with fewer filters</span>
           </>
         ) : (
-          'Select a park to start browsing delicious menu items!'
+          'Select a destination to start browsing menu items.'
         )}
       </p>
     </div>
@@ -146,25 +146,25 @@ export default function Browse() {
         {!parkId && (
           <div className="mb-4 rounded-lg border border-teal-200 bg-teal-50 px-3 py-2">
             <p className="text-sm font-semibold text-teal-900">
-              All Parks shows a fast preview. Select a destination for complete park listings and faster filtering.
+              All Parks shows a 3,000-item preview for speed; pick a destination for the full catalog.
             </p>
           </div>
         )}
 
         {/* Park selector - horizontal pill buttons */}
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-600 whitespace-nowrap">Park:</span>
+          <span className="text-sm font-medium text-gray-600 whitespace-nowrap">Destination:</span>
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
             <button
               type="button"
               onClick={() => setParkId(undefined)}
               className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                 parkId === undefined
-                  ? 'bg-teal-600 text-white shadow-md'
+                  ? 'bg-teal-700 text-white shadow-md'
                   : 'bg-stone-100 text-gray-700 hover:bg-stone-200'
               }`}
             >
-              All Parks{parkOptions.length > 0 ? ` (${parkOptions.length})` : ''}
+              All Destinations{parkOptions.length > 0 ? ` (${parkOptions.length})` : ''}
             </button>
             {parkOptions.map(p => (
               <button
@@ -173,7 +173,7 @@ export default function Browse() {
                 onClick={() => setParkId(p.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                   parkId === p.id
-                    ? 'bg-teal-600 text-white shadow-md'
+                    ? 'bg-teal-700 text-white shadow-md'
                     : 'bg-stone-100 text-gray-700 hover:bg-stone-200'
                 }`}
               >
@@ -189,7 +189,7 @@ export default function Browse() {
             onClick={() => setViewMode('list')}
             aria-pressed={viewMode === 'list'}
             className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-              viewMode === 'list' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500 hover:text-stone-700'
+              viewMode === 'list' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-600 hover:text-stone-800'
             }`}
           >
             List
@@ -199,10 +199,10 @@ export default function Browse() {
             onClick={() => setViewMode('location')}
             aria-pressed={viewMode === 'location'}
             className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-              viewMode === 'location' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500 hover:text-stone-700'
+              viewMode === 'location' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-600 hover:text-stone-800'
             }`}
           >
-            By Location
+            By Destination
           </button>
         </div>
       </div>
@@ -213,7 +213,7 @@ export default function Browse() {
         {/* Result count */}
         {!isLoading && totalItems > 0 && (
           <div className="mb-4 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm text-gray-600" aria-live="polite">
-            <span className="font-semibold text-gray-900">{browseSummary.main}</span>
+            <BrowseSummaryMain summary={browseSummary} />
             {browseSummary.detail && <span className="text-gray-500"> {browseSummary.detail}</span>}
             {browseSummary.note && (
               <span className="mt-1 block text-xs font-medium text-teal-700">{browseSummary.note}</span>
@@ -225,7 +225,7 @@ export default function Browse() {
           <>
             <div className="mb-3 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-medium text-stone-600" role="status">
               {!parkId
-                ? 'Loading the All Parks preview and restaurant groups...'
+                ? 'Loading the All Destinations preview and restaurant groups...'
                 : 'Loading complete destination listings and restaurant groups...'}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -285,6 +285,40 @@ export default function Browse() {
   )
 }
 
+function BrowseSummaryMain({ summary }: { summary: ReturnType<typeof getBrowseSummary> }) {
+  const phrase = 'loaded preview items'
+
+  if (!summary.previewTooltip || !summary.main.includes(phrase)) {
+    return <span className="font-semibold text-gray-900">{summary.main}</span>
+  }
+
+  const [before, after] = summary.main.split(phrase)
+  const tooltipId = 'browse-preview-tooltip'
+
+  return (
+    <span className="font-semibold text-gray-900">
+      {before}
+      <span className="group relative inline-flex">
+        <button
+          type="button"
+          aria-describedby={tooltipId}
+          className="rounded-sm underline decoration-dotted underline-offset-4 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+        >
+          {phrase}
+        </button>
+        <span
+          id={tooltipId}
+          role="tooltip"
+          className="invisible absolute left-0 top-full z-20 mt-2 w-72 rounded-lg bg-stone-900 px-3 py-2 text-left text-xs font-medium text-white shadow-lg group-focus-within:visible group-hover:visible"
+        >
+          {summary.previewTooltip}
+        </span>
+      </span>
+      {after}
+    </span>
+  )
+}
+
 function LocationBrowseView({
   groups,
   expandedRestaurants,
@@ -322,8 +356,8 @@ function LocationBrowseView({
                     {category.icon && <span className="mr-2">{category.icon}</span>}
                     {category.name}
                   </h3>
-                  <span className="text-xs font-medium text-stone-500">
-                    {category.venues.length} {category.venues.length === 1 ? 'location' : 'locations'}
+                  <span className="text-xs font-medium text-stone-600">
+                    {category.venues.length} {category.venues.length === 1 ? 'destination' : 'destinations'}
                   </span>
                 </div>
 
@@ -334,7 +368,7 @@ function LocationBrowseView({
                         <h4 id={`venue-${venue.id}`} className="text-base font-semibold text-stone-900">
                           {venue.name}
                         </h4>
-                        <span className="text-xs text-stone-500">{venue.itemCount} items</span>
+                        <span className="text-xs text-stone-500">{venue.itemCount} menu items</span>
                       </div>
 
                       <div className="space-y-5">
@@ -345,7 +379,7 @@ function LocationBrowseView({
                               <h5 id={`area-${area.id}`} className="text-sm font-bold uppercase tracking-wide text-stone-700">
                                 {area.name}
                               </h5>
-                              <span className="text-xs text-stone-400">{area.itemCount}</span>
+                              <span className="text-xs text-stone-600">{area.itemCount}</span>
                             </div>
 
                             <div className="divide-y divide-stone-100 rounded-lg border border-stone-200 bg-white">
@@ -400,7 +434,6 @@ function LocationRestaurantSection({
         type="button"
         onClick={onToggle}
         aria-expanded={expanded}
-        aria-label={`${expanded ? 'Collapse' : 'Expand'} ${restaurant.name}, ${restaurant.itemCount} menu items`}
         className="flex w-full items-center justify-between gap-3 px-3 py-3 text-left transition-colors hover:bg-stone-50"
       >
         <span className="min-w-0">

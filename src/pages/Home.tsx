@@ -1,6 +1,6 @@
 import { type FormEvent, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useParks, useMenuItemCounts } from '../lib/queries'
+import { useParks, useMenuItemCounts, useTotalRestaurantCount } from '../lib/queries'
 import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
 import { buildBrowsePresetUrl } from '../lib/browse-url'
 import { useFavorites } from '../hooks/useFavorites'
@@ -91,6 +91,7 @@ export default function Home() {
   const { favorites } = useFavorites()
   const { data: parks, isLoading, error } = useParks()
   const { data: menuItemCounts } = useMenuItemCounts()
+  const { data: totalRestaurantCount } = useTotalRestaurantCount()
   const countsReady = hasUsableHomeItemCounts(menuItemCounts)
 
   const resortGroups = useMemo(() => {
@@ -98,7 +99,7 @@ export default function Home() {
     return buildHomeResortGroups(parks, menuItemCounts)
   }, [parks, menuItemCounts])
 
-  const totalLocationCount = resortGroups.reduce((sum, group) => sum + group.locationCount, 0)
+  const totalDestinationCount = resortGroups.reduce((sum, group) => sum + group.locationCount, 0)
   const totalItemCount = resortGroups.reduce((sum, group) => sum + group.itemCount, 0)
 
   const submitSearch = (event: FormEvent<HTMLFormElement>) => {
@@ -122,9 +123,9 @@ export default function Home() {
               </p>
             </div>
           </div>
-          {countsReady && (
+          {countsReady && totalRestaurantCount != null && (
             <div className="rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-600">
-              Catalog preview: {totalItemCount.toLocaleString()} menu items across {totalLocationCount} locations
+              Catalog preview: {totalItemCount.toLocaleString()} menu items &middot; {totalRestaurantCount.toLocaleString()} restaurants &middot; {totalDestinationCount} destinations
             </div>
           )}
         </div>
@@ -149,7 +150,7 @@ export default function Home() {
             </div>
             <button
               type="submit"
-              className="h-12 rounded-xl bg-teal-600 px-5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+              className="h-12 rounded-xl bg-teal-700 px-5 text-sm font-semibold text-white transition-colors hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
             >
               Search
             </button>
@@ -285,13 +286,13 @@ function formatItems(count: number, countsReady: boolean): string {
   return `${count.toLocaleString()} ${count === 1 ? 'menu item' : 'menu items'}`
 }
 
-function formatLocations(count: number): string {
-  return `${count} ${count === 1 ? 'location' : 'locations'}`
+function formatDestinations(count: number): string {
+  return `${count} ${count === 1 ? 'destination' : 'destinations'}`
 }
 
 function formatGroupStats(group: HomeResortGroup, countsReady: boolean): string {
-  if (!countsReady) return `${formatLocations(group.locationCount)} with counts syncing`
-  return `${formatItems(group.itemCount, countsReady)} across ${formatLocations(group.locationCount)}`
+  if (!countsReady) return `${formatDestinations(group.locationCount)} with counts syncing`
+  return `${formatItems(group.itemCount, countsReady)} across ${formatDestinations(group.locationCount)}`
 }
 
 function resortHref(group: HomeResortGroup): string {
@@ -384,7 +385,7 @@ function ResortDestinationSection({
             <span className="min-w-0 flex-1">
               <span className="block font-semibold text-stone-900 group-hover:text-teal-800">{category.label}</span>
               <span className="mt-0.5 block text-xs font-medium text-stone-500">
-                {formatItems(category.itemCount, countsReady)} | {formatLocations(category.locationCount)}
+                {formatItems(category.itemCount, countsReady)} | {formatDestinations(category.locationCount)}
               </span>
               {category.parks.length > 0 && (
                 <span className="mt-1 block truncate text-xs text-stone-500" title={venuePreview(category)}>

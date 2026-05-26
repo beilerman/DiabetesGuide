@@ -124,7 +124,7 @@ export function FilterBar({ filters, onChange }: Props) {
             onClick={() => set('maxCarbs', filters.maxCarbs === 30 ? null : 30)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
               filters.maxCarbs === 30
-                ? 'bg-teal-600 text-white shadow-md'
+                ? 'bg-teal-700 text-white shadow-md'
                 : 'bg-white text-stone-700 border border-stone-200 hover:border-teal-300'
             }`}
           >
@@ -134,7 +134,7 @@ export function FilterBar({ filters, onChange }: Props) {
             onClick={() => set('vegetarianOnly', !filters.vegetarianOnly)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
               filters.vegetarianOnly
-                ? 'bg-teal-600 text-white shadow-md'
+                ? 'bg-teal-700 text-white shadow-md'
                 : 'bg-white text-stone-700 border border-stone-200 hover:border-teal-300'
             }`}
           >
@@ -144,7 +144,7 @@ export function FilterBar({ filters, onChange }: Props) {
             onClick={() => set('hideFried', !filters.hideFried)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
               filters.hideFried
-                ? 'bg-teal-600 text-white shadow-md'
+                ? 'bg-teal-700 text-white shadow-md'
                 : 'bg-white text-stone-700 border border-stone-200 hover:border-teal-300'
             }`}
           >
@@ -154,7 +154,7 @@ export function FilterBar({ filters, onChange }: Props) {
             onClick={() => set('hideAlcohol', !filters.hideAlcohol)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
               filters.hideAlcohol
-                ? 'bg-teal-600 text-white shadow-md'
+                ? 'bg-teal-700 text-white shadow-md'
                 : 'bg-white text-stone-700 border border-stone-200 hover:border-teal-300'
             }`}
           >
@@ -187,7 +187,7 @@ export function FilterBar({ filters, onChange }: Props) {
               onClick={() => set('category', null)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 ${
                 filters.category === null
-                  ? 'bg-teal-600 text-white shadow-md'
+                  ? 'bg-teal-700 text-white shadow-md'
                   : 'bg-white text-stone-700 border border-stone-200 hover:border-teal-300'
               }`}
             >
@@ -199,7 +199,7 @@ export function FilterBar({ filters, onChange }: Props) {
                 onClick={() => set('category', cat.value)}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 ${
                   filters.category === cat.value
-                    ? 'bg-teal-600 text-white shadow-md'
+                    ? 'bg-teal-700 text-white shadow-md'
                     : 'bg-white text-stone-700 border border-stone-200 hover:border-teal-300'
                 }`}
               >
@@ -233,7 +233,7 @@ export function FilterBar({ filters, onChange }: Props) {
                 aria-valuetext={`${filters.maxCarbs ?? 150} grams`}
                 className="flex-1 h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, #0d9488 0%, #0d9488 ${((filters.maxCarbs ?? 150) / 150) * 100}%, #e7e5e4 ${((filters.maxCarbs ?? 150) / 150) * 100}%, #e7e5e4 100%)`
+                  background: `linear-gradient(to right, #0f766e 0%, #0f766e ${((filters.maxCarbs ?? 150) / 150) * 100}%, #e7e5e4 ${((filters.maxCarbs ?? 150) / 150) * 100}%, #e7e5e4 100%)`
                 }}
               />
               <span className="text-xs font-semibold text-stone-700 min-w-[3rem] text-right">
@@ -244,6 +244,7 @@ export function FilterBar({ filters, onChange }: Props) {
 
           <div className="relative">
             <select
+              aria-label="Sort menu items"
               value={filters.sort}
               onChange={e => set('sort', e.target.value as Filters['sort'])}
               className="appearance-none px-3 py-1.5 pr-8 rounded-lg border border-stone-200 bg-white text-xs font-medium focus:border-teal-500 focus:ring-2 focus:ring-teal-200 focus:outline-none cursor-pointer"
@@ -267,7 +268,7 @@ export function FilterBar({ filters, onChange }: Props) {
         {activeFilterCount > 0 && (
           <div className="flex justify-between items-center pt-2 border-t border-stone-200">
             <span className="text-xs text-stone-600">
-              <span className="inline-flex items-center justify-center w-5 h-5 bg-teal-600 text-white text-[10px] font-bold rounded-full mr-1">
+              <span className="inline-flex items-center justify-center w-5 h-5 bg-teal-700 text-white text-[10px] font-bold rounded-full mr-1">
                 {activeFilterCount}
               </span>
               filter{activeFilterCount !== 1 ? 's' : ''} active

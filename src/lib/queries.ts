@@ -9,7 +9,7 @@ import {
   fetchAllRestaurantsOffline,
   fetchMenuItemCountsOffline,
 } from './offline-queries'
-import { readRestaurantsByPark, readItemsByPark, readAllItems } from './offline-db'
+import { readRestaurants, readRestaurantsByPark, readItemsByPark, readAllItems } from './offline-db'
 import { readMenuItemCountsCache } from './menu-count-cache'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
 
@@ -156,6 +156,24 @@ export function useTotalMenuItemCount() {
         return count ?? 0
       } catch {
         const cached = await readAllItems()
+        return cached.length
+      }
+    },
+  })
+}
+
+export function useTotalRestaurantCount() {
+  return useQuery({
+    queryKey: ['totalRestaurantCount'],
+    queryFn: async (): Promise<number> => {
+      try {
+        const { count, error } = await supabase
+          .from('restaurants')
+          .select('*', { count: 'exact', head: true })
+        if (error) throw error
+        return count ?? 0
+      } catch {
+        const cached = await readRestaurants()
         return cached.length
       }
     },

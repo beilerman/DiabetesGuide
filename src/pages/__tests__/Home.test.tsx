@@ -7,13 +7,14 @@ import type { Park } from '../../lib/types'
 vi.mock('../../lib/queries', () => ({
   useParks: vi.fn(),
   useMenuItemCounts: vi.fn(),
+  useTotalRestaurantCount: vi.fn(),
 }))
 
 vi.mock('../../hooks/useFavorites', () => ({
   useFavorites: vi.fn(),
 }))
 
-import { useMenuItemCounts, useParks } from '../../lib/queries'
+import { useMenuItemCounts, useParks, useTotalRestaurantCount } from '../../lib/queries'
 import { useFavorites } from '../../hooks/useFavorites'
 
 function makePark(id: string, name: string): Park {
@@ -43,6 +44,9 @@ describe('Home', () => {
         ['disneyland', 231],
       ]),
     } as ReturnType<typeof useMenuItemCounts>)
+    vi.mocked(useTotalRestaurantCount).mockReturnValue({
+      data: 680,
+    } as ReturnType<typeof useTotalRestaurantCount>)
     vi.mocked(useFavorites).mockReturnValue({
       favorites: new Set(['item-1', 'item-2']),
       toggle: vi.fn(),
@@ -79,6 +83,9 @@ describe('Home', () => {
         ['grand-floridian', 5],
       ]),
     } as ReturnType<typeof useMenuItemCounts>)
+    vi.mocked(useTotalRestaurantCount).mockReturnValue({
+      data: 2,
+    } as ReturnType<typeof useTotalRestaurantCount>)
     vi.mocked(useFavorites).mockReturnValue({
       favorites: new Set(),
       toggle: vi.fn(),
@@ -93,7 +100,8 @@ describe('Home', () => {
 
     const jumpNav = screen.getByRole('navigation', { name: /jump to destination groups/i })
     expect(within(jumpNav).getByRole('link', { name: /walt disney world/i })).toHaveAttribute('href', '#home-resort-wdw')
-    expect(screen.getByText('15 menu items across 2 locations')).toBeInTheDocument()
+    expect(screen.getByText('Catalog preview: 15 menu items · 2 restaurants · 2 destinations')).toBeInTheDocument()
+    expect(screen.getByText('15 menu items across 2 destinations')).toBeInTheDocument()
     expect(screen.queryByText(/menu records/i)).not.toBeInTheDocument()
   })
 })

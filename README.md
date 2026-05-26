@@ -51,3 +51,7 @@ Primary navigation metadata lives in `src/lib/nav.ts`. The desktop header and mo
 ## Task 3 Notes
 
 The search page only shows the `Searching...` status during an initial pending catalog request or a deferred query transition. Background refetches with already-resolved results do not keep the status visible, and the result count uses `aria-live="polite"`.
+
+## Task 4 Notes
+
+Catalog counts now distinguish menu items, restaurants, and destinations in the home hero. Browse explains the All Parks preview limit with a tooltip on `loaded preview items`, and visible resort/browse terminology uses `destinations` for parks, hotels, ships, and grouped properties.
