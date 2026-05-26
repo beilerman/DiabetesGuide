@@ -17,6 +17,7 @@
 - Reworked Trip Plan into named date-range trips with selected parks, Meal Builder/favorite assignment, and JSON backup under `dg.trips.v1`.
 - Added focus-moving home destination jump links and a scroll-triggered Back to top action.
 - Made the home catalog badge and quick-filter chip row responsive with a scroll affordance and 44px chip targets.
+- Added route-aware skip links for Search/Browse and corrected item-detail contrast issues caught by axe.
 
 ### Tests
 
@@ -34,3 +35,4 @@
 - Added unit and Playwright coverage for trip creation, versioned storage, JSON export/import, and selected parks.
 - Added unit and Playwright coverage for home anchor focus movement and Back to top visibility.
 - Added unit and Playwright coverage for home hero badge placement and quick-filter chip responsiveness.
+- Added a CI axe-core gate for serious/critical accessibility violations across core public routes.

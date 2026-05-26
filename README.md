@@ -36,9 +36,11 @@ npm test
 npm run lint
 npm run build
 npm run test:e2e
+npm run test:a11y
 ```
 
 The Playwright suite starts a production preview server and uses mocked catalog responses where a test should not depend on live Supabase data.
+The accessibility suite runs axe-core against the key public routes and fails on serious or critical violations.
 
 ## Task 1 Notes
 
@@ -87,3 +89,7 @@ Home destination jump links focus the matching `#home-resort-*` heading after na
 ## Task 12 Notes
 
 The home catalog preview badge is constrained with mobile-friendly sizing, while common filter chips render in a horizontal scroll rail with a right-edge fade, chevron affordance, and 44px minimum touch targets.
+
+## Task 13 Notes
+
+Skip links are route-aware: Search exposes `Skip to search`, `Skip to results`, and `Skip to main content`, while Browse exposes filter and result targets before the main-content link. The `test:a11y` script runs axe-core against the home, Search, Browse, estimator, Meal Builder, Packing, Guide, and sample item-detail routes.
