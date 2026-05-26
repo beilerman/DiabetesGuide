@@ -59,3 +59,7 @@ Catalog counts now distinguish menu items, restaurants, and destinations in the 
 ## Task 5 Notes
 
 Hidden carb-estimator output now uses `HiddenDoseExplainer` on both `/insulin` and `/meal`. The explainer lists active safety triggers and links to `/data-sources#estimator-safety`, where the estimator guardrails are documented.
+
+## Task 6 Notes
+
+Item detail pages show one Sodium metric in the nutrition grid, display the catalog update date next to the grade badge, and expose a grade-specific explanation that links to `/data-sources#grade-rubric`.

@@ -36,6 +36,20 @@ export default function Methodology() {
         </p>
       </section>
 
+      <section id="grade-rubric" className="scroll-mt-24 rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
+        <h2 className="text-lg font-bold text-stone-900">Grade Rubric</h2>
+        <p className="mt-2 text-sm text-stone-600">
+          Item grades are a planning shorthand for diabetes-friendly choices. They weigh net carbs most heavily, then sugar ratio, protein, fiber, calories, and alcohol. The grade is not a medical recommendation.
+        </p>
+        <dl className="mt-4 grid gap-2 text-sm text-stone-700">
+          <GradeRow grade="A" label="Diabetes-friendly" />
+          <GradeRow grade="B" label="Good choice" />
+          <GradeRow grade="C" label="Plan your bolus" />
+          <GradeRow grade="D" label="Caution - high carb impact" />
+          <GradeRow grade="F" label="Consider alternatives" />
+        </dl>
+      </section>
+
       <section id="estimator-safety" className="scroll-mt-24 rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
         <h2 className="text-lg font-bold text-stone-900">Estimator Safety Methodology</h2>
         <div className="mt-3 space-y-2 text-sm text-stone-600">
@@ -72,6 +86,17 @@ function SourceBlock({ title, body }: { title: string; body: string }) {
     <div className="rounded-lg border border-stone-200 bg-stone-50 p-3">
       <h3 className="font-semibold text-stone-900">{title}</h3>
       <p className="mt-1 text-sm text-stone-600">{body}</p>
+    </div>
+  )
+}
+
+function GradeRow({ grade, label }: { grade: string; label: string }) {
+  return (
+    <div className="flex items-start gap-2">
+      <dt className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-stone-900 text-xs font-bold text-white">
+        {grade}
+      </dt>
+      <dd>{label}</dd>
     </div>
   )
 }

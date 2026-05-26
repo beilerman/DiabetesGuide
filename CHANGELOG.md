@@ -10,6 +10,7 @@
 - Fixed the search status so `Searching...` clears after results resolve and added an `aria-live` result-count announcement.
 - Clarified catalog counts as menu items, restaurants, and destinations, with an All Parks preview tooltip on Browse.
 - Added a shared hidden-dose explainer for the insulin and meal estimators, linked to estimator safety methodology.
+- Removed duplicate Sodium output from item detail pages and added grade/rubric context plus visible freshness.
 
 ### Tests
 
@@ -19,3 +20,4 @@
 - Added unit and Playwright coverage for search pending-state cleanup and inline filter placement.
 - Added Browse summary and Playwright coverage for catalog count terminology and preview-limit copy.
 - Added unit and Playwright coverage for hidden-dose explainer triggers and methodology links.
+- Added unit and Playwright coverage for item detail grade context, updated date, and concise Sodium rendering.

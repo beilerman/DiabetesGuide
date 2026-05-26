@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { useMenuItem } from '../lib/queries'
-import { getGradeForItem, GRADE_CONFIG } from '../lib/grade'
+import { getGradeForItem, GRADE_CONFIG, type Grade } from '../lib/grade'
 import { getDiabetesAnnotations } from '../lib/annotations'
 import { cleanDisplayText, getDisplayCategory, getMenuItemDisplayName, hasUsableNutrition, formatMaybeNumber } from '../lib/display'
 import { useMealCart } from '../hooks/useMealCart'
@@ -9,7 +9,7 @@ import { useCompare } from '../hooks/useCompare'
 import { GradeBadge } from '../components/menu/GradeBadge'
 import { AnnotationBadge } from '../components/menu/AnnotationBadge'
 import { NutritionBadge } from '../components/menu/NutritionBadge'
-import { sodiumColor, alcoholColor } from '../components/menu/nutrition-colors'
+import { alcoholColor } from '../components/menu/nutrition-colors'
 import { buildNutritionReportMailto, getNutritionTrust, type NutritionTrustSummary } from '../lib/nutrition-trust'
 
 const categoryLabels: Record<string, string> = {
@@ -93,6 +93,7 @@ export default function MenuItemDetail() {
   const favorite = isFavorite(item.id)
   const availabilityCount = item.availability_count ?? 1
   const availabilityRestaurants = item.availability_restaurants ?? []
+  const updatedHeaderLabel = trust.lastUpdatedLabel?.replace('Last updated ', 'Updated ') ?? null
 
   const addToMeal = () => {
     if (!nutrition) return
@@ -136,7 +137,14 @@ export default function MenuItemDetail() {
         <div className="p-5 border-b border-stone-100">
           <div className="flex items-start gap-4">
             {nutrition ? (
-              <GradeBadge grade={grade} size="lg" />
+              <div className="flex flex-col items-center gap-1">
+                <GradeBadge grade={grade} size="lg" />
+                {updatedHeaderLabel && (
+                  <span className="max-w-20 text-center text-[11px] font-semibold leading-tight text-stone-600">
+                    {updatedHeaderLabel}
+                  </span>
+                )}
+              </div>
             ) : (
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-stone-100 text-xs font-bold text-stone-500">
                 N/A
@@ -158,10 +166,13 @@ export default function MenuItemDetail() {
                   : item.restaurant?.name ?? 'Restaurant unavailable'}
                 {item.restaurant?.park?.name ? ` | ${item.restaurant.park.name}` : ''}
               </p>
-              {colors && (
-                <p className="mt-2 text-sm font-semibold" style={{ color: colors.bg }}>
-                  {GRADE_CONFIG[grade!].label}
-                </p>
+              {colors && grade && (
+                <div className="mt-2 flex flex-wrap items-center gap-3">
+                  <p className="text-sm font-semibold" style={{ color: colors.bg }}>
+                    {GRADE_CONFIG[grade].label}
+                  </p>
+                  <GradeContextPopover grade={grade} />
+                </div>
               )}
               <div className="mt-3">
                 <TrustPill trust={trust} />
@@ -222,6 +233,10 @@ export default function MenuItemDetail() {
             <h2 id="nutrition-heading" className="text-lg font-bold text-stone-900">Nutrition Details</h2>
             {nutrition ? (
               <>
+                <p className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-stone-600">
+                  <span aria-hidden="true" className="inline-block h-2 w-2 rounded-full bg-stone-500" />
+                  fewer is better - scale shows item vs. category median (0-5)
+                </p>
                 <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
                   <Metric label="Carbs" value={formatMaybeNumber(carbs, 'g')} emphasis />
                   <Metric label="Net Carbs" value={formatMaybeNumber(netCarbs, 'g')} />
@@ -234,12 +249,11 @@ export default function MenuItemDetail() {
                   <Metric label="Cholesterol" value={formatMaybeNumber(nutrition.cholesterol, 'mg')} />
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <NutritionBadge label="Sodium" value={sodium} unit="mg" colorFn={sodiumColor} />
-                  {alcoholGrams != null && alcoholGrams > 0 && (
+                {alcoholGrams != null && alcoholGrams > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
                     <NutritionBadge label="Alcohol" value={alcoholGrams} unit="g" colorFn={alcoholColor} />
-                  )}
-                </div>
+                  </div>
+                )}
 
                 {alcoholGrams != null && alcoholGrams > 0 && (
                   <p className="mt-2 text-xs text-purple-700">
@@ -331,6 +345,24 @@ function TrustPill({ trust }: { trust: NutritionTrustSummary }) {
       {trust.label}
       {trust.confidenceLabel ? ` - ${trust.confidenceLabel}` : ''}
     </span>
+  )
+}
+
+function GradeContextPopover({ grade }: { grade: Grade }) {
+  return (
+    <details className="group relative max-w-full text-sm">
+      <summary className="cursor-pointer font-semibold text-teal-700 underline underline-offset-2">
+        What does grade {grade} mean?
+      </summary>
+      <div className="mt-2 max-w-sm rounded-lg border border-stone-200 bg-stone-50 p-3 text-xs text-stone-700 shadow-sm">
+        <p>
+          Grade {grade} means {GRADE_CONFIG[grade].label.toLowerCase()}. Grades weigh net carbs, sugar ratio, protein, fiber, calories, and alcohol.
+        </p>
+        <Link to="/data-sources#grade-rubric" className="mt-2 inline-flex font-semibold text-teal-700 underline underline-offset-2">
+          View the grade rubric
+        </Link>
+      </div>
+    </details>
   )
 }
 
