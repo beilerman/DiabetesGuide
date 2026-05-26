@@ -75,3 +75,7 @@ The desktop header uses `ContrastToggle`, which persists high contrast through `
 ## Task 9 Notes
 
 The packing checklist stores checked items in `dg_checklist`, grouped by the active profile combination such as `t1`, `t1-child`, or `t1-pump-cgm`. The page shows per-section progress, a reset action for the current profile, and a print/export control backed by the print stylesheet.
+
+## Task 10 Notes
+
+Trip planning now stores versioned trip backups in `dg.trips.v1`, with an active trip plus a trips array. The `/plan` page creates named date-range trips, records selected parks, supports favorite and Meal Builder item assignment into trip days, and exposes JSON export/import for local backup.

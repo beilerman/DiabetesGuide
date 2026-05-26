@@ -14,6 +14,7 @@
 - Converted Search grade chips into URL-backed filter toggles with a separate grade-rubric link.
 - Added a reusable header contrast toggle with visible active-state text and stronger high-contrast palette overrides.
 - Added profile-scoped packing checklist persistence, section progress, reset confirmation, and print/export styling.
+- Reworked Trip Plan into named date-range trips with selected parks, Meal Builder/favorite assignment, and JSON backup under `dg.trips.v1`.
 
 ### Tests
 
@@ -28,3 +29,4 @@
 - Increased the Vitest timeout for route-heavy component tests so the full suite remains stable under parallel load.
 - Added unit and Playwright coverage for high-contrast header state, persistence, and Settings synchronization.
 - Added unit and Playwright coverage for packing checklist profile persistence, progress, reset, and print/export.
+- Added unit and Playwright coverage for trip creation, versioned storage, JSON export/import, and selected parks.
