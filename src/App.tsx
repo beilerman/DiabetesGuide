@@ -2,9 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
 
-// Eagerly load Home (first paint) — lazy-load everything else
-import Home from './pages/Home'
-
+const Home = lazy(() => import('./pages/Home'))
 const ParkDetail = lazy(() => import('./pages/ParkDetail'))
 const Search = lazy(() => import('./pages/Search'))
 const Browse = lazy(() => import('./pages/Browse'))

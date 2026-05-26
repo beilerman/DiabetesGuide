@@ -40,7 +40,7 @@ describe('buildHomeResortGroups', () => {
       'Walt Disney World',
       'Disneyland Resort',
       'Universal Orlando Resort',
-      'Other Destinations',
+      'Supplemental Dining',
     ])
 
     const wdw = groups[0]
@@ -60,8 +60,8 @@ describe('buildHomeResortGroups', () => {
     expect(universal.categories[0].parks.map(park => park.name)).toEqual(['Epic Universe Hotels'])
 
     const other = groups.at(-1)!
-    expect(other.name).toBe('Other Destinations')
-    expect(other.categories[0].label).toBe('Destinations')
+    expect(other.name).toBe('Supplemental Dining')
+    expect(other.categories[0].label).toBe('Additional Locations')
     expect(other.categories[0].itemCount).toBe(4)
   })
 

@@ -1,4 +1,5 @@
 import { useDeferredValue, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useMenuItems, useParks } from '../lib/queries'
 import { dedupeParksForDisplay } from '../lib/park-display'
 import { SearchResultRow } from '../components/search/SearchResultRow'
@@ -33,7 +34,8 @@ function saveRecentSearch(query: string) {
 }
 
 export default function Search() {
-  const [query, setQuery] = useState('')
+  const [searchParams] = useSearchParams()
+  const [query, setQuery] = useState(searchParams.get('q') ?? '')
   const [parkId, setParkId] = useState<string | undefined>(undefined)
   const [filters, setFilters] = useState<Pick<Filters, 'maxCarbs' | 'category' | 'gradeFilter' | 'allergenFree' | 'sort'>>({
     maxCarbs: null,

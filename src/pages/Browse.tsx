@@ -6,7 +6,8 @@ import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
-import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
+import { applyFilters, hasActiveFilters } from '../lib/filters'
+import { getInitialBrowseFilters } from '../lib/browse-url'
 import { dedupeParksForDisplay } from '../lib/park-display'
 import { groupMenuItemsByLocation, type ResortLocationGroup, type RestaurantLocationGroup } from '../lib/menu-location-groups'
 import {
@@ -62,8 +63,7 @@ function EmptyState({ hasFilters }: { hasFilters: boolean }) {
 
 export default function Browse() {
   const [searchParams] = useSearchParams()
-  const initialSort = (searchParams.get('sort') || 'name') as Filters['sort']
-  const [filters, setFilters] = useState<Filters>({ ...DEFAULT_FILTERS, sort: initialSort })
+  const [filters, setFilters] = useState<Filters>(() => getInitialBrowseFilters(searchParams))
   const [parkId, setParkId] = useState<string | undefined>(searchParams.get('park') || undefined)
   const [viewMode, setViewMode] = useState<BrowseViewMode>('location')
   const [expandedRestaurants, setExpandedRestaurants] = useState<Set<string>>(() => new Set())

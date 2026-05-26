@@ -44,11 +44,11 @@ type MutableResortGroup = Omit<HomeResortGroup, 'locationCount' | 'categories'> 
 }
 
 const OTHER_RESORT_ID = 'other'
-const OTHER_RESORT_NAME = 'Other Destinations'
-const OTHER_RESORT_LOCATION = 'Additional locations'
+const OTHER_RESORT_NAME = 'Supplemental Dining'
+const OTHER_RESORT_LOCATION = 'Additional theme-park dining records'
 const OTHER_RESORT_ICON = ''
 const OTHER_CATEGORY_ID = 'destinations'
-const OTHER_CATEGORY_LABEL = 'Destinations'
+const OTHER_CATEGORY_LABEL = 'Additional Locations'
 const OTHER_CATEGORY_ICON = ''
 
 function resortSortIndex(resort: ResortConfig | undefined): number {
