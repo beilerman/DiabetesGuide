@@ -55,3 +55,7 @@ The search page only shows the `Searching...` status during an initial pending c
 ## Task 4 Notes
 
 Catalog counts now distinguish menu items, restaurants, and destinations in the home hero. Browse explains the All Parks preview limit with a tooltip on `loaded preview items`, and visible resort/browse terminology uses `destinations` for parks, hotels, ships, and grouped properties.
+
+## Task 5 Notes
+
+Hidden carb-estimator output now uses `HiddenDoseExplainer` on both `/insulin` and `/meal`. The explainer lists active safety triggers and links to `/data-sources#estimator-safety`, where the estimator guardrails are documented.

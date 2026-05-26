@@ -36,6 +36,24 @@ export default function Methodology() {
         </p>
       </section>
 
+      <section id="estimator-safety" className="scroll-mt-24 rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
+        <h2 className="text-lg font-bold text-stone-900">Estimator Safety Methodology</h2>
+        <div className="mt-3 space-y-2 text-sm text-stone-600">
+          <p>
+            The carb and correction estimator hides dose output until required values are present and within conservative bounds for blood glucose, target glucose, insulin-to-carb ratio, correction factor, active insulin, and max bolus.
+          </p>
+          <p>
+            Blood glucose below 70 mg/dL blocks insulin estimates and surfaces low-glucose treatment education. Blood glucose below target suppresses correction insulin rather than applying a negative correction.
+          </p>
+          <p>
+            Insulin on board reduces correction insulin only. Activity adjustments reduce the carb bolus only. Totals above the configured max bolus are blocked instead of shown as a suggested dose.
+          </p>
+          <p>
+            These guardrails are educational safeguards, not a replacement for pump settings, clinician instructions, or emergency care plans.
+          </p>
+        </div>
+      </section>
+
       <section className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
         <h2 className="text-lg font-bold text-stone-900">Report Problems</h2>
         <p className="mt-2 text-sm text-stone-600">

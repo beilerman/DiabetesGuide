@@ -5,6 +5,7 @@ import { GradeBadge } from '../components/menu/GradeBadge'
 import { computeScore, computeGrade, GRADE_CONFIG } from '../lib/grade'
 import { INSULIN_LIMITS, calculateInsulinDose, validateInsulinInputs, type ActivityLevel } from '../lib/insulin'
 import { cleanDisplayText } from '../lib/display'
+import { HiddenDoseExplainer } from '../components/InsulinEstimator/HiddenDoseExplainer'
 import type { Grade } from '../lib/grade'
 
 const INSULIN_SETTINGS_KEY = 'dg_insulin_settings'
@@ -105,6 +106,11 @@ export default function Meal() {
     () => unavailableNutritionItems.length > 0 ? null : calculateInsulinDose(insulinInputs),
     [insulinInputs, unavailableNutritionItems.length],
   )
+  const doseHidden =
+    unavailableNutritionItems.length > 0 ||
+    !insulinValidation.isValid ||
+    insulinResult?.status === 'blocked' ||
+    (typeof effectiveCarbs === 'number' && effectiveCarbs <= 0)
 
   // Carb goal progress
   const carbPct = carbGoal > 0 ? Math.min(100, Math.round((totals.carbs / carbGoal) * 100)) : 0
@@ -493,7 +499,16 @@ export default function Meal() {
           </div>
         )}
 
-        {insulinResult && (
+        {doseHidden && (
+          <HiddenDoseExplainer
+            inputs={insulinInputs}
+            validation={insulinValidation}
+            result={insulinResult}
+            blockedByUnavailableNutrition={unavailableNutritionItems.length > 0}
+          />
+        )}
+
+        {insulinResult && !doseHidden && (
           <div
             className={`mt-4 rounded-lg border p-4 space-y-2 ${
               insulinResult.status === 'blocked'
