@@ -93,3 +93,7 @@ The home catalog preview badge is constrained with mobile-friendly sizing, while
 ## Task 13 Notes
 
 Skip links are route-aware: Search exposes `Skip to search`, `Skip to results`, and `Skip to main content`, while Browse exposes filter and result targets before the main-content link. The `test:a11y` script runs axe-core against the home, Search, Browse, estimator, Meal Builder, Packing, Guide, and sample item-detail routes.
+
+## Task 14 Notes
+
+Build metadata is injected through `vite.config.ts` as `__APP_BUILD_INFO__`, using the Vercel git SHA when present and falling back to the local git SHA. The About page exposes version, build date, git SHA, and catalog snapshot date; the footer repeats catalog freshness next to the app version. `/changelog` renders from `CHANGELOG.md` through Vite's raw markdown import.

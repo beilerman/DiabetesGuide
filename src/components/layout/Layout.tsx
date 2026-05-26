@@ -9,6 +9,7 @@ import { ComparisonTray } from '../compare/ComparisonTray'
 import { ComparisonModal } from '../compare/ComparisonModal'
 import { useCompare } from '../../hooks/useCompare'
 import { SkipLinks } from '../SkipLinks'
+import { buildInfo, formatBuildDate } from '../../lib/build-info'
 
 export function Layout() {
   const location = useLocation()
@@ -32,11 +33,15 @@ export function Layout() {
 
       <footer className="mx-auto max-w-7xl px-4 pb-28 pt-6 text-xs text-stone-500 md:pb-8">
         <div className="border-t border-stone-200 pt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p>DiabetesGuide v1.0 - educational nutrition planning for theme park visits.</p>
+          <p>
+            DiabetesGuide {buildInfo.version} - Catalog updated: {formatBuildDate(buildInfo.catalogSnapshotDate)} - educational nutrition planning for theme park visits.
+          </p>
           <p>
             <Link to="/about" className="font-medium text-stone-700 hover:text-teal-700">About</Link>
             <span className="mx-2">|</span>
             <Link to="/data-sources" className="font-medium text-stone-700 hover:text-teal-700">Data Sources</Link>
+            <span className="mx-2">|</span>
+            <Link to="/changelog" className="font-medium text-stone-700 hover:text-teal-700">Changelog</Link>
             <span className="mx-2">|</span>
             <Link to="/privacy" className="font-medium text-stone-700 hover:text-teal-700">Privacy</Link>
             <span className="mx-2">|</span>

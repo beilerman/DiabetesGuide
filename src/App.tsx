@@ -21,6 +21,7 @@ const Methodology = lazy(() => import('./pages/Methodology'))
 const Privacy = lazy(() => import('./pages/Privacy'))
 const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
+const Changelog = lazy(() => import('./pages/Changelog'))
 
 // Legacy pages
 const ResortDetail = lazy(() => import('./pages/ResortDetail'))
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/data-sources" element={<Methodology />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/changelog" element={<Changelog />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/tips" element={<Navigate to="/advice" replace />} />
           <Route path="/advice" element={<ParkAdvice />} />
