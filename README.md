@@ -43,3 +43,7 @@ The Playwright suite starts a production preview server and uses mocked catalog 
 ## Task 1 Notes
 
 The resort section routes, such as `/resort/wdw/theme-parks`, are client-rendered SPA routes. Venue card counts are loaded per card through TanStack Query, so cards must stay in a loading skeleton until both restaurant and menu item counts are resolved. Count failures render an inline recovery message instead of misleading zero-count cards.
+
+## Task 2 Notes
+
+Primary navigation metadata lives in `src/lib/nav.ts`. The desktop header and mobile bottom navigation both consume that shared source, while the bottom navigation remains mobile-only via the `md:hidden` breakpoint.

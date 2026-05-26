@@ -153,7 +153,7 @@ export default function Meal() {
               onClick={() => handleSwitchMeal(id)}
               className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 id === activeMealId
-                  ? 'bg-teal-600 text-white'
+                  ? 'bg-teal-700 text-white'
                   : 'bg-stone-200 text-stone-600 hover:bg-stone-300'
               }`}
             >
@@ -234,7 +234,7 @@ export default function Meal() {
       {/* Section 1: Item List */}
       <section aria-label="Meal items">
         {items.length === 0 ? (
-          <div className="rounded-xl border-2 border-dashed border-stone-300 p-8 text-center text-stone-400">
+          <div className="rounded-xl border-2 border-dashed border-stone-300 p-8 text-center text-stone-600">
             <svg className="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>

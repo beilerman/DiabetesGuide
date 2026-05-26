@@ -25,4 +25,19 @@ describe('Header', () => {
 
     expect(screen.getByRole('button', { name: /disable high contrast/i })).toHaveAttribute('aria-pressed', 'true')
   })
+
+  it('renders shared desktop navigation labels with an active page state', () => {
+    render(
+      <MemoryRouter initialEntries={['/meal']}>
+        <Header />
+      </MemoryRouter>,
+    )
+
+    expect(screen.getByRole('link', { name: /diabetesguide home/i })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: /^home$/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /^meal builder$/i })).toHaveAttribute('aria-current', 'page')
+    expect(screen.getByRole('link', { name: /^favorites$/i })).toHaveAttribute('href', '/plan')
+    expect(screen.getByRole('link', { name: /^menu$/i })).toHaveAttribute('href', '/more')
+    expect(screen.queryByRole('link', { name: /^packing list$/i })).not.toBeInTheDocument()
+  })
 })

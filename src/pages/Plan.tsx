@@ -42,7 +42,7 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
     <button
       onClick={onClick}
       className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-        active ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500 hover:text-stone-700'
+        active ? 'bg-white shadow-sm text-stone-900' : 'text-stone-600 hover:text-stone-800'
       }`}
     >
       {children}
@@ -168,7 +168,7 @@ function FavoritesTab() {
       ) : (
         <div className="text-center py-16">
           <div className="text-5xl mb-4">&#x2764;&#xFE0F;</div>
-          <h3 className="text-xl font-semibold text-stone-800 mb-2">No favorites yet</h3>
+          <h2 className="text-xl font-semibold text-stone-800 mb-2">No favorites yet</h2>
           <p className="text-stone-600">Tap the heart on any menu item to save it here.</p>
         </div>
       )}

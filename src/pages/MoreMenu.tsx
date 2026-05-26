@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom'
 
 const menuItems = [
   {
+    to: '/insulin',
+    icon: 'Rx',
+    label: 'Carb Estimator',
+    description: 'Estimate carbs and corrections with safety guardrails',
+  },
+  {
     to: '/packing',
     icon: '🎒',
     label: 'Packing List',

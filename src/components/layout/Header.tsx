@@ -1,18 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { usePreferences } from '../../hooks/usePreferences'
+import { getTopNavItems, isNavItemActive } from '../../lib/nav'
 
 export function Header() {
+  const location = useLocation()
   const { highContrast, toggleContrast } = usePreferences()
 
-  const navLinks = (
-    <>
-      <Link to="/search" className="hover:text-teal-600 transition-colors">Search</Link>
-      <Link to="/browse" className="hover:text-teal-600 transition-colors">Browse</Link>
-      <Link to="/insulin" className="hover:text-teal-600 transition-colors">Carb Estimator</Link>
-      <Link to="/packing" className="hover:text-teal-600 transition-colors">Packing List</Link>
-      <Link to="/guide" className="hover:text-teal-600 transition-colors">Guide</Link>
-    </>
-  )
+  const navLinks = getTopNavItems()
 
   return (
     <header className="bg-white shadow-sm border-b border-stone-200 sticky top-0 z-50">
@@ -28,7 +22,19 @@ export function Header() {
 
         {/* Desktop nav + contrast toggle */}
         <div className="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600">
-          {navLinks}
+          {navLinks.map(item => {
+            const active = isNavItemActive(item, location.pathname)
+            return (
+              <Link
+                key={item.id}
+                to={item.href}
+                aria-current={active ? 'page' : undefined}
+                className={`transition-colors hover:text-teal-600 ${active ? 'font-semibold text-teal-700 underline underline-offset-4' : ''}`}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
           <button
             onClick={toggleContrast}
             aria-label={highContrast ? 'Disable high contrast' : 'Enable high contrast'}
