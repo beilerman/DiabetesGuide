@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import {
   INSULIN_LIMITS,
   calculateInsulinDose,
+  getHypoglycemiaTreatmentPlan,
   validateInsulinInputs,
   type ActivityLevel,
 } from '../lib/insulin'
@@ -37,6 +38,7 @@ export default function InsulinHelper() {
   }), [bg, target, carbs, icr, cf, activeInsulin, maxBolus, activity])
   const validation = useMemo(() => validateInsulinInputs(inputs), [inputs])
   const result = useMemo(() => calculateInsulinDose(inputs), [inputs])
+  const hypoPlan = useMemo(() => getHypoglycemiaTreatmentPlan(bg), [bg])
 
   return (
     <div className="max-w-lg mx-auto">
@@ -146,6 +148,30 @@ export default function InsulinHelper() {
             Treat the low first: take 15g fast-acting carbohydrate, recheck in 15 minutes, and follow your care plan.
             Seek urgent help for severe symptoms or if you cannot safely treat the low.
           </p>
+          {hypoPlan && (
+            <div className="mt-3 rounded-lg border border-red-200 bg-white/70 p-3">
+              <h3 className="text-sm font-semibold text-red-950">{hypoPlan.headline}</h3>
+              <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
+                <div className="rounded-md bg-red-100 px-3 py-2">
+                  <span className="block text-xs font-medium uppercase tracking-wide text-red-700">Fast carbs</span>
+                  <span className="text-lg font-bold text-red-950">{hypoPlan.fastCarbsGrams}g</span>
+                </div>
+                <div className="rounded-md bg-red-100 px-3 py-2">
+                  <span className="block text-xs font-medium uppercase tracking-wide text-red-700">Recheck</span>
+                  <span className="text-lg font-bold text-red-950">{hypoPlan.recheckMinutes} min</span>
+                </div>
+              </div>
+              <p className="mt-2 text-sm text-red-900">{hypoPlan.guidance}</p>
+              {hypoPlan.urgent && (
+                <p className="mt-2 text-sm font-semibold text-red-950">
+                  If symptoms are severe, you cannot swallow safely, or glucose is not rising, use your emergency plan and seek urgent help.
+                </p>
+              )}
+              <p className="mt-2 text-xs text-red-700">
+                General 15-15 education based on CDC and NIDDK low blood glucose guidance; your care plan takes priority.
+              </p>
+            </div>
+          )}
           <ul className="mt-2 list-disc pl-5 text-sm text-red-800">
             {validation.messages.map(message => (
               <li key={message}>{message}</li>

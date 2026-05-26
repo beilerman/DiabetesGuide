@@ -7,8 +7,10 @@ import {
   fetchMenuItemsByIdsOffline,
   searchMenuItemsOffline,
   fetchAllRestaurantsOffline,
+  fetchMenuItemCountsOffline,
 } from './offline-queries'
 import { readRestaurantsByPark, readItemsByPark, readAllItems } from './offline-db'
+import { readMenuItemCountsCache } from './menu-count-cache'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
 
 export function useParks() {
@@ -137,41 +139,8 @@ export function useAllRestaurants() {
 export function useMenuItemCounts() {
   return useQuery({
     queryKey: ['menuItemCounts'],
-    queryFn: async (): Promise<Map<string, number>> => {
-      try {
-        const { data: restaurants, error: restErr } = await supabase
-          .from('restaurants')
-          .select('id, park_id')
-        if (restErr) throw restErr
-
-        const parkRestaurants = new Map<string, string[]>()
-        for (const r of restaurants || []) {
-          const list = parkRestaurants.get(r.park_id) || []
-          list.push(r.id)
-          parkRestaurants.set(r.park_id, list)
-        }
-
-        const counts = new Map<string, number>()
-        for (const [parkId, rIds] of parkRestaurants) {
-          const { count, error } = await supabase
-            .from('menu_items')
-            .select('*', { count: 'exact', head: true })
-            .in('restaurant_id', rIds)
-          if (error) throw error
-          counts.set(parkId, count ?? 0)
-        }
-        return counts
-      } catch {
-        // Offline fallback: count from cached items
-        const allItems = await readAllItems()
-        const counts = new Map<string, number>()
-        for (const item of allItems) {
-          const parkId = item.restaurant?.park?.id
-          if (parkId) counts.set(parkId, (counts.get(parkId) ?? 0) + 1)
-        }
-        return counts
-      }
-    },
+    queryFn: (): Promise<Map<string, number>> => fetchMenuItemCountsOffline(),
+    initialData: () => readMenuItemCountsCache(),
   })
 }
 

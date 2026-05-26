@@ -33,8 +33,18 @@ export interface InsulinDoseResult {
   messages: string[]
 }
 
+export interface HypoglycemiaTreatmentPlan {
+  severity: 'low' | 'clinically-significant-low'
+  fastCarbsGrams: number
+  recheckMinutes: number
+  headline: string
+  guidance: string
+  urgent: boolean
+}
+
 export const INSULIN_LIMITS = {
   hypoglycemiaThreshold: 70,
+  clinicallySignificantHypoglycemiaThreshold: 54,
   carbs: { min: 0, max: 250 },
   bloodGlucose: { min: 40, max: 600 },
   targetGlucose: { min: 70, max: 180 },
@@ -189,5 +199,28 @@ export function calculateInsulinDose(inputs: InsulinInputs): InsulinDoseResult |
     suggested,
     status,
     messages,
+  }
+}
+
+export function getHypoglycemiaTreatmentPlan(
+  bloodGlucose: number | '',
+): HypoglycemiaTreatmentPlan | null {
+  if (
+    typeof bloodGlucose !== 'number' ||
+    !Number.isFinite(bloodGlucose) ||
+    bloodGlucose >= INSULIN_LIMITS.hypoglycemiaThreshold
+  ) {
+    return null
+  }
+
+  const urgent = bloodGlucose < INSULIN_LIMITS.clinicallySignificantHypoglycemiaThreshold
+
+  return {
+    severity: urgent ? 'clinically-significant-low' : 'low',
+    fastCarbsGrams: 15,
+    recheckMinutes: 15,
+    headline: urgent ? 'Clinically significant low - treat now' : 'Treat low glucose before insulin',
+    guidance: 'Take 15g fast-acting carbohydrate, recheck in 15 minutes, and repeat if still below 70 mg/dL.',
+    urgent,
   }
 }

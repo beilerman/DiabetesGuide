@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Outlet, useLocation, Link } from 'react-router-dom'
 import { Header } from './Header'
 import { OfflineBanner } from './OfflineBanner'
+import { PageMeta } from './PageMeta'
 import { useMealCart } from '../../hooks/useMealCart'
 import { ComparisonTray } from '../compare/ComparisonTray'
 import { ComparisonModal } from '../compare/ComparisonModal'
@@ -31,6 +32,7 @@ export function Layout() {
 
   return (
     <div className="min-h-screen bg-stone-50">
+      <PageMeta />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-teal-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium"

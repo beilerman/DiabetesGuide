@@ -11,6 +11,8 @@ import {
   setLastSync,
 } from './offline-db'
 import { dedupeMenuItems } from './menu-item-dedupe'
+import { writeMenuItemCountsCache, readMenuItemCountsCache } from './menu-count-cache'
+import { countMenuItemsByPark, type RestaurantCountSource, type MenuItemCountSource } from './menu-counts'
 import { getMenuItemDisplayName, isLikelyMenuSectionHeader } from './display'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
 
@@ -27,6 +29,11 @@ type MenuItemsBatchFetcher = (args: {
   to: number
   restaurantIds?: string[]
 }) => Promise<MenuItemWithNutrition[]>
+
+type MenuItemCountBatchFetcher = (args: {
+  from: number
+  to: number
+}) => Promise<MenuItemCountSource[]>
 
 export interface FetchMenuItemsOptions {
   limit?: number
@@ -74,6 +81,38 @@ async function fetchAllMenuItemsOnline(
   }
 
   return Number.isFinite(cap) ? allItems.slice(0, cap) : allItems
+}
+
+async function fetchMenuItemCountPage({ from, to }: {
+  from: number
+  to: number
+}): Promise<MenuItemCountSource[]> {
+  const { data, error } = await supabase
+    .from('menu_items')
+    .select('restaurant_id')
+    .order('restaurant_id')
+    .range(from, to)
+
+  if (error) throw error
+  return (data ?? []) as MenuItemCountSource[]
+}
+
+async function fetchAllMenuItemCountRowsOnline(
+  fetchPage: MenuItemCountBatchFetcher = fetchMenuItemCountPage,
+): Promise<MenuItemCountSource[]> {
+  const batchSize = 1000
+  let from = 0
+  const rows: MenuItemCountSource[] = []
+
+  while (true) {
+    const batch = await fetchPage({ from, to: from + batchSize - 1 })
+    if (batch.length === 0) break
+    rows.push(...batch)
+    if (batch.length < batchSize) break
+    from += batchSize
+  }
+
+  return rows
 }
 
 function escapeSearch(q: string): string {
@@ -134,6 +173,42 @@ export async function fetchAllRestaurantsOffline(): Promise<Restaurant[]> {
     const cached = await readRestaurants()
     if (cached.length > 0) return cached
     throw new Error('No network and no cached restaurant data')
+  }
+}
+
+/** Fetch all park item counts with offline/cached fallback */
+export async function fetchMenuItemCountsOffline(options?: {
+  fetchCountPage?: MenuItemCountBatchFetcher
+}): Promise<Map<string, number>> {
+  try {
+    const { data: restaurants, error: restErr } = await supabase
+      .from('restaurants')
+      .select('id, park_id')
+    if (restErr) throw restErr
+
+    const itemRows = await fetchAllMenuItemCountRowsOnline(options?.fetchCountPage)
+    const counts = countMenuItemsByPark(
+      (restaurants ?? []) as RestaurantCountSource[],
+      itemRows,
+    )
+    writeMenuItemCountsCache(counts)
+    return counts
+  } catch {
+    const cachedCounts = readMenuItemCountsCache()
+    if (cachedCounts) return cachedCounts
+
+    const allItems = await readAllItems()
+    const restaurantMap = new Map<string, RestaurantCountSource>()
+    for (const item of allItems) {
+      const restaurant = item.restaurant
+      if (!restaurant) continue
+      restaurantMap.set(restaurant.id, {
+        id: restaurant.id,
+        park_id: restaurant.park_id ?? restaurant.park?.id ?? null,
+      })
+    }
+
+    return countMenuItemsByPark([...restaurantMap.values()], allItems)
   }
 }
 

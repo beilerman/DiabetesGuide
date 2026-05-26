@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { calculateInsulinDose, validateInsulinInputs } from '../insulin'
+import { calculateInsulinDose, getHypoglycemiaTreatmentPlan, validateInsulinInputs } from '../insulin'
 
 describe('validateInsulinInputs', () => {
   it('requires all clinically relevant values before showing a dose', () => {
@@ -189,6 +189,33 @@ describe('calculateInsulinDose', () => {
     expect(aboveAbsoluteCap).toMatchObject({
       suggested: null,
       status: 'blocked',
+    })
+  })
+})
+
+describe('getHypoglycemiaTreatmentPlan', () => {
+  it('returns no plan when glucose is not low or is missing', () => {
+    expect(getHypoglycemiaTreatmentPlan('')).toBeNull()
+    expect(getHypoglycemiaTreatmentPlan(90)).toBeNull()
+  })
+
+  it('recommends the 15-15 pattern for mild lows', () => {
+    expect(getHypoglycemiaTreatmentPlan(65)).toEqual({
+      severity: 'low',
+      fastCarbsGrams: 15,
+      recheckMinutes: 15,
+      headline: 'Treat low glucose before insulin',
+      guidance: 'Take 15g fast-acting carbohydrate, recheck in 15 minutes, and repeat if still below 70 mg/dL.',
+      urgent: false,
+    })
+  })
+
+  it('escalates guidance for clinically significant lows', () => {
+    expect(getHypoglycemiaTreatmentPlan(53)).toMatchObject({
+      severity: 'clinically-significant-low',
+      fastCarbsGrams: 15,
+      recheckMinutes: 15,
+      urgent: true,
     })
   })
 })
