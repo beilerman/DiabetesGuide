@@ -2,7 +2,7 @@
 import { useParams } from 'react-router-dom'
 import { useParks, useRestaurants, useMenuItemCount } from '../lib/queries'
 import { Breadcrumb } from '../components/ui/Breadcrumb'
-import { VenueCard } from '../components/resort/VenueCard'
+import { VenueCard, VenueCardCountsError, VenueCardSkeleton } from '../components/resort/VenueCard'
 import { getResortById, getParksForCategory } from '../lib/resort-config'
 import type { ResortTheme } from '../lib/resort-config'
 
@@ -79,6 +79,7 @@ export default function VenueList() {
       {/* Venue cards */}
       {!isLoading && (
         <div className="space-y-3">
+          <h2 className="sr-only">Destinations</h2>
           {categoryParks.map(park => (
             <VenueCardWithData
               key={park.id}
@@ -110,11 +111,25 @@ function VenueCardWithData({ parkId, parkName, resortId, categoryId, theme }: {
   categoryId: string
   theme: ResortTheme
 }) {
-  const { data: restaurants } = useRestaurants(parkId)
-  const { data: itemCount } = useMenuItemCount(parkId)
+  const restaurantsQuery = useRestaurants(parkId)
+  const itemCountQuery = useMenuItemCount(parkId)
+
+  const countsAreLoading =
+    restaurantsQuery.isLoading ||
+    itemCountQuery.isLoading ||
+    restaurantsQuery.data == null ||
+    itemCountQuery.data == null
+
+  if (restaurantsQuery.isError || itemCountQuery.isError) {
+    return <VenueCardCountsError parkName={parkName} theme={theme} />
+  }
+
+  if (countsAreLoading) {
+    return <VenueCardSkeleton parkName={parkName} theme={theme} />
+  }
 
   // Extract unique lands from restaurants
-  const lands = [...new Set((restaurants ?? []).map(r => r.land).filter(Boolean) as string[])]
+  const lands = [...new Set(restaurantsQuery.data.map(r => r.land).filter(Boolean) as string[])]
 
   return (
     <VenueCard
@@ -124,8 +139,8 @@ function VenueCardWithData({ parkId, parkName, resortId, categoryId, theme }: {
       categoryId={categoryId}
       theme={theme}
       lands={lands}
-      restaurantCount={restaurants?.length ?? 0}
-      itemCount={itemCount ?? 0}
+      restaurantCount={restaurantsQuery.data.length}
+      itemCount={itemCountQuery.data}
     />
   )
 }

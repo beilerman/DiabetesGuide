@@ -18,7 +18,7 @@ export function Header() {
     <header className="bg-white shadow-sm border-b border-stone-200 sticky top-0 z-50">
       <nav aria-label="Top navigation" className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold text-teal-600 hover:text-teal-700 transition-colors">
+        <Link to="/" aria-label="DiabetesGuide home" className="flex items-center gap-2 text-xl font-bold text-teal-600 hover:text-teal-700 transition-colors">
           <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
             <path d="M12 8v8m-4-4h8" strokeLinecap="round"/>

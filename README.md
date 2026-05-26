@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# DiabetesGuide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+DiabetesGuide is a mobile-first theme-park nutrition guide for people planning meals with diabetes. It combines park, restaurant, and menu-item nutrition data with local favorites, trip planning, and an educational carb and correction estimator.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19, TypeScript, Vite, React Router
+- TanStack Query for catalog fetching and cache state
+- Supabase Postgres as the read-only catalog source
+- Tailwind CSS v4 for the interface
+- Vitest and Testing Library for unit and component tests
+- Playwright for route-level browser checks
 
-## React Compiler
+## Local Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Create a local environment file with the public Supabase values:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then run:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
+
+## Verification
+
+Use the focused commands while working, then run the full set before opening a PR:
+
+```bash
+npm test
+npm run lint
+npm run build
+npm run test:e2e
+```
+
+The Playwright suite starts a production preview server and uses mocked catalog responses where a test should not depend on live Supabase data.
+
+## Task 1 Notes
+
+The resort section routes, such as `/resort/wdw/theme-parks`, are client-rendered SPA routes. Venue card counts are loaded per card through TanStack Query, so cards must stay in a loading skeleton until both restaurant and menu item counts are resolved. Count failures render an inline recovery message instead of misleading zero-count cards.
