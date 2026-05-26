@@ -11,6 +11,7 @@
 - Clarified catalog counts as menu items, restaurants, and destinations, with an All Parks preview tooltip on Browse.
 - Added a shared hidden-dose explainer for the insulin and meal estimators, linked to estimator safety methodology.
 - Removed duplicate Sodium output from item detail pages and added grade/rubric context plus visible freshness.
+- Converted Search grade chips into URL-backed filter toggles with a separate grade-rubric link.
 
 ### Tests
 
@@ -21,3 +22,5 @@
 - Added Browse summary and Playwright coverage for catalog count terminology and preview-limit copy.
 - Added unit and Playwright coverage for hidden-dose explainer triggers and methodology links.
 - Added unit and Playwright coverage for item detail grade context, updated date, and concise Sodium rendering.
+- Added unit and Playwright coverage for Search grade querystring hydration and updates.
+- Increased the Vitest timeout for route-heavy component tests so the full suite remains stable under parallel load.

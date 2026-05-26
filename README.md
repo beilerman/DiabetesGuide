@@ -63,3 +63,7 @@ Hidden carb-estimator output now uses `HiddenDoseExplainer` on both `/insulin` a
 ## Task 6 Notes
 
 Item detail pages show one Sodium metric in the nutrition grid, display the catalog update date next to the grade badge, and expose a grade-specific explanation that links to `/data-sources#grade-rubric`.
+
+## Task 7 Notes
+
+Search grade chips are multi-select filter toggles backed by the `?grade=` query string. The grade explanation is a separate link to `/data-sources#grade-rubric` so the chips are filters, not decoration.

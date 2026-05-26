@@ -3,7 +3,7 @@ import { expect, test, type Page, type Route } from '@playwright/test'
 test('search pending label clears after results resolve and filters stay inline', async ({ page }) => {
   await mockSearchCatalogApi(page, { delayMenuItemsMs: 500 })
 
-  await page.goto('/search?q=chicken')
+  await page.goto('/search?q=chicken&grade=B')
 
   await expect(page.getByRole('status')).toContainText('Searching')
   const count = page.getByText(/showing 1 of 1 matching result/i)
@@ -12,6 +12,14 @@ test('search pending label clears after results resolve and filters stay inline'
   await expect(page.getByText(/searching/i)).toHaveCount(0)
   await expect(page.getByRole('region', { name: /search filters/i })).toBeVisible()
   await expect(page.locator('button.fixed, button[class*="fixed"]').filter({ hasText: /filter/i })).toHaveCount(0)
+
+  const gradeB = page.getByRole('button', { name: /B - Good choice/i })
+  await expect(gradeB).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.getByRole('link', { name: /what do grades mean/i })).toHaveAttribute('href', '/data-sources#grade-rubric')
+
+  await gradeB.click()
+  await expect(gradeB).toHaveAttribute('aria-pressed', 'false')
+  await expect.poll(() => new URL(page.url()).searchParams.get('grade')).toBeNull()
 })
 
 async function mockSearchCatalogApi(page: Page, options?: { delayMenuItemsMs?: number }) {
