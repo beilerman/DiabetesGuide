@@ -23,6 +23,7 @@ type IconName =
   | 'ship'
   | 'sparkles'
   | 'waves'
+  | 'chevron-right'
 
 const ICON_PATHS: Record<IconName, string[]> = {
   castle: ['M5 21V9l3 2 4-5 4 5 3-2v12', 'M9 21v-5a3 3 0 016 0v5', 'M4 9V5m16 4V5M10 8V4m4 4V4'],
@@ -36,6 +37,7 @@ const ICON_PATHS: Record<IconName, string[]> = {
   ship: ['M4 15l2-7h12l2 7', 'M3 16c2 3 4 3 6 1 2 2 4 2 6 0 2 2 4 2 6-1M9 8V4h6v4'],
   sparkles: ['M12 3l1.4 4.2L18 9l-4.6 1.8L12 15l-1.4-4.2L6 9l4.6-1.8L12 3z', 'M5 14l.8 2.2L8 17l-2.2.8L5 20l-.8-2.2L2 17l2.2-.8L5 14zM18 14l.8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8L18 14z'],
   waves: ['M3 16c2 2 4 2 6 0s4-2 6 0 4 2 6 0M3 11c2 2 4 2 6 0s4-2 6 0 4 2 6 0'],
+  'chevron-right': ['M9 18l6-6-6-6'],
 }
 
 const RESORT_ICONS: Record<string, IconName> = {
@@ -147,7 +149,7 @@ export default function Home() {
             </div>
           </div>
           {countsReady && totalRestaurantCount != null && (
-            <div className="rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-600">
+            <div className="w-fit rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-600 sm:ml-auto">
               Catalog preview: {totalItemCount.toLocaleString()} menu items &middot; {totalRestaurantCount.toLocaleString()} restaurants &middot; {totalDestinationCount} destinations
             </div>
           )}
@@ -180,23 +182,36 @@ export default function Home() {
           </form>
         </div>
 
-        <div className="flex flex-wrap gap-2" aria-label="Common browse filters">
-          {PRESET_LINKS.map(link => (
-            <Link
-              key={link.label}
-              to={link.href}
-              className="group rounded-full border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-stone-700 transition-colors hover:border-teal-400 hover:text-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-              title={link.detail}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            to="/insulin"
-            className="rounded-full border border-amber-300 bg-amber-50 px-3 py-2 text-sm font-semibold text-amber-900 transition-colors hover:border-amber-400 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+        <div className="relative" aria-label="Common browse filters">
+          <div
+            data-testid="home-filter-chip-rail"
+            className="scrollbar-hide flex gap-2 overflow-x-auto pb-1 pr-10"
+            style={{ maskImage: 'linear-gradient(to right, #000 calc(100% - 2.5rem), transparent)' }}
           >
-            Carb &amp; correction estimator
-          </Link>
+            {PRESET_LINKS.map(link => (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="group inline-flex min-h-11 shrink-0 items-center rounded-full border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-stone-700 transition-colors hover:border-teal-400 hover:text-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+                title={link.detail}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              to="/insulin"
+              className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-amber-300 bg-amber-50 px-3 py-2 text-sm font-semibold text-amber-900 transition-colors hover:border-amber-400 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+            >
+              Carb &amp; correction estimator
+            </Link>
+          </div>
+          <div
+            data-testid="home-filter-chip-chevron"
+            className="pointer-events-none absolute inset-y-0 right-0 flex w-10 items-center justify-end bg-gradient-to-l from-stone-50 via-stone-50/95 to-transparent pr-1 text-stone-500"
+            aria-hidden="true"
+          >
+            <Icon name="chevron-right" className="h-5 w-5" />
+          </div>
         </div>
 
         <div className="flex flex-col gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-950 sm:flex-row sm:items-center sm:justify-between">

@@ -83,3 +83,7 @@ Trip planning now stores versioned trip backups in `dg.trips.v1`, with an active
 ## Task 11 Notes
 
 Home destination jump links focus the matching `#home-resort-*` heading after navigation. Each heading is programmatically focusable with a 6rem scroll margin, and a Back to top button appears after scrolling past 600px.
+
+## Task 12 Notes
+
+The home catalog preview badge is constrained with mobile-friendly sizing, while common filter chips render in a horizontal scroll rail with a right-edge fade, chevron affordance, and 44px minimum touch targets.

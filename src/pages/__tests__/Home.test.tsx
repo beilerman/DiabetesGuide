@@ -149,4 +149,46 @@ describe('Home', () => {
 
     expect(screen.getByRole('button', { name: /back to top/i })).toBeInTheDocument()
   })
+
+  it('keeps the catalog badge mobile-friendly and exposes a scrollable quick-filter chip rail', () => {
+    vi.mocked(useParks).mockReturnValue({
+      data: [
+        makePark('magic-kingdom', 'Magic Kingdom Park'),
+        makePark('disneyland', 'Disneyland Park'),
+      ],
+      isLoading: false,
+      error: null,
+    } as ReturnType<typeof useParks>)
+    vi.mocked(useMenuItemCounts).mockReturnValue({
+      data: new Map([
+        ['magic-kingdom', 9510],
+        ['disneyland', 231],
+      ]),
+    } as ReturnType<typeof useMenuItemCounts>)
+    vi.mocked(useTotalRestaurantCount).mockReturnValue({
+      data: 680,
+    } as ReturnType<typeof useTotalRestaurantCount>)
+    vi.mocked(useFavorites).mockReturnValue({
+      favorites: new Set(),
+      toggle: vi.fn(),
+      isFavorite: vi.fn(),
+    } as ReturnType<typeof useFavorites>)
+
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    )
+
+    expect(screen.getByText(/catalog preview:/i)).toHaveClass('w-fit', 'sm:ml-auto')
+
+    const chipRail = screen.getByTestId('home-filter-chip-rail')
+    expect(chipRail).toHaveClass('overflow-x-auto', 'pr-10')
+    expect(chipRail).toHaveStyle({ maskImage: 'linear-gradient(to right, #000 calc(100% - 2.5rem), transparent)' })
+    expect(screen.getByTestId('home-filter-chip-chevron')).toHaveAttribute('aria-hidden', 'true')
+
+    for (const chip of within(chipRail).getAllByRole('link')) {
+      expect(chip).toHaveClass('min-h-11')
+    }
+  })
 })
