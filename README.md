@@ -71,3 +71,7 @@ Search grade chips are multi-select filter toggles backed by the `?grade=` query
 ## Task 8 Notes
 
 The desktop header uses `ContrastToggle`, which persists high contrast through `dg_preferences`, exposes `aria-pressed`, and shows `Contrast: on` while active. Settings uses the same preference hook, so both controls stay synchronized.
+
+## Task 9 Notes
+
+The packing checklist stores checked items in `dg_checklist`, grouped by the active profile combination such as `t1`, `t1-child`, or `t1-pump-cgm`. The page shows per-section progress, a reset action for the current profile, and a print/export control backed by the print stylesheet.

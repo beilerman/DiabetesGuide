@@ -245,3 +245,26 @@ input[type="range"]::-moz-range-track {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+@media print {
+  .print-hidden,
+  header,
+  nav[aria-label="Top navigation"],
+  nav[aria-label="Bottom navigation"],
+  [data-print-hidden="true"] {
+    display: none !important;
+  }
+
+  .bottom-nav-padding {
+    padding-bottom: 0 !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+}
