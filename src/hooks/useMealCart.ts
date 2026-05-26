@@ -45,6 +45,12 @@ function sanitizeMealItem(raw: unknown): MealItem | null {
   const fat = safeNumber(item.fat)
   const nutritionConfidence = optionalNumber(item.nutritionConfidence)
   const nutritionSource = safeNutritionSource(item.nutritionSource)
+  const likelyLegacyUnavailable =
+    item.nutritionAvailable == null &&
+    nutritionConfidence == null &&
+    nutritionSource == null &&
+    carbs === 0 &&
+    calories === 0
   return {
     id: item.id,
     name: item.name,
@@ -60,6 +66,9 @@ function sanitizeMealItem(raw: unknown): MealItem | null {
     nutritionConfidence,
     nutritionSource,
     nutritionSourceDetail: typeof item.nutritionSourceDetail === 'string' ? item.nutritionSourceDetail : null,
+    nutritionAvailable: typeof item.nutritionAvailable === 'boolean'
+      ? item.nutritionAvailable
+      : !likelyLegacyUnavailable,
   }
 }
 

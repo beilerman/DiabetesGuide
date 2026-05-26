@@ -73,6 +73,7 @@ export default function Meal() {
   const effectiveCarbs = activeCarbOverride ?? totals.carbs
   const netCarbs = Math.max(0, totals.carbs - totals.fiber)
   const lowConfidenceItems = items.filter(item => (item.nutritionConfidence ?? 100) < 70)
+  const unavailableNutritionItems = items.filter(item => item.nutritionAvailable === false)
 
   // Meal composite grade
   const mealGradeResult = useMemo(() => {
@@ -100,7 +101,10 @@ export default function Meal() {
     activity,
   }), [effectiveCarbs, bg, insulinSettings, activity])
   const insulinValidation = useMemo(() => validateInsulinInputs(insulinInputs), [insulinInputs])
-  const insulinResult = useMemo(() => calculateInsulinDose(insulinInputs), [insulinInputs])
+  const insulinResult = useMemo(
+    () => unavailableNutritionItems.length > 0 ? null : calculateInsulinDose(insulinInputs),
+    [insulinInputs, unavailableNutritionItems.length],
+  )
 
   // Carb goal progress
   const carbPct = carbGoal > 0 ? Math.min(100, Math.round((totals.carbs / carbGoal) * 100)) : 0
@@ -290,6 +294,17 @@ export default function Meal() {
         </div>
       )}
 
+      {unavailableNutritionItems.length > 0 && (
+        <div className="rounded-xl border border-red-300 bg-red-50 p-3">
+          <p className="text-sm font-semibold text-red-900">
+            This meal includes {unavailableNutritionItems.length} item{unavailableNutritionItems.length === 1 ? '' : 's'} without usable nutrition.
+          </p>
+          <p className="mt-1 text-xs text-red-800">
+            Meal totals may be incomplete, so this meal is blocked from the carb estimator until those items are removed or nutrition is verified.
+          </p>
+        </div>
+      )}
+
       {/* Section 2: Meal Totals */}
       {items.length > 0 && (
         <section className="rounded-xl bg-white p-4 shadow-sm border border-stone-100" aria-label="Meal totals">
@@ -466,6 +481,15 @@ export default function Meal() {
                 <li key={message}>{message}</li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {unavailableNutritionItems.length > 0 && (
+          <div className="mt-4 rounded-lg border border-red-300 bg-red-50 p-3" role="alert">
+            <p className="text-sm font-semibold text-red-900">Meal estimator blocked.</p>
+            <p className="mt-1 text-xs text-red-800">
+              Remove no-nutrition items before using this meal total for an insulin estimate.
+            </p>
           </div>
         )}
 

@@ -7,6 +7,7 @@ import {
   validateInsulinInputs,
   type ActivityLevel,
 } from '../lib/insulin'
+import { hasEstimatorAcknowledgement, saveEstimatorAcknowledgement } from '../lib/estimator-ack'
 
 function parseInitialCarbs(value: string | null): number | '' {
   if (value == null) return ''
@@ -25,6 +26,7 @@ export default function InsulinHelper() {
   const [activeInsulin, setActiveInsulin] = useState<number | ''>(0)
   const [maxBolus, setMaxBolus] = useState<number | ''>(INSULIN_LIMITS.maxBolus.default)
   const [activity, setActivity] = useState<ActivityLevel>('none')
+  const [acknowledged, setAcknowledged] = useState(hasEstimatorAcknowledgement)
 
   const inputs = useMemo(() => ({
     carbs,
@@ -42,6 +44,36 @@ export default function InsulinHelper() {
 
   return (
     <div className="max-w-lg mx-auto">
+      {!acknowledged && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-stone-950/70 px-4">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="estimator-ack-title"
+            className="max-w-lg rounded-xl border border-amber-300 bg-white p-5 shadow-xl"
+          >
+            <h2 id="estimator-ack-title" className="text-lg font-bold text-stone-950">
+              Before using this estimator
+            </h2>
+            <div className="mt-3 space-y-2 text-sm text-stone-700">
+              <p>This is an educational carb and correction estimator, not medical advice or an automated dosing device.</p>
+              <p>Use only insulin ratios, correction factors, targets, and max-bolus limits prescribed by your care team.</p>
+              <p>For children, pregnancy, illness, exercise, pump settings, or hypoglycemia risk, confirm your plan with a clinician.</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                saveEstimatorAcknowledgement()
+                setAcknowledged(true)
+              }}
+              className="mt-5 w-full rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+            >
+              I understand
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="rounded-lg bg-amber-50 border border-amber-300 p-4 mb-6">
         <p className="font-semibold text-amber-900">
           Educational estimator only - not medical advice. Use only ratios and limits from your care team.

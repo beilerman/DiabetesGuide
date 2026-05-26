@@ -49,13 +49,13 @@ export function Layout() {
         <div className="border-t border-stone-200 pt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>DiabetesGuide v1.0 - educational nutrition planning for theme park visits.</p>
           <p>
-            <Link to="/guide" className="font-medium text-stone-700 hover:text-teal-700">About</Link>
+            <Link to="/about" className="font-medium text-stone-700 hover:text-teal-700">About</Link>
             <span className="mx-2">|</span>
-            <Link to="/methodology" className="font-medium text-stone-700 hover:text-teal-700">Data Sources</Link>
+            <Link to="/data-sources" className="font-medium text-stone-700 hover:text-teal-700">Data Sources</Link>
             <span className="mx-2">|</span>
             <Link to="/privacy" className="font-medium text-stone-700 hover:text-teal-700">Privacy</Link>
             <span className="mx-2">|</span>
-            <a href="mailto:contact@diabetesguide.app" className="font-medium text-stone-700 hover:text-teal-700">Contact</a>
+            <Link to="/contact" className="font-medium text-stone-700 hover:text-teal-700">Contact</Link>
           </p>
         </div>
       </footer>
@@ -137,8 +137,8 @@ export function Layout() {
           {/* More */}
           <Link
             to="/more"
-            aria-current={isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin') || isActive('/methodology') || isActive('/privacy') ? 'page' : undefined}
-            className={navItemClass(isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin') || isActive('/methodology') || isActive('/privacy'))}
+            aria-current={isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin') || isActive('/methodology') || isActive('/data-sources') || isActive('/about') || isActive('/contact') || isActive('/privacy') ? 'page' : undefined}
+            className={navItemClass(isActive('/more') || isActive('/guide') || isActive('/packing') || isActive('/advice') || isActive('/settings') || isActive('/insulin') || isActive('/methodology') || isActive('/data-sources') || isActive('/about') || isActive('/contact') || isActive('/privacy'))}
           >
             <svg className="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="12" cy="6" r="2"/>

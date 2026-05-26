@@ -95,6 +95,7 @@ export default function MenuItemDetail() {
   const availabilityRestaurants = item.availability_restaurants ?? []
 
   const addToMeal = () => {
+    if (!nutrition) return
     addItem({
       id: item.id,
       name: displayName,
@@ -110,6 +111,7 @@ export default function MenuItemDetail() {
       nutritionConfidence: nutrition?.confidence_score,
       nutritionSource: nutrition?.source,
       nutritionSourceDetail: nutrition?.source_detail,
+      nutritionAvailable: true,
     })
   }
   const reportHref = buildNutritionReportMailto(
@@ -183,9 +185,14 @@ export default function MenuItemDetail() {
             <button
               type="button"
               onClick={addToMeal}
-              className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+              disabled={!nutrition}
+              className={`rounded-lg px-4 py-2 text-sm font-semibold ${
+                nutrition
+                  ? 'bg-teal-600 text-white hover:bg-teal-700'
+                  : 'cursor-not-allowed bg-stone-200 text-stone-500'
+              }`}
             >
-              Add to Meal
+              {nutrition ? 'Add to Meal' : 'Nutrition needed'}
             </button>
             <button
               type="button"

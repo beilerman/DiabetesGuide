@@ -5,7 +5,7 @@ export default function Methodology() {
     <div className="mx-auto max-w-3xl space-y-6">
       <div>
         <p className="text-sm font-semibold uppercase tracking-wide text-teal-700">Data Sources</p>
-        <h1 className="mt-2 text-3xl font-bold text-stone-950">Nutrition Methodology</h1>
+        <h1 className="mt-2 text-3xl font-bold text-stone-950">Nutrition Data Sources</h1>
         <p className="mt-3 text-stone-600">
           DiabetesGuide combines public menu information with nutrition sources that vary in reliability. Treat all values as planning aids, not clinical dosing instructions.
         </p>

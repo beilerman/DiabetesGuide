@@ -102,6 +102,30 @@ const ROUTE_META: Array<{ match: (pathname: string) => boolean; meta: PageMeta }
     },
   },
   {
+    match: pathname => pathname.startsWith('/data-sources'),
+    meta: {
+      title: 'Nutrition Data Sources - DiabetesGuide',
+      description: 'How DiabetesGuide sources, estimates, flags, and audits theme park nutrition data.',
+      canonicalPath: '/data-sources',
+    },
+  },
+  {
+    match: pathname => pathname.startsWith('/about'),
+    meta: {
+      title: 'About - DiabetesGuide',
+      description: 'About DiabetesGuide, an independent educational theme park diabetes food planning tool.',
+      canonicalPath: '/about',
+    },
+  },
+  {
+    match: pathname => pathname.startsWith('/contact'),
+    meta: {
+      title: 'Contact - DiabetesGuide',
+      description: 'Contact DiabetesGuide for nutrition corrections, broken links, accessibility issues, and menu updates.',
+      canonicalPath: '/contact',
+    },
+  },
+  {
     match: pathname => pathname.startsWith('/privacy'),
     meta: {
       title: 'Privacy - DiabetesGuide',

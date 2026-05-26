@@ -88,6 +88,7 @@ export interface MealItem {
   nutritionConfidence?: number
   nutritionSource?: NutritionalData['source']
   nutritionSourceDetail?: string | null
+  nutritionAvailable?: boolean
 }
 
 export interface MealData {
