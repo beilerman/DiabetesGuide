@@ -12,6 +12,7 @@
 - Added a shared hidden-dose explainer for the insulin and meal estimators, linked to estimator safety methodology.
 - Removed duplicate Sodium output from item detail pages and added grade/rubric context plus visible freshness.
 - Converted Search grade chips into URL-backed filter toggles with a separate grade-rubric link.
+- Added a reusable header contrast toggle with visible active-state text and stronger high-contrast palette overrides.
 
 ### Tests
 
@@ -24,3 +25,4 @@
 - Added unit and Playwright coverage for item detail grade context, updated date, and concise Sodium rendering.
 - Added unit and Playwright coverage for Search grade querystring hydration and updates.
 - Increased the Vitest timeout for route-heavy component tests so the full suite remains stable under parallel load.
+- Added unit and Playwright coverage for high-contrast header state, persistence, and Settings synchronization.

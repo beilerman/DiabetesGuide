@@ -67,3 +67,7 @@ Item detail pages show one Sodium metric in the nutrition grid, display the cata
 ## Task 7 Notes
 
 Search grade chips are multi-select filter toggles backed by the `?grade=` query string. The grade explanation is a separate link to `/data-sources#grade-rubric` so the chips are filters, not decoration.
+
+## Task 8 Notes
+
+The desktop header uses `ContrastToggle`, which persists high contrast through `dg_preferences`, exposes `aria-pressed`, and shows `Contrast: on` while active. Settings uses the same preference hook, so both controls stay synchronized.
