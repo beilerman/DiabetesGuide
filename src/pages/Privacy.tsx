@@ -14,6 +14,9 @@ export default function Privacy() {
         <p className="mt-2 text-sm text-stone-600">
           Meal carts, saved favorites, carb goals, contrast settings, checklist state, trip plans, and estimator inputs are stored with browser storage on the device you use.
         </p>
+        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-stone-600">
+          <li>Checklist progress is stored locally on this device.</li>
+        </ul>
       </section>
 
       <section className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
