@@ -47,3 +47,7 @@ The resort section routes, such as `/resort/wdw/theme-parks`, are client-rendere
 ## Task 2 Notes
 
 Primary navigation metadata lives in `src/lib/nav.ts`. The desktop header and mobile bottom navigation both consume that shared source, while the bottom navigation remains mobile-only via the `md:hidden` breakpoint.
+
+## Task 3 Notes
+
+The search page only shows the `Searching...` status during an initial pending catalog request or a deferred query transition. Background refetches with already-resolved results do not keep the status visible, and the result count uses `aria-live="polite"`.

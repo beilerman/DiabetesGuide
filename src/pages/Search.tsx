@@ -52,7 +52,7 @@ export default function Search() {
   const [recentSearches, setRecentSearches] = useState(getRecentSearches)
   const { data: parks } = useParks()
   const parkOptions = dedupeParksForDisplay(parks ?? [])
-  const { data: menuItems, isFetching: menuLoading } = useMenuItems(parkId)
+  const { data: menuItems, isLoading: menuItemsLoading } = useMenuItems(parkId)
   const deferredQuery = useDeferredValue(query)
   const isSearching = query.trim().length >= 2
   const isPendingQuery = query !== deferredQuery
@@ -61,7 +61,7 @@ export default function Search() {
     [menuItems, deferredQuery, filters, visibleCount],
   )
   const results = isSearching ? searchView.visibleItems : null
-  const searchLoading = menuLoading
+  const searchLoading = isSearching && (isPendingQuery || (menuItemsLoading && menuItems == null))
 
   const handleSearch = (q: string) => {
     setQuery(q)
@@ -102,12 +102,12 @@ export default function Search() {
             value={query}
             onChange={e => handleSearch(e.target.value)}
             placeholder="Search menu items..."
-            className="w-full pl-10 pr-10 py-3 rounded-xl bg-stone-100 border border-stone-200 text-stone-900 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="w-full pl-10 pr-12 py-3 rounded-xl bg-stone-100 border border-stone-200 text-stone-900 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
           />
           {query && (
             <button
               onClick={() => handleSearch('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+              className="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-stone-500 hover:bg-stone-200 hover:text-stone-700"
               aria-label="Clear search"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -118,9 +118,10 @@ export default function Search() {
         </div>
 
         {/* Park scope dropdown */}
-        <div className="mt-3 flex items-center gap-2">
+        <div className="mt-3 flex items-center gap-2" aria-label="Search scope and status">
           <span className="text-xs font-medium text-stone-500">Scope:</span>
           <select
+            aria-label="Search park scope"
             value={parkId ?? ''}
             onChange={e => setParkId(e.target.value || undefined)}
             className="text-xs px-2 py-1.5 rounded-lg border border-stone-200 bg-white text-stone-700 focus:border-teal-500 focus:outline-none"
@@ -130,12 +131,12 @@ export default function Search() {
               <option key={p.id} value={p.id}>{p.name}</option>
             ))}
           </select>
-          {(searchLoading || isPendingQuery) && isSearching && (
-            <span className="text-[10px] text-stone-400">Searching...</span>
+          {searchLoading && (
+            <span role="status" className="text-[10px] font-medium text-stone-600">Searching...</span>
           )}
         </div>
 
-        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <section aria-label="Search filters" className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
           <label className="text-xs font-medium text-stone-600">
             Max carbs
             <input
@@ -195,7 +196,7 @@ export default function Search() {
           >
             Reset filters
           </button>
-        </div>
+        </section>
 
         <div className="mt-3 rounded-lg border border-stone-200 bg-stone-50 px-3 py-2">
           <p className="text-xs font-semibold text-stone-700">Grade legend</p>
@@ -248,7 +249,7 @@ export default function Search() {
           <>
             {results && results.length > 0 ? (
               <div>
-                <p className="text-sm text-stone-500 mb-2">
+                <p className="text-sm text-stone-500 mb-2" aria-live="polite">
                   Showing {results.length} of {searchView.totalMatches} matching result{searchView.totalMatches !== 1 ? 's' : ''}
                 </p>
                 <div className="bg-white rounded-xl border border-stone-200 divide-y divide-stone-100">
@@ -272,7 +273,7 @@ export default function Search() {
                   </div>
                 )}
               </div>
-            ) : !(searchLoading || isPendingQuery) ? (
+            ) : !searchLoading ? (
               <div className="text-center py-12">
                 <div className="text-5xl mb-3">🔍</div>
                 <p className="text-stone-600">No results for &ldquo;{query}&rdquo;</p>
