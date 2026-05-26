@@ -1,4 +1,4 @@
-import { type FormEvent, useMemo, useState } from 'react'
+import { type FormEvent, type MouseEvent, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useParks, useMenuItemCounts, useTotalRestaurantCount } from '../lib/queries'
 import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
@@ -88,6 +88,7 @@ function SkeletonCard() {
 export default function Home() {
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('')
+  const [showBackToTop, setShowBackToTop] = useState(false)
   const { favorites } = useFavorites()
   const { data: parks, isLoading, error } = useParks()
   const { data: menuItemCounts } = useMenuItemCounts()
@@ -108,6 +109,28 @@ export default function Home() {
     navigate(query ? `/search?q=${encodeURIComponent(query)}` : '/search')
   }
 
+  useEffect(() => {
+    const handleScroll = () => setShowBackToTop(window.scrollY > 600)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const handleDestinationJump = (event: MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    const target = document.getElementById(targetId)
+    if (!target) return
+
+    event.preventDefault()
+    target.scrollIntoView?.({ block: 'start' })
+    target.focus({ preventScroll: true })
+    window.history.replaceState(null, '', `#${targetId}`)
+  }
+
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    document.getElementById('home-title')?.focus({ preventScroll: true })
+  }
+
   return (
     <div className="space-y-6">
       <section className="space-y-4 py-2 sm:py-3" aria-labelledby="home-title">
@@ -117,7 +140,7 @@ export default function Home() {
               <BrandMark />
             </div>
             <div>
-              <h1 id="home-title" className="text-3xl font-bold text-stone-900 sm:text-4xl">DiabetesGuide</h1>
+              <h1 id="home-title" tabIndex={-1} className="text-3xl font-bold text-stone-900 sm:text-4xl">DiabetesGuide</h1>
               <p className="mt-1 text-sm text-stone-600 sm:text-base">
                 Theme-park nutrition planning for diabetes.
               </p>
@@ -219,6 +242,7 @@ export default function Home() {
                 <a
                   key={group.id}
                   href={`#home-resort-${group.id}`}
+                  onClick={event => handleDestinationJump(event, `home-resort-${group.id}`)}
                   className="whitespace-nowrap rounded-full border border-stone-300 bg-white px-3 py-1.5 text-xs font-semibold text-stone-700 transition-colors hover:border-teal-300 hover:text-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
                 >
                   {group.name}
@@ -277,6 +301,18 @@ export default function Home() {
           </div>
         )}
       </section>
+
+      {showBackToTop && (
+        <button
+          type="button"
+          onClick={handleBackToTop}
+          className="fixed bottom-20 right-4 z-40 rounded-full border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-stone-700 shadow-lg transition-colors hover:border-teal-300 hover:text-teal-800 md:bottom-6"
+          aria-label="Back to top"
+          data-print-hidden="true"
+        >
+          Back to top
+        </button>
+      )}
     </div>
   )
 }
@@ -335,10 +371,7 @@ function ResortDestinationSection({
   const theme = group.id === 'other' ? DEFAULT_THEME : getThemeForResort(group.id)
 
   return (
-    <section
-      aria-labelledby={`home-resort-${group.id}`}
-      className="scroll-mt-32 border-t border-stone-200 pt-5"
-    >
+    <section aria-labelledby={`home-resort-${group.id}`} className="border-t border-stone-200 pt-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex min-w-0 gap-3">
           <div
@@ -349,7 +382,7 @@ function ResortDestinationSection({
             <Icon name={RESORT_ICONS[group.id] ?? 'map'} className="h-6 w-6" />
           </div>
           <div className="min-w-0">
-            <h3 id={`home-resort-${group.id}`} className="text-xl font-bold text-stone-900">
+            <h3 id={`home-resort-${group.id}`} tabIndex={-1} className="scroll-mt-24 text-xl font-bold text-stone-900">
               {group.name}
             </h3>
             <p className="text-sm text-stone-600">{resortContext(group)}</p>

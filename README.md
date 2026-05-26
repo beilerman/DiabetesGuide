@@ -79,3 +79,7 @@ The packing checklist stores checked items in `dg_checklist`, grouped by the act
 ## Task 10 Notes
 
 Trip planning now stores versioned trip backups in `dg.trips.v1`, with an active trip plus a trips array. The `/plan` page creates named date-range trips, records selected parks, supports favorite and Meal Builder item assignment into trip days, and exposes JSON export/import for local backup.
+
+## Task 11 Notes
+
+Home destination jump links focus the matching `#home-resort-*` heading after navigation. Each heading is programmatically focusable with a 6rem scroll margin, and a Back to top button appears after scrolling past 600px.

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import Home from '../Home'
 import type { Park } from '../../lib/types'
@@ -103,5 +103,50 @@ describe('Home', () => {
     expect(screen.getByText('Catalog preview: 15 menu items · 2 restaurants · 2 destinations')).toBeInTheDocument()
     expect(screen.getByText('15 menu items across 2 destinations')).toBeInTheDocument()
     expect(screen.queryByText(/menu records/i)).not.toBeInTheDocument()
+  })
+
+  it('moves focus with destination jumps and shows a back-to-top action after scrolling', () => {
+    vi.mocked(useParks).mockReturnValue({
+      data: [
+        makePark('magic-kingdom', 'Magic Kingdom Park'),
+        makePark('grand-floridian', "Disney's Grand Floridian Resort"),
+      ],
+      isLoading: false,
+      error: null,
+    } as ReturnType<typeof useParks>)
+    vi.mocked(useMenuItemCounts).mockReturnValue({
+      data: new Map([
+        ['magic-kingdom', 10],
+        ['grand-floridian', 5],
+      ]),
+    } as ReturnType<typeof useMenuItemCounts>)
+    vi.mocked(useTotalRestaurantCount).mockReturnValue({
+      data: 2,
+    } as ReturnType<typeof useTotalRestaurantCount>)
+    vi.mocked(useFavorites).mockReturnValue({
+      favorites: new Set(),
+      toggle: vi.fn(),
+      isFavorite: vi.fn(),
+    } as ReturnType<typeof useFavorites>)
+
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    )
+
+    const heading = screen.getByRole('heading', { name: /walt disney world/i })
+    expect(heading).toHaveAttribute('tabindex', '-1')
+    expect(heading).toHaveClass('scroll-mt-24')
+
+    const jumpNav = screen.getByRole('navigation', { name: /jump to destination groups/i })
+    fireEvent.click(within(jumpNav).getByRole('link', { name: /walt disney world/i }))
+    expect(heading).toHaveFocus()
+
+    expect(screen.queryByRole('button', { name: /back to top/i })).not.toBeInTheDocument()
+    Object.defineProperty(window, 'scrollY', { value: 700, configurable: true })
+    fireEvent.scroll(window)
+
+    expect(screen.getByRole('button', { name: /back to top/i })).toBeInTheDocument()
   })
 })
