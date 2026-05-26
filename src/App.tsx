@@ -2,7 +2,8 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
 
-const Home = lazy(() => import('./pages/Home'))
+const homeModule = import('./pages/Home')
+const Home = lazy(() => homeModule)
 const ParkDetail = lazy(() => import('./pages/ParkDetail'))
 const Search = lazy(() => import('./pages/Search'))
 const Browse = lazy(() => import('./pages/Browse'))

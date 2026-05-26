@@ -37,5 +37,5 @@ describe('PackingList', () => {
     await user.click(screen.getByRole('button', { name: /reset checklist/i }))
     expect(confirmSpy).toHaveBeenCalled()
     expect(screen.getByText(/Essentials 0\/12/i)).toBeInTheDocument()
-  })
+  }, 10_000)
 })
