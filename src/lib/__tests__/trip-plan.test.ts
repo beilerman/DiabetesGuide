@@ -51,6 +51,69 @@ describe('useTripPlan', () => {
     expect(day.meals[2].name).toBe('Dinner')
   })
 
+  it('creates a named dated trip with selected parks in dg.trips.v1', () => {
+    const { result } = renderHook(() => useTripPlan())
+
+    act(() => {
+      result.current.createPlan({
+        name: 'June Disney Trip',
+        resortId: 'wdw',
+        startDate: '2026-06-01',
+        endDate: '2026-06-03',
+        selectedParkIds: ['park-mk', 'park-epcot'],
+        mealsPerDay: 2,
+        carbGoalPerMeal: 45,
+      })
+    })
+
+    expect(result.current.hasPlan).toBe(true)
+    expect(result.current.plan).toMatchObject({
+      name: 'June Disney Trip',
+      resortId: 'wdw',
+      startDate: '2026-06-01',
+      endDate: '2026-06-03',
+      selectedParkIds: ['park-mk', 'park-epcot'],
+      carbGoalPerMeal: 45,
+      mealsPerDay: 2,
+    })
+    expect(result.current.plan!.days).toHaveLength(3)
+
+    const stored = JSON.parse(localStorage.getItem('dg.trips.v1') ?? '{}')
+    expect(stored.activeTripId).toBe(result.current.plan!.id)
+    expect(stored.trips).toHaveLength(1)
+    expect(localStorage.getItem('dg_trip_plan')).toBeNull()
+  })
+
+  it('exports and imports trips as backup JSON', () => {
+    const { result } = renderHook(() => useTripPlan())
+
+    act(() => {
+      result.current.createPlan({
+        name: 'Backup Trip',
+        resortId: 'wdw',
+        startDate: '2026-07-10',
+        endDate: '2026-07-11',
+        selectedParkIds: ['park-ak'],
+      })
+    })
+
+    const backup = result.current.exportTrips()
+    act(() => { result.current.clearPlan() })
+    expect(result.current.hasPlan).toBe(false)
+
+    act(() => {
+      const imported = result.current.importTrips(backup)
+      expect(imported.ok).toBe(true)
+    })
+
+    expect(result.current.plan).toMatchObject({
+      name: 'Backup Trip',
+      startDate: '2026-07-10',
+      endDate: '2026-07-11',
+      selectedParkIds: ['park-ak'],
+    })
+  })
+
   it('assigns a park to a day', () => {
     const { result } = renderHook(() => useTripPlan())
     act(() => { result.current.createPlan('wdw', 2) })

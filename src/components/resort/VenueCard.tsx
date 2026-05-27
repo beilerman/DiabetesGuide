@@ -38,7 +38,7 @@ export function VenueCard({
         <div className="flex items-center gap-2 mt-1.5 text-sm text-stone-600">
           <span>{restaurantCount} {restaurantCount === 1 ? 'restaurant' : 'restaurants'}</span>
           <span className="text-stone-400">|</span>
-          <span>{itemCount} items</span>
+          <span>{itemCount} menu items</span>
         </div>
       </div>
       <svg className="w-5 h-5 text-stone-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

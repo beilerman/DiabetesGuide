@@ -14,7 +14,8 @@ describe('getBrowseSummary', () => {
     })).toEqual({
       main: 'Showing 2,999 loaded preview items',
       detail: 'across 680 restaurants',
-      note: 'Full catalog: 9,261 menu records. Choose a destination for complete listings.',
+      note: 'Full catalog: 9,261 menu items. Choose a destination for complete listings.',
+      previewTooltip: 'All Parks shows a 3,000-item preview for speed; pick a destination for the full catalog.',
     })
   })
 
@@ -31,6 +32,7 @@ describe('getBrowseSummary', () => {
       main: 'Showing 48 of 120 items',
       detail: null,
       note: null,
+      previewTooltip: null,
     })
   })
 
@@ -46,7 +48,8 @@ describe('getBrowseSummary', () => {
     })).toEqual({
       main: 'Showing 18 items from 2,999 loaded preview items',
       detail: null,
-      note: 'Full catalog: 9,261 menu records. Choose a destination for complete listings.',
+      note: 'Full catalog: 9,261 menu items. Choose a destination for complete listings.',
+      previewTooltip: 'All Parks shows a 3,000-item preview for speed; pick a destination for the full catalog.',
     })
   })
 })

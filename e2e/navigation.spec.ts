@@ -9,6 +9,15 @@ test('desktop header uses shared navigation and hides the bottom bar', async ({ 
   await expect(page.getByRole('link', { name: /^favorites$/i })).toHaveAttribute('href', '/plan')
   await expect(page.getByRole('link', { name: /^menu$/i })).toHaveAttribute('href', '/more')
   await expect(page.getByRole('navigation', { name: /bottom navigation/i })).toBeHidden()
+
+  const contrastToggle = page.getByRole('button', { name: /enable high contrast/i })
+  await expect(contrastToggle).toHaveAttribute('aria-pressed', 'false')
+  await contrastToggle.click()
+  await expect(page.getByRole('button', { name: /disable high contrast/i })).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.getByText(/contrast:\s*on/i)).toBeVisible()
+
+  await page.goto('/settings')
+  await expect(page.getByRole('switch', { name: /high contrast/i })).toHaveAttribute('aria-checked', 'true')
 })
 
 test('mobile bottom navigation uses renamed labels and active state', async ({ page }) => {
