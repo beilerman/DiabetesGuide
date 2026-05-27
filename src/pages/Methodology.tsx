@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { buildInfo, formatBuildDate } from '../lib/build-info'
 
 export default function Methodology() {
   return (
@@ -33,6 +34,14 @@ export default function Methodology() {
         <h2 className="text-lg font-bold text-amber-950">How to Read Confidence</h2>
         <p className="mt-2 text-sm text-amber-900">
           Items below 70% confidence are flagged as low-confidence estimates. A listed 0g carb value is not the same as unknown nutrition; unavailable nutrition is labeled separately and should not be treated as zero.
+        </p>
+      </section>
+
+      <section className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
+        <h2 className="text-lg font-bold text-stone-900">Catalog Snapshot</h2>
+        <p className="mt-2 text-sm text-stone-600">
+          The current catalog snapshot is dated <span className="font-semibold text-stone-900">{formatBuildDate(buildInfo.catalogSnapshotDate)}</span>.
+          Build metadata is available on the <Link to="/about" className="font-semibold text-teal-700 underline underline-offset-2">About page</Link>.
         </p>
       </section>
 
@@ -73,7 +82,7 @@ export default function Methodology() {
         <p className="mt-2 text-sm text-stone-600">
           Menus change frequently. Use the report link on any item detail page to send the item, restaurant, park, and page URL with your correction.
         </p>
-        <Link to="/browse" className="mt-4 inline-flex rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700">
+        <Link to="/browse" className="mt-4 inline-flex rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800">
           Browse items
         </Link>
       </section>
