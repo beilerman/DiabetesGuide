@@ -11,7 +11,9 @@ import {
 } from './offline-queries'
 import { readRestaurants, readRestaurantsByPark, readItemsByPark, readAllItems } from './offline-db'
 import { readMenuItemCountsCache } from './menu-count-cache'
+import { fetchCatalogPreview, STATIC_CATALOG_PREVIEW } from './catalog-preview'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
+import type { CatalogPreview } from './catalog-preview'
 
 export function useParks() {
   return useQuery({
@@ -33,6 +35,16 @@ export function useRestaurants(parkId: string | undefined) {
 
 interface UseMenuItemsOptions {
   dedupe?: boolean
+  enabled?: boolean
+}
+
+export function useCatalogPreview() {
+  return useQuery({
+    queryKey: ['catalogPreview'],
+    queryFn: (): Promise<CatalogPreview> => fetchCatalogPreview(),
+    initialData: STATIC_CATALOG_PREVIEW,
+    staleTime: 60 * 60 * 1000,
+  })
 }
 
 export function useMenuItems(parkId?: string, options?: UseMenuItemsOptions) {
@@ -40,7 +52,7 @@ export function useMenuItems(parkId?: string, options?: UseMenuItemsOptions) {
   return useQuery({
     queryKey: ['menuItems', parkId, dedupe],
     queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsOffline(parkId, { dedupe }),
-    enabled: true,
+    enabled: options?.enabled ?? true,
   })
 }
 

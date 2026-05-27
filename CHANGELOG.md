@@ -13,6 +13,14 @@
 - Removed duplicate Sodium output from item detail pages and added grade/rubric context plus visible freshness.
 - Converted Search grade chips into URL-backed filter toggles with a separate grade-rubric link.
 - Added a reusable header contrast toggle with visible active-state text and stronger high-contrast palette overrides.
+- Added profile-scoped packing checklist persistence, section progress, reset confirmation, and print/export styling.
+- Reworked Trip Plan into named date-range trips with selected parks, Meal Builder/favorite assignment, and JSON backup under `dg.trips.v1`.
+- Added focus-moving home destination jump links and a scroll-triggered Back to top action.
+- Made the home catalog badge and quick-filter chip row responsive with a scroll affordance and 44px chip targets.
+- Added route-aware skip links for Search/Browse and corrected item-detail contrast issues caught by axe.
+- Added build metadata, catalog freshness copy, and a markdown-backed Changelog route.
+- Added a static catalog preview, preload hint, and Vercel cache headers so Home and resort section counts render before live catalog requests finish.
+- Documented checklist local storage on Privacy, kept Contact email as a `mailto:` link, replaced More menu emoji icons with inline SVGs, and added Guide tab semantics.
 
 ### Tests
 
@@ -26,3 +34,11 @@
 - Added unit and Playwright coverage for Search grade querystring hydration and updates.
 - Increased the Vitest timeout for route-heavy component tests so the full suite remains stable under parallel load.
 - Added unit and Playwright coverage for high-contrast header state, persistence, and Settings synchronization.
+- Added unit and Playwright coverage for packing checklist profile persistence, progress, reset, and print/export.
+- Added unit and Playwright coverage for trip creation, versioned storage, JSON export/import, and selected parks.
+- Added unit and Playwright coverage for home anchor focus movement and Back to top visibility.
+- Added unit and Playwright coverage for home hero badge placement and quick-filter chip responsiveness.
+- Added a CI axe-core gate for serious/critical accessibility violations across core public routes.
+- Added unit and Playwright coverage for About metadata, footer catalog freshness, and the Changelog route.
+- Added unit and Playwright coverage for static catalog preview rendering, preload markup, and cache headers.
+- Added unit and Playwright coverage for Privacy, Contact, More menu icons, and Guide tablist semantics.
