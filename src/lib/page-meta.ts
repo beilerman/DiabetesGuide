@@ -126,6 +126,14 @@ const ROUTE_META: Array<{ match: (pathname: string) => boolean; meta: PageMeta }
     },
   },
   {
+    match: pathname => pathname.startsWith('/changelog'),
+    meta: {
+      title: 'Changelog - DiabetesGuide',
+      description: 'Review recent DiabetesGuide app, accessibility, and catalog-quality changes.',
+      canonicalPath: '/changelog',
+    },
+  },
+  {
     match: pathname => pathname.startsWith('/privacy'),
     meta: {
       title: 'Privacy - DiabetesGuide',

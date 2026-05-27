@@ -108,15 +108,26 @@ export interface TripMealSlot {
 }
 
 export interface TripDay {
+  date: string | null
   parkId: string | null
   meals: TripMealSlot[]
 }
 
 export interface TripPlan {
+  id: string
+  name: string
   resortId: string
+  startDate: string
+  endDate: string
+  selectedParkIds: string[]
   days: TripDay[]
   carbGoalPerMeal: number
   mealsPerDay: number
+}
+
+export interface TripsState {
+  activeTripId: string | null
+  trips: TripPlan[]
 }
 
 export interface Filters {
