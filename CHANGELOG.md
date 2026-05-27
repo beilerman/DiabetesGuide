@@ -19,6 +19,8 @@
 - Made the home catalog badge and quick-filter chip row responsive with a scroll affordance and 44px chip targets.
 - Added route-aware skip links for Search/Browse and corrected item-detail contrast issues caught by axe.
 - Added build metadata, catalog freshness copy, and a markdown-backed Changelog route.
+- Added a static catalog preview, preload hint, and Vercel cache headers so Home and resort section counts render before live catalog requests finish.
+- Documented checklist local storage on Privacy, kept Contact email as a `mailto:` link, replaced More menu emoji icons with inline SVGs, and added Guide tab semantics.
 
 ### Tests
 
@@ -38,3 +40,5 @@
 - Added unit and Playwright coverage for home hero badge placement and quick-filter chip responsiveness.
 - Added a CI axe-core gate for serious/critical accessibility violations across core public routes.
 - Added unit and Playwright coverage for About metadata, footer catalog freshness, and the Changelog route.
+- Added unit and Playwright coverage for static catalog preview rendering, preload markup, and cache headers.
+- Added unit and Playwright coverage for Privacy, Contact, More menu icons, and Guide tablist semantics.

@@ -69,7 +69,7 @@ export default defineConfig({
       includeAssets: ['pwa-192x192.svg', 'pwa-512x512.svg'],
       manifest: false, // Use public/manifest.json directly
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,ico}'],
+        globPatterns: ['**/*.{js,css,html,svg,ico,json}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/rcrzdpzwcbekgqgiwqcp\.supabase\.co\/rest\/.*/i,

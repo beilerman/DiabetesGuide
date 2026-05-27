@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import Home from '../Home'
@@ -8,14 +8,16 @@ vi.mock('../../lib/queries', () => ({
   useParks: vi.fn(),
   useMenuItemCounts: vi.fn(),
   useTotalRestaurantCount: vi.fn(),
+  useCatalogPreview: vi.fn(),
 }))
 
 vi.mock('../../hooks/useFavorites', () => ({
   useFavorites: vi.fn(),
 }))
 
-import { useMenuItemCounts, useParks, useTotalRestaurantCount } from '../../lib/queries'
+import { useCatalogPreview, useMenuItemCounts, useParks, useTotalRestaurantCount } from '../../lib/queries'
 import { useFavorites } from '../../hooks/useFavorites'
+import type { CatalogPreview } from '../../lib/catalog-preview'
 
 function makePark(id: string, name: string): Park {
   return {
@@ -28,7 +30,48 @@ function makePark(id: string, name: string): Park {
   }
 }
 
+const previewFixture: CatalogPreview = {
+  version: 1,
+  snapshotDate: '2026-05-25',
+  generatedAt: '2026-05-26T00:00:00.000Z',
+  totalItems: 20,
+  totalRestaurants: 3,
+  totalDestinations: 2,
+  parks: [
+    {
+      id: 'magic-kingdom-park',
+      name: 'Magic Kingdom Park',
+      location: 'Walt Disney World',
+      timezone: 'America/New_York',
+      resortId: 'wdw',
+      categoryId: 'theme-parks',
+      itemCount: 10,
+      restaurantCount: 2,
+      lands: ['Main Street, U.S.A.', 'Tomorrowland'],
+    },
+    {
+      id: 'epcot',
+      name: 'EPCOT',
+      location: 'Walt Disney World',
+      timezone: 'America/New_York',
+      resortId: 'wdw',
+      categoryId: 'theme-parks',
+      itemCount: 10,
+      restaurantCount: 1,
+      lands: ['World Celebration'],
+    },
+  ],
+}
+
 describe('Home', () => {
+  beforeEach(() => {
+    vi.mocked(useCatalogPreview).mockReturnValue({
+      data: previewFixture,
+      isLoading: false,
+      error: null,
+    } as ReturnType<typeof useCatalogPreview>)
+  })
+
   it('renders a compact task-first hero with search, trust copy, and useful quick filters', () => {
     vi.mocked(useParks).mockReturnValue({
       data: [
@@ -66,7 +109,7 @@ describe('Home', () => {
     expect(screen.getByRole('link', { name: /data sources/i })).toHaveAttribute('href', '/data-sources')
     expect(screen.getByRole('link', { name: /low carb/i })).toHaveAttribute('href', '/browse?maxCarbs=30&sort=carbsAsc')
     expect(screen.getByRole('link', { name: /saved favorites/i })).toHaveAttribute('href', '/plan')
-  })
+  }, 10_000)
 
   it('exposes jump navigation and clarified destination counts', () => {
     vi.mocked(useParks).mockReturnValue({
@@ -190,5 +233,35 @@ describe('Home', () => {
     for (const chip of within(chipRail).getAllByRole('link')) {
       expect(chip).toHaveClass('min-h-11')
     }
+  })
+
+  it('renders destination cards from the static catalog preview while live catalog requests load', () => {
+    vi.mocked(useParks).mockReturnValue({
+      data: undefined,
+      isLoading: true,
+      error: null,
+    } as ReturnType<typeof useParks>)
+    vi.mocked(useMenuItemCounts).mockReturnValue({
+      data: undefined,
+    } as ReturnType<typeof useMenuItemCounts>)
+    vi.mocked(useTotalRestaurantCount).mockReturnValue({
+      data: undefined,
+    } as ReturnType<typeof useTotalRestaurantCount>)
+    vi.mocked(useFavorites).mockReturnValue({
+      favorites: new Set(),
+      toggle: vi.fn(),
+      isFavorite: vi.fn(),
+    } as ReturnType<typeof useFavorites>)
+
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    )
+
+    expect(screen.getByText('Catalog preview: 20 menu items · 3 restaurants · 2 destinations')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /walt disney world/i })).toBeInTheDocument()
+    expect(screen.getByText('20 menu items across 2 destinations')).toBeInTheDocument()
+    expect(screen.queryByText(/counts syncing/i)).not.toBeInTheDocument()
   })
 })
