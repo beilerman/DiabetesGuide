@@ -85,6 +85,29 @@ body {
   border-radius: 0.25rem;
 }
 
+/* Route-aware skip links */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 60;
+  transform: translateY(-150%);
+  border-radius: 0.5rem;
+  background: #0f766e;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-lg);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid #99f6e4;
+  outline-offset: 2px;
+}
+
 /* Remove default focus outline */
 *:focus {
   outline: none;

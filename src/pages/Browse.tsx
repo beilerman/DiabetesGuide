@@ -209,7 +209,8 @@ export default function Browse() {
 
       <FilterBar filters={filters} onChange={setFilters} />
 
-      <div className="px-4 py-4">
+      <section id="browse-results" tabIndex={-1} aria-labelledby="browse-results-heading" className="px-4 py-4 scroll-mt-24">
+        <h2 id="browse-results-heading" className="sr-only">Browse results</h2>
         {/* Result count */}
         {!isLoading && totalItems > 0 && (
           <div className="mb-4 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm text-gray-600" aria-live="polite">
@@ -280,7 +281,7 @@ export default function Browse() {
             )}
           </>
         )}
-      </div>
+      </section>
     </div>
   )
 }
