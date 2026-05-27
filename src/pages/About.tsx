@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { buildInfo, formatBuildDate } from '../lib/build-info'
 
 export default function About() {
   return (
@@ -31,8 +32,11 @@ export default function About() {
       <section className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
         <h2 className="text-lg font-bold text-stone-900">Useful Links</h2>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link to="/data-sources" className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700">
+          <Link to="/data-sources" className="rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800">
             Nutrition data sources
+          </Link>
+          <Link to="/changelog" className="rounded-lg border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-stone-700 hover:border-teal-300">
+            Changelog
           </Link>
           <Link to="/privacy" className="rounded-lg border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-stone-700 hover:border-teal-300">
             Privacy
@@ -42,6 +46,25 @@ export default function About() {
           </Link>
         </div>
       </section>
+
+      <section className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
+        <h2 className="text-lg font-bold text-stone-900">Version &amp; Data Freshness</h2>
+        <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+          <MetadataRow label="App version" value={buildInfo.version} />
+          <MetadataRow label="Git SHA" value={buildInfo.gitSha} />
+          <MetadataRow label="Build date" value={formatBuildDate(buildInfo.buildDate)} />
+          <MetadataRow label="Catalog snapshot" value={formatBuildDate(buildInfo.catalogSnapshotDate)} />
+        </dl>
+      </section>
+    </div>
+  )
+}
+
+function MetadataRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg bg-stone-50 px-3 py-2">
+      <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">{label}</dt>
+      <dd className="mt-1 font-semibold text-stone-900">{value}</dd>
     </div>
   )
 }

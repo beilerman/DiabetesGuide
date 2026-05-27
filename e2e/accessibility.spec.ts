@@ -9,6 +9,9 @@ const ROUTES_TO_AUDIT = [
   '/meal',
   '/packing',
   '/guide',
+  '/more',
+  '/privacy',
+  '/contact',
   '/item/sample-item',
 ] as const
 
