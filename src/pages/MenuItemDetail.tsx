@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { useMenuItem } from '../lib/queries'
-import { getGradeForItem, GRADE_CONFIG } from '../lib/grade'
+import { getGradeForItem, GRADE_CONFIG, type Grade } from '../lib/grade'
 import { getDiabetesAnnotations } from '../lib/annotations'
 import { cleanDisplayText, getDisplayCategory, getMenuItemDisplayName, hasUsableNutrition, formatMaybeNumber } from '../lib/display'
 import { useMealCart } from '../hooks/useMealCart'
@@ -9,7 +9,8 @@ import { useCompare } from '../hooks/useCompare'
 import { GradeBadge } from '../components/menu/GradeBadge'
 import { AnnotationBadge } from '../components/menu/AnnotationBadge'
 import { NutritionBadge } from '../components/menu/NutritionBadge'
-import { sodiumColor, alcoholColor } from '../components/menu/nutrition-colors'
+import { alcoholColor } from '../components/menu/nutrition-colors'
+import { buildNutritionReportMailto, getNutritionTrust, type NutritionTrustSummary } from '../lib/nutrition-trust'
 
 const categoryLabels: Record<string, string> = {
   beverage: 'Beverage',
@@ -17,6 +18,14 @@ const categoryLabels: Record<string, string> = {
   entree: 'Entree',
   side: 'Side',
   snack: 'Snack',
+}
+
+const gradeTextColors: Record<Grade, string> = {
+  A: '#166534',
+  B: '#3f6212',
+  C: '#854d0e',
+  D: '#9a3412',
+  F: '#991b1b',
 }
 
 export default function MenuItemDetail() {
@@ -47,7 +56,7 @@ export default function MenuItemDetail() {
       <div className="mx-auto max-w-xl rounded-xl bg-white border border-stone-200 p-8 text-center">
         <h1 className="text-2xl font-bold text-stone-900">Item not found</h1>
         <p className="mt-2 text-sm text-stone-600">This menu item may have moved or been removed.</p>
-        <Link to="/browse" className="mt-5 inline-flex rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700">
+        <Link to="/browse" className="mt-5 inline-flex rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800">
           Back to Browse
         </Link>
       </div>
@@ -57,6 +66,7 @@ export default function MenuItemDetail() {
   const displayName = getMenuItemDisplayName(item)
   const displayCategory = getDisplayCategory(item)
   const nutrition = hasUsableNutrition(item) ? item.nutritional_data?.[0] : undefined
+  const trust = getNutritionTrust(nutrition)
   const carbs = nutrition?.carbs ?? null
   const calories = nutrition?.calories ?? null
   const fat = nutrition?.fat ?? null
@@ -91,8 +101,10 @@ export default function MenuItemDetail() {
   const favorite = isFavorite(item.id)
   const availabilityCount = item.availability_count ?? 1
   const availabilityRestaurants = item.availability_restaurants ?? []
+  const updatedHeaderLabel = trust.lastUpdatedLabel?.replace('Last updated ', 'Updated ') ?? null
 
   const addToMeal = () => {
+    if (!nutrition) return
     addItem({
       id: item.id,
       name: displayName,
@@ -105,8 +117,16 @@ export default function MenuItemDetail() {
       sodium: sodium ?? 0,
       restaurant: availabilityCount > 1 ? `${availabilityCount} locations` : item.restaurant?.name,
       parkName: item.restaurant?.park?.name,
+      nutritionConfidence: nutrition?.confidence_score,
+      nutritionSource: nutrition?.source,
+      nutritionSourceDetail: nutrition?.source_detail,
+      nutritionAvailable: true,
     })
   }
+  const reportHref = buildNutritionReportMailto(
+    item,
+    typeof window === 'undefined' ? undefined : window.location.href
+  )
 
   return (
     <div className="mx-auto max-w-4xl space-y-5">
@@ -125,7 +145,14 @@ export default function MenuItemDetail() {
         <div className="p-5 border-b border-stone-100">
           <div className="flex items-start gap-4">
             {nutrition ? (
-              <GradeBadge grade={grade} size="lg" />
+              <div className="flex flex-col items-center gap-1">
+                <GradeBadge grade={grade} size="lg" />
+                {updatedHeaderLabel && (
+                  <span className="max-w-20 text-center text-[11px] font-semibold leading-tight text-stone-600">
+                    {updatedHeaderLabel}
+                  </span>
+                )}
+              </div>
             ) : (
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-stone-100 text-xs font-bold text-stone-500">
                 N/A
@@ -147,21 +174,44 @@ export default function MenuItemDetail() {
                   : item.restaurant?.name ?? 'Restaurant unavailable'}
                 {item.restaurant?.park?.name ? ` | ${item.restaurant.park.name}` : ''}
               </p>
-              {colors && (
-                <p className="mt-2 text-sm font-semibold" style={{ color: colors.bg }}>
-                  {GRADE_CONFIG[grade!].label}
-                </p>
+              {colors && grade && (
+                <div className="mt-2 flex flex-wrap items-center gap-3">
+                  <p className="text-sm font-semibold" style={{ color: gradeTextColors[grade] }}>
+                    {GRADE_CONFIG[grade].label}
+                  </p>
+                  <GradeContextPopover grade={grade} />
+                </div>
               )}
+              <div className="mt-3">
+                <TrustPill trust={trust} />
+              </div>
             </div>
           </div>
+
+          {trust.caution && (
+            <div className={`mt-4 rounded-lg border p-3 ${trust.level === 'low' || trust.level === 'unavailable' ? 'border-amber-300 bg-amber-50 text-amber-900' : 'border-teal-200 bg-teal-50 text-teal-900'}`}>
+              <p className="text-sm font-semibold">{trust.label}</p>
+              <p className="mt-1 text-sm">{trust.caution}</p>
+              {trust.qualityWarnings.length > 0 && (
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
+                  {trust.qualityWarnings.map(warning => <li key={warning}>{warning}</li>)}
+                </ul>
+              )}
+            </div>
+          )}
 
           <div className="mt-5 flex flex-wrap gap-2">
             <button
               type="button"
               onClick={addToMeal}
-              className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+              disabled={!nutrition}
+              className={`rounded-lg px-4 py-2 text-sm font-semibold ${
+                nutrition
+                  ? 'bg-teal-700 text-white hover:bg-teal-800'
+                  : 'cursor-not-allowed bg-stone-200 text-stone-500'
+              }`}
             >
-              Add to Meal
+              {nutrition ? 'Add to Meal' : 'Nutrition needed'}
             </button>
             <button
               type="button"
@@ -177,6 +227,12 @@ export default function MenuItemDetail() {
             >
               Compare
             </button>
+            <a
+              href={reportHref}
+              className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-900 hover:border-amber-400 hover:bg-amber-100"
+            >
+              Report nutrition issue
+            </a>
           </div>
         </div>
 
@@ -185,6 +241,10 @@ export default function MenuItemDetail() {
             <h2 id="nutrition-heading" className="text-lg font-bold text-stone-900">Nutrition Details</h2>
             {nutrition ? (
               <>
+                <p className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-stone-600">
+                  <span aria-hidden="true" className="inline-block h-2 w-2 rounded-full bg-stone-500" />
+                  fewer is better - scale shows item vs. category median (0-5)
+                </p>
                 <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
                   <Metric label="Carbs" value={formatMaybeNumber(carbs, 'g')} emphasis />
                   <Metric label="Net Carbs" value={formatMaybeNumber(netCarbs, 'g')} />
@@ -197,12 +257,11 @@ export default function MenuItemDetail() {
                   <Metric label="Cholesterol" value={formatMaybeNumber(nutrition.cholesterol, 'mg')} />
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <NutritionBadge label="Sodium" value={sodium} unit="mg" colorFn={sodiumColor} />
-                  {alcoholGrams != null && alcoholGrams > 0 && (
+                {alcoholGrams != null && alcoholGrams > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
                     <NutritionBadge label="Alcohol" value={alcoholGrams} unit="g" colorFn={alcoholColor} />
-                  )}
-                </div>
+                  </div>
+                )}
 
                 {alcoholGrams != null && alcoholGrams > 0 && (
                   <p className="mt-2 text-xs text-purple-700">
@@ -264,15 +323,62 @@ export default function MenuItemDetail() {
             {nutrition && (
               <section aria-labelledby="source-heading" className="rounded-lg bg-stone-50 p-3">
                 <h2 id="source-heading" className="text-sm font-bold text-stone-900">Data Source</h2>
-                <p className="mt-1 text-xs text-stone-600">
-                  {nutrition.source.replace('_', ' ')} | Confidence {nutrition.confidence_score}%
-                  {nutrition.source_detail ? ` | ${nutrition.source_detail}` : ''}
-                </p>
+                <dl className="mt-2 grid gap-1 text-xs text-stone-600">
+                  <SourceRow label="Source" value={trust.sourceLabel} />
+                  {trust.confidenceLabel && <SourceRow label="Confidence" value={trust.confidenceLabel} />}
+                  {trust.lastUpdatedLabel && <SourceRow label="Updated" value={trust.lastUpdatedLabel.replace('Last updated ', '')} />}
+                  {nutrition.source_detail && <SourceRow label="Detail" value={nutrition.source_detail} />}
+                </dl>
+                <Link to="/methodology" className="mt-3 inline-flex text-xs font-semibold text-teal-700 hover:text-teal-800">
+                  How nutrition data is sourced
+                </Link>
               </section>
             )}
           </aside>
         </div>
       </article>
+    </div>
+  )
+}
+
+function TrustPill({ trust }: { trust: NutritionTrustSummary }) {
+  const className = trust.level === 'verified'
+    ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
+    : trust.level === 'estimated'
+      ? 'border-teal-200 bg-teal-50 text-teal-800'
+      : 'border-amber-200 bg-amber-50 text-amber-800'
+
+  return (
+    <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${className}`}>
+      {trust.label}
+      {trust.confidenceLabel ? ` - ${trust.confidenceLabel}` : ''}
+    </span>
+  )
+}
+
+function GradeContextPopover({ grade }: { grade: Grade }) {
+  return (
+    <details className="group relative max-w-full text-sm">
+      <summary className="cursor-pointer font-semibold text-teal-700 underline underline-offset-2">
+        What does grade {grade} mean?
+      </summary>
+      <div className="mt-2 max-w-sm rounded-lg border border-stone-200 bg-stone-50 p-3 text-xs text-stone-700 shadow-sm">
+        <p>
+          Grade {grade} means {GRADE_CONFIG[grade].label.toLowerCase()}. Grades weigh net carbs, sugar ratio, protein, fiber, calories, and alcohol.
+        </p>
+        <Link to="/data-sources#grade-rubric" className="mt-2 inline-flex font-semibold text-teal-700 underline underline-offset-2">
+          View the grade rubric
+        </Link>
+      </div>
+    </details>
+  )
+}
+
+function SourceRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex justify-between gap-3">
+      <dt className="font-medium text-stone-500">{label}</dt>
+      <dd className="text-right text-stone-700">{value}</dd>
     </div>
   )
 }

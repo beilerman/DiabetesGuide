@@ -150,14 +150,19 @@ export function ComparisonModal({ onClose }: Props) {
   )
 
   return (
-    <div
-      className="fixed inset-0 z-50 bg-black/50 flex items-start justify-center overflow-y-auto"
-      onClick={e => { if (e.target === e.currentTarget) onClose() }}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Compare items"
-    >
-      <div className="w-full max-w-2xl mx-4 my-8 bg-white rounded-2xl shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto">
+      <button
+        type="button"
+        className="absolute inset-0 min-h-full w-full cursor-default bg-black/50"
+        onClick={onClose}
+        aria-label="Close comparison overlay"
+      />
+      <div
+        className="relative z-10 w-full max-w-2xl mx-4 my-8 bg-white rounded-2xl shadow-2xl overflow-hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Compare items"
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-stone-200">
           <h2 className="text-lg font-bold text-stone-900">Compare Items</h2>

@@ -44,6 +44,7 @@ data/parks/*-supplement*.json
 data/parks/*-final*.json
 data/parks/*-beverages*.json
 output/
+test-results/
 supabase/.temp/
 FA2026.json
 .vercel

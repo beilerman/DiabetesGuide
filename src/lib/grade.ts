@@ -6,6 +6,8 @@ export interface GradeColors {
   label: string
 }
 
+export const GRADE_RUBRIC_SUMMARY = 'Grades weigh net carbs, sugar ratio, protein, fiber, calories, and alcohol.'
+
 export const GRADE_CONFIG: Record<Grade, GradeColors> = {
   A: { bg: '#16a34a', text: '#ffffff', label: 'Diabetes-friendly' },
   B: { bg: '#65a30d', text: '#ffffff', label: 'Good choice' },

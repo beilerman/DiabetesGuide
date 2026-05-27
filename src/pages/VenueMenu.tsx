@@ -1,7 +1,7 @@
 // src/pages/VenueMenu.tsx
 import { useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
-import { useParks, useMenuItems, useRestaurants } from '../lib/queries'
+import { useCatalogPreview, useParks, useMenuItems, useRestaurants } from '../lib/queries'
 import { Breadcrumb } from '../components/ui/Breadcrumb'
 import { RestaurantGroup } from '../components/menu/RestaurantGroup'
 import { FilterBar } from '../components/filters/FilterBar'
@@ -9,6 +9,7 @@ import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { getParkEmoji } from '../components/resort/park-emoji'
 import { getResortById } from '../lib/resort-config'
+import { catalogPreviewParkToPark, findCatalogPreviewPark } from '../lib/catalog-preview'
 import { applyFilters, DEFAULT_FILTERS } from '../lib/filters'
 import type { Filters, MenuItemWithNutrition } from '../lib/types'
 
@@ -19,18 +20,27 @@ export default function VenueMenu() {
   const resort = getResortById(resortId || '')
   const category = resort?.categories.find(c => c.id === categoryId)
   const { data: parks } = useParks()
-  const park = parks?.find(p => p.id === parkId)
-  const { data: items, isLoading } = useMenuItems(parkId)
-  const { data: restaurants } = useRestaurants(parkId)
+  const { data: catalogPreview } = useCatalogPreview()
+  const previewPark = catalogPreview ? findCatalogPreviewPark(catalogPreview, parkId) : undefined
+  const livePark = parks?.find(p => p.id === parkId) ??
+    (previewPark && catalogPreview
+      ? parks?.find(p => findCatalogPreviewPark(catalogPreview, p.name)?.id === previewPark.id)
+      : undefined)
+  const park = livePark ?? (previewPark ? catalogPreviewParkToPark(previewPark) : undefined)
+  const resolvedParkId = livePark?.id
+  const { data: items, isLoading } = useMenuItems(resolvedParkId, { enabled: Boolean(resolvedParkId) })
+  const { data: restaurants } = useRestaurants(resolvedParkId)
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS)
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
   const isSeasonalCategory = !!category?.seasonalFilter
+  const isWaitingForLivePark = Boolean(previewPark && !livePark)
 
   const filtered = useMemo(() => {
     const base = applyFilters(items ?? [], filters)
     return isSeasonalCategory ? base.filter(item => item.is_seasonal) : base
   }, [items, filters, isSeasonalCategory])
+  const displayedItemCount = isWaitingForLivePark ? previewPark?.itemCount ?? 0 : filtered.length
 
   // Group filtered items by restaurant
   const groupedByRestaurant = useMemo(() => {
@@ -75,7 +85,7 @@ export default function VenueMenu() {
         <div>
           <h1 className="text-2xl font-bold text-stone-900">{park.name}</h1>
           <p className="text-sm text-stone-600">
-            {restaurants?.length ?? 0} restaurants · {filtered.length} items
+            {restaurants?.length ?? previewPark?.restaurantCount ?? 0} restaurants · {displayedItemCount} items
           </p>
         </div>
       </div>
@@ -84,7 +94,7 @@ export default function VenueMenu() {
       <FilterBar filters={filters} onChange={setFilters} />
 
       {/* Restaurant groups */}
-      {isLoading ? (
+      {isLoading || isWaitingForLivePark ? (
         <div className="space-y-4">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="rounded-2xl bg-white shadow-sm p-6 animate-pulse">

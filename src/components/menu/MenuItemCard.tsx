@@ -7,6 +7,7 @@ import { getDisplayCategory, getMenuItemDisplayName, hasUsableNutrition } from '
 import { GradeBadge } from './GradeBadge'
 import { DotMeter } from './DotMeter'
 import { AnnotationBadge } from './AnnotationBadge'
+import { getNutritionQualityWarnings } from '../../lib/nutrition-trust'
 
 interface Props {
   item: MenuItemWithNutrition
@@ -72,6 +73,8 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
   const availabilityCount = item.availability_count ?? 1
   const availabilityRestaurants = item.availability_restaurants ?? []
   const hasMultipleLocations = availabilityCount > 1
+  const isLowConfidenceNutrition = Boolean(nd && nd.confidence_score < 70)
+  const qualityWarnings = nd ? getNutritionQualityWarnings(nd) : []
 
   const { grade, colors: gradeColors } = getGradeForItem({
     calories, carbs, fat, protein, sugar, fiber, sodium,
@@ -87,6 +90,7 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
   const topAnnotation = annotations[0] ?? null
 
   const handleAddToMeal = () => {
+    if (!hasNutrition) return
     setAddingToMeal(true)
     onAddToMeal({
       id: item.id,
@@ -100,6 +104,10 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
       sodium: sodium ?? 0,
       restaurant: hasMultipleLocations ? `${availabilityCount} locations` : item.restaurant?.name,
       parkName: item.restaurant?.park?.name,
+      nutritionConfidence: nd?.confidence_score,
+      nutritionSource: nd?.source,
+      nutritionSourceDetail: nd?.source_detail,
+      nutritionAvailable: true,
     })
     setTimeout(() => setAddingToMeal(false), 600)
   }
@@ -240,6 +248,9 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
             <span className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm bg-stone-100 text-stone-500 border border-stone-200">
               Nutrition unavailable
             </span>
+            <p className="mt-2 text-xs font-medium text-amber-800">
+              Cannot add to meal totals until nutrition is available.
+            </p>
           </div>
         )}
 
@@ -247,6 +258,19 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
         {topAnnotation && (
           <div className="mt-2">
             <AnnotationBadge annotation={topAnnotation} />
+          </div>
+        )}
+
+        {isLowConfidenceNutrition && nd && (
+          <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-2 text-xs font-medium text-amber-800">
+            Estimated nutrition - {nd.confidence_score}% confidence. Verify before dosing.
+            {qualityWarnings[0] && <span className="mt-1 block">{qualityWarnings[0]}</span>}
+          </div>
+        )}
+
+        {!isLowConfidenceNutrition && qualityWarnings.length > 0 && (
+          <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-2 text-xs font-medium text-amber-800">
+            Verify nutrition values: {qualityWarnings[0]}
           </div>
         )}
 
@@ -296,8 +320,12 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
         <div className="mt-3 flex gap-2">
           <button
             type="button"
+            disabled={!hasNutrition}
+            aria-label={!hasNutrition ? `Nutrition needed before adding ${displayName} to meal` : undefined}
             className={`flex-1 h-10 flex items-center justify-center gap-1.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
-              addingToMeal
+              !hasNutrition
+                ? 'bg-stone-200 text-stone-500 cursor-not-allowed'
+                : addingToMeal
                 ? 'bg-green-500 text-white'
                 : 'bg-teal-600 hover:bg-teal-700 text-white shadow-sm'
             }`}
@@ -306,7 +334,9 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
               handleAddToMeal()
             }}
           >
-            {addingToMeal ? (
+            {!hasNutrition ? (
+              <>Nutrition needed</>
+            ) : addingToMeal ? (
               <>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />

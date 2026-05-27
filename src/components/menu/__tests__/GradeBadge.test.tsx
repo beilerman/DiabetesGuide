@@ -7,6 +7,7 @@ describe('GradeBadge', () => {
     render(<GradeBadge grade="A" />)
     const badge = screen.getByRole('img')
     expect(badge).toHaveAttribute('aria-label', 'Grade A: Diabetes-friendly')
+    expect(badge).toHaveAttribute('title', expect.stringContaining('net carbs'))
     expect(badge).toHaveTextContent('A')
   })
 

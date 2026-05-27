@@ -95,7 +95,7 @@ export function useCompare() {
 
   const isInCompare = useCallback((id: string) => {
     return sharedItems.some(i => i.id === id)
-  }, [items])
+  }, [])
 
   return {
     compareItems: items,
@@ -105,5 +105,13 @@ export function useCompare() {
     removeFromCompare,
     clearCompare,
     isInCompare,
+  }
+}
+
+export function __resetCompareState(items: CompareItem[] = []) {
+  listeners.clear()
+  sharedItems = items
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
   }
 }

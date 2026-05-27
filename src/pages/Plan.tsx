@@ -5,14 +5,14 @@ import { GradeBadge } from '../components/menu/GradeBadge'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
-import { useTripPlan } from '../hooks/useTripPlan'
+import { useTripPlan, type CreateTripInput } from '../hooks/useTripPlan'
 import type { DayTotals } from '../hooks/useTripPlan'
 import { computeScore, computeGrade } from '../lib/grade'
 import { RESORT_CONFIG, getParksForResort } from '../lib/resort-config'
 import { cleanDisplayText } from '../lib/display'
 // Lazy-load PDF export to keep main bundle small (~200KB for jsPDF)
 const lazyExportPdf = () => import('../lib/export-pdf').then(m => m.exportTripPlanPdf)
-import type { MealItem } from '../lib/types'
+import type { MealItem, MenuItemWithNutrition, Park } from '../lib/types'
 
 type SortOption = 'recent' | 'grade' | 'carbsAsc' | 'carbsDesc'
 type Tab = 'favorites' | 'trip'
@@ -22,6 +22,11 @@ export default function Plan() {
 
   return (
     <div className="space-y-4">
+      <div>
+        <h1 className="text-2xl font-bold text-stone-900">Favorites & Trip Plan</h1>
+        <p className="text-sm text-stone-500">Save menu ideas, build dated park days, and back up the plan on this device.</p>
+      </div>
+
       {/* Tab switcher */}
       <div className="flex gap-1 bg-stone-100 rounded-lg p-0.5">
         <TabButton active={tab === 'favorites'} onClick={() => setTab('favorites')}>
@@ -42,7 +47,7 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
     <button
       onClick={onClick}
       className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-        active ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500 hover:text-stone-700'
+        active ? 'bg-white shadow-sm text-stone-900' : 'text-stone-600 hover:text-stone-800'
       }`}
     >
       {children}
@@ -59,6 +64,8 @@ function FavoritesTab() {
   const { hasPlan, plan, addItemToSlot } = useTripPlan()
   const [sort, setSort] = useState<SortOption>('recent')
   const [addToDayModal, setAddToDayModal] = useState(false)
+  const [favoriteDayIndex, setFavoriteDayIndex] = useState(0)
+  const [favoriteMealIndex, setFavoriteMealIndex] = useState(0)
   const favoriteIds = useMemo(() => [...favorites].sort(), [favorites])
   const { data: items, isLoading } = useFavoriteMenuItems(favoriteIds)
 
@@ -111,11 +118,36 @@ function FavoritesTab() {
     setAddToDayModal(false)
   }
 
+  const toMealItem = (item: MenuItemWithNutrition): MealItem => {
+    const nd = item.nutritional_data?.[0]
+    return {
+      id: item.id,
+      name: item.name,
+      carbs: nd?.carbs ?? 0,
+      calories: nd?.calories ?? 0,
+      fat: nd?.fat ?? 0,
+      protein: nd?.protein ?? 0,
+      sugar: nd?.sugar ?? 0,
+      fiber: nd?.fiber ?? 0,
+      sodium: nd?.sodium ?? 0,
+      restaurant: item.restaurant?.name,
+      parkName: item.restaurant?.park?.name,
+      nutritionConfidence: nd?.confidence_score,
+      nutritionSource: nd?.source,
+      nutritionSourceDetail: nd?.source_detail,
+      nutritionAvailable: nd != null,
+    }
+  }
+
+  const handleAddFavoriteToTrip = (item: MenuItemWithNutrition) => {
+    addItemToSlot(favoriteDayIndex, favoriteMealIndex, toMealItem(item))
+  }
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-stone-900">Favorites</h1>
+          <h2 className="text-xl font-bold text-stone-900">Favorites</h2>
           <p className="text-sm text-stone-500">{favoriteItems.length} saved {favoriteItems.length === 1 ? 'item' : 'items'}</p>
         </div>
         <div className="flex items-center gap-2">
@@ -141,6 +173,43 @@ function FavoritesTab() {
         </div>
       </div>
 
+      {hasPlan && plan && (
+        <div className="rounded-xl border border-stone-200 bg-white p-3 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Favorite trip target</p>
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            <label className="text-sm text-stone-700">
+              Trip day
+              <select
+                className="mt-1 w-full rounded-lg border border-stone-300 px-2 py-1.5 text-sm"
+                value={favoriteDayIndex}
+                onChange={event => {
+                  setFavoriteDayIndex(Number(event.target.value))
+                  setFavoriteMealIndex(0)
+                }}
+              >
+                {plan.days.map((day, index) => (
+                  <option key={`${day.date}-${index}`} value={index}>
+                    Day {index + 1}{day.date ? ` - ${day.date}` : ''}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="text-sm text-stone-700">
+              Meal slot
+              <select
+                className="mt-1 w-full rounded-lg border border-stone-300 px-2 py-1.5 text-sm"
+                value={favoriteMealIndex}
+                onChange={event => setFavoriteMealIndex(Number(event.target.value))}
+              >
+                {(plan.days[favoriteDayIndex]?.meals ?? []).map((meal, index) => (
+                  <option key={`${meal.name}-${index}`} value={index}>{meal.name}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+        </div>
+      )}
+
       {isLoading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[...Array(3)].map((_, i) => (
@@ -155,20 +224,30 @@ function FavoritesTab() {
       ) : favoriteItems.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {favoriteItems.map(item => (
-            <MenuItemCard
-              key={item.id}
-              item={item}
-              onAddToMeal={addItem}
-              isFavorite={isFavorite(item.id)}
-              onToggleFavorite={toggle}
-              onCompare={addToCompare}
-            />
+            <div key={item.id} className="space-y-2">
+              <MenuItemCard
+                item={item}
+                onAddToMeal={addItem}
+                isFavorite={isFavorite(item.id)}
+                onToggleFavorite={toggle}
+                onCompare={addToCompare}
+              />
+              {hasPlan && plan && (
+                <button
+                  type="button"
+                  onClick={() => handleAddFavoriteToTrip(item)}
+                  className="w-full rounded-lg border border-teal-200 bg-teal-50 px-3 py-2 text-sm font-semibold text-teal-800 hover:bg-teal-100"
+                >
+                  Add to trip day
+                </button>
+              )}
+            </div>
           ))}
         </div>
       ) : (
         <div className="text-center py-16">
           <div className="text-5xl mb-4">&#x2764;&#xFE0F;</div>
-          <h3 className="text-xl font-semibold text-stone-800 mb-2">No favorites yet</h3>
+          <h2 className="text-xl font-semibold text-stone-800 mb-2">No favorites yet</h2>
           <p className="text-stone-600">Tap the heart on any menu item to save it here.</p>
         </div>
       )}
@@ -211,26 +290,38 @@ function FavoritesTab() {
 // ─── Trip Plan Tab ───────────────────────────────────────────────────────────
 
 function TripPlanTab() {
-  const { plan, hasPlan, dayTotals, tripTotals, createPlan, assignPark, addItemToSlot, removeItemFromSlot, clearPlan, addDay, removeDay, updateCarbGoal } = useTripPlan()
+  const {
+    plan, hasPlan, dayTotals, tripTotals, createPlan, assignPark, addItemToSlot, removeItemFromSlot,
+    clearPlan, addDay, removeDay, updateCarbGoal, exportTrips, importTrips,
+  } = useTripPlan()
+  const { items: mealItems, activeMealName } = useMealCart()
   const { data: parks } = useParks()
+  const [showClearConfirm, setShowClearConfirm] = useState(false)
+  const [backupJson, setBackupJson] = useState('')
+  const [backupMessage, setBackupMessage] = useState('')
+  const [mealDayIndex, setMealDayIndex] = useState(0)
+  const [mealSlotIndex, setMealSlotIndex] = useState(0)
 
   if (!hasPlan || !plan) {
-    return <TripSetupForm onCreatePlan={createPlan} />
+    return <TripSetupForm onCreatePlan={createPlan} onImportTrips={importTrips} parks={parks ?? []} />
   }
 
   const resort = RESORT_CONFIG.find(r => r.id === plan.resortId)
   const resortParks = parks ? (resort ? getParksForResort(parks, resort) : parks) : []
+  const tripParks = plan.selectedParkIds.length > 0
+    ? resortParks.filter(park => plan.selectedParkIds.includes(park.id))
+    : resortParks
+  const dateRange = plan.startDate === plan.endDate ? plan.startDate : `${plan.startDate} to ${plan.endDate}`
+  const activeMealSlots = plan.days[mealDayIndex]?.meals ?? []
 
   return (
     <div className="space-y-6">
       {/* Trip header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-stone-900">
-            {resort?.icon} {resort?.name ?? 'Trip Plan'}
-          </h1>
+          <h2 className="text-2xl font-bold text-stone-900">{plan.name}</h2>
           <p className="text-sm text-stone-500">
-            {plan.days.length} {plan.days.length === 1 ? 'day' : 'days'} &middot; {tripTotals.itemCount} items planned
+            {resort?.name ?? 'Theme park trip'} &middot; {dateRange} &middot; {plan.days.length} {plan.days.length === 1 ? 'day' : 'days'} &middot; {tripTotals.itemCount} items planned
           </p>
         </div>
         <div className="flex gap-2">
@@ -254,13 +345,98 @@ function TripPlanTab() {
             + Day
           </button>
           <button
-            onClick={clearPlan}
+            onClick={() => setShowClearConfirm(true)}
             className="px-3 py-1.5 rounded-lg text-red-600 text-xs font-medium hover:bg-red-50"
           >
             Clear Plan
           </button>
         </div>
       </div>
+
+      <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
+        <h3 className="font-bold text-stone-900">Backup</h3>
+        <p className="mt-1 text-sm text-stone-500">Export or import all saved trips as JSON for device backup.</p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              setBackupJson(exportTrips())
+              setBackupMessage('Trip backup JSON ready.')
+            }}
+            className="rounded-lg border border-stone-300 px-3 py-1.5 text-sm font-medium text-stone-700 hover:bg-stone-50"
+          >
+            Export JSON
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              const result = importTrips(backupJson)
+              setBackupMessage(result.ok ? 'Trip backup imported.' : result.error ?? 'Import failed.')
+            }}
+            className="rounded-lg bg-teal-700 px-3 py-1.5 text-sm font-semibold text-white hover:bg-teal-800"
+          >
+            Import JSON
+          </button>
+        </div>
+        <label className="mt-3 block text-sm font-medium text-stone-700">
+          Trip plan backup JSON
+          <textarea
+            value={backupJson}
+            onChange={event => setBackupJson(event.target.value)}
+            rows={4}
+            className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 font-mono text-xs"
+            placeholder="Paste exported trip JSON here"
+          />
+        </label>
+        {backupMessage && <p className="mt-2 text-sm text-stone-600" role="status">{backupMessage}</p>}
+      </div>
+
+      {mealItems.length > 0 && (
+        <div className="rounded-xl border border-teal-200 bg-teal-50 p-4">
+          <h3 className="font-bold text-teal-950">Add Meal Builder items</h3>
+          <p className="mt-1 text-sm text-teal-900">
+            Assign {mealItems.length} item{mealItems.length === 1 ? '' : 's'} from {activeMealName} to a trip day.
+          </p>
+          <div className="mt-3 grid gap-2 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
+            <label className="text-sm font-medium text-teal-950">
+              Day
+              <select
+                className="mt-1 w-full rounded-lg border border-teal-300 px-2 py-1.5 text-sm"
+                value={mealDayIndex}
+                onChange={event => {
+                  setMealDayIndex(Number(event.target.value))
+                  setMealSlotIndex(0)
+                }}
+              >
+                {plan.days.map((day, index) => (
+                  <option key={`${day.date}-${index}`} value={index}>Day {index + 1}{day.date ? ` - ${day.date}` : ''}</option>
+                ))}
+              </select>
+            </label>
+            <label className="text-sm font-medium text-teal-950">
+              Meal
+              <select
+                className="mt-1 w-full rounded-lg border border-teal-300 px-2 py-1.5 text-sm"
+                value={mealSlotIndex}
+                onChange={event => setMealSlotIndex(Number(event.target.value))}
+              >
+                {activeMealSlots.map((meal, index) => (
+                  <option key={`${meal.name}-${index}`} value={index}>{meal.name}</option>
+                ))}
+              </select>
+            </label>
+            <button
+              type="button"
+              onClick={() => {
+                for (const item of mealItems) addItemToSlot(mealDayIndex, mealSlotIndex, item)
+              }}
+              className="rounded-lg bg-teal-700 px-3 py-2 text-sm font-semibold text-white hover:bg-teal-800"
+            >
+              Add active meal to trip
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Carb goal setting */}
       <div className="flex items-center gap-3 text-sm">
@@ -285,6 +461,7 @@ function TripPlanTab() {
           dayTotals={dayTotals[dayIndex]}
           carbGoalPerMeal={plan.carbGoalPerMeal}
           resortParks={resortParks}
+          tripParks={tripParks}
           canRemove={plan.days.length > 1}
           onAssignPark={parkId => assignPark(dayIndex, parkId)}
           onAddItem={(mealIndex, item) => addItemToSlot(dayIndex, mealIndex, item)}
@@ -307,27 +484,116 @@ function TripPlanTab() {
           </div>
         </div>
       )}
+
+      {showClearConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+          <button
+            type="button"
+            className="absolute inset-0 bg-stone-950/40"
+            onClick={() => setShowClearConfirm(false)}
+            aria-label="Cancel clear trip plan"
+          />
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="clear-trip-plan-heading"
+            className="relative z-10 w-full max-w-md rounded-2xl border border-stone-200 bg-white p-5 shadow-xl"
+          >
+            <h2 id="clear-trip-plan-heading" className="text-lg font-semibold text-stone-900">Clear trip plan?</h2>
+            <p className="mt-2 text-sm text-stone-600">
+              This removes all planned days, parks, meal slots, and items from this device.
+            </p>
+            <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={() => setShowClearConfirm(false)}
+                className="rounded-xl border border-stone-200 px-4 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  clearPlan()
+                  setShowClearConfirm(false)
+                }}
+                className="rounded-xl border border-red-200 bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+              >
+                Clear Trip Plan
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
 
 // ─── Trip Setup Form ────────────────────────────────────────────────────────
 
-function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numDays: number, mealsPerDay?: number, carbGoalPerMeal?: number) => void }) {
+function todayIso(): string {
+  return new Date().toISOString().slice(0, 10)
+}
+
+function addIsoDays(date: string, days: number): string {
+  const parsed = new Date(`${date}T00:00:00Z`)
+  parsed.setUTCDate(parsed.getUTCDate() + days)
+  return parsed.toISOString().slice(0, 10)
+}
+
+function getTripDayCount(startDate: string, endDate: string): number {
+  const start = new Date(`${startDate}T00:00:00Z`).getTime()
+  const end = new Date(`${endDate}T00:00:00Z`).getTime()
+  if (!Number.isFinite(start) || !Number.isFinite(end) || end < start) return 1
+  return Math.max(1, Math.round((end - start) / 86_400_000) + 1)
+}
+
+function TripSetupForm({ onCreatePlan, onImportTrips, parks }: {
+  onCreatePlan: (input: CreateTripInput) => void
+  onImportTrips: (json: string) => { ok: boolean; error?: string }
+  parks: Park[]
+}) {
+  const defaultStart = todayIso()
   const [resortId, setResortId] = useState(RESORT_CONFIG[0].id)
-  const [numDays, setNumDays] = useState(3)
+  const [name, setName] = useState('My Theme Park Trip')
+  const [startDate, setStartDate] = useState(defaultStart)
+  const [endDate, setEndDate] = useState(addIsoDays(defaultStart, 2))
+  const [selectedParkIds, setSelectedParkIds] = useState<string[]>([])
   const [mealsPerDay, setMealsPerDay] = useState(3)
   const [carbGoal, setCarbGoal] = useState(60)
+  const [importJson, setImportJson] = useState('')
+  const [importMessage, setImportMessage] = useState('')
+  const resort = RESORT_CONFIG.find(r => r.id === resortId)
+  const resortParks = resort ? getParksForResort(parks, resort) : parks
+  const tripDayCount = getTripDayCount(startDate, endDate)
+
+  const togglePark = (parkId: string) => {
+    setSelectedParkIds(prev => prev.includes(parkId)
+      ? prev.filter(id => id !== parkId)
+      : [...prev, parkId]
+    )
+  }
 
   return (
     <div className="max-w-md mx-auto space-y-6">
       <div className="text-center py-4">
         <div className="text-5xl mb-3">&#x1F5D3;&#xFE0F;</div>
-        <h2 className="text-2xl font-bold text-stone-900">Plan Your Trip</h2>
+        <h2 className="text-2xl font-bold text-stone-900">Create trip</h2>
         <p className="text-sm text-stone-500 mt-1">Build a day-by-day meal plan with carb tracking</p>
       </div>
 
       <div className="rounded-xl bg-white border border-stone-200 p-5 shadow-sm space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-name">Trip name</label>
+          <input
+            id="trip-name"
+            type="text"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
+          />
+        </div>
+
         <div>
           <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-resort">Resort</label>
           <select
@@ -342,19 +608,34 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
           </select>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-days">Days</label>
+            <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-start-date">Start date</label>
             <input
-              id="trip-days"
-              type="number"
-              value={numDays}
-              onChange={e => setNumDays(Math.max(1, Math.min(14, Number(e.target.value))))}
+              id="trip-start-date"
+              type="date"
+              value={startDate}
+              onChange={e => {
+                const next = e.target.value
+                setStartDate(next)
+                if (endDate < next) setEndDate(next)
+              }}
               className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm text-center"
-              min={1}
-              max={14}
             />
           </div>
+          <div>
+            <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-end-date">End date</label>
+            <input
+              id="trip-end-date"
+              type="date"
+              value={endDate}
+              onChange={e => setEndDate(e.target.value < startDate ? startDate : e.target.value)}
+              className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm text-center"
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-meals-per-day">Meals/Day</label>
             <input
@@ -369,26 +650,80 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
           </div>
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1" htmlFor="trip-setup-carb-goal">Carb Goal</label>
-            <div className="flex items-center gap-1">
-              <input
-                id="trip-setup-carb-goal"
-                type="number"
-                value={carbGoal}
-                onChange={e => setCarbGoal(Math.max(0, Number(e.target.value)))}
-                className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm text-center"
-                min={0}
-              />
-              <span className="text-xs text-stone-400">g</span>
-            </div>
+            <input
+              id="trip-setup-carb-goal"
+              type="number"
+              value={carbGoal}
+              onChange={e => setCarbGoal(Math.max(0, Number(e.target.value)))}
+              className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm text-center"
+              min={0}
+            />
           </div>
         </div>
 
+        <fieldset>
+          <legend className="text-sm font-medium text-stone-700">Parks selected</legend>
+          <p className="mt-0.5 text-xs text-stone-500">
+            {selectedParkIds.length > 0 ? `${selectedParkIds.length} selected` : 'Select parks for the trip; days can still be adjusted later.'}
+          </p>
+          <div className="mt-2 max-h-44 space-y-1 overflow-y-auto rounded-lg border border-stone-200 p-2">
+            {resortParks.length > 0 ? resortParks.map(park => (
+              <label key={park.id} className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-stone-50">
+                <input
+                  type="checkbox"
+                  checked={selectedParkIds.includes(park.id)}
+                  onChange={() => togglePark(park.id)}
+                />
+                <span>{park.name}</span>
+              </label>
+            )) : (
+              <p className="px-2 py-1.5 text-sm text-stone-500">Park list unavailable. You can create the trip and assign parks later.</p>
+            )}
+          </div>
+        </fieldset>
+
         <button
-          onClick={() => onCreatePlan(resortId, numDays, mealsPerDay, carbGoal)}
+          onClick={() => onCreatePlan({
+            name,
+            resortId,
+            startDate,
+            endDate,
+            selectedParkIds,
+            mealsPerDay,
+            carbGoalPerMeal: carbGoal,
+          })}
           className="w-full py-3 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition-colors"
         >
-          Create Trip Plan
+          Create trip
         </button>
+
+        <p className="text-center text-xs text-stone-500">{tripDayCount} trip {tripDayCount === 1 ? 'day' : 'days'} will be created.</p>
+      </div>
+
+      <div className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
+        <h3 className="font-bold text-stone-900">Import a saved trip</h3>
+        <p className="mt-1 text-sm text-stone-500">Paste a previous `dg.trips.v1` JSON export to restore it on this device.</p>
+        <label className="mt-3 block text-sm font-medium text-stone-700">
+          Trip backup JSON
+          <textarea
+            value={importJson}
+            onChange={event => setImportJson(event.target.value)}
+            rows={4}
+            className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 font-mono text-xs"
+            placeholder="Paste exported trip JSON here"
+          />
+        </label>
+        <button
+          type="button"
+          onClick={() => {
+            const result = onImportTrips(importJson)
+            setImportMessage(result.ok ? 'Trip backup imported.' : result.error ?? 'Import failed.')
+          }}
+          className="mt-3 rounded-lg bg-teal-700 px-3 py-2 text-sm font-semibold text-white hover:bg-teal-800"
+        >
+          Import JSON
+        </button>
+        {importMessage && <p className="mt-2 text-sm text-stone-600" role="status">{importMessage}</p>}
       </div>
     </div>
   )
@@ -402,6 +737,7 @@ interface DayCardProps {
   dayTotals: DayTotals
   carbGoalPerMeal: number
   resortParks: import('../lib/types').Park[]
+  tripParks: import('../lib/types').Park[]
   canRemove: boolean
   onAssignPark: (parkId: string | null) => void
   onAddItem: (mealIndex: number, item: MealItem) => void
@@ -409,14 +745,15 @@ interface DayCardProps {
   onRemoveDay: () => void
 }
 
-function DayCard({ day, dayIndex, dayTotals, carbGoalPerMeal, resortParks, canRemove, onAssignPark, onRemoveItem, onRemoveDay }: DayCardProps) {
+function DayCard({ day, dayIndex, dayTotals, carbGoalPerMeal, resortParks, tripParks, canRemove, onAssignPark, onRemoveItem, onRemoveDay }: DayCardProps) {
   const selectedPark = resortParks.find(p => p.id === day.parkId)
+  const parkOptions = tripParks.length > 0 ? tripParks : resortParks
 
   return (
     <div className="rounded-xl bg-white border border-stone-200 shadow-sm overflow-hidden">
       {/* Day header */}
       <div className="flex items-center justify-between px-4 py-3 bg-stone-50 border-b border-stone-100">
-        <h3 className="font-bold text-stone-900">Day {dayIndex + 1}</h3>
+        <h3 className="font-bold text-stone-900">Day {dayIndex + 1}{day.date ? ` · ${day.date}` : ''}</h3>
         <div className="flex items-center gap-2">
           <select
             value={day.parkId ?? ''}
@@ -425,7 +762,7 @@ function DayCard({ day, dayIndex, dayTotals, carbGoalPerMeal, resortParks, canRe
             aria-label={`Park for day ${dayIndex + 1}`}
           >
             <option value="">Select park...</option>
-            {resortParks.map(p => (
+            {parkOptions.map(p => (
               <option key={p.id} value={p.id}>{p.name}</option>
             ))}
           </select>

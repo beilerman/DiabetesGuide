@@ -7,9 +7,13 @@ import {
   fetchMenuItemsByIdsOffline,
   searchMenuItemsOffline,
   fetchAllRestaurantsOffline,
+  fetchMenuItemCountsOffline,
 } from './offline-queries'
-import { readRestaurantsByPark, readItemsByPark, readAllItems } from './offline-db'
+import { readRestaurants, readRestaurantsByPark, readItemsByPark, readAllItems } from './offline-db'
+import { readMenuItemCountsCache } from './menu-count-cache'
+import { fetchCatalogPreview, STATIC_CATALOG_PREVIEW } from './catalog-preview'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
+import type { CatalogPreview } from './catalog-preview'
 
 export function useParks() {
   return useQuery({
@@ -31,6 +35,16 @@ export function useRestaurants(parkId: string | undefined) {
 
 interface UseMenuItemsOptions {
   dedupe?: boolean
+  enabled?: boolean
+}
+
+export function useCatalogPreview() {
+  return useQuery({
+    queryKey: ['catalogPreview'],
+    queryFn: (): Promise<CatalogPreview> => fetchCatalogPreview(),
+    initialData: STATIC_CATALOG_PREVIEW,
+    staleTime: 60 * 60 * 1000,
+  })
 }
 
 export function useMenuItems(parkId?: string, options?: UseMenuItemsOptions) {
@@ -38,7 +52,7 @@ export function useMenuItems(parkId?: string, options?: UseMenuItemsOptions) {
   return useQuery({
     queryKey: ['menuItems', parkId, dedupe],
     queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsOffline(parkId, { dedupe }),
-    enabled: true,
+    enabled: options?.enabled ?? true,
   })
 }
 
@@ -137,39 +151,42 @@ export function useAllRestaurants() {
 export function useMenuItemCounts() {
   return useQuery({
     queryKey: ['menuItemCounts'],
-    queryFn: async (): Promise<Map<string, number>> => {
+    queryFn: (): Promise<Map<string, number>> => fetchMenuItemCountsOffline(),
+    initialData: () => readMenuItemCountsCache(),
+  })
+}
+
+export function useTotalMenuItemCount() {
+  return useQuery({
+    queryKey: ['totalMenuItemCount'],
+    queryFn: async (): Promise<number> => {
       try {
-        const { data: restaurants, error: restErr } = await supabase
-          .from('restaurants')
-          .select('id, park_id')
-        if (restErr) throw restErr
-
-        const parkRestaurants = new Map<string, string[]>()
-        for (const r of restaurants || []) {
-          const list = parkRestaurants.get(r.park_id) || []
-          list.push(r.id)
-          parkRestaurants.set(r.park_id, list)
-        }
-
-        const counts = new Map<string, number>()
-        for (const [parkId, rIds] of parkRestaurants) {
-          const { count, error } = await supabase
-            .from('menu_items')
-            .select('*', { count: 'exact', head: true })
-            .in('restaurant_id', rIds)
-          if (error) throw error
-          counts.set(parkId, count ?? 0)
-        }
-        return counts
+        const { count, error } = await supabase
+          .from('menu_items')
+          .select('*', { count: 'exact', head: true })
+        if (error) throw error
+        return count ?? 0
       } catch {
-        // Offline fallback: count from cached items
-        const allItems = await readAllItems()
-        const counts = new Map<string, number>()
-        for (const item of allItems) {
-          const parkId = item.restaurant?.park?.id
-          if (parkId) counts.set(parkId, (counts.get(parkId) ?? 0) + 1)
-        }
-        return counts
+        const cached = await readAllItems()
+        return cached.length
+      }
+    },
+  })
+}
+
+export function useTotalRestaurantCount() {
+  return useQuery({
+    queryKey: ['totalRestaurantCount'],
+    queryFn: async (): Promise<number> => {
+      try {
+        const { count, error } = await supabase
+          .from('restaurants')
+          .select('*', { count: 'exact', head: true })
+        if (error) throw error
+        return count ?? 0
+      } catch {
+        const cached = await readRestaurants()
+        return cached.length
       }
     },
   })
