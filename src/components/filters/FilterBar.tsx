@@ -83,8 +83,10 @@ export function FilterBar({ filters, onChange }: Props) {
             </svg>
           </div>
           <input
+            id="browse-filter-search"
             type="text"
             placeholder="Search menu items, restaurants..."
+            aria-label="Search menu items and restaurants"
             value={filters.search}
             onChange={e => set('search', e.target.value)}
             className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-stone-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 focus:outline-none text-sm transition-colors"

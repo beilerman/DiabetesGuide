@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { MemoryRouter, useLocation } from 'react-router-dom'
 import Search from '../Search'
 import type { MenuItemWithNutrition } from '../../lib/types'
 
@@ -27,8 +28,14 @@ function renderSearch(path = '/search?q=chicken') {
   return render(
     <MemoryRouter initialEntries={[path]}>
       <Search />
+      <LocationProbe />
     </MemoryRouter>,
   )
+}
+
+function LocationProbe() {
+  const location = useLocation()
+  return <output data-testid="location-search">{location.search}</output>
 }
 
 describe('Search', () => {
@@ -70,6 +77,27 @@ describe('Search', () => {
     renderSearch('/search')
 
     expect(screen.queryByText(/searching/i)).not.toBeInTheDocument()
+  })
+
+  it('binds grade filter chips to the grade query string', async () => {
+    const user = userEvent.setup()
+    vi.mocked(useParks).mockReturnValue({ data: [] } as unknown as ReturnType<typeof useParks>)
+    vi.mocked(useMenuItems).mockReturnValue({
+      data: [makeMenuItem('item-1', 'Grilled Chicken Sandwich')],
+      isLoading: false,
+      isFetching: false,
+    } as ReturnType<typeof useMenuItems>)
+
+    renderSearch('/search?q=chicken&grade=A,F')
+
+    expect(screen.getByRole('button', { name: /A - diabetes-friendly/i })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('button', { name: /F - consider alternatives/i })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('link', { name: /what do grades mean/i })).toHaveAttribute('href', '/data-sources#grade-rubric')
+
+    await user.click(screen.getByRole('button', { name: /F - consider alternatives/i }))
+
+    expect(screen.getByRole('button', { name: /F - consider alternatives/i })).toHaveAttribute('aria-pressed', 'false')
+    expect(screen.getByTestId('location-search')).toHaveTextContent('grade=A')
   })
 })
 

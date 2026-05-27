@@ -24,6 +24,8 @@ describe('Header', () => {
     await user.click(toggle)
 
     expect(screen.getByRole('button', { name: /disable high contrast/i })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByText(/contrast:\s*on/i)).toBeVisible()
+    expect(JSON.parse(localStorage.getItem('dg_preferences') ?? '{}')).toMatchObject({ highContrast: true })
   })
 
   it('renders shared desktop navigation labels with an active page state', () => {

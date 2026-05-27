@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { buildInfo, formatBuildDate } from '../lib/build-info'
 
 export default function Methodology() {
   return (
@@ -36,6 +37,28 @@ export default function Methodology() {
         </p>
       </section>
 
+      <section className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
+        <h2 className="text-lg font-bold text-stone-900">Catalog Snapshot</h2>
+        <p className="mt-2 text-sm text-stone-600">
+          The current catalog snapshot is dated <span className="font-semibold text-stone-900">{formatBuildDate(buildInfo.catalogSnapshotDate)}</span>.
+          Build metadata is available on the <Link to="/about" className="font-semibold text-teal-700 underline underline-offset-2">About page</Link>.
+        </p>
+      </section>
+
+      <section id="grade-rubric" className="scroll-mt-24 rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
+        <h2 className="text-lg font-bold text-stone-900">Grade Rubric</h2>
+        <p className="mt-2 text-sm text-stone-600">
+          Item grades are a planning shorthand for diabetes-friendly choices. They weigh net carbs most heavily, then sugar ratio, protein, fiber, calories, and alcohol. The grade is not a medical recommendation.
+        </p>
+        <dl className="mt-4 grid gap-2 text-sm text-stone-700">
+          <GradeRow grade="A" label="Diabetes-friendly" />
+          <GradeRow grade="B" label="Good choice" />
+          <GradeRow grade="C" label="Plan your bolus" />
+          <GradeRow grade="D" label="Caution - high carb impact" />
+          <GradeRow grade="F" label="Consider alternatives" />
+        </dl>
+      </section>
+
       <section id="estimator-safety" className="scroll-mt-24 rounded-xl border border-stone-200 bg-white p-5 shadow-sm">
         <h2 className="text-lg font-bold text-stone-900">Estimator Safety Methodology</h2>
         <div className="mt-3 space-y-2 text-sm text-stone-600">
@@ -59,7 +82,7 @@ export default function Methodology() {
         <p className="mt-2 text-sm text-stone-600">
           Menus change frequently. Use the report link on any item detail page to send the item, restaurant, park, and page URL with your correction.
         </p>
-        <Link to="/browse" className="mt-4 inline-flex rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700">
+        <Link to="/browse" className="mt-4 inline-flex rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800">
           Browse items
         </Link>
       </section>
@@ -72,6 +95,17 @@ function SourceBlock({ title, body }: { title: string; body: string }) {
     <div className="rounded-lg border border-stone-200 bg-stone-50 p-3">
       <h3 className="font-semibold text-stone-900">{title}</h3>
       <p className="mt-1 text-sm text-stone-600">{body}</p>
+    </div>
+  )
+}
+
+function GradeRow({ grade, label }: { grade: string; label: string }) {
+  return (
+    <div className="flex items-start gap-2">
+      <dt className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-stone-900 text-xs font-bold text-white">
+        {grade}
+      </dt>
+      <dd>{label}</dd>
     </div>
   )
 }
