@@ -29,6 +29,7 @@
     "enrich:dfb": "tsx scripts/enrich-from-dfb.ts",
     "estimate:ai": "tsx scripts/estimate-nutrition-ai.ts",
     "keepalive": "tsx scripts/keepalive.ts",
+    "catalog:preview": "tsx scripts/generate-catalog-preview.ts",
     "audit:pipeline": "tsx scripts/audit/pipeline.ts",
     "audit:accuracy": "tsx scripts/audit/accuracy.ts",
     "audit:completeness": "tsx scripts/audit/completeness.ts",
@@ -39,7 +40,9 @@
     "audit:migrate": "tsx scripts/audit/migrate-constraints.ts",
     "fix:public-qa-data": "tsx scripts/fix-public-qa-data.ts",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:a11y": "playwright test e2e/accessibility.spec.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",
@@ -51,8 +54,10 @@
     "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
     "@eslint/js": "^9.39.1",
     "@google/generative-ai": "^0.21.0",
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/vite": "^4.1.18",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",

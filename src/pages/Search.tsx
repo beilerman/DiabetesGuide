@@ -9,14 +9,26 @@ import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
 import { DEFAULT_FILTERS } from '../lib/filters'
-import { GRADE_CONFIG, type Grade } from '../lib/grade'
+import type { Grade } from '../lib/grade'
 import { getNextVisibleCount } from '../lib/visible-items'
 import { getSearchResultView } from '../lib/search-results'
 import type { Filters } from '../lib/types'
+import { GradeLegend, GRADE_OPTIONS } from '../components/GradeLegend'
 
 const RECENT_KEY = 'dg_recent_searches'
 const MAX_RECENT = 5
 const INITIAL_VISIBLE_RESULTS = 50
+
+function getGradeFilterFromParams(searchParams: URLSearchParams): Grade[] | null {
+  const requested = new Set(
+    (searchParams.get('grade') ?? '')
+      .split(',')
+      .map(value => value.trim().toUpperCase())
+      .filter(Boolean),
+  )
+  const grades = GRADE_OPTIONS.filter(grade => requested.has(grade))
+  return grades.length > 0 ? grades : null
+}
 
 function getRecentSearches(): string[] {
   try {
@@ -34,13 +46,12 @@ function saveRecentSearch(query: string) {
 }
 
 export default function Search() {
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const [query, setQuery] = useState(searchParams.get('q') ?? '')
   const [parkId, setParkId] = useState<string | undefined>(undefined)
-  const [filters, setFilters] = useState<Pick<Filters, 'maxCarbs' | 'category' | 'gradeFilter' | 'allergenFree' | 'sort'>>({
+  const [filters, setFilters] = useState<Pick<Filters, 'maxCarbs' | 'category' | 'allergenFree' | 'sort'>>({
     maxCarbs: null,
     category: null,
-    gradeFilter: null,
     allergenFree: [],
     sort: 'name',
   })
@@ -52,16 +63,21 @@ export default function Search() {
   const [recentSearches, setRecentSearches] = useState(getRecentSearches)
   const { data: parks } = useParks()
   const parkOptions = dedupeParksForDisplay(parks ?? [])
-  const { data: menuItems, isFetching: menuLoading } = useMenuItems(parkId)
+  const { data: menuItems, isLoading: menuItemsLoading } = useMenuItems(parkId)
   const deferredQuery = useDeferredValue(query)
+  const gradeFilter = useMemo(() => getGradeFilterFromParams(searchParams), [searchParams])
+  const searchFilters = useMemo(
+    () => ({ ...filters, gradeFilter }),
+    [filters, gradeFilter],
+  )
   const isSearching = query.trim().length >= 2
   const isPendingQuery = query !== deferredQuery
   const searchView = useMemo(
-    () => getSearchResultView(menuItems ?? [], deferredQuery, filters, visibleCount),
-    [menuItems, deferredQuery, filters, visibleCount],
+    () => getSearchResultView(menuItems ?? [], deferredQuery, searchFilters, visibleCount),
+    [menuItems, deferredQuery, searchFilters, visibleCount],
   )
   const results = isSearching ? searchView.visibleItems : null
-  const searchLoading = menuLoading
+  const searchLoading = isSearching && (isPendingQuery || (menuItemsLoading && menuItems == null))
 
   const handleSearch = (q: string) => {
     setQuery(q)
@@ -79,12 +95,26 @@ export default function Search() {
     setExpandedItem(null)
   }
 
+  const setGradeParam = (grades: Grade[] | null) => {
+    const nextParams = new URLSearchParams(searchParams)
+    if (grades && grades.length > 0) {
+      nextParams.set('grade', grades.join(','))
+    } else {
+      nextParams.delete('grade')
+    }
+    setSearchParams(nextParams)
+  }
+
   const toggleGrade = (grade: Grade) => {
-    const current = filters.gradeFilter ?? []
-    const next = current.includes(grade)
+    const current = gradeFilter ?? []
+    const selected = current.includes(grade)
       ? current.filter(g => g !== grade)
       : [...current, grade]
-    updateFilter('gradeFilter', next.length > 0 ? next : null)
+    const next = GRADE_OPTIONS.filter(option => selected.includes(option))
+    const nextFilter = next.length > 0 ? next : null
+    setVisibleCount(INITIAL_VISIBLE_RESULTS)
+    setExpandedItem(null)
+    setGradeParam(nextFilter)
   }
 
   return (
@@ -98,16 +128,18 @@ export default function Search() {
             <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <input
+            id="site-search"
             type="text"
             value={query}
             onChange={e => handleSearch(e.target.value)}
             placeholder="Search menu items..."
-            className="w-full pl-10 pr-10 py-3 rounded-xl bg-stone-100 border border-stone-200 text-stone-900 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            aria-label="Search all menu items"
+            className="w-full pl-10 pr-12 py-3 rounded-xl bg-stone-100 border border-stone-200 text-stone-900 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
           />
           {query && (
             <button
               onClick={() => handleSearch('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+              className="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-stone-500 hover:bg-stone-200 hover:text-stone-700"
               aria-label="Clear search"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -118,9 +150,10 @@ export default function Search() {
         </div>
 
         {/* Park scope dropdown */}
-        <div className="mt-3 flex items-center gap-2">
+        <div className="mt-3 flex items-center gap-2" aria-label="Search scope and status">
           <span className="text-xs font-medium text-stone-500">Scope:</span>
           <select
+            aria-label="Search park scope"
             value={parkId ?? ''}
             onChange={e => setParkId(e.target.value || undefined)}
             className="text-xs px-2 py-1.5 rounded-lg border border-stone-200 bg-white text-stone-700 focus:border-teal-500 focus:outline-none"
@@ -130,12 +163,12 @@ export default function Search() {
               <option key={p.id} value={p.id}>{p.name}</option>
             ))}
           </select>
-          {(searchLoading || isPendingQuery) && isSearching && (
-            <span className="text-[10px] text-stone-400">Searching...</span>
+          {searchLoading && (
+            <span role="status" className="text-[10px] font-medium text-stone-600">Searching...</span>
           )}
         </div>
 
-        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <section aria-label="Search filters" className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
           <label className="text-xs font-medium text-stone-600">
             Max carbs
             <input
@@ -185,42 +218,28 @@ export default function Search() {
               setFilters({
                 maxCarbs: DEFAULT_FILTERS.maxCarbs,
                 category: DEFAULT_FILTERS.category,
-                gradeFilter: DEFAULT_FILTERS.gradeFilter,
                 allergenFree: DEFAULT_FILTERS.allergenFree,
                 sort: DEFAULT_FILTERS.sort,
               })
               setVisibleCount(INITIAL_VISIBLE_RESULTS)
+              setGradeParam(null)
             }}
             className="mt-5 rounded-lg border border-stone-200 bg-white px-2 py-1.5 text-xs font-semibold text-stone-600 hover:border-teal-300 hover:text-teal-700"
           >
             Reset filters
           </button>
-        </div>
+        </section>
 
-        <div className="mt-3 rounded-lg border border-stone-200 bg-stone-50 px-3 py-2">
-          <p className="text-xs font-semibold text-stone-700">Grade legend</p>
-          <div className="mt-1 flex flex-wrap gap-1.5">
-            {(Object.keys(GRADE_CONFIG) as Grade[]).map(grade => (
-              <button
-                key={grade}
-                type="button"
-                aria-pressed={(filters.gradeFilter ?? []).includes(grade)}
-                onClick={() => toggleGrade(grade)}
-                className={`rounded-full border px-2 py-1 text-[11px] font-semibold transition-colors ${
-                  (filters.gradeFilter ?? []).includes(grade)
-                    ? 'border-teal-500 bg-teal-50 text-teal-800'
-                    : 'border-stone-200 bg-white text-stone-600 hover:border-teal-300'
-                }`}
-                title={GRADE_CONFIG[grade].label}
-              >
-                {grade} - {GRADE_CONFIG[grade].label}
-              </button>
-            ))}
-          </div>
-        </div>
+        <GradeLegend activeGrades={gradeFilter ?? []} onToggle={toggleGrade} />
       </div>
 
-      <div className="px-4 py-4">
+      <section
+        id="search-results"
+        tabIndex={-1}
+        aria-labelledby="search-results-heading"
+        className="px-4 py-4 scroll-mt-24"
+      >
+        <h2 id="search-results-heading" className="sr-only">Search results</h2>
         {/* Expanded item card */}
         {expandedItem && (
           <div className="mb-4">
@@ -248,7 +267,7 @@ export default function Search() {
           <>
             {results && results.length > 0 ? (
               <div>
-                <p className="text-sm text-stone-500 mb-2">
+                <p className="text-sm text-stone-500 mb-2" aria-live="polite">
                   Showing {results.length} of {searchView.totalMatches} matching result{searchView.totalMatches !== 1 ? 's' : ''}
                 </p>
                 <div className="bg-white rounded-xl border border-stone-200 divide-y divide-stone-100">
@@ -272,7 +291,7 @@ export default function Search() {
                   </div>
                 )}
               </div>
-            ) : !(searchLoading || isPendingQuery) ? (
+            ) : !searchLoading ? (
               <div className="text-center py-12">
                 <div className="text-5xl mb-3">🔍</div>
                 <p className="text-stone-600">No results for &ldquo;{query}&rdquo;</p>
@@ -311,7 +330,7 @@ export default function Search() {
             </div>
           </div>
         )}
-      </div>
+      </section>
     </div>
   )
 }

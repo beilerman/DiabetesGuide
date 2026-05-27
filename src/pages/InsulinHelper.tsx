@@ -8,6 +8,7 @@ import {
   type ActivityLevel,
 } from '../lib/insulin'
 import { hasEstimatorAcknowledgement, saveEstimatorAcknowledgement } from '../lib/estimator-ack'
+import { HiddenDoseExplainer } from '../components/InsulinEstimator/HiddenDoseExplainer'
 
 function parseInitialCarbs(value: string | null): number | '' {
   if (value == null) return ''
@@ -41,6 +42,10 @@ export default function InsulinHelper() {
   const validation = useMemo(() => validateInsulinInputs(inputs), [inputs])
   const result = useMemo(() => calculateInsulinDose(inputs), [inputs])
   const hypoPlan = useMemo(() => getHypoglycemiaTreatmentPlan(bg), [bg])
+  const doseHidden =
+    !validation.isValid ||
+    result?.status === 'blocked' ||
+    (typeof carbs === 'number' && carbs <= 0)
 
   return (
     <div className="max-w-lg mx-auto">
@@ -66,7 +71,7 @@ export default function InsulinHelper() {
                 saveEstimatorAcknowledgement()
                 setAcknowledged(true)
               }}
-              className="mt-5 w-full rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+              className="mt-5 w-full rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800"
             >
               I understand
             </button>
@@ -223,7 +228,15 @@ export default function InsulinHelper() {
         </div>
       )}
 
-      {result && (
+      {doseHidden && (
+        <HiddenDoseExplainer
+          inputs={inputs}
+          validation={validation}
+          result={result}
+        />
+      )}
+
+      {result && !doseHidden && (
         <div
           className={`mt-6 rounded-lg border p-4 space-y-2 ${
             result.status === 'blocked'

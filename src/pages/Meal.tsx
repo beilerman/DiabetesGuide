@@ -5,6 +5,7 @@ import { GradeBadge } from '../components/menu/GradeBadge'
 import { computeScore, computeGrade, GRADE_CONFIG } from '../lib/grade'
 import { INSULIN_LIMITS, calculateInsulinDose, validateInsulinInputs, type ActivityLevel } from '../lib/insulin'
 import { cleanDisplayText } from '../lib/display'
+import { HiddenDoseExplainer } from '../components/InsulinEstimator/HiddenDoseExplainer'
 import type { Grade } from '../lib/grade'
 
 const INSULIN_SETTINGS_KEY = 'dg_insulin_settings'
@@ -105,6 +106,11 @@ export default function Meal() {
     () => unavailableNutritionItems.length > 0 ? null : calculateInsulinDose(insulinInputs),
     [insulinInputs, unavailableNutritionItems.length],
   )
+  const doseHidden =
+    unavailableNutritionItems.length > 0 ||
+    !insulinValidation.isValid ||
+    insulinResult?.status === 'blocked' ||
+    (typeof effectiveCarbs === 'number' && effectiveCarbs <= 0)
 
   // Carb goal progress
   const carbPct = carbGoal > 0 ? Math.min(100, Math.round((totals.carbs / carbGoal) * 100)) : 0
@@ -153,7 +159,7 @@ export default function Meal() {
               onClick={() => handleSwitchMeal(id)}
               className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 id === activeMealId
-                  ? 'bg-teal-600 text-white'
+                  ? 'bg-teal-700 text-white'
                   : 'bg-stone-200 text-stone-600 hover:bg-stone-300'
               }`}
             >
@@ -234,7 +240,7 @@ export default function Meal() {
       {/* Section 1: Item List */}
       <section aria-label="Meal items">
         {items.length === 0 ? (
-          <div className="rounded-xl border-2 border-dashed border-stone-300 p-8 text-center text-stone-400">
+          <div className="rounded-xl border-2 border-dashed border-stone-300 p-8 text-center text-stone-600">
             <svg className="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -493,7 +499,16 @@ export default function Meal() {
           </div>
         )}
 
-        {insulinResult && (
+        {doseHidden && (
+          <HiddenDoseExplainer
+            inputs={insulinInputs}
+            validation={insulinValidation}
+            result={insulinResult}
+            blockedByUnavailableNutrition={unavailableNutritionItems.length > 0}
+          />
+        )}
+
+        {insulinResult && !doseHidden && (
           <div
             className={`mt-4 rounded-lg border p-4 space-y-2 ${
               insulinResult.status === 'blocked'
