@@ -73,7 +73,7 @@ export default function ResortDetail() {
       {/* Error state */}
       {error && (
         <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-center">
-          <p className="text-red-700">Unable to load venues. Please try again later.</p>
+          <p className="text-red-700">Unable to load destinations. Please try again later.</p>
         </div>
       )}
 

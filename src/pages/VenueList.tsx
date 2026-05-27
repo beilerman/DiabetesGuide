@@ -1,20 +1,40 @@
 // src/pages/VenueList.tsx
 import { useParams } from 'react-router-dom'
-import { useParks, useRestaurants, useMenuItemCount } from '../lib/queries'
+import { useCatalogPreview, useParks, useRestaurants, useMenuItemCount } from '../lib/queries'
 import { Breadcrumb } from '../components/ui/Breadcrumb'
 import { VenueCard, VenueCardCountsError, VenueCardSkeleton } from '../components/resort/VenueCard'
 import { getResortById, getParksForCategory } from '../lib/resort-config'
+import { getCatalogPreviewVenues, findCatalogPreviewPark } from '../lib/catalog-preview'
 import type { ResortTheme } from '../lib/resort-config'
+import type { CatalogPreviewPark } from '../lib/catalog-preview'
+import type { Park } from '../lib/types'
 
 export default function VenueList() {
   const { resortId, categoryId } = useParams<{ resortId: string; categoryId: string }>()
   const resort = getResortById(resortId || '')
   const category = resort?.categories.find(c => c.id === categoryId)
   const { data: allParks, isLoading, error } = useParks()
+  const { data: catalogPreview } = useCatalogPreview()
 
   const categoryParks = (allParks && resort && categoryId)
     ? getParksForCategory(allParks, resort, categoryId)
     : []
+  const previewVenues = (catalogPreview && resort && categoryId)
+    ? getCatalogPreviewVenues(catalogPreview, resort.id, categoryId)
+    : []
+  const venueSummaries = categoryParks.length > 0
+    ? categoryParks.map(park => ({
+      kind: 'live' as const,
+      park,
+      preview: catalogPreview ? findCatalogPreviewPark(catalogPreview, park.name) : undefined,
+    }))
+    : previewVenues.map(preview => ({
+      kind: 'preview' as const,
+      preview,
+    }))
+  const displayedDestinationCount = categoryParks.length > 0 ? categoryParks.length : previewVenues.length
+  const showLoadingState = isLoading && venueSummaries.length === 0
+  const showErrorState = error && venueSummaries.length === 0
 
   if (!resort || !category) {
     return (
@@ -26,10 +46,10 @@ export default function VenueList() {
     )
   }
 
-  if (error) {
+  if (showErrorState) {
     return (
       <div className="text-center py-12 px-4 bg-red-50 border border-red-200 rounded-xl">
-        <p className="text-red-700">Failed to load venues. Please try again.</p>
+        <p className="text-red-700">Failed to load destinations. Please try again.</p>
       </div>
     )
   }
@@ -53,14 +73,14 @@ export default function VenueList() {
           <div>
             <h1 className="text-2xl font-bold text-stone-900">{category.label}</h1>
             <p className="text-sm text-stone-600">
-              {isLoading ? 'Loading...' : `${categoryParks.length} ${categoryParks.length === 1 ? 'venue' : 'venues'}`}
+              {showLoadingState ? 'Loading...' : `${displayedDestinationCount} ${displayedDestinationCount === 1 ? 'destination' : 'destinations'}`}
             </p>
           </div>
         </div>
       </div>
 
       {/* Loading state */}
-      {isLoading && (
+      {showLoadingState && (
         <div className="space-y-3">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="rounded-2xl bg-white border border-stone-200 p-5 animate-pulse">
@@ -77,26 +97,38 @@ export default function VenueList() {
       )}
 
       {/* Venue cards */}
-      {!isLoading && (
+      {!showLoadingState && (
         <div className="space-y-3">
           <h2 className="sr-only">Destinations</h2>
-          {categoryParks.map(park => (
+          {venueSummaries.map(summary => summary.kind === 'live' ? (
             <VenueCardWithData
-              key={park.id}
-              parkId={park.id}
-              parkName={park.name}
+              key={summary.park.id}
+              park={summary.park}
               resortId={resort.id}
               categoryId={category.id}
               theme={resort.theme}
+              preview={summary.preview}
+            />
+          ) : (
+            <VenueCard
+              key={summary.preview.id}
+              parkId={summary.preview.id}
+              parkName={summary.preview.name}
+              resortId={resort.id}
+              categoryId={category.id}
+              theme={resort.theme}
+              lands={[...summary.preview.lands]}
+              restaurantCount={summary.preview.restaurantCount}
+              itemCount={summary.preview.itemCount}
             />
           ))}
         </div>
       )}
 
-      {!isLoading && categoryParks.length === 0 && (
+      {!showLoadingState && venueSummaries.length === 0 && (
         <div className="text-center py-12">
           <div className="text-5xl mb-4">🍽️</div>
-          <p className="text-stone-600">No venues found in this category.</p>
+          <p className="text-stone-600">No destinations found in this category.</p>
         </div>
       )}
     </div>
@@ -104,15 +136,15 @@ export default function VenueList() {
 }
 
 /** Wrapper that loads restaurant and item count data for a single venue card */
-function VenueCardWithData({ parkId, parkName, resortId, categoryId, theme }: {
-  parkId: string
-  parkName: string
+function VenueCardWithData({ park, resortId, categoryId, theme, preview }: {
+  park: Park
   resortId: string
   categoryId: string
   theme: ResortTheme
+  preview?: CatalogPreviewPark
 }) {
-  const restaurantsQuery = useRestaurants(parkId)
-  const itemCountQuery = useMenuItemCount(parkId)
+  const restaurantsQuery = useRestaurants(park.id)
+  const itemCountQuery = useMenuItemCount(park.id)
 
   const countsAreLoading =
     restaurantsQuery.isLoading ||
@@ -121,11 +153,39 @@ function VenueCardWithData({ parkId, parkName, resortId, categoryId, theme }: {
     itemCountQuery.data == null
 
   if (restaurantsQuery.isError || itemCountQuery.isError) {
-    return <VenueCardCountsError parkName={parkName} theme={theme} />
+    if (preview) {
+      return (
+        <VenueCard
+          parkId={park.id}
+          parkName={park.name}
+          resortId={resortId}
+          categoryId={categoryId}
+          theme={theme}
+          lands={[...preview.lands]}
+          restaurantCount={preview.restaurantCount}
+          itemCount={preview.itemCount}
+        />
+      )
+    }
+    return <VenueCardCountsError parkName={park.name} theme={theme} />
   }
 
   if (countsAreLoading) {
-    return <VenueCardSkeleton parkName={parkName} theme={theme} />
+    if (preview) {
+      return (
+        <VenueCard
+          parkId={park.id}
+          parkName={park.name}
+          resortId={resortId}
+          categoryId={categoryId}
+          theme={theme}
+          lands={[...preview.lands]}
+          restaurantCount={preview.restaurantCount}
+          itemCount={preview.itemCount}
+        />
+      )
+    }
+    return <VenueCardSkeleton parkName={park.name} theme={theme} />
   }
 
   // Extract unique lands from restaurants
@@ -133,8 +193,8 @@ function VenueCardWithData({ parkId, parkName, resortId, categoryId, theme }: {
 
   return (
     <VenueCard
-      parkId={parkId}
-      parkName={parkName}
+      parkId={park.id}
+      parkName={park.name}
       resortId={resortId}
       categoryId={categoryId}
       theme={theme}

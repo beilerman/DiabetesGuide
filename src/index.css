@@ -85,6 +85,29 @@ body {
   border-radius: 0.25rem;
 }
 
+/* Route-aware skip links */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 60;
+  transform: translateY(-150%);
+  border-radius: 0.5rem;
+  background: #0f766e;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-lg);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid #99f6e4;
+  outline-offset: 2px;
+}
+
 /* Remove default focus outline */
 *:focus {
   outline: none;
@@ -108,7 +131,15 @@ body {
 }
 
 .high-contrast .bg-gray-50,
-.high-contrast .bg-stone-50 {
+.high-contrast .bg-stone-50,
+.high-contrast .bg-stone-100,
+.high-contrast .bg-teal-50,
+.high-contrast .bg-emerald-50,
+.high-contrast .bg-amber-50,
+.high-contrast .bg-rose-50,
+.high-contrast .bg-purple-50,
+.high-contrast .bg-orange-50,
+.high-contrast .bg-green-50 {
   background: #000 !important;
   color: #fff !important;
 }
@@ -127,14 +158,44 @@ body {
   color: #bbb !important;
 }
 
+.high-contrast .text-gray-700,
+.high-contrast .text-gray-800,
+.high-contrast .text-gray-900,
+.high-contrast .text-stone-700,
+.high-contrast .text-stone-800,
+.high-contrast .text-stone-900,
+.high-contrast .text-stone-950 {
+  color: #fff !important;
+}
+
 .high-contrast .text-teal-600,
-.high-contrast .text-emerald-600 {
+.high-contrast .text-teal-700,
+.high-contrast .text-teal-800,
+.high-contrast .text-emerald-600,
+.high-contrast .text-emerald-700,
+.high-contrast .text-emerald-800 {
   color: #5eead4 !important;
 }
 
+.high-contrast .text-amber-700,
+.high-contrast .text-amber-800,
+.high-contrast .text-amber-900,
+.high-contrast .text-amber-950 {
+  color: #fde68a !important;
+}
+
+.high-contrast .text-rose-700,
+.high-contrast .text-rose-800,
+.high-contrast .text-red-700,
+.high-contrast .text-red-800 {
+  color: #fecdd3 !important;
+}
+
 .high-contrast .bg-teal-600,
-.high-contrast .bg-emerald-600 {
-  background: #14b8a6 !important;
+.high-contrast .bg-teal-700,
+.high-contrast .bg-emerald-600,
+.high-contrast .bg-emerald-700 {
+  background: #0f766e !important;
 }
 
 /* Custom range slider styling */
@@ -206,4 +267,27 @@ input[type="range"]::-moz-range-track {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+@media print {
+  .print-hidden,
+  header,
+  nav[aria-label="Top navigation"],
+  nav[aria-label="Bottom navigation"],
+  [data-print-hidden="true"] {
+    display: none !important;
+  }
+
+  .bottom-nav-padding {
+    padding-bottom: 0 !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
 }

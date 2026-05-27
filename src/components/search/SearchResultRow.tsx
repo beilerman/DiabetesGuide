@@ -35,7 +35,7 @@ export function SearchResultRow({ item, onClick }: Props) {
       {nd ? (
         <GradeBadge grade={grade} size="sm" />
       ) : (
-        <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-stone-100 text-[10px] font-bold text-stone-500">
+        <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-stone-200 text-[10px] font-bold text-stone-700">
           N/A
         </span>
       )}
@@ -54,7 +54,7 @@ export function SearchResultRow({ item, onClick }: Props) {
           <div className="text-[10px] text-stone-500">carbs</div>
         </div>
       ) : (
-        <div className="flex-shrink-0 text-xs text-stone-400">No data</div>
+        <div className="flex-shrink-0 text-xs text-stone-600">No data</div>
       )}
     </button>
   )
