@@ -20,6 +20,14 @@ const categoryLabels: Record<string, string> = {
   snack: 'Snack',
 }
 
+const gradeTextColors: Record<Grade, string> = {
+  A: '#166534',
+  B: '#3f6212',
+  C: '#854d0e',
+  D: '#9a3412',
+  F: '#991b1b',
+}
+
 export default function MenuItemDetail() {
   const { itemId } = useParams<{ itemId: string }>()
   const { data: item, isLoading } = useMenuItem(itemId)
@@ -48,7 +56,7 @@ export default function MenuItemDetail() {
       <div className="mx-auto max-w-xl rounded-xl bg-white border border-stone-200 p-8 text-center">
         <h1 className="text-2xl font-bold text-stone-900">Item not found</h1>
         <p className="mt-2 text-sm text-stone-600">This menu item may have moved or been removed.</p>
-        <Link to="/browse" className="mt-5 inline-flex rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700">
+        <Link to="/browse" className="mt-5 inline-flex rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800">
           Back to Browse
         </Link>
       </div>
@@ -168,7 +176,7 @@ export default function MenuItemDetail() {
               </p>
               {colors && grade && (
                 <div className="mt-2 flex flex-wrap items-center gap-3">
-                  <p className="text-sm font-semibold" style={{ color: colors.bg }}>
+                  <p className="text-sm font-semibold" style={{ color: gradeTextColors[grade] }}>
                     {GRADE_CONFIG[grade].label}
                   </p>
                   <GradeContextPopover grade={grade} />
@@ -199,7 +207,7 @@ export default function MenuItemDetail() {
               disabled={!nutrition}
               className={`rounded-lg px-4 py-2 text-sm font-semibold ${
                 nutrition
-                  ? 'bg-teal-600 text-white hover:bg-teal-700'
+                  ? 'bg-teal-700 text-white hover:bg-teal-800'
                   : 'cursor-not-allowed bg-stone-200 text-stone-500'
               }`}
             >

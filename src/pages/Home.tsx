@@ -1,6 +1,6 @@
 import { type FormEvent, type MouseEvent, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useParks, useMenuItemCounts, useTotalRestaurantCount } from '../lib/queries'
+import { useCatalogPreview, useParks, useMenuItemCounts, useTotalRestaurantCount } from '../lib/queries'
 import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
 import { buildBrowsePresetUrl } from '../lib/browse-url'
 import { useFavorites } from '../hooks/useFavorites'
@@ -10,6 +10,10 @@ import {
   type HomeResortCategoryGroup,
   type HomeResortGroup,
 } from '../lib/home-resort-groups'
+import {
+  getCatalogPreviewItemCountsForParks,
+  getCatalogPreviewParks,
+} from '../lib/catalog-preview'
 
 type IconName =
   | 'castle'
@@ -95,15 +99,29 @@ export default function Home() {
   const { data: parks, isLoading, error } = useParks()
   const { data: menuItemCounts } = useMenuItemCounts()
   const { data: totalRestaurantCount } = useTotalRestaurantCount()
-  const countsReady = hasUsableHomeItemCounts(menuItemCounts)
+  const { data: catalogPreview } = useCatalogPreview()
+  const previewParks = useMemo(
+    () => catalogPreview ? getCatalogPreviewParks(catalogPreview) : [],
+    [catalogPreview],
+  )
+  const displayParks = parks && parks.length > 0 ? parks : previewParks
+  const displayMenuItemCounts = hasUsableHomeItemCounts(menuItemCounts)
+    ? menuItemCounts
+    : catalogPreview ? getCatalogPreviewItemCountsForParks(catalogPreview, parks) : undefined
+  const countsReady = hasUsableHomeItemCounts(displayMenuItemCounts)
 
   const resortGroups = useMemo(() => {
-    if (!parks) return []
-    return buildHomeResortGroups(parks, menuItemCounts)
-  }, [parks, menuItemCounts])
+    if (displayParks.length === 0) return []
+    return buildHomeResortGroups(displayParks, displayMenuItemCounts)
+  }, [displayParks, displayMenuItemCounts])
 
   const totalDestinationCount = resortGroups.reduce((sum, group) => sum + group.locationCount, 0)
   const totalItemCount = resortGroups.reduce((sum, group) => sum + group.itemCount, 0)
+  const displayedRestaurantCount = totalRestaurantCount && totalRestaurantCount > 0
+    ? totalRestaurantCount
+    : catalogPreview?.totalRestaurants
+  const showLoadingState = isLoading && resortGroups.length === 0
+  const showErrorState = error && resortGroups.length === 0
 
   const submitSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -148,9 +166,9 @@ export default function Home() {
               </p>
             </div>
           </div>
-          {countsReady && totalRestaurantCount != null && (
+          {countsReady && displayedRestaurantCount != null && (
             <div className="w-fit rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-600 sm:ml-auto">
-              Catalog preview: {totalItemCount.toLocaleString()} menu items &middot; {totalRestaurantCount.toLocaleString()} restaurants &middot; {totalDestinationCount} destinations
+              Catalog preview: {totalItemCount.toLocaleString()} menu items &middot; {displayedRestaurantCount.toLocaleString()} restaurants &middot; {totalDestinationCount} destinations
             </div>
           )}
         </div>
@@ -247,7 +265,7 @@ export default function Home() {
           </Link>
         </div>
 
-        {!isLoading && !error && resortGroups.length > 0 && (
+        {!showLoadingState && !showErrorState && resortGroups.length > 0 && (
           <nav
             aria-label="Jump to destination groups"
             className="sticky top-16 z-30 -mx-4 border-y border-stone-200 bg-stone-50/95 px-4 py-2 backdrop-blur"
@@ -267,13 +285,13 @@ export default function Home() {
           </nav>
         )}
 
-        {isLoading && (
+        {showLoadingState && (
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[...Array(6)].map((_, i) => <SkeletonCard key={i} />)}
           </div>
         )}
 
-        {error && (
+        {showErrorState && (
           <div className="text-center py-12 px-4">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-rose-100 rounded-full mb-4">
               <svg className="w-8 h-8 text-rose-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -291,7 +309,7 @@ export default function Home() {
           </div>
         )}
 
-        {!isLoading && !error && resortGroups.length > 0 && (
+        {!showLoadingState && !showErrorState && resortGroups.length > 0 && (
           <div className="space-y-6">
             {resortGroups.map(group => (
               <ResortDestinationSection
@@ -303,7 +321,7 @@ export default function Home() {
           </div>
         )}
 
-        {!isLoading && !error && resortGroups.length === 0 && (
+        {!showLoadingState && !showErrorState && resortGroups.length === 0 && (
           <div className="rounded-lg border border-stone-200 bg-white p-6 text-center">
             <h3 className="font-semibold text-stone-900">No destinations found</h3>
             <p className="mt-1 text-sm text-stone-600">Try browsing all menu items instead.</p>
