@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { MemoryRouter } from 'react-router-dom'
 import type { ComponentType } from 'react'
@@ -32,6 +32,7 @@ describe('public trust routes', () => {
     ['/about', /about diabetesguide/i],
     ['/data-sources', /nutrition data sources/i],
     ['/contact', /contact diabetesguide/i],
+    ['/changelog', /changelog/i],
   ])('renders %s instead of the not-found page', async (path, heading) => {
     await renderRoute(path)
 
@@ -42,8 +43,16 @@ describe('public trust routes', () => {
   it('uses real internal footer routes for trust links', async () => {
     await renderRoute('/about')
 
-    expect(await screen.findByRole('link', { name: /^about$/i })).toHaveAttribute('href', '/about')
-    expect(screen.getByRole('link', { name: /^data sources$/i })).toHaveAttribute('href', '/data-sources')
-    expect(screen.getAllByRole('link', { name: /^contact$/i }).some(link => link.getAttribute('href') === '/contact')).toBe(true)
+    const footer = within(screen.getByRole('contentinfo'))
+    expect(await footer.findByRole('link', { name: /^about$/i })).toHaveAttribute('href', '/about')
+    expect(footer.getByRole('link', { name: /^data sources$/i })).toHaveAttribute('href', '/data-sources')
+    expect(footer.getByRole('link', { name: /^changelog$/i })).toHaveAttribute('href', '/changelog')
+    expect(footer.getByRole('link', { name: /^contact$/i })).toHaveAttribute('href', '/contact')
+  })
+
+  it('shows catalog freshness in the footer', async () => {
+    await renderRoute('/about')
+
+    expect(await screen.findByText(/catalog updated:/i)).toBeInTheDocument()
   })
 })

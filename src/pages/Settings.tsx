@@ -7,6 +7,7 @@ const LOCAL_APP_STORAGE_KEYS = [
   'dg_favorites',
   'dg_compare',
   'dg_trip_plan',
+  'dg.trips.v1',
   'dg_checklist',
   'dg_checklist_options',
   'dg_recent_searches',

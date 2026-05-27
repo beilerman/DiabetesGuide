@@ -128,10 +128,12 @@ export default function Search() {
             <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <input
+            id="site-search"
             type="text"
             value={query}
             onChange={e => handleSearch(e.target.value)}
             placeholder="Search menu items..."
+            aria-label="Search all menu items"
             className="w-full pl-10 pr-12 py-3 rounded-xl bg-stone-100 border border-stone-200 text-stone-900 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
           />
           {query && (
@@ -231,7 +233,13 @@ export default function Search() {
         <GradeLegend activeGrades={gradeFilter ?? []} onToggle={toggleGrade} />
       </div>
 
-      <div className="px-4 py-4">
+      <section
+        id="search-results"
+        tabIndex={-1}
+        aria-labelledby="search-results-heading"
+        className="px-4 py-4 scroll-mt-24"
+      >
+        <h2 id="search-results-heading" className="sr-only">Search results</h2>
         {/* Expanded item card */}
         {expandedItem && (
           <div className="mb-4">
@@ -322,7 +330,7 @@ export default function Search() {
             </div>
           </div>
         )}
-      </div>
+      </section>
     </div>
   )
 }
