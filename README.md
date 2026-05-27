@@ -101,3 +101,7 @@ Build metadata is injected through `vite.config.ts` as `__APP_BUILD_INFO__`, usi
 ## Task 15 Notes
 
 This app is a Vite SPA, so the Next.js RSC/ISR requirements are implemented as a static catalog-preview layer instead. `npm run catalog:preview` rebuilds `public/data/catalog-preview.json` and the bundled `src/data/catalog-preview.ts` snapshot from `data/parks/*.json`. Home and resort section pages use that snapshot immediately, fetch the public JSON through React Query, and then reconcile live Supabase data when it arrives. `index.html` preloads `/data/catalog-preview.json`, Vercel caches it and `/resort/*` responses for one hour with stale revalidation, and the service worker precaches JSON assets.
+
+## Task 16 Notes
+
+Trust and secondary content routes now make local storage behavior explicit, keep contact email addresses as real `mailto:` links, replace More menu emoji/icon text with decorative inline SVGs next to visible labels, and expose the Guide Type 1/Type 2 selector as a labeled tablist with matching tabpanels.
