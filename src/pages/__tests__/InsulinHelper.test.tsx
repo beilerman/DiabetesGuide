@@ -26,4 +26,20 @@ describe('InsulinHelper acknowledgement', () => {
     expect(localStorage.getItem(ESTIMATOR_ACK_KEY)).toBe('true')
     expect(screen.queryByRole('dialog', { name: /before using this estimator/i })).not.toBeInTheDocument()
   })
+
+  it('shows why the dose is hidden with a methodology link', async () => {
+    const user = userEvent.setup()
+
+    render(
+      <MemoryRouter>
+        <InsulinHelper />
+      </MemoryRouter>,
+    )
+
+    await user.click(screen.getByRole('button', { name: /i understand/i }))
+
+    expect(screen.getByText(/why is the dose hidden/i)).toBeInTheDocument()
+    expect(screen.getByText(/missing required input/i)).toHaveTextContent(/blood glucose/i)
+    expect(screen.getByRole('link', { name: /safety methodology/i })).toHaveAttribute('href', '/data-sources#estimator-safety')
+  })
 })

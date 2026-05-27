@@ -31,7 +31,7 @@ test('resort section cards show resolved counts, not zero placeholders', async (
   await expect(venueCards.filter({ hasText: /0 restaurants/i })).toHaveCount(0)
   await expect(venueCards.filter({ hasText: /0 items/i })).toHaveCount(0)
   await expect(venueCards.first()).toContainText('2 restaurants')
-  await expect(venueCards.first()).toContainText('84 items')
+  await expect(venueCards.first()).toContainText('84 menu items')
 })
 
 async function mockCatalogApi(page: Page) {

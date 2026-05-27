@@ -9,15 +9,22 @@ const tabs = [
 export default function DiabetesGuide() {
   const [active, setActive] = useState<'type1' | 'type2'>('type1')
   const current = tabs.find(t => t.key === active)!
+  const currentTabId = `guide-tab-${current.key}`
+  const currentPanelId = `guide-panel-${current.key}`
 
   return (
     <div className="max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">Diabetes Guide</h1>
 
-      <div className="flex gap-2 mb-6">
+      <div className="flex gap-2 mb-6" role="tablist" aria-label="Diabetes type">
         {tabs.map(tab => (
           <button
             key={tab.key}
+            id={`guide-tab-${tab.key}`}
+            type="button"
+            role="tab"
+            aria-selected={active === tab.key}
+            aria-controls={`guide-panel-${tab.key}`}
             onClick={() => setActive(tab.key)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               active === tab.key
@@ -30,7 +37,12 @@ export default function DiabetesGuide() {
         ))}
       </div>
 
-      <div className="space-y-6">
+      <div
+        id={currentPanelId}
+        role="tabpanel"
+        aria-labelledby={currentTabId}
+        className="space-y-6"
+      >
         {current.content.map((section: EducationSection) => (
           <div key={section.heading}>
             <h2 className="text-lg font-semibold mb-2">{section.heading}</h2>
