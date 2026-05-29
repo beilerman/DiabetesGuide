@@ -35,6 +35,10 @@ data/*.json
 !data/portion-multipliers.json
 data/pending/
 
+# Signed tax documents (W-9, etc.) — contains SSN, signature, address.
+# NEVER commit. Move files out of the repo tree entirely if possible.
+data/w9-output/
+
 # Curated supplement data (imported to Supabase, not needed in repo)
 data/chain-nutrition/
 data/chains/
