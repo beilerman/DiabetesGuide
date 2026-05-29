@@ -16,6 +16,29 @@ export function inferParkType(name: string): ParkType {
   return 'other'
 }
 
+function isFestivalOrEventPark(name: string): boolean {
+  return /\b(festival|festivals|events|flower\s*&\s*garden|food\s*&\s*wine|holiday)\b/i.test(name)
+}
+
+// Specific venues known to be single- or low-product kiosks whose names don't
+// match the generic limited-service regex. Lowercased for case-insensitive lookup.
+const LIMITED_SERVICE_VENUE_NAMES = new Set<string>([
+  'aloha isle',            // DOLE Whip stand (Magic Kingdom)
+  "kayla's cake",          // single-product cake stand (Disney Springs)
+  'jamba',                 // smoothie chain (single-product line)
+  'le gobelet noir',       // themed drink kiosk
+  'shakes malt shoppe',    // milkshake stand
+  'tuk tuk market',        // resort market kiosk
+  'snoopy snow cone',      // single-product (snow cones)
+  '21° and colder',        // frozen-drink stand (Kings Island)
+])
+
+function isLimitedServiceVenue(name: string, parkName: string): boolean {
+  if (isFestivalOrEventPark(parkName)) return true
+  if (LIMITED_SERVICE_VENUE_NAMES.has(name.toLowerCase().trim())) return true
+  return /\b(cart|kiosk|stand|station|popcorn|churro|coffee|ice cream|frozen cocktails|snacks?|treats?|dots|bar|lounge|bites?|corn dogs?|snow cones?|funnel cakes?|dole whip|shakes?|malt|shoppe)\b/i.test(name)
+}
+
 /**
  * Completeness check pass.
  * Validates data coverage at the park and restaurant level:
@@ -70,13 +93,14 @@ export function checkCompleteness(items: Item[]): AuditPassResult {
 
     // Check 2: sparse restaurants (< MIN_ITEMS_PER_RESTAURANT items)
     for (const [restName, restItems] of restMap) {
+      if (isLimitedServiceVenue(restName, parkName)) continue
       if (restItems.length < THRESHOLDS.MIN_ITEMS_PER_RESTAURANT) {
         findings.push({
           item: '',
           restaurant: restName,
           park: parkName,
           checkName: 'sparse_restaurant',
-          severity: 'MEDIUM',
+          severity: 'LOW',
           message: `Restaurant has only ${restItems.length} item(s), minimum is ${THRESHOLDS.MIN_ITEMS_PER_RESTAURANT}`,
           currentValue: String(restItems.length),
           suggestedValue: String(THRESHOLDS.MIN_ITEMS_PER_RESTAURANT),

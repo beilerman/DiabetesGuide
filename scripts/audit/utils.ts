@@ -82,7 +82,7 @@ export async function fetchAllItems(
       .select(
         `id, name, category, is_vegetarian, is_fried, description,
          restaurant:restaurants(name, park:parks(name)),
-         nutritional_data(id, calories, carbs, fat, sugar, protein, fiber, sodium, cholesterol, source, confidence_score)`
+         nutritional_data(id, calories, carbs, fat, sugar, protein, fiber, sodium, cholesterol, alcohol_grams, source, confidence_score)`
       )
       .range(offset, offset + PAGE_SIZE - 1)
 
@@ -106,6 +106,24 @@ export async function fetchAllItems(
  */
 export function nd(item: Item): NutData | null {
   return item.nutritional_data?.[0] ?? null
+}
+
+/**
+ * Average of a list of numbers, skipping null/undefined entries entirely.
+ *
+ * Critical for rollups over `confidence_score`, which is `number | null`:
+ * empty-shell rows carry `null`, not `0`. Using `?? 0` would drag the average
+ * down with phantom zeros; this helper drops them from both numerator and
+ * denominator.
+ *
+ * Returns null when every input is null (no defined value to average).
+ */
+export function averageIgnoringNulls(values: Array<number | null | undefined>): number | null {
+  const defined = values.filter((v): v is number => v != null)
+  if (defined.length === 0) return null
+  let sum = 0
+  for (const v of defined) sum += v
+  return sum / defined.length
 }
 
 /**

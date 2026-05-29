@@ -22,42 +22,65 @@ const SQL = `
 -- ============================================================
 
 -- -------------------------------------------------------
--- 1. CHECK constraints on nutritional_data
+-- 1. CHECK constraints on nutritional_data — two-step (NOT VALID + VALIDATE)
 -- -------------------------------------------------------
+--
+-- Step 1 below runs a pre-check that counts existing violations BEFORE adding
+-- the constraint. If any pre-check returns > 0, STOP and run a data-fix script
+-- (e.g. fix-data-anomalies.ts, fix-audit-findings.ts) before re-running.
+--
+-- Step 2 adds each constraint as NOT VALID. ADD CONSTRAINT NOT VALID takes the
+-- ACCESS EXCLUSIVE lock only briefly (writes a catalog row; no full-table scan).
+-- The constraint applies to new and updated rows immediately.
+--
+-- Step 3 issues VALIDATE CONSTRAINT for each. VALIDATE takes only SHARE UPDATE
+-- EXCLUSIVE — concurrent reads continue, concurrent writes are blocked
+-- briefly. VALIDATE is restartable: failure leaves the constraint in NOT VALID
+-- state, and the same VALIDATE can be re-issued after fixing offending rows.
 
--- fiber <= carbs
+-- Step 1: Pre-check violation counts. Re-run after any data-fix until each
+-- count is 0; only then proceed to Step 2.
+SELECT
+  COUNT(*) FILTER (WHERE fiber IS NOT NULL AND carbs IS NOT NULL AND fiber > carbs)      AS violations_fiber_gt_carbs,
+  COUNT(*) FILTER (WHERE sugar IS NOT NULL AND carbs IS NOT NULL AND sugar > carbs)      AS violations_sugar_gt_carbs,
+  COUNT(*) FILTER (WHERE calories IS NOT NULL AND (calories < 0 OR calories > 5000))     AS violations_calories_range,
+  COUNT(*) FILTER (WHERE sodium IS NOT NULL AND (sodium < 0 OR sodium > 10000))          AS violations_sodium_range,
+  COUNT(*) FILTER (WHERE
+    (carbs IS NOT NULL AND carbs < 0) OR (fat IS NOT NULL AND fat < 0) OR
+    (protein IS NOT NULL AND protein < 0) OR (sugar IS NOT NULL AND sugar < 0) OR
+    (fiber IS NOT NULL AND fiber < 0)
+  ) AS violations_macros_negative
+FROM nutritional_data;
+
+-- Step 2: Add constraints as NOT VALID (catalog-only, no table scan).
 DO $$ BEGIN
   ALTER TABLE nutritional_data
     ADD CONSTRAINT chk_fiber_lte_carbs
-    CHECK (fiber IS NULL OR carbs IS NULL OR fiber <= carbs);
+    CHECK (fiber IS NULL OR carbs IS NULL OR fiber <= carbs) NOT VALID;
 EXCEPTION WHEN duplicate_object THEN NULL;
 END $$;
 
--- sugar <= carbs
 DO $$ BEGIN
   ALTER TABLE nutritional_data
     ADD CONSTRAINT chk_sugar_lte_carbs
-    CHECK (sugar IS NULL OR carbs IS NULL OR sugar <= carbs);
+    CHECK (sugar IS NULL OR carbs IS NULL OR sugar <= carbs) NOT VALID;
 EXCEPTION WHEN duplicate_object THEN NULL;
 END $$;
 
--- calories 0-5000
 DO $$ BEGIN
   ALTER TABLE nutritional_data
     ADD CONSTRAINT chk_calories_range
-    CHECK (calories IS NULL OR (calories >= 0 AND calories <= 5000));
+    CHECK (calories IS NULL OR (calories >= 0 AND calories <= 5000)) NOT VALID;
 EXCEPTION WHEN duplicate_object THEN NULL;
 END $$;
 
--- sodium 0-10000
 DO $$ BEGIN
   ALTER TABLE nutritional_data
     ADD CONSTRAINT chk_sodium_range
-    CHECK (sodium IS NULL OR (sodium >= 0 AND sodium <= 10000));
+    CHECK (sodium IS NULL OR (sodium >= 0 AND sodium <= 10000)) NOT VALID;
 EXCEPTION WHEN duplicate_object THEN NULL;
 END $$;
 
--- all macros non-negative
 DO $$ BEGIN
   ALTER TABLE nutritional_data
     ADD CONSTRAINT chk_macros_non_negative
@@ -67,9 +90,63 @@ DO $$ BEGIN
       (protein IS NULL OR protein >= 0) AND
       (sugar   IS NULL OR sugar   >= 0) AND
       (fiber   IS NULL OR fiber   >= 0)
-    );
+    ) NOT VALID;
 EXCEPTION WHEN duplicate_object THEN NULL;
 END $$;
+
+-- Step 3: VALIDATE existing rows against the new constraints. Restartable.
+-- Run AFTER step 2 succeeds; can be re-run if a violation is found.
+ALTER TABLE nutritional_data VALIDATE CONSTRAINT chk_fiber_lte_carbs;
+ALTER TABLE nutritional_data VALIDATE CONSTRAINT chk_sugar_lte_carbs;
+ALTER TABLE nutritional_data VALIDATE CONSTRAINT chk_calories_range;
+ALTER TABLE nutritional_data VALIDATE CONSTRAINT chk_sodium_range;
+ALTER TABLE nutritional_data VALIDATE CONSTRAINT chk_macros_non_negative;
+
+-- Rollback: ALTER TABLE nutritional_data DROP CONSTRAINT <name>;
+
+-- freshness / source detail columns used by audit and alcohol filtering
+ALTER TABLE restaurants
+  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ DEFAULT NOW();
+
+ALTER TABLE menu_items
+  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ DEFAULT NOW();
+
+ALTER TABLE nutritional_data
+  ADD COLUMN IF NOT EXISTS alcohol_grams DECIMAL(6, 2),
+  ADD COLUMN IF NOT EXISTS source_detail TEXT,
+  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ DEFAULT NOW();
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_restaurants_park_name_unique
+  ON restaurants(park_id, lower(name));
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_menu_items_restaurant_name_unique
+  ON menu_items(restaurant_id, lower(name));
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_nutritional_data_menu_item_unique
+  ON nutritional_data(menu_item_id);
+
+CREATE OR REPLACE FUNCTION set_updated_at()
+RETURNS TRIGGER AS $updated_at$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$updated_at$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trg_restaurants_updated_at ON restaurants;
+CREATE TRIGGER trg_restaurants_updated_at
+  BEFORE UPDATE ON restaurants
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+DROP TRIGGER IF EXISTS trg_menu_items_updated_at ON menu_items;
+CREATE TRIGGER trg_menu_items_updated_at
+  BEFORE UPDATE ON menu_items
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+DROP TRIGGER IF EXISTS trg_nutritional_data_updated_at ON nutritional_data;
+CREATE TRIGGER trg_nutritional_data_updated_at
+  BEFORE UPDATE ON nutritional_data
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
 
 -- -------------------------------------------------------

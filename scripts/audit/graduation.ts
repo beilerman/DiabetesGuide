@@ -61,6 +61,7 @@ export function updateGraduation(
 if (process.argv[1]?.endsWith('graduation.ts') || process.argv[1]?.endsWith('graduation.js')) {
   const accuracyPath = rootPath('audit', 'accuracy-results.json')
   const completenessPath = rootPath('audit', 'completeness-results.json')
+  const externalPath = rootPath('audit', 'external-results.json')
   const autofixPath = rootPath('audit', 'autofix-results.json')
 
   // Tally findings from accuracy + completeness results
@@ -78,6 +79,15 @@ if (process.argv[1]?.endsWith('graduation.ts') || process.argv[1]?.endsWith('gra
   if (existsSync(completenessPath)) {
     const comp: AuditPassResult = JSON.parse(readFileSync(completenessPath, 'utf-8'))
     for (const f of comp.findings) {
+      if (f.severity === 'HIGH') findings.high++
+      else if (f.severity === 'MEDIUM') findings.medium++
+      else findings.low++
+    }
+  }
+
+  if (existsSync(externalPath)) {
+    const ext: AuditPassResult = JSON.parse(readFileSync(externalPath, 'utf-8'))
+    for (const f of ext.findings) {
       if (f.severity === 'HIGH') findings.high++
       else if (f.severity === 'MEDIUM') findings.medium++
       else findings.low++

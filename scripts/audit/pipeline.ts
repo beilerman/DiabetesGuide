@@ -2,6 +2,7 @@ import { createSupabaseClient, fetchAllItems, rootPath } from './utils.js'
 import { checkAccuracy } from './accuracy.js'
 import { checkCompleteness } from './completeness.js'
 import { buildFixBatch } from './auto-fix.js'
+import { runExternalChecks } from './external.js'
 import { writeFileSync, mkdirSync } from 'fs'
 import { execSync } from 'child_process'
 
@@ -17,17 +18,17 @@ async function main() {
   mkdirSync(rootPath('audit', 'daily'), { recursive: true })
 
   // -----------------------------------------------------------------------
-  // [1/5] Fetch data
+  // [1/6] Fetch data
   // -----------------------------------------------------------------------
-  console.log('[1/5] Fetching data...')
+  console.log('[1/6] Fetching data...')
   const supabase = createSupabaseClient()
   const items = await fetchAllItems(supabase)
   console.log(`  ${items.length} items loaded`)
 
   // -----------------------------------------------------------------------
-  // [2/5] Accuracy checks
+  // [2/6] Accuracy checks
   // -----------------------------------------------------------------------
-  console.log('\n[2/5] Accuracy checks...')
+  console.log('\n[2/6] Accuracy checks...')
   const accuracy = checkAccuracy(items)
 
   const accHigh = accuracy.findings.filter(f => f.severity === 'HIGH').length
@@ -42,9 +43,9 @@ async function main() {
   )
 
   // -----------------------------------------------------------------------
-  // [3/5] Auto-fix
+  // [3/6] Auto-fix
   // -----------------------------------------------------------------------
-  console.log('\n[3/5] Auto-fix...')
+  console.log('\n[3/6] Auto-fix...')
 
   if (accuracy.autoFixes.length === 0) {
     console.log('  No auto-fixes needed')
@@ -94,9 +95,9 @@ async function main() {
   }
 
   // -----------------------------------------------------------------------
-  // [4/5] Completeness checks
+  // [4/6] Completeness checks
   // -----------------------------------------------------------------------
-  console.log('\n[4/5] Completeness checks...')
+  console.log('\n[4/6] Completeness checks...')
   const completeness = checkCompleteness(items)
 
   const compHigh = completeness.findings.filter(f => f.severity === 'HIGH').length
@@ -110,10 +111,26 @@ async function main() {
   )
 
   // -----------------------------------------------------------------------
-  // [5/5] Reporting (graduation + report as child processes)
+  // -----------------------------------------------------------------------
+  // [5/6] External checks
+  // -----------------------------------------------------------------------
+  console.log('\n[5/6] External checks...')
+  const external = await runExternalChecks()
+  const extHigh = external.findings.filter(f => f.severity === 'HIGH').length
+  const extMed = external.findings.filter(f => f.severity === 'MEDIUM').length
+  console.log(`  Findings: ${external.findings.length} (HIGH: ${extHigh}, MEDIUM: ${extMed})`)
+
+  writeFileSync(
+    rootPath('audit', 'external-results.json'),
+    JSON.stringify(external, null, 2) + '\n',
+    'utf-8',
+  )
+
+  // -----------------------------------------------------------------------
+  // [6/6] Reporting (graduation + report as child processes)
   // -----------------------------------------------------------------------
   if (!SKIP_REPORT) {
-    console.log('\n[5/5] Reporting...')
+    console.log('\n[6/6] Reporting...')
 
     // Graduation
     try {
@@ -139,14 +156,14 @@ async function main() {
       console.error('  Report step failed (continuing)')
     }
   } else {
-    console.log('\n[5/5] Reporting... skipped (--skip-report)')
+    console.log('\n[6/6] Reporting... skipped (--skip-report)')
   }
 
   // -----------------------------------------------------------------------
   // Summary
   // -----------------------------------------------------------------------
   const elapsed = ((Date.now() - t0) / 1000).toFixed(1)
-  const totalHigh = accHigh + compHigh
+  const totalHigh = accHigh + compHigh + extHigh
 
   console.log(`\nPipeline complete in ${elapsed}s`)
 

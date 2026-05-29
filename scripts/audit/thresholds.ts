@@ -7,6 +7,10 @@ export const THRESHOLDS = {
   ATWATER_MIN_ABS_CAL: 50,
   ATWATER_MIN_ABS_MEDIUM_CAL: 30,
   ATWATER_MEDIUM_PCT_BEVERAGE: 30,
+  // Stricter floor for USDA-derived rows: deviations below this are typically
+  // standard-portion vs theme-park-portion mismatches, not actionable findings.
+  ATWATER_MEDIUM_PCT_API_LOOKUP: 35,
+  ATWATER_MIN_ABS_MEDIUM_CAL_API_LOOKUP: 100,
   TEMPLATE_MIN_COUNT: 5,
 
   // Completeness

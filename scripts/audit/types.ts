@@ -64,6 +64,7 @@ export interface NutData {
   fiber: number | null
   sodium: number | null
   cholesterol: number | null
+  alcohol_grams: number | null
   source: string
   confidence_score: number | null
 }

@@ -39,7 +39,7 @@ function makeItems(
 }
 
 describe('checkCompleteness', () => {
-  it('flags restaurants with < 3 items as MEDIUM', () => {
+  it('flags restaurants with < 3 items as LOW review findings', () => {
     const items: Item[] = [
       // "Tiny Place" with only 2 items
       ...makeItems('Good Park', 'Tiny Place', 2),
@@ -55,7 +55,7 @@ describe('checkCompleteness', () => {
       (f) => f.checkName === 'sparse_restaurant' && f.restaurant === 'Tiny Place',
     )
     expect(finding).toBeDefined()
-    expect(finding!.severity).toBe('MEDIUM')
+    expect(finding!.severity).toBe('LOW')
     expect(finding!.park).toBe('Good Park')
   })
 
@@ -105,5 +105,96 @@ describe('checkCompleteness', () => {
 
     const highFindings = result.findings.filter((f) => f.severity === 'HIGH')
     expect(highFindings).toHaveLength(0)
+  })
+
+  it('does not flag kiosks and carts as sparse restaurants', () => {
+    const items: Item[] = [
+      ...makeItems('Magic Kingdom Park', 'Spring Roll Cart', 1),
+      ...Array.from({ length: 10 }, (_, i) =>
+        makeItems('Magic Kingdom Park', `Restaurant ${i}`, 5),
+      ).flat(),
+    ]
+
+    const result = checkCompleteness(items)
+
+    expect(result.findings.find(
+      (f) => f.checkName === 'sparse_restaurant' && f.restaurant === 'Spring Roll Cart',
+    )).toBeUndefined()
+  })
+
+  it('does not flag festival booths as sparse restaurants', () => {
+    const items: Item[] = [
+      ...makeItems('Walt Disney World Festivals & Events', 'Belgium', 2),
+      ...makeItems('Walt Disney World Festivals & Events', 'Canada', 2),
+      ...makeItems('Walt Disney World Festivals & Events', 'Flavors From Fire', 2),
+    ]
+
+    const result = checkCompleteness(items)
+
+    expect(result.findings.filter((f) => f.checkName === 'sparse_restaurant')).toHaveLength(0)
+  })
+
+  it('does not flag known single-product venues (regex patterns) as sparse', () => {
+    // Each name represents a real venue from prior audit findings whose menu
+    // is genuinely limited (single product line). Adding 10 filler restaurants
+    // so the park itself is not flagged as sparse.
+    const limitedNames = [
+      'Trilo-Bites',
+      'Dino-Bite Snacks',
+      'Blue Ribbon Corn Dogs',
+      'World\'s Greatest Funnel Cakes',
+      '21° and Colder',
+    ]
+    const items: Item[] = [
+      ...limitedNames.flatMap((n) => makeItems('Magic Kingdom Park', n, 1)),
+      ...Array.from({ length: 10 }, (_, i) =>
+        makeItems('Magic Kingdom Park', `Filler ${i}`, 5),
+      ).flat(),
+    ]
+
+    const result = checkCompleteness(items)
+    const sparse = result.findings.filter((f) => f.checkName === 'sparse_restaurant')
+    expect(sparse).toHaveLength(0)
+  })
+
+  it('does not flag named-override venues (LIMITED_SERVICE_VENUE_NAMES) as sparse', () => {
+    const overrideNames = [
+      'Aloha Isle',
+      "Kayla's Cake",
+      'Jamba',
+      'Snoopy Snow Cone',
+    ]
+    const items: Item[] = [
+      ...overrideNames.flatMap((n) => makeItems('Magic Kingdom Park', n, 1)),
+      ...Array.from({ length: 10 }, (_, i) =>
+        makeItems('Magic Kingdom Park', `Filler ${i}`, 5),
+      ).flat(),
+    ]
+
+    const result = checkCompleteness(items)
+    const sparse = result.findings.filter((f) => f.checkName === 'sparse_restaurant')
+    expect(sparse).toHaveLength(0)
+  })
+
+  it('still flags real restaurants with low item counts (no false negatives)', () => {
+    // Pecos Bill and Coral Reef are real quick-service / table-service venues
+    // with substantial menus. Low item counts here reflect a data gap, not a
+    // limited-service operation, and should remain flagged.
+    const items: Item[] = [
+      ...makeItems('Magic Kingdom Park', 'Pecos Bill Tall Tale Inn', 2),
+      ...makeItems('EPCOT', 'Coral Reef Restaurant', 2),
+      ...Array.from({ length: 10 }, (_, i) =>
+        makeItems('Magic Kingdom Park', `Filler ${i}`, 5),
+      ).flat(),
+      ...Array.from({ length: 10 }, (_, i) =>
+        makeItems('EPCOT', `Filler ${i}`, 5),
+      ).flat(),
+    ]
+
+    const result = checkCompleteness(items)
+    const sparse = result.findings.filter((f) => f.checkName === 'sparse_restaurant')
+    const restNames = sparse.map((f) => f.restaurant)
+    expect(restNames).toContain('Pecos Bill Tall Tale Inn')
+    expect(restNames).toContain('Coral Reef Restaurant')
   })
 })

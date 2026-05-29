@@ -29,4 +29,11 @@ describe('weekly-menu-sync workflow', () => {
 
     expect(workflow).toContain('git add -f data/pending/ data/scraped/ data/approved/')
   })
+
+  it('gates merge on scrape files produced for the current run date', () => {
+    const workflow = readWorkflow()
+
+    expect(workflow).toContain('today=$(date -u +%F)')
+    expect(workflow).toContain('data/scraped/*$today*.json')
+  })
 })

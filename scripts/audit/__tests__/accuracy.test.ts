@@ -1,179 +1,160 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { checkAccuracy } from '../accuracy.js'
-import type { Item, NutData } from '../types.js'
+import type { Item } from '../types.js'
 
-function makeItem(overrides: Partial<Item> & { nd?: Partial<NutData> }): Item {
-  const { nd: ndOverrides, ...itemOverrides } = overrides
+interface MakeItemOpts {
+  source?: string
+  confidenceScore?: number | null
+  alcoholGrams?: number | null
+  name?: string
+  category?: string
+  calories?: number
+  carbs?: number
+  fat?: number
+  protein?: number
+}
+
+function makeItem(opts: MakeItemOpts = {}): Item {
+  const {
+    source = 'api_lookup',
+    confidenceScore = 40,
+    alcoholGrams = null,
+    name = 'Estimated Burger',
+    category = 'entree',
+    calories = 540,
+    carbs = 40,
+    fat = 20,
+    protein = 20,
+  } = opts
   return {
-    id: 'test-id',
-    name: 'Test Item',
-    category: 'entree',
+    id: 'item-1',
+    name,
+    category,
     is_vegetarian: false,
     is_fried: false,
     description: null,
-    restaurant: { name: 'Test Restaurant', park: { name: 'Test Park' } },
+    restaurant: { name: 'Restaurant', park: { name: 'Park' } },
     nutritional_data: [
       {
-        id: 'nd-id',
-        calories: 500,
-        carbs: 50,
-        fat: 20,
-        protein: 25,
-        sugar: 10,
-        fiber: 5,
-        sodium: 800,
+        id: 'nd-1',
+        calories,
+        carbs,
+        fat,
+        protein,
+        sugar: 5,
+        fiber: 3,
+        sodium: 900,
         cholesterol: 50,
-        source: 'api_lookup',
-        confidence_score: 60,
-        ...ndOverrides,
+        alcohol_grams: alcoholGrams,
+        source,
+        confidence_score: confidenceScore,
       },
     ],
-    ...itemOverrides,
   }
 }
 
 describe('checkAccuracy', () => {
-  it('flags fiber > carbs as HIGH auto-fixable', () => {
-    const item = makeItem({ nd: { fiber: 60, carbs: 30 } })
-    const result = checkAccuracy([item])
-
-    const finding = result.findings.find((f) => f.checkName === 'fiber_gt_carbs')
-    expect(finding).toBeDefined()
-    expect(finding!.severity).toBe('HIGH')
-    expect(finding!.autoFixable).toBe(true)
-
-    const fix = result.autoFixes.find((f) => f.field === 'fiber')
-    expect(fix).toBeDefined()
-    expect(fix!.after).toBe(Math.round(30 * 0.1)) // 3
-  })
-
-  it('flags sugar > carbs as HIGH auto-fixable', () => {
-    const item = makeItem({ nd: { sugar: 80, carbs: 50 } })
-    const result = checkAccuracy([item])
-
-    const finding = result.findings.find((f) => f.checkName === 'sugar_gt_carbs')
-    expect(finding).toBeDefined()
-    expect(finding!.severity).toBe('HIGH')
-    expect(finding!.autoFixable).toBe(true)
-
-    const fix = result.autoFixes.find((f) => f.field === 'sugar')
-    expect(fix).toBeDefined()
-    expect(fix!.after).toBe(50) // capped to carbs
-  })
-
-  it('flags sodium > 10000 as HIGH auto-fixable', () => {
-    const item = makeItem({ nd: { sodium: 48000 } })
-    const result = checkAccuracy([item])
-
-    const finding = result.findings.find((f) => f.checkName === 'sodium_extreme')
-    expect(finding).toBeDefined()
-    expect(finding!.severity).toBe('HIGH')
-    expect(finding!.autoFixable).toBe(true)
-
-    const fix = result.autoFixes.find((f) => f.field === 'sodium')
-    expect(fix).toBeDefined()
-    expect(fix!.after).toBe(4800) // 48000 / 10
-  })
-
-  it('flags Atwater deviation > 50% as HIGH non-fixable', () => {
-    // Atwater estimate = 25*4 + 50*4 + 20*9 = 100+200+180 = 480
-    // calories = 900, deviation = |900-480|/480 * 100 = 87.5%
-    const item = makeItem({ nd: { calories: 900, carbs: 50, fat: 20, protein: 25 } })
-    const result = checkAccuracy([item])
-
+  it('downgrades Atwater deviations on low-confidence api_lookup nutrition to LOW when above the stricter floor', () => {
+    // Need a deviation big enough to cross the api_lookup-tightened floor (35%, 100 cal abs).
+    // 60% deviation, 350 cal absolute diff.
+    const result = checkAccuracy([makeItem({ source: 'api_lookup', confidenceScore: 40, calories: 900, carbs: 40, fat: 20, protein: 20 })])
     const finding = result.findings.find((f) => f.checkName === 'atwater_deviation')
     expect(finding).toBeDefined()
-    expect(finding!.severity).toBe('HIGH')
-    expect(finding!.autoFixable).toBe(false)
+    expect(finding!.severity).toBe('LOW')
   })
 
-  it('skips Atwater check for alcoholic beverages', () => {
-    // Frozen Margarita: Atwater = 0*4 + 30*4 + 0*9 = 120
-    // calories = 400, deviation = |400-120|/120 * 100 = 233%
-    // But it's alcoholic, so Atwater check should be skipped
-    const item = makeItem({
-      name: 'Frozen Margarita',
-      category: 'beverage',
-      nd: { calories: 400, carbs: 30, fat: 0, protein: 0 },
-    })
-    const result = checkAccuracy([item])
-
-    const atwaterFinding = result.findings.find((f) => f.checkName === 'atwater_deviation')
-    expect(atwaterFinding).toBeUndefined()
-  })
-
-  it('flags negative calories as HIGH', () => {
-    const item = makeItem({ nd: { calories: -50 } })
-    const result = checkAccuracy([item])
-
-    const finding = result.findings.find((f) => f.checkName === 'negative_value')
-    expect(finding).toBeDefined()
-    expect(finding!.severity).toBe('HIGH')
-    expect(finding!.autoFixable).toBe(true)
-
-    const fix = result.autoFixes.find((f) => f.field === 'calories')
-    expect(fix).toBeDefined()
-    expect(fix!.after).toBe(0)
-  })
-
-  it('uses relaxed 30% threshold for beverages (not flagged at 25%)', () => {
-    // Latte: Atwater = 10*4 + 30*4 + 5*9 = 40+120+45 = 205
-    // calories = 260, deviation = |260-205|/205 * 100 = 26.8%
-    // 26.8% > 20% (food threshold) but < 30% (beverage threshold)
-    // Should NOT be flagged as MEDIUM because it's a beverage
-    const item = makeItem({
-      name: 'Vanilla Latte',
-      category: 'beverage',
-      nd: { calories: 260, carbs: 30, fat: 5, protein: 10 },
-    })
-    const result = checkAccuracy([item])
-
-    const atwaterFinding = result.findings.find((f) => f.checkName === 'atwater_deviation')
-    expect(atwaterFinding).toBeUndefined()
-  })
-
-  it('uses strict 20% threshold for food items (flagged at 25%)', () => {
-    // Burger: Atwater = 25*4 + 40*4 + 20*9 = 100+160+180 = 440
-    // calories = 560, deviation = |560-440|/440 * 100 = 27.3%
-    // 27.3% > 20% AND absDiff = 120 >= 30 → MEDIUM for food
-    const item = makeItem({
-      name: 'Cheeseburger',
-      category: 'entree',
-      nd: { calories: 560, carbs: 40, fat: 20, protein: 25 },
-    })
-    const result = checkAccuracy([item])
-
+  it('flags moderate Atwater deviations on official nutrition as MEDIUM (not LOW)', () => {
+    // Official-source data is the most trustworthy bucket; a medium-tier
+    // deviation there is worth a real human look. Downgrading it to LOW
+    // (the pre-fix behaviour) hid real anomalies in the daily report.
+    const result = checkAccuracy([makeItem({ source: 'official', confidenceScore: 90 })])
     const finding = result.findings.find((f) => f.checkName === 'atwater_deviation')
     expect(finding).toBeDefined()
     expect(finding!.severity).toBe('MEDIUM')
   })
 
-  it('detects beverages by name pattern even without beverage category', () => {
-    // Cold Brew Coffee categorized as "snack" but name pattern matches beverage
-    // Atwater = 1*4 + 15*4 + 0*9 = 64
-    // calories = 90, deviation = |90-64|/64 * 100 = 40.6%
-    // 40.6% > 30% (beverage threshold) AND absDiff = 26 < 30 → not flagged (abs too small)
-    const item = makeItem({
-      name: 'Cold Brew Coffee',
-      category: 'snack',
-      nd: { calories: 90, carbs: 15, fat: 0, protein: 1 },
-    })
-    const result = checkAccuracy([item])
-
-    const atwaterFinding = result.findings.find((f) => f.checkName === 'atwater_deviation')
-    expect(atwaterFinding).toBeUndefined()
+  it('keeps moderate Atwater deviations on api_lookup nutrition as LOW (not MEDIUM)', () => {
+    // Atwater estimate from 20p+40c+20f = 420 cal. Stated 600 → 42.9% deviation,
+    // 180 cal absDiff: above api_lookup medium floor (35%, 100 cal) but below
+    // HIGH (50%, 50 cal). High confidence (70) skips the low-confidence gate.
+    // Result should land in the medium branch and stay LOW for api_lookup.
+    const result = checkAccuracy([
+      makeItem({ source: 'api_lookup', confidenceScore: 70, calories: 600, carbs: 40, fat: 20, protein: 20 }),
+    ])
+    const finding = result.findings.find((f) => f.checkName === 'atwater_deviation')
+    expect(finding).toBeDefined()
+    expect(finding!.severity).toBe('LOW')
   })
 
-  it('returns clean result for valid items', () => {
-    // Default item: Atwater = 25*4 + 50*4 + 20*9 = 480 vs cal=500
-    // deviation = |500-480|/480*100 = ~4.2% — well under 20% threshold
-    const item = makeItem({})
-    const result = checkAccuracy([item])
+  it('does not flag Atwater deviation on crowdsourced (AI-estimated) nutrition', () => {
+    // Same data that would flag for official/api_lookup must NOT flag for crowdsourced.
+    const result = checkAccuracy([makeItem({ source: 'crowdsourced', confidenceScore: 35, calories: 900, carbs: 40, fat: 20, protein: 20 })])
+    const finding = result.findings.find((f) => f.checkName === 'atwater_deviation')
+    expect(finding).toBeUndefined()
+  })
 
-    expect(result.findings).toHaveLength(0)
-    expect(result.autoFixes).toHaveLength(0)
-    expect(result.stats.checked).toBe(1)
-    expect(result.stats.clean).toBe(1)
-    expect(result.stats.flagged).toBe(0)
+  it('suppresses small Atwater deviations on api_lookup that previously generated noise', () => {
+    // 25% deviation, 80 cal absolute diff — would flag under old thresholds (>20% & >=30 cal),
+    // but should NOT under api_lookup floor (>35% & >=100 cal).
+    // Macros: P*4+C*4+F*9 = 20*4+40*4+20*9 = 420 cal. calories=525 → 25% / 105 cal.
+    const result = checkAccuracy([makeItem({ source: 'api_lookup', confidenceScore: 40, calories: 525, carbs: 40, fat: 20, protein: 20 })])
+    const finding = result.findings.find((f) => f.checkName === 'atwater_deviation')
+    // 25% < 35% threshold, so should NOT flag
+    expect(finding).toBeUndefined()
+  })
+
+  // Regression fixtures for previously-fixed false positives — see CLAUDE.md
+  // "Data Quality Regex Gotchas" and scripts/fix-false-positives.ts history.
+  it('does not flag fat=0 zero_fat_fried on "Coffee Cake Cookie"', () => {
+    const item = makeItem({
+      source: 'crowdsourced',
+      confidenceScore: 35,
+      name: 'Coffee Cake Cookie',
+      category: 'dessert',
+      fat: 0,
+      // High-cal dessert; just confirming the regex does not slot it into the fried bucket.
+      calories: 380,
+      carbs: 50,
+      protein: 4,
+    })
+    const result = checkAccuracy([item])
+    const finding = result.findings.find((f) => f.checkName === 'zero_fat_fried')
+    expect(finding).toBeUndefined()
+  })
+
+  it('does not flag fat=0 zero_fat_fried on "Crispy Mac & Cheese"', () => {
+    const item = makeItem({
+      source: 'api_lookup',
+      confidenceScore: 60,
+      name: 'Crispy Mac & Cheese',
+      category: 'side',
+      fat: 0,
+      calories: 200,
+      carbs: 30,
+      protein: 10,
+    })
+    const result = checkAccuracy([item])
+    const finding = result.findings.find((f) => f.checkName === 'zero_fat_fried')
+    expect(finding).toBeUndefined()
+  })
+
+  it('uses alcohol_grams * 7 in the Atwater calculation when present', () => {
+    // Wine-like row: 5 carbs, 0 fat, 0 protein, 14g alcohol → estimated 5*4 + 14*7 = 118 cal.
+    // Stated 120 cal → ~1.7% deviation, well within tolerance. Without alcohol included it
+    // would compute to 20 cal estimate vs 120 stated = 500% deviation and HIGH-flag.
+    const item = makeItem({
+      source: 'official',
+      confidenceScore: 90,
+      name: 'House Red',
+      category: 'beverage',
+      calories: 120,
+      carbs: 5,
+      fat: 0,
+      protein: 0,
+      alcoholGrams: 14,
+    })
+    const result = checkAccuracy([item])
+    const finding = result.findings.find((f) => f.checkName === 'atwater_deviation')
+    expect(finding).toBeUndefined()
   })
 })

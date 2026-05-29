@@ -17,6 +17,7 @@ interface AutoFixResults {
 interface ReportData {
   accuracy: AuditPassResult | null
   completeness: AuditPassResult | null
+  external: AuditPassResult | null
   autofix: AutoFixResults | null
   graduation: GraduationState | null
 }
@@ -35,6 +36,7 @@ function loadReportData(): ReportData {
   return {
     accuracy: loadJsonFile<AuditPassResult>(rootPath('audit', 'accuracy-results.json')),
     completeness: loadJsonFile<AuditPassResult>(rootPath('audit', 'completeness-results.json')),
+    external: loadJsonFile<AuditPassResult>(rootPath('audit', 'external-results.json')),
     autofix: loadJsonFile<AutoFixResults>(rootPath('audit', 'autofix-results.json')),
     graduation: loadJsonFile<GraduationState>(rootPath('audit', 'graduation-state.json')),
   }
@@ -56,6 +58,7 @@ export function buildMarkdownReport(data: ReportData): string {
   const allFindings = [
     ...(data.accuracy?.findings ?? []),
     ...(data.completeness?.findings ?? []),
+    ...(data.external?.findings ?? []),
   ]
 
   const high = allFindings.filter(f => f.severity === 'HIGH').length
