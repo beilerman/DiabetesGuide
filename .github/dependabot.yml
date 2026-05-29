@@ -1,0 +1,21 @@
+version: 2
+updates:
+  # Pin GitHub Actions versions and surface new SHAs as PRs.
+  # Goal: every third-party action used by .github/workflows/*.yml is on a
+  # 40-char commit SHA, not a floating @v4 tag. Dependabot reads the workflow
+  # files weekly and opens PRs that bump the SHAs to the latest release SHA,
+  # closing the door on the floating-tag attack vector (e.g. tj-actions
+  # incident, March 2025).
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    labels:
+      - dependencies
+      - github-actions

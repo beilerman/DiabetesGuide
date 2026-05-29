@@ -7,9 +7,17 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', '.claude/**', '.worktrees/**', 'node_modules/**']),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: [
+      'src/**/*.{ts,tsx}',
+      'scripts/audit/**/*.{ts,tsx}',
+      'scripts/sync/**/*.{ts,tsx}',
+      'scripts/__tests__/**/*.{ts,tsx}',
+      'scripts/scrapers/universal.ts',
+      'vitest.config.ts',
+      'vite.config.ts',
+    ],
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
