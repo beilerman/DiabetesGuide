@@ -1,0 +1,752 @@
+{
+  "date": "2026-05-04",
+  "generatedAt": "2026-05-04T23:22:39.070Z",
+  "sections": [
+    {
+      "name": "Row counts",
+      "ok": true,
+      "rows": [
+        {
+          "label": "parks",
+          "value": 44
+        },
+        {
+          "label": "restaurants",
+          "value": 780
+        },
+        {
+          "label": "menu_items",
+          "value": 11867
+        },
+        {
+          "label": "nutritional_data",
+          "value": 11867
+        },
+        {
+          "label": "allergens",
+          "value": 14269
+        },
+        {
+          "label": "1:1 menu_items ↔ nutritional_data invariant",
+          "value": "PASS",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "FK orphans",
+      "ok": true,
+      "rows": [
+        {
+          "label": "restaurants without park",
+          "value": 0,
+          "status": "ok"
+        },
+        {
+          "label": "menu_items without restaurant",
+          "value": 0,
+          "status": "ok"
+        },
+        {
+          "label": "nutritional_data without item",
+          "value": 0,
+          "status": "ok"
+        },
+        {
+          "label": "allergens without item",
+          "value": 0,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Duplicates by normalized name",
+      "ok": true,
+      "rows": [
+        {
+          "label": "duplicate (park, name) restaurant groups",
+          "value": 0,
+          "status": "ok"
+        },
+        {
+          "label": "duplicate (restaurant, name) item groups",
+          "value": 0,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Impossible values",
+      "ok": true,
+      "rows": [
+        {
+          "label": "negative macros",
+          "value": 0,
+          "status": "ok"
+        },
+        {
+          "label": "calories > 5000",
+          "value": 0,
+          "status": "ok"
+        },
+        {
+          "label": "sodium > 10000mg",
+          "value": 0,
+          "status": "ok"
+        },
+        {
+          "label": "sugar > carbs",
+          "value": 0,
+          "status": "ok"
+        },
+        {
+          "label": "fiber > carbs",
+          "value": 0,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Source distribution",
+      "ok": true,
+      "rows": [
+        {
+          "label": "source: official",
+          "value": "431 (3.6%)"
+        },
+        {
+          "label": "source: api_lookup",
+          "value": "5598 (47.2%)"
+        },
+        {
+          "label": "source: crowdsourced",
+          "value": "5838 (49.2%)"
+        },
+        {
+          "label": "source: other",
+          "value": "0 (0.0%)"
+        }
+      ]
+    },
+    {
+      "name": "Confidence distribution",
+      "ok": true,
+      "rows": [
+        {
+          "label": "high (≥80)",
+          "value": "291 (2.5%)"
+        },
+        {
+          "label": "medium (50–79)",
+          "value": "883 (7.4%)"
+        },
+        {
+          "label": "low (<50)",
+          "value": "10528 (88.7%)"
+        },
+        {
+          "label": "null (no confidence recorded)",
+          "value": "165 (1.4%)"
+        }
+      ]
+    },
+    {
+      "name": "Freshness distribution",
+      "ok": true,
+      "rows": [
+        {
+          "label": "fresh (<12 months)",
+          "value": "11867 (100.0%)"
+        },
+        {
+          "label": "12–24 months stale",
+          "value": "0 (0.0%)",
+          "status": "ok"
+        },
+        {
+          "label": "> 2 years stale",
+          "value": "0 (0.0%)",
+          "status": "ok"
+        },
+        {
+          "label": "never verified (null updated_at)",
+          "value": "0 (0.0%)",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Nutrition field coverage",
+      "ok": true,
+      "rows": [
+        {
+          "label": "calories > 0",
+          "value": "11592 (97.7%)"
+        },
+        {
+          "label": "carbs not null",
+          "value": "11701 (98.6%)"
+        },
+        {
+          "label": "protein not null",
+          "value": "11702 (98.6%)"
+        },
+        {
+          "label": "fat not null",
+          "value": "11684 (98.5%)"
+        },
+        {
+          "label": "sodium not null",
+          "value": "11698 (98.6%)"
+        },
+        {
+          "label": "sugar not null",
+          "value": "11688 (98.5%)"
+        },
+        {
+          "label": "fiber not null",
+          "value": "11688 (98.5%)"
+        },
+        {
+          "label": "all macros null (empty shells)",
+          "value": "165 (1.4%)",
+          "status": "ok"
+        },
+        {
+          "label": "all macros = 0",
+          "value": "110 (0.9%)",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Dosing-grade items",
+      "ok": true,
+      "rows": [
+        {
+          "label": "items meeting dosing bar (source=official, conf≥80, carbs not null, fresh)",
+          "value": "247 (2.1%)",
+          "status": "warn"
+        }
+      ]
+    },
+    {
+      "name": "Category distribution",
+      "ok": true,
+      "rows": [
+        {
+          "label": "entree",
+          "value": "5770 (48.6%)"
+        },
+        {
+          "label": "beverage",
+          "value": "3037 (25.6%)"
+        },
+        {
+          "label": "snack",
+          "value": "1362 (11.5%)"
+        },
+        {
+          "label": "dessert",
+          "value": "1109 (9.3%)"
+        },
+        {
+          "label": "side",
+          "value": "589 (5.0%)"
+        }
+      ]
+    },
+    {
+      "name": "Allergen coverage",
+      "ok": true,
+      "rows": [
+        {
+          "label": "menu_items with ≥1 allergen record",
+          "value": "6129 (51.6%)"
+        },
+        {
+          "label": "avg allergen records per covered item",
+          "value": "2.33"
+        }
+      ]
+    },
+    {
+      "name": "Per-park coverage (top 10 by item count)",
+      "ok": true,
+      "rows": [
+        {
+          "label": "Disney Springs",
+          "value": "2816 items, 100% w/ cal, 100% w/ carbs, 11% conf≥50"
+        },
+        {
+          "label": "EPCOT",
+          "value": "1356 items, 100% w/ cal, 100% w/ carbs, 10% conf≥50"
+        },
+        {
+          "label": "Disney's Animal Kingdom",
+          "value": "1012 items, 100% w/ cal, 100% w/ carbs, 1% conf≥50"
+        },
+        {
+          "label": "Universal CityWalk",
+          "value": "983 items, 98% w/ cal, 100% w/ carbs, 20% conf≥50"
+        },
+        {
+          "label": "Universal's Epic Universe",
+          "value": "842 items, 83% w/ cal, 89% w/ carbs, 1% conf≥50"
+        },
+        {
+          "label": "Universal's Islands of Adventure",
+          "value": "806 items, 97% w/ cal, 100% w/ carbs, 16% conf≥50"
+        },
+        {
+          "label": "Disney's Hollywood Studios",
+          "value": "683 items, 99% w/ cal, 99% w/ carbs, 1% conf≥50"
+        },
+        {
+          "label": "Universal Studios Florida",
+          "value": "581 items, 95% w/ cal, 97% w/ carbs, 15% conf≥50"
+        },
+        {
+          "label": "Dollywood",
+          "value": "417 items, 100% w/ cal, 100% w/ carbs, 27% conf≥50"
+        },
+        {
+          "label": "Walt Disney World Resorts",
+          "value": "373 items, 100% w/ cal, 100% w/ carbs, 7% conf≥50"
+        }
+      ]
+    }
+  ],
+  "parkCoverage": [
+    {
+      "park": "Disney Springs",
+      "items": 2816,
+      "withCalories": 2810,
+      "withCarbs": 2816,
+      "withConfMed": 316,
+      "pctCalories": 99.78693181818183,
+      "pctCarbs": 100,
+      "pctConfMed": 11.221590909090908
+    },
+    {
+      "park": "EPCOT",
+      "items": 1356,
+      "withCalories": 1356,
+      "withCarbs": 1355,
+      "withConfMed": 132,
+      "pctCalories": 100,
+      "pctCarbs": 99.92625368731564,
+      "pctConfMed": 9.734513274336283
+    },
+    {
+      "park": "Disney's Animal Kingdom",
+      "items": 1012,
+      "withCalories": 1012,
+      "withCarbs": 1012,
+      "withConfMed": 13,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 1.2845849802371543
+    },
+    {
+      "park": "Universal CityWalk",
+      "items": 983,
+      "withCalories": 967,
+      "withCarbs": 983,
+      "withConfMed": 195,
+      "pctCalories": 98.37232960325534,
+      "pctCarbs": 100,
+      "pctConfMed": 19.837232960325537
+    },
+    {
+      "park": "Universal's Epic Universe",
+      "items": 842,
+      "withCalories": 698,
+      "withCarbs": 746,
+      "withConfMed": 5,
+      "pctCalories": 82.89786223277909,
+      "pctCarbs": 88.59857482185272,
+      "pctConfMed": 0.5938242280285035
+    },
+    {
+      "park": "Universal's Islands of Adventure",
+      "items": 806,
+      "withCalories": 784,
+      "withCarbs": 806,
+      "withConfMed": 131,
+      "pctCalories": 97.27047146401985,
+      "pctCarbs": 100,
+      "pctConfMed": 16.253101736972706
+    },
+    {
+      "park": "Disney's Hollywood Studios",
+      "items": 683,
+      "withCalories": 674,
+      "withCarbs": 675,
+      "withConfMed": 4,
+      "pctCalories": 98.68228404099561,
+      "pctCarbs": 98.82869692532942,
+      "pctConfMed": 0.5856515373352855
+    },
+    {
+      "park": "Universal Studios Florida",
+      "items": 581,
+      "withCalories": 550,
+      "withCarbs": 563,
+      "withConfMed": 87,
+      "pctCalories": 94.66437177280551,
+      "pctCarbs": 96.90189328743546,
+      "pctConfMed": 14.974182444061961
+    },
+    {
+      "park": "Dollywood",
+      "items": 417,
+      "withCalories": 417,
+      "withCarbs": 417,
+      "withConfMed": 112,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 26.85851318944844
+    },
+    {
+      "park": "Walt Disney World Resorts",
+      "items": 373,
+      "withCalories": 373,
+      "withCarbs": 373,
+      "withConfMed": 25,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 6.702412868632708
+    },
+    {
+      "park": "Downtown Disney District",
+      "items": 267,
+      "withCalories": 257,
+      "withCarbs": 257,
+      "withConfMed": 38,
+      "pctCalories": 96.25468164794007,
+      "pctCarbs": 96.25468164794007,
+      "pctConfMed": 14.232209737827715
+    },
+    {
+      "park": "Magic Kingdom Park",
+      "items": 254,
+      "withCalories": 238,
+      "withCarbs": 239,
+      "withConfMed": 1,
+      "pctCalories": 93.7007874015748,
+      "pctCarbs": 94.09448818897637,
+      "pctConfMed": 0.39370078740157477
+    },
+    {
+      "park": "Walt Disney World Festivals & Events",
+      "items": 184,
+      "withCalories": 184,
+      "withCarbs": 184,
+      "withConfMed": 4,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 2.1739130434782608
+    },
+    {
+      "park": "SeaWorld Orlando",
+      "items": 165,
+      "withCalories": 164,
+      "withCarbs": 165,
+      "withConfMed": 0,
+      "pctCalories": 99.39393939393939,
+      "pctCarbs": 100,
+      "pctConfMed": 0
+    },
+    {
+      "park": "Kings Island",
+      "items": 158,
+      "withCalories": 158,
+      "withCarbs": 158,
+      "withConfMed": 37,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 23.417721518987342
+    },
+    {
+      "park": "Universal's Volcano Bay",
+      "items": 146,
+      "withCalories": 139,
+      "withCarbs": 139,
+      "withConfMed": 21,
+      "pctCalories": 95.2054794520548,
+      "pctCarbs": 95.2054794520548,
+      "pctConfMed": 14.383561643835616
+    },
+    {
+      "park": "Busch Gardens Tampa Bay",
+      "items": 119,
+      "withCalories": 117,
+      "withCarbs": 119,
+      "withConfMed": 2,
+      "pctCalories": 98.31932773109243,
+      "pctCarbs": 100,
+      "pctConfMed": 1.680672268907563
+    },
+    {
+      "park": "EPCOT Flower & Garden Festival 2026",
+      "items": 117,
+      "withCalories": 117,
+      "withCarbs": 117,
+      "withConfMed": 0,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 0
+    },
+    {
+      "park": "Walt Disney World & Universal Orlando - Additional Dining",
+      "items": 108,
+      "withCalories": 108,
+      "withCarbs": 108,
+      "withConfMed": 4,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 3.7037037037037033
+    },
+    {
+      "park": "Disneyland Resort Hotels",
+      "items": 56,
+      "withCalories": 56,
+      "withCarbs": 56,
+      "withConfMed": 6,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 10.714285714285714
+    },
+    {
+      "park": "Disney's Typhoon Lagoon Water Park",
+      "items": 52,
+      "withCalories": 41,
+      "withCarbs": 41,
+      "withConfMed": 0,
+      "pctCalories": 78.84615384615384,
+      "pctCarbs": 78.84615384615384,
+      "pctConfMed": 0
+    },
+    {
+      "park": "Aulani, A Disney Resort & Spa",
+      "items": 41,
+      "withCalories": 41,
+      "withCarbs": 41,
+      "withConfMed": 7,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 17.073170731707318
+    },
+    {
+      "park": "Disney Treasure",
+      "items": 29,
+      "withCalories": 29,
+      "withCarbs": 29,
+      "withConfMed": 2,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 6.896551724137931
+    },
+    {
+      "park": "Disney Magic",
+      "items": 28,
+      "withCalories": 28,
+      "withCarbs": 28,
+      "withConfMed": 5,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 17.857142857142858
+    },
+    {
+      "park": "Disney Wish",
+      "items": 28,
+      "withCalories": 28,
+      "withCarbs": 28,
+      "withConfMed": 3,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 10.714285714285714
+    },
+    {
+      "park": "Disney Dream",
+      "items": 26,
+      "withCalories": 26,
+      "withCarbs": 26,
+      "withConfMed": 3,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 11.538461538461538
+    },
+    {
+      "park": "Disney Fantasy",
+      "items": 26,
+      "withCalories": 26,
+      "withCarbs": 26,
+      "withConfMed": 3,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 11.538461538461538
+    },
+    {
+      "park": "Disney Wonder",
+      "items": 24,
+      "withCalories": 24,
+      "withCarbs": 24,
+      "withConfMed": 3,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 12.5
+    },
+    {
+      "park": "Universal Cabana Bay Beach Resort",
+      "items": 19,
+      "withCalories": 19,
+      "withCarbs": 19,
+      "withConfMed": 4,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 21.052631578947366
+    },
+    {
+      "park": "Universal Royal Pacific Resort",
+      "items": 18,
+      "withCalories": 18,
+      "withCarbs": 18,
+      "withConfMed": 1,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 5.555555555555555
+    },
+    {
+      "park": "Walt Disney World Parks",
+      "items": 15,
+      "withCalories": 15,
+      "withCarbs": 15,
+      "withConfMed": 0,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 0
+    },
+    {
+      "park": "Universal Portofino Bay Hotel",
+      "items": 15,
+      "withCalories": 15,
+      "withCarbs": 15,
+      "withConfMed": 1,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 6.666666666666667
+    },
+    {
+      "park": "Epic Universe Hotels",
+      "items": 14,
+      "withCalories": 14,
+      "withCarbs": 14,
+      "withConfMed": 0,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 0
+    },
+    {
+      "park": "Universal Hard Rock Hotel",
+      "items": 14,
+      "withCalories": 14,
+      "withCarbs": 14,
+      "withConfMed": 0,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 0
+    },
+    {
+      "park": "Universal Sapphire Falls Resort",
+      "items": 13,
+      "withCalories": 13,
+      "withCarbs": 13,
+      "withConfMed": 3,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 23.076923076923077
+    },
+    {
+      "park": "Universal Aventura Hotel",
+      "items": 11,
+      "withCalories": 11,
+      "withCarbs": 11,
+      "withConfMed": 2,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 18.181818181818183
+    },
+    {
+      "park": "Universal Endless Summer Resort - Dockside Inn",
+      "items": 10,
+      "withCalories": 10,
+      "withCarbs": 10,
+      "withConfMed": 0,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 0
+    },
+    {
+      "park": "Universal Stella Nova Resort",
+      "items": 10,
+      "withCalories": 10,
+      "withCarbs": 10,
+      "withConfMed": 2,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 20
+    },
+    {
+      "park": "Universal Terra Luna Resort",
+      "items": 10,
+      "withCalories": 10,
+      "withCarbs": 10,
+      "withConfMed": 1,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 10
+    },
+    {
+      "park": "Disney's BoardWalk",
+      "items": 7,
+      "withCalories": 7,
+      "withCarbs": 7,
+      "withConfMed": 0,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 0
+    },
+    {
+      "park": "Universal Endless Summer Resort - Surfside Inn",
+      "items": 7,
+      "withCalories": 7,
+      "withCarbs": 7,
+      "withConfMed": 0,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 0
+    },
+    {
+      "park": "Disney's Grand Floridian Resort",
+      "items": 4,
+      "withCalories": 4,
+      "withCarbs": 4,
+      "withConfMed": 1,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 25
+    },
+    {
+      "park": "Disney's Contemporary Resort",
+      "items": 3,
+      "withCalories": 3,
+      "withCarbs": 3,
+      "withConfMed": 0,
+      "pctCalories": 100,
+      "pctCarbs": 100,
+      "pctConfMed": 0
+    }
+  ]
+}
