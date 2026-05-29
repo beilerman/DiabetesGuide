@@ -58,3 +58,8 @@ audit/completeness-results.json
 audit/autofix-results.json
 audit/external-results.json
 audit/.tmp-report-body.md
+
+# Temp browser / screenshot artifacts from review and test sessions.
+# Not source-of-truth; regenerate with /test-browser or similar if needed.
+.playwright-mcp/
+ui-review-*.png
