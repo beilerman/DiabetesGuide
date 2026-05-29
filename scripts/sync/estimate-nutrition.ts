@@ -4,6 +4,7 @@ import { resolve, dirname } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
 import type { MergeResult, MergedItem } from './merge.js'
 import { normalizeName } from '../scrapers/utils.js'
+import { HIGH_CONFIDENCE, MEDIUM_CONFIDENCE } from '../lib/confidence-thresholds.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -118,10 +119,55 @@ async function getExistingItemsWithNutrition(): Promise<{
 
   if (error) throw error
 
-  return (data || [])
-    .filter(item => item.nutritional_data && (item.nutritional_data as any).calories)
+  return collectExistingNutritionRows(data || [])
+}
+
+interface RawNutritionRow {
+  calories?: number | null
+  carbs?: number | null
+  fat?: number | null
+  protein?: number | null
+  sugar?: number | null
+  fiber?: number | null
+  sodium?: number | null
+}
+
+interface RawExistingItem {
+  id: string
+  name: string
+  category: string
+  nutritional_data?: RawNutritionRow | RawNutritionRow[] | null
+}
+
+export function collectExistingNutritionRows(items: RawExistingItem[]): {
+  id: string
+  name: string
+  category: string
+  calories: number
+  carbs: number
+  fat: number
+  protein: number
+  sugar: number | null
+  fiber: number | null
+  sodium: number | null
+  keywords: string[]
+}[] {
+  return items
     .map(item => {
-      const nutrition = item.nutritional_data as any
+      const nutrition = Array.isArray(item.nutritional_data)
+        ? item.nutritional_data[0]
+        : item.nutritional_data
+
+      if (
+        !nutrition?.calories ||
+        nutrition.carbs === null ||
+        nutrition.carbs === undefined ||
+        nutrition.fat === null ||
+        nutrition.fat === undefined ||
+        nutrition.protein === null ||
+        nutrition.protein === undefined
+      ) return null
+
       return {
         id: item.id,
         name: item.name,
@@ -130,12 +176,13 @@ async function getExistingItemsWithNutrition(): Promise<{
         carbs: nutrition.carbs,
         fat: nutrition.fat,
         protein: nutrition.protein,
-        sugar: nutrition.sugar,
-        fiber: nutrition.fiber,
-        sodium: nutrition.sodium,
+        sugar: nutrition.sugar ?? null,
+        fiber: nutrition.fiber ?? null,
+        sodium: nutrition.sodium ?? null,
         keywords: extractKeywords(item.name),
       }
     })
+    .filter((item): item is NonNullable<typeof item> => item !== null)
 }
 
 function estimateNutrition(
@@ -234,9 +281,9 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
       console.log('')
       console.log('=== Nutrition Estimation Complete ===')
       console.log(`With nutrition: ${withNutrition.length}`)
-      console.log(`  High confidence (80%+): ${withNutrition.filter(e => e.nutrition!.confidence >= 80).length}`)
-      console.log(`  Medium confidence (50-79%): ${withNutrition.filter(e => e.nutrition!.confidence >= 50 && e.nutrition!.confidence < 80).length}`)
-      console.log(`  Low confidence (<50%): ${withNutrition.filter(e => e.nutrition!.confidence < 50).length}`)
+      console.log(`  High confidence (${HIGH_CONFIDENCE}%+): ${withNutrition.filter(e => e.nutrition!.confidence >= HIGH_CONFIDENCE).length}`)
+      console.log(`  Medium confidence (${MEDIUM_CONFIDENCE}-${HIGH_CONFIDENCE - 1}%): ${withNutrition.filter(e => e.nutrition!.confidence >= MEDIUM_CONFIDENCE && e.nutrition!.confidence < HIGH_CONFIDENCE).length}`)
+      console.log(`  Low confidence (<${MEDIUM_CONFIDENCE}%): ${withNutrition.filter(e => e.nutrition!.confidence < MEDIUM_CONFIDENCE).length}`)
       console.log(`Needs manual entry: ${needsManual.length}`)
       console.log(`Output: ${outputPath}`)
     })

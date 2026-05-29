@@ -16,6 +16,7 @@ import { createClient } from '@supabase/supabase-js'
 import Groq from 'groq-sdk'
 import { readFileSync } from 'fs'
 import { dirname, resolve } from 'path'
+import { sanitizeLLMInput } from './lib/sanitize-llm-input.js'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -164,9 +165,15 @@ function validateNutrition(estimate: NutritionEstimate): NutritionEstimate | nul
 function buildPrompt(items: MenuItem[]): string {
   const itemList = items.map((item, i) => {
     const fried = item.is_fried ? ' (fried)' : ''
-    return `[${i + 1}] Name: ${item.name}${fried}
-Category: ${item.category}
-Description: ${item.description || 'No description'}`
+    // Inputs come from scraped menus and may contain prompt-injection attempts
+    // or control characters. Sanitize at the boundary; wrap in <item>/<desc>
+    // tags so any injection in prompt logs is visibly contained.
+    const safeName = sanitizeLLMInput(item.name, { wrapTag: 'item' })
+    const safeCategory = sanitizeLLMInput(item.category, { maxLength: 32 })
+    const safeDescription = sanitizeLLMInput(item.description || 'No description', { wrapTag: 'desc', maxLength: 400 })
+    return `[${i + 1}] Name: ${safeName}${fried}
+Category: ${safeCategory}
+Description: ${safeDescription}`
   }).join('\n\n')
 
   return `You are a nutritionist estimating nutrition facts for theme park food items. These are typically larger portions than home-cooked meals (1.5-2x standard restaurant portions).

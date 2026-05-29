@@ -185,7 +185,7 @@ export async function mergeScrapedData(scrapeResults: ScrapeResult[]): Promise<M
   }
 
   // Process each unique item
-  for (const [key, { items }] of itemMap) {
+  for (const { items } of itemMap.values()) {
     // Sort by source priority (highest first)
     items.sort((a, b) => (SOURCE_PRIORITY[b.source] || 0) - (SOURCE_PRIORITY[a.source] || 0))
 

@@ -24,7 +24,7 @@ const RESTAURANT_MENUS: Record<string, { park: string; urls: string[] }> = {
     ],
   },
   'Bambu': {
-    park: 'Universal Volcano Bay',
+    park: "Universal's Volcano Bay",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/bambu/menu.html',
     ],
@@ -215,7 +215,7 @@ const RESTAURANT_MENUS: Record<string, { park: string; urls: string[] }> = {
     ],
   },
   'Lone Palm Airport': {
-    park: 'Universal Volcano Bay',
+    park: "Universal's Volcano Bay",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining//lone-palm-airport/menu.html',
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining//lone-palm-airport/kids_menu.html',
@@ -385,7 +385,7 @@ const RESTAURANT_MENUS: Record<string, { park: string; urls: string[] }> = {
     ],
   },
   'Whakawaiwai Eats': {
-    park: 'Universal Volcano Bay',
+    park: "Universal's Volcano Bay",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/whakawaiwai-eats/menu.html',
     ],
@@ -398,139 +398,139 @@ const RESTAURANT_MENUS: Record<string, { park: string; urls: string[] }> = {
   },
   // Epic Universe restaurants
   "Cafe L'Air de la Sirene": {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/cafe-lair-de-la-sirene/menu.html',
     ],
   },
   'Das Stakehaus': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/das-stakehaus/menu.html',
     ],
   },
   'Le Gobelet Noir': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/le-gobelet-noir/menu.html',
     ],
   },
   'Bar Moonshine': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/bar-moonshine/menu.html',
     ],
   },
   'Toadstool Cafe': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/toadstool-cafe/menu.html',
     ],
   },
   'The Bubbly Barrel': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/the-bubbly-barrel/menu.html',
     ],
   },
   "Yoshi's Snack Island": {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/yoshis-snack-island/menu.html',
     ],
   },
   'Turbo Boost Treats': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/turbo-boost-treats/menu.html',
     ],
   },
   "De Lacey's": {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/de-laceys/menu.html',
     ],
   },
   'Atlantic': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/atlantic/menu.html',
     ],
   },
   'The Plastered Owl': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/the-plastered-owl/menu.html',
     ],
   },
   'Star Sui Bao': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/star-sui-bao/menu.html',
     ],
   },
   'Comet Dogs': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/comet-dogs/menu.html',
     ],
   },
   'Celestiki': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/celestiki/menu.html',
     ],
   },
   'Bar Zenith': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/bar-zenith/menu.html',
     ],
   },
   'Mead Hall': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/mead-hall/menu.html',
     ],
   },
   'Spit Fyre Grill': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/spit-fyre-grill/menu.html',
     ],
   },
   "Hooligan's Grog and Gruel": {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/hooligans-grog-and-gruel/menu.html',
     ],
   },
   'The Burning Blade Tavern': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/the-burning-blade-tavern/menu.html',
     ],
   },
   'The Oak and Star Tavern': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/the-oak-and-star-tavern/menu.html',
     ],
   },
   'Pizza Moon': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/pizza-moon/menu.html',
     ],
   },
   'Meteor Astropub': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/meteor-astropub/menu.html',
     ],
   },
   'Frosty Moon': {
-    park: 'Universal Epic Universe',
+    park: "Universal's Epic Universe",
     urls: [
       'https://www.universalorlando.com/webdata/k2/en/us/things-to-do/dining/frosty-moon/menu.html',
     ],

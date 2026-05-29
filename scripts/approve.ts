@@ -51,14 +51,35 @@ function inferTimezone(parkName: string): string {
   return 'America/New_York'
 }
 
-async function findOrCreatePark(parkName: string): Promise<string> {
-  const { data: existing } = await supabase
-    .from('parks')
-    .select('id')
-    .ilike('name', `%${parkName}%`)
-    .limit(1)
+/**
+ * Normalize a park name for matching: lowercase, strip the possessive 's
+ * (so "Universal's Epic Universe" matches "Universal Epic Universe"),
+ * then drop non-alphanumerics (apostrophes, hyphens, ampersands), collapse
+ * whitespace. Used exclusively for matching — stored name keeps punctuation.
+ */
+function normalizeParkName(name: string): string {
+  return name
+    .toLowerCase()
+    // Strip possessive 's variants (straight + curly quotes) BEFORE stripping
+    // punctuation, otherwise "universals" leaks through as a distinct word.
+    .replace(/['‘’´`]s\b/g, '')
+    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
 
-  if (existing && existing.length > 0) return existing[0].id
+async function findOrCreatePark(parkName: string): Promise<string> {
+  // Fetch all parks once and match by normalized name. This catches
+  // apostrophe variants (Universal's Epic Universe vs Universal Epic Universe)
+  // that the previous ilike-based lookup missed, which led to duplicate
+  // park rows being created on each weekly sync run.
+  const { data: allParks } = await supabase.from('parks').select('id, name')
+  if (allParks) {
+    const target = normalizeParkName(parkName)
+    for (const p of allParks) {
+      if (normalizeParkName(p.name) === target) return p.id
+    }
+  }
 
   const { data: newPark, error } = await supabase
     .from('parks')

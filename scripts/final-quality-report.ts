@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { MEDIUM_CONFIDENCE } from './lib/confidence-thresholds.js'
 
 const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -87,7 +88,7 @@ async function generateReport() {
   console.log()
 
   // Confidence score distribution
-  const highConfidence = withNutrition.filter(i => i.nutritional_data[0].confidence_score >= 50)
+  const highConfidence = withNutrition.filter(i => i.nutritional_data[0].confidence_score >= MEDIUM_CONFIDENCE)
   const mediumConfidence = withNutrition.filter(i => {
     const conf = i.nutritional_data[0].confidence_score
     return conf && conf >= 35 && conf < 50
