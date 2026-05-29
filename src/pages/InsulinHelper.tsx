@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { calculateBolus, type ActivityLevel } from '../lib/insulin'
 
 export default function InsulinHelper() {
   const [searchParams] = useSearchParams()
@@ -12,43 +13,33 @@ export default function InsulinHelper() {
   )
   const [icr, setIcr] = useState<number | ''>('')
   const [cf, setCf] = useState<number | ''>('')
-  const [activity, setActivity] = useState<'none' | 'mod' | 'high'>('none')
+  const [activity, setActivity] = useState<ActivityLevel>('none')
 
   const result = useMemo(() => {
     if (carbs === '' || icr === '' || bg === '') return null
-    if (Number(icr) <= 0) return null
-
-    const carbBolus = Number(carbs) / Number(icr)
-    const cfVal = Number(cf)
-    const bgVal = Number(bg)
-    const correction =
-      cfVal && bgVal > target
-        ? (bgVal - target) / cfVal
-        : cfVal && bgVal < target
-          ? (bgVal - target) / cfVal
-          : 0
-
-    const baseDose = carbBolus + correction
-    const adjPct = activity === 'mod' ? 0.25 : activity === 'high' ? 0.5 : 0
-    const suggested = Math.max(0, baseDose * (1 - adjPct))
-
-    return {
-      carbBolus: Math.round(carbBolus * 10) / 10,
-      correction: Math.round(correction * 10) / 10,
-      adjPct: Math.round(adjPct * 100),
-      suggested: Math.round(suggested * 10) / 10,
-    }
+    return calculateBolus({
+      carbs: Number(carbs),
+      bg: Number(bg),
+      target,
+      icr: Number(icr),
+      cf: cf === '' ? null : Number(cf),
+      activity,
+    })
   }, [bg, target, carbs, icr, cf, activity])
 
   return (
     <div className="max-w-lg mx-auto">
       <div className="rounded-lg bg-amber-50 border border-amber-300 p-4 mb-6">
         <p className="font-semibold text-amber-800">
-          Educational tool only — not medical advice. Always consult your healthcare provider.
+          Educational estimator only — not medical advice or a dosing device.
+          Always confirm with your healthcare provider before taking insulin.
         </p>
       </div>
 
-      <h1 className="text-2xl font-bold mb-6">Insulin Dose Helper</h1>
+      <h1 className="text-2xl font-bold mb-2">Carb Counting Estimator</h1>
+      <p className="text-sm text-stone-600 mb-6">
+        Estimates a meal bolus from your own ratios. Discuss results with your provider.
+      </p>
 
       <div className="space-y-4">
         <Field label="Blood Glucose (mg/dL)" value={bg} onChange={setBg} />
@@ -74,16 +65,24 @@ export default function InsulinHelper() {
               )
             )}
           </div>
+          <p className="mt-1 text-xs text-stone-500">
+            Activity reduction is applied to the carb bolus only; correction is unchanged.
+          </p>
         </fieldset>
       </div>
 
       {result && (
         <div className="mt-6 rounded-lg border bg-white p-4 space-y-2">
-          <h2 className="font-semibold text-lg mb-2">Results</h2>
-          <Row label="Carb Bolus" value={`${result.carbBolus} units`} />
-          <Row label="Correction Dose" value={`${result.correction} units`} />
-          <Row label="Activity Adjustment" value={`-${result.adjPct}%`} />
-          <Row label="Suggested Total Dose" value={`${result.suggested} units`} bold />
+          <h2 className="font-semibold text-lg mb-2">Breakdown</h2>
+          <Row label="Carb bolus (pre-activity)" value={`${result.carbBolusRaw} units`} />
+          <Row label="Activity adjustment" value={`-${result.activityPct}%`} />
+          <Row label="Carb bolus (after activity)" value={`${result.carbBolus} units`} />
+          <Row label="Correction" value={`${result.correction} units`} />
+          <Row
+            label="Estimated bolus to discuss with provider"
+            value={`${result.total} units`}
+            bold
+          />
         </div>
       )}
     </div>

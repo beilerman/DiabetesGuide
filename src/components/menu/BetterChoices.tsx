@@ -1,5 +1,6 @@
 import type { MenuItemWithNutrition } from '../../lib/types'
-import { computeScore, computeGrade } from '../../lib/grade'
+import { computeGrade } from '../../lib/grade'
+import { findBetterChoices } from '../../lib/recommendations'
 import { GradeBadge } from './GradeBadge'
 
 interface Props {
@@ -7,29 +8,8 @@ interface Props {
   siblingItems: MenuItemWithNutrition[]
 }
 
-function getScore(item: MenuItemWithNutrition): number | null {
-  const nd = item.nutritional_data?.[0]
-  if (!nd) return null
-  return computeScore({
-    calories: nd.calories, carbs: nd.carbs, fat: nd.fat,
-    protein: nd.protein, sugar: nd.sugar, fiber: nd.fiber,
-    sodium: nd.sodium, alcoholGrams: nd.alcohol_grams,
-  })
-}
-
 export function BetterChoices({ currentItem, siblingItems }: Props) {
-  const currentScore = getScore(currentItem)
-  if (currentScore == null) return null
-
-  const betterItems = siblingItems
-    .filter(item => item.id !== currentItem.id)
-    .map(item => ({ item, score: getScore(item) }))
-    .filter((entry): entry is { item: MenuItemWithNutrition; score: number } =>
-      entry.score != null && entry.score > currentScore
-    )
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 2)
-
+  const betterItems = findBetterChoices(currentItem, siblingItems)
   if (betterItems.length === 0) return null
 
   return (

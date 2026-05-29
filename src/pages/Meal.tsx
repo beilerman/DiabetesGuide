@@ -4,6 +4,7 @@ import { usePreferences } from '../hooks/usePreferences'
 import { GradeBadge } from '../components/menu/GradeBadge'
 import { computeScore, computeGrade, GRADE_CONFIG } from '../lib/grade'
 import type { Grade } from '../lib/grade'
+import { calculateBolus, type ActivityLevel } from '../lib/insulin'
 
 const INSULIN_SETTINGS_KEY = 'dg_insulin_settings'
 
@@ -38,29 +39,33 @@ export default function Meal() {
   // Insulin calculator state
   const [insulinSettings, setInsulinSettings] = useState<InsulinSettings>(loadInsulinSettings)
   const [bg, setBg] = useState<number | ''>('')
-  const [carbOverride, setCarbOverride] = useState<number | null>(null)
-  const [activity, setActivity] = useState<'none' | 'mod' | 'high'>('none')
+  const [carbOverride, setCarbOverride] = useState<{ mealId: string; value: number } | null>(null)
+  const [activity, setActivity] = useState<ActivityLevel>('none')
 
   // Persist insulin settings
   useEffect(() => {
     localStorage.setItem(INSULIN_SETTINGS_KEY, JSON.stringify(insulinSettings))
   }, [insulinSettings])
 
-  // Reset carb override when meal changes
-  useEffect(() => {
-    setCarbOverride(null)
-  }, [activeMealId])
+  // Only honor the override when there IS an active meal AND it matches the
+  // one the override was typed against. Without the `activeMealId &&` guard,
+  // `undefined === undefined` would resurface a stale override during the
+  // transient no-active-meal state (e.g., right after deleting the last meal).
+  const activeCarbOverride =
+    activeMealId && carbOverride?.mealId === activeMealId ? carbOverride.value : null
+  const effectiveCarbs = activeCarbOverride ?? totals.carbs
 
-  // Sync name input when switching meals
+  // Drop the override when it no longer belongs to the active meal (meal switch
+  // or deletion). Prevents bleed-through of stale values into the Insulin Helper.
   useEffect(() => {
-    setNameInput(activeMealName)
-    setEditingName(false)
-  }, [activeMealName])
-
-  const effectiveCarbs = carbOverride ?? totals.carbs
+    if (carbOverride && carbOverride.mealId !== activeMealId) {
+      setCarbOverride(null)
+    }
+  }, [activeMealId, carbOverride])
   const netCarbs = Math.max(0, totals.carbs - totals.fiber)
 
-  // Meal composite grade
+  // Meal composite grade — score against entree (meal-sized) bands since
+  // totals represent a multi-item meal, not a single snack.
   const mealGradeResult = useMemo(() => {
     if (items.length === 0) return { score: null, grade: null as Grade | null }
     const score = computeScore({
@@ -71,30 +76,23 @@ export default function Meal() {
       sugar: totals.sugar,
       fiber: totals.fiber,
       sodium: totals.sodium,
+      category: 'entree',
     })
     return { score, grade: computeGrade(score) }
   }, [items.length, totals])
 
-  // Insulin calculation
+  // Insulin calculation (delegates to shared lib/insulin.calculateBolus)
   const insulinResult = useMemo(() => {
     const { icr, cf, target } = insulinSettings
     if (effectiveCarbs === 0 || icr === '' || bg === '') return null
-    if (Number(icr) <= 0) return null
-
-    const carbBolus = effectiveCarbs / Number(icr)
-    const cfVal = Number(cf)
-    const bgVal = Number(bg)
-    const correction = cfVal && bgVal !== target ? (bgVal - target) / cfVal : 0
-    const baseDose = carbBolus + correction
-    const adjPct = activity === 'mod' ? 0.25 : activity === 'high' ? 0.5 : 0
-    const suggested = Math.max(0, baseDose * (1 - adjPct))
-
-    return {
-      carbBolus: Math.round(carbBolus * 10) / 10,
-      correction: Math.round(correction * 10) / 10,
-      adjPct: Math.round(adjPct * 100),
-      suggested: Math.round(suggested * 10) / 10,
-    }
+    return calculateBolus({
+      carbs: effectiveCarbs,
+      bg: Number(bg),
+      target,
+      icr: Number(icr),
+      cf: cf === '' ? null : Number(cf),
+      activity,
+    })
   }, [effectiveCarbs, bg, insulinSettings, activity])
 
   // Carb goal progress
@@ -106,6 +104,11 @@ export default function Meal() {
       renameMeal(activeMealId, nameInput.trim())
     }
     setEditingName(false)
+  }
+
+  const handleStartRename = () => {
+    setNameInput(activeMealName)
+    setEditingName(true)
   }
 
   const handleCreateMeal = () => {
@@ -162,7 +165,6 @@ export default function Meal() {
               onKeyDown={e => e.key === 'Enter' && handleCreateMeal()}
               placeholder="Meal name (e.g. EPCOT Lunch)"
               className="flex-1 rounded-lg border border-stone-300 px-3 py-1.5 text-sm"
-              autoFocus
             />
             <button onClick={handleCreateMeal} className="px-3 py-1.5 rounded-lg bg-teal-600 text-white text-sm font-medium">
               Add
@@ -185,16 +187,16 @@ export default function Meal() {
               onBlur={handleRename}
               onKeyDown={e => e.key === 'Enter' && handleRename()}
               className="text-xl font-bold border-b-2 border-teal-500 outline-none bg-transparent"
-              autoFocus
             />
           ) : (
-            <h1
-              className="text-xl font-bold cursor-pointer hover:text-teal-600"
-              onClick={() => setEditingName(true)}
+            <button
+              type="button"
+              className="text-xl font-bold hover:text-teal-600 text-left"
+              onClick={handleStartRename}
               title="Click to rename"
             >
               {activeMealName}
-            </h1>
+            </button>
           )}
         </div>
         <div className="flex gap-2">
@@ -298,9 +300,12 @@ export default function Meal() {
         </section>
       )}
 
-      {/* Section 3: Inline Insulin Calculator */}
-      <section className="rounded-xl bg-white p-4 shadow-sm border border-stone-100" aria-label="Insulin calculator">
-        <h2 className="text-lg font-bold mb-4">Insulin Calculator</h2>
+      {/* Section 3: Inline Carb Counting Estimator */}
+      <section className="rounded-xl bg-white p-4 shadow-sm border border-stone-100" aria-label="Carb counting estimator">
+        <h2 className="text-lg font-bold mb-1">Carb Counting Estimator</h2>
+        <p className="text-xs text-stone-500 mb-4">
+          Estimates a meal bolus from your own ratios. Discuss results with your provider.
+        </p>
 
         <div className="space-y-3">
           <div className="grid grid-cols-2 gap-3">
@@ -317,15 +322,16 @@ export default function Meal() {
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-stone-600 mb-1">Total Carbs (g)</label>
+            <label htmlFor="meal-total-carbs" className="block text-xs font-medium text-stone-600 mb-1">Total Carbs (g)</label>
             <div className="flex items-center gap-2">
               <input
+                id="meal-total-carbs"
                 type="number"
                 className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
-                value={carbOverride ?? totals.carbs}
-                onChange={e => setCarbOverride(e.target.value === '' ? null : Number(e.target.value))}
+                value={activeCarbOverride ?? totals.carbs}
+                onChange={e => setCarbOverride(e.target.value === '' ? null : { mealId: activeMealId, value: Number(e.target.value) })}
               />
-              {carbOverride !== null && (
+              {activeCarbOverride !== null && (
                 <button
                   onClick={() => setCarbOverride(null)}
                   className="text-xs text-teal-600 hover:underline whitespace-nowrap"
@@ -334,7 +340,7 @@ export default function Meal() {
                 </button>
               )}
             </div>
-            {items.length > 0 && carbOverride === null && (
+            {items.length > 0 && activeCarbOverride === null && (
               <p className="text-xs text-stone-400 mt-0.5">Auto-populated from meal ({items.length} items)</p>
             )}
           </div>
@@ -370,21 +376,25 @@ export default function Meal() {
                 )
               )}
             </div>
+            <p className="mt-1 text-[11px] text-stone-500">
+              Activity reduction is applied to the carb bolus only; correction is unchanged.
+            </p>
           </fieldset>
         </div>
 
         {insulinResult && (
           <div className="mt-4 rounded-lg bg-teal-50 border border-teal-200 p-4 space-y-2">
-            <h3 className="font-semibold text-teal-800 text-sm">Dose Breakdown</h3>
-            <ResultRow label="Carb Bolus" value={`${insulinResult.carbBolus} units`} />
-            <ResultRow label="Correction Dose" value={`${insulinResult.correction} units`} />
-            {insulinResult.adjPct > 0 && (
-              <ResultRow label="Activity Adjustment" value={`-${insulinResult.adjPct}%`} />
+            <h3 className="font-semibold text-teal-800 text-sm">Breakdown</h3>
+            <ResultRow label="Carb bolus (pre-activity)" value={`${insulinResult.carbBolusRaw} units`} />
+            {insulinResult.activityPct > 0 && (
+              <ResultRow label="Activity adjustment" value={`-${insulinResult.activityPct}%`} />
             )}
+            <ResultRow label="Carb bolus (after activity)" value={`${insulinResult.carbBolus} units`} />
+            <ResultRow label="Correction" value={`${insulinResult.correction} units`} />
             <div className="border-t border-teal-200 pt-2 mt-2">
-              <div className="flex justify-between font-bold text-teal-900">
-                <span>Suggested Dose</span>
-                <span className="text-lg">{insulinResult.suggested} units</span>
+              <div className="flex justify-between items-baseline font-bold text-teal-900">
+                <span className="text-xs">Estimated bolus to discuss with provider</span>
+                <span className="text-lg">{insulinResult.total} units</span>
               </div>
             </div>
           </div>

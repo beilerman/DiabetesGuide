@@ -32,6 +32,7 @@ function makeItem(overrides: Partial<MenuItemWithNutrition> & { carbs?: number; 
       source_detail: null,
       confidence_score: 60,
       created_at: '',
+      updated_at: null,
     }],
     allergens: (allergenTypes ?? []).map(t => ({
       id: `a-${t}`,
@@ -80,6 +81,20 @@ describe('applyFilters — allergen-free filter', () => {
     const result = applyFilters(items, filters)
     expect(result.length).toBe(2)
     expect(result.map(i => i.id)).not.toContain('dairy')
+  })
+})
+
+describe('applyFilters — search', () => {
+  it('trims surrounding whitespace from search terms', () => {
+    const items = [
+      makeItem({ id: 'match', name: 'Turkey Leg' }),
+      makeItem({ id: 'miss', name: 'Fruit Cup' }),
+    ]
+    const filters: Filters = { ...DEFAULT_FILTERS, search: '  turkey  ' }
+
+    const result = applyFilters(items, filters)
+
+    expect(result.map(i => i.id)).toEqual(['match'])
   })
 })
 

@@ -27,6 +27,7 @@ function getItemScore(item: MenuItemWithNutrition): number | null {
     fiber: n.fiber,
     sodium: n.sodium,
     alcoholGrams: n.alcohol_grams,
+    category: item.category,
   })
 }
 
@@ -49,8 +50,9 @@ export function applyFilters(
     return direction === 'asc' ? a - b : b - a
   }
 
-  if (filters.search) {
-    const q = filters.search.toLowerCase()
+  const search = filters.search.trim()
+  if (search) {
+    const q = search.toLowerCase()
     result = result.filter(
       (i) =>
         i.name.toLowerCase().includes(q) ||
@@ -100,30 +102,36 @@ export function applyFilters(
     })
   }
 
-  const sortFns: Record<
-    string,
-    (a: MenuItemWithNutrition, b: MenuItemWithNutrition) => number
-  > = {
-    name: (a, b) => a.name.localeCompare(b.name),
-    carbsAsc: (a, b) =>
-      compareNullableNumber(getNutrition(a)?.carbs, getNutrition(b)?.carbs, 'asc'),
-    carbsDesc: (a, b) =>
-      compareNullableNumber(getNutrition(a)?.carbs, getNutrition(b)?.carbs, 'desc'),
-    caloriesAsc: (a, b) =>
-      compareNullableNumber(getNutrition(a)?.calories, getNutrition(b)?.calories, 'asc'),
-    caloriesDesc: (a, b) =>
-      compareNullableNumber(getNutrition(a)?.calories, getNutrition(b)?.calories, 'desc'),
-    grade: (a, b) =>
-      compareNullableNumber(getItemScore(a), getItemScore(b), 'desc'),
+  // For sorts that depend on derived values (score, nutrition fields), precompute
+  // a lookup so we don't recompute O(n log n) times inside the comparator.
+  // Array.sort calls the comparator ~n·log₂(n) times; with 9k items that's ~117k
+  // computeScore calls instead of the 9k we actually need.
+  const sortKey = filters.sort
+  if (sortKey === 'grade') {
+    const scoreByItem = new Map<string, number | null>()
+    for (const item of result) scoreByItem.set(item.id, getItemScore(item))
+    result = [...result].sort((a, b) =>
+      compareNullableNumber(scoreByItem.get(a.id), scoreByItem.get(b.id), 'desc'),
+    )
+  } else if (sortKey === 'carbsAsc' || sortKey === 'carbsDesc' ||
+             sortKey === 'caloriesAsc' || sortKey === 'caloriesDesc') {
+    const field = (sortKey === 'carbsAsc' || sortKey === 'carbsDesc') ? 'carbs' : 'calories'
+    const direction = sortKey.endsWith('Asc') ? 'asc' : 'desc'
+    const valueByItem = new Map<string, number | null | undefined>()
+    for (const item of result) valueByItem.set(item.id, getNutrition(item)?.[field])
+    result = [...result].sort((a, b) =>
+      compareNullableNumber(valueByItem.get(a.id), valueByItem.get(b.id), direction),
+    )
+  } else {
+    result = [...result].sort((a, b) => a.name.localeCompare(b.name))
   }
-  result = [...result].sort(sortFns[filters.sort] || sortFns.name)
 
   return result
 }
 
 export function hasActiveFilters(filters: Filters): boolean {
   return (
-    filters.search !== '' ||
+    filters.search.trim() !== '' ||
     filters.maxCarbs != null ||
     filters.category != null ||
     filters.vegetarianOnly ||

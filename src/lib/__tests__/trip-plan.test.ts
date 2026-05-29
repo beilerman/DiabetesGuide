@@ -1,11 +1,14 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
-import { useTripPlan } from '../../hooks/useTripPlan'
+import {
+  __normalizeStoredTripPlan,
+  __resetTripPlanState,
+  useTripPlan,
+} from '../../hooks/useTripPlan'
 
 beforeEach(() => {
   localStorage.clear()
-  // Reset shared state by removing and re-importing
-  // We rely on localStorage.clear() since the hook reads from storage on init
+  __resetTripPlanState(null)
 })
 
 const mockItem = {
@@ -138,5 +141,49 @@ describe('useTripPlan', () => {
     act(() => { result.current.removeItemFromSlot(0, 0, 0) })
     act(() => { result.current.updateCarbGoal(45) })
     expect(result.current.plan).toBeNull()
+  })
+})
+
+describe('__normalizeStoredTripPlan', () => {
+  it('sanitizes legacy persisted item values so totals stay numeric', () => {
+    const normalized = __normalizeStoredTripPlan({
+      resortId: 'wdw',
+      carbGoalPerMeal: '45',
+      mealsPerDay: '2',
+      days: [
+        {
+          parkId: 123,
+          meals: [
+            {
+              name: 'Lunch',
+              items: [
+                {
+                  id: 'item-1',
+                  name: 'Turkey Leg',
+                  carbs: '40',
+                  calories: null,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    })
+
+    expect(normalized).not.toBeNull()
+    expect(normalized!.carbGoalPerMeal).toBe(45)
+    expect(normalized!.mealsPerDay).toBe(2)
+    expect(normalized!.days[0].parkId).toBeNull()
+    expect(normalized!.days[0].meals[0].items[0]).toMatchObject({
+      id: 'item-1',
+      name: 'Turkey Leg',
+      carbs: 40,
+      calories: 0,
+      fat: 0,
+      protein: 0,
+      sugar: 0,
+      fiber: 0,
+      sodium: 0,
+    })
   })
 })

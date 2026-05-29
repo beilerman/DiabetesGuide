@@ -72,7 +72,7 @@ const menuItem1 = {
   nutritional_data: [{
     id: 'n1', menu_item_id: 'm1', calories: 350, carbs: 28, fat: 18, sugar: 4,
     protein: 14, fiber: 1, sodium: 800, cholesterol: 40, alcohol_grams: null,
-    source: 'api_lookup' as const, source_detail: null, confidence_score: 60, created_at: '2026-01-01',
+    source: 'api_lookup' as const, source_detail: null, confidence_score: 60, created_at: '2026-01-01', updated_at: null,
   }],
   allergens: [],
   restaurant: { ...restaurant1, park: park1 },
@@ -93,7 +93,7 @@ const menuItem2 = {
   nutritional_data: [{
     id: 'n2', menu_item_id: 'm2', calories: 550, carbs: 38, fat: 30, sugar: 3,
     protein: 28, fiber: 2, sodium: 900, cholesterol: 60, alcohol_grams: null,
-    source: 'api_lookup' as const, source_detail: null, confidence_score: 55, created_at: '2026-01-01',
+    source: 'api_lookup' as const, source_detail: null, confidence_score: 55, created_at: '2026-01-01', updated_at: null,
   }],
   allergens: [],
   restaurant: { ...restaurant2, park: park2 },

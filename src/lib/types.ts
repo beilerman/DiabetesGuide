@@ -53,8 +53,9 @@ export interface NutritionalData {
   alcohol_grams: number | null
   source: 'official' | 'crowdsourced' | 'api_lookup'
   source_detail: string | null
-  confidence_score: number
+  confidence_score: number | null
   created_at: string
+  updated_at: string | null
 }
 
 export interface Allergen {

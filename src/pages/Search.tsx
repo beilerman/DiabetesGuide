@@ -7,23 +7,21 @@ import { MenuItemCard } from '../components/menu/MenuItemCard'
 import { useMealCart } from '../hooks/useMealCart'
 import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
-
-const RECENT_KEY = 'dg_recent_searches'
-const MAX_RECENT = 5
+import { addRecentSearch, RECENT_SEARCHES_STORAGE_KEY } from '../lib/recent-searches'
 
 function getRecentSearches(): string[] {
   try {
-    const raw = localStorage.getItem(RECENT_KEY)
+    const raw = localStorage.getItem(RECENT_SEARCHES_STORAGE_KEY)
     return raw ? JSON.parse(raw) : []
   } catch {
     return []
   }
 }
 
-function saveRecentSearch(query: string) {
-  const recent = getRecentSearches().filter(q => q !== query)
-  recent.unshift(query)
-  localStorage.setItem(RECENT_KEY, JSON.stringify(recent.slice(0, MAX_RECENT)))
+function saveRecentSearch(query: string): string[] {
+  const next = addRecentSearch(getRecentSearches(), query)
+  localStorage.setItem(RECENT_SEARCHES_STORAGE_KEY, JSON.stringify(next))
+  return next
 }
 
 export default function Search() {
@@ -53,8 +51,7 @@ export default function Search() {
     setQuery(q)
     setExpandedItem(null)
     if (q.trim().length > 1) {
-      saveRecentSearch(q.trim())
-      setRecentSearches(getRecentSearches())
+      setRecentSearches(saveRecentSearch(q.trim()))
     }
   }
 
@@ -76,7 +73,6 @@ export default function Search() {
             onChange={e => handleSearch(e.target.value)}
             placeholder="Search menu items..."
             className="w-full pl-10 pr-10 py-3 rounded-xl bg-stone-100 border border-stone-200 text-stone-900 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-            autoFocus
           />
           {query && (
             <button

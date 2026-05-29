@@ -2,12 +2,14 @@ import { useState } from 'react'
 import type { MenuItemWithNutrition, MealItem } from '../../lib/types'
 import { getGradeForItem } from '../../lib/grade'
 import { getDiabetesAnnotations } from '../../lib/annotations'
+import { summarizeConfidence } from '../../lib/confidence'
 import { GradeBadge } from './GradeBadge'
 import { DotMeter } from './DotMeter'
 import { AnnotationBadge } from './AnnotationBadge'
 import { NutritionBadge } from './NutritionBadge'
+import { NutritionConfidence } from './NutritionConfidence'
 import { BetterChoices } from './BetterChoices'
-import { sodiumColor, alcoholColor } from './nutrition-colors'
+import { alcoholColor } from './nutrition-colors'
 
 interface Props {
   item: MenuItemWithNutrition
@@ -37,9 +39,9 @@ function sugarDots(v: number): 'green' | 'amber' | 'rose' {
   return 'rose'
 }
 
-function proteinDots(v: number): 'green' | 'amber' | 'rose' {
-  if (v >= 20) return 'green'
-  if (v >= 10) return 'amber'
+function sodiumDots(v: number): 'green' | 'amber' | 'rose' {
+  if (v < 500) return 'green'
+  if (v <= 1000) return 'amber'
   return 'rose'
 }
 
@@ -77,10 +79,12 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
   const sodium = nd?.sodium ?? null
   const alcoholGrams = nd?.alcohol_grams ?? null
   const netCarbs = carbs != null && fiber != null ? Math.max(0, carbs - fiber) : carbs
+  const confidence = summarizeConfidence(nd)
 
   const { grade, colors: gradeColors } = getGradeForItem({
     calories, carbs, fat, protein, sugar, fiber, sodium,
     alcoholGrams,
+    category: item.category,
   })
 
   const annotations = getDiabetesAnnotations({
@@ -155,62 +159,73 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
           </div>
         </div>
 
-        {/* Hero nutrition row */}
+        {/* Hero nutrition row — 4 metrics max for mobile fit:
+            carbs (with net inline when different), calories, sugar, sodium.
+            Protein and alcohol live in the expanded panel. */}
         {hasNutrition ? (
-          <div className="mt-3 flex items-end gap-4">
-            {/* Carbs hero */}
-            <div className="flex flex-col items-center">
-              <span className="text-2xl font-bold text-stone-900">{carbs ?? 0}<span className="text-sm font-normal text-stone-500">g</span></span>
-              <span className="text-[10px] text-stone-500 uppercase tracking-wide">Carbs</span>
+          <div className="mt-3 grid grid-cols-4 gap-3">
+            {/* Carbs hero (with net carbs caption when fiber is meaningful) */}
+            <div className="flex flex-col items-center text-center">
+              <span className="text-2xl font-bold text-stone-900 leading-none">
+                {carbs ?? 0}
+                <span className="text-sm font-normal text-stone-500">g</span>
+              </span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wide mt-0.5">Carbs</span>
+              {confidence.uncertaintyG != null && carbs != null && (
+                <span
+                  className="text-[10px] text-stone-500"
+                  title={`Uncertainty band derived from ${confidence.sourceLabel.toLowerCase()} (confidence ${confidence.confidenceScore ?? '—'})`}
+                >
+                  &plusmn;{confidence.uncertaintyG}g
+                </span>
+              )}
+              {fiber != null && fiber > 0 && netCarbs !== carbs && (
+                <span className="text-[10px] text-teal-700 font-medium">net {netCarbs}g</span>
+              )}
               <DotMeter value={carbs ?? 0} max={80} colorFn={carbDots} label="Carbs" />
             </div>
 
-            {/* Net carbs */}
-            {fiber != null && fiber > 0 && netCarbs !== carbs && (
-              <div className="flex flex-col items-center">
-                <span className="text-lg font-semibold text-teal-700">{netCarbs}<span className="text-xs font-normal text-teal-600">g</span></span>
-                <span className="text-[10px] text-teal-600 uppercase tracking-wide">Net</span>
-              </div>
-            )}
-
-            {/* Cal */}
-            <div className="flex flex-col items-center">
-              <span className="text-lg font-semibold text-stone-700">{calories ?? 0}</span>
-              <span className="text-[10px] text-stone-500 uppercase tracking-wide">Cal</span>
+            {/* Calories */}
+            <div className="flex flex-col items-center text-center">
+              <span className="text-lg font-semibold text-stone-700 leading-none">{calories ?? 0}</span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wide mt-0.5">Cal</span>
               <DotMeter value={calories ?? 0} max={1000} colorFn={calDots} label="Calories" />
             </div>
 
             {/* Sugar */}
-            {sugar != null && sugar > 0 && (
-              <div className="flex flex-col items-center">
-                <span className="text-lg font-semibold text-stone-700">{sugar}<span className="text-xs font-normal text-stone-500">g</span></span>
-                <span className="text-[10px] text-stone-500 uppercase tracking-wide">Sugar</span>
-                <DotMeter value={sugar} max={50} colorFn={sugarDots} label="Sugar" />
-              </div>
-            )}
+            <div className="flex flex-col items-center text-center">
+              <span className="text-lg font-semibold text-stone-700 leading-none">
+                {sugar ?? 0}<span className="text-xs font-normal text-stone-500">g</span>
+              </span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wide mt-0.5">Sugar</span>
+              <DotMeter value={sugar ?? 0} max={50} colorFn={sugarDots} label="Sugar" />
+            </div>
 
-            {/* Protein */}
-            {protein != null && protein > 0 && (
-              <div className="flex flex-col items-center">
-                <span className="text-lg font-semibold text-stone-700">{protein}<span className="text-xs font-normal text-stone-500">g</span></span>
-                <span className="text-[10px] text-stone-500 uppercase tracking-wide">Protein</span>
-                <DotMeter value={protein} max={50} colorFn={proteinDots} label="Protein" />
-              </div>
-            )}
-
-            {/* Alcohol */}
-            {alcoholGrams != null && alcoholGrams > 0 && (
-              <div className="flex flex-col items-center">
-                <span className="text-lg font-semibold text-purple-700">{alcoholGrams}<span className="text-xs font-normal text-purple-500">g</span></span>
-                <span className="text-[10px] text-purple-500 uppercase tracking-wide">Alcohol</span>
-              </div>
-            )}
+            {/* Sodium — moved to hero row for HTN/CKD relevance */}
+            <div className="flex flex-col items-center text-center">
+              <span className="text-lg font-semibold text-stone-700 leading-none">
+                {sodium ?? 0}<span className="text-xs font-normal text-stone-500">mg</span>
+              </span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wide mt-0.5">Sodium</span>
+              {/* Cap at FDA DRV (2300mg/day) so the bar fills against a published
+                  reference. Previously capped at 1500mg, which made an item just
+                  past the red threshold (1100mg) render at ~73% and look only
+                  slightly worse than a 1500mg item at 100%. */}
+              <DotMeter value={sodium ?? 0} max={2300} colorFn={sodiumDots} label="Sodium" />
+            </div>
           </div>
         ) : (
           <div className="mt-3">
             <span className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm bg-stone-100 text-stone-500 border border-stone-200">
               No nutrition data
             </span>
+          </div>
+        )}
+
+        {/* Confidence + freshness — always visible so users see source/age before dosing */}
+        {hasNutrition && (
+          <div className="mt-2">
+            <NutritionConfidence summary={confidence} variant="compact" />
           </div>
         )}
 
@@ -252,12 +267,11 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
         {/* Expanded state */}
         {expanded && hasNutrition && (
           <div className="mt-3 p-3 bg-stone-50 rounded-xl space-y-3">
-            {/* Full nutrition grid */}
+            {/* Full nutrition grid (hero row already shows carbs/cal/sugar/sodium) */}
             <div className="grid grid-cols-2 gap-2">
               {protein != null && <NutritionBadge label="Protein" value={protein} unit="g" size="sm" />}
               {fat != null && <NutritionBadge label="Fat" value={fat} unit="g" size="sm" />}
               {fiber != null && <NutritionBadge label="Fiber" value={fiber} unit="g" size="sm" />}
-              {sodium != null && <NutritionBadge label="Sodium" value={sodium} unit="mg" size="sm" colorFn={sodiumColor} />}
               {nd?.cholesterol != null && <NutritionBadge label="Cholesterol" value={nd.cholesterol} unit="mg" size="sm" />}
               {alcoholGrams != null && alcoholGrams > 0 && (
                 <NutritionBadge label="Alcohol" value={alcoholGrams} unit="g" size="sm" colorFn={alcoholColor} />
@@ -299,10 +313,11 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
               </div>
             )}
 
-            {/* Confidence */}
-            {nd?.confidence_score != null && (
-              <div className="text-[11px] text-stone-400">
-                Data confidence: {nd.confidence_score}% &middot; Source: {nd.source}
+            {/* Confidence (detailed) */}
+            {hasNutrition && (
+              <div>
+                <div className="text-xs font-medium text-stone-600 mb-1">Data quality</div>
+                <NutritionConfidence summary={confidence} variant="detailed" />
               </div>
             )}
 

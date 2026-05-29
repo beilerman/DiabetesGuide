@@ -122,8 +122,8 @@ export default function Home() {
             </svg>
           </div>
           <div className="flex-1 min-w-0">
-            <div className="font-semibold text-amber-900">Insulin Helper</div>
-            <div className="text-xs text-amber-700">Calculate dosage</div>
+            <div className="font-semibold text-amber-900">Bolus Estimator</div>
+            <div className="text-xs text-amber-700">Estimate from your ratios</div>
           </div>
         </Link>
       </div>

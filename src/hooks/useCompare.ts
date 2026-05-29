@@ -57,6 +57,12 @@ function readFromStorage(): CompareItem[] {
 let sharedItems: CompareItem[] = readFromStorage()
 const listeners = new Set<() => void>()
 
+/** Test-only: clears the module-level compare state. */
+export function __resetCompareState() {
+  sharedItems = []
+  listeners.clear()
+}
+
 function notify() {
   for (const l of listeners) l()
 }
@@ -79,21 +85,21 @@ export function useCompare() {
   }, [])
 
   const addToCompare = useCallback((item: MenuItemWithNutrition) => {
-    if (sharedItems.length >= MAX_ITEMS) return
-    if (sharedItems.some(i => i.id === item.id)) return
-    persist([...sharedItems, toCompareItem(item)])
-  }, [])
+    if (items.length >= MAX_ITEMS) return
+    if (items.some(i => i.id === item.id)) return
+    persist([...items, toCompareItem(item)])
+  }, [items])
 
   const removeFromCompare = useCallback((id: string) => {
-    persist(sharedItems.filter(i => i.id !== id))
-  }, [])
+    persist(items.filter(i => i.id !== id))
+  }, [items])
 
   const clearCompare = useCallback(() => {
     persist([])
   }, [])
 
   const isInCompare = useCallback((id: string) => {
-    return sharedItems.some(i => i.id === id)
+    return items.some(i => i.id === id)
   }, [items])
 
   return {

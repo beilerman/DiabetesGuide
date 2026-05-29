@@ -173,11 +173,14 @@ function FavoritesTab() {
 
       {/* Add all to day modal */}
       {addToDayModal && plan && (
-        <div
-          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center"
-          onClick={e => { if (e.target === e.currentTarget) setAddToDayModal(false) }}
-        >
-          <div className="bg-white rounded-2xl p-6 mx-4 max-w-sm w-full shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <button
+            type="button"
+            className="fixed inset-0 bg-black/50"
+            onClick={() => setAddToDayModal(false)}
+            aria-label="Close add favorites dialog"
+          />
+          <div className="relative bg-white rounded-2xl p-6 mx-4 max-w-sm w-full shadow-2xl">
             <h3 className="font-bold text-lg mb-4">Add favorites to which day?</h3>
             <div className="space-y-2">
               {plan.days.map((_, i) => (
@@ -259,8 +262,9 @@ function TripPlanTab() {
 
       {/* Carb goal setting */}
       <div className="flex items-center gap-3 text-sm">
-        <label className="text-stone-600">Carb goal per meal:</label>
+        <label htmlFor="trip-carb-goal" className="text-stone-600">Carb goal per meal:</label>
         <input
+          id="trip-carb-goal"
           type="number"
           value={plan.carbGoalPerMeal}
           onChange={e => updateCarbGoal(Number(e.target.value) || 60)}
@@ -323,8 +327,9 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
 
       <div className="rounded-xl bg-white border border-stone-200 p-5 shadow-sm space-y-4">
         <div>
-          <label className="block text-sm font-medium text-stone-700 mb-1">Resort</label>
+          <label htmlFor="trip-resort" className="block text-sm font-medium text-stone-700 mb-1">Resort</label>
           <select
+            id="trip-resort"
             value={resortId}
             onChange={e => setResortId(e.target.value)}
             className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
@@ -337,8 +342,9 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
 
         <div className="grid grid-cols-3 gap-3">
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1">Days</label>
+            <label htmlFor="trip-days" className="block text-sm font-medium text-stone-700 mb-1">Days</label>
             <input
+              id="trip-days"
               type="number"
               value={numDays}
               onChange={e => setNumDays(Math.max(1, Math.min(14, Number(e.target.value))))}
@@ -348,8 +354,9 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1">Meals/Day</label>
+            <label htmlFor="trip-meals-per-day" className="block text-sm font-medium text-stone-700 mb-1">Meals/Day</label>
             <input
+              id="trip-meals-per-day"
               type="number"
               value={mealsPerDay}
               onChange={e => setMealsPerDay(Math.max(1, Math.min(6, Number(e.target.value))))}
@@ -359,9 +366,10 @@ function TripSetupForm({ onCreatePlan }: { onCreatePlan: (resortId: string, numD
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1">Carb Goal</label>
+            <label htmlFor="trip-setup-carb-goal" className="block text-sm font-medium text-stone-700 mb-1">Carb Goal</label>
             <div className="flex items-center gap-1">
               <input
+                id="trip-setup-carb-goal"
                 type="number"
                 value={carbGoal}
                 onChange={e => setCarbGoal(Math.max(0, Number(e.target.value)))}
