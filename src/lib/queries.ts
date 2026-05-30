@@ -31,7 +31,7 @@ export function useRestaurants(parkId: string | undefined) {
 export function useMenuItems(parkId?: string) {
   return useQuery({
     queryKey: ['menuItems', parkId],
-    queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsOffline(parkId),
+    queryFn: (): Promise<MenuItemWithNutrition[]> => fetchMenuItemsOffline(parkId, parkId ? {} : { limit: 3000 }),
     enabled: true,
   })
 }

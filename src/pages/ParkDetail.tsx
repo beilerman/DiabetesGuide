@@ -10,7 +10,7 @@ import { useCompare } from '../hooks/useCompare'
 import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
 import { findResortForPark } from '../lib/resort-config'
 import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
-import type { Filters, MenuItemWithNutrition } from '../lib/types'
+import type { Filters, MenuItemWithNutrition, Restaurant } from '../lib/types'
 
 function SkeletonCard() {
   return (
@@ -44,19 +44,28 @@ export default function ParkDetail() {
 
   const filtered = useMemo(() => applyFilters(items ?? [], filters), [items, filters])
 
+  // Index restaurants by id once so the land grouping below is O(n) instead of
+  // O(items x restaurants) -- the previous restaurants.find() was a linear scan
+  // per item, re-run on every filter change.
+  const restaurantsById = useMemo(() => {
+    const map = new Map<string, Restaurant>()
+    for (const r of restaurants ?? []) map.set(r.id, r)
+    return map
+  }, [restaurants])
+
   // Group items by land
   const landGroups = useMemo(() => {
     if (!restaurants || !filtered.length) return new Map<string, MenuItemWithNutrition[]>()
     const groups = new Map<string, MenuItemWithNutrition[]>()
     for (const item of filtered) {
-      const rest = restaurants.find(r => r.id === item.restaurant_id)
+      const rest = item.restaurant_id ? restaurantsById.get(item.restaurant_id) : undefined
       const land = rest?.land || 'Other Areas'
       const list = groups.get(land) || []
       list.push(item)
       groups.set(land, list)
     }
     return groups
-  }, [filtered, restaurants])
+  }, [filtered, restaurants, restaurantsById])
 
   if (!park && !isLoading) {
     return (

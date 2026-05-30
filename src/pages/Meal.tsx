@@ -55,13 +55,9 @@ export default function Meal() {
     activeMealId && carbOverride?.mealId === activeMealId ? carbOverride.value : null
   const effectiveCarbs = activeCarbOverride ?? totals.carbs
 
-  // Drop the override when it no longer belongs to the active meal (meal switch
-  // or deletion). Prevents bleed-through of stale values into the Insulin Helper.
-  useEffect(() => {
-    if (carbOverride && carbOverride.mealId !== activeMealId) {
-      setCarbOverride(null)
-    }
-  }, [activeMealId, carbOverride])
+  // The override is already gated by `activeCarbOverride` above (it only applies
+  // when carbOverride.mealId === activeMealId), so a stale override can never
+  // reach effectiveCarbs or the Insulin Helper — no effect needed to clear it.
   const netCarbs = Math.max(0, totals.carbs - totals.fiber)
 
   // Meal composite grade — score against entree (meal-sized) bands since
