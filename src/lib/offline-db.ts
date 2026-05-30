@@ -2,13 +2,51 @@ import { openDB, type IDBPDatabase } from 'idb'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
 
 const DB_NAME = 'diabetesguide'
-const DB_VERSION = 1
+// v2: the `items` park index moved from the fragile nested keyPath
+// 'restaurant.park.id' to a flat, denormalized `_parkId` field computed at write
+// time (see parkIdOf). IndexedDB excludes a record from an index whenever any
+// segment of a nested keyPath is missing, so if a cached item's restaurant/park
+// join came back null — or as a one-element array instead of an object, which a
+// Supabase nested select can produce — readItemsByPark silently omitted it,
+// under-reporting a park's food offline. On a tool meant for in-park use with
+// poor connectivity, that's exactly when it must be complete.
+const DB_VERSION = 2
+
+/**
+ * Cached menu item plus a denormalized park id used solely for the offline
+ * `by-park` index. Prefixed with `_` to mark it as an internal cache field, not
+ * part of the domain model.
+ */
+type StoredMenuItem = MenuItemWithNutrition & { _parkId?: string }
 
 interface DGSchema {
   parks: { key: string; value: Park }
   restaurants: { key: string; value: Restaurant; indexes: { parkId: string } }
-  items: { key: string; value: MenuItemWithNutrition; indexes: { parkId: string; category: string } }
+  items: { key: string; value: StoredMenuItem; indexes: { parkId: string; category: string } }
   metadata: { key: string; value: { key: string; value: string } }
+}
+
+/**
+ * Extract a park id from an item, tolerating the shapes a Supabase nested select
+ * can produce: `restaurant` (and `restaurant.park`) may be a single object or a
+ * one-element array. Returns undefined when no park id is present, in which case
+ * the item simply isn't indexed by park (it's still returned by readAllItems and
+ * the "All Parks" view).
+ */
+function parkIdOf(item: MenuItemWithNutrition): string | undefined {
+  const r = item.restaurant as unknown
+  const restaurant = Array.isArray(r) ? r[0] : r
+  if (!restaurant || typeof restaurant !== 'object') return undefined
+  const p = (restaurant as { park?: unknown }).park
+  const park = Array.isArray(p) ? p[0] : p
+  if (!park || typeof park !== 'object') return undefined
+  const id = (park as { id?: unknown }).id
+  return typeof id === 'string' ? id : undefined
+}
+
+function toStored(item: MenuItemWithNutrition): StoredMenuItem {
+  const _parkId = parkIdOf(item)
+  return _parkId ? { ...item, _parkId } : { ...item }
 }
 
 let dbPromise: Promise<IDBPDatabase<DGSchema>> | null = null
@@ -16,7 +54,7 @@ let dbPromise: Promise<IDBPDatabase<DGSchema>> | null = null
 function getDb() {
   if (!dbPromise) {
     dbPromise = openDB<DGSchema>(DB_NAME, DB_VERSION, {
-      upgrade(db) {
+      upgrade(db, oldVersion) {
         if (!db.objectStoreNames.contains('parks')) {
           db.createObjectStore('parks', { keyPath: 'id' })
         }
@@ -24,9 +62,15 @@ function getDb() {
           const store = db.createObjectStore('restaurants', { keyPath: 'id' })
           store.createIndex('parkId', 'park_id')
         }
+        // The items store's park index changed keyPath in v2. Recreate the store
+        // so the index is rebuilt and any pre-v2 rows (which lack `_parkId`) are
+        // dropped — they're a cache and get refetched online-first.
+        if (db.objectStoreNames.contains('items') && oldVersion < 2) {
+          db.deleteObjectStore('items')
+        }
         if (!db.objectStoreNames.contains('items')) {
           const store = db.createObjectStore('items', { keyPath: 'id' })
-          store.createIndex('parkId', 'restaurant.park.id')
+          store.createIndex('parkId', '_parkId')
           store.createIndex('category', 'category')
         }
         if (!db.objectStoreNames.contains('metadata')) {
@@ -78,7 +122,7 @@ export async function writeAllItems(items: MenuItemWithNutrition[]): Promise<voi
   const db = await getDb()
   const tx = db.transaction('items', 'readwrite')
   await Promise.all([
-    ...items.map(item => tx.store.put(item)),
+    ...items.map(item => tx.store.put(toStored(item))),
     tx.done,
   ])
 }
@@ -116,4 +160,8 @@ export async function clearOfflineData(): Promise<void> {
     tx.objectStore('metadata').clear(),
     tx.done,
   ])
+}
+
+export function __resetDbForTests(): void {
+  dbPromise = null
 }
