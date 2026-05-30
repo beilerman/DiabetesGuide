@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent } from 'react'
+import { memo, useState, type KeyboardEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import type { MenuItemWithNutrition, MealItem } from '../../lib/types'
 import { getGradeForItem } from '../../lib/grade'
@@ -51,7 +51,7 @@ const categoryColors: Record<string, string> = {
   side: 'bg-emerald-100 text-emerald-700',
 }
 
-export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, themeColor }: Props) {
+function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, themeColor }: Props) {
   const navigate = useNavigate()
   const [addingToMeal, setAddingToMeal] = useState(false)
   const [favoriteNotice, setFavoriteNotice] = useState<string | null>(null)
@@ -374,3 +374,9 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
     </div>
   )
 }
+
+// Memoized: skip re-rendering a card when its props are unchanged (e.g. a
+// parent filter/slider re-render re-rendering the whole list). Browse/ParkDetail
+// render hundreds of these; the per-item derivations only recompute when this
+// card's props actually change. The hook callbacks passed in are stable.
+export const MenuItemCard = memo(MenuItemCardImpl)
