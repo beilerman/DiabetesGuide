@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useMemo, useState } from 'react'
 import type { MenuItemWithNutrition, MealItem } from '../../lib/types'
 import { getGradeForItem } from '../../lib/grade'
 import { getDiabetesAnnotations } from '../../lib/annotations'
@@ -64,7 +64,7 @@ const categoryColors: Record<string, string> = {
   side: 'bg-emerald-100 text-emerald-700',
 }
 
-export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, siblingItems, themeColor }: Props) {
+function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, siblingItems, themeColor }: Props) {
   const [expanded, setExpanded] = useState(false)
   const [addingToMeal, setAddingToMeal] = useState(false)
 
@@ -79,20 +79,31 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
   const sodium = nd?.sodium ?? null
   const alcoholGrams = nd?.alcohol_grams ?? null
   const netCarbs = carbs != null && fiber != null ? Math.max(0, carbs - fiber) : carbs
-  const confidence = summarizeConfidence(nd)
 
-  const { grade, colors: gradeColors } = getGradeForItem({
-    calories, carbs, fat, protein, sugar, fiber, sodium,
-    alcoholGrams,
-    category: item.category,
-  })
+  // Memoize the three expensive pure derivations so a parent re-render (e.g. a
+  // filter-slider tick re-rendering the whole list) doesn't recompute grade,
+  // annotations, and the confidence summary for every card. They derive purely
+  // from this item's nutrition + category, so the deps below fully capture them.
+  const confidence = useMemo(() => summarizeConfidence(nd), [nd])
 
-  const annotations = getDiabetesAnnotations({
-    calories, carbs, sugar, fat, protein, fiber, sodium,
-    alcoholGrams: alcoholGrams ?? 0,
-    category: item.category,
-    isFried: item.is_fried,
-  })
+  const { grade, colors: gradeColors } = useMemo(
+    () => getGradeForItem({
+      calories, carbs, fat, protein, sugar, fiber, sodium,
+      alcoholGrams,
+      category: item.category,
+    }),
+    [calories, carbs, fat, protein, sugar, fiber, sodium, alcoholGrams, item.category],
+  )
+
+  const annotations = useMemo(
+    () => getDiabetesAnnotations({
+      calories, carbs, sugar, fat, protein, fiber, sodium,
+      alcoholGrams: alcoholGrams ?? 0,
+      category: item.category,
+      isFried: item.is_fried,
+    }),
+    [calories, carbs, sugar, fat, protein, fiber, sodium, alcoholGrams, item.category, item.is_fried],
+  )
   const topAnnotation = annotations[0] ?? null
 
   const handleAddToMeal = () => {
@@ -387,3 +398,9 @@ export function MenuItemCard({ item, onAddToMeal, isFavorite, onToggleFavorite, 
     </div>
   )
 }
+
+// Memoized: re-renders only when its own props change (item, isFavorite,
+// callbacks), not on every parent (filter/slider) re-render. The hook callbacks
+// passed in are stable (useCallback), so toggling one card no longer re-renders
+// the whole list.
+export const MenuItemCard = memo(MenuItemCardImpl)

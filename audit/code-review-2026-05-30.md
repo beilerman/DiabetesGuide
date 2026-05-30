@@ -204,9 +204,14 @@ mismatch; treat `DB_VERSION` as a real migration lever tied to the type version.
 
 ---
 
-### 054 — `MenuItemCard` recomputes grade + annotations + confidence on every render, unmemoized (P2, performance)
+### 054 — `MenuItemCard` recomputes grade + annotations + confidence on every render, unmemoized (P2, performance) — FIXED
 
-**Status:** pending · **Effort:** S
+**Status:** complete · **Effort:** S
+
+> **Fixed (2026-05-30):** the three derivations are now each `useMemo`'d with
+> precise deps and the component export is `memo()`-wrapped. Verified lint/tsc/
+> 184 tests. Pairs with 050 (stable `isFavorite` identity). Original analysis
+> below.
 
 **Problem.** Each card calls `summarizeConfidence`, `getGradeForItem`
 (`computeScore`), and `getDiabetesAnnotations` directly in render, with no
