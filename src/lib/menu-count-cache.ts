@@ -1,4 +1,6 @@
-const CACHE_KEY = 'dg_menu_item_counts_by_park_v1'
+import { STORAGE_KEYS } from './storage-keys'
+
+const CACHE_KEY = STORAGE_KEYS.menuItemCounts
 const CACHE_VERSION = 1
 const DEFAULT_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000
 

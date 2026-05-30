@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
+import { STORAGE_KEYS } from '../lib/storage-keys'
 
-const STORAGE_KEY = 'dg_favorites'
+const STORAGE_KEY = STORAGE_KEYS.favorites
 
 /**
  * Favorites are shared across every component that mounts this hook via a single

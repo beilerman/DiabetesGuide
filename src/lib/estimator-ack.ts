@@ -1,4 +1,6 @@
-export const ESTIMATOR_ACK_KEY = 'dg_estimator_acknowledged_v1'
+import { STORAGE_KEYS } from './storage-keys'
+
+export const ESTIMATOR_ACK_KEY = STORAGE_KEYS.estimatorAck
 
 function getStorage(): Storage | null {
   try {

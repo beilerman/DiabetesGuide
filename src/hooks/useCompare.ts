@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { MenuItemWithNutrition } from '../lib/types'
 import { getDisplayCategory, getMenuItemDisplayName } from '../lib/display'
+import { STORAGE_KEYS } from '../lib/storage-keys'
 
-const STORAGE_KEY = 'dg_compare'
+const STORAGE_KEY = STORAGE_KEYS.compare
 const MAX_ITEMS = 3
 
 /** Slim version stored in localStorage (full MenuItemWithNutrition is too large) */
