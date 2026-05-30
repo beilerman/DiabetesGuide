@@ -176,9 +176,16 @@ render and breaks any CI gate on lint (the next person assumes a clean baseline)
 
 ---
 
-### 053 — Offline data has three uncoordinated caches and an unversioned IndexedDB schema; can serve indefinitely-stale carb counts (P1, architecture)
+### 053 — Offline data has three uncoordinated caches and an unversioned IndexedDB schema; can serve indefinitely-stale carb counts (P1, architecture) — PARTIAL
 
-**Status:** pending · **Effort:** M
+**Status:** partial · **Effort:** M
+
+> **Partial fix (2026-05-30):** the IndexedDB **schema-versioning** half is
+> shipped — `DATA_SCHEMA_VERSION` + `ensureSchemaVersion()` drop stale-shape
+> data stores on open (lastSync preserved), with `offline-schema-version.test.ts`
+> (4 tests). Still open (need a decision, see todo 053): the freshness "data may
+> be stale" signal, and coordinating the Workbox SW `/rest/` rule vs the
+> IndexedDB durable store. Original analysis below.
 
 **Problem.** Three caches sit on the same data with independent TTLs: React
 Query in-memory (5-min stale), a best-effort IndexedDB write
