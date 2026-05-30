@@ -1,6 +1,7 @@
 import type { ChecklistOptions } from '../data/checklist'
+import { STORAGE_KEYS } from './storage-keys'
 
-export const CHECKLIST_OPTIONS_KEY = 'dg_checklist_options'
+export const CHECKLIST_OPTIONS_KEY = STORAGE_KEYS.checklistOptions
 
 export const MIN_TRIP_DAYS = 1
 export const MAX_TRIP_DAYS = 30

@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { MealItem, TripPlan, TripDay, TripMealSlot, TripsState } from '../lib/types'
+import { STORAGE_KEYS } from '../lib/storage-keys'
 
-const STORAGE_KEY = 'dg.trips.v1'
-const LEGACY_STORAGE_KEY = 'dg_trip_plan'
+const STORAGE_KEY = STORAGE_KEYS.tripPlan
+const LEGACY_STORAGE_KEY = STORAGE_KEYS.tripPlanLegacy
 const DEFAULT_MEAL_NAMES = ['Breakfast', 'Lunch', 'Dinner', 'Snacks']
 const DEFAULT_START_DATE = '2026-01-01'
 

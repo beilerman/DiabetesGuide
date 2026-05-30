@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo } from 'react'
 import { buildChecklist, type ChecklistOptions } from '../data/checklist'
 import { loadChecklistOptions, normalizeTripDays, saveChecklistOptions } from '../lib/packing-options'
+import { STORAGE_KEYS } from '../lib/storage-keys'
 
-const LS_KEY = 'dg_checklist'
+const LS_KEY = STORAGE_KEYS.checklist
 type ChecklistProgress = Record<string, Record<string, boolean>>
 
 function loadChecklistProgress(): ChecklistProgress {

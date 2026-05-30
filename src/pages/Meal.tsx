@@ -7,8 +7,9 @@ import { INSULIN_LIMITS, calculateInsulinDose, validateInsulinInputs, type Activ
 import { cleanDisplayText } from '../lib/display'
 import { HiddenDoseExplainer } from '../components/InsulinEstimator/HiddenDoseExplainer'
 import type { Grade } from '../lib/grade'
+import { STORAGE_KEYS } from '../lib/storage-keys'
 
-const INSULIN_SETTINGS_KEY = 'dg_insulin_settings'
+const INSULIN_SETTINGS_KEY = STORAGE_KEYS.insulinSettings
 
 interface InsulinSettings {
   icr: number | ''
