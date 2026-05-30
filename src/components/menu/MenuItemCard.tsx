@@ -9,7 +9,7 @@ import { AnnotationBadge } from './AnnotationBadge'
 import { NutritionBadge } from './NutritionBadge'
 import { NutritionConfidence } from './NutritionConfidence'
 import { BetterChoices } from './BetterChoices'
-import { alcoholColor } from './nutrition-colors'
+import { alcoholColor, nutritionLevel } from './nutrition-colors'
 
 interface Props {
   item: MenuItemWithNutrition
@@ -21,29 +21,12 @@ interface Props {
   themeColor?: string
 }
 
-function carbDots(v: number): 'green' | 'amber' | 'rose' {
-  if (v <= 30) return 'green'
-  if (v <= 60) return 'amber'
-  return 'rose'
-}
-
-function calDots(v: number): 'green' | 'amber' | 'rose' {
-  if (v < 400) return 'green'
-  if (v <= 700) return 'amber'
-  return 'rose'
-}
-
-function sugarDots(v: number): 'green' | 'amber' | 'rose' {
-  if (v < 10) return 'green'
-  if (v <= 25) return 'amber'
-  return 'rose'
-}
-
-function sodiumDots(v: number): 'green' | 'amber' | 'rose' {
-  if (v < 500) return 'green'
-  if (v <= 1000) return 'amber'
-  return 'rose'
-}
+// Dot-meter colors delegate to the shared nutritionLevel() so the dot bands can
+// never drift from the badge color bands (see nutrition-colors.ts).
+const carbDots = (v: number) => nutritionLevel('carbs', v)
+const calDots = (v: number) => nutritionLevel('calories', v)
+const sugarDots = (v: number) => nutritionLevel('sugar', v)
+const sodiumDots = (v: number) => nutritionLevel('sodium', v)
 
 const allergenIcons: Record<string, string> = {
   milk: '\uD83E\uDD5B',

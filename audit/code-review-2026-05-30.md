@@ -289,9 +289,15 @@ agree.
 
 ---
 
-### 058 — Traffic-light thresholds duplicated across `nutrition-colors.ts` and `MenuItemCard` dot helpers (P2, quality)
+### 058 — Traffic-light thresholds duplicated across `nutrition-colors.ts` and `MenuItemCard` dot helpers (P2, quality) — FIXED
 
-**Status:** pending · **Effort:** S
+**Status:** complete · **Effort:** S
+
+> **Fixed (2026-05-30):** added `NUTRITION_BANDS` + `nutritionLevel()` as the
+> single source of truth; both the `*Color` class fns and the `*Dots` fns derive
+> from it (exact boundary semantics preserved). New
+> `nutrition-colors.test.ts` (9 tests). Verified lint/tsc/193 tests. Original
+> analysis below.
 
 **Problem.** The carb/sugar/calorie/sodium green/amber bands are encoded twice:
 `nutrition-colors.ts` (`carbColor`/`sugarColor`/…, returns Tailwind classes) and
