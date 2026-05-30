@@ -1,19 +1,7 @@
 import { usePreferences } from '../hooks/usePreferences'
 import { clearOfflineData } from '../lib/offline-db'
+import { LOCAL_APP_STORAGE_KEYS } from '../lib/storage-keys'
 import { useState } from 'react'
-
-const LOCAL_APP_STORAGE_KEYS = [
-  'dg_meal_cart',
-  'dg_favorites',
-  'dg_compare',
-  'dg_trip_plan',
-  'dg.trips.v1',
-  'dg_checklist',
-  'dg_checklist_options',
-  'dg_recent_searches',
-  'dg_insulin_settings',
-  'dg_preferences',
-]
 
 export default function Settings() {
   const { fontScale, highContrast, carbGoal, setFontScale, toggleContrast, setCarbGoal, resetPreferences } = usePreferences()

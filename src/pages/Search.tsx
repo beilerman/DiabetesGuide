@@ -14,8 +14,9 @@ import { getNextVisibleCount } from '../lib/visible-items'
 import { getSearchResultView } from '../lib/search-results'
 import type { Filters } from '../lib/types'
 import { GradeLegend, GRADE_OPTIONS } from '../components/GradeLegend'
+import { STORAGE_KEYS } from '../lib/storage-keys'
 
-const RECENT_KEY = 'dg_recent_searches'
+const RECENT_KEY = STORAGE_KEYS.recentSearches
 const MAX_RECENT = 5
 const INITIAL_VISIBLE_RESULTS = 50
 

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { MealItem, MealData, MealCartState } from '../lib/types'
+import { STORAGE_KEYS } from '../lib/storage-keys'
 
-const STORAGE_KEY = 'dg_meal_cart'
+const STORAGE_KEY = STORAGE_KEYS.mealCart
 
 function defaultMeal(name = 'My Meal'): MealData {
   return { name, parkId: null, items: [] }

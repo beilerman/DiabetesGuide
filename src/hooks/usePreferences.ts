@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
+import { STORAGE_KEYS } from '../lib/storage-keys'
 
-const STORAGE_KEY = 'dg_preferences'
+const STORAGE_KEY = STORAGE_KEYS.preferences
 
 interface Preferences {
   highContrast: boolean
