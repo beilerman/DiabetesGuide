@@ -32,8 +32,8 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 |-------|------------|-------|
 | `parks` | name, location, timezone, first_aid_locations (JSONB) | 41 parks total |
 | `restaurants` | park_id (FK), name, land, cuisine_type, hours (JSONB), lat/lon | 1,152 restaurants |
-| `menu_items` | restaurant_id (FK), name, description, price, category (enum), is_seasonal, is_fried, is_vegetarian | 9,261 items |
-| `nutritional_data` | menu_item_id (FK), calories/carbs/fat/sugar/protein/fiber/sodium/cholesterol (all INTEGER), source (enum), confidence_score | 9,261 rows (79% with actual values) |
+| `menu_items` | restaurant_id (FK), name, description, price, category (enum), is_seasonal, is_fried, is_vegetarian | ~17,300 items (grows via weekly sync). UNIQUE(restaurant_id, lower(btrim(name))) — migration 00002 |
+| `nutritional_data` | menu_item_id (FK), calories/carbs/fat/sugar/protein/fiber/sodium/cholesterol (all INTEGER), source (enum), confidence_score | ~17,200 rows (~78% with calories). Run `npm run audit:quality` for live coverage |
 | `allergens` | menu_item_id (FK), allergen_type (TEXT), severity (enum: contains/may_contain) | 1,430 records |
 
 **Enums:** `menu_category` (entree/snack/beverage/dessert/side), `nutrition_source` (official/crowdsourced/api_lookup), `allergen_severity` (contains/may_contain)
@@ -65,8 +65,12 @@ Theme park diabetes food guide — a mobile-first React SPA that helps people wi
 
 ### Scripts (all in `scripts/`, run with `npx tsx`)
 
+> **Source of truth for LIVE scripts: [`scripts/README.md`](scripts/README.md).** The ~136 one-off `fix-*`/`check-*`/`analyze-*` data-repair scripts were archived to `scripts/archive/` (May 2026); only ~12 entry points + `scrapers/`, `sync/`, `audit/` remain live. Typecheck the active pipeline with `npx tsc -p tsconfig.scripts.json --noEmit`. Many rows in the table below now point to archived scripts — treat the README as canonical.
+
 | Script | Purpose | Env Vars Needed |
 |--------|---------|----------------|
+| `audit/quality.ts` (`npm run audit:quality`) | Catalog quality + trusted-carbs % over time (writes `audit/quality-history.json`) | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
+| `enrich-nutritionix.ts` (`npm run enrich:nutritionix`) | Upgrade missing/low-confidence carbs from Nutritionix (branded/official → api fallback) | + NUTRITIONIX_APP_ID, NUTRITIONIX_API_KEY |
 | `seed.ts` | Initial seed from `data/source.json` | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `import-all.ts` | Import all `data/parks/*.json`, deduplicates by name | SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY |
 | `enrich-nutrition.ts` | USDA FoodData Central API lookup by item name | + USDA_API_KEY |
