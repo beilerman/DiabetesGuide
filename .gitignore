@@ -33,6 +33,7 @@ data/approved/
 data/*.json
 !data/source.json
 !data/portion-multipliers.json
+!data/researched-nutrition.json
 data/pending/
 
 # Curated supplement data (imported to Supabase, not needed in repo)

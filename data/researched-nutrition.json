@@ -1,0 +1,25 @@
+{
+  "_comment": "Hand-researched official nutrition for PACKAGED/BRANDED park items, where the park sells the exact packaged product so the official label is correct (unlike made-in-park items, whose portion differs from any published serving). Each entry cites its source. Importer: scripts/import-researched-nutrition.ts. Only fields actually verified are listed; the importer leaves unlisted fields untouched. Confidence 80 = packaged official label (minor cross-source vari/serving rounding).",
+  "entries": [
+    {
+      "label": "Mickey's Premium Ice Cream Bar (Nestlé, vanilla, chocolate-coated)",
+      "match": ["mickey'?s? premium ice cream bar", "mickey'?s? ice cream bar"],
+      "exclude": ["hand.?dipped", "sandwich", "cookie", "sundae"],
+      "nutrition": { "calories": 320, "carbs": 31, "fat": 20, "protein": 3 },
+      "source": "official",
+      "confidence": 80,
+      "sourceUrl": "https://www.carbmanager.com/food-detail/md:33eed13e3acc7d35363f4a8bc3b4d575/mickeys-premium-ice-cream-bar",
+      "note": "Packaged Nestlé product; official label. Excludes hand-dipped (larger, made in-park) and sandwich."
+    },
+    {
+      "label": "Mickey's Premium Ice Cream Sandwich (Nestlé, vanilla)",
+      "match": ["mickey'?s? premium ice cream sandwich", "mickey'?s? ice cream sandwich"],
+      "exclude": ["cookies.?n.?cream", "bar"],
+      "nutrition": { "calories": 270, "carbs": 37, "fat": 12, "protein": 4 },
+      "source": "official",
+      "confidence": 80,
+      "sourceUrl": "https://foods.fatsecret.com/calories-nutrition/nestle/mickeys-premium-ice-cream-sandwich",
+      "note": "Packaged Nestlé product; vanilla official label."
+    }
+  ]
+}
