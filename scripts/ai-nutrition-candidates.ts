@@ -36,8 +36,29 @@ const num = (flag: string, def: number) => {
 const BATCH = num('--batch-size', 20)
 const MAX_CONF = num('--max-conf', 45)
 const LIMIT = num('--limit', Infinity as unknown as number)
+// --flagged: target items whose CURRENT nutrition is internally inconsistent
+// (definitely wrong), regardless of confidence — the highest accuracy-per-token.
+const FLAGGED = args.includes('--flagged')
 
 const CHAIN = /starbucks|panda express|cinnabon|cold stone|haagen|ben\s*&?\s*jerry|blaze|earl of sandwich|wetzel|jamba|chicken guy|sprinkles|skyline|larosa|auntie anne|subway|chipotle|shake shack|dunkin/i
+// Broad alcohol detection over name + description: alcoholic drinks carry ~7
+// cal/g of ethanol that the P*4+C*4+F*9 estimate can't see, so they MUST be
+// exempt from the caloric-math check or they flag forever even when correct.
+const ALC = /(alcohol|margarita|mojito|daiquiri|martini|cocktail|sangria|mimosa|bellini|negroni|paloma|colada|mai.?tai|michelada|tiki|spritz|\bbeer\b|\bale\b|lager|\bipa\b|pilsner|stout|porter|hefeweizen|saison|gose|radler|\bwine\b|chardonnay|cabernet|\bpinot\b|sauvignon|merlot|riesling|prosecco|champagne|ros[eé]|shiraz|tempranillo|malbec|\bcider\b|seltzer|\brum\b|vodka|tequila|whisk|bourbon|\bgin\b|\bsake\b|mezcal|liqueur|aperol|brewing|brewery|draft|draught|\babv\b|old fashioned|long island|moscow mule|highball|spirits?\b|frosé|frose)/i
+
+/** True when the stored nutrition is physically impossible / internally inconsistent. */
+function isImplausible(nd: any, text: string): boolean {
+  if (!nd) return false
+  const cal = nd.calories, c = nd.carbs, f = nd.fat, p = nd.protein, sg = nd.sugar, fb = nd.fiber
+  if (c != null && cal != null && cal > 0 && c * 4 > cal * 1.15) return true // carbs exceed total calories
+  if (sg != null && c != null && sg > c + 1) return true // sugar > carbs
+  if (fb != null && c != null && fb > c + 1) return true // fiber > carbs
+  if (cal != null && cal > 50 && c != null && f != null && p != null && !ALC.test(text)) {
+    const est = p * 4 + c * 4 + f * 9
+    if (Math.abs(cal - est) / cal > 0.45) return true // caloric-math gap (non-alcohol)
+  }
+  return false
+}
 
 async function fetchAll<T>(table: string, cols: string): Promise<T[]> {
   const out: T[] = []
@@ -57,15 +78,19 @@ async function fetchAll<T>(table: string, cols: string): Promise<T[]> {
 async function main() {
   const items = await fetchAll<any>(
     'menu_items',
-    'id, name, description, restaurant:restaurants(name, park:parks(name)), nutritional_data(calories, carbs, confidence_score)',
+    'id, name, description, restaurant:restaurants(name, park:parks(name)), nutritional_data(calories, carbs, fat, protein, sugar, fiber, confidence_score)',
   )
   const cand = items
     .filter(it => {
       const nd = it.nutritional_data?.[0]
       const r = Array.isArray(it.restaurant) ? it.restaurant[0] : it.restaurant
+      if (CHAIN.test(r?.name ?? '')) return false
+      if (FLAGGED) {
+        // Wrong-data targeting: implausible nutrition, not yet authoritative.
+        return isImplausible(nd, `${it.name} ${it.description ?? ''}`) && (nd?.confidence_score ?? 0) < 70
+      }
       return (nd?.confidence_score ?? 0) < MAX_CONF
         && it.description && it.description.trim().length > 10
-        && !CHAIN.test(r?.name ?? '')
     })
     .map(it => {
       const r = Array.isArray(it.restaurant) ? it.restaurant[0] : it.restaurant

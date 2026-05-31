@@ -29,6 +29,10 @@ if (!url || !key) {
 }
 const supabase = createClient(url, key)
 const APPLY = process.argv.includes('--apply')
+// --force: overwrite even when existing confidence is >= the new value. Use for
+// the flagged run, where the existing data is provably WRONG (internally
+// inconsistent) regardless of its confidence label.
+const FORCE = process.argv.includes('--force')
 const fileArg = process.argv.find(a => a.startsWith('--file='))
 const FILE = fileArg ? fileArg.split('=')[1] : 'data/ai-nutrition.json'
 
@@ -88,7 +92,7 @@ async function main() {
     const { data: nd } = await supabase
       .from('nutritional_data').select('id, confidence_score').eq('menu_item_id', e.id).limit(1)
     const existing = nd?.[0]
-    if (existing && (existing.confidence_score ?? 0) >= e.confidence) {
+    if (!FORCE && existing && (existing.confidence_score ?? 0) >= e.confidence) {
       skippedBetter++
       continue
     }

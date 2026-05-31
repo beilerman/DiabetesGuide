@@ -8,18 +8,18 @@
       "photo": 0.3,
       "price": 68.4,
       "nutritionRow": 99.4,
-      "caloriesPresent": 96,
+      "caloriesPresent": 95.9,
       "carbsPresent": 97.8,
-      "allEightFields": 78.5,
+      "allEightFields": 78.6,
       "allergens": 34.8
     },
     "carbTrust": {
-      "trustedCarbsPct": 42.8,
-      "untrustedCarbs": 9505,
+      "trustedCarbsPct": 42.4,
+      "untrustedCarbs": 9573,
       "bySource": {
-        "crowdsourced": 10927,
-        "official": 1489,
-        "api_lookup": 4785
+        "crowdsourced": 10995,
+        "official": 1516,
+        "api_lookup": 4690
       }
     },
     "nutritionFieldNullPct": {
@@ -28,9 +28,9 @@
       "fat": 1.6,
       "protein": 1.6,
       "sugar": 2.4,
-      "fiber": 2.7,
+      "fiber": 2.6,
       "sodium": 1.8,
-      "cholesterol": 20.4
+      "cholesterol": 20.3
     },
     "orphans": 105
   }
