@@ -20,6 +20,16 @@
       "confidence": 80,
       "sourceUrl": "https://foods.fatsecret.com/calories-nutrition/nestle/mickeys-premium-ice-cream-sandwich",
       "note": "Packaged Nestlé product; vanilla official label."
+    },
+    {
+      "label": "Mickey's Premium Cookies 'n Cream Ice Cream Sandwich (Nestlé)",
+      "match": ["mickey.*cookies.?n.?cream.*sandwich", "cookies.?n.?cream.*mickey.*sandwich"],
+      "exclude": ["bar"],
+      "nutrition": { "calories": 280, "carbs": 38, "fat": 12, "protein": 4, "sugar": 21 },
+      "source": "official",
+      "confidence": 80,
+      "sourceUrl": "https://www.carbmanager.com/food-detail/md:da7aa7a67062a3e53be1d58cb22d4783/mickey-mouse-cookies-n-cream-ice-cream-sandwich",
+      "note": "Packaged Nestlé product; cookies 'n cream variant official label."
     }
   ]
 }
