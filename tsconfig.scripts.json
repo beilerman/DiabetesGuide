@@ -26,6 +26,7 @@
     "scripts/enrich-from-allears.ts",
     "scripts/enrich-nutrition.ts",
     "scripts/enrich-nutritionix.ts",
+    "scripts/enrich-edamam.ts",
     "scripts/import-researched-nutrition.ts",
     "scripts/sync",
     "scripts/scrapers",

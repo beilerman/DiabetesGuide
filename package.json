@@ -41,6 +41,7 @@
     "audit:migrate": "tsx scripts/audit/migrate-constraints.ts",
     "audit:quality": "tsx scripts/audit/quality.ts",
     "enrich:nutritionix": "tsx scripts/enrich-nutritionix.ts",
+    "enrich:edamam": "tsx scripts/enrich-edamam.ts",
     "import:researched": "tsx scripts/import-researched-nutrition.ts",
     "fix:public-qa-data": "tsx scripts/fix-public-qa-data.ts",
     "test": "vitest run",
