@@ -25,6 +25,7 @@
     "scripts/enrich-from-dfb.ts",
     "scripts/enrich-from-allears.ts",
     "scripts/enrich-nutrition.ts",
+    "scripts/enrich-nutritionix.ts",
     "scripts/sync",
     "scripts/scrapers",
     "scripts/audit"

@@ -467,7 +467,10 @@ async function estimateNutritionAI() {
           source: 'crowdsourced',
           confidence_score: confidenceScore,
         }
-        if (nutData?.id) updateRows.push({ id: nutData.id, ...fields })
+        // Include menu_item_id even on the update path: upsert() issues an
+        // INSERT ... ON CONFLICT, and the INSERT half is validated against the
+        // NOT NULL menu_item_id before conflict resolution.
+        if (nutData?.id) updateRows.push({ id: nutData.id, menu_item_id: item.id, ...fields })
         else insertRows.push({ menu_item_id: item.id, ...fields })
       }
 
