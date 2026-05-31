@@ -34,52 +34,60 @@ jobs:
       - name: Check scraped output
         id: check_scraped
         run: |
-          count=$(ls data/scraped/*.json 2>/dev/null | wc -l)
-          echo "file_count=$count" >> $GITHUB_OUTPUT
-          if [ "$count" -eq 0 ]; then
-            echo "::warning::No scraped files produced — all scrapers may have failed"
+          # Gate on TOTAL ITEM COUNT, not "a file exists": empty scrapes still
+          # write a file, so the old file-count check let a fully-broken scrape
+          # proceed to the DB. Require a sane minimum before touching the DB.
+          item_count=$(node -e "
+            const fs=require('fs');const dir='data/scraped';let total=0;
+            if(fs.existsSync(dir)){for(const f of fs.readdirSync(dir).filter(f=>f.endsWith('.json'))){
+              try{const d=JSON.parse(fs.readFileSync(dir+'/'+f,'utf8'));
+                total+=(d.restaurants||[]).reduce((s,r)=>s+((r.items||[]).length),0);}catch{}}}
+            console.log(total);
+          ")
+          echo "item_count=$item_count" >> $GITHUB_OUTPUT
+          echo "Scraped item count: $item_count"
+          if [ "$item_count" -lt 100 ]; then
+            echo "::warning::Only $item_count scraped items (< 100) — scrapers likely failing; skipping DB sync."
           fi
 
       - name: Merge with database
-        if: steps.check_scraped.outputs.file_count != '0'
+        if: fromJSON(steps.check_scraped.outputs.item_count) >= 100
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: npm run sync:merge
 
       - name: Estimate nutrition
-        if: steps.check_scraped.outputs.file_count != '0'
+        if: fromJSON(steps.check_scraped.outputs.item_count) >= 100
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: npm run sync:estimate
 
       - name: Generate diff report
-        if: steps.check_scraped.outputs.file_count != '0'
+        if: fromJSON(steps.check_scraped.outputs.item_count) >= 100
         run: npm run sync:report
 
       - name: Auto-approve high-confidence items
-        if: steps.check_scraped.outputs.file_count != '0'
+        if: fromJSON(steps.check_scraped.outputs.item_count) >= 100
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        # No continue-on-error: a failed import (approve sets a non-zero exit on
+        # errors, or the volume circuit-breaker trips) should fail the run loudly.
         run: npm run sync:approve -- --auto
-        continue-on-error: true
 
-      - name: Upload report artifact
+      - name: Upload report + pending artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
+          # Curated review artifacts only. Raw scraped/approved data is NOT
+          # committed to the repo — Supabase is the source of truth, and those
+          # paths stay gitignored (force-committing them previously overrode the
+          # ignore rules and defeated the secret-leak backstop).
           name: menu-sync-report-${{ github.run_id }}
           path: |
             data/pending/report-*.md
             data/pending/report-*.json
+            data/pending/estimated-*.json
           retention-days: 30
-
-      - name: Commit pending data
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f data/pending/ data/scraped/ data/approved/
-          git commit -m "chore: weekly menu sync data [skip ci]" || echo "No changes to commit"
-          git push

@@ -6,11 +6,11 @@
  * Image URL pattern: https://www.disneyfoodblog.com/wp-content/uploads/YYYY/MM/[descriptive-filename]-700x525.jpg
  */
 
-import puppeteer from 'puppeteer'
+import puppeteer, { type Page, type Browser } from 'puppeteer'
 import { writeFileSync, mkdirSync, existsSync } from 'fs'
 import { dirname, resolve } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
-import type { ScrapeResult, ScrapedRestaurant } from './types.js'
+import type { ScrapeResult } from './types.js'
 import { delay } from './utils.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -193,7 +193,7 @@ function parseItemFromFilename(filename: string): { itemName: string; restaurant
 /**
  * Extract food images from a DFB page
  */
-async function extractFoodImages(page: puppeteer.Page): Promise<ExtractedItem[]> {
+async function extractFoodImages(page: Page): Promise<ExtractedItem[]> {
   const items: ExtractedItem[] = []
   const seen = new Set<string>()
 
@@ -234,7 +234,7 @@ async function extractFoodImages(page: puppeteer.Page): Promise<ExtractedItem[]>
  * Scrape a single park's pages
  */
 async function scrapePark(
-  browser: puppeteer.Browser,
+  browser: Browser,
   parkName: string,
   urls: string[]
 ): Promise<ExtractedItem[]> {

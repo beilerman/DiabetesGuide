@@ -1,6 +1,6 @@
 import type { Item, AuditFinding, AutoFix, AuditPassResult, Severity } from './types.js'
 import { THRESHOLDS } from './thresholds.js'
-import { nd, loc, isLikelyAlcoholic } from './utils.js'
+import { nd, isLikelyAlcoholic } from './utils.js'
 
 const BEVERAGE_NAME_PATTERN =
   /\b(latte|cappuccino|mocha|espresso|coffee|cold brew|tea|chai|juice|smoothie|milk|hot chocolate|cocoa|frappuccino|macchiato|americano)\b/i
@@ -42,7 +42,6 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
     stats.checked++
     const itemFindings: AuditFinding[] = []
     const itemFixes: AutoFix[] = []
-    const location = loc(item)
     const restaurant = item.restaurant?.name ?? 'Unknown Restaurant'
     const park = item.restaurant?.park?.name ?? 'Unknown Park'
 

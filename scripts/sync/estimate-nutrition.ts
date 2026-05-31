@@ -99,29 +99,50 @@ async function getExistingItemsWithNutrition(): Promise<{
   sodium: number | null
   keywords: string[]
 }[]> {
-  const { data, error } = await supabase
-    .from('menu_items')
-    .select(`
-      id,
-      name,
-      category,
-      nutritional_data (
-        calories,
-        carbs,
-        fat,
-        protein,
-        sugar,
-        fiber,
-        sodium
-      )
-    `)
+  // Paginate so the matching pool is the FULL catalog, not just the first
+  // PostgREST page (default 1000). Combined with the array-embed fix below,
+  // this is what makes the keyword estimator actually useful.
+  const data: any[] = []
+  const page = 1000
+  let from = 0
+  for (;;) {
+    const { data: batch, error } = await supabase
+      .from('menu_items')
+      .select(`
+        id,
+        name,
+        category,
+        nutritional_data (
+          calories,
+          carbs,
+          fat,
+          protein,
+          sugar,
+          fiber,
+          sodium
+        )
+      `)
+      .range(from, from + page - 1)
+    if (error) throw error
+    if (!batch || batch.length === 0) break
+    data.push(...batch)
+    if (batch.length < page) break
+    from += page
+  }
 
-  if (error) throw error
-
-  return (data || [])
-    .filter(item => item.nutritional_data && (item.nutritional_data as any).calories)
+  return data
     .map(item => {
-      const nutrition = item.nutritional_data as any
+      // PostgREST returns a to-many embed as an array (no UNIQUE on the FK),
+      // so unwrap the first row. Reading `.calories` off the array yields
+      // undefined and silently drops the entire matching pool — see the
+      // sibling handling in estimate-nutrition-ai.ts.
+      const nutrition: any = Array.isArray(item.nutritional_data)
+        ? item.nutritional_data[0]
+        : item.nutritional_data
+      return { item, nutrition }
+    })
+    .filter(({ nutrition }) => nutrition && typeof nutrition.calories === 'number')
+    .map(({ item, nutrition }) => {
       return {
         id: item.id,
         name: item.name,
@@ -171,13 +192,13 @@ function estimateNutrition(
     matchedItems: topMatches.map(m => ({ name: m.name, similarity: m.similarity })),
   }
 
-  if (topMatches.every(m => m.sugar !== null)) {
+  if (topMatches.every(m => m.sugar != null)) {
     estimate.sugar = Math.round(topMatches.reduce((sum, m) => sum + ((m.sugar || 0) * m.similarity), 0) / totalWeight)
   }
-  if (topMatches.every(m => m.fiber !== null)) {
+  if (topMatches.every(m => m.fiber != null)) {
     estimate.fiber = Math.round(topMatches.reduce((sum, m) => sum + ((m.fiber || 0) * m.similarity), 0) / totalWeight)
   }
-  if (topMatches.every(m => m.sodium !== null)) {
+  if (topMatches.every(m => m.sodium != null)) {
     estimate.sodium = Math.round(topMatches.reduce((sum, m) => sum + ((m.sodium || 0) * m.similarity), 0) / totalWeight)
   }
 
@@ -240,5 +261,8 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
       console.log(`Needs manual entry: ${needsManual.length}`)
       console.log(`Output: ${outputPath}`)
     })
-    .catch(console.error)
+    .catch(err => {
+      console.error(err)
+      process.exit(1)
+    })
 }
