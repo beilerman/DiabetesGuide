@@ -28,6 +28,8 @@
     "scripts/enrich-nutritionix.ts",
     "scripts/enrich-edamam.ts",
     "scripts/import-researched-nutrition.ts",
+    "scripts/import-ai-nutrition.ts",
+    "scripts/ai-nutrition-candidates.ts",
     "scripts/sync",
     "scripts/scrapers",
     "scripts/audit"

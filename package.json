@@ -47,7 +47,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "test:a11y": "playwright test e2e/accessibility.spec.ts"
+    "test:a11y": "playwright test e2e/accessibility.spec.ts",
+    "ai:candidates": "tsx scripts/ai-nutrition-candidates.ts",
+    "import:ai": "tsx scripts/import-ai-nutrition.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",

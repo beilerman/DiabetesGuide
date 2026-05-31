@@ -56,3 +56,6 @@ audit/completeness-results.json
 audit/autofix-results.json
 audit/external-results.json
 audit/.tmp-report-body.md
+data/ai-batches/
+data/ai-nutrition*.json
+data/llm-candidates*.json
