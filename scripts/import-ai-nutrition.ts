@@ -63,7 +63,10 @@ function sane(e: Entry): string | null {
   if (e.fiber != null && e.fiber > e.carbs + 1) return `fiber>${e.carbs} carbs`
   // Atwater plausibility — SKIP for alcoholic drinks, whose ~7 cal/g of alcohol
   // is invisible to the P*4+C*4+F*9 estimate (the documented caloric-math gap).
-  const isAlcohol = /\b(margarita|mojito|daiquiri|martini|cocktail|sangria|mimosa|bellini|negroni|paloma|colada|mai\s*tai|mule|sour|spritz|punch|jungle juice|icefall|beer|wine|cider|seltzer|rum|vodka|tequila|whiskey|bourbon|gin|sake|mezcal|liqueur|aperol|prosecco|champagne|hard )\b/i.test(e.name ?? '')
+  // Check name AND the generator's note (creative cocktail names like
+  // "Tequilasaurus"/"Uh-Oa!" don't contain a keyword, but the note does).
+  const text = `${e.name ?? ''} ${e.note ?? ''}`
+  const isAlcohol = /(alcohol|margarita|mojito|daiquiri|martini|cocktail|sangria|mimosa|bellini|negroni|paloma|colada|mai.?tai|michelada|tiki|spritz|jungle juice|icefall|beer|wine|cider|seltzer|\brum\b|vodka|tequila|whiskey|bourbon|\bgin\b|sake|mezcal|liqueur|aperol|prosecco|champagne|hard )/i.test(text)
   if (!isAlcohol && e.fat != null && e.protein != null) {
     const est = e.protein * 4 + e.carbs * 4 + e.fat * 9
     if (e.calories > 50 && Math.abs(e.calories - est) / e.calories > 0.45) return `caloric math off (stated ${e.calories}, macros imply ${Math.round(est)})`

@@ -10,16 +10,16 @@
       "nutritionRow": 99.4,
       "caloriesPresent": 96,
       "carbsPresent": 97.8,
-      "allEightFields": 78.4,
+      "allEightFields": 78.5,
       "allergens": 34.8
     },
     "carbTrust": {
-      "trustedCarbsPct": 43.4,
-      "untrustedCarbs": 9405,
+      "trustedCarbsPct": 42.8,
+      "untrustedCarbs": 9505,
       "bySource": {
-        "crowdsourced": 10827,
-        "official": 1492,
-        "api_lookup": 4882
+        "crowdsourced": 10927,
+        "official": 1489,
+        "api_lookup": 4785
       }
     },
     "nutritionFieldNullPct": {
