@@ -1,0 +1,37 @@
+[
+  {
+    "date": "2026-05-31",
+    "totalItems": 17306,
+    "qualityScore": 67,
+    "coverage": {
+      "description": 83.2,
+      "photo": 0.3,
+      "price": 68.4,
+      "nutritionRow": 99.4,
+      "caloriesPresent": 96,
+      "carbsPresent": 97.8,
+      "allEightFields": 78.4,
+      "allergens": 34.8
+    },
+    "carbTrust": {
+      "trustedCarbsPct": 43.4,
+      "untrustedCarbs": 9405,
+      "bySource": {
+        "crowdsourced": 10827,
+        "official": 1492,
+        "api_lookup": 4882
+      }
+    },
+    "nutritionFieldNullPct": {
+      "calories": 1.6,
+      "carbs": 1.7,
+      "fat": 1.6,
+      "protein": 1.6,
+      "sugar": 2.4,
+      "fiber": 2.7,
+      "sodium": 1.8,
+      "cholesterol": 20.4
+    },
+    "orphans": 105
+  }
+]
