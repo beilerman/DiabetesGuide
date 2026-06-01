@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-06-01T09:50:36.494Z",
+  "summary": {
+    "newItems": 0,
+    "updatedItems": 3003,
+    "flaggedRemovals": 0,
+    "conflicts": 17,
+    "coverageChange": "+0 items"
+  },
+  "newItemsByPark": {},
+  "needsReview": {
+    "priceConflicts": [],
+    "lowConfidence": [],
+    "potentiallyDiscontinued": []
+  },
+  "approveAllUrl": "npx tsx scripts/approve.ts --all",
+  "reviewUrl": "npx tsx scripts/approve.ts --interactive"
+}
