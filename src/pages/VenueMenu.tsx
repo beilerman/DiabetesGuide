@@ -10,7 +10,8 @@ import { useFavorites } from '../hooks/useFavorites'
 import { getParkEmoji } from '../components/resort/park-emoji'
 import { getResortById } from '../lib/resort-config'
 import { catalogPreviewParkToPark, findCatalogPreviewPark } from '../lib/catalog-preview'
-import { applyFilters, DEFAULT_FILTERS } from '../lib/filters'
+import { applyFilters, hasActiveFilters, DEFAULT_FILTERS } from '../lib/filters'
+import NotFound from './NotFound'
 import type { Filters, MenuItemWithNutrition } from '../lib/types'
 
 export default function VenueMenu() {
@@ -19,7 +20,7 @@ export default function VenueMenu() {
   }>()
   const resort = getResortById(resortId || '')
   const category = resort?.categories.find(c => c.id === categoryId)
-  const { data: parks } = useParks()
+  const { data: parks, isPending: parksPending, isError: parksError } = useParks()
   const { data: catalogPreview } = useCatalogPreview()
   const previewPark = catalogPreview ? findCatalogPreviewPark(catalogPreview, parkId) : undefined
   const livePark = parks?.find(p => p.id === parkId) ??
@@ -40,7 +41,25 @@ export default function VenueMenu() {
     const base = applyFilters(items ?? [], filters)
     return isSeasonalCategory ? base.filter(item => item.is_seasonal) : base
   }, [items, filters, isSeasonalCategory])
-  const displayedItemCount = isWaitingForLivePark ? previewPark?.itemCount ?? 0 : filtered.length
+
+  // Header counts. While items are still loading we show the preview count (or a
+  // neutral "loading" state) — never a misleading "0 items". Once loaded, the
+  // item count reflects active filters, and the restaurant count collapses to
+  // the number of restaurants that still have matching items.
+  const itemsPending = isLoading || isWaitingForLivePark
+  const headerItemCount = itemsPending ? previewPark?.itemCount ?? null : filtered.length
+  const matchingRestaurantCount = useMemo(
+    () => new Set(filtered.map(i => i.restaurant?.id).filter((id): id is string => id != null)).size,
+    [filtered],
+  )
+  const totalRestaurantCount = restaurants?.length ?? previewPark?.restaurantCount ?? null
+  const isNarrowed = hasActiveFilters(filters)
+  const headerRestaurantText =
+    totalRestaurantCount == null
+      ? 'restaurants'
+      : itemsPending || !isNarrowed
+        ? `${totalRestaurantCount} restaurants`
+        : `${matchingRestaurantCount} of ${totalRestaurantCount} restaurants`
 
   // Group filtered items by restaurant
   const groupedByRestaurant = useMemo(() => {
@@ -57,13 +76,38 @@ export default function VenueMenu() {
     return [...groups.values()]
   }, [filtered])
 
-  if (!resort || !category || !park) {
-    return (
-      <div className="text-center py-16">
-        <div className="text-5xl mb-4">🍽️</div>
-        <h2 className="text-xl font-semibold text-stone-900 mb-2">Venue not found</h2>
-      </div>
-    )
+  // The resort/category come from synchronous config — a missing one is a
+  // genuinely bad URL, settle immediately.
+  if (!resort || !category) {
+    return <NotFound />
+  }
+  // `park` resolves asynchronously (parks query + catalog preview). Never flash
+  // "not found" while the parks list is still loading or failed to load.
+  if (!park) {
+    if (parksPending) {
+      return (
+        <div className="text-center py-16" role="status" aria-live="polite">
+          <div className="text-5xl mb-4 animate-pulse">🍽️</div>
+          <p className="text-stone-600">Loading venue…</p>
+        </div>
+      )
+    }
+    if (parksError) {
+      return (
+        <div className="text-center py-16">
+          <div className="text-5xl mb-4">📡</div>
+          <h2 className="text-xl font-semibold text-stone-900 mb-2">Couldn’t load this venue</h2>
+          <p className="text-stone-600 mb-4">Check your connection and try again.</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+          >
+            Retry
+          </button>
+        </div>
+      )
+    }
+    return <NotFound />
   }
 
   return (
@@ -84,8 +128,8 @@ export default function VenueMenu() {
         <span className="text-4xl">{getParkEmoji(park.name)}</span>
         <div>
           <h1 className="text-2xl font-bold text-stone-900">{park.name}</h1>
-          <p className="text-sm text-stone-600">
-            {restaurants?.length ?? previewPark?.restaurantCount ?? 0} restaurants · {displayedItemCount} items
+          <p className="text-sm text-stone-600" role="status" aria-live="polite">
+            {headerRestaurantText} · {headerItemCount == null ? 'loading menu…' : `${headerItemCount} items`}
           </p>
         </div>
       </div>

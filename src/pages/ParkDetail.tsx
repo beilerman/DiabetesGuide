@@ -35,7 +35,7 @@ function SkeletonCard() {
 
 export default function ParkDetail() {
   const { parkId } = useParams<{ parkId: string }>()
-  const { data: parks } = useParks()
+  const { data: parks, isPending: parksPending, isError: parksError } = useParks()
   const { data: items, isLoading } = useMenuItems(parkId)
   const { data: restaurants } = useRestaurants(parkId)
   const { addItem } = useMealCart()
@@ -79,14 +79,36 @@ export default function ParkDetail() {
     return groups
   }, [visibleItems, restaurants])
 
-  if (!park && !isLoading) {
-    return (
-      <div className="text-center py-16">
-        <div className="text-6xl mb-4">🔍</div>
-        <h2 className="text-xl font-semibold text-stone-900 mb-2">Park not found</h2>
-        <Link to="/" className="text-teal-600 hover:underline">Back to parks</Link>
-      </div>
-    )
+  // Distinguish "still loading the parks list" from "this park genuinely does not
+  // exist". Gating on the parks query (not the menu-items query) prevents a
+  // transient "Park not found" flash when parks load slower than menu items.
+  if (!park) {
+    if (parksError) {
+      return (
+        <div className="text-center py-16">
+          <div className="text-6xl mb-4">📡</div>
+          <h2 className="text-xl font-semibold text-stone-900 mb-2">Couldn’t load this park</h2>
+          <p className="text-stone-600 mb-4">Check your connection and try again.</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+          >
+            Retry
+          </button>
+        </div>
+      )
+    }
+    if (!parksPending) {
+      return (
+        <div className="text-center py-16">
+          <div className="text-6xl mb-4">🔍</div>
+          <h2 className="text-xl font-semibold text-stone-900 mb-2">Park not found</h2>
+          <Link to="/" className="text-teal-600 hover:underline">Back to parks</Link>
+        </div>
+      )
+    }
+    // parks still loading — fall through to the normal shell, which renders a
+    // "Loading…" header and skeleton cards.
   }
 
   return (
