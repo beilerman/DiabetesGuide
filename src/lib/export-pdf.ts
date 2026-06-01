@@ -1,5 +1,5 @@
 import { jsPDF } from 'jspdf'
-import { computeScore, computeGrade } from './grade'
+import { gradeForNutrition } from './grade'
 import type { TripPlan } from './types'
 
 interface ParkNames {
@@ -88,11 +88,11 @@ export function exportTripPlanPdf(plan: TripPlan, parkNames: ParkNames, resortNa
         for (const item of meal.items) {
           checkPageBreak(6)
 
-          const grade = computeGrade(computeScore({
+          const grade = gradeForNutrition({
             calories: item.calories, carbs: item.carbs, fat: item.fat,
             protein: item.protein, sugar: item.sugar, fiber: item.fiber,
             sodium: item.sodium,
-          }))
+          })
 
           // Grade badge
           doc.setFontSize(8)

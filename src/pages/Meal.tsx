@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import { useMealCart } from '../hooks/useMealCart'
 import { usePreferences } from '../hooks/usePreferences'
 import { GradeBadge } from '../components/menu/GradeBadge'
-import { computeScore, computeGrade, GRADE_CONFIG } from '../lib/grade'
+import { computeScore, gradeForNutrition, GRADE_CONFIG } from '../lib/grade'
 import { INSULIN_LIMITS, calculateInsulinDose, validateInsulinInputs, type ActivityLevel } from '../lib/insulin'
 import { cleanDisplayText } from '../lib/display'
 import { getEstimateTierShort } from '../lib/nutrition-trust'
@@ -82,7 +82,7 @@ export default function Meal() {
   // Meal composite grade
   const mealGradeResult = useMemo(() => {
     if (items.length === 0) return { score: null, grade: null as Grade | null }
-    const score = computeScore({
+    const n = {
       calories: totals.calories,
       carbs: totals.carbs,
       fat: totals.fat,
@@ -90,8 +90,8 @@ export default function Meal() {
       sugar: totals.sugar,
       fiber: totals.fiber,
       sodium: totals.sodium,
-    })
-    return { score, grade: computeGrade(score) }
+    }
+    return { score: computeScore(n), grade: gradeForNutrition(n) }
   }, [items.length, totals])
 
   const insulinInputs = useMemo(() => ({
@@ -253,11 +253,11 @@ export default function Meal() {
         ) : (
           <ul className="space-y-2">
             {items.map((item, i) => {
-              const itemGrade = computeGrade(computeScore({
+              const itemGrade = gradeForNutrition({
                 calories: item.calories, carbs: item.carbs, fat: item.fat,
                 protein: item.protein, sugar: item.sugar, fiber: item.fiber,
                 sodium: item.sodium,
-              }))
+              })
               return (
                 <li key={`${item.id}-${i}`} className="flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm border border-stone-100">
                   <GradeBadge grade={itemGrade} size="sm" estimated={(item.nutritionConfidence ?? 100) < 70} />

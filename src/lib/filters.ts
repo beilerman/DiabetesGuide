@@ -1,6 +1,6 @@
 import type { Filters, MenuItemWithNutrition } from './types'
 import { getNutrition } from './nutrition'
-import { computeScore, computeGrade } from './grade'
+import { computeScore, gradeForNutrition } from './grade'
 import { getDisplayCategory, getMenuItemDisplayName, isLikelyMenuSectionHeader } from './display'
 
 export const DEFAULT_FILTERS: Filters = {
@@ -16,10 +16,10 @@ export const DEFAULT_FILTERS: Filters = {
   sort: 'name',
 }
 
-function getItemScore(item: MenuItemWithNutrition): number | null {
+function getItemNutritionInput(item: MenuItemWithNutrition) {
   const n = getNutrition(item)
   if (!n) return null
-  return computeScore({
+  return {
     calories: n.calories,
     carbs: n.carbs,
     fat: n.fat,
@@ -28,7 +28,12 @@ function getItemScore(item: MenuItemWithNutrition): number | null {
     fiber: n.fiber,
     sodium: n.sodium,
     alcoholGrams: n.alcohol_grams,
-  })
+  }
+}
+
+function getItemScore(item: MenuItemWithNutrition): number | null {
+  const input = getItemNutritionInput(item)
+  return input ? computeScore(input) : null
 }
 
 export function applyFilters(
@@ -86,8 +91,8 @@ export function applyFilters(
   // New: grade filter
   if (filters.gradeFilter && filters.gradeFilter.length > 0) {
     result = result.filter((i) => {
-      const score = getItemScore(i)
-      const grade = computeGrade(score)
+      const input = getItemNutritionInput(i)
+      const grade = input ? gradeForNutrition(input) : null
       return grade != null && filters.gradeFilter!.includes(grade)
     })
   }

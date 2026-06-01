@@ -107,9 +107,43 @@ export function computeGrade(score: number | null): Grade | null {
   return 'F'
 }
 
+// A high-calorie item can earn a strong score purely on a low net-carb load
+// (net carbs are weighted 40%, calories only 10%). For a diabetes audience an
+// "A" on an 800-calorie item is misleading, so we cap the *letter grade* — not
+// the numeric score, which still feeds sorting and the 0–5 meters honestly.
+// Threshold matches scoreCalories()'s top bucket so there is one calorie
+// boundary in this file.
+const HIGH_CALORIE_THRESHOLD = 700
+const HIGH_CALORIE_GRADE_CAP: Grade = 'C'
+const GRADE_ORDER: readonly Grade[] = ['A', 'B', 'C', 'D', 'F']
+
+/** Returns a grade no better than `cap` (A is best, F is worst). */
+function clampGrade(grade: Grade, cap: Grade): Grade {
+  return GRADE_ORDER.indexOf(grade) >= GRADE_ORDER.indexOf(cap) ? grade : cap
+}
+
+/**
+ * Canonical capped grade for an item. Every grade *displayed or filtered on*
+ * must go through this so the badge and the grade filter can never disagree.
+ */
+export function gradeForNutrition(n: NutritionInput): Grade | null {
+  const grade = computeGrade(computeScore(n))
+  if (grade == null) return null
+  if (n.calories != null && n.calories >= HIGH_CALORIE_THRESHOLD) {
+    return clampGrade(grade, HIGH_CALORIE_GRADE_CAP)
+  }
+  return grade
+}
+
+/** True when the calorie cap actually lowered the raw grade (for annotations). */
+export function isCalorieCapped(n: NutritionInput): boolean {
+  const raw = computeGrade(computeScore(n))
+  return raw != null && raw !== gradeForNutrition(n)
+}
+
 export function getGradeForItem(n: NutritionInput): { score: number | null; grade: Grade | null; colors: GradeColors | null } {
   const score = computeScore(n)
-  const grade = computeGrade(score)
+  const grade = gradeForNutrition(n)
   const colors = grade ? GRADE_CONFIG[grade] : null
   return { score, grade, colors }
 }

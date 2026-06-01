@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useCompare } from '../../hooks/useCompare'
 import type { CompareItem } from '../../hooks/useCompare'
 import { GradeBadge } from '../menu/GradeBadge'
-import { computeScore, computeGrade, GRADE_CONFIG } from '../../lib/grade'
+import { computeScore, gradeForNutrition, GRADE_CONFIG } from '../../lib/grade'
 import { useMealCart } from '../../hooks/useMealCart'
 import { cleanDisplayText } from '../../lib/display'
 
@@ -68,12 +68,12 @@ function getBestIndex(items: CompareItem[], metric: MetricRow): number {
 }
 
 function getGrade(item: CompareItem) {
-  const score = computeScore({
+  const n = {
     calories: item.calories, carbs: item.carbs, fat: item.fat,
     protein: item.protein, sugar: item.sugar, fiber: item.fiber,
     sodium: item.sodium,
-  })
-  return { score, grade: computeGrade(score) }
+  }
+  return { score: computeScore(n), grade: gradeForNutrition(n) }
 }
 
 export function ComparisonModal({ onClose }: Props) {

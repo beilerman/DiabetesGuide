@@ -7,7 +7,7 @@ import { useFavorites } from '../hooks/useFavorites'
 import { useCompare } from '../hooks/useCompare'
 import { useTripPlan, type CreateTripInput } from '../hooks/useTripPlan'
 import type { DayTotals } from '../hooks/useTripPlan'
-import { computeScore, computeGrade } from '../lib/grade'
+import { computeScore, gradeForNutrition } from '../lib/grade'
 import { RESORT_CONFIG, getParksForResort } from '../lib/resort-config'
 import { cleanDisplayText } from '../lib/display'
 // Lazy-load PDF export to keep main bundle small (~200KB for jsPDF)
@@ -813,11 +813,11 @@ function DayCard({ day, dayIndex, dayTotals, carbGoalPerMeal, resortParks, tripP
               {meal.items.length > 0 ? (
                 <ul className="space-y-1">
                   {meal.items.map((item, itemIndex) => {
-                    const grade = computeGrade(computeScore({
+                    const grade = gradeForNutrition({
                       calories: item.calories, carbs: item.carbs, fat: item.fat,
                       protein: item.protein, sugar: item.sugar, fiber: item.fiber,
                       sodium: item.sodium,
-                    }))
+                    })
                     return (
                       <li key={`${item.id}-${itemIndex}`} className="flex items-center gap-2 text-sm">
                         <GradeBadge grade={grade} size="sm" />

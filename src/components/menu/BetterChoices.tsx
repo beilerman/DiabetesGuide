@@ -1,5 +1,5 @@
 import type { MenuItemWithNutrition } from '../../lib/types'
-import { computeScore, computeGrade } from '../../lib/grade'
+import { computeScore, gradeForNutrition } from '../../lib/grade'
 import { GradeBadge } from './GradeBadge'
 
 interface Props {
@@ -36,9 +36,15 @@ export function BetterChoices({ currentItem, siblingItems }: Props) {
     <div className="mt-3">
       <p className="text-xs font-medium text-stone-500 mb-1.5">Lower carb at this restaurant</p>
       <div className="space-y-1.5">
-        {betterItems.map(({ item, score }) => {
+        {betterItems.map(({ item }) => {
           const nd = item.nutritional_data?.[0]
-          const grade = computeGrade(score)
+          const grade = nd
+            ? gradeForNutrition({
+                calories: nd.calories, carbs: nd.carbs, fat: nd.fat,
+                protein: nd.protein, sugar: nd.sugar, fiber: nd.fiber,
+                sodium: nd.sodium, alcoholGrams: nd.alcohol_grams,
+              })
+            : null
           return (
             <div key={item.id} className="flex items-center gap-2 rounded-lg bg-green-50 border border-green-100 px-2.5 py-1.5">
               <GradeBadge grade={grade} size="sm" />
