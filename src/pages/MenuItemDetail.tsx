@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useMenuItem } from '../lib/queries'
 import { getGradeForItem, GRADE_CONFIG, type Grade } from '../lib/grade'
@@ -34,6 +35,10 @@ export default function MenuItemDetail() {
   const { addItem } = useMealCart()
   const { isFavorite, toggle } = useFavorites()
   const { addToCompare } = useCompare()
+  // On-page confirmation for "Add to Meal" — a transient button flip for sighted
+  // users, plus a polite live-region announcement (the badge update alone is
+  // silent to screen readers and easy to miss on a long detail page).
+  const [addedMessage, setAddedMessage] = useState('')
 
   if (isLoading) {
     return (
@@ -123,6 +128,8 @@ export default function MenuItemDetail() {
       nutritionSourceDetail: nutrition?.source_detail,
       nutritionAvailable: true,
     })
+    setAddedMessage(`Added ${displayName} to your meal`)
+    window.setTimeout(() => setAddedMessage(''), 2000)
   }
   const reportHref = buildNutritionReportMailto(
     item,
@@ -206,13 +213,16 @@ export default function MenuItemDetail() {
               type="button"
               onClick={addToMeal}
               disabled={!nutrition}
-              className={`rounded-lg px-4 py-2 text-sm font-semibold ${
-                nutrition
-                  ? 'bg-teal-700 text-white hover:bg-teal-800'
-                  : 'cursor-not-allowed bg-stone-200 text-stone-500'
+              aria-label={!nutrition ? 'Add to meal — nutrition data needed first' : undefined}
+              className={`rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
+                !nutrition
+                  ? 'cursor-not-allowed bg-stone-200 text-stone-500'
+                  : addedMessage
+                    ? 'bg-green-600 text-white'
+                    : 'bg-teal-700 text-white hover:bg-teal-800'
               }`}
             >
-              {nutrition ? 'Add to Meal' : 'Nutrition needed'}
+              {!nutrition ? 'Nutrition needed' : addedMessage ? 'Added ✓' : 'Add to Meal'}
             </button>
             <button
               type="button"
@@ -235,6 +245,7 @@ export default function MenuItemDetail() {
               Report nutrition issue
             </a>
           </div>
+          <p role="status" aria-live="polite" className="sr-only">{addedMessage}</p>
         </div>
 
         <div className="grid gap-5 p-5 lg:grid-cols-[1.2fr_0.8fr]">
@@ -244,7 +255,7 @@ export default function MenuItemDetail() {
               <>
                 <p className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-stone-600">
                   <span aria-hidden="true" className="inline-block h-2 w-2 rounded-full bg-stone-500" />
-                  fewer is better - scale shows item vs. category median (0-5)
+                  For most values, fewer is better — confirm carbs before dosing.
                 </p>
                 <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
                   <Metric label="Carbs" value={formatMaybeNumber(carbs, 'g')} emphasis />

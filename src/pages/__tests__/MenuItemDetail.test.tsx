@@ -45,9 +45,25 @@ describe('MenuItemDetail', () => {
 
     expect(screen.queryByText('Sodium:')).not.toBeInTheDocument()
     expect(screen.getByText(/updated feb 15, 2026/i)).toBeInTheDocument()
-    expect(screen.getByText(/fewer is better/i)).toHaveTextContent(/scale shows item vs\. category median \(0-5\)/i)
+    expect(screen.getByText(/fewer is better/i)).toHaveTextContent(/confirm carbs before dosing/i)
     await user.click(screen.getByText(/what does grade f mean\?/i))
     expect(screen.getByRole('link', { name: /grade rubric/i })).toHaveAttribute('href', '/data-sources#grade-rubric')
+  })
+
+  it('confirms on-page (button + live region) when adding to the meal', async () => {
+    const user = userEvent.setup()
+    vi.mocked(useMenuItem).mockReturnValue({
+      data: makeMenuItem(),
+      isLoading: false,
+    } as ReturnType<typeof useMenuItem>)
+
+    renderDetail()
+
+    const addButton = screen.getByRole('button', { name: /add to meal/i })
+    await user.click(addButton)
+
+    expect(screen.getByRole('button', { name: /added/i })).toBeInTheDocument()
+    expect(screen.getByRole('status')).toHaveTextContent(/added .* to your meal/i)
   })
 })
 

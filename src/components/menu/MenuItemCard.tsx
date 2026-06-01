@@ -53,6 +53,7 @@ const categoryColors: Record<string, string> = {
 
 function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, themeColor }: Props) {
   const [addingToMeal, setAddingToMeal] = useState(false)
+  const [mealNotice, setMealNotice] = useState('')
   const [favoriteNotice, setFavoriteNotice] = useState<string | null>(null)
 
   const displayName = getMenuItemDisplayName(item)
@@ -109,7 +110,9 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
       nutritionSourceDetail: nd?.source_detail,
       nutritionAvailable: true,
     })
+    setMealNotice(`Added ${displayName} to your meal`)
     setTimeout(() => setAddingToMeal(false), 600)
+    window.setTimeout(() => setMealNotice(''), 2000)
   }
 
   const handleFavorite = () => {
@@ -307,6 +310,8 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
             {favoriteNotice}
           </div>
         )}
+
+        <span role="status" aria-live="polite" className="sr-only">{mealNotice}</span>
 
         <Link
           to={`/item/${item.id}`}

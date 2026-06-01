@@ -46,6 +46,7 @@ export function DotMeter({ value, max, colorFn, label }: Props) {
       className="inline-flex items-center gap-0.5"
       role="meter"
       aria-label={ariaText}
+      aria-valuetext={ariaText}
       aria-valuenow={level}
       aria-valuemin={0}
       aria-valuemax={5}

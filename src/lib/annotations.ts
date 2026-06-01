@@ -1,3 +1,5 @@
+import { isCalorieCapped } from './grade'
+
 export type AnnotationSeverity = 'green' | 'amber' | 'red' | 'teal'
 
 export interface Annotation {
@@ -22,11 +24,18 @@ interface AnnotationInput {
 }
 
 export function getDiabetesAnnotations(item: AnnotationInput): Annotation[] {
-  const { calories, carbs, sugar, fat, protein, fiber, alcoholGrams, category, isFried, confidenceScore } = item
+  const { calories, carbs, sugar, fat, protein, fiber, sodium, alcoholGrams, category, isFried, confidenceScore } = item
   if (calories == null || carbs == null) return []
   const isLowConfidence = confidenceScore != null && confidenceScore < 70
 
   const annotations: Annotation[] = []
+
+  // Data sanity: sugar and fiber are components of carbohydrate, so neither can
+  // exceed total carbs. When one does, the row is internally inconsistent — flag
+  // it for verification rather than silently trusting the numbers.
+  if ((sugar != null && sugar > carbs) || (fiber != null && fiber > carbs)) {
+    annotations.push({ text: 'Values look inconsistent — sugar or fiber exceeds total carbs; verify before dosing', severity: 'amber' })
+  }
   const s = sugar ?? 0
   const f = fiber ?? 0
   const p = protein ?? 0
@@ -85,6 +94,12 @@ export function getDiabetesAnnotations(item: AnnotationInput): Annotation[] {
     annotations.push({ text: 'High fiber offsets some carb impact — watch net carbs', severity: 'teal' })
   } else if (f > 6) {
     annotations.push({ text: 'Good fiber content — slower carb absorption', severity: 'green' })
+  }
+
+  // Calorie-dense item whose letter grade was capped despite a low carb load —
+  // explains why a low-carb item isn't graded A and nudges portion awareness.
+  if (isCalorieCapped({ calories, carbs, fat, protein, sugar, fiber, sodium, alcoholGrams })) {
+    annotations.push({ text: 'Calorie-dense — grade capped despite low carbs; mind the portion', severity: 'amber' })
   }
 
   // Minimal impact (only skip if there are warning annotations)
