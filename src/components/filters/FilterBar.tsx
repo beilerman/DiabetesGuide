@@ -10,6 +10,10 @@ interface Props {
 
 const GRADES: Grade[] = ['A', 'B', 'C', 'D', 'F']
 
+// The slider's top stop means "no carb limit". One constant so the value, the
+// thumb, the gradient, the label, and the aria text can never drift apart.
+const MAX_CARB_CAP = 150
+
 const ALLERGEN_TOGGLES = [
   { key: 'milk', label: 'Dairy-Free' },
   { key: 'wheat', label: 'Gluten-Free' },
@@ -25,8 +29,10 @@ export function FilterBar({ filters, onChange }: Props) {
   const set = <K extends keyof Filters>(key: K, value: Filters[K]) =>
     onChange({ ...filters, [key]: value })
 
+  // Free-text search is a separate affordance from the structured filters, so it
+  // is intentionally excluded from this count — typing in search must not
+  // increment the "filters active" badge.
   const activeFilterCount = [
-    filters.search,
     filters.maxCarbs != null,
     filters.category != null,
     filters.vegetarianOnly,
@@ -93,8 +99,20 @@ export function FilterBar({ filters, onChange }: Props) {
             aria-label="Search menu items and restaurants"
             value={filters.search}
             onChange={e => set('search', e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-stone-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 focus:outline-none text-sm transition-colors"
+            className="w-full pl-10 pr-10 py-3 rounded-xl border-2 border-stone-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 focus:outline-none text-sm transition-colors"
           />
+          {filters.search && (
+            <button
+              type="button"
+              onClick={() => set('search', '')}
+              aria-label="Clear search"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-stone-400 hover:text-stone-600"
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
         </div>
 
         {/* Grade pills */}
@@ -242,31 +260,31 @@ export function FilterBar({ filters, onChange }: Props) {
         <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
           <div className="flex-1 w-full">
             <label className="block text-xs font-medium text-stone-600 mb-1">
-              Max Carbs: {filters.maxCarbs ?? 'Any'}{filters.maxCarbs != null ? 'g' : ''}
+              Max Carbs: {filters.maxCarbs == null ? `Any (${MAX_CARB_CAP}g+)` : `${filters.maxCarbs}g`}
             </label>
             <div className="flex items-center gap-3">
               <input
                 type="range"
-                min="0"
-                max="150"
-                step="5"
-                value={filters.maxCarbs ?? 150}
+                min={0}
+                max={MAX_CARB_CAP}
+                step={5}
+                value={filters.maxCarbs ?? MAX_CARB_CAP}
                 onChange={e => {
                   const value = Number(e.target.value)
-                  set('maxCarbs', value === 150 ? null : value)
+                  set('maxCarbs', value === MAX_CARB_CAP ? null : value)
                 }}
                 aria-label="Maximum carbs filter"
                 aria-valuemin={0}
-                aria-valuemax={150}
-                aria-valuenow={filters.maxCarbs ?? 150}
-                aria-valuetext={`${filters.maxCarbs ?? 150} grams`}
+                aria-valuemax={MAX_CARB_CAP}
+                aria-valuenow={filters.maxCarbs ?? MAX_CARB_CAP}
+                aria-valuetext={filters.maxCarbs == null ? 'Any — no carb limit' : `${filters.maxCarbs} grams`}
                 className="flex-1 h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, #0f766e 0%, #0f766e ${((filters.maxCarbs ?? 150) / 150) * 100}%, #e7e5e4 ${((filters.maxCarbs ?? 150) / 150) * 100}%, #e7e5e4 100%)`
+                  background: `linear-gradient(to right, #0f766e 0%, #0f766e ${((filters.maxCarbs ?? MAX_CARB_CAP) / MAX_CARB_CAP) * 100}%, #e7e5e4 ${((filters.maxCarbs ?? MAX_CARB_CAP) / MAX_CARB_CAP) * 100}%, #e7e5e4 100%)`
                 }}
               />
               <span className="text-xs font-semibold text-stone-700 min-w-[3rem] text-right">
-                {filters.maxCarbs ?? 150}g
+                {filters.maxCarbs == null ? 'Any' : `${filters.maxCarbs}g`}
               </span>
             </div>
           </div>
