@@ -14,19 +14,19 @@ describe('DotMeter', () => {
 
   it('fills correct number of dots for low value', () => {
     const { container } = render(<DotMeter value={10} max={100} colorFn={greenFn} />)
-    const filled = container.querySelectorAll('.bg-green-500')
+    const filled = container.querySelectorAll('.bg-green-600')
     expect(filled.length).toBe(1)
   })
 
   it('fills correct number of dots for high value', () => {
     const { container } = render(<DotMeter value={90} max={100} colorFn={amberFn} />)
-    const filled = container.querySelectorAll('.bg-amber-500')
+    const filled = container.querySelectorAll('.bg-amber-600')
     expect(filled.length).toBe(5)
   })
 
   it('fills 0 dots for zero value', () => {
     const { container } = render(<DotMeter value={0} max={100} colorFn={greenFn} />)
-    const filled = container.querySelectorAll('.bg-green-500')
+    const filled = container.querySelectorAll('.bg-green-600')
     expect(filled.length).toBe(0)
   })
 

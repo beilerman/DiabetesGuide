@@ -29,16 +29,19 @@ describe('GradeBadge', () => {
     expect(wrapper.style.width).toBe('44px')
   })
 
-  it('renders theme ring when themeColor provided', () => {
-    const { container } = render(<GradeBadge grade="C" themeColor="#4338ca" />)
-    const ring = container.querySelector('[class*="opacity-30"]') as HTMLElement
-    expect(ring).toBeTruthy()
-    expect(ring.style.border).toContain('rgb(67, 56, 202)')
+  it('flags an estimated grade in the aria label and shows a marker', () => {
+    const { container } = render(<GradeBadge grade="C" estimated />)
+    expect(screen.getByRole('img')).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining('estimated'),
+    )
+    // The "~" marker is decorative (aria-hidden) but present in the DOM.
+    expect(container.textContent).toContain('~')
   })
 
-  it('does not render theme ring when themeColor omitted', () => {
+  it('does not show the estimated marker by default', () => {
     const { container } = render(<GradeBadge grade="C" />)
-    const ring = container.querySelector('[class*="opacity-30"]')
-    expect(ring).toBeNull()
+    expect(screen.getByRole('img').getAttribute('aria-label')).not.toContain('estimated')
+    expect(container.textContent).not.toContain('~')
   })
 })

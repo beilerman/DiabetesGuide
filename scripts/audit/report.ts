@@ -126,9 +126,9 @@ export function buildMarkdownReport(data: ReportData): string {
     const displayLimit = 50
     const shown = reviewFindings.slice(0, displayLimit)
     for (const f of shown) {
-      const item = f.item || '\u2014'
-      const restaurant = f.restaurant || '\u2014'
-      lines.push(`| ${f.severity} | ${item} | ${restaurant} | ${f.park} | ${f.message} |`)
+      const item = mdCell(f.item) || '\u2014'
+      const restaurant = mdCell(f.restaurant) || '\u2014'
+      lines.push(`| ${f.severity} | ${item} | ${restaurant} | ${mdCell(f.park)} | ${mdCell(f.message)} |`)
     }
     if (reviewFindings.length > displayLimit) {
       lines.push('')
@@ -307,7 +307,29 @@ ${body}
 </html>`
 }
 
+/**
+ * Sanitize a scraped/DB-derived string for use inside a Markdown table cell:
+ * escape pipes (which would break the column structure of the GitHub issue)
+ * and flatten newlines. Defends the issue body against poisoned upstream data.
+ */
+function mdCell(text: string | undefined | null): string {
+  if (!text) return ''
+  return String(text).replace(/\|/g, '\\|').replace(/[\r\n]+/g, ' ').trim()
+}
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
 function inlineFormat(text: string): string {
+  // Escape HTML FIRST so scraped item names/descriptions (third-party data)
+  // can never inject markup into the audit email or GitHub issue. The
+  // markdown transforms below operate on the escaped string.
+  text = escapeHtml(text)
   // Bold: **text**
   text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
   // Italic: _text_

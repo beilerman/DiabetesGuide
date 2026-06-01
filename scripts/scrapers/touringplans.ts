@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer'
+import puppeteer, { type Page, type Browser } from 'puppeteer'
 import { writeFileSync, mkdirSync, existsSync } from 'fs'
 import { dirname, resolve } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
@@ -25,7 +25,7 @@ interface RestaurantInfo {
 /**
  * Extract restaurant links from a park dining page
  */
-async function getRestaurantLinks(page: puppeteer.Page, parkUrl: string): Promise<RestaurantInfo[]> {
+async function getRestaurantLinks(page: Page, parkUrl: string): Promise<RestaurantInfo[]> {
   await page.goto(parkUrl, { waitUntil: 'networkidle2', timeout: 30000 })
 
   // Wait for content to load
@@ -67,7 +67,7 @@ async function getRestaurantLinks(page: puppeteer.Page, parkUrl: string): Promis
 /**
  * Extract menu items from a restaurant page
  */
-async function getMenuItems(page: puppeteer.Page, restaurantUrl: string): Promise<ScrapedRestaurant['items']> {
+async function getMenuItems(page: Page, restaurantUrl: string): Promise<ScrapedRestaurant['items']> {
   await page.goto(restaurantUrl, { waitUntil: 'networkidle2', timeout: 30000 })
 
   // Wait for menu content to load
@@ -159,7 +159,7 @@ async function getMenuItems(page: puppeteer.Page, restaurantUrl: string): Promis
  * Scrape all restaurants for a park
  */
 async function scrapePark(
-  browser: puppeteer.Browser,
+  browser: Browser,
   parkName: string,
   parkUrl: string
 ): Promise<ScrapedRestaurant[]> {

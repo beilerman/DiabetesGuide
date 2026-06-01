@@ -2,7 +2,7 @@ import * as cheerio from 'cheerio'
 import { writeFileSync, mkdirSync, existsSync } from 'fs'
 import { dirname, resolve } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
-import type { ScrapeResult, ScrapedRestaurant, ScrapedItem } from './types.js'
+import type { ScrapeResult, ScrapedRestaurant } from './types.js'
 import { inferCategory, delay } from './utils.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -561,8 +561,8 @@ async function fetchPage(url: string): Promise<string> {
  * 1. Epic Universe (GDS Menu Page Template): sections.EmbeddedValues[].items.EmbeddedValues[] with heading/description
  * 2. Older parks (K2 Restaurant Menu): ComponentPresentations[].Component.Fields.MenuDetails.EmbeddedValues[].DishDetails.EmbeddedValues[] with Title/Description/Price
  */
-function parseMenuJson(content: string): ScrapedItem[] {
-  const items: ScrapedItem[] = []
+function parseMenuJson(content: string): ScrapedRestaurant['items'] {
+  const items: ScrapedRestaurant['items'] = []
 
   try {
     const data = JSON.parse(content)
@@ -695,9 +695,9 @@ function parseMenuJson(content: string): ScrapedItem[] {
 /**
  * Fallback: Parse Universal menu page HTML to extract items
  */
-function parseMenuHtml(html: string): ScrapedItem[] {
+function parseMenuHtml(html: string): ScrapedRestaurant['items'] {
   const $ = cheerio.load(html)
-  const items: ScrapedItem[] = []
+  const items: ScrapedRestaurant['items'] = []
 
   // Universal uses consistent menu card structure
   // Look for menu items with name, description, price
@@ -771,7 +771,7 @@ async function scrapeRestaurant(
   park: string,
   urls: string[]
 ): Promise<ScrapedRestaurant | null> {
-  const allItems: ScrapedItem[] = []
+  const allItems: ScrapedRestaurant['items'] = []
   const seenItems = new Set<string>()
 
   for (const url of urls) {
@@ -855,12 +855,21 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
       const outputPath = resolve(outputDir, `universal-${timestamp}.json`)
       writeFileSync(outputPath, JSON.stringify(result, null, 2))
 
+      const totalItems = result.restaurants.reduce((sum, r) => sum + r.items.length, 0)
       console.log('')
       console.log('=== Scrape Complete ===')
       console.log(`Restaurants: ${result.restaurants.length}`)
-      console.log(`Total items: ${result.restaurants.reduce((sum, r) => sum + r.items.length, 0)}`)
+      console.log(`Total items: ${totalItems}`)
       console.log(`Errors: ${result.errors.length}`)
       console.log(`Output: ${outputPath}`)
+
+      if (totalItems === 0) {
+        console.error('FAIL: Universal scraped 0 items — treating as scraper failure.')
+        process.exit(1)
+      }
     })
-    .catch(console.error)
+    .catch(err => {
+      console.error(err)
+      process.exit(1)
+    })
 }

@@ -5,6 +5,7 @@ import { GradeBadge } from '../components/menu/GradeBadge'
 import { computeScore, computeGrade, GRADE_CONFIG } from '../lib/grade'
 import { INSULIN_LIMITS, calculateInsulinDose, validateInsulinInputs, type ActivityLevel } from '../lib/insulin'
 import { cleanDisplayText } from '../lib/display'
+import { getEstimateTierShort } from '../lib/nutrition-trust'
 import { HiddenDoseExplainer } from '../components/InsulinEstimator/HiddenDoseExplainer'
 import type { Grade } from '../lib/grade'
 import { STORAGE_KEYS } from '../lib/storage-keys'
@@ -76,6 +77,7 @@ export default function Meal() {
   const netCarbs = Math.max(0, totals.carbs - totals.fiber)
   const lowConfidenceItems = items.filter(item => (item.nutritionConfidence ?? 100) < 70)
   const unavailableNutritionItems = items.filter(item => item.nutritionAvailable === false)
+  const mealHasEstimates = lowConfidenceItems.length > 0
 
   // Meal composite grade
   const mealGradeResult = useMemo(() => {
@@ -258,7 +260,7 @@ export default function Meal() {
               }))
               return (
                 <li key={`${item.id}-${i}`} className="flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm border border-stone-100">
-                  <GradeBadge grade={itemGrade} size="sm" />
+                  <GradeBadge grade={itemGrade} size="sm" estimated={(item.nutritionConfidence ?? 100) < 70} />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-sm truncate">{cleanDisplayText(item.name) || item.name}</p>
                     {item.restaurant && (
@@ -266,7 +268,7 @@ export default function Meal() {
                     )}
                     {(item.nutritionConfidence ?? 100) < 70 && (
                       <p className="text-xs font-medium text-amber-700 truncate">
-                        Estimated nutrition - verify before dosing
+                        {getEstimateTierShort(item.nutritionConfidence ?? 0)} — verify before dosing
                       </p>
                     )}
                   </div>
@@ -316,12 +318,17 @@ export default function Meal() {
       {items.length > 0 && (
         <section className="rounded-xl bg-white p-4 shadow-sm border border-stone-100" aria-label="Meal totals">
           <div className="flex items-center gap-4 mb-4">
-            <GradeBadge grade={mealGradeResult.grade} size="lg" />
+            <GradeBadge grade={mealGradeResult.grade} size="lg" estimated={mealHasEstimates} />
             <div>
               <p className="text-sm text-stone-500">Meal Grade</p>
               <p className="font-semibold" style={{ color: mealGradeResult.grade ? GRADE_CONFIG[mealGradeResult.grade].bg : '#78716c' }}>
                 {mealGradeResult.grade ? GRADE_CONFIG[mealGradeResult.grade].label : 'No grade'}
               </p>
+              {mealHasEstimates && (
+                <p className="mt-0.5 text-xs font-medium text-amber-700">
+                  Based on estimates — verify before dosing
+                </p>
+              )}
             </div>
           </div>
 
@@ -333,6 +340,10 @@ export default function Meal() {
             <MacroBox label="Fat" value={`${totals.fat}g`} />
             <MacroBox label="Fiber" value={`${totals.fiber}g`} />
           </div>
+
+          <p className="-mt-2 mb-4 text-xs text-stone-500">
+            The estimator uses total carbs. Most people dose on total carbs unless their clinician says otherwise.
+          </p>
 
           {/* Carb goal progress */}
           {carbGoal > 0 && (

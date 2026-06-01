@@ -87,6 +87,19 @@ export function getNutritionTrust(nutrition: NutritionalData | null | undefined)
   }
 }
 
+/**
+ * Plain-language estimate tier for glanceable surfaces (cards, search rows,
+ * meal list). Replaces the pseudo-precise "X% confidence" reading — that score
+ * is an internal provenance code (official import vs USDA vs AI vs keyword),
+ * not a calibrated probability a layperson can act on. The raw number stays on
+ * the item-detail Data Source panel and the methodology page for transparency.
+ */
+export function getEstimateTierShort(confidenceScore: number): string {
+  if (confidenceScore < 50) return 'Rough estimate'
+  if (confidenceScore < 70) return 'Estimated'
+  return 'Verified'
+}
+
 export function getNutritionQualityWarnings(nutrition: NutritionalData): string[] {
   const warnings: string[] = []
 

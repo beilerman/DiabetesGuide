@@ -256,18 +256,33 @@ async function estimateBatch(items: MenuItem[], retryCount = 0): Promise<Map<str
     const parsed = JSON.parse(jsonMatch[0])
     const estimates = new Map<string, NutritionEstimate>()
 
-    for (const entry of parsed.items) {
-      const item = items[entry.index - 1]
+    // The model may return the array under a different key, a bare array, or an
+    // object — guard before iterating so a malformed shape doesn't throw and
+    // discard the whole batch (CLAUDE.md notes LLMs return unexpected shapes).
+    const entries: any[] = Array.isArray(parsed)
+      ? parsed
+      : Array.isArray(parsed?.items)
+        ? parsed.items
+        : Array.isArray(parsed?.data)
+          ? parsed.data
+          : []
+    if (entries.length === 0) {
+      console.error(`Malformed JSON shape from ${activeModel} (no items array):`, text.slice(0, 200))
+      return new Map()
+    }
+
+    for (const entry of entries) {
+      const item = items[Number(entry?.index) - 1]
       if (!item) continue
 
       const estimate: NutritionEstimate = {
-        calories: Math.round(entry.calories),
-        carbs: Math.round(entry.carbs),
-        fat: Math.round(entry.fat),
-        protein: Math.round(entry.protein),
-        sugar: Math.round(entry.sugar),
-        fiber: Math.round(entry.fiber),
-        sodium: Math.round(entry.sodium),
+        calories: Math.round(Number(entry.calories)),
+        carbs: Math.round(Number(entry.carbs)),
+        fat: Math.round(Number(entry.fat)),
+        protein: Math.round(Number(entry.protein)),
+        sugar: Math.round(Number(entry.sugar)),
+        fiber: Math.round(Number(entry.fiber)),
+        sodium: Math.round(Number(entry.sodium)),
       }
 
       const validated = validateNutrition(estimate)
@@ -346,7 +361,7 @@ async function fetchItemsNeedingNutrition(): Promise<MenuItem[]> {
       process.exit(1)
     }
     if (!batch?.length) break
-    allRows = allRows.concat(batch)
+    allRows.push(...batch)
     if (batch.length < batchSize) break
     from += batchSize
   }
@@ -404,10 +419,10 @@ async function estimateNutritionAI() {
     }
   }
 
-  // Groq free tier: 30 req/min, 12K tokens/min
-  // Conservative settings to avoid hitting rate limits
-  const BATCH_SIZE = 5 // Smaller batches = fewer tokens per request
-  const RATE_LIMIT_DELAY = 6000 // 6 seconds between batches (~10 req/min, well under 30 RPM)
+  // Groq free tier: 30 req/min. ~2.2s between 5-item batches ≈ 27 req/min with
+  // headroom (the retry/backoff path handles the occasional 429 gracefully).
+  const BATCH_SIZE = 5
+  const RATE_LIMIT_DELAY = 2200
 
   let totalEstimated = 0
   let totalInserted = 0
@@ -419,84 +434,75 @@ async function estimateNutritionAI() {
     const batch = items.slice(i, i + BATCH_SIZE)
     console.log(`\nProcessing batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(items.length / BATCH_SIZE)} (${batch.length} items)...`)
 
+    // The DB writes for this batch run concurrently with the rate-limit sleep
+    // below, so the write latency is effectively hidden under the mandatory wait.
+    let writePromise: Promise<void> = Promise.resolve()
+
     try {
       const estimates = await estimateBatch(batch)
       totalEstimated += estimates.size
 
-      // Insert or update nutrition data
+      // Groq (70B) gets higher confidence than local models
+      const confidenceScore = activeModel === 'groq' ? 35 : 30
+      const updateRows: Record<string, unknown>[] = []
+      const insertRows: Record<string, unknown>[] = []
+
       for (const item of batch) {
         const estimate = estimates.get(item.id)
         if (!estimate) {
           totalFailed++
           continue
         }
-
         const nutData = Array.isArray(item.nutritional_data)
           ? item.nutritional_data[0]
           : item.nutritional_data
-
-        // Groq (70B) gets higher confidence than local models
-        const confidenceScore = activeModel === 'groq' ? 35 : 30
-
-        if (nutData?.id) {
-          // Update existing record
-          const { error } = await supabase
-            .from('nutritional_data')
-            .update({
-              calories: estimate.calories,
-              carbs: estimate.carbs,
-              fat: estimate.fat,
-              protein: estimate.protein,
-              sugar: estimate.sugar,
-              fiber: estimate.fiber,
-              sodium: estimate.sodium,
-              source: 'crowdsourced',
-              confidence_score: confidenceScore,
-            })
-            .eq('id', nutData.id)
-
-          if (error) {
-            console.error(`  Failed to update ${item.name}:`, error)
-            totalFailed++
-          } else {
-            totalUpdated++
-          }
-        } else {
-          // Insert new record
-          const { error } = await supabase
-            .from('nutritional_data')
-            .insert({
-              menu_item_id: item.id,
-              calories: estimate.calories,
-              carbs: estimate.carbs,
-              fat: estimate.fat,
-              protein: estimate.protein,
-              sugar: estimate.sugar,
-              fiber: estimate.fiber,
-              sodium: estimate.sodium,
-              source: 'crowdsourced',
-              confidence_score: confidenceScore,
-            })
-
-          if (error) {
-            console.error(`  Failed to insert ${item.name}:`, error)
-            totalFailed++
-          } else {
-            totalInserted++
-          }
+        const fields = {
+          calories: estimate.calories,
+          carbs: estimate.carbs,
+          fat: estimate.fat,
+          protein: estimate.protein,
+          sugar: estimate.sugar,
+          fiber: estimate.fiber,
+          sodium: estimate.sodium,
+          source: 'crowdsourced',
+          confidence_score: confidenceScore,
         }
+        // Include menu_item_id even on the update path: upsert() issues an
+        // INSERT ... ON CONFLICT, and the INSERT half is validated against the
+        // NOT NULL menu_item_id before conflict resolution.
+        if (nutData?.id) updateRows.push({ id: nutData.id, menu_item_id: item.id, ...fields })
+        else insertRows.push({ menu_item_id: item.id, ...fields })
       }
 
-      console.log(`  Batch complete: ${estimates.size} estimated, ${totalInserted + totalUpdated} saved`)
+      // Two bulk writes per batch instead of one round-trip per item.
+      writePromise = (async () => {
+        if (updateRows.length > 0) {
+          const { error } = await supabase.from('nutritional_data').upsert(updateRows)
+          if (error) {
+            console.error('  Bulk update failed:', error.message)
+            totalFailed += updateRows.length
+          } else {
+            totalUpdated += updateRows.length
+          }
+        }
+        if (insertRows.length > 0) {
+          const { error } = await supabase.from('nutritional_data').insert(insertRows)
+          if (error) {
+            console.error('  Bulk insert failed:', error.message)
+            totalFailed += insertRows.length
+          } else {
+            totalInserted += insertRows.length
+          }
+        }
+      })()
     } catch (err) {
       console.error(`  Batch failed:`, err)
       totalFailed += batch.length
     }
 
-    // Rate limit
-    if (i + BATCH_SIZE < items.length) {
-      await delay(RATE_LIMIT_DELAY)
-    }
+    // Await the writes AND the rate-limit window together (they overlap).
+    const isLast = i + BATCH_SIZE >= items.length
+    await Promise.all([writePromise, isLast ? Promise.resolve() : delay(RATE_LIMIT_DELAY)])
   }
 
   console.log('')
@@ -509,4 +515,7 @@ async function estimateNutritionAI() {
   console.log(`Failed/skipped: ${totalFailed}`)
 }
 
-estimateNutritionAI().catch(console.error)
+estimateNutritionAI().catch(err => {
+  console.error(err)
+  process.exit(1)
+})

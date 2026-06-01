@@ -112,4 +112,4 @@ async function seed() {
   console.log(`Seeded: ${parkCount} parks, ${restCount} restaurants, ${itemCount} menu items`)
 }
 
-seed().catch(console.error)
+seed().catch((err) => { console.error(err); process.exit(1) })

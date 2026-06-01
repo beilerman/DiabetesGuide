@@ -13,6 +13,7 @@ export function SearchResultRow({ item, onClick }: Props) {
   const nd = hasUsableNutrition(item) ? item.nutritional_data?.[0] : undefined
   const carbs = nd?.carbs ?? null
   const calories = nd?.calories ?? null
+  const isLowConfidence = nd != null && nd.confidence_score < 70
   const availabilityCount = item.availability_count ?? 1
   const hasMultipleLocations = availabilityCount > 1
 
@@ -33,7 +34,7 @@ export function SearchResultRow({ item, onClick }: Props) {
       onClick={() => onClick(item)}
     >
       {nd ? (
-        <GradeBadge grade={grade} size="sm" />
+        <GradeBadge grade={grade} size="sm" estimated={isLowConfidence} />
       ) : (
         <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-stone-200 text-[10px] font-bold text-stone-700">
           N/A
@@ -52,6 +53,13 @@ export function SearchResultRow({ item, onClick }: Props) {
         <div className="flex-shrink-0 text-right">
           <span className="text-sm font-bold text-stone-900">{carbs}g</span>
           <div className="text-[10px] text-stone-500">carbs</div>
+          {isLowConfidence && (
+            <div className="mt-0.5 inline-flex items-center gap-0.5 rounded bg-amber-100 px-1 text-[10px] font-semibold text-amber-800">
+              <span aria-hidden="true">~</span>
+              <span>est.</span>
+              <span className="sr-only">Estimated — verify before dosing</span>
+            </div>
+          )}
         </div>
       ) : (
         <div className="flex-shrink-0 text-xs text-stone-600">No data</div>

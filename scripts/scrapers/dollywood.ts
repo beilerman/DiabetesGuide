@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer'
+import puppeteer, { type Page } from 'puppeteer'
 import { writeFileSync, mkdirSync, existsSync } from 'fs'
 import { dirname, resolve } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
@@ -38,7 +38,7 @@ function sectionToCategory(sectionName: string): ScrapedRestaurant['items'][numb
 /**
  * Extract restaurant links and land names from the main Dollywood dining page
  */
-async function getRestaurantLinks(page: puppeteer.Page): Promise<RestaurantLink[]> {
+async function getRestaurantLinks(page: Page): Promise<RestaurantLink[]> {
   console.log('Fetching dining listing page...')
   await page.goto(DINING_LIST_URL, { waitUntil: 'domcontentloaded', timeout: 45000 })
   await delay(5000)
@@ -111,7 +111,7 @@ async function getRestaurantLinks(page: puppeteer.Page): Promise<RestaurantLink[
  * We force-expand all sections via JS, then parse the structured HTML.
  */
 async function getMenuItems(
-  page: puppeteer.Page,
+  page: Page,
   restaurantUrl: string
 ): Promise<{ items: ScrapedRestaurant['items']; landName?: string }> {
   try {
@@ -125,7 +125,12 @@ async function getMenuItems(
     }
   }
 
-  await delay(3000)
+  // Proceed as soon as the menu container exists instead of always burning 3s.
+  try {
+    await page.waitForSelector('.menu', { timeout: 8000 })
+  } catch {
+    // Some pages have no published menu — fall through; evaluate handles absence.
+  }
 
   const result = await page.evaluate(() => {
     // Force-expand all Bootstrap collapse sections
@@ -262,57 +267,73 @@ export async function scrapeDollywood(): Promise<ScrapeResult> {
     ],
   })
 
+  const USER_AGENT =
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+
   try {
-    const page = await browser.newPage()
-    await page.setViewport({ width: 1280, height: 800 })
-    await page.setUserAgent(
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-    )
+    const listPage = await browser.newPage()
+    await listPage.setViewport({ width: 1280, height: 800 })
+    await listPage.setUserAgent(USER_AGENT)
 
     // Step 1: Get all restaurant links from the listing page
     let restaurantLinks: RestaurantLink[]
     try {
-      restaurantLinks = await getRestaurantLinks(page)
+      restaurantLinks = await getRestaurantLinks(listPage)
     } catch (err) {
       const msg = `Failed to load dining listing page: ${err}`
       console.error(msg)
       result.errors.push(msg)
+      await listPage.close()
       await browser.close()
       return result
     }
+    await listPage.close()
 
-    // Step 2: Scrape each restaurant's menu
-    for (const link of restaurantLinks) {
+    // Step 2: Scrape restaurant detail pages with bounded concurrency. Each
+    // worker owns its own page and pulls from a shared cursor; independent
+    // restaurants have no shared state, so this is ~3x faster than serial.
+    const CONCURRENCY = 3
+    let cursor = 0
+
+    const worker = async (): Promise<void> => {
+      const page = await browser.newPage()
+      await page.setViewport({ width: 1280, height: 800 })
+      await page.setUserAgent(USER_AGENT)
       try {
-        console.log(`  Scraping: ${link.name}...`)
-        await delay(2000) // Rate limit: 2s between pages
-
-        const { items, landName } = await getMenuItems(page, link.url)
-
-        // Use land from listing page first, then from detail page
-        const resolvedLand = link.landName || landName
-
-        if (items.length > 0) {
-          result.restaurants.push({
-            source: 'official',
-            parkName: PARK_NAME,
-            restaurantName: link.name,
-            landName: resolvedLand,
-            items,
-            scrapedAt: new Date(),
-          })
-          console.log(`    -> ${items.length} items` + (resolvedLand ? ` (${resolvedLand})` : ''))
-        } else {
-          console.log(`    -> No menu items found`)
+        for (;;) {
+          const idx = cursor++
+          if (idx >= restaurantLinks.length) break
+          const link = restaurantLinks[idx]
+          try {
+            console.log(`  Scraping: ${link.name}...`)
+            const { items, landName } = await getMenuItems(page, link.url)
+            const resolvedLand = link.landName || landName
+            if (items.length > 0) {
+              result.restaurants.push({
+                source: 'official',
+                parkName: PARK_NAME,
+                restaurantName: link.name,
+                landName: resolvedLand,
+                items,
+                scrapedAt: new Date(),
+              })
+              console.log(`    -> ${items.length} items` + (resolvedLand ? ` (${resolvedLand})` : ''))
+            } else {
+              console.log(`    -> No menu items found for ${link.name}`)
+            }
+          } catch (err) {
+            const msg = `Error scraping ${link.name}: ${err}`
+            console.error(`    -> ${msg}`)
+            result.errors.push(msg)
+          }
+          await delay(300) // small politeness jitter between pages
         }
-      } catch (err) {
-        const msg = `Error scraping ${link.name}: ${err}`
-        console.error(`    -> ${msg}`)
-        result.errors.push(msg)
+      } finally {
+        await page.close()
       }
     }
 
-    await page.close()
+    await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()))
   } finally {
     await browser.close()
   }
@@ -344,6 +365,14 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
         result.errors.forEach(e => console.log(`  - ${e}`))
       }
       console.log(`Output: ${outputPath}`)
+
+      if (totalItems === 0) {
+        console.error('FAIL: Dollywood scraped 0 items — treating as scraper failure.')
+        process.exit(1)
+      }
     })
-    .catch(console.error)
+    .catch(err => {
+      console.error(err)
+      process.exit(1)
+    })
 }

@@ -6,11 +6,10 @@ import type { MenuItemWithNutrition } from '../../lib/types'
 
 interface Props {
   items: MenuItemWithNutrition[]
-  themeColor: string
   parkId: string
 }
 
-export function DiabetesFriendlyPicks({ items, themeColor, parkId }: Props) {
+export function DiabetesFriendlyPicks({ items, parkId }: Props) {
   const topPicks = useMemo(() => {
     return items
       .map(item => {
@@ -44,7 +43,7 @@ export function DiabetesFriendlyPicks({ items, themeColor, parkId }: Props) {
             className="flex-shrink-0 w-52 rounded-xl bg-white border border-stone-200 shadow-sm p-3"
           >
             <div className="flex items-center gap-2 mb-2">
-              <GradeBadge grade={grade} size="sm" themeColor={themeColor} />
+              <GradeBadge grade={grade} size="sm" />
               <span className="text-sm font-semibold text-stone-900 truncate">{item.name}</span>
             </div>
             <div className="flex items-center justify-between text-xs text-stone-600">

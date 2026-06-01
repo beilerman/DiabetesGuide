@@ -12,7 +12,7 @@
  * 4. Parse descriptions to infer menu items
  */
 
-import puppeteer from 'puppeteer'
+import puppeteer, { type Page, type Browser } from 'puppeteer'
 import { writeFileSync, mkdirSync, existsSync } from 'fs'
 import { dirname, resolve } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
@@ -369,7 +369,7 @@ interface AlgoliaRestaurant {
 /**
  * Intercept Algolia API credentials from the initial page load
  */
-async function getAlgoliaCredentials(browser: puppeteer.Browser): Promise<{
+async function getAlgoliaCredentials(browser: Browser): Promise<{
   appId: string
   apiKey: string
   indexName: string
@@ -422,6 +422,13 @@ async function fetchAllRestaurants(creds: {
   indexName: string
   filters: string
 }): Promise<AlgoliaRestaurant[]> {
+  // appId is intercepted from an untrusted third-party page and interpolated
+  // into the request hostname — validate its shape before trusting it as a
+  // fetch target (defends against a poisoned/MITM'd page steering the request).
+  if (!/^[A-Z0-9]{4,32}$/i.test(creds.appId)) {
+    throw new Error(`Refusing to query Algolia: implausible appId "${creds.appId}"`)
+  }
+
   const url = `https://${creds.appId}-dsn.algolia.net/1/indexes/*/queries?x-algolia-application-id=${creds.appId}&x-algolia-api-key=${creds.apiKey}`
 
   const body = {
@@ -440,9 +447,19 @@ async function fetchAllRestaurants(creds: {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
+    signal: AbortSignal.timeout(30000),
   })
 
-  const json = await resp.json() as any
+  // Without this check an Algolia 4xx/5xx (expired key, rate limit) is parsed
+  // as success, yields zero restaurants, and the scraper "succeeds" — silently
+  // dropping Kings Island from the weekly sync with no error.
+  if (!resp.ok) {
+    throw new Error(`Algolia query failed: ${resp.status} ${resp.statusText}`)
+  }
+
+  const json = await resp.json() as {
+    results?: { hits?: AlgoliaRestaurant[] }[]
+  }
   const hits: AlgoliaRestaurant[] = []
 
   if (json.results) {
@@ -460,7 +477,7 @@ async function fetchAllRestaurants(creds: {
  * Scrape a restaurant detail page for its full description
  */
 async function scrapeRestaurantDetail(
-  page: puppeteer.Page,
+  page: Page,
   slug: string
 ): Promise<{ description: string; headings: string[] }> {
   const url = `${BASE_URL}/dining/${slug}`
@@ -475,7 +492,13 @@ async function scrapeRestaurantDetail(
     }
   }
 
-  await delay(2000)
+  // Wait for the main content rather than a fixed 2s sleep; cap the wait so a
+  // page without <main> doesn't stall the worker.
+  try {
+    await page.waitForSelector('main', { timeout: 5000 })
+  } catch {
+    // proceed with whatever rendered
+  }
 
   const data = await page.evaluate(() => {
     const main = document.querySelector('main') || document.body
@@ -618,55 +641,65 @@ export async function scrapeKingsIsland(): Promise<ScrapeResult> {
     )
     console.log(`  Regular: ${regularRestaurants.length}, Seasonal/event: ${seasonalRestaurants.length}`)
 
-    // Step 3: Scrape each restaurant detail page
+    // Step 3: Scrape restaurant detail pages with bounded concurrency.
     console.log('\nStep 3: Scraping restaurant detail pages...')
-    const page = await browser.newPage()
-    await page.setViewport({ width: 1280, height: 800 })
-    await page.setUserAgent(
+    const USER_AGENT =
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-    )
+    const CONCURRENCY = 3
+    let cursor = 0
 
-    for (const restaurant of regularRestaurants) {
+    const worker = async (): Promise<void> => {
+      const page = await browser.newPage()
+      await page.setViewport({ width: 1280, height: 800 })
+      await page.setUserAgent(USER_AGENT)
       try {
-        console.log(`  ${restaurant.name}...`)
-        await delay(2000) // Rate limit
+        for (;;) {
+          const idx = cursor++
+          if (idx >= regularRestaurants.length) break
+          const restaurant = regularRestaurants[idx]
+          try {
+            console.log(`  ${restaurant.name}...`)
+            const detail = await scrapeRestaurantDetail(page, restaurant.url)
+            const items = buildMenuItems(restaurant, detail.description)
 
-        const detail = await scrapeRestaurantDetail(page, restaurant.url)
-        const items = buildMenuItems(restaurant, detail.description)
+            if (items.length > 0) {
+              const landName = restaurant.parkLocation !== 'Kings Island'
+                ? restaurant.parkLocation
+                : undefined
 
-        if (items.length > 0) {
-          // Determine area/land from parkLocation
-          const landName = restaurant.parkLocation !== 'Kings Island'
-            ? restaurant.parkLocation
-            : undefined
+              let cuisineType: string | undefined
+              if (restaurant.foodTypes.includes('Meals')) {
+                cuisineType = 'Quick Service'
+              } else if (restaurant.foodTypes.includes('Snacks')) {
+                cuisineType = 'Snack Stand'
+              }
 
-          // Infer cuisine type from food types and description
-          let cuisineType: string | undefined
-          if (restaurant.foodTypes.includes('Meals')) {
-            cuisineType = 'Quick Service'
-          } else if (restaurant.foodTypes.includes('Snacks')) {
-            cuisineType = 'Snack Stand'
+              result.restaurants.push({
+                source: 'official',
+                parkName: PARK_NAME,
+                restaurantName: restaurant.displayName || restaurant.name,
+                landName,
+                cuisineType,
+                items,
+                scrapedAt: new Date(),
+              })
+              console.log(`    ${restaurant.name}: ${items.length} items`)
+            } else {
+              console.log(`    ${restaurant.name}: No items found`)
+            }
+          } catch (err) {
+            const msg = `Error scraping ${restaurant.name}: ${err}`
+            console.error(`    ${msg}`)
+            result.errors.push(msg)
           }
-
-          result.restaurants.push({
-            source: 'official',
-            parkName: PARK_NAME,
-            restaurantName: restaurant.displayName || restaurant.name,
-            landName,
-            cuisineType,
-            items,
-            scrapedAt: new Date(),
-          })
-          console.log(`    ${items.length} items`)
-        } else {
-          console.log(`    No items found`)
+          await delay(300) // small politeness jitter between pages
         }
-      } catch (err) {
-        const msg = `Error scraping ${restaurant.name}: ${err}`
-        console.error(`    ${msg}`)
-        result.errors.push(msg)
+      } finally {
+        await page.close()
       }
     }
+
+    await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()))
 
     // Also add seasonal restaurants with known menus
     for (const restaurant of seasonalRestaurants) {
@@ -688,8 +721,6 @@ export async function scrapeKingsIsland(): Promise<ScrapeResult> {
         })
       }
     }
-
-    await page.close()
   } finally {
     await browser.close()
   }
@@ -726,6 +757,16 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
         const categories = [...new Set(r.items.map(i => i.category || 'unknown'))]
         console.log(`  ${r.restaurantName.padEnd(45)} ${String(r.items.length).padStart(3)} items  [${categories.join(', ')}]`)
       })
+
+      // A clean run that returned nothing means the scraper is broken (selector
+      // rot / expired Algolia creds) — fail loudly instead of silently.
+      if (totalItems === 0) {
+        console.error('FAIL: Kings Island scraped 0 items — treating as scraper failure.')
+        process.exit(1)
+      }
     })
-    .catch(console.error)
+    .catch(err => {
+      console.error(err)
+      process.exit(1)
+    })
 }

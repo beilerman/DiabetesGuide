@@ -121,7 +121,7 @@ export default function ParkDetail() {
 
       {/* Diabetes-Friendly Picks carousel */}
       {items && parkId && (
-        <DiabetesFriendlyPicks items={items} themeColor={theme.primary} parkId={parkId} />
+        <DiabetesFriendlyPicks items={items} parkId={parkId} />
       )}
 
       {/* Filter bar */}

@@ -10,6 +10,7 @@ import { readFileSync, readdirSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import type { ScrapeResult } from './scrapers/types.js'
+import { isSafePhotoUrl } from './scrapers/utils.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -189,20 +190,13 @@ async function fetchDbItems(): Promise<DbMenuItem[]> {
       restaurant: Array.isArray(row.restaurant) ? row.restaurant[0] : row.restaurant
     })).filter((row: any) => row.restaurant?.park)
 
-    allRows = allRows.concat(flattened)
+    allRows.push(...flattened)
     if (batch.length < batchSize) break
     from += batchSize
   }
 
   console.log(`Fetched ${allRows.length} menu items`)
   return allRows
-}
-
-interface MatchResult {
-  dbItem: DbMenuItem
-  scrapedItem: ScrapedItem
-  restaurantScore: number
-  itemScore: number
 }
 
 async function enrichFromAllears() {
@@ -302,9 +296,11 @@ async function enrichFromAllears() {
         update.description = scrapedItem.description
       }
 
-      // Update photo_url if missing and scraped data has it
+      // Update photo_url if missing and scraped data has a SAFE (https,
+      // allowlisted-host) URL — it renders as an <img src> in the app.
       if (!bestMatch.photo_url && scrapedItem.photoUrl) {
-        update.photo_url = scrapedItem.photoUrl
+        const safeUrl = isSafePhotoUrl(scrapedItem.photoUrl)
+        if (safeUrl) update.photo_url = safeUrl
       }
 
       if (Object.keys(update).length === 0) {
@@ -340,4 +336,4 @@ async function enrichFromAllears() {
   console.log(`No match found: ${noMatches}`)
 }
 
-enrichFromAllears().catch(console.error)
+enrichFromAllears().catch((err) => { console.error(err); process.exit(1) })

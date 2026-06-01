@@ -1,7 +1,7 @@
 import { type FormEvent, type MouseEvent, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCatalogPreview, useParks, useMenuItemCounts, useTotalRestaurantCount } from '../lib/queries'
-import { getThemeForResort, DEFAULT_THEME } from '../lib/park-themes'
+import { DEFAULT_THEME } from '../lib/park-themes'
 import { buildBrowsePresetUrl } from '../lib/browse-url'
 import { useFavorites } from '../hooks/useFavorites'
 import {
@@ -401,7 +401,10 @@ function ResortDestinationSection({
   group: HomeResortGroup
   countsReady: boolean
 }) {
-  const theme = group.id === 'other' ? DEFAULT_THEME : getThemeForResort(group.id)
+  // Home is a brand surface: use the teal brand accent for all resorts so the
+  // landing screen reads as one product. Per-resort theming lives on the resort
+  // and park detail pages, where a distinct identity is expected.
+  const theme = DEFAULT_THEME
 
   return (
     <section aria-labelledby={`home-resort-${group.id}`} className="border-t border-stone-200 pt-5">

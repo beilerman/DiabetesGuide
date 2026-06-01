@@ -1,54 +1,94 @@
-import { writeFileSync } from 'fs'
+import { writeFileSync, existsSync, readdirSync, readFileSync, statSync } from 'fs'
 import type { AuditFinding, AuditPassResult } from './types.js'
 import { THRESHOLDS } from './thresholds.js'
 import { createSupabaseClient, rootPath } from './utils.js'
 
 // ---- Scraper Health ----
+//
+// Health is DERIVED from the actual scraped output in data/scraped/, not a
+// hand-edited status table. A scraper that runs clean but returns zero items
+// (selector rot / expired creds) is the silent-failure mode we care about, so
+// we flag a recent-but-empty file as HIGH and a missing/stale file as MEDIUM.
 
-interface ScraperStatus {
+interface ExpectedScraper {
   name: string
-  status: 'operational' | 'blocked_cloudflare' | 'degraded' | 'unknown'
-  note: string
+  filePrefix: string
+  minItems: number
 }
 
-const KNOWN_SCRAPERS: ScraperStatus[] = [
-  {
-    name: 'AllEars (allears.net)',
-    status: 'blocked_cloudflare',
-    note: 'Blocked by Cloudflare bot detection since late 2025. DFB scraper used as fallback for photos.',
-  },
-  {
-    name: 'Universal (universalorlando.com)',
-    status: 'operational',
-    note: 'Official JSON endpoints (K2 + GDS CMS). Covers USF, IOA, Volcano Bay, CityWalk, Epic Universe.',
-  },
-  {
-    name: 'Dollywood (dollywood.com)',
-    status: 'operational',
-    note: 'Puppeteer scraper. 32 restaurants across 10 lands. No prices published.',
-  },
-  {
-    name: 'Kings Island (sixflags.com/kingsisland)',
-    status: 'operational',
-    note: 'Algolia API interception via Next.js. KNOWN_MENUS dictionary for 38 restaurants.',
-  },
+const EXPECTED_SCRAPERS: ExpectedScraper[] = [
+  { name: 'Universal (universalorlando.com)', filePrefix: 'universal', minItems: 500 },
+  { name: 'Dollywood (dollywood.com)', filePrefix: 'dollywood', minItems: 100 },
+  { name: 'Kings Island (sixflags.com/kingsisland)', filePrefix: 'kings-island', minItems: 50 },
 ]
+
+const SCRAPE_FRESH_DAYS = 8 // weekly sync runs every 7 days
+
+function latestScrapeFor(prefix: string): { path: string; ageDays: number } | null {
+  const dir = rootPath('data', 'scraped')
+  if (!existsSync(dir)) return null
+  const matches = readdirSync(dir)
+    .filter(f => f.startsWith(`${prefix}-`) && f.endsWith('.json'))
+    .map(f => {
+      const p = rootPath('data', 'scraped', f)
+      return { path: p, mtime: statSync(p).mtimeMs }
+    })
+    .sort((a, b) => b.mtime - a.mtime)
+  if (matches.length === 0) return null
+  return { path: matches[0].path, ageDays: (Date.now() - matches[0].mtime) / 86_400_000 }
+}
+
+function countItems(filePath: string): number {
+  try {
+    const data = JSON.parse(readFileSync(filePath, 'utf-8')) as {
+      restaurants?: { items?: unknown[] }[]
+    }
+    return (data.restaurants ?? []).reduce((sum, r) => sum + (r.items?.length ?? 0), 0)
+  } catch {
+    return -1
+  }
+}
 
 function checkScraperHealth(): AuditFinding[] {
   const findings: AuditFinding[] = []
 
-  for (const scraper of KNOWN_SCRAPERS) {
-    if (scraper.status !== 'operational') {
+  for (const scraper of EXPECTED_SCRAPERS) {
+    const latest = latestScrapeFor(scraper.filePrefix)
+
+    if (!latest) {
       findings.push({
-        item: '',
-        restaurant: '',
-        park: scraper.name,
-        checkName: 'scraper_health',
-        severity: 'LOW',
-        message: `Scraper status: ${scraper.status}. ${scraper.note}`,
-        currentValue: scraper.status,
-        suggestedValue: 'operational',
-        autoFixable: false,
+        item: '', restaurant: '', park: scraper.name,
+        checkName: 'scraper_health', severity: 'MEDIUM',
+        message: `No scrape output found for ${scraper.name}. Scraper may not be running.`,
+        currentValue: 'missing', suggestedValue: `>= ${scraper.minItems} items`, autoFixable: false,
+      })
+      continue
+    }
+
+    const items = countItems(latest.path)
+
+    if (items <= 0) {
+      findings.push({
+        item: '', restaurant: '', park: scraper.name,
+        checkName: 'scraper_health', severity: 'HIGH',
+        message: `Latest ${scraper.name} scrape produced ${items < 0 ? 'an unreadable file' : '0 items'} — likely broken (selector rot / expired credentials).`,
+        currentValue: String(items), suggestedValue: `>= ${scraper.minItems} items`, autoFixable: false,
+      })
+    } else if (items < scraper.minItems) {
+      findings.push({
+        item: '', restaurant: '', park: scraper.name,
+        checkName: 'scraper_health', severity: 'MEDIUM',
+        message: `Latest ${scraper.name} scrape produced only ${items} items (expected >= ${scraper.minItems}) — possible partial failure.`,
+        currentValue: String(items), suggestedValue: `>= ${scraper.minItems} items`, autoFixable: false,
+      })
+    }
+
+    if (latest.ageDays > SCRAPE_FRESH_DAYS) {
+      findings.push({
+        item: '', restaurant: '', park: scraper.name,
+        checkName: 'scraper_health', severity: 'MEDIUM',
+        message: `Latest ${scraper.name} scrape is ${latest.ageDays.toFixed(0)} days old (> ${SCRAPE_FRESH_DAYS}). Weekly sync may be failing.`,
+        currentValue: `${latest.ageDays.toFixed(0)}d`, suggestedValue: `<= ${SCRAPE_FRESH_DAYS}d`, autoFixable: false,
       })
     }
   }
@@ -148,7 +188,7 @@ async function main() {
     findings: [...scraperFindings, ...staleFindings],
     autoFixes: [],
     stats: {
-      scraperChecks: KNOWN_SCRAPERS.length,
+      scraperChecks: EXPECTED_SCRAPERS.length,
       scraperIssues: scraperFindings.length,
       staleParks: staleFindings.length,
     },

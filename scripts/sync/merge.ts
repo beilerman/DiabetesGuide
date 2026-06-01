@@ -74,72 +74,88 @@ function fuzzyMatch(a: string, b: string): number {
   return Math.floor((intersection.length / union.size) * 80)
 }
 
-/**
- * Find best matching restaurant in DB
- */
-async function findMatchingRestaurant(
-  restaurantName: string,
-  parkName: string
-): Promise<{ id: string; name: string } | null> {
-  // First try exact park name match
-  const { data: parks } = await supabase
-    .from('parks')
-    .select('id, name')
-    .ilike('name', `%${parkName}%`)
-
-  if (!parks || parks.length === 0) return null
-
-  const parkIds = parks.map(p => p.id)
-
-  // Get all restaurants for these parks
-  const { data: restaurants } = await supabase
-    .from('restaurants')
-    .select('id, name')
-    .in('park_id', parkIds)
-
-  if (!restaurants || restaurants.length === 0) return null
-
-  // Find best fuzzy match
-  let bestMatch: { id: string; name: string } | null = null
-  let bestScore = 0
-
-  for (const restaurant of restaurants) {
-    const score = fuzzyMatch(restaurantName, restaurant.name)
-    if (score > bestScore && score >= 70) {
-      bestScore = score
-      bestMatch = restaurant
-    }
+/** Paginated full-table fetch (avoids the default 1000-row PostgREST cap). */
+async function fetchAll<T>(table: string, columns: string): Promise<T[]> {
+  const all: T[] = []
+  const page = 1000
+  let from = 0
+  for (;;) {
+    const { data, error } = await supabase.from(table).select(columns).range(from, from + page - 1)
+    if (error) throw error
+    if (!data || data.length === 0) break
+    all.push(...(data as T[]))
+    if (data.length < page) break
+    from += page
   }
-
-  return bestMatch
+  return all
 }
 
 /**
- * Find best matching menu item in DB
+ * In-memory index of the whole DB, loaded ONCE per merge. Replaces the prior
+ * N+1 storm — 3 Supabase round-trips per scraped item (~10k round-trips/run) —
+ * with three paginated reads. Restaurant/item matching then happens in memory.
  */
-async function findMatchingMenuItem(
-  itemName: string,
-  restaurantId: string
-): Promise<{ id: string; name: string } | null> {
-  const { data: items } = await supabase
-    .from('menu_items')
-    .select('id, name')
-    .eq('restaurant_id', restaurantId)
+class DbIndex {
+  private parks: { id: string; name: string; norm: string }[] = []
+  private restaurantsByPark = new Map<string, { id: string; name: string }[]>()
+  private itemsByRestaurant = new Map<string, { id: string; name: string }[]>()
 
-  if (!items || items.length === 0) return null
+  static async load(): Promise<DbIndex> {
+    const idx = new DbIndex()
+    const parks = await fetchAll<{ id: string; name: string }>('parks', 'id, name')
+    idx.parks = parks.map(p => ({ ...p, norm: normalizeName(p.name) }))
 
-  let bestMatch: { id: string; name: string } | null = null
-  let bestScore = 0
-
-  for (const item of items) {
-    const score = fuzzyMatch(itemName, item.name)
-    if (score > bestScore && score >= 75) {
-      bestScore = score
-      bestMatch = item
+    const rests = await fetchAll<{ id: string; park_id: string; name: string }>(
+      'restaurants', 'id, park_id, name',
+    )
+    for (const r of rests) {
+      const arr = idx.restaurantsByPark.get(r.park_id) ?? []
+      arr.push({ id: r.id, name: r.name })
+      idx.restaurantsByPark.set(r.park_id, arr)
     }
+
+    const items = await fetchAll<{ id: string; restaurant_id: string; name: string }>(
+      'menu_items', 'id, restaurant_id, name',
+    )
+    for (const it of items) {
+      const arr = idx.itemsByRestaurant.get(it.restaurant_id) ?? []
+      arr.push({ id: it.id, name: it.name })
+      idx.itemsByRestaurant.set(it.restaurant_id, arr)
+    }
+
+    console.log(`  index: ${parks.length} parks, ${rests.length} restaurants, ${items.length} items`)
+    return idx
   }
 
-  return bestMatch
+  findMatchingRestaurant(restaurantName: string, parkName: string): { id: string; name: string } | null {
+    const np = normalizeName(parkName)
+    let best: { id: string; name: string } | null = null
+    let bestScore = 0
+    for (const park of this.parks) {
+      if (!(park.norm.includes(np) || np.includes(park.norm))) continue
+      for (const r of this.restaurantsByPark.get(park.id) ?? []) {
+        const score = fuzzyMatch(restaurantName, r.name)
+        if (score > bestScore && score >= 70) {
+          bestScore = score
+          best = r
+        }
+      }
+    }
+    return best
+  }
+
+  findMatchingMenuItem(itemName: string, restaurantId: string): { id: string; name: string } | null {
+    let best: { id: string; name: string } | null = null
+    let bestScore = 0
+    for (const item of this.itemsByRestaurant.get(restaurantId) ?? []) {
+      const score = fuzzyMatch(itemName, item.name)
+      if (score > bestScore && score >= 75) {
+        bestScore = score
+        best = item
+      }
+    }
+    return best
+  }
 }
 
 /**
@@ -153,6 +169,9 @@ export async function mergeScrapedData(scrapeResults: ScrapeResult[]): Promise<M
     potentiallyRemoved: [],
     conflicts: [],
   }
+
+  console.log('Loading DB index for matching...')
+  const dbIndex = await DbIndex.load()
 
   // Group items by normalized restaurant+item name
   const itemMap = new Map<string, {
@@ -185,20 +204,21 @@ export async function mergeScrapedData(scrapeResults: ScrapeResult[]): Promise<M
   }
 
   // Process each unique item
-  for (const [key, { items }] of itemMap) {
+  for (const [, { items }] of itemMap) {
     // Sort by source priority (highest first)
     items.sort((a, b) => (SOURCE_PRIORITY[b.source] || 0) - (SOURCE_PRIORITY[a.source] || 0))
 
     const primary = items[0]
 
-    // Check for price conflicts (>15% difference)
-    const prices = items.filter(i => i.price).map(i => ({ source: i.source, price: i.price! }))
+    // Check for price conflicts (>15% difference). Use a nullish check so a
+    // legitimately-free ($0) item isn't dropped by the falsy filter.
+    const prices = items.filter(i => i.price != null).map(i => ({ source: i.source, price: i.price! }))
     let priceConflict: MergedItem['priceConflict'] | undefined
 
     if (prices.length >= 2) {
       const maxPrice = Math.max(...prices.map(p => p.price))
       const minPrice = Math.min(...prices.map(p => p.price))
-      if ((maxPrice - minPrice) / minPrice > 0.15) {
+      if (minPrice > 0 && (maxPrice - minPrice) / minPrice > 0.15) {
         priceConflict = prices
         result.conflicts.push({
           item: `${primary.restaurantName} - ${primary.itemName}`,
@@ -207,12 +227,12 @@ export async function mergeScrapedData(scrapeResults: ScrapeResult[]): Promise<M
       }
     }
 
-    // Check if item exists in DB
-    const matchingRestaurant = await findMatchingRestaurant(primary.restaurantName, primary.parkName)
+    // Check if item exists in DB (in-memory, no round-trip)
+    const matchingRestaurant = dbIndex.findMatchingRestaurant(primary.restaurantName, primary.parkName)
     let existingItem: { id: string; name: string } | null = null
 
     if (matchingRestaurant) {
-      existingItem = await findMatchingMenuItem(primary.itemName, matchingRestaurant.id)
+      existingItem = dbIndex.findMatchingMenuItem(primary.itemName, matchingRestaurant.id)
     }
 
     const merged: MergedItem = {
@@ -294,5 +314,8 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
       console.log(`Conflicts: ${result.conflicts.length}`)
       console.log(`Output: ${outputPath}`)
     })
-    .catch(console.error)
+    .catch(err => {
+      console.error(err)
+      process.exit(1)
+    })
 }

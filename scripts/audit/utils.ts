@@ -70,7 +70,7 @@ export function createSupabaseClient() {
  * Fetches 500 items per page.
  */
 export async function fetchAllItems(
-  supabase: ReturnType<typeof createClient>
+  supabase: ReturnType<typeof createSupabaseClient>
 ): Promise<Item[]> {
   const PAGE_SIZE = 500
   const all: Item[] = []

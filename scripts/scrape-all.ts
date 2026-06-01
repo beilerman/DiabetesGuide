@@ -1,15 +1,15 @@
 /**
  * scrape-all.ts — Run all working scrapers, clean old data, report results.
  *
- * Runs Universal, Dollywood, Kings Island in parallel (no browser needed for Universal).
- * DFB requires Puppeteer and runs sequentially after the parallel batch.
+ * Runs Universal, Dollywood, Kings Island, and (optionally) DFB sequentially,
+ * each as its own tsx subprocess with a 5-minute timeout.
  * AllEars is skipped (blocked by Cloudflare).
  *
  * Usage:
  *   npx tsx scripts/scrape-all.ts [--skip-dfb] [--clean-days=30]
  */
 
-import { execSync } from 'child_process'
+import { execFileSync } from 'child_process'
 import { readdirSync, unlinkSync, existsSync, mkdirSync, statSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -22,9 +22,13 @@ const skipDfb = args.includes('--skip-dfb')
 const cleanDaysArg = args.find(a => a.startsWith('--clean-days='))
 const cleanDays = cleanDaysArg ? parseInt(cleanDaysArg.split('=')[1]) : 30
 
+// npx resolves to npx.cmd on Windows; execFileSync runs without a shell so we
+// must name the platform-specific binary explicitly (and avoid shell injection).
+const NPX = process.platform === 'win32' ? 'npx.cmd' : 'npx'
+
 interface ScrapeRun {
   name: string
-  command: string
+  script: string
   success: boolean
   durationMs: number
   error?: string
@@ -48,15 +52,16 @@ function cleanOldScrapedFiles(days: number): number {
   return removed
 }
 
-function runScraper(name: string, command: string): ScrapeRun {
+function runScraper(name: string, script: string): ScrapeRun {
   const t0 = Date.now()
   try {
-    execSync(command, { stdio: 'inherit', cwd: resolve(__dirname, '..'), timeout: 300_000 })
-    return { name, command, success: true, durationMs: Date.now() - t0 }
+    // Array args, no shell — scraper paths can never be interpreted by a shell.
+    execFileSync(NPX, ['tsx', script], { stdio: 'inherit', cwd: resolve(__dirname, '..'), timeout: 300_000 })
+    return { name, script, success: true, durationMs: Date.now() - t0 }
   } catch (err) {
     return {
       name,
-      command,
+      script,
       success: false,
       durationMs: Date.now() - t0,
       error: err instanceof Error ? err.message : String(err),
@@ -79,11 +84,11 @@ async function main() {
   }
 
   // Define scrapers in order of reliability
-  const scrapers: { name: string; command: string; skip?: boolean }[] = [
-    { name: 'Universal Orlando', command: 'npx tsx scripts/scrapers/universal.ts' },
-    { name: 'Dollywood', command: 'npx tsx scripts/scrapers/dollywood.ts' },
-    { name: 'Kings Island', command: 'npx tsx scripts/scrapers/kings-island.ts' },
-    { name: 'Disney Food Blog', command: 'npx tsx scripts/scrapers/dfb-puppeteer.ts', skip: skipDfb },
+  const scrapers: { name: string; script: string; skip?: boolean }[] = [
+    { name: 'Universal Orlando', script: 'scripts/scrapers/universal.ts' },
+    { name: 'Dollywood', script: 'scripts/scrapers/dollywood.ts' },
+    { name: 'Kings Island', script: 'scripts/scrapers/kings-island.ts' },
+    { name: 'Disney Food Blog', script: 'scripts/scrapers/dfb-puppeteer.ts', skip: skipDfb },
     // AllEars: blocked by Cloudflare — skipped
   ]
 
@@ -96,7 +101,7 @@ async function main() {
     }
 
     console.log(`[RUN] ${scraper.name}...`)
-    const result = runScraper(scraper.name, scraper.command)
+    const result = runScraper(scraper.name, scraper.script)
     results.push(result)
 
     if (result.success) {
