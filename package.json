@@ -22,7 +22,8 @@
     "sync:merge": "tsx scripts/sync/merge.ts",
     "sync:estimate": "tsx scripts/sync/estimate-nutrition.ts",
     "sync:report": "tsx scripts/sync/generate-diff.ts",
-    "sync:approve": "tsx scripts/approve.ts --all",
+    "sync:approve": "tsx scripts/approve.ts",
+    "sync:approve:all": "tsx scripts/approve.ts --all",
     "scrape:all": "tsx scripts/scrape-all.ts",
     "sync:full": "npm run scrape:all && npm run sync:merge && npm run sync:estimate && npm run sync:report",
     "enrich:allears": "tsx scripts/enrich-from-allears.ts",
@@ -38,11 +39,17 @@
     "audit:report": "tsx scripts/audit/report.ts",
     "audit:graduation": "tsx scripts/audit/graduation.ts",
     "audit:migrate": "tsx scripts/audit/migrate-constraints.ts",
+    "audit:quality": "tsx scripts/audit/quality.ts",
+    "enrich:nutritionix": "tsx scripts/enrich-nutritionix.ts",
+    "enrich:edamam": "tsx scripts/enrich-edamam.ts",
+    "import:researched": "tsx scripts/import-researched-nutrition.ts",
     "fix:public-qa-data": "tsx scripts/fix-public-qa-data.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "test:a11y": "playwright test e2e/accessibility.spec.ts"
+    "test:a11y": "playwright test e2e/accessibility.spec.ts",
+    "ai:candidates": "tsx scripts/ai-nutrition-candidates.ts",
+    "import:ai": "tsx scripts/import-ai-nutrition.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",

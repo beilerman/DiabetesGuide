@@ -1,8 +1,4 @@
 import { createClient } from '@supabase/supabase-js'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const url = process.env.SUPABASE_URL
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -87,7 +83,7 @@ async function enrich() {
       .range(from, from + batchSize - 1)
     if (batchErr) { console.error('Failed to fetch:', batchErr); process.exit(1) }
     if (!batch?.length) break
-    allRows = allRows.concat(batch)
+    allRows.push(...batch)
     if (batch.length < batchSize) break
     from += batchSize
   }
@@ -214,4 +210,4 @@ async function enrich() {
   )
 }
 
-enrich().catch(console.error)
+enrich().catch((err) => { console.error(err); process.exit(1) })

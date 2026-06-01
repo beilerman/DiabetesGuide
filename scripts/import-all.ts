@@ -201,4 +201,4 @@ async function importAll() {
   console.log(`Menu items: ${totalNewItems} new, ${totalSkippedItems} skipped (duplicate)`)
 }
 
-importAll().catch(console.error)
+importAll().catch((err) => { console.error(err); process.exit(1) })

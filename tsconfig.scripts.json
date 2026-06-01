@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "types": ["node"],
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": [
+    "scripts/approve.ts",
+    "scripts/scrape-all.ts",
+    "scripts/keepalive.ts",
+    "scripts/estimate-nutrition-ai.ts",
+    "scripts/enrich-from-dfb.ts",
+    "scripts/enrich-from-allears.ts",
+    "scripts/enrich-nutrition.ts",
+    "scripts/enrich-nutritionix.ts",
+    "scripts/enrich-edamam.ts",
+    "scripts/import-researched-nutrition.ts",
+    "scripts/import-ai-nutrition.ts",
+    "scripts/ai-nutrition-candidates.ts",
+    "scripts/sync",
+    "scripts/scrapers",
+    "scripts/audit"
+  ],
+  "exclude": ["scripts/audit/__tests__", "scripts/scrapers/allears.ts"]
+}

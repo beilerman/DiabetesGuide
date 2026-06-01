@@ -86,4 +86,4 @@ async function enrich() {
   console.log(`Inferred ${toInsert.length} allergen records for ${itemsWithAllergens.size} items`)
 }
 
-enrich().catch(console.error)
+enrich().catch((err) => { console.error(err); process.exit(1) })

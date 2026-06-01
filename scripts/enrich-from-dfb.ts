@@ -10,6 +10,7 @@ import { readFileSync, readdirSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import type { ScrapeResult } from './scrapers/types.js'
+import { isSafePhotoUrl } from './scrapers/utils.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -211,7 +212,7 @@ async function fetchDbItems(): Promise<DbMenuItem[]> {
       restaurant: Array.isArray(row.restaurant) ? row.restaurant[0] : row.restaurant
     })).filter((row: any) => row.restaurant?.park)
 
-    allRows = allRows.concat(flattened)
+    allRows.push(...flattened)
     if (batch.length < batchSize) break
     from += batchSize
   }
@@ -274,11 +275,15 @@ async function enrichFromDFB() {
       console.log(`  Top candidates: ${topCandidates.map(c => `${c.name} (${c.score.toFixed(2)})`).join(', ') || 'none'}`)
     }
 
-    if (bestMatch) {
+    // Only write photo URLs that are https on an allowlisted host — a scraped
+    // URL is rendered as an <img src> in the app.
+    const safeUrl = bestMatch ? isSafePhotoUrl(photo.photoUrl) : undefined
+
+    if (bestMatch && safeUrl) {
       // Update the item with the photo URL
       const { error } = await supabase
         .from('menu_items')
-        .update({ photo_url: photo.photoUrl })
+        .update({ photo_url: safeUrl })
         .eq('id', bestMatch.id)
 
       if (error) {
@@ -301,4 +306,4 @@ async function enrichFromDFB() {
   console.log(`No match found: ${noMatch}`)
 }
 
-enrichFromDFB().catch(console.error)
+enrichFromDFB().catch((err) => { console.error(err); process.exit(1) })
