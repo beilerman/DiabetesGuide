@@ -152,7 +152,7 @@ export default function Browse() {
         )}
 
         {/* Park selector - horizontal pill buttons */}
-        <div className="flex items-center gap-2">
+        <div id="browse-destination" tabIndex={-1} className="flex items-center gap-2 scroll-mt-20">
           <span className="text-sm font-medium text-gray-600 whitespace-nowrap">Destination:</span>
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
             <button
@@ -217,7 +217,21 @@ export default function Browse() {
             <BrowseSummaryMain summary={browseSummary} />
             {browseSummary.detail && <span className="text-gray-500"> {browseSummary.detail}</span>}
             {browseSummary.note && (
-              <span className="mt-1 block text-xs font-medium text-teal-700">{browseSummary.note}</span>
+              !parkId ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const target = document.getElementById('browse-destination')
+                    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    target?.focus({ preventScroll: true })
+                  }}
+                  className="mt-1 block text-left text-xs font-semibold text-teal-700 underline decoration-dotted underline-offset-2 hover:text-teal-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+                >
+                  {browseSummary.note}
+                </button>
+              ) : (
+                <span className="mt-1 block text-xs font-medium text-teal-700">{browseSummary.note}</span>
+              )
             )}
           </div>
         )}

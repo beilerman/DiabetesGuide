@@ -97,6 +97,7 @@ export default function MenuItemDetail() {
     alcoholGrams: alcoholGrams ?? 0,
     category: displayCategory,
     isFried: item.is_fried,
+    confidenceScore: nutrition?.confidence_score,
   })
   const favorite = isFavorite(item.id)
   const availabilityCount = item.availability_count ?? 1
@@ -257,6 +258,12 @@ export default function MenuItemDetail() {
                   <Metric label="Cholesterol" value={formatMaybeNumber(nutrition.cholesterol, 'mg')} />
                 </div>
 
+                {netCarbs != null && netCarbs !== carbs && (
+                  <p className="mt-2 text-xs text-stone-500">
+                    Net carbs = carbs − fiber. Most people dose on total carbs unless their clinician says otherwise.
+                  </p>
+                )}
+
                 {alcoholGrams != null && alcoholGrams > 0 && (
                   <div className="mt-4 flex flex-wrap gap-2">
                     <NutritionBadge label="Alcohol" value={alcoholGrams} unit="g" colorFn={alcoholColor} />
@@ -348,10 +355,11 @@ function TrustPill({ trust }: { trust: NutritionTrustSummary }) {
       ? 'border-teal-200 bg-teal-50 text-teal-800'
       : 'border-amber-200 bg-amber-50 text-amber-800'
 
+  // The numeric confidence score is a provenance code, not a calibrated
+  // probability — it stays in the Data Source panel below, not in this pill.
   return (
     <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${className}`}>
       {trust.label}
-      {trust.confidenceLabel ? ` - ${trust.confidenceLabel}` : ''}
     </span>
   )
 }

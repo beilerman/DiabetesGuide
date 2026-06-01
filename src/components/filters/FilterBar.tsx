@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Filters, MenuItem } from '../../lib/types'
 import type { Grade } from '../../lib/grade'
 import { GRADE_CONFIG } from '../../lib/grade'
@@ -17,6 +18,9 @@ const ALLERGEN_TOGGLES = [
 ]
 
 export function FilterBar({ filters, onChange }: Props) {
+  // On mobile the full filter stack pushes all results below the fold, so the
+  // advanced filters collapse behind a toggle. They are always shown on md+.
+  const [expanded, setExpanded] = useState(false)
 
   const set = <K extends keyof Filters>(key: K, value: Filters[K]) =>
     onChange({ ...filters, [key]: value })
@@ -64,12 +68,12 @@ export function FilterBar({ filters, onChange }: Props) {
     set('allergenFree', next)
   }
 
-  const categories: Array<{ value: MenuItem['category']; label: string; icon: string }> = [
-    { value: 'entree', label: 'Entree', icon: '\uD83C\uDF7D\uFE0F' },
-    { value: 'snack', label: 'Snack', icon: '\uD83E\uDD68' },
-    { value: 'beverage', label: 'Beverage', icon: '\uD83E\uDD64' },
-    { value: 'dessert', label: 'Dessert', icon: '\uD83C\uDF70' },
-    { value: 'side', label: 'Side', icon: '\uD83E\uDD57' },
+  const categories: Array<{ value: MenuItem['category']; label: string }> = [
+    { value: 'entree', label: 'Entree' },
+    { value: 'snack', label: 'Snack' },
+    { value: 'beverage', label: 'Beverage' },
+    { value: 'dessert', label: 'Dessert' },
+    { value: 'side', label: 'Side' },
   ]
 
   return (
@@ -104,9 +108,9 @@ export function FilterBar({ filters, onChange }: Props) {
                 <button
                   key={grade}
                   onClick={() => toggleGrade(grade)}
-                  className={`w-8 h-8 rounded-full text-xs font-bold transition-all duration-200 ${
+                  className={`w-10 h-10 rounded-full text-sm font-bold transition-all duration-200 ${
                     active
-                      ? 'text-white shadow-md scale-110'
+                      ? 'text-white shadow-md scale-105'
                       : 'bg-white border border-stone-200 text-stone-500 hover:border-stone-300'
                   }`}
                   style={active ? { backgroundColor: colors.bg } : undefined}
@@ -120,6 +124,29 @@ export function FilterBar({ filters, onChange }: Props) {
           </div>
         </div>
 
+        {/* Mobile-only toggle for the advanced filter stack */}
+        <button
+          type="button"
+          onClick={() => setExpanded(v => !v)}
+          aria-expanded={expanded}
+          aria-controls="advanced-filters"
+          className="md:hidden flex w-full items-center justify-between rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-medium text-stone-700"
+        >
+          <span className="flex items-center gap-2">
+            {expanded ? 'Fewer filters' : 'More filters'}
+            {activeFilterCount > 0 && (
+              <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-teal-700 px-1 text-[10px] font-bold text-white">
+                {activeFilterCount}
+              </span>
+            )}
+          </span>
+          <svg className={`h-4 w-4 text-stone-400 transition-transform ${expanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        {/* Advanced filters: collapsible on mobile, always shown on md+ */}
+        <div id="advanced-filters" className={`${expanded ? 'block' : 'hidden'} md:block space-y-3`}>
         {/* Quick filter chips */}
         <div className="flex flex-wrap gap-2">
           <button
@@ -205,7 +232,7 @@ export function FilterBar({ filters, onChange }: Props) {
                     : 'bg-white text-stone-700 border border-stone-200 hover:border-teal-300'
                 }`}
               >
-                {cat.icon} {cat.label}
+                {cat.label}
               </button>
             ))}
           </div>
@@ -283,6 +310,7 @@ export function FilterBar({ filters, onChange }: Props) {
             </button>
           </div>
         )}
+        </div>
       </div>
     </div>
   )

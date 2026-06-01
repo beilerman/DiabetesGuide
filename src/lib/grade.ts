@@ -8,11 +8,15 @@ export interface GradeColors {
 
 export const GRADE_RUBRIC_SUMMARY = 'Grades weigh net carbs, sugar ratio, protein, fiber, calories, and alcohol.'
 
+// Background colors double as the on-white label text color, so every value
+// must clear WCAG AA 4.5:1 against white in BOTH directions (white-on-bg badge
+// letter and bg-on-white label text). The ramp is intentionally darkened from
+// the brighter 600-weights to meet contrast for the low-vision audience.
 export const GRADE_CONFIG: Record<Grade, GradeColors> = {
-  A: { bg: '#16a34a', text: '#ffffff', label: 'Diabetes-friendly' },
-  B: { bg: '#65a30d', text: '#ffffff', label: 'Good choice' },
-  C: { bg: '#ca8a04', text: '#ffffff', label: 'Plan your bolus' },
-  D: { bg: '#ea580c', text: '#ffffff', label: 'Caution — high carb impact' },
+  A: { bg: '#15803d', text: '#ffffff', label: 'Diabetes-friendly' },
+  B: { bg: '#4d7c0f', text: '#ffffff', label: 'Good choice' },
+  C: { bg: '#a16207', text: '#ffffff', label: 'Plan your bolus' },
+  D: { bg: '#c2410c', text: '#ffffff', label: 'Caution — high carb impact' },
   F: { bg: '#dc2626', text: '#ffffff', label: 'Consider alternatives' },
 }
 

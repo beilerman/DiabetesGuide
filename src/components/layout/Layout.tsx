@@ -22,12 +22,12 @@ export function Layout() {
   const compareTrayVisible = showCompareTray && compareCount > 0 && compareKey !== dismissedCompareKey
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen overflow-x-hidden bg-stone-50">
       <PageMeta />
       <SkipLinks />
       <Header />
       <OfflineBanner />
-      <main id="main-content" className={`mx-auto max-w-7xl px-4 py-6 md:pb-6 ${compareTrayVisible ? 'pb-40' : 'pb-24'}`}>
+      <main id="main-content" className={`mx-auto max-w-7xl overflow-x-hidden px-4 py-6 md:pb-6 ${compareTrayVisible ? 'pb-40' : 'pb-24'}`}>
         <Outlet />
       </main>
 

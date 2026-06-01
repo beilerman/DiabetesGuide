@@ -5,13 +5,15 @@ interface Props {
   label?: string
 }
 
+// 600-weights clear WCAG 1.4.11 (3:1) as non-text graphics against white;
+// the brighter 500-weights did not.
 const dotColors = {
-  green: 'bg-green-500',
-  amber: 'bg-amber-500',
-  rose: 'bg-rose-500',
+  green: 'bg-green-600',
+  amber: 'bg-amber-600',
+  rose: 'bg-rose-600',
 }
 
-const emptyDot = 'bg-stone-200'
+const emptyDot = 'bg-stone-300'
 
 function getLevel(value: number, max: number): number {
   if (max <= 0) return 0
@@ -51,7 +53,7 @@ export function DotMeter({ value, max, colorFn, label }: Props) {
       {Array.from({ length: 5 }, (_, i) => (
         <div
           key={i}
-          className={`w-1.5 h-1.5 rounded-full ${i < level ? filledClass : emptyDot}`}
+          className={`w-2 h-2 rounded-full ${i < level ? filledClass : emptyDot}`}
         />
       ))}
     </div>

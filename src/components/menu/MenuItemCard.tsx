@@ -1,5 +1,5 @@
-import { memo, useState, type KeyboardEvent } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { memo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import type { MenuItemWithNutrition, MealItem } from '../../lib/types'
 import { getGradeForItem } from '../../lib/grade'
 import { getDiabetesAnnotations } from '../../lib/annotations'
@@ -7,7 +7,7 @@ import { getDisplayCategory, getMenuItemDisplayName, hasUsableNutrition } from '
 import { GradeBadge } from './GradeBadge'
 import { DotMeter } from './DotMeter'
 import { AnnotationBadge } from './AnnotationBadge'
-import { getNutritionQualityWarnings } from '../../lib/nutrition-trust'
+import { getEstimateTierShort, getNutritionQualityWarnings } from '../../lib/nutrition-trust'
 
 interface Props {
   item: MenuItemWithNutrition
@@ -52,7 +52,6 @@ const categoryColors: Record<string, string> = {
 }
 
 function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, themeColor }: Props) {
-  const navigate = useNavigate()
   const [addingToMeal, setAddingToMeal] = useState(false)
   const [favoriteNotice, setFavoriteNotice] = useState<string | null>(null)
 
@@ -86,6 +85,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
     alcoholGrams: alcoholGrams ?? 0,
     category: displayCategory,
     isFried: item.is_fried,
+    confidenceScore: nd?.confidence_score,
   })
   const topAnnotation = annotations[0] ?? null
 
@@ -119,45 +119,37 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
     window.setTimeout(() => setFavoriteNotice(null), 1400)
   }
 
-  const goToDetails = () => {
-    navigate(`/item/${item.id}`)
-  }
-
-  const handleCardKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.target !== event.currentTarget) return
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      goToDetails()
-    }
-  }
-
   const borderColor = themeColor ?? '#0d9488'
 
+  // Stretched-link pattern: the title is the single real link, and its
+  // ::before pseudo-element overlays the whole card so any non-interactive
+  // area still navigates to details. Interactive children (favorite, buttons,
+  // explicit links) sit above it via `relative z-10`. This keeps whole-card
+  // click without nesting buttons/links inside a role="link" container.
   return (
     <div
-      className="rounded-2xl bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200 cursor-pointer"
+      className="relative rounded-2xl bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
       style={{ borderLeft: `3px solid ${borderColor}` }}
-      role="link"
-      tabIndex={0}
-      aria-label={`View details for ${displayName}`}
-      onClick={goToDetails}
-      onKeyDown={handleCardKeyDown}
     >
       <div className="p-4">
         {/* Top row: Grade badge + name + favorite */}
         <div className="flex items-start gap-3">
-          <GradeBadge grade={grade} size="lg" themeColor={themeColor} />
+          <GradeBadge grade={grade} size="lg" estimated={isLowConfidenceNutrition} />
 
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-base font-semibold text-stone-900 leading-tight">{displayName}</h3>
+              <h3 className="text-base font-semibold text-stone-900 leading-tight">
+                <Link
+                  to={`/item/${item.id}`}
+                  className="rounded-sm before:absolute before:inset-0 before:content-[''] focus:outline-none focus-visible:underline"
+                >
+                  {displayName}
+                </Link>
+              </h3>
               <button
                 type="button"
-                onClick={(event) => {
-                  event.stopPropagation()
-                  handleFavorite()
-                }}
-                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone-100 transition-colors"
+                onClick={handleFavorite}
+                className="relative z-10 flex-shrink-0 w-11 h-11 -my-1.5 -mr-1.5 flex items-center justify-center rounded-full hover:bg-stone-100 transition-colors"
                 aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
               >
                 <svg
@@ -181,7 +173,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
                   {hasMultipleLocations ? `${availabilityCount} locations` : item.restaurant?.name}
                 </span>
               )}
-              <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider ${categoryColors[displayCategory] ?? 'bg-stone-100 text-stone-600'}`}>
+              <span className={`inline-block px-1.5 py-0.5 rounded text-[11px] font-medium uppercase tracking-wider ${categoryColors[displayCategory] ?? 'bg-stone-100 text-stone-600'}`}>
                 {displayCategory}
               </span>
             </div>
@@ -195,16 +187,19 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
             {carbs != null && (
               <div className="flex flex-col items-center">
                 <span className="text-2xl font-bold text-stone-900">{carbs}<span className="text-sm font-normal text-stone-500">g</span></span>
-                <span className="text-[10px] text-stone-500 uppercase tracking-wide">Carbs</span>
+                <span className="text-[11px] text-stone-500 uppercase tracking-wide">Carbs</span>
                 <DotMeter value={carbs} max={80} colorFn={carbDots} label="Carbs" />
               </div>
             )}
 
             {/* Net carbs */}
             {fiber != null && fiber > 0 && netCarbs !== carbs && (
-              <div className="flex flex-col items-center">
+              <div
+                className="flex flex-col items-center"
+                title="Net carbs = carbs − fiber. Most people dose on total carbs unless their clinician says otherwise."
+              >
                 <span className="text-lg font-semibold text-teal-700">{netCarbs}<span className="text-xs font-normal text-teal-600">g</span></span>
-                <span className="text-[10px] text-teal-600 uppercase tracking-wide">Net</span>
+                <span className="text-[11px] text-teal-600 uppercase tracking-wide">Net</span>
               </div>
             )}
 
@@ -212,7 +207,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
             {calories != null && (
               <div className="flex flex-col items-center">
                 <span className="text-lg font-semibold text-stone-700">{calories}</span>
-                <span className="text-[10px] text-stone-500 uppercase tracking-wide">Cal</span>
+                <span className="text-[11px] text-stone-500 uppercase tracking-wide">Cal</span>
                 <DotMeter value={calories} max={1000} colorFn={calDots} label="Calories" />
               </div>
             )}
@@ -221,7 +216,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
             {sugar != null && sugar > 0 && (
               <div className="flex flex-col items-center">
                 <span className="text-lg font-semibold text-stone-700">{sugar}<span className="text-xs font-normal text-stone-500">g</span></span>
-                <span className="text-[10px] text-stone-500 uppercase tracking-wide">Sugar</span>
+                <span className="text-[11px] text-stone-500 uppercase tracking-wide">Sugar</span>
                 <DotMeter value={sugar} max={50} colorFn={sugarDots} label="Sugar" />
               </div>
             )}
@@ -230,7 +225,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
             {protein != null && protein > 0 && (
               <div className="flex flex-col items-center">
                 <span className="text-lg font-semibold text-stone-700">{protein}<span className="text-xs font-normal text-stone-500">g</span></span>
-                <span className="text-[10px] text-stone-500 uppercase tracking-wide">Protein</span>
+                <span className="text-[11px] text-stone-500 uppercase tracking-wide">Protein</span>
                 <DotMeter value={protein} max={50} colorFn={proteinDots} label="Protein" />
               </div>
             )}
@@ -239,7 +234,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
             {alcoholGrams != null && alcoholGrams > 0 && (
               <div className="flex flex-col items-center">
                 <span className="text-lg font-semibold text-purple-700">{alcoholGrams}<span className="text-xs font-normal text-purple-500">g</span></span>
-                <span className="text-[10px] text-purple-500 uppercase tracking-wide">Alcohol</span>
+                <span className="text-[11px] text-purple-500 uppercase tracking-wide">Alcohol</span>
               </div>
             )}
           </div>
@@ -262,14 +257,18 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
         )}
 
         {isLowConfidenceNutrition && nd && (
-          <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-2 text-xs font-medium text-amber-800">
-            Estimated nutrition - {nd.confidence_score}% confidence. Verify before dosing.
-            {qualityWarnings[0] && <span className="mt-1 block">{qualityWarnings[0]}</span>}
+          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-800">
+              <span aria-hidden="true">~</span>{getEstimateTierShort(nd.confidence_score)} — verify before dosing
+            </span>
+            {qualityWarnings[0] && (
+              <span className="text-[11px] font-medium text-amber-700">{qualityWarnings[0]}</span>
+            )}
           </div>
         )}
 
         {!isLowConfidenceNutrition && qualityWarnings.length > 0 && (
-          <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-2 text-xs font-medium text-amber-800">
+          <div className="mt-2 text-[11px] font-medium text-amber-700">
             Verify nutrition values: {qualityWarnings[0]}
           </div>
         )}
@@ -278,6 +277,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
         {gradeColors && (
           <div className="mt-2 text-xs font-medium" style={{ color: gradeColors.bg }}>
             {gradeColors.label}
+            {isLowConfidenceNutrition && <span className="text-amber-700"> · estimated</span>}
           </div>
         )}
 
@@ -310,14 +310,13 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
 
         <Link
           to={`/item/${item.id}`}
-          onClick={(event) => event.stopPropagation()}
-          className="mt-2 inline-flex text-xs text-teal-600 hover:text-teal-700 font-medium"
+          className="relative z-10 mt-2 inline-flex text-xs text-teal-600 hover:text-teal-700 font-medium"
         >
           More details
         </Link>
 
         {/* Action buttons */}
-        <div className="mt-3 flex gap-2">
+        <div className="relative z-10 mt-3 flex gap-2">
           <button
             type="button"
             disabled={!hasNutrition}

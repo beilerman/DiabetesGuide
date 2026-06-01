@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useId, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { useSearchParams } from 'react-router-dom'
 import {
   INSULIN_LIMITS,
@@ -9,6 +10,7 @@ import {
 } from '../lib/insulin'
 import { hasEstimatorAcknowledgement, saveEstimatorAcknowledgement } from '../lib/estimator-ack'
 import { HiddenDoseExplainer } from '../components/InsulinEstimator/HiddenDoseExplainer'
+import { STORAGE_KEYS } from '../lib/storage-keys'
 
 function parseInitialCarbs(value: string | null): number | '' {
   if (value == null) return ''
@@ -16,18 +18,47 @@ function parseInitialCarbs(value: string | null): number | '' {
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : ''
 }
 
+// Clinician-set values (ICR, correction factor, target, IOB, max bolus) rarely
+// change between visits, so persist them — a returning in-line user only enters
+// blood glucose and carbs. Shares STORAGE_KEYS.insulinSettings with the Meal
+// Builder estimator so the two stay in sync.
+interface StoredInsulinSettings {
+  icr: number | ''
+  cf: number | ''
+  target: number | ''
+  activeInsulin: number | ''
+  maxBolus: number | ''
+}
+
+function loadStoredInsulinSettings(): Partial<StoredInsulinSettings> {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.insulinSettings)
+    return raw ? (JSON.parse(raw) as Partial<StoredInsulinSettings>) : {}
+  } catch {
+    return {}
+  }
+}
+
 export default function InsulinHelper() {
   const [searchParams] = useSearchParams()
 
+  const [stored] = useState(loadStoredInsulinSettings)
   const [bg, setBg] = useState<number | ''>('')
-  const [target, setTarget] = useState<number | ''>('')
+  const [target, setTarget] = useState<number | ''>(stored.target ?? '')
   const [carbs, setCarbs] = useState<number | ''>(parseInitialCarbs(searchParams.get('carbs')))
-  const [icr, setIcr] = useState<number | ''>('')
-  const [cf, setCf] = useState<number | ''>('')
-  const [activeInsulin, setActiveInsulin] = useState<number | ''>(0)
-  const [maxBolus, setMaxBolus] = useState<number | ''>(INSULIN_LIMITS.maxBolus.default)
+  const [icr, setIcr] = useState<number | ''>(stored.icr ?? '')
+  const [cf, setCf] = useState<number | ''>(stored.cf ?? '')
+  const [activeInsulin, setActiveInsulin] = useState<number | ''>(stored.activeInsulin ?? 0)
+  const [maxBolus, setMaxBolus] = useState<number | ''>(stored.maxBolus ?? INSULIN_LIMITS.maxBolus.default)
   const [activity, setActivity] = useState<ActivityLevel>('none')
   const [acknowledged, setAcknowledged] = useState(hasEstimatorAcknowledgement)
+
+  useEffect(() => {
+    localStorage.setItem(
+      STORAGE_KEYS.insulinSettings,
+      JSON.stringify({ icr, cf, target, activeInsulin, maxBolus }),
+    )
+  }, [icr, cf, target, activeInsulin, maxBolus])
 
   const inputs = useMemo(() => ({
     carbs,
@@ -47,38 +78,18 @@ export default function InsulinHelper() {
     result?.status === 'blocked' ||
     (typeof carbs === 'number' && carbs <= 0)
 
-  return (
-    <div className="max-w-lg mx-auto">
-      {!acknowledged && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-stone-950/70 px-4">
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="estimator-ack-title"
-            className="max-w-lg rounded-xl border border-amber-300 bg-white p-5 shadow-xl"
-          >
-            <h2 id="estimator-ack-title" className="text-lg font-bold text-stone-950">
-              Before using this estimator
-            </h2>
-            <div className="mt-3 space-y-2 text-sm text-stone-700">
-              <p>This is an educational carb and correction estimator, not medical advice or an automated dosing device.</p>
-              <p>Use only insulin ratios, correction factors, targets, and max-bolus limits prescribed by your care team.</p>
-              <p>For children, pregnancy, illness, exercise, pump settings, or hypoglycemia risk, confirm your plan with a clinician.</p>
-            </div>
-            <button
-              type="button"
-              onClick={() => {
-                saveEstimatorAcknowledgement()
-                setAcknowledged(true)
-              }}
-              className="mt-5 w-full rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800"
-            >
-              I understand
-            </button>
-          </div>
-        </div>
-      )}
+  const handleAcknowledge = () => {
+    saveEstimatorAcknowledgement()
+    setAcknowledged(true)
+  }
 
+  return (
+    <>
+      {!acknowledged && createPortal(
+        <EstimatorAckModal onAcknowledge={handleAcknowledge} />,
+        document.body,
+      )}
+      <div className="max-w-lg mx-auto" inert={!acknowledged}>
       <div className="rounded-lg bg-amber-50 border border-amber-300 p-4 mb-6">
         <p className="font-semibold text-amber-900">
           Educational estimator only - not medical advice. Use only ratios and limits from your care team.
@@ -270,6 +281,55 @@ export default function InsulinHelper() {
           )}
         </div>
       )}
+      </div>
+    </>
+  )
+}
+
+function EstimatorAckModal({ onAcknowledge }: { onAcknowledge: () => void }) {
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
+
+  // Move focus into the dialog on open and trap Tab. The single focusable
+  // control means preventing Tab's default keeps focus on the button — focus
+  // cannot escape to the page behind the consent gate (also marked inert).
+  useEffect(() => {
+    buttonRef.current?.focus()
+    const node = dialogRef.current
+    if (!node) return
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Tab') event.preventDefault()
+    }
+    node.addEventListener('keydown', handleKeyDown)
+    return () => node.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-stone-950/70 px-4">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="estimator-ack-title"
+        className="max-w-lg rounded-xl border border-amber-300 bg-white p-5 shadow-xl"
+      >
+        <h2 id="estimator-ack-title" className="text-lg font-bold text-stone-950">
+          Before using this estimator
+        </h2>
+        <div className="mt-3 space-y-2 text-sm text-stone-700">
+          <p>This is an educational carb and correction estimator, not medical advice or an automated dosing device.</p>
+          <p>Use only insulin ratios, correction factors, targets, and max-bolus limits prescribed by your care team.</p>
+          <p>For children, pregnancy, illness, exercise, pump settings, or hypoglycemia risk, confirm your plan with a clinician.</p>
+        </div>
+        <button
+          ref={buttonRef}
+          type="button"
+          onClick={onAcknowledge}
+          className="mt-5 w-full rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800"
+        >
+          I understand
+        </button>
+      </div>
     </div>
   )
 }
@@ -293,10 +353,18 @@ function Field({
   helper?: string
   required?: boolean
 }) {
+  const fieldId = useId()
+  const helperId = `${fieldId}-helper`
+  const outOfRange =
+    typeof value === 'number' &&
+    ((min != null && value < min) || (max != null && value > max))
+  const invalid = Boolean(required && (value === '' || outOfRange))
+
   return (
-    <label className="block">
-      <span className="text-sm font-medium">{label}</span>
+    <div>
+      <label htmlFor={fieldId} className="text-sm font-medium">{label}</label>
       <input
+        id={fieldId}
         type="number"
         className="mt-1 block w-full rounded border px-3 py-2"
         value={value}
@@ -304,11 +372,14 @@ function Field({
         max={max}
         step={step}
         required={required}
+        aria-required={required || undefined}
+        aria-invalid={invalid || undefined}
+        aria-describedby={helper ? helperId : undefined}
         inputMode="decimal"
         onChange={e => onChange(e.target.value === '' ? '' : Number(e.target.value))}
       />
-      {helper && <span className="mt-1 block text-xs text-stone-500">{helper}</span>}
-    </label>
+      {helper && <span id={helperId} className="mt-1 block text-xs text-stone-500">{helper}</span>}
+    </div>
   )
 }
 

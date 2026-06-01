@@ -16,11 +16,15 @@ interface AnnotationInput {
   alcoholGrams: number | null
   category: string
   isFried: boolean
+  /** When the underlying nutrition is a low-confidence estimate, reassuring
+   * "zero impact" claims are downgraded so they don't discourage verification. */
+  confidenceScore?: number
 }
 
 export function getDiabetesAnnotations(item: AnnotationInput): Annotation[] {
-  const { calories, carbs, sugar, fat, protein, fiber, alcoholGrams, category, isFried } = item
+  const { calories, carbs, sugar, fat, protein, fiber, alcoholGrams, category, isFried, confidenceScore } = item
   if (calories == null || carbs == null) return []
+  const isLowConfidence = confidenceScore != null && confidenceScore < 70
 
   const annotations: Annotation[] = []
   const s = sugar ?? 0
@@ -31,9 +35,14 @@ export function getDiabetesAnnotations(item: AnnotationInput): Annotation[] {
   const sugarRatio = carbs > 0 ? s / carbs : 0
   const proteinRatio = carbs > 0 ? p / carbs : (p > 0 ? 10 : 0)
 
-  // Zero carb beverage — no impact
+  // Zero carb beverage — no impact. A low-confidence zero is not asserted as
+  // safe; it's flagged for verification instead of given a reassuring green.
   if (carbs === 0 && category === 'beverage') {
-    annotations.push({ text: 'Zero carb — no glucose impact', severity: 'green' })
+    annotations.push(
+      isLowConfidence
+        ? { text: 'Estimated zero carb — verify before assuming no impact', severity: 'amber' }
+        : { text: 'Zero carb — no glucose impact', severity: 'green' },
+    )
     return annotations
   }
 
@@ -53,12 +62,12 @@ export function getDiabetesAnnotations(item: AnnotationInput): Annotation[] {
   if (sugarRatio > 0.6 && category !== 'beverage') {
     annotations.push({ text: 'High simple sugar — expect rapid glucose spike', severity: 'red' })
   } else if (sugarRatio > 0.4 && carbs > 40) {
-    annotations.push({ text: 'Moderate sugar with high carbs — bolus early', severity: 'amber' })
+    annotations.push({ text: 'Moderate sugar with high carbs — can raise glucose quickly', severity: 'amber' })
   }
 
   // High fat + high carb (delayed absorption)
   if (fa > 40 && carbs > 40) {
-    annotations.push({ text: 'High fat may delay carb absorption — consider extended bolus', severity: 'amber' })
+    annotations.push({ text: 'High fat may delay carb absorption — slower, more prolonged rise', severity: 'amber' })
   }
 
   // Fried + high carb
@@ -81,7 +90,7 @@ export function getDiabetesAnnotations(item: AnnotationInput): Annotation[] {
   // Minimal impact (only skip if there are warning annotations)
   const hasWarnings = annotations.some(a => a.severity === 'red' || a.severity === 'amber')
   if (carbs < 15 && calories < 200 && !hasWarnings) {
-    annotations.push({ text: 'Minimal glucose impact — may not need bolus', severity: 'green' })
+    annotations.push({ text: 'Low carbohydrate — small glucose impact', severity: 'green' })
   }
 
   return annotations

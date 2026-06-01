@@ -24,9 +24,11 @@ describe('getDiabetesAnnotations', () => {
     expect(annotations[0].text).toContain('Liquid sugar')
   })
 
-  it('notes minimal glucose impact for low carb items', () => {
+  it('notes low carbohydrate / small glucose impact for low carb items', () => {
     const annotations = getDiabetesAnnotations({ calories: 120, carbs: 8, sugar: 2, fat: 6, protein: 10, fiber: 1, sodium: 300, alcoholGrams: 0, category: 'snack', isFried: false })
-    expect(annotations.some(a => a.text.includes('Minimal glucose impact'))).toBe(true)
+    // Non-prescriptive wording: describes the food, never recommends withholding insulin.
+    expect(annotations.some(a => a.text.includes('Low carbohydrate'))).toBe(true)
+    expect(annotations.some(a => a.text.includes('may not need bolus'))).toBe(false)
   })
 
   it('returns empty for null nutrition', () => {
