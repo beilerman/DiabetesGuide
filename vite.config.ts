@@ -49,6 +49,22 @@ function collectFiles(dir: string): string[] {
   }
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function getSupabaseRestUrlPattern(): RegExp {
+  const supabaseUrl = process.env.VITE_SUPABASE_URL
+  if (!supabaseUrl) return /^$/
+
+  try {
+    const origin = new URL(supabaseUrl).origin
+    return new RegExp(`^${escapeRegExp(origin)}/rest/.*`, 'i')
+  } catch {
+    return /^$/
+  }
+}
+
 export default defineConfig({
   define: {
     __APP_BUILD_INFO__: JSON.stringify({
@@ -72,7 +88,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,ico,json}'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/rcrzdpzwcbekgqgiwqcp\.supabase\.co\/rest\/.*/i,
+            urlPattern: getSupabaseRestUrlPattern(),
             handler: 'NetworkFirst',
             options: {
               cacheName: 'supabase-api',

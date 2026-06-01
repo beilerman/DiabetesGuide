@@ -4,7 +4,7 @@ import { LOCAL_APP_STORAGE_KEYS } from '../lib/storage-keys'
 import { useState } from 'react'
 
 export default function Settings() {
-  const { fontScale, highContrast, carbGoal, setFontScale, toggleContrast, setCarbGoal, resetPreferences } = usePreferences()
+  const { fontScale, highContrast, carbGoal, setFontScale, toggleContrast, setCarbGoal, clearPreferences } = usePreferences()
   const [cleared, setCleared] = useState(false)
   const [showClearConfirm, setShowClearConfirm] = useState(false)
   const [isClearing, setIsClearing] = useState(false)
@@ -15,7 +15,7 @@ export default function Settings() {
     for (const key of LOCAL_APP_STORAGE_KEYS) {
       localStorage.removeItem(key)
     }
-    resetPreferences()
+    clearPreferences()
     setIsClearing(false)
     setShowClearConfirm(false)
     setCleared(true)

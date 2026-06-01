@@ -1,6 +1,15 @@
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
+
+function readMigrations(): string {
+  const migrationsDir = resolve(process.cwd(), 'supabase/migrations')
+  return readdirSync(migrationsDir)
+    .filter(file => file.endsWith('.sql'))
+    .sort()
+    .map(file => readFileSync(resolve(migrationsDir, file), 'utf8'))
+    .join('\n')
+}
 
 describe('static deployment assets', () => {
   it('preloads the static catalog preview JSON from the shell document', () => {
@@ -21,5 +30,19 @@ describe('static deployment assets', () => {
     expect(catalogHeader?.headers).toEqual(expect.arrayContaining([
       { key: 'Cache-Control', value: 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
     ]))
+  })
+
+  it('keeps Supabase migrations aligned with nutritional fields used by the app', () => {
+    const migrations = readMigrations()
+
+    expect(migrations).toMatch(/\bsource_detail\b/i)
+    expect(migrations).toMatch(/\balcohol_grams\b/i)
+  })
+
+  it('derives PWA Supabase runtime caching from the configured environment URL', () => {
+    const viteConfig = readFileSync(resolve(process.cwd(), 'vite.config.ts'), 'utf8')
+
+    expect(viteConfig).toContain('process.env.VITE_SUPABASE_URL')
+    expect(viteConfig).not.toContain('rcrzdpzwcbekgqgiwqcp')
   })
 })
