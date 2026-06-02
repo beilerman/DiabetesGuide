@@ -36,6 +36,7 @@ data/*.json
 !data/source.json
 !data/portion-multipliers.json
 !data/researched-nutrition.json
+!data/manual-nutrition-estimates.json
 data/pending/
 data/w9-output/
 
