@@ -18,7 +18,7 @@ export function OfflineBanner() {
     <div
       role="status"
       aria-live="polite"
-      className="bg-amber-50 border-b border-amber-200 px-4 py-2 text-center text-sm text-amber-800"
+      className="bg-amber-50 border-b border-amber-300 px-4 py-2 text-center text-sm text-amber-950"
     >
       <span className="inline-flex items-center gap-1.5">
         <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -26,8 +26,8 @@ export function OfflineBanner() {
           <line x1="4" y1="4" x2="20" y2="20" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
         Offline mode
-        {syncDate && <span className="text-amber-600">— using cached data from {syncDate}</span>}
-        {!syncDate && <span className="text-amber-600">— no cached data available</span>}
+        {syncDate && <span className="text-amber-900">— using cached data from {syncDate}</span>}
+        {!syncDate && <span className="text-amber-900">— no cached data available</span>}
       </span>
     </div>
   )

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { getBottomNavItems, isNavItemActive, type NavItem, type NavItemId } from '../../lib/nav'
+import { getBottomNavItems, getTopNavItems, isNavItemActive, type NavItem, type NavItemId } from '../../lib/nav'
 
 interface BottomNavProps {
   totalItemCount: number
@@ -7,38 +7,57 @@ interface BottomNavProps {
 
 export function BottomNav({ totalItemCount }: BottomNavProps) {
   const location = useLocation()
-  const navItems = getBottomNavItems()
+  const mobileNavItems = getBottomNavItems()
+  const desktopNavItems = getTopNavItems()
 
   return (
-    <nav
-      aria-label="Bottom navigation"
-      className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 shadow-lg z-40"
-      style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}
-    >
-      <div className="grid grid-cols-5 h-16">
-        {navItems.map(item => {
-          const active = isNavItemActive(item, location.pathname)
-          return (
-            <Link
-              key={item.id}
-              to={item.href}
-              aria-current={active ? 'page' : undefined}
-              className={`${navItemClass(active)} ${item.id === 'meal-builder' ? 'relative' : ''}`}
-            >
-              <div className="relative">
-                <NavIcon id={item.id} active={active} />
-                {item.id === 'meal-builder' && totalItemCount > 0 && (
-                  <span aria-hidden="true" className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-teal-600 text-[10px] font-bold text-white">
-                    {totalItemCount > 9 ? '9+' : totalItemCount}
-                  </span>
-                )}
-              </div>
-              <span className="px-0.5 text-center text-[11px] font-medium leading-tight">{item.label}</span>
-            </Link>
-          )
-        })}
-      </div>
-    </nav>
+    <>
+      <nav
+        aria-label="Bottom navigation"
+        className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 shadow-lg z-40"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}
+      >
+        <div className="grid grid-cols-5 h-16">
+          {mobileNavItems.map(item => {
+            const active = isNavItemActive(item, location.pathname)
+            return (
+              <Link
+                key={item.id}
+                to={item.href}
+                aria-current={active ? 'page' : undefined}
+                className={`${navItemClass(active)} ${item.id === 'meal-builder' ? 'relative' : ''}`}
+              >
+                <NavItemIconWithBadge item={item} active={active} totalItemCount={totalItemCount} />
+                <span className="px-0.5 text-center text-[11px] font-medium leading-tight">{item.label}</span>
+              </Link>
+            )
+          })}
+        </div>
+      </nav>
+
+      <nav
+        aria-label="Sidebar navigation"
+        className="hidden md:flex fixed left-0 top-[65px] bottom-0 z-30 w-20 flex-col border-r border-stone-200 bg-white/95 px-2 py-4 shadow-sm backdrop-blur lg:w-60 lg:px-4"
+      >
+        <div className="flex flex-1 flex-col gap-1">
+          {desktopNavItems.map(item => {
+            const active = isNavItemActive(item, location.pathname)
+            return (
+              <Link
+                key={item.id}
+                to={item.href}
+                title={item.label}
+                aria-current={active ? 'page' : undefined}
+                className={desktopNavItemClass(active)}
+              >
+                <NavItemIconWithBadge item={item} active={active} totalItemCount={totalItemCount} />
+                <span className="sr-only text-sm font-semibold lg:not-sr-only">{item.label}</span>
+              </Link>
+            )
+          })}
+        </div>
+      </nav>
+    </>
   )
 }
 
@@ -48,6 +67,35 @@ function navItemClass(active: boolean): string {
       ? 'border-teal-600 text-teal-700 font-semibold'
       : 'border-transparent text-stone-500 font-medium'
   }`
+}
+
+function desktopNavItemClass(active: boolean): string {
+  return `flex min-h-12 items-center justify-center gap-3 rounded-xl px-3 transition-colors lg:justify-start ${
+    active
+      ? 'bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200'
+      : 'text-stone-600 hover:bg-stone-50 hover:text-teal-700'
+  }`
+}
+
+function NavItemIconWithBadge({
+  item,
+  active,
+  totalItemCount,
+}: {
+  item: NavItem
+  active: boolean
+  totalItemCount: number
+}) {
+  return (
+    <div className="relative flex-shrink-0">
+      <NavIcon id={item.id} active={active} />
+      {item.id === 'meal-builder' && totalItemCount > 0 && (
+        <span aria-hidden="true" className="absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-700 px-1 text-[10px] font-bold leading-none text-white">
+          {totalItemCount > 9 ? '9+' : totalItemCount}
+        </span>
+      )}
+    </div>
+  )
 }
 
 function NavIcon({ id, active }: { id: NavItem['id']; active: boolean }) {
@@ -64,6 +112,12 @@ function NavIcon({ id, active }: { id: NavItem['id']; active: boolean }) {
       return (
         <svg className="h-6 w-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    case 'browse':
+      return (
+        <svg className="h-6 w-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     case 'meal-builder':

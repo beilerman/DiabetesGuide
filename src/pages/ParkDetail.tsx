@@ -157,7 +157,7 @@ export default function ParkDetail() {
       {/* Items */}
       <div className="px-4 py-4">
         {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {[...Array(6)].map((_, i) => <SkeletonCard key={i} />)}
           </div>
         ) : viewMode === 'byLand' ? (
@@ -173,7 +173,7 @@ export default function ParkDetail() {
                     {land}
                     <span className="text-sm font-normal text-stone-500">({landItems.length})</span>
                   </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {landItems.map(item => (
                       <MenuItemCard
                         key={item.id}
@@ -193,7 +193,7 @@ export default function ParkDetail() {
           </>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {visibleItems.map(item => (
                 <MenuItemCard
                   key={item.id}

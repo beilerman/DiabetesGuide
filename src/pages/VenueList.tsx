@@ -81,7 +81,7 @@ export default function VenueList() {
 
       {/* Loading state */}
       {showLoadingState && (
-        <div className="space-y-3">
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="rounded-2xl bg-white border border-stone-200 p-5 animate-pulse">
               <div className="flex items-center gap-4">
@@ -98,7 +98,7 @@ export default function VenueList() {
 
       {/* Venue cards */}
       {!showLoadingState && (
-        <div className="space-y-3">
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           <h2 className="sr-only">Destinations</h2>
           {venueSummaries.map(summary => summary.kind === 'live' ? (
             <VenueCardWithData

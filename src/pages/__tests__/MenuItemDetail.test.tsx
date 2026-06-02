@@ -34,6 +34,18 @@ function renderDetail() {
 }
 
 describe('MenuItemDetail', () => {
+  it('uses an announced skeleton while item details load', () => {
+    vi.mocked(useMenuItem).mockReturnValue({
+      data: undefined,
+      isLoading: true,
+    } as ReturnType<typeof useMenuItem>)
+
+    renderDetail()
+
+    expect(screen.getByRole('status', { name: /loading item details/i })).toBeInTheDocument()
+    expect(screen.getAllByTestId('item-detail-skeleton')).toHaveLength(4)
+  })
+
   it('keeps item-detail nutrition and grade context concise and linked', async () => {
     const user = userEvent.setup()
     vi.mocked(useMenuItem).mockReturnValue({

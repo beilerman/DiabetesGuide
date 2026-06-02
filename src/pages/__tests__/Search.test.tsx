@@ -53,7 +53,7 @@ describe('Search', () => {
     expect(screen.getByText(/showing 1 of 1 matching result/i)).toHaveAttribute('aria-live', 'polite')
   })
 
-  it('shows Searching while the initial catalog request is pending for a non-empty query', () => {
+  it('shows skeleton rows while the initial catalog request is pending for a non-empty query', () => {
     vi.mocked(useParks).mockReturnValue({ data: [] } as unknown as ReturnType<typeof useParks>)
     vi.mocked(useMenuItems).mockReturnValue({
       data: undefined,
@@ -63,7 +63,9 @@ describe('Search', () => {
 
     renderSearch()
 
-    expect(screen.getByText(/searching/i)).toBeInTheDocument()
+    expect(screen.getByRole('status', { name: /loading search results/i })).toBeInTheDocument()
+    expect(screen.getAllByTestId('search-result-skeleton')).toHaveLength(5)
+    expect(screen.queryByText(/^searching/i)).not.toBeInTheDocument()
   })
 
   it('clears Searching for an empty query even if the catalog is fetching', () => {
@@ -98,6 +100,24 @@ describe('Search', () => {
 
     expect(screen.getByRole('button', { name: /F - consider alternatives/i })).toHaveAttribute('aria-pressed', 'false')
     expect(screen.getByTestId('location-search')).toHaveTextContent('grade=A')
+  })
+
+  it('separates weak fuzzy matches below strong search results', () => {
+    vi.mocked(useParks).mockReturnValue({ data: [] } as unknown as ReturnType<typeof useParks>)
+    vi.mocked(useMenuItems).mockReturnValue({
+      data: [
+        makeMenuItem('item-1', 'Churro'),
+        makeMenuItem('item-2', 'Churro Bites'),
+        makeMenuItem('item-3', 'Cinnamon Twist'),
+      ],
+      isLoading: false,
+      isFetching: false,
+    } as ReturnType<typeof useMenuItems>)
+
+    renderSearch('/search?q=churo')
+
+    expect(screen.getByText(/showing 2 of 2 matching results/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /possible fuzzy matches/i })).toBeInTheDocument()
   })
 })
 

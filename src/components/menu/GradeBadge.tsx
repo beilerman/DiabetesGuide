@@ -41,7 +41,7 @@ export function GradeBadge({ grade, size = 'md', estimated = false }: Props) {
       </div>
       {estimated && grade && (
         <span
-          className={`absolute -bottom-0.5 -right-0.5 flex items-center justify-center rounded-full bg-white font-bold leading-none text-amber-700 ring-1 ring-amber-500 ${marker}`}
+          className={`absolute -bottom-0.5 -right-0.5 flex items-center justify-center rounded-full bg-white font-bold leading-none text-amber-900 ring-1 ring-amber-700 ${marker}`}
           aria-hidden="true"
         >
           ~

@@ -5,7 +5,8 @@ test('search pending label clears after results resolve and filters stay inline'
 
   await page.goto('/search?q=chicken&grade=B')
 
-  await expect(page.getByRole('status')).toContainText('Searching')
+  await expect(page.getByRole('status', { name: /loading search results/i })).toBeVisible()
+  await expect(page.getByTestId('search-result-skeleton')).toHaveCount(5)
   const count = page.getByText(/showing 1 of 1 matching result/i)
   await expect(count).toBeVisible()
   await expect(count).toHaveAttribute('aria-live', 'polite')

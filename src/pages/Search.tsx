@@ -11,7 +11,7 @@ import { useCompare } from '../hooks/useCompare'
 import { DEFAULT_FILTERS } from '../lib/filters'
 import type { Grade } from '../lib/grade'
 import { getNextVisibleCount } from '../lib/visible-items'
-import { getSearchResultView } from '../lib/search-results'
+import { getSearchResultView, type SearchSort } from '../lib/search-results'
 import type { Filters } from '../lib/types'
 import { GradeLegend, GRADE_OPTIONS } from '../components/GradeLegend'
 import { STORAGE_KEYS } from '../lib/storage-keys'
@@ -19,6 +19,11 @@ import { STORAGE_KEYS } from '../lib/storage-keys'
 const RECENT_KEY = STORAGE_KEYS.recentSearches
 const MAX_RECENT = 5
 const INITIAL_VISIBLE_RESULTS = 50
+
+type SearchPageFilters = Pick<Filters, 'maxCarbs' | 'category' | 'allergenFree'> & {
+  sort: SearchSort
+}
+type SearchMatch = ReturnType<typeof getSearchResultView>['visibleMatches'][number]
 
 function getGradeFilterFromParams(searchParams: URLSearchParams): Grade[] | null {
   const requested = new Set(
@@ -50,11 +55,11 @@ export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [query, setQuery] = useState(searchParams.get('q') ?? '')
   const [parkId, setParkId] = useState<string | undefined>(undefined)
-  const [filters, setFilters] = useState<Pick<Filters, 'maxCarbs' | 'category' | 'allergenFree' | 'sort'>>({
+  const [filters, setFilters] = useState<SearchPageFilters>({
     maxCarbs: null,
     category: null,
     allergenFree: [],
-    sort: 'name',
+    sort: 'relevance',
   })
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_RESULTS)
   const [expandedItem, setExpandedItem] = useState<MenuItemWithNutrition | null>(null)
@@ -77,8 +82,10 @@ export default function Search() {
     () => getSearchResultView(menuItems ?? [], deferredQuery, searchFilters, visibleCount),
     [menuItems, deferredQuery, searchFilters, visibleCount],
   )
-  const results = isSearching ? searchView.visibleItems : null
+  const results = isSearching ? searchView.visibleMatches : null
   const searchLoading = isSearching && (isPendingQuery || (menuItemsLoading && menuItems == null))
+  const strongResults = results?.filter(match => match.tier !== 'weak') ?? []
+  const weakResults = results?.filter(match => match.tier === 'weak') ?? []
 
   const handleSearch = (q: string) => {
     setQuery(q)
@@ -165,7 +172,7 @@ export default function Search() {
             ))}
           </select>
           {searchLoading && (
-            <span role="status" className="text-[10px] font-medium text-stone-600">Searching...</span>
+            <span className="text-[10px] font-medium text-stone-600">Loading...</span>
           )}
         </div>
 
@@ -202,9 +209,10 @@ export default function Search() {
             Sort
             <select
               value={filters.sort}
-              onChange={e => updateFilter('sort', e.target.value as Filters['sort'])}
+              onChange={e => updateFilter('sort', e.target.value as SearchSort)}
               className="mt-1 w-full rounded-lg border border-stone-200 bg-white px-2 py-1.5 text-xs text-stone-700 focus:border-teal-500 focus:outline-none"
             >
+              <option value="relevance">Relevance</option>
               <option value="name">Name</option>
               <option value="grade">Best grade</option>
               <option value="carbsAsc">Carbs low to high</option>
@@ -220,7 +228,7 @@ export default function Search() {
                 maxCarbs: DEFAULT_FILTERS.maxCarbs,
                 category: DEFAULT_FILTERS.category,
                 allergenFree: DEFAULT_FILTERS.allergenFree,
-                sort: DEFAULT_FILTERS.sort,
+                sort: 'relevance',
               })
               setVisibleCount(INITIAL_VISIBLE_RESULTS)
               setGradeParam(null)
@@ -263,23 +271,32 @@ export default function Search() {
           </div>
         )}
 
+        {searchLoading && !expandedItem && <SearchResultsSkeleton />}
+
         {/* Search results */}
-        {!expandedItem && isSearching && (
+        {!expandedItem && isSearching && !searchLoading && (
           <>
             {results && results.length > 0 ? (
               <div>
                 <p className="text-sm text-stone-500 mb-2" aria-live="polite">
                   Showing {results.length} of {searchView.totalMatches} matching result{searchView.totalMatches !== 1 ? 's' : ''}
                 </p>
-                <div className="bg-white rounded-xl border border-stone-200 divide-y divide-stone-100">
-                  {results.map(item => (
-                    <SearchResultRow
-                      key={item.id}
-                      item={item}
-                      onClick={setExpandedItem}
-                    />
-                  ))}
-                </div>
+                {strongResults.length > 0 && (
+                  <SearchResultsGroup matches={strongResults} onSelect={setExpandedItem} />
+                )}
+                {weakResults.length > 0 && (
+                  <section className={strongResults.length > 0 ? 'mt-5' : undefined} aria-labelledby="weak-search-results-heading">
+                    <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+                      <h3 id="weak-search-results-heading" className="text-sm font-bold text-stone-800">
+                        Possible fuzzy matches
+                      </h3>
+                      <p className="text-xs text-stone-500">
+                        Shown after stronger name matches
+                      </p>
+                    </div>
+                    <SearchResultsGroup matches={weakResults} onSelect={setExpandedItem} weak />
+                  </section>
+                )}
                 {searchView.hasMore && (
                   <div className="mt-4 flex justify-center">
                     <button
@@ -332,6 +349,58 @@ export default function Search() {
           </div>
         )}
       </section>
+    </div>
+  )
+}
+
+function SearchResultsSkeleton() {
+  return (
+    <div
+      role="status"
+      aria-label="Loading search results"
+      className="space-y-2"
+    >
+      <span className="sr-only">Loading search results</span>
+      {[...Array(5)].map((_, index) => (
+        <div
+          key={index}
+          data-testid="search-result-skeleton"
+          className="rounded-xl border border-stone-200 bg-white p-3"
+        >
+          <div className="flex items-center gap-3">
+            <div className="skeleton h-8 w-8 flex-shrink-0 rounded-full" />
+            <div className="min-w-0 flex-1 space-y-2">
+              <div className="skeleton h-4 w-3/4" />
+              <div className="skeleton h-3 w-1/2" />
+            </div>
+            <div className="skeleton h-8 w-12 flex-shrink-0" />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function SearchResultsGroup({
+  matches,
+  onSelect,
+  weak = false,
+}: {
+  matches: SearchMatch[]
+  onSelect: (item: MenuItemWithNutrition) => void
+  weak?: boolean
+}) {
+  return (
+    <div className={`grid gap-2 lg:grid-cols-2 ${weak ? 'opacity-90' : ''}`}>
+      {matches.map(match => (
+        <SearchResultRow
+          key={match.item.id}
+          item={match.item}
+          relevanceTier={match.tier}
+          relevanceReason={match.reason}
+          onClick={onSelect}
+        />
+      ))}
     </div>
   )
 }

@@ -108,8 +108,8 @@ body {
   outline-offset: 2px;
 }
 
-/* Remove default focus outline */
-*:focus {
+/* Remove mouse focus outline while preserving keyboard focus-visible rings. */
+*:focus:not(:focus-visible) {
   outline: none;
 }
 

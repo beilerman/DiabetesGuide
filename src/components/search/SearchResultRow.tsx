@@ -2,13 +2,16 @@ import type { MenuItemWithNutrition } from '../../lib/types'
 import { getGradeForItem } from '../../lib/grade'
 import { getMenuItemDisplayName, hasUsableNutrition } from '../../lib/display'
 import { GradeBadge } from '../menu/GradeBadge'
+import type { SearchMatchTier } from '../../lib/search-index'
 
 interface Props {
   item: MenuItemWithNutrition
   onClick: (item: MenuItemWithNutrition) => void
+  relevanceTier?: SearchMatchTier
+  relevanceReason?: string
 }
 
-export function SearchResultRow({ item, onClick }: Props) {
+export function SearchResultRow({ item, onClick, relevanceTier, relevanceReason }: Props) {
   const displayName = getMenuItemDisplayName(item)
   const nd = hasUsableNutrition(item) ? item.nutritional_data?.[0] : undefined
   const carbs = nd?.carbs ?? null
@@ -30,7 +33,7 @@ export function SearchResultRow({ item, onClick }: Props) {
 
   return (
     <button
-      className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-stone-50 active:bg-stone-100 transition-colors text-left rounded-lg"
+      className="w-full flex items-center gap-3 rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-left transition-colors hover:border-teal-200 hover:bg-stone-50 active:bg-stone-100"
       onClick={() => onClick(item)}
     >
       {nd ? (
@@ -47,6 +50,15 @@ export function SearchResultRow({ item, onClick }: Props) {
           {hasMultipleLocations ? `${availabilityCount} locations` : item.restaurant?.name}
           {item.restaurant?.park && <span> &middot; {item.restaurant.park.name}</span>}
         </div>
+        {relevanceReason && (
+          <span className={`mt-1 inline-flex rounded-full px-2 py-0.5 text-[10px] font-bold ${
+            relevanceTier === 'weak'
+              ? 'bg-amber-100 text-amber-900'
+              : 'bg-teal-50 text-teal-800'
+          }`}>
+            {relevanceReason}
+          </span>
+        )}
       </div>
 
       {carbs != null ? (
