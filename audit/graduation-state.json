@@ -1,80 +1,10 @@
 {
   "mode": "daily",
   "consecutiveCleanDays": 0,
-  "lastAudit": "2026-05-30",
+  "lastAudit": "2026-06-09",
   "autoFixesApplied": 0,
   "graduationThreshold": 14,
   "history": [
-    {
-      "date": "2026-04-30",
-      "high": 2,
-      "medium": 269,
-      "low": 0,
-      "autoFixes": 0
-    },
-    {
-      "date": "2026-05-01",
-      "high": 2,
-      "medium": 269,
-      "low": 0,
-      "autoFixes": 0
-    },
-    {
-      "date": "2026-05-02",
-      "high": 2,
-      "medium": 269,
-      "low": 0,
-      "autoFixes": 0
-    },
-    {
-      "date": "2026-05-03",
-      "high": 0,
-      "medium": 266,
-      "low": 0,
-      "autoFixes": 0
-    },
-    {
-      "date": "2026-05-04",
-      "high": 2,
-      "medium": 267,
-      "low": 0,
-      "autoFixes": 0
-    },
-    {
-      "date": "2026-05-05",
-      "high": 0,
-      "medium": 267,
-      "low": 0,
-      "autoFixes": 0
-    },
-    {
-      "date": "2026-05-07",
-      "high": 18,
-      "medium": 218,
-      "low": 0,
-      "autoFixes": 0
-    },
-    {
-      "date": "2026-05-08",
-      "high": 20,
-      "medium": 196,
-      "low": 0,
-      "autoFixes": 0
-    },
-    {
-      "date": "2026-05-09",
-      "high": 20,
-      "medium": 196,
-      "low": 0,
-      "autoFixes": 0
-    },
-    {
-      "date": "2026-05-10",
-      "high": 20,
-      "medium": 196,
-      "low": 0,
-      "autoFixes": 0
-    },
     {
       "date": "2026-05-11",
       "high": 21,
@@ -212,6 +142,76 @@
       "date": "2026-05-30",
       "high": 17,
       "medium": 217,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-05-31",
+      "high": 17,
+      "medium": 217,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-06-01",
+      "high": 18,
+      "medium": 230,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-06-02",
+      "high": 17,
+      "medium": 230,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-06-03",
+      "high": 17,
+      "medium": 230,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-06-04",
+      "high": 17,
+      "medium": 230,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-06-05",
+      "high": 17,
+      "medium": 230,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-06-06",
+      "high": 17,
+      "medium": 230,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-06-07",
+      "high": 17,
+      "medium": 230,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-06-08",
+      "high": 17,
+      "medium": 230,
+      "low": 0,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-06-09",
+      "high": 17,
+      "medium": 230,
       "low": 0,
       "autoFixes": 0
     }
