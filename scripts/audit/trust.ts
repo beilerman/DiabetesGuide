@@ -47,3 +47,32 @@ export function isPrioritySliceItem(category: string | null, parkLocation: strin
   if (!category || !PRIORITY_CATEGORIES.has(category)) return false
   return TOP_DESTINATIONS.test(parkLocation ?? '')
 }
+
+// ---- Verification-queue priority (dosing impact ordering) ----
+
+const CATEGORY_WEIGHTS: Record<string, number> = {
+  entree: 3,
+  dessert: 3,
+  snack: 2,
+  side: 1,
+  beverage: 0.5,
+}
+
+/**
+ * Dosing-impact score for ordering the verification queue: destination tier
+ * (top-3 destinations weigh 3x) x category weight (entrees/desserts highest,
+ * beverages lowest) x carb magnitude (a 90g-carb platter matters more than a
+ * 12g side, even when the current estimate is untrusted — magnitude is a proxy
+ * for dosing consequence). Higher = research first.
+ */
+export function dosingPriorityScore(
+  category: string | null,
+  parkLocation: string | null,
+  carbs: number | null,
+): number {
+  const destWeight = TOP_DESTINATIONS.test(parkLocation ?? '') ? 3 : 1
+  const categoryWeight = CATEGORY_WEIGHTS[category ?? ''] ?? 1
+  // 1..3, with unknown carbs treated as a modest 25g
+  const carbFactor = 1 + Math.min(Math.max(carbs ?? 25, 0), 150) / 75
+  return destWeight * categoryWeight * carbFactor
+}
