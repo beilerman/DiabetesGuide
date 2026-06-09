@@ -19,6 +19,8 @@ import { writeFileSync, mkdirSync, existsSync, rmSync, readdirSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
+import { dosingPriorityScore } from './audit/trust.js'
+
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -39,6 +41,9 @@ const LIMIT = num('--limit', Infinity as unknown as number)
 // --flagged: target items whose CURRENT nutrition is internally inconsistent
 // (definitely wrong), regardless of confidence — the highest accuracy-per-token.
 const FLAGGED = args.includes('--flagged')
+// --priority: order candidates by dosing impact (destination tier x category
+// weight x carb magnitude) so high-stakes items get researched first.
+const PRIORITY = args.includes('--priority')
 
 const CHAIN = /starbucks|panda express|cinnabon|cold stone|haagen|ben\s*&?\s*jerry|blaze|earl of sandwich|wetzel|jamba|chicken guy|sprinkles|skyline|larosa|auntie anne|subway|chipotle|shake shack|dunkin/i
 // Broad alcohol detection over name + description: alcoholic drinks carry ~7
@@ -78,7 +83,7 @@ async function fetchAll<T>(table: string, cols: string): Promise<T[]> {
 async function main() {
   const items = await fetchAll<any>(
     'menu_items',
-    'id, name, description, restaurant:restaurants(name, park:parks(name)), nutritional_data(calories, carbs, fat, protein, sugar, fiber, confidence_score)',
+    'id, name, description, category, restaurant:restaurants(name, park:parks(name, location)), nutritional_data(calories, carbs, fat, protein, sugar, fiber, confidence_score)',
   )
   const cand = items
     .filter(it => {
@@ -99,8 +104,10 @@ async function main() {
         id: it.id, name: it.name, description: it.description,
         restaurant: r?.name ?? '', park: r?.park?.name ?? '',
         curCal: nd?.calories ?? null, curCarbs: nd?.carbs ?? null, conf: nd?.confidence_score ?? null,
+        priority: dosingPriorityScore(it.category ?? null, r?.park?.location ?? null, nd?.carbs ?? null),
       }
     })
+    .sort((a, b) => (PRIORITY ? b.priority - a.priority : 0))
     .slice(0, Number.isFinite(LIMIT) ? LIMIT : undefined)
 
   const dir = resolve(__dirname, '..', 'data', 'ai-batches')
@@ -114,7 +121,10 @@ async function main() {
     writeFileSync(resolve(dir, `batch-${String(n).padStart(3, '0')}.json`), JSON.stringify(batch, null, 2))
   }
 
-  console.log(`Candidates (park-unique, conf < ${MAX_CONF}, with description, non-chain): ${cand.length}`)
+  console.log(`Candidates (park-unique, conf < ${MAX_CONF}, with description, non-chain${PRIORITY ? ', dosing-priority order' : ''}): ${cand.length}`)
+  if (PRIORITY && cand.length > 0) {
+    console.log(`Top of queue: ${cand.slice(0, 5).map(c => `${c.name} (${c.park}, score ${c.priority.toFixed(1)})`).join(' | ')}`)
+  }
   console.log(`Wrote ${n} batch file(s) of up to ${BATCH} items to data/ai-batches/`)
   console.log(`\nNext: dispatch an Opus subagent per batch to write data/ai-nutrition.json, then:`)
   console.log(`  npm run import:ai            # dry-run`)

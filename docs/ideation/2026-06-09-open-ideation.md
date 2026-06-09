@@ -22,7 +22,7 @@ focus: Review this codebase and make it better
 **Downsides:** Per-chain importer effort; popularity needs a proxy (no analytics).
 **Confidence:** 85%
 **Complexity:** Medium-High
-**Status:** Unexplored
+**Status:** Explored (brainstorm started 2026-06-09)
 
 ### 2. Dosing-Point Safety UX
 **Description:** Show trust at the insulin calculation: warn when meal-cart carbs include low-confidence estimates; present estimated carbs as ranges (±) not points; add high-fat-meal → delayed BG rise / extended-bolus education note.
@@ -90,4 +90,5 @@ focus: Review this codebase and make it better
 
 ## Session Log
 - 2026-06-09: Initial ideation — ~30 candidates generated, 7 survived. User selected #3 (Ship & Prune) for immediate execution.
-- 2026-06-09: Ship & Prune executed — PR #33 CI failure root-caused (PWA service worker bypassing Playwright route mocks on slow CI runners; fixed with `serviceWorkers: 'block'`), branch updated with main (quality-history conflict resolved keeping both sides), 24 local + 22 remote merged branches pruned, migration 00002 re-verified (0 duplicates across 17,306 items).
+- 2026-06-09: Ship & Prune executed — PR #33 CI failure root-caused (PWA service worker bypassing Playwright route mocks on slow CI runners; fixed with `serviceWorkers: 'block'`), branch updated with main (quality-history conflict resolved keeping both sides), 24 local + 22 remote merged branches pruned, migration 00002 re-verified (0 duplicates across 17,306 items). PR #33 auto-closed by base-branch pruning (stacked PR); replaced with PR #34, merged to main (4a0ed88), main CI green.
+- 2026-06-09: Idea #1 (Trusted-Carbs Pipeline) selected — brainstorm started.

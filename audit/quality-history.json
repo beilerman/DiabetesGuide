@@ -317,7 +317,7 @@
   {
     "date": "2026-06-09",
     "totalItems": 17306,
-    "qualityScore": 67,
+    "qualityScore": 54,
     "coverage": {
       "description": 83.2,
       "photo": 0.3,
@@ -329,13 +329,20 @@
       "allergens": 34.8
     },
     "carbTrust": {
-      "trustedCarbsPct": 42.5,
-      "untrustedCarbs": 9608,
+      "trustDefinition": "confidence>=70 (v2)",
+      "trustedCarbsPct": 14.6,
+      "sourcedCarbsPct": 42.5,
+      "untrustedCarbs": 14431,
       "bySource": {
         "crowdsourced": 10994,
         "official": 1520,
         "api_lookup": 4687
       }
+    },
+    "prioritySlice": {
+      "total": 8818,
+      "dosingGrade": 668,
+      "pct": 7.6
     },
     "nutritionFieldNullPct": {
       "calories": 1.3,
