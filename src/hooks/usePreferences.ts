@@ -21,10 +21,14 @@ let currentPrefs = load()
 let lastStoredValue: string | null = null
 const listeners = new Set<(prefs: Preferences) => void>()
 
-function applyPreferenceEffects(prefs: Preferences) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs))
+function applyPreferenceDomEffects(prefs: Preferences) {
   document.documentElement.style.fontSize = `${16 * prefs.fontScale}px`
   document.body.classList.toggle('high-contrast', prefs.highContrast)
+}
+
+function applyPreferenceEffects(prefs: Preferences) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs))
+  applyPreferenceDomEffects(prefs)
 }
 
 function getSnapshot(): Preferences {
@@ -40,6 +44,14 @@ function commitPreferences(updater: (prefs: Preferences) => Preferences) {
   currentPrefs = updater(getSnapshot())
   lastStoredValue = JSON.stringify(currentPrefs)
   applyPreferenceEffects(currentPrefs)
+  listeners.forEach(listener => listener(currentPrefs))
+}
+
+function clearPersistedPreferences() {
+  currentPrefs = defaults
+  lastStoredValue = null
+  localStorage.removeItem(STORAGE_KEY)
+  applyPreferenceDomEffects(currentPrefs)
   listeners.forEach(listener => listener(currentPrefs))
 }
 
@@ -71,5 +83,9 @@ export function usePreferences() {
     commitPreferences(() => defaults)
   }, [])
 
-  return { ...prefs, setFontScale, toggleContrast, setCarbGoal, resetPreferences }
+  const clearPreferences = useCallback(() => {
+    clearPersistedPreferences()
+  }, [])
+
+  return { ...prefs, setFontScale, toggleContrast, setCarbGoal, resetPreferences, clearPreferences }
 }

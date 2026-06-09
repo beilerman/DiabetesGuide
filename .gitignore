@@ -24,6 +24,8 @@ dist-ssr
 *.sln
 *.sw?
 .worktrees/
+.compound-engineering/config.local.yaml
+.playwright-mcp/
 
 # Menu sync data (large JSON files)
 data/scraped/
@@ -34,7 +36,9 @@ data/*.json
 !data/source.json
 !data/portion-multipliers.json
 !data/researched-nutrition.json
+!data/manual-nutrition-estimates.json
 data/pending/
+data/w9-output/
 
 # Curated supplement data (imported to Supabase, not needed in repo)
 data/chain-nutrition/

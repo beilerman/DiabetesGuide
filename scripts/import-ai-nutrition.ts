@@ -19,10 +19,16 @@ import { createClient } from '@supabase/supabase-js'
 import { readFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { loadEnv } from './audit/utils.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY
+const envVars = loadEnv()
+const url =
+  process.env.SUPABASE_URL ||
+  process.env.VITE_SUPABASE_URL ||
+  envVars.SUPABASE_URL ||
+  envVars.VITE_SUPABASE_URL
+const key = process.env.SUPABASE_SERVICE_ROLE_KEY || envVars.SUPABASE_SERVICE_ROLE_KEY
 if (!url || !key) {
   console.error('Set SUPABASE_URL (or VITE_SUPABASE_URL) and SUPABASE_SERVICE_ROLE_KEY')
   process.exit(1)
@@ -51,6 +57,7 @@ interface Entry {
   source?: string // 'official' | 'crowdsourced'
   method?: string
   sourceUrl?: string
+  sourceDetail?: string
   note?: string
 }
 
@@ -69,7 +76,7 @@ function sane(e: Entry): string | null {
   // is invisible to the P*4+C*4+F*9 estimate (the documented caloric-math gap).
   // Check name AND the generator's note (creative cocktail names like
   // "Tequilasaurus"/"Uh-Oa!" don't contain a keyword, but the note does).
-  const text = `${e.name ?? ''} ${e.note ?? ''}`
+  const text = `${e.name ?? ''} ${e.method ?? ''} ${e.note ?? ''} ${e.sourceDetail ?? ''}`
   const isAlcohol = /(alcohol|margarita|mojito|daiquiri|martini|cocktail|sangria|mimosa|bellini|negroni|paloma|colada|mai.?tai|michelada|tiki|spritz|jungle juice|icefall|beer|wine|cider|seltzer|\brum\b|vodka|tequila|whiskey|bourbon|\bgin\b|sake|mezcal|liqueur|aperol|prosecco|champagne|hard )/i.test(text)
   if (!isAlcohol && e.fat != null && e.protein != null) {
     const est = e.protein * 4 + e.carbs * 4 + e.fat * 9
@@ -101,6 +108,8 @@ async function main() {
       source: e.source ?? 'crowdsourced',
       confidence_score: e.confidence,
     }
+    const sourceDetail = e.sourceDetail ?? buildSourceDetail(e)
+    if (sourceDetail) fields.source_detail = sourceDetail
     for (const f of NUT_FIELDS) if ((e as any)[f] != null) fields[f] = (e as any)[f]
 
     console.log(`  ${APPLY ? 'WRITE' : 'would write'} ${e.name ?? e.id}: ${e.calories}cal/${e.carbs}g [${e.method ?? '?'}, conf ${e.confidence}]`)
@@ -119,3 +128,12 @@ async function main() {
 }
 
 main().catch(err => { console.error(err); process.exit(1) })
+
+function buildSourceDetail(e: Entry): string | null {
+  const parts = [
+    e.method,
+    e.sourceUrl ? `source: ${e.sourceUrl}` : '',
+    e.note,
+  ].filter(Boolean)
+  return parts.length > 0 ? parts.join(' | ') : null
+}

@@ -37,13 +37,18 @@ export default function MenuItemDetail() {
 
   if (isLoading) {
     return (
-      <div className="mx-auto max-w-3xl space-y-4">
-        <div className="h-4 w-32 rounded bg-stone-200 animate-pulse" />
+      <div
+        role="status"
+        aria-label="Loading item details"
+        className="mx-auto max-w-3xl space-y-4"
+      >
+        <span className="sr-only">Loading item details</span>
+        <div data-testid="item-detail-skeleton" className="h-4 w-32 rounded bg-stone-200 animate-pulse" />
         <div className="rounded-xl bg-white border border-stone-200 p-5 space-y-4 animate-pulse">
-          <div className="h-7 w-3/4 rounded bg-stone-200" />
-          <div className="h-4 w-1/2 rounded bg-stone-200" />
+          <div data-testid="item-detail-skeleton" className="h-7 w-3/4 rounded bg-stone-200" />
+          <div data-testid="item-detail-skeleton" className="h-4 w-1/2 rounded bg-stone-200" />
           <div className="grid grid-cols-2 gap-3">
-            <div className="h-16 rounded bg-stone-100" />
+            <div data-testid="item-detail-skeleton" className="h-16 rounded bg-stone-100" />
             <div className="h-16 rounded bg-stone-100" />
           </div>
         </div>

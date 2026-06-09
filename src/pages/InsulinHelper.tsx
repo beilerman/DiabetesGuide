@@ -77,6 +77,9 @@ export default function InsulinHelper() {
     !validation.isValid ||
     result?.status === 'blocked' ||
     (typeof carbs === 'number' && carbs <= 0)
+  const estimatorLiveMessage = doseHidden
+    ? getDoseHiddenLiveMessage(validation, result, carbs)
+    : `Dose estimate visible. Suggested total dose ${result?.suggested} units.`
 
   const handleAcknowledge = () => {
     saveEstimatorAcknowledgement()
@@ -89,7 +92,7 @@ export default function InsulinHelper() {
         <EstimatorAckModal onAcknowledge={handleAcknowledge} />,
         document.body,
       )}
-      <div className="max-w-lg mx-auto" inert={!acknowledged}>
+      <div className="mx-auto max-w-6xl" inert={!acknowledged}>
       <div className="rounded-lg bg-amber-50 border border-amber-300 p-4 mb-6">
         <p className="font-semibold text-amber-900">
           Educational estimator only - not medical advice. Use only ratios and limits from your care team.
@@ -100,8 +103,19 @@ export default function InsulinHelper() {
       <p className="text-sm text-stone-600 mb-6">
         The estimate is hidden until required values are complete and within conservative safety ranges.
       </p>
+      <div
+        role="status"
+        aria-live="polite"
+        className="sr-only"
+        data-testid="estimator-live-status"
+      >
+        {estimatorLiveMessage}
+      </div>
 
-      <div className="space-y-4">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,0.9fr)] lg:items-start">
+      <section aria-labelledby="estimator-inputs-heading" className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
+        <h2 id="estimator-inputs-heading" className="sr-only">Estimator inputs</h2>
+      <div className="grid gap-4 sm:grid-cols-2">
         <Field
           label="Blood Glucose (mg/dL)"
           value={bg}
@@ -168,7 +182,7 @@ export default function InsulinHelper() {
           required
         />
 
-        <fieldset>
+        <fieldset className="sm:col-span-2">
           <legend className="text-sm font-medium mb-1">Planned Activity</legend>
           <div className="flex flex-wrap gap-3">
             {([['none', 'None'], ['mod', 'Moderate - carb bolus -25%'], ['high', 'High - carb bolus -50%']] as const).map(
@@ -188,7 +202,10 @@ export default function InsulinHelper() {
           </div>
         </fieldset>
       </div>
+      </section>
 
+      <section aria-labelledby="estimator-results-heading" className="lg:sticky lg:top-24">
+      <h2 id="estimator-results-heading" className="sr-only">Estimator results and safety messages</h2>
       {validation.status === 'hypoglycemia' && (
         <div className="mt-6 rounded-lg border border-red-300 bg-red-50 p-4" role="alert">
           <h2 className="font-semibold text-red-900">Low blood glucose - no bolus estimate shown</h2>
@@ -281,6 +298,8 @@ export default function InsulinHelper() {
           )}
         </div>
       )}
+      </section>
+      </div>
       </div>
     </>
   )
@@ -334,6 +353,26 @@ function EstimatorAckModal({ onAcknowledge }: { onAcknowledge: () => void }) {
   )
 }
 
+function getDoseHiddenLiveMessage(
+  validation: ReturnType<typeof validateInsulinInputs>,
+  result: ReturnType<typeof calculateInsulinDose>,
+  carbs: number | '',
+): string {
+  if (validation.status === 'hypoglycemia') {
+    return 'Dose hidden because blood glucose is low. Treat the low before considering insulin.'
+  }
+  if (!validation.isValid) {
+    return `Dose hidden: ${validation.messages[0] ?? 'required values are incomplete or outside safety ranges.'}`
+  }
+  if (result?.status === 'blocked') {
+    return `Dose hidden: ${result.messages[0] ?? 'calculated dose is blocked by safety limits.'}`
+  }
+  if (typeof carbs === 'number' && carbs <= 0) {
+    return 'Dose hidden: total carbs are 0g, so no meal-carb dose is shown.'
+  }
+  return 'Dose hidden until values are valid.'
+}
+
 function Field({
   label,
   value,
@@ -355,18 +394,26 @@ function Field({
 }) {
   const fieldId = useId()
   const helperId = `${fieldId}-helper`
+  const validationId = `${fieldId}-validation`
   const outOfRange =
     typeof value === 'number' &&
     ((min != null && value < min) || (max != null && value > max))
-  const invalid = Boolean(required && (value === '' || outOfRange))
+  const invalid = Boolean((required && value === '') || outOfRange)
+  const validationHint = getFieldValidationHint(label, value, min, max, required)
+  const describedBy = [
+    helper ? helperId : null,
+    validationHint ? validationId : null,
+  ].filter(Boolean).join(' ') || undefined
 
   return (
     <div>
-      <label htmlFor={fieldId} className="text-sm font-medium">{label}</label>
+      <label htmlFor={fieldId} className="text-sm font-medium text-stone-800">{label}</label>
       <input
         id={fieldId}
         type="number"
-        className="mt-1 block w-full rounded border px-3 py-2"
+        className={`mt-1 block w-full rounded-lg border px-3 py-2 text-stone-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 ${
+          invalid ? 'border-amber-400 bg-amber-50' : 'border-stone-300 bg-white'
+        }`}
         value={value}
         min={min}
         max={max}
@@ -374,13 +421,57 @@ function Field({
         required={required}
         aria-required={required || undefined}
         aria-invalid={invalid || undefined}
-        aria-describedby={helper ? helperId : undefined}
+        aria-describedby={describedBy}
         inputMode="decimal"
         onChange={e => onChange(e.target.value === '' ? '' : Number(e.target.value))}
       />
       {helper && <span id={helperId} className="mt-1 block text-xs text-stone-500">{helper}</span>}
+      {validationHint && (
+        <span id={validationId} className="mt-1 block text-xs font-medium text-amber-800" aria-live="polite">
+          {validationHint}
+        </span>
+      )}
     </div>
   )
+}
+
+function getFieldValidationHint(
+  label: string,
+  value: number | '',
+  min?: number,
+  max?: number,
+  required?: boolean,
+): string | null {
+  const name = getPlainFieldName(label)
+  const unit = getFieldUnit(label)
+
+  if (required && value === '') {
+    return `${name} is required.`
+  }
+
+  if (
+    typeof value === 'number' &&
+    ((min != null && value < min) || (max != null && value > max))
+  ) {
+    const range = min != null && max != null
+      ? `between ${min} and ${max}${unit ? ` ${unit}` : ''}`
+      : min != null
+        ? `at least ${min}${unit ? ` ${unit}` : ''}`
+        : `no more than ${max}${unit ? ` ${unit}` : ''}`
+    return `${name} must be ${range}.`
+  }
+
+  return null
+}
+
+function getPlainFieldName(label: string): string {
+  const withoutUnit = label.replace(/\s*\([^)]*\)/g, '').trim()
+  return withoutUnit.charAt(0).toUpperCase() + withoutUnit.slice(1).toLowerCase()
+}
+
+function getFieldUnit(label: string): string | null {
+  const match = label.match(/\(([^)]+)\)/)
+  return match?.[1] ?? null
 }
 
 function Row({ label, value, bold }: { label: string; value: string; bold?: boolean }) {

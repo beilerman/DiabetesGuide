@@ -39,7 +39,13 @@ npx tsc -p tsconfig.scripts.json --noEmit
 ### Enrichment / maintenance (run as needed)
 
 `seed`, `import:all`, `enrich:nutrition`, `enrich:allergens`, `enrich:allears`,
-`enrich:dfb`, `estimate:ai`, `keepalive`, `catalog:preview`, `fix:public-qa-data`.
+`enrich:dfb`, `estimate:ai`, `import:ai`, `import:manual-nutrition`, `keepalive`,
+`catalog:preview`, `fix:public-qa-data`.
+
+`import:manual-nutrition` reads `data/manual-nutrition-estimates.json` and uses the
+same dry-run/apply semantics as `import:ai`. Use it for ID-specific researched or
+recipe-computed values that should be traceable in git before being written to
+Supabase.
 
 ## Safety notes
 

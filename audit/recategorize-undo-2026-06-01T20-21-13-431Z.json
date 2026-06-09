@@ -1,0 +1,3173 @@
+[
+  {
+    "id": "00546818-2ff3-4b5d-b28a-2cb7f2864d56",
+    "name": "Coca-Cola Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Souvenir Cup",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "005d6e20-29ee-43b1-89bf-5fa435d48ee0",
+    "name": "Schöfferhofer Grapefruit Hefeweizen - Germany",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "006e5446-84b1-44bb-a2bb-ceffb75c8845",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "0161037e-9897-489d-894e-ddcf83486f06",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "01b3c91e-078e-47c3-8ba6-c055f60d11a8",
+    "name": "Frozen Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "0351f240-00c9-42a9-9f79-6e57de4cc2c8",
+    "name": "Gelati Floats",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "037969cb-d76b-4b37-85ef-1f4e6f2ddbd7",
+    "name": "Extra Dipping Sauces",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "0386ff4d-0635-4cf6-9c2e-144a87f1be87",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "0403195c-5eef-4282-b476-b8aca65d93cb",
+    "name": "Iced Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "04a05e3c-c554-41a0-966e-fc9bd3a414c1",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "04b47f6e-a8c2-4ce5-94cb-74af85c92fdd",
+    "name": "2026 FLOWER & GARDEN FESTIVAL- DOLE Whip Pineapple",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "04f76d7e-13e4-4671-8cf7-39a917b09258",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "0520694d-134f-42d4-8b13-0d0394ca2464",
+    "name": "Chocolate Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "05f3c9e3-e762-4d22-aab0-2d00a6b20d2f",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "06049e56-6850-4f4c-93e8-c1ecc5274662",
+    "name": "Islander Boba",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "063960f5-4e77-4503-a128-b97d98c864e7",
+    "name": "Fillmore’s Fuelin’ Groovy Pomegranate Limeade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "non-alcoholic"
+  },
+  {
+    "id": "0742f2e9-abec-4dd3-bd89-ded0e45d3a5c",
+    "name": "Shakin' Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "0748e2bc-ae61-4c1c-a09d-26e2cd95c50b",
+    "name": "Dole Whip Float",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "092e8ce2-d7a9-4f89-a3ec-2fb5fc05a7ce",
+    "name": "Cappuccino Dream",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "09bd26d3-eece-4a88-8672-59ea6107d156",
+    "name": "Crooked Can<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> High Stepper IPA",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "09c5f1a8-379e-4e68-b85b-f432258520f2",
+    "name": "Honey Almondmilk Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "0a3b22ba-86ce-4275-813e-168cb7f4cd90",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "0b4006a9-c2f0-4bfa-a3c7-2d5561527bf1",
+    "name": "Crooked Can<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> High Stepper IPA",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "0d193807-6081-41ee-a3d5-9d9add5dc76f",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "0dbd59fb-443d-4043-b908-449128e559eb",
+    "name": "Aviary<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "0ee1a326-acef-42fd-9305-c42590ad0b89",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "0f139d68-3c0f-428c-bbd3-0c7fc02eaa40",
+    "name": "Modelo Negra®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "0fad2bf7-23c1-46e5-ace5-0331ed356b4e",
+    "name": "Shakin' Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "0fb61e38-2e2d-460a-aa60-5bd47327c914",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "0fbf782c-bb13-43ab-a2e9-0b747fa6fc53",
+    "name": "Piña Colada Panna Cotta",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "0fc5d0a6-de2b-40dd-a718-e5feab562b3f",
+    "name": "Hot Chocolate with Liqueur",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "0fd67700-3a30-4068-9991-b5eb724e1133",
+    "name": "Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "103c6128-6c3e-493d-96b1-74f6913fe70b",
+    "name": "Mega Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "10548a93-b170-4422-a749-97a3e013b533",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "1073eb1d-c187-4d4e-9e3e-4eb236c02991",
+    "name": "Tiramisu Crème Brûlée",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "10c1dcf4-5c30-4140-b43b-a370a52fcf3a",
+    "name": "Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "10e5f2d5-ed20-4e45-b73a-f7997252bb81",
+    "name": "Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "1157c851-e750-433f-8178-5277cdff9314",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "11c32345-dc7e-41c1-b8f1-7ea4ec3b72f9",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "121aa83e-6bbd-4216-a1ed-7002a282a795",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "127e0c51-3008-49e4-a5c5-0595bb1bf741",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "12bbdeae-f3f2-4313-947a-9936620d5bc1",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "132428ae-1a9a-48af-a6ca-1eb6009bb66b",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "13b108b7-7000-44bb-b463-4219ef57200a",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "13b4f99f-0144-40af-95ae-5c6db1379885",
+    "name": "Cosmopolitan",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "13df3f95-0650-4480-bd2d-771a46cdc483",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "14037845-9a45-4d11-999a-1719fc30f0d0",
+    "name": "SEASONAL- Caramel Protein Latte",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "15c7eacd-8d96-4796-be06-374b4d7c1d48",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "165b95e1-71da-4582-aa0f-06b337d2ee2f",
+    "name": "APRIL 2026- Dark Mocha Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "169b6f42-b674-43e0-8af7-63ef83029e18",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "16dec58b-63c3-4842-92aa-b324dfc8fe05",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "171468c4-abdd-4b56-946a-0d81b6a631ab",
+    "name": "Dark Cherry Truffle Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "175b3285-f368-4993-b663-62ca42913ac7",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "181534ae-307f-4c02-a767-7174b6c65b71",
+    "name": "Etude<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Pinot Noir",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "190a5433-b795-401a-b5c5-1e91c7366f0c",
+    "name": "Poached Pears and Panna Cotta",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "19e491fb-b46b-4938-8830-f81a99f50c64",
+    "name": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Fruit Punch",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "1a0a3ea6-50a1-4f4d-9cd3-68dab517e67b",
+    "name": "Paul Buisse Touraine Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "1a186dc8-5b68-43a4-82d6-dfc092c902cf",
+    "name": "Dole Whip Float",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "1a9860fa-6686-420e-9224-a64b3e609297",
+    "name": "Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "1b1436b0-c6ad-4e50-b878-918f4ef85b40",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "1b682acd-7f82-4430-87e0-ad329f05310c",
+    "name": "Schöfferhofer® Hefeweizen Bier Grapefruit",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "1c203433-3c42-4f6c-9eef-3a4cab38be2f",
+    "name": "Negroni",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "1d41b5a5-9edc-4e6c-8541-10ac4eb62fb8",
+    "name": "Dole Whip Float",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "1dae2b03-8d82-4ecb-ba2f-df1c1c23c2f9",
+    "name": "Friedrich-Wilhelm \"Fritz Willi\" Riesling",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "1df2eab5-ad7a-4795-9778-bfbb091b5b8a",
+    "name": "Caramel Macchiato",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "1f014d00-5308-48c0-b3d5-0fe1465d0ce7",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "1f952c9d-5fcb-4585-9993-c1602ffdd700",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "1fa152c8-2715-4848-9106-ad39fa031063",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "1fbb9973-9912-46ed-8788-935aac847c6e",
+    "name": "Cold Brew, Flavored",
+    "from": "dessert",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "203c5da7-79da-4380-b75a-8e47ba95ae3e",
+    "name": "Grab 'n' Go- Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "20410d50-8cb1-41d2-a97d-211f9b993064",
+    "name": "Atlantic Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "2243857e-ff30-426c-b8ba-e6f9c4aec08a",
+    "name": "Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "23351448-7dab-46b0-b32a-a130543cab4a",
+    "name": "Peppermint Mocha Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "236b2b7d-a652-42ee-9194-0c841624b84c",
+    "name": "Breca® Old Vines Garnacha",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine-region"
+  },
+  {
+    "id": "23a9a72c-05e2-4091-a7a8-41b3604d407b",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "252eac9c-0a5b-49db-9725-16b0291fad9e",
+    "name": "2025 HALLOWEEN- BearPaw Basin Cold Brew- Avail through Jan 7, 2026",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "25554b62-dfb1-4b1f-b093-f53eb883acb3",
+    "name": "Side Scrambled Eggs",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "2624645b-9aaa-43cf-9697-698f90dad1ec",
+    "name": "Poggio Anima® Samael Montepulciano d'Abruzzo",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine-region"
+  },
+  {
+    "id": "263e7adc-f741-4f60-a352-491c1b0c6c88",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "265e1fc9-8ba2-4303-b5a2-9eb4fcb02808",
+    "name": "Shakin' Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "26cf2a69-a4d3-4bdd-a4d6-4deb6fb3a792",
+    "name": "Powerade® Mountain Berry Blast",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "2797f490-61e9-462d-8120-5dbe0083731b",
+    "name": "Modelo Especial<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "27ea2d65-f32f-4baf-983c-54893fc73875",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "2841f60e-122a-47f9-be97-b87c261ecef7",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "28eeb953-c442-45ef-859a-dabf061de426",
+    "name": "SmartWater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "29f63ac2-d7dc-4ecc-b68f-272556e739e5",
+    "name": "Pewsey Vale<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Dry Riesling",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "2b55372c-764f-4126-a496-cdcdc4771703",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "2c34e8d3-df41-4713-9f4b-5c9d9ffad92f",
+    "name": "Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "2d43e8c5-0bbe-494c-89a2-39b158b2ba8f",
+    "name": "Affogato",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "2db6e535-3172-4724-acc2-24f364f55a0b",
+    "name": "Shakin' Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "2e5c965a-da96-40c7-bdc5-295a4e963342",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "2ee6b41b-29ad-4393-b11b-ff58e185ebd9",
+    "name": "Schofferhoffer Pink Grapefruit Hefeweizen",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "2ef729c7-460b-420c-8f6c-7c21d0928cd7",
+    "name": "Sorbetto",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "2f20d45b-3bc6-46f2-9b01-f10249a67fd5",
+    "name": "Iced Caramel Macchiato",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "2fd2602e-ce15-4948-8280-1616fe8ddf7c",
+    "name": "Golden Road Brewing, Hefeweizen",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "30337511-6ad2-4f06-9e2d-ddc424ffaac8",
+    "name": "Budweiser or Bud Light",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "313207f8-fb21-485e-8a9e-9bc2b5c78762",
+    "name": "Frappuccino® Blended Beverages",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "3184654f-a866-467b-8540-e7209c5da3b8",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "320d51d9-8adf-4736-8d6f-c93d21d73892",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "326f8143-461e-413b-af10-5327eada09eb",
+    "name": "DK Crush Float Tropical Banana Flavor",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "327585fe-3f92-44ac-8689-a0635276eee0",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "340ad275-0cb7-4a3f-83aa-e52296467db6",
+    "name": "Mimosa (21+)",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "3522c921-12ef-4364-b7bc-f995af694ee3",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "35cb9c7b-2830-49a0-9773-2588eec21abe",
+    "name": "Powerade® Fruit Punch",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "3836340c-a250-4fc1-8cef-c0996aa14ed5",
+    "name": "Iced Caffè Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "38b7af9d-ad02-4b5a-801f-cf029ee8f351",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "39696960-b8d4-4435-8e1e-88e5322f1435",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "397cc7de-fe29-49a8-91d7-39fc728843ca",
+    "name": "Seasonal Slushie",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "3b44544a-b710-4add-892b-4f3afbd0e6a0",
+    "name": "Agua Fresca",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "non-alcoholic"
+  },
+  {
+    "id": "3b8b2e4f-d772-4125-86e0-5f01c43294b7",
+    "name": "Bottled Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "3be7b2f2-8615-4403-9b01-087469c40a9b",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "3c54374b-a21e-4ec1-b890-602ccd009e08",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "3c83c2e8-1ebd-4c22-8357-3fb50d9d138a",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "3d7e14ac-852f-43ef-a30a-710beb2b5eb3",
+    "name": "Salted Caramel Mudslide Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "3dbe7ebe-c45f-4fad-9af2-7080441fcb15",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "3e035a89-621b-4e2f-9d92-2a7c53257480",
+    "name": "DK Crush Float with Mug Tropical Banana Flavor",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "3e0c4e8f-07be-40d5-9380-3aacf74668a1",
+    "name": "SmartWater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "3edd5b05-4e61-4eec-9785-a246d2dd359a",
+    "name": "2023 Spring- Mango Peach Refresher",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "smoothie"
+  },
+  {
+    "id": "3f014bb8-ad22-4e6b-a5d8-8ab9fc3564d7",
+    "name": "2026 FLOWER & GARDEN FESTIVAL Florida Fresh- Starlight Papaya Pilsner",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "3f86bea4-11d3-40ea-8921-a8f3ebcad8f8",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "3fee36aa-cd34-47c6-ab4a-b9c5535fa498",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "4054851b-8775-4004-8c6b-ad2babb15435",
+    "name": "Coca-Cola Freestyle<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "40829571-0ce5-4e21-9aaa-5c918a2ab4d3",
+    "name": "Modelo®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "40d13194-a1d2-4398-8322-8ed4969755cd",
+    "name": "Fruit Slush",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "42c444e5-2b22-423e-bf3d-bfe60377987d",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "437db019-d59d-4888-9232-5fc8fed19233",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "43e8279d-c9bd-46e5-9072-3181cb439aa6",
+    "name": "Taverne Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "44666cef-10e3-45ea-be52-eb11f136bc7d",
+    "name": "Carlsberg® Danish Pilsner",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "44c34e63-ec5c-44aa-b894-46551df6e9a1",
+    "name": "Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "44f79b75-4731-4a14-8d02-e04704403ec7",
+    "name": "Caramel Apple Spice",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "candy"
+  },
+  {
+    "id": "459ca88e-a195-433d-990c-c205079ef27b",
+    "name": "Panna Cotta",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "477731f2-3c8e-4b03-9b81-53ba806559e3",
+    "name": "Paul Buisse Touraine Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "4784239c-6d9c-49fd-b019-28ec4edf3ebd",
+    "name": "DOLE Whip Mango and Chamoy Float",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "47ae27b1-2c6c-4e05-a376-db45cdc4e5ff",
+    "name": "Crooked Can<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cloud Chaser Hefeweizen",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "47d40d9d-1904-4c81-9ded-e04ccb732214",
+    "name": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Mountain Berry Blast",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "47ea1a76-3116-4f4e-b7ae-e58bb94da26b",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "4915be4a-3d21-43ca-83cf-4a3fd98b44fb",
+    "name": "Giesen 0% Sauvignon Blanc Or Rosé",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "49685496-1368-4265-9476-190172bfc4a9",
+    "name": "SmartWater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "497884dc-c072-4dce-90d0-57a9068447a6",
+    "name": "Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "49c7e7e0-3f0c-42c6-bd81-f887ead53927",
+    "name": "Spiked Cold Brew Black Caf",
+    "from": "dessert",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "49e546a3-e6ac-481d-a041-264f03e14257",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "4a7a6ceb-b991-41aa-9555-e18bbb758955",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "4a7b9363-2795-411e-9c15-0287c9fbc10a",
+    "name": "Shakin Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "4a9d21fe-268f-4192-9710-db4f4649ad92",
+    "name": "Double Shot Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "4a9f8a8d-318c-4614-bca1-14f2f6655230",
+    "name": "Yealands Estate Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "4ad51803-be59-4483-ade8-727fa99eabb8",
+    "name": "Side Caesar",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "4b40762f-5f74-4bb8-9e81-97105658f4d9",
+    "name": "Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "4b71df58-334d-42f2-998d-269054deb01a",
+    "name": "Montes Limited Sauvignon Blanc (White)",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "4bd26706-3439-4f00-a747-150f44abf272",
+    "name": "Coconut Passion Fruit Panna Cotta",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "4be7c671-cf69-4dbc-8805-73bed7a9ae52",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "4ded6f4e-45f9-4417-bfe7-968ea51eccb6",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "4e329f29-2467-496b-a2b9-51bc2cc0359e",
+    "name": "Spellbound<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "4ef4235e-c896-47f0-b43c-1d9ed10b2a8d",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "5013c5b1-26dd-44aa-a1b0-1dd9210ef473",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "5030a1e5-a867-4763-a63e-78738fb81245",
+    "name": "ICEE®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "50638666-de3f-446b-bba5-57189a3eca5e",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "533d6949-e4f6-4e16-a7a4-781cc2c50d66",
+    "name": "Wente<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Southern Hills Cabernet Sauvignon",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "53a78fb7-70a9-4400-b85c-dc2b670a0231",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "54cd619c-433a-489a-9a36-de82cede453a",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "5524a852-c337-4486-882e-b768365f6db3",
+    "name": "Matcha Float",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "tea"
+  },
+  {
+    "id": "5526d555-f8b2-463b-9ddb-9a283ce3b03c",
+    "name": "Caffe Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "562aed35-e5ca-4fa4-a92c-b37daa2d2a1f",
+    "name": "Modelo®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "5670bece-71eb-4abc-ba76-2134ea6b60f2",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "56d522b5-d41a-4e36-bb60-c124b2a16c6f",
+    "name": "Caramel Apple Doughnuts",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "candy"
+  },
+  {
+    "id": "56edd50a-388a-45fb-98c6-be48a271e3c3",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "572c4e6c-c38b-4894-88b4-729fa276c744",
+    "name": "Cavicchioli<font size=\"1\" xmlns=\"http://www.w3.org/1999/xhtml\"><sup>®</sup> 1928 Prosecco</font>",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "572f2782-105b-4672-8f3f-1dad7c834934",
+    "name": "Affogato",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "57c23170-a176-41c4-8dfd-e077d7615b0d",
+    "name": "Shaken Affogato",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "583cf3da-af5c-434a-bf91-4dfb20ca0452",
+    "name": "Selbach-Oster Riesling Kabinet (White)",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "58c0f935-8f2e-4b23-b85a-e6b23afd6237",
+    "name": "SEASONAL- Iced Chocolate Almondmilk Shaken Espresso",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "58e9f9fa-0a26-4194-ba49-2a76b27b11af",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "58fd0204-e92d-4053-a1ef-c1f21049aa44",
+    "name": "Gelati e Sorbetti",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "59576570-d199-44e6-916c-5858e9a295be",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "596215a1-32f3-4813-a77f-e5c847ca28e4",
+    "name": "A to Z Wineworks<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Riesling",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "59d4856a-b46b-43b8-a5ae-d64b83f7b9c9",
+    "name": "Powerade® Fruit Punch",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "5b0b96f5-5d22-4273-b08d-5adbe726d8c2",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "5b695b15-35f6-417f-b930-24c1a9b9886d",
+    "name": "Frappuccino® Blended Beverages",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "5c45741c-fba5-4f7a-8395-eaa41cc606ee",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "5d72c97a-7c2c-4528-99ef-ea2d3f82f35c",
+    "name": "Side Smoked Sausage",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "5dc7ff02-fa8e-4805-bfc0-d2588e7ee3ad",
+    "name": "Side BBQ Bacon",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "5e3282e2-c0f7-4b6f-840a-48d50f3378a7",
+    "name": "Stella Artois®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "5e8b587c-c12c-4f73-81e9-d3638f7279fa",
+    "name": "Coke Float",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "5eb8fd81-d8e9-4e58-9ad1-861b79084284",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "5edd3016-f7f3-40a7-a2f4-525f95e94818",
+    "name": "High Noon<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "61801c03-196c-446f-8160-8a70e527fc4c",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "61ef9728-ff84-4d78-87eb-88eddb0acf8c",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "6211327e-e5c5-4438-818b-485dcccaf2e6",
+    "name": "smartwater Sparkling",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "62912135-1bc7-48b5-a17a-ab477c7f0057",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "637dd2b8-990d-48a2-b0c0-973cfa406afa",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "63b83db8-0d02-4c9a-b204-c7f8880ff239",
+    "name": "Rosemary Paloma",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "64033196-b48e-47b7-8155-ce21aeffd0d8",
+    "name": "Frozen Cappuccino Dream",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "64848f3d-19a4-45b5-8bc6-cf204a217ba1",
+    "name": "Strawberry Limeade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "non-alcoholic"
+  },
+  {
+    "id": "6488dad0-b076-44b1-86cd-dbe114d58d82",
+    "name": "2026 FLOWER & GARDEN FESTIVAL- Very Berry Matcha",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "tea"
+  },
+  {
+    "id": "64f1f59f-91c3-4c5d-be7c-ea04044e9d00",
+    "name": "Mocha Frappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "653c83a7-5730-4341-9da6-24e7f7c1e3f0",
+    "name": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Mountain Berry Blast",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "661ae3af-e8a1-4e58-91e6-00be53ba4b6d",
+    "name": "Sparkling Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "665d03ae-da5d-4c2c-bfad-0efd14b591f3",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "667de1d7-5045-4bc8-946c-2f6ad1492131",
+    "name": "Orange Blossom Pilsner",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "66b8a069-7718-4a39-812b-881dfe560a8c",
+    "name": "Abita Purple Haze Sorbetto (21+)",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "671c7848-c9f6-4247-92f1-9c4085c134ed",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "68451a37-2c5c-4c0a-a315-3931d3d3e021",
+    "name": "Strawberry Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "69c4e08f-c27c-4081-86aa-eebbdd27ed5e",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "6afe268b-0714-4212-a954-45149dce87b9",
+    "name": "Shakin' Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "6ccbdf24-7bc5-4d09-a6fb-4e195dd406fe",
+    "name": "Chocolate-Butterscotch Cold Brew",
+    "from": "dessert",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "6d471b59-f7bc-4438-9b73-1b251b9461fc",
+    "name": "ICEE®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "6d7ef1ec-c11c-4791-95c8-a494da8672ae",
+    "name": "Negroni",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "6ecc5fe2-5a99-469e-954c-b3cdd710a4a7",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "6ecf5a74-f3bd-4477-a9bd-14e722c6e275",
+    "name": "Daou<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Reserve Cabernet Sauvignon",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "6f35950d-5493-4609-93ff-f402ff073ced",
+    "name": "Iced Pineapple Matcha",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "tea"
+  },
+  {
+    "id": "6f6bde25-b162-4114-aaad-6a0ec8f7bbbb",
+    "name": "Nutella Cannoli",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "7195437e-623d-4bf8-9975-2846269722e8",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "71ca45d4-2656-4e60-b919-3b343dc49c7c",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "7212bf19-4500-49d6-bdbc-bb04cee551c0",
+    "name": "Oreo Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "727a7d07-d006-4303-8e91-e8d57ff979ac",
+    "name": "Elysian Brewing Co.<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Space Dust IPA",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "733c692b-fe27-43d3-88d9-e06186be915e",
+    "name": "Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "741b6c56-1aaa-4ed4-84b8-54ef473f370e",
+    "name": "“Affogato” Al Cioccolato",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "74d10195-69a0-4868-a5fa-e07e591e441c",
+    "name": "Stone® Buenaveza Salt &amp; Lime Lager",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "751e36ee-03c8-4276-9524-c294a29a8e93",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "75263ab6-219f-4b4a-a2f7-dea69630fed8",
+    "name": "Tiramisù Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "75a92c16-d780-46f9-b39a-155952edc6a0",
+    "name": "Side Vegan Bacon",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "75c8570c-0358-426c-ac43-380527cd5bcb",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "7652057d-d033-4be6-8cf1-62f60b9d71d8",
+    "name": "Domaine Joost de Villebois Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "76772ea8-1d82-4bda-b44f-311ec34c206e",
+    "name": "Float Topped with Rum",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "772c58a8-8f73-455e-805e-09c012bfa547",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "775e5f13-6656-4db6-88b9-2593f0f04709",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "77648668-f363-41d2-9b5c-7ddd767382c4",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "783ab4af-a254-4312-b08e-b8737ebaec9c",
+    "name": "S'mores Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "786f1f15-bd9f-4fff-a430-aa8e6d4134eb",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "7899bcc9-98e4-4009-b203-c095160a7d81",
+    "name": "Santa<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Julia \"El Burro\" Natural Malbec",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "793eec5d-0ded-4f8a-9c91-e163e3b1651f",
+    "name": "Orange Blossom Pilsner (21+)",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "7a3427eb-0a24-411f-9ea9-d6a8ada569fd",
+    "name": "Modelo Especial<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "7bb3a283-1d77-448f-b222-d182225d472d",
+    "name": "Peregrine Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "7c2a992d-f243-4533-b756-5a654703a7c7",
+    "name": "Powerade<sup xmlns=\"http://www.w3.org/1999/xhtml\"><span style=\"font-size: 9.16667px;\">®</span></sup> Fruit Punch",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "7c9a621a-bb1c-4393-870f-61e048444d94",
+    "name": "Rodney Strong<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Rosé of Pinot Noir",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "7cb429f8-1075-41b9-9da3-67307dc8ac67",
+    "name": "Rafiki Wildberry and Dole Whip Orange Float",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "7cc5fa8c-25b6-45d6-9ae8-9915e92ba5c8",
+    "name": "Cold Brew Baileys Frappe",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "7cc6658e-a653-46de-9a96-67333b783612",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "7d2949fd-780e-409c-a070-cb0fcb25bc5a",
+    "name": "A to Z Wineworks Riesling",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "7d7719b7-67a8-4b08-b743-f4f21dbaa00c",
+    "name": "Mocha Tiramisù",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "7dec9ddd-976e-4833-a361-8728f3b32555",
+    "name": "Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "7e64d17b-1fa8-46ea-ac25-e94db5881466",
+    "name": "Brewery X, Battlesnake Pilsner",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "7e7f57fe-c484-4c74-8152-b254c5f2759a",
+    "name": "Au Bon Climat<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "809d43d0-43db-41e3-9588-9e51a00a67be",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "80bf86d3-7047-4cba-a8f1-78f55af2db74",
+    "name": "Caffe Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "80e19df8-6b0a-4b97-abb2-c49f136a8268",
+    "name": "Seasonal Sorbet",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "80ea0aec-5083-4e9d-8c89-4accb00e6ece",
+    "name": "Mezcal Paloma",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "spirit"
+  },
+  {
+    "id": "8121b94f-20c8-4a46-9c30-0e2540116ab9",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "824d2594-f9e8-438b-ac6c-d814556c08cd",
+    "name": "Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "83fdcb85-d76c-4c44-8545-d436f167bb84",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "846de273-c97b-4d4a-930d-5914524a49bc",
+    "name": "Samuel Adams Seasonal",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "85a6f09d-2035-4260-88d8-9f7bcfa02f58",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "8665a500-a600-4e5c-9afe-10c20e4cccec",
+    "name": "Shakin Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "868e6d52-375c-4ff1-a4cb-531e85a9897c",
+    "name": "Side Baked Egg",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "86d9f81f-7d60-46c6-8806-b1b62d458d1e",
+    "name": "Caramel Macchiato",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "88f2819c-303f-4c36-9a1e-ea642c6dee4b",
+    "name": "Inglenook<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "8940d494-b815-448a-809f-c9ffab9c6c47",
+    "name": "Vodka & Pomegranate Limeade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "non-alcoholic"
+  },
+  {
+    "id": "89c7faf7-4e02-4bc9-82e9-8039ddad0e51",
+    "name": "Yealands Estate<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "8a0c55cc-cd2b-4dc5-a319-6f9e01710022",
+    "name": "2026 FLOWER & GARDEN FESTIVAL- Lemon Sorbet",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "8ad54b01-a358-4808-a8c0-6d0a5a593438",
+    "name": "Kunuku Daiquiri",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "8b75a45c-a83f-450b-a76a-1b2ebdf8d49a",
+    "name": "Seasonal Sorbet",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "8c779e9c-f727-4f9a-aa50-44666724bc25",
+    "name": "Powerade® Mountain Berry Blast",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "8cc93b56-9433-4bc6-b123-8460740322ab",
+    "name": "Vanilla Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "8d67e43e-2df3-4050-ae8f-7bc9c1f61e6f",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "8dcc4c6d-4039-4a0f-bf1d-cefc0e4ade5c",
+    "name": "Tiramisu Push Pop",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "8ec073f7-405d-440d-9601-f2769c444f25",
+    "name": "Yealands Estate® Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "8fae4759-7917-4b1f-8b84-355ad1b98db8",
+    "name": "Caffe Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "900622e8-c967-4252-b320-3c737c1a4b91",
+    "name": "Caffè Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "902d076e-369e-4532-bbdd-424eedc4f920",
+    "name": "Dole Whip Swirl",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "91c7bc76-cdec-41b8-ac5c-826b51cea785",
+    "name": "Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "921c1c76-e236-41e1-b161-8885178f0a69",
+    "name": "Ommegang Neon Rainbows®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "92bccfdd-2e56-40bf-be7e-2d6bbfc459f2",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "933ca6dd-5cc2-41af-b23a-08929007426e",
+    "name": "Black Cherry Taverne Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "94390eba-a2de-4971-bd11-105e5342596b",
+    "name": "Smartwater®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "94a06659-36fa-4a78-9af7-57a52a6f3d17",
+    "name": "Knights Bridge<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Pont de Chevalier\" Chardonnay",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "94d76ecf-bce7-40db-9f12-9cdf2eb0c68a",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "951ebeed-dc95-415a-b683-5b3d3f7c139d",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "9525cca6-20eb-4c65-b4e3-60c308d13305",
+    "name": "Block Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "95805b01-d73a-4dbb-93ec-1afa9a8bb79e",
+    "name": "Noble Vines<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 446<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "95a4abd1-6d27-4de6-830c-6590f026fa58",
+    "name": "Caramel Apple Spice",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "candy"
+  },
+  {
+    "id": "96af5371-1459-41d1-a414-4373ee044545",
+    "name": "Savannah Banana Latte",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "96df0bef-693e-4860-a1b9-ebbb494724d1",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "973ef99c-0d30-4587-9891-c9a09fbac612",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "9782754e-17a6-4238-b26a-10c7f9d6b202",
+    "name": "Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "9815f276-03b5-49a5-845b-0fbe0e089cb6",
+    "name": "Black & White Cannoli",
+    "from": "side",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "988f2471-6a65-4e04-a223-4d7a9c6d0ce0",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "9afb1884-148c-4eff-a6bc-1f3dde8ca54a",
+    "name": "One Big Profiterole",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "9b33c573-5576-4b67-8901-f51117bc5603",
+    "name": "Orange Float",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "9b4d2f2b-4419-43c4-aa61-64729503c54e",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "9c62ad04-7bfd-45e8-90bd-03f8953a7484",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "9c933676-dd7f-420c-bf75-26ac9217754d",
+    "name": "Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "9cd0d6b7-2316-4326-b308-0c0062670d02",
+    "name": "Ashland Hard Seltzer, Cherry, Lime, Blue Raspberry",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "9d334227-aab6-4204-bf03-209e669ab120",
+    "name": "Side of Slaw",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "9d3a9b53-a7ff-4e01-9e4d-7f25032faddb",
+    "name": "2026 FLOWER & GARDEN FESTIVAL Farmers Feast - Avail 4/6-5/10- Hibiscus Tangelo Hard Seltzer",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "9dc118b9-f83e-437e-b106-a8e662443c4b",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "9dd97e09-c39d-41e8-8940-2c50facda7b3",
+    "name": "Watermelon-Mint Agua Fresca",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "non-alcoholic"
+  },
+  {
+    "id": "9e1901f6-4f47-44c5-a1f4-355f835e3f40",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "9e7999fb-320c-4319-9b8a-cc85d279620a",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "9f7096a4-8472-4af2-93e9-91fe62585447",
+    "name": "Icee in a Lighthouse Cup",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "9fba45dd-1bac-4307-8018-bc9b926571f5",
+    "name": "Dathomir Sprint Slush",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "a14a5a43-607f-4d50-a015-87ac11077c6f",
+    "name": "Grab 'n' Go- Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "a19f8cf1-9c14-4b65-828c-5f04f116a218",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "a1be84f9-103f-4910-b746-1b3651eb038d",
+    "name": "Tiramisu",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "a28cb61b-abc3-4dea-aaa0-9fe2398d63b2",
+    "name": "Side of Cornbread",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "a370854c-7fda-4208-abf2-ab442694db46",
+    "name": "Frozen Cappuccino Dream",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "a448e3e8-27a0-4d77-afbc-f794f7efbaf0",
+    "name": "Chocolate Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "a4545c76-4bba-44f0-a566-1ee79322a6dd",
+    "name": "Cannoli",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "a4a9d45a-fe2b-44f7-a88d-af1cdc76a836",
+    "name": "Iced Chocolate Almondmilk Shaken Espresso",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "a5226001-a2bb-4aa1-bcd3-00884eb51cf2",
+    "name": "Salted Caramel Mudslide Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "a541b159-9a29-440e-b59c-bd9d59571f51",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "a58ebbf5-85ce-460a-9b4c-f42a22b31e42",
+    "name": "Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "a672e56e-52db-4985-9b45-78532eb8d769",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "a67cdf3d-c3ce-4148-958b-01070dec5eec",
+    "name": "Sorbet",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "a7663115-e72c-4d2e-b351-cb1ba1f3d5b4",
+    "name": "Frozen Strawberry Daiquiri",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "a7d24f7d-6698-40ae-a231-a03808a98bd2",
+    "name": "Crooked Can® Cloud Chaser Hefeweizen",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "a91ceda5-1443-48ca-a88b-92942abdac2f",
+    "name": "Rodney Strong<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Rosé of Pinot Noir",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "a99af099-5b08-40cc-95a2-7fb72646be59",
+    "name": "Cold Brew Kahlua Frappe",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "aaf15ccc-164e-4534-8aac-d24a09942071",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "ab3202fa-2e40-47c2-973a-8846b804f50f",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "abeb7949-b17a-49b6-970c-55b5dde6cd2a",
+    "name": "Shakin' Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "ad78bf33-38c0-4894-a376-c8c8c7c16267",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "add9d71a-2578-442c-8c3f-532d3f1393c8",
+    "name": "Schofferhofer Pink Grapefruit Hefeweizen",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "ae27ff6b-3121-4a27-b018-0fb943283a2e",
+    "name": "Yealands Estate<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "aee2a4eb-047f-4b2f-b530-8ec01bfc2af4",
+    "name": "Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "af5959f0-9235-48dc-a97b-149c0438f592",
+    "name": "Napa Cellars<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Merlot",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "b0fa61d2-26ca-4f05-8dd2-d2a1e6010c3f",
+    "name": "Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "b18d26fb-41ca-4344-90ea-0db63da2b532",
+    "name": "Black Cherry Chip Cannoli",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "b3339fd4-05da-4c29-8559-6d33cc3c3b2c",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "b392f981-bc01-4371-beb8-ef31ff85b689",
+    "name": "Tiramisu Alla Nutella",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "b53a27e5-9262-420c-ba08-0e44df8ba674",
+    "name": "Pizza Port Brewing, Coastin', Tropical IPA, Solano Beach, CA",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "b67f6f4b-58cf-4bdb-9fd1-d89eaa04c51d",
+    "name": "Abita<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Amber Lager",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "b7aa93f1-8af6-4de8-bf36-246b43e3d506",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "b7e3f45d-473a-44f6-a447-0d4680382ac3",
+    "name": "Beringer<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "b87c543b-1833-4c13-b67a-39e945896403",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "ba093f4f-1c82-421a-8384-778cd74ee703",
+    "name": "Spellbound<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "ba44726b-efdf-44f4-8809-cc808a5f9150",
+    "name": "Limeade Lavanda",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "non-alcoholic"
+  },
+  {
+    "id": "ba9cc175-a319-4987-ad46-bcbc20fc4f82",
+    "name": "Yuengling Can",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "bb70d008-e7a9-4e1a-8783-8da804b2efaa",
+    "name": "SEASONAL- Caramel Protein Latte",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "bb93bfa7-d9f6-47f2-9423-79fa69d3ea15",
+    "name": "Cygne Profiterole",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "bb9d8700-6e0f-4155-a155-6aff2551e23d",
+    "name": "Cold Brew Black Caf",
+    "from": "dessert",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "bbcf55cb-fb3f-43ec-b403-be2a4a35b224",
+    "name": "Cucumber-Lime Agua Fresca",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "non-alcoholic"
+  },
+  {
+    "id": "bdac33da-9ce7-4f5f-ac01-8219f0c9dd92",
+    "name": "Slush with Alcohol",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "bdb12b65-9850-4908-8e78-e4bfb677d01a",
+    "name": "Banana Avocado Sorbet",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "be0048c9-3f61-48d6-bcfa-3b421e3574fa",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "be450614-3b43-4f45-ba5d-3f4c73bef37c",
+    "name": "Strongbow<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Gold Apple Cider",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "be902ebc-c1d1-4099-9c74-988596f29863",
+    "name": "Modelo Especial<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "beff7d06-34b8-4d40-be69-c132144d90c5",
+    "name": "Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "c026b837-cbd1-4ae4-95ce-39949ee76d06",
+    "name": "Frozen Pina Colada",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-cocktail"
+  },
+  {
+    "id": "c0290e2d-a5b8-4778-b8dc-03d76c938749",
+    "name": "Paul Buisse Touraine Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "c03d97cb-5d6e-4cbb-a52c-b37c710b17c6",
+    "name": "Tiramisu Push Pop",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "c0892ce8-4e3c-4b7a-a8b7-4ffaaeb0ecfb",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "c0981833-29b5-4a69-9e85-8bc72266c787",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "c3431e50-de3c-4b76-adaa-94cf732ad98f",
+    "name": "Paloma",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "c359b625-8746-4c33-925c-dd0f630e0d73",
+    "name": "Matchbook Malbec",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "c35fc599-3a9d-43c0-9789-40cddd303006",
+    "name": "Dole Whip",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "c4027545-e750-455c-833b-cfa28336ac44",
+    "name": "Vanilla Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "c76ffe93-b2e5-4b96-a222-a99b79f6f4ff",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "c86651c8-648b-4d39-bf78-8d36d25058d0",
+    "name": "Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "c88a470f-9ac6-430d-93cd-de78b073454e",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "c91018d6-94c7-4ee7-a217-6f9779f0c682",
+    "name": "Powerade® Fruit Punch",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "c92f165d-16a8-4c9b-bb68-af857c409477",
+    "name": "Coppa del Nonno",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "coppa-gelato"
+  },
+  {
+    "id": "c9404a44-5cdb-4b56-a2ee-c9e87d998ac5",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "ca450f5d-dc5e-4f4c-82a0-207d0f1f6cae",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "ca46dbe3-fa8f-489e-aec7-441bce4112ef",
+    "name": "Side of Grapes",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "ca872a5b-c511-4501-89e8-d55a9d9f63e0",
+    "name": "Minute Maid® Agua Fresca Mango",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "non-alcoholic"
+  },
+  {
+    "id": "cb891ae7-be57-4a4d-8ca8-c4657ae4432b",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "cc93d85a-0587-4c38-8764-e9c45b96c2b8",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "cd33745d-9c84-4cb1-b1e9-8e0cda2b5acf",
+    "name": "Hard Seltzer",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "cdbbd012-38a6-44cc-814c-3f728e112597",
+    "name": "Coconut Panna Cotta",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "ce130b22-ea0b-41cd-ae16-18e07fb97e7f",
+    "name": "Hemingway Daiquiri",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "cee4cac4-fc9c-4273-b5d9-707dc71474ca",
+    "name": "Tiramisu",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "cf1f5357-32e1-4a5d-b867-7134dd2f4eab",
+    "name": "Iced Americano with Liqueur or Liquor",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "cf96f8c2-0fec-452a-9403-190e8115fa25",
+    "name": "Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "cfa70be5-a8b8-4265-a843-c1f72da68b4f",
+    "name": "Isole e Olena®Chianti",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine-region"
+  },
+  {
+    "id": "cfb7dcdd-8c14-4347-a336-27cb02a7566c",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "d09e5dff-5105-4a96-a101-6fdef00f9937",
+    "name": "Cannoli",
+    "from": "snack",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "d15a6bbd-5d23-46e7-980e-5c0758c31c34",
+    "name": "A to Z Wineworks® Riesling",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "d174aae4-fdb1-4d28-ad7d-ce75d2006e26",
+    "name": "High Noon<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "d254fea8-bb1f-4105-978d-eb543d9b67af",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "d28e5ae8-fdc6-4ee6-a779-8ca3634b54d8",
+    "name": "Breca<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Old Vines Garnacha",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine-region"
+  },
+  {
+    "id": "d4f76a5b-2aac-4c0b-a25e-42477a681618",
+    "name": "Pewsey Vale® Dry Riesling",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "d5bf19d4-09c7-492d-95c5-1b0357db5af3",
+    "name": "Cappuccino Dream",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "d5efeb3a-3d1a-4d04-a0a2-4e97fb3d4c18",
+    "name": "SEASONAL- Caramel Protein Latte",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "d6b99d7f-aea1-4051-a5f4-9027488d14de",
+    "name": "One Big Profiterole",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "d74a8db7-b3eb-4442-a633-c1dae7637a62",
+    "name": "Santa® Julia \"El Burro\" Natural Malbec",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "d74e8f58-70c5-4a86-9ca2-6bcc0c916c58",
+    "name": "Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "d774eef6-9b69-4c35-a064-4ccab05677c4",
+    "name": "Crooked Can® Cloud Chaser Hefeweizen",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "d845d147-b15b-4033-832e-111eb937acc0",
+    "name": "Souvenir Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "d8b307a2-fb6d-492f-b6bd-3013289475fb",
+    "name": "Cold Brew and More",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "d8bc060b-7ef0-4752-9b16-c937663d9985",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "d9459892-fcac-40f5-aa07-b750867cb29b",
+    "name": "Nouveau Negroni",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "d9b5d868-4510-452c-a56c-cb265a1e9531",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "db06eed5-2d6c-4ebb-8cd4-ed1be5e1d012",
+    "name": "Kenwood<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> \"Six Ridges\" Pinot Noir",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "db28f7df-a373-45bc-94cc-e3a8fa001e03",
+    "name": "Icee®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "db6f804a-10a3-47bc-9be1-e34c44d899eb",
+    "name": "High Noon<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "dc49efcf-d69e-4037-9e5e-dbab21365594",
+    "name": "Samuel Adams Seasonal",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "dc70cb59-7829-4333-975a-eccae16ba492",
+    "name": "Salted Caramel Mudslide Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "dcc64911-09f6-4f55-bb96-3ccd466c5ef0",
+    "name": "Powerade® Fruit Punch",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "dcd21228-1b00-4f73-978b-a8b143fa718f",
+    "name": "Matchbook Malbec",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "ddede595-0fc9-46c9-8dbf-8b290e18d9b2",
+    "name": "Salted Caramel Mudslide Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "de6fd459-3a25-4014-b291-b5fa1eed737c",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "de740f87-a713-4264-91f6-f3b8625198fc",
+    "name": "Toffee-Nut Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "e0999c9f-d664-47c8-b6fe-5a488adc2fbb",
+    "name": "2024 CELEBRATE SOULFULLY- Black Girl Magic Float- Avail through 3/30",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "e38623a4-d8ef-4d24-8185-f9733e49b213",
+    "name": "Shakin Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "e3e96bf0-7ac5-47f4-92a4-8161e3b360dd",
+    "name": "Smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "e405e5df-5dbe-4141-be62-20379825c915",
+    "name": "Matcha & Sweet – A Peaceful Finish",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "tea"
+  },
+  {
+    "id": "e44fd1cc-c586-4ff6-ab50-b9a5080e6061",
+    "name": "Float Tray",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "e5b2edcd-90a8-42a5-84dd-3b20bf42b39f",
+    "name": "Pink Paloma",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "e5f08320-59e8-4abd-834c-2370cb46227e",
+    "name": "2024 DOLE WHIP DAY- Orange Bird Float- Avail through 8/11",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "e6b981ba-2afa-406e-b2bb-6a7e3433bf91",
+    "name": "Glitter Cupcake Cold Brew",
+    "from": "dessert",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "e708396c-84c6-4e11-8bb8-36a9e6b570b3",
+    "name": "Modelo Especial®",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-brand"
+  },
+  {
+    "id": "e845455b-16e4-49d6-af4a-606f93b98dd0",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "e85137fe-1130-4c51-b610-e201ac058a9c",
+    "name": "Yealands Estate® Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "e8a34b85-0bbf-41d2-9e39-4006dc758a01",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "e953c332-1d68-403a-8754-f6e3740c3138",
+    "name": "Patz &amp; Hall<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Dutton Ranch Chardonnay",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "e95f9c1c-cd14-4492-aa40-8427a08c71d4",
+    "name": "Icee<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "e9be4423-e1fc-44a3-990c-dcbee0c6ff72",
+    "name": "Caramel Macchiato",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "e9cbbe19-bfe8-4d01-acea-3c1109d83a8c",
+    "name": "Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "e9eec1a1-e4f3-49f1-8e11-be135e904c18",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "eaf8755b-d2fa-498b-8236-7ccbcee6bf52",
+    "name": "Orange Blossom Pilsner",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "ec0f70fe-7162-4d1c-9b11-45c13129eacd",
+    "name": "Powerade® Mountain Berry Blast",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "ec2c23f9-9870-4eaf-9e27-c61397bfa39f",
+    "name": "Seasonal Slushie",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "ec42e429-f635-4f48-a9f7-ec9a355e69a2",
+    "name": "Matchbook Malbec",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "edb9192c-d48f-4a8a-aeff-1811fe361013",
+    "name": "Orange Blossom Pilsner",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "ede467f7-304d-40b9-b3b3-726cf7a545a1",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "ede644a9-a31f-4f1c-bbc9-5740fc6c5c43",
+    "name": "Powerade® Fruit Punch",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "edece427-b5d2-485c-9b56-2fda007d0575",
+    "name": "Sean Minor<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Cabernet Sauvignon",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "ee68733a-e8af-41a2-aa08-0d492f570396",
+    "name": "Extra Shot",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "ef3805af-0576-4411-a761-32e6b1eabdae",
+    "name": "ICEE",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "efd45d32-c3fa-4a1b-8cc7-dd85cd3de083",
+    "name": "Side Chorizo",
+    "from": "entree",
+    "to": "side",
+    "rule": "side-prefix"
+  },
+  {
+    "id": "f041d761-12eb-48a6-a841-872fb493e3ec",
+    "name": "Banfi<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> San Angelo Pinot Grigio",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "f0d28eef-9683-4c0a-866d-55668d896049",
+    "name": "Swirled Milkshake",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "shake-or-float"
+  },
+  {
+    "id": "f1f99baa-cab5-4176-b71e-5b7d650582c3",
+    "name": "Frozen Slush",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "f3536ac7-fc8f-458c-995c-b38df3b61984",
+    "name": "Paul Dolan Sauvignon Blanc",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "f3d913cd-5bcb-47c4-b19b-a202b559b1b4",
+    "name": "Hot Chocolate",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "hot-chocolate"
+  },
+  {
+    "id": "f43300d8-b9e1-436b-95ee-03e09560e7e3",
+    "name": "Carlsberg® Danish Pilsner",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "beer-style"
+  },
+  {
+    "id": "f6c7103b-2853-420f-b25a-ce7b1d1c96c0",
+    "name": "Honey Almondmilk Nitro Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "f754e091-c8b2-40db-8470-e1f0342add9b",
+    "name": "Cavicchioli<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 1928 Prosecco",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "f768f06f-c942-4ab5-8ec2-2c0829d92905",
+    "name": "Passion Fruit Daiquiri",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "cocktail"
+  },
+  {
+    "id": "f7b7fab3-7a8e-4fc1-af63-e175bf93c851",
+    "name": "Powerade",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "f87d471c-6854-41e3-a64c-4bc8ee2d2882",
+    "name": "Shakin' Jamaican Cold Brew",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "f8b73422-28f7-41da-b0f4-1bf22373ca2a",
+    "name": "2026 FLOWER & GARDEN FESTIVAL- Dubai Chocolate Frozen Cappuccino",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "f8d2b584-e20b-4429-90e4-359e1e8264f4",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "f9efa3f6-2337-4325-9120-947ec3374f06",
+    "name": "DISNEYLAND 70TH- Tiramisu Cold Brew",
+    "from": "dessert",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "fa4d4ff7-e492-4bf9-9e6c-6f1f92505319",
+    "name": "Abita Purple Haze Sorbetto (21+)",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "fa82ed8a-3ebb-434a-9221-ecc259992d83",
+    "name": "Isole e Olena<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup>Chianti",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine-region"
+  },
+  {
+    "id": "fa8fc4bc-852d-49e0-b8ec-5e6471e733c1",
+    "name": "Dole Whip",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "fb204463-4314-4366-bcb5-26b859b84576",
+    "name": "Americano",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "fcff98e3-ba2b-486f-b256-58b4e2cb1110",
+    "name": "Noble Vines<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> 446<sup xmlns=\"http://www.w3.org/1999/xhtml\">®</sup> Chardonnay",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "wine"
+  },
+  {
+    "id": "fd311e4f-81e2-4970-98f2-3b0df9b91802",
+    "name": "Matterhorn 65th Anniversary Dole Whip",
+    "from": "entree",
+    "to": "dessert",
+    "rule": "frozen-or-italian-dessert"
+  },
+  {
+    "id": "fd8fae66-3ab4-46de-a169-55a4814171af",
+    "name": "smartwater",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "soda"
+  },
+  {
+    "id": "fd94ce03-6b6c-4734-82b6-d94957f49fff",
+    "name": "Caramel Macchiato",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  },
+  {
+    "id": "ffd9d416-2b50-4382-8ede-707e6b4b3374",
+    "name": "Blue Raspberry Slush with Glow Cube",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "frozen-drink"
+  },
+  {
+    "id": "ffddf8a3-38c4-486b-8dbc-3c0df8456681",
+    "name": "Cold Brew, Starbucks",
+    "from": "entree",
+    "to": "beverage",
+    "rule": "coffee"
+  }
+]

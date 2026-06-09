@@ -267,7 +267,7 @@ export default function Meal() {
                       <p className="text-xs text-stone-400 truncate">{item.restaurant}</p>
                     )}
                     {(item.nutritionConfidence ?? 100) < 70 && (
-                      <p className="text-xs font-medium text-amber-700 truncate">
+                      <p className="text-xs font-medium text-amber-800 truncate">
                         {getEstimateTierShort(item.nutritionConfidence ?? 0)} — verify before dosing
                       </p>
                     )}
@@ -325,7 +325,7 @@ export default function Meal() {
                 {mealGradeResult.grade ? GRADE_CONFIG[mealGradeResult.grade].label : 'No grade'}
               </p>
               {mealHasEstimates && (
-                <p className="mt-0.5 text-xs font-medium text-amber-700">
+                <p className="mt-0.5 text-xs font-medium text-amber-800">
                   Based on estimates — verify before dosing
                 </p>
               )}

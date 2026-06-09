@@ -1,12 +1,7 @@
-import { Link, useLocation } from 'react-router-dom'
-import { getTopNavItems, isNavItemActive } from '../../lib/nav'
+import { Link } from 'react-router-dom'
 import { ContrastToggle } from '../ContrastToggle'
 
 export function Header() {
-  const location = useLocation()
-
-  const navLinks = getTopNavItems()
-
   return (
     <header className="bg-white shadow-sm border-b border-stone-200 sticky top-0 z-50">
       <nav aria-label="Top navigation" className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
@@ -19,21 +14,8 @@ export function Header() {
           <span className="hidden sm:inline">DiabetesGuide</span>
         </Link>
 
-        {/* Desktop nav + contrast toggle */}
-        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600">
-          {navLinks.map(item => {
-            const active = isNavItemActive(item, location.pathname)
-            return (
-              <Link
-                key={item.id}
-                to={item.href}
-                aria-current={active ? 'page' : undefined}
-                className={`transition-colors hover:text-teal-600 ${active ? 'font-semibold text-teal-700 underline underline-offset-4' : ''}`}
-              >
-                {item.label}
-              </Link>
-            )
-          })}
+        {/* Desktop utility controls */}
+        <div className="hidden md:flex items-center gap-3 text-sm font-medium text-stone-600">
           <ContrastToggle />
           <Link to="/settings" aria-label="Settings" title="Settings" className="w-10 h-10 rounded-lg flex items-center justify-center border border-stone-300 text-stone-500 hover:bg-stone-50 transition-colors">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">

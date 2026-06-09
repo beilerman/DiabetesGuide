@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { buildSearchIndex, searchItems } from '../search-index'
+import { buildSearchIndex, searchItemMatches, searchItems } from '../search-index'
 import type { MenuItemWithNutrition } from '../types'
 
 function makeItem(overrides: Partial<MenuItemWithNutrition>): MenuItemWithNutrition {
@@ -75,5 +75,30 @@ describe('buildSearchIndex + searchItems', () => {
   it('returns empty for no matches', () => {
     const results = searchItems(index, 'xyzzynonexistent')
     expect(results).toEqual([])
+  })
+
+  it('weights exact and prefix name matches ahead of weaker matches', () => {
+    const rankedItems: MenuItemWithNutrition[] = [
+      makeItem({ id: 'exact', name: 'Churro' }),
+      makeItem({ id: 'prefix', name: 'Churro Bites' }),
+      makeItem({ id: 'boundary', name: 'Mini Churro Sundae' }),
+      makeItem({ id: 'restaurant', name: 'Cinnamon Twist', restaurant: { id: 'r10', park_id: 'p1', name: 'Churro Cart', land: null, cuisine_type: null, hours: null, lat: null, lon: null, created_at: '' } }),
+      makeItem({ id: 'unrelated', name: 'Atlantic Sea Bass', description: 'Pan-seared fish with lemon butter' }),
+    ]
+    const matches = searchItemMatches(buildSearchIndex(rankedItems), 'churro')
+
+    expect(matches.map(match => match.item.id)).toEqual(['exact', 'prefix', 'boundary', 'restaurant'])
+    expect(matches[0]).toMatchObject({ tier: 'strong', reason: 'Exact name match' })
+    expect(matches[1]).toMatchObject({ tier: 'strong', reason: 'Name starts with search' })
+    expect(matches[2]).toMatchObject({ tier: 'strong', reason: 'Name word match' })
+    expect(matches.map(match => match.item.id)).not.toContain('unrelated')
+  })
+
+  it('keeps useful fuzzy matches but labels them as weak', () => {
+    const matches = searchItemMatches(index, 'turky leg')
+
+    expect(matches[0].item.name).toBe('Turkey Leg')
+    expect(matches[0].tier).toBe('weak')
+    expect(matches[0].reason).toBe('Fuzzy match')
   })
 })

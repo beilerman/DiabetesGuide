@@ -286,7 +286,7 @@ export default function Home() {
         )}
 
         {showLoadingState && (
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {[...Array(6)].map((_, i) => <SkeletonCard key={i} />)}
           </div>
         )}
@@ -436,7 +436,7 @@ function ResortDestinationSection({
         </Link>
       </div>
 
-      <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {group.categories.map(category => (
           <Link
             key={category.id}

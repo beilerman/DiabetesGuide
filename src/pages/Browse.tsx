@@ -243,7 +243,7 @@ export default function Browse() {
                 ? 'Loading the All Destinations preview and restaurant groups...'
                 : 'Loading complete destination listings and restaurant groups...'}
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {[...Array(6)].map((_, i) => (
                 <SkeletonCard key={i} />
               ))}
@@ -267,7 +267,7 @@ export default function Browse() {
           )
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {visibleItems.map(item => (
                 <MenuItemCard
                   key={item.id}
@@ -468,7 +468,7 @@ function LocationRestaurantSection({
       </button>
 
       {expanded && (
-        <div className="grid grid-cols-1 gap-4 border-t border-stone-100 bg-stone-50 px-3 py-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 border-t border-stone-100 bg-stone-50 px-3 py-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {restaurant.items.map(item => (
             <MenuItemCard
               key={item.id}

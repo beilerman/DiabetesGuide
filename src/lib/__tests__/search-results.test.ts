@@ -80,4 +80,39 @@ describe('getSearchResultView', () => {
     expect(view.visibleItems).toHaveLength(1)
     expect(view.hasMore).toBe(true)
   })
+
+  it('keeps unrelated fuzzy matches out of result counts', () => {
+    const view = getSearchResultView(
+      [
+        makeItem('churro', 'Churro', 48),
+        makeItem('churro-bites', 'Churro Bites', 62),
+        makeItem('sea-bass', 'Atlantic Sea Bass', 0),
+      ],
+      'churro',
+      { ...DEFAULT_FILTERS, sort: 'relevance' },
+      10,
+    )
+
+    expect(view.totalMatches).toBe(2)
+    expect(view.visibleMatches.map(match => match.item.id)).toEqual(['churro', 'churro-bites'])
+    expect(view.visibleMatches.every(match => match.tier === 'strong')).toBe(true)
+  })
+
+  it('returns weak fuzzy matches after strong matches for visual separation', () => {
+    const view = getSearchResultView(
+      [
+        makeItem('turkey-leg', 'Turkey Leg', 0),
+        makeItem('turkey-sandwich', 'Turkey Sandwich', 34),
+      ],
+      'turky leg',
+      { ...DEFAULT_FILTERS, sort: 'relevance' },
+      10,
+    )
+
+    expect(view.visibleMatches[0]).toMatchObject({
+      item: expect.objectContaining({ id: 'turkey-leg' }),
+      tier: 'weak',
+      reason: 'Fuzzy match',
+    })
+  })
 })

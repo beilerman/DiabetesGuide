@@ -90,6 +90,7 @@ describe('HiddenDoseExplainer', () => {
     )
 
     expect(screen.getByText(/why is the dose hidden/i)).toBeInTheDocument()
+    expect(screen.getByRole('note', { name: /missing required input/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /safety methodology/i })).toHaveAttribute('href', '/data-sources#estimator-safety')
   })
 })

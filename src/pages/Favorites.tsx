@@ -27,7 +27,7 @@ export default function Favorites() {
       </div>
 
       {isLoading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="rounded-2xl bg-white shadow-md overflow-hidden animate-pulse">
               <div className="h-32 bg-gradient-to-br from-stone-200 to-stone-300" />
@@ -39,7 +39,7 @@ export default function Favorites() {
           ))}
         </div>
       ) : favoriteItems.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {favoriteItems.map(item => (
             <MenuItemCard
               key={item.id}
