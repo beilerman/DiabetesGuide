@@ -1,42 +1,42 @@
 {
   "date": "2026-06-09",
   "totalItems": 17306,
-  "qualityScore": 54,
+  "qualityScore": 55,
   "coverage": {
     "description": 83.2,
     "photo": 0.3,
     "price": 68.4,
     "nutritionRow": 99.4,
     "caloriesPresent": 96.2,
-    "carbsPresent": 98,
-    "allEightFields": 78.8,
+    "carbsPresent": 98.1,
+    "allEightFields": 78.9,
     "allergens": 34.8
   },
   "carbTrust": {
     "trustDefinition": "confidence>=70 (v2)",
-    "trustedCarbsPct": 14.6,
-    "sourcedCarbsPct": 42.5,
-    "untrustedCarbs": 14431,
+    "trustedCarbsPct": 16.4,
+    "sourcedCarbsPct": 43.6,
+    "untrustedCarbs": 14129,
     "bySource": {
-      "crowdsourced": 10994,
-      "official": 1520,
-      "api_lookup": 4687
+      "crowdsourced": 10794,
+      "official": 1847,
+      "api_lookup": 4560
     }
   },
   "prioritySlice": {
     "total": 8818,
-    "dosingGrade": 668,
-    "pct": 7.6
+    "dosingGrade": 830,
+    "pct": 9.4
   },
   "nutritionFieldNullPct": {
-    "calories": 1.3,
-    "carbs": 1.4,
-    "fat": 1.3,
-    "protein": 1.4,
-    "sugar": 2.1,
-    "fiber": 2.3,
-    "sodium": 1.5,
-    "cholesterol": 20
+    "calories": 1.2,
+    "carbs": 1.3,
+    "fat": 1.2,
+    "protein": 1.3,
+    "sugar": 2,
+    "fiber": 2.2,
+    "sodium": 1.4,
+    "cholesterol": 19.9
   },
   "orphans": 105
 }
