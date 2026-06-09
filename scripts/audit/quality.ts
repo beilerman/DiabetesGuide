@@ -15,6 +15,7 @@
  */
 import { writeFileSync, readFileSync, existsSync } from 'fs'
 import { createSupabaseClient, rootPath } from './utils.js'
+import { isDosingGrade, isSourced, isPrioritySliceItem, TRUSTED_CONFIDENCE, TRUST_DEFINITION } from './trust.js'
 
 interface Row {
   id: string
@@ -22,6 +23,7 @@ interface Row {
   description: string | null
   photo_url: string | null
   price: number | null
+  restaurant: { park: { location: string | null } | null } | null
   nutritional_data: {
     calories: number | null
     carbs: number | null
@@ -37,10 +39,9 @@ interface Row {
 }
 
 const NUT_FIELDS = ['calories', 'carbs', 'fat', 'protein', 'sugar', 'fiber', 'sodium', 'cholesterol'] as const
-// A carb value is "trusted" for insulin dosing if it comes from an authoritative
-// source OR carries a high confidence score.
-const TRUSTED_SOURCES = new Set(['official', 'api_lookup'])
-const TRUSTED_CONFIDENCE = 70
+// Trust predicates live in trust.ts (shared with unit tests):
+//  - trustedCarbsPct (v2): confidence >= 70 — matches the app UI's dosing threshold
+//  - sourcedCarbsPct (v1): official/api source OR confidence >= 70 — continuity series
 
 async function fetchAll(): Promise<Row[]> {
   const supabase = createSupabaseClient()
@@ -52,6 +53,7 @@ async function fetchAll(): Promise<Row[]> {
       .from('menu_items')
       .select(
         `id, category, description, photo_url, price,
+         restaurant:restaurants(park:parks(location)),
          nutritional_data(calories, carbs, fat, protein, sugar, fiber, sodium, cholesterol, source, confidence_score)`,
       )
       .range(from, from + page - 1)
@@ -91,7 +93,8 @@ async function main() {
   const N = rows.length
 
   let hasDesc = 0, hasPhoto = 0, hasPrice = 0, hasRow = 0, hasCal = 0, hasCarbs = 0, allEight = 0
-  let trustedCarbs = 0
+  let trustedCarbs = 0, sourcedCarbs = 0
+  let sliceTotal = 0, sliceDosingGrade = 0
   const bySource: Record<string, number> = {}
   const fieldNull: Record<string, number> = {}
   for (const f of NUT_FIELDS) fieldNull[f] = 0
@@ -100,6 +103,8 @@ async function main() {
     if (row.description?.trim()) hasDesc++
     if (row.photo_url) hasPhoto++
     if (row.price != null) hasPrice++
+    const inSlice = isPrioritySliceItem(row.category, row.restaurant?.park?.location ?? null)
+    if (inSlice) sliceTotal++
     const n = nd(row)
     if (!n) continue
     hasRow++
@@ -109,9 +114,11 @@ async function main() {
     if (NUT_FIELDS.every(f => n[f] != null)) allEight++
     const src = n.source ?? 'null'
     bySource[src] = (bySource[src] ?? 0) + 1
-    if (n.carbs != null && (TRUSTED_SOURCES.has(src) || (n.confidence_score ?? 0) >= TRUSTED_CONFIDENCE)) {
+    if (isDosingGrade(n.carbs, n.confidence_score)) {
       trustedCarbs++
+      if (inSlice) sliceDosingGrade++
     }
+    if (isSourced(n.carbs, n.source, n.confidence_score)) sourcedCarbs++
   }
 
   const p = (x: number) => Number(((x / N) * 100).toFixed(1))
@@ -142,9 +149,16 @@ async function main() {
       allergens: p(allergenCount),
     },
     carbTrust: {
+      trustDefinition: TRUST_DEFINITION,
       trustedCarbsPct: p(trustedCarbs),
+      sourcedCarbsPct: p(sourcedCarbs),
       untrustedCarbs: hasCarbs - trustedCarbs,
       bySource,
+    },
+    prioritySlice: {
+      total: sliceTotal,
+      dosingGrade: sliceDosingGrade,
+      pct: Number(((sliceDosingGrade / Math.max(1, sliceTotal)) * 100).toFixed(1)),
     },
     nutritionFieldNullPct: Object.fromEntries(
       NUT_FIELDS.map(f => [f, Number(((fieldNull[f] / Math.max(1, hasRow)) * 100).toFixed(1))]),
@@ -156,7 +170,9 @@ async function main() {
   console.log(`=== Quality Report (${snapshot.date}) ===`)
   console.log(`Total items:        ${N}`)
   console.log(`QUALITY SCORE:      ${score}/100\n`)
-  console.log(`Trusted carbs:      ${snapshot.carbTrust.trustedCarbsPct}%  (carbs from official/api or confidence>=${TRUSTED_CONFIDENCE})`)
+  console.log(`Trusted carbs:      ${snapshot.carbTrust.trustedCarbsPct}%  (dosing-grade: confidence>=${TRUSTED_CONFIDENCE}, matches app UI)`)
+  console.log(`Sourced carbs:      ${snapshot.carbTrust.sourcedCarbsPct}%  (legacy v1: official/api source or confidence>=${TRUSTED_CONFIDENCE})`)
+  console.log(`Priority slice:     ${snapshot.prioritySlice.dosingGrade}/${snapshot.prioritySlice.total} dosing-grade (${snapshot.prioritySlice.pct}%)  (entrees+desserts @ WDW/Universal/Disneyland)`)
   console.log(`Carbs present:      ${snapshot.coverage.carbsPresent}%`)
   console.log(`Calories present:   ${snapshot.coverage.caloriesPresent}%`)
   console.log(`All 8 fields:       ${snapshot.coverage.allEightFields}%`)
