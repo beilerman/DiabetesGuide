@@ -1,0 +1,844 @@
+{
+  "comment": "Starbucks tranche 1 — national-menu staples with published official nutrition (anchors verified against starbucks.com 2026-06-09). Drinks: Grande 16 fl oz, 2% milk, standard build (whip where default) unless noted. Park-exclusive items (character cupcakes, Disney pastries), generic placeholders (Assorted Pastries, Espresso Drinks), alcohol, and seasonal one-offs are intentionally NOT mapped. Entry order matters: specific (iced/flavored) before general. Apply: npx tsx scripts/import-researched-nutrition.ts --file=data/chains/starbucks.json [--apply]",
+  "entries": [
+    {
+      "label": "Iced White Chocolate Mocha (grande, 2%, whip)",
+      "match": ["^iced white chocolate mocha"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 420, "carbs": 49, "sugar": 47, "protein": 9, "fat": 20, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk, with whip"
+    },
+    {
+      "label": "White Chocolate Mocha (grande, 2%, whip)",
+      "match": ["^white chocolate mocha"],
+      "exclude": ["iced", "macadamia", "cold brew"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 430, "carbs": 54, "sugar": 53, "protein": 14, "fat": 18, "fiber": 0, "sodium": 240 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk, with whip"
+    },
+    {
+      "label": "Iced Caffè Mocha (grande, 2%, whip)",
+      "match": ["^iced caff[eè] mocha"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 350, "carbs": 44, "sugar": 35, "protein": 9, "fat": 17, "fiber": 2 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk, with whip"
+    },
+    {
+      "label": "Caffè Mocha (grande, 2%, whip)",
+      "match": ["^caff[eè]? ?mocha", "^mocha latte$"],
+      "exclude": ["iced", "white", "frapp", "cookie", "mousse"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 370, "carbs": 43, "sugar": 35, "protein": 13, "fat": 15, "fiber": 3, "sodium": 170 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk, with whip. 'Mocha Latte' mapped to Caffè Mocha."
+    },
+    {
+      "label": "Iced Caffè Latte (grande, 2%)",
+      "match": ["^iced caff[eè]? ?latte"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 130, "carbs": 13, "sugar": 11, "protein": 8, "fat": 4, "fiber": 0, "sodium": 115 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Caffè Latte (grande, 2%)",
+      "match": ["^caff[eè]? ?latte", "^latte$"],
+      "exclude": ["iced", "macchiato", "art"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 190, "carbs": 19, "sugar": 18, "protein": 13, "fat": 7, "fiber": 0, "sodium": 170, "cholesterol": 30 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu/product/407/hot/nutrition",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Skinny Vanilla Latte (grande, nonfat, sugar-free syrup)",
+      "match": ["^skinny vanilla latte"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 120, "carbs": 18, "sugar": 17, "protein": 12, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, nonfat milk, sugar-free vanilla syrup"
+    },
+    {
+      "label": "Vanilla Latte (grande, 2%)",
+      "match": ["^(starbucks blonde )?vanilla latte"],
+      "exclude": ["skinny", "iced"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 250, "carbs": 37, "sugar": 35, "protein": 12, "fat": 6, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Iced Cinnamon Dolce Latte (grande, 2%, whip)",
+      "match": ["^iced cinnamon dolce latte"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 300, "carbs": 40, "sugar": 39, "protein": 8, "fat": 13, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk, with whip"
+    },
+    {
+      "label": "Cinnamon Dolce Latte (grande, 2%, whip)",
+      "match": ["^cinnamon dolce latte"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 340, "carbs": 41, "sugar": 40, "protein": 11, "fat": 14, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk, with whip"
+    },
+    {
+      "label": "Iced Caramel Macchiato (grande, 2%)",
+      "match": ["^iced caramel macchiato"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 250, "carbs": 36, "sugar": 34, "protein": 9, "fat": 7, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Caramel Macchiato (grande, 2%)",
+      "match": ["^caramel macchiato"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 250, "carbs": 35, "sugar": 33, "protein": 10, "fat": 7, "fiber": 0, "sodium": 150 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu/product/413/hot/nutrition",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Latte Macchiato (grande, 2%)",
+      "match": ["^latte macchiato"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 190, "carbs": 19, "sugar": 17, "protein": 12, "fat": 7, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Espresso Macchiato (doppio)",
+      "match": ["^espresso macchiato"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 15, "carbs": 2, "sugar": 1, "protein": 1, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Doppio"
+    },
+    {
+      "label": "Espresso Con Panna (doppio)",
+      "match": ["^espresso con panna"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 35, "carbs": 2, "sugar": 1, "protein": 1, "fat": 3, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Doppio with whipped cream"
+    },
+    {
+      "label": "Cappuccino (grande, 2%)",
+      "match": ["^cappuccino"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 140, "carbs": 14, "sugar": 12, "protein": 9, "fat": 5, "fiber": 0, "sodium": 115 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Iced Caffè Americano (grande)",
+      "match": ["^iced caff[eè]? ?americano"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 10, "carbs": 2, "sugar": 0, "protein": 1, "fat": 0, "fiber": 0, "sodium": 10 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, black"
+    },
+    {
+      "label": "Caffè Americano (grande)",
+      "match": ["^caff[eè]? ?americano"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 15, "carbs": 2, "sugar": 0, "protein": 1, "fat": 0, "fiber": 0, "sodium": 10 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, black"
+    },
+    {
+      "label": "Flat White (grande, whole milk)",
+      "match": ["^(the )?flat white"],
+      "exclude": ["honey", "iced"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 220, "carbs": 18, "sugar": 17, "protein": 12, "fat": 11, "fiber": 0, "sodium": 160 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, whole milk (standard build)"
+    },
+    {
+      "label": "Honey Almondmilk Flat White (grande)",
+      "match": ["^honey almond(milk)? flat white"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 170, "carbs": 27, "sugar": 25, "protein": 4, "fat": 5, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, almondmilk"
+    },
+    {
+      "label": "Iced Honey Almondmilk Flat White (grande)",
+      "match": ["^iced honey almond(milk)? flat white"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 150, "carbs": 24, "sugar": 22, "protein": 3, "fat": 4, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, almondmilk"
+    },
+    {
+      "label": "Caffè Misto (grande, 2%)",
+      "match": ["misto"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 110, "carbs": 10, "sugar": 9, "protein": 7, "fat": 4, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Iced Brown Sugar Oatmilk Shaken Espresso (grande)",
+      "match": ["iced brown sugar oatmilk shaken espresso"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 120, "carbs": 21, "sugar": 13, "protein": 2, "fat": 3, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, oatmilk"
+    },
+    {
+      "label": "Iced Chocolate Almondmilk Shaken Espresso (grande)",
+      "match": ["iced chocolate almondmilk shaken espresso"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 110, "carbs": 19, "sugar": 13, "protein": 2, "fat": 3, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, almondmilk"
+    },
+    {
+      "label": "Iced Shaken Espresso (grande, 2%)",
+      "match": ["^iced shaken espresso"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 100, "carbs": 12, "sugar": 11, "protein": 3, "fat": 2, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk, classic syrup"
+    },
+    {
+      "label": "Doubleshot on Ice (grande)",
+      "match": ["doubleshot on ice"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 45, "carbs": 5, "sugar": 4, "protein": 3, "fat": 1, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Vanilla Sweet Cream Cold Brew (grande)",
+      "match": ["vanilla sweet cream cold brew", "^cold brew, vanilla sweet cream"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 110, "carbs": 11, "sugar": 10, "protein": 1, "fat": 6, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz"
+    },
+    {
+      "label": "Nitro Cold Brew with Sweet Cream (grande)",
+      "match": ["nitro cold brew with sweet cream"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 70, "carbs": 4, "sugar": 4, "protein": 1, "fat": 5, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz"
+    },
+    {
+      "label": "Chocolate Cream Cold Brew (grande)",
+      "match": ["^chocolate cream cold brew"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 250, "carbs": 27, "sugar": 25, "protein": 2, "fat": 15, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz"
+    },
+    {
+      "label": "Honey Almondmilk Cold Brew / Nitro (grande)",
+      "match": ["honey almondmilk (nitro )?cold brew"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 50, "carbs": 11, "sugar": 9, "protein": 1, "fat": 1, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, almondmilk"
+    },
+    {
+      "label": "Cold Brew / Nitro Cold Brew, unsweetened (any size)",
+      "match": ["cold brew"],
+      "exclude": ["sweet cream", "vanilla", "caramel", "chocolate", "honey", "flavored", "macadamia", "cinnamon", "with milk", "oatmilk", "pumpkin"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 5, "carbs": 0, "sugar": 0, "protein": 0, "fat": 0, "fiber": 0, "sodium": 15, "cholesterol": 0 },
+      "source": "official", "confidence": 88,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Black unsweetened cold brew/nitro: ~5 cal at any size"
+    },
+    {
+      "label": "Iced Coffee with Milk (grande, sweetened)",
+      "match": ["^iced coffee with milk"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 110, "carbs": 22, "sugar": 21, "protein": 2, "fat": 1, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, classic syrup, splash of 2%"
+    },
+    {
+      "label": "Brewed coffee, black (all roasts/sizes incl. Clover)",
+      "match": ["^(freshly )?brewed coffee", "^coffee$", "pike place", "blonde roast", "^medium roast$", "^dark roast$", "^featured starbucks dark roast", "guatemala", "yukon", "siren's blend", "^italian roast$", "gold coast", "verona", "komodo", "^(iced )?(decaf )?sumatra( clover)?$", "^espresso roast$", "^iced espresso roast clover$", "^clover brewed", "veranda", "yirgacheffe", "jamaica blue mountain", "huehuetenango", "^iced clover brewed"],
+      "exclude": ["misto", "cake", "frapp", "latte", "mocha", "macchiato", "with milk", "cream", "doubleshot"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 5, "carbs": 0, "sugar": 0, "protein": 1, "fat": 0, "fiber": 0, "sodium": 10, "cholesterol": 0 },
+      "source": "official", "confidence": 88,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Black brewed coffee: ~5 cal at any size/roast"
+    },
+    {
+      "label": "Hot brewed teas, unsweetened (0 cal)",
+      "match": ["^royal english breakfast tea$", "^iced royal english breakfast tea$", "^earl grey black tea$", "^jade citrus mint", "^mint majesty", "^peach tranquility", "^emperor'?s cloud", "^chai tea$", "^full-leaf brewed tea$", "^teas$", "^teavana teas$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 0, "carbs": 0, "sugar": 0, "protein": 0, "fat": 0, "fiber": 0, "sodium": 0, "cholesterol": 0 },
+      "source": "official", "confidence": 88,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Brewed tea, no sweetener: 0 cal"
+    },
+    {
+      "label": "Honey Citrus Mint Tea (grande)",
+      "match": ["^honey citrus mint tea"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 130, "carbs": 34, "sugar": 32, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz (Medicine Ball)"
+    },
+    {
+      "label": "Iced Chai Tea Latte (grande)",
+      "match": ["^iced chai tea latte"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 240, "carbs": 46, "sugar": 43, "protein": 7, "fat": 4, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Chai Tea Latte (grande, 2%)",
+      "match": ["chai tea latte"],
+      "exclude": ["iced", "lavender", "dirty"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 240, "carbs": 45, "sugar": 42, "protein": 8, "fat": 4, "fiber": 0, "sodium": 120 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Iced London Fog Tea Latte (grande)",
+      "match": ["^iced london fog"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 140, "carbs": 23, "sugar": 22, "protein": 4, "fat": 2, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "London Fog Tea Latte (grande, 2%)",
+      "match": ["^london fog"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 180, "carbs": 29, "sugar": 28, "protein": 7, "fat": 4, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Iced Matcha Green Tea Latte (grande)",
+      "match": ["iced matcha green tea latte"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 200, "carbs": 32, "sugar": 29, "protein": 8, "fat": 5, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Matcha Green Tea Latte (grande, 2%)",
+      "match": ["matcha green tea latte", "^green tea latte$"],
+      "exclude": ["iced"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 240, "carbs": 34, "sugar": 32, "protein": 12, "fat": 7, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Royal English Breakfast Tea Latte (grande, 2%)",
+      "match": ["^royal english breakfast tea latte"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 200, "carbs": 34, "sugar": 32, "protein": 7, "fat": 4, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk"
+    },
+    {
+      "label": "Hot Chocolate (grande, 2%, whip)",
+      "match": ["^hot chocolate$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 370, "carbs": 43, "sugar": 37, "protein": 14, "fat": 16, "fiber": 2 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, 2% milk, with whip"
+    },
+    {
+      "label": "Mocha Frappuccino (grande, whip)",
+      "match": ["^mocha frappuccino"],
+      "exclude": ["cookie", "java"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 370, "carbs": 54, "sugar": 51, "protein": 5, "fat": 15, "fiber": 2 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, whole milk, with whip"
+    },
+    {
+      "label": "Pink Drink (grande)",
+      "match": ["^pink drink"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 140, "carbs": 28, "sugar": 25, "protein": 1, "fat": 2, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu/product/2122275/iced/nutrition",
+      "note": "Grande 16 oz, coconutmilk"
+    },
+    {
+      "label": "Dragon Drink (grande)",
+      "match": ["^dragon drink"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 130, "carbs": 26, "sugar": 23, "protein": 1, "fat": 2, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, coconutmilk"
+    },
+    {
+      "label": "Violet Drink (grande)",
+      "match": ["^violet drink"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 110, "carbs": 23, "sugar": 20, "protein": 1, "fat": 2, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, coconutmilk"
+    },
+    {
+      "label": "Star Drink (grande)",
+      "match": ["^star drink"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 130, "carbs": 26, "sugar": 23, "protein": 1, "fat": 2, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, coconutmilk"
+    },
+    {
+      "label": "Teavana Shaken Iced Tea (grande, any flavor)",
+      "match": ["^teavana shaken iced tea$", "^iced black tea$", "^iced green tea$", "^iced passion tango tea$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 30, "carbs": 8, "sugar": 8, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, lightly sweetened; flavors range 25-35 cal"
+    },
+    {
+      "label": "Teavana Shaken Iced Tea Lemonade (grande, any flavor)",
+      "match": ["^teavana shaken iced tea.{0,3}(lemonade|flavored tea with lemonade)", "^iced black tea lemonade$", "^iced green tea lemonade$", "^iced passion tango tea lemonade$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 90, "carbs": 23, "sugar": 22, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz; flavors range 80-100 cal"
+    },
+    {
+      "label": "Peach Green Tea Lemonade (grande)",
+      "match": ["^(iced )?peach green tea lemonade"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 100, "carbs": 25, "sugar": 24, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz"
+    },
+    {
+      "label": "Mango Black Tea Lemonade (grande)",
+      "match": ["^mango black tea lemonade"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 100, "carbs": 25, "sugar": 24, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz"
+    },
+    {
+      "label": "Iced Peach Green Tea (grande)",
+      "match": ["^iced peach green tea$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 60, "carbs": 15, "sugar": 14, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz"
+    },
+    {
+      "label": "Lemonade (grande)",
+      "match": ["^lemonade$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 140, "carbs": 34, "sugar": 33, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz"
+    },
+    {
+      "label": "Blended Strawberry Lemonade (grande)",
+      "match": ["^blended strawberry lemonade"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 190, "carbs": 47, "sugar": 45, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz"
+    },
+    {
+      "label": "Caramel Apple Spice (grande, whip)",
+      "match": ["^caramel apple spice"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 380, "carbs": 71, "sugar": 68, "protein": 1, "fat": 8, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz, with whip"
+    },
+    {
+      "label": "Steamed Apple Juice (grande)",
+      "match": ["^steamed apple juice"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 220, "carbs": 54, "sugar": 50, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Grande 16 oz"
+    },
+    {
+      "label": "Butter Croissant",
+      "match": ["^croissant$", "^butter croissant$"],
+      "exclude": ["ham", "chocolate", "almond", "specialty"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 260, "carbs": 27, "sugar": 6, "protein": 5, "fat": 15, "fiber": 1, "sodium": 310 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Generic 'Croissant' mapped to Butter Croissant"
+    },
+    {
+      "label": "Ham & Swiss Croissant",
+      "match": ["^ham (&|and) (swiss|cheese) croissant$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 320, "carbs": 26, "sugar": 4, "protein": 15, "fat": 17, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Sausage, Cheddar & Egg Sandwich",
+      "match": ["^sausage,? (cheddar|egg)[^a-z]*(egg|cheddar)", "^sausage and cheddar breakfast sandwich$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 480, "carbs": 41, "sugar": 3, "protein": 19, "fat": 28, "fiber": 1, "sodium": 920 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Bacon, Gouda & Egg Sandwich",
+      "match": ["^bacon,? (egg,? )?(and |& )?gouda", "^bacon and gouda (breakfast )?sandwich$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 360, "carbs": 34, "sugar": 3, "protein": 17, "fat": 17, "fiber": 1, "sodium": 750 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Double-Smoked Bacon, Cheddar & Egg Sandwich",
+      "match": ["double.?smoked bacon"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 500, "carbs": 40, "sugar": 5, "protein": 21, "fat": 27, "fiber": 1, "sodium": 950 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Reduced-Fat Turkey Bacon & Egg White Sandwich",
+      "match": ["turkey bacon,? (cheddar )?(and |& )?egg white", "^reduced.?fat turkey bacon"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 230, "carbs": 28, "sugar": 2, "protein": 14, "fat": 5, "fiber": 1, "sodium": 550 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Spinach, Feta & Egg White Wrap",
+      "match": ["spinach,? (and )?feta", "spinach (and|&) egg white"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 290, "carbs": 34, "sugar": 4, "protein": 20, "fat": 8, "fiber": 3, "sodium": 840 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Impossible Breakfast Sandwich",
+      "match": ["^impossible breakfast sandwich"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 420, "carbs": 36, "sugar": 4, "protein": 21, "fat": 22, "fiber": 2 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Bacon & Gruyère Sous Vide Egg Bites",
+      "match": ["bacon (and|&) gruy[eè]re sous vide", "^sous vide egg bites$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 300, "carbs": 9, "sugar": 2, "protein": 19, "fat": 22, "fiber": 0, "sodium": 680 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Generic 'Sous Vide Egg Bites' mapped to Bacon & Gruyère (egg-white variant is 170 cal)"
+    },
+    {
+      "label": "Egg White & Roasted Red Pepper Egg Bites",
+      "match": ["egg white (and|&) roasted red"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 170, "carbs": 12, "sugar": 2, "protein": 12, "fat": 8, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Whole-Grain / Classic Oatmeal (plain)",
+      "match": ["^whole.?grain oatmeal", "^classic oatmeal$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 160, "carbs": 28, "sugar": 1, "protein": 5, "fat": 2, "fiber": 4, "sodium": 125 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Plain, without toppings"
+    },
+    {
+      "label": "Hearty Blueberry Oatmeal",
+      "match": ["^hearty blueberry oatmeal"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 220, "carbs": 43, "sugar": 13, "protein": 5, "fat": 2, "fiber": 5 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Plain Bagel",
+      "match": ["^bagels?$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 280, "carbs": 56, "sugar": 7, "protein": 9, "fat": 1, "fiber": 2, "sodium": 470 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Generic 'Bagels' mapped to Plain Bagel (without spread)"
+    },
+    {
+      "label": "Banana Nut Bread / Loaf",
+      "match": ["^banana nut (bread|loaf)"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 420, "carbs": 52, "sugar": 30, "protein": 6, "fat": 22, "fiber": 2 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Banana Walnut & Pecan Loaf"
+    },
+    {
+      "label": "Pumpkin Bread / Loaf",
+      "match": ["^pumpkin (bread|loaf)"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 410, "carbs": 63, "sugar": 39, "protein": 6, "fat": 15, "fiber": 2 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Iced Lemon Pound Cake / Loaf",
+      "match": ["^iced lemon pound cake", "^pound cake, iced", "^iced pound cake", "^lemon loaf"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 470, "carbs": 68, "sugar": 42, "protein": 6, "fat": 20, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Classic Coffee Cake",
+      "match": ["coffee cake"],
+      "exclude": ["cookie", "reduced"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 330, "carbs": 46, "sugar": 25, "protein": 4, "fat": 15, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Marshmallow Dream Bar",
+      "match": ["^marshmallow dream bar"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 230, "carbs": 47, "sugar": 24, "protein": 1, "fat": 5, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Birthday Cake Pop",
+      "match": ["^birthday cake pop", "^cake pops?$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 170, "carbs": 23, "sugar": 18, "protein": 2, "fat": 9, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu/product/784/single/nutrition",
+      "note": "Generic 'Cake Pop' mapped to Birthday Cake Pop (flavors range 150-180 cal)"
+    },
+    {
+      "label": "Chocolate Cake Pop",
+      "match": ["^chocolate cake pop"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 160, "carbs": 22, "sugar": 15, "protein": 2, "fat": 8, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Chocolate Chip Cookie",
+      "match": ["^chocolate chip cookie$", "^cookies?$"],
+      "exclude": ["mickey", "dough"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 360, "carbs": 49, "sugar": 30, "protein": 4, "fat": 18, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Generic 'Cookie' mapped to Chocolate Chip Cookie"
+    },
+    {
+      "label": "Double Chocolate Brownie",
+      "match": ["^double chocolate (chunk )?brownie$", "^brownie$", "^brownie - double chocolate chunk$"],
+      "exclude": ["walnut", "cheetah", "bug", "bites"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 480, "carbs": 60, "sugar": 40, "protein": 6, "fat": 26, "fiber": 2 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Generic 'Brownie' mapped to Double Chocolate Brownie"
+    },
+    {
+      "label": "Old-Fashioned Glazed Doughnut",
+      "match": ["glazed dou?ghnut"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 480, "carbs": 57, "sugar": 29, "protein": 5, "fat": 25, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Cheese Danish",
+      "match": ["^cheese danish$", "^danish$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 290, "carbs": 33, "sugar": 12, "protein": 6, "fat": 14, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Generic 'Danish' mapped to Cheese Danish"
+    },
+    {
+      "label": "Blueberry Scone",
+      "match": ["^blueberry scone$", "^scones?$"],
+      "exclude": ["petite", "vanilla"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 380, "carbs": 56, "sugar": 18, "protein": 5, "fat": 15, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Generic 'Scones' mapped to Blueberry Scone"
+    },
+    {
+      "label": "Petite Vanilla Bean Scone",
+      "match": ["petite vanilla bean scone", "^scone - petite vanilla bean"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 120, "carbs": 18, "sugar": 8, "protein": 1, "fat": 4, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Per single petite scone"
+    },
+    {
+      "label": "Blueberry Muffin",
+      "match": ["^blueberry muffin$", "^muffins?$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 360, "carbs": 52, "sugar": 28, "protein": 6, "fat": 14, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Generic 'Muffin' mapped to Blueberry Muffin"
+    },
+    {
+      "label": "Crispy / Old-Fashioned Grilled Cheese",
+      "match": ["grilled cheese"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 520, "carbs": 40, "sugar": 5, "protein": 19, "fat": 30, "fiber": 2, "sodium": 1010 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Ham & Swiss Panini / Baguette",
+      "match": ["^ham (and|&) swiss (panini|sandwich|baguette)"],
+      "exclude": ["croissant", "breakfast"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 450, "carbs": 44, "sugar": 4, "protein": 28, "fat": 19, "fiber": 2 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Mapped to Ham & Swiss Baguette"
+    },
+    {
+      "label": "Chicken & Bacon Panini",
+      "match": ["^chicken (&|and) bacon panini", "^chicken bacon panini"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 540, "carbs": 45, "sugar": 6, "protein": 26, "fat": 28, "fiber": 2 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Cheese & Fruit Bistro/Protein Box",
+      "match": ["^cheese (and|&) fruit (bistro|protein) box"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 470, "carbs": 41, "sugar": 22, "protein": 20, "fat": 26, "fiber": 5 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "PB&J / Peanut Butter & Jelly Protein Box",
+      "match": ["^pb ?(&|and) ?j", "^p/?b and j(elly)? bistro box"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 520, "carbs": 50, "sugar": 26, "protein": 20, "fat": 27, "fiber": 6 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Eggs & Cheddar Protein Box",
+      "match": ["^eggs? (and|&) cheddar protein box", "^egg and cheese protein box"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 470, "carbs": 40, "sugar": 12, "protein": 23, "fat": 25, "fiber": 4 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Chicken & Quinoa Protein Bowl",
+      "match": ["chicken (and|&) quinoa protein bowl"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 420, "carbs": 42, "sugar": 12, "protein": 27, "fat": 12, "fiber": 8 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Grilled Chicken & Hummus Protein Box",
+      "match": ["grilled chicken (and|&) hummus protein box"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 300, "carbs": 30, "sugar": 7, "protein": 22, "fat": 8, "fiber": 5 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Banana (whole fruit)",
+      "match": ["^banana$"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 110, "carbs": 28, "sugar": 15, "protein": 1, "fat": 0, "fiber": 3, "sodium": 0, "cholesterol": 0 },
+      "source": "official", "confidence": 88,
+      "sourceUrl": "https://www.starbucks.com/menu"
+    },
+    {
+      "label": "Tree Top Apple Juice Box",
+      "match": ["apple juice box"],
+      "restaurantMatch": ["starbucks"],
+      "nutrition": { "calories": 60, "carbs": 15, "sugar": 13, "protein": 0, "fat": 0, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.starbucks.com/menu",
+      "note": "Kids' juice box"
+    }
+  ]
+}
