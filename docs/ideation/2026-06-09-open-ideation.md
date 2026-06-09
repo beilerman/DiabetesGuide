@@ -90,3 +90,4 @@ focus: Review this codebase and make it better
 
 ## Session Log
 - 2026-06-09: Initial ideation — ~30 candidates generated, 7 survived. User selected #3 (Ship & Prune) for immediate execution.
+- 2026-06-09: Ship & Prune executed — PR #33 CI failure root-caused (PWA service worker bypassing Playwright route mocks on slow CI runners; fixed with `serviceWorkers: 'block'`), branch updated with main (quality-history conflict resolved keeping both sides), 24 local + 22 remote merged branches pruned, migration 00002 re-verified (0 duplicates across 17,306 items).
