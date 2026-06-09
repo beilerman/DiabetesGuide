@@ -1,0 +1,109 @@
+{
+  "comment": "Small-chain graduations: Wetzel's Pretzels (third-party-verified official data, confidence 75 — official PDF not machine-readable), Panda Express rice sides, Cinnabon classics (official). Skipped: Wetzel's Jalaroni (implausible legacy carbs), dips/bitz/drinks without published sizes, Skyline (values not confidently published per DB item form), LaRosa's (slice-vs-pie ambiguity), Dippin' Dots (flavor variance), Auntie Anne's 'Regular' nugget sizes (no published size match). Apply: npx tsx scripts/import-researched-nutrition.ts --file=data/chains/small-chains.json [--apply]",
+  "entries": [
+    {
+      "label": "Wetzel's Original Pretzel (buttered, default prep)",
+      "match": ["^original pretzels?$", "^original pretzel \\(with butter"],
+      "restaurantMatch": ["wetzel"],
+      "nutrition": { "calories": 470, "carbs": 83, "fat": 8, "protein": 13, "sugar": 3, "fiber": 4, "sodium": 900 },
+      "source": "official", "confidence": 75,
+      "sourceUrl": "https://www.wetzels.com",
+      "note": "With butter, salted (default prep); no-butter version is 400 cal. Third-party-verified."
+    },
+    {
+      "label": "Wetzel's Sinful Cinnamon Pretzel",
+      "match": ["^sinful cinnamon pretzel$"],
+      "restaurantMatch": ["wetzel"],
+      "nutrition": { "calories": 490, "carbs": 90, "fat": 9, "protein": 12, "sodium": 510 },
+      "source": "official", "confidence": 75,
+      "sourceUrl": "https://www.wetzels.com",
+      "note": "Third-party-verified"
+    },
+    {
+      "label": "Wetzel's Almond Crunch Pretzel",
+      "match": ["^almond crunch pretzel$"],
+      "restaurantMatch": ["wetzel"],
+      "nutrition": { "calories": 500, "carbs": 88, "fat": 9, "protein": 13, "sodium": 510 },
+      "source": "official", "confidence": 75,
+      "sourceUrl": "https://www.wetzels.com",
+      "note": "Third-party-verified"
+    },
+    {
+      "label": "Wetzel's Pretzel Bites / Wetzel Bitz",
+      "match": ["^pretzel bites$", "^wetzel bitz$"],
+      "restaurantMatch": ["wetzel"],
+      "nutrition": { "calories": 450, "carbs": 80, "fat": 11, "protein": 9 },
+      "source": "official", "confidence": 75,
+      "sourceUrl": "https://www.wetzels.com",
+      "note": "Regular cup; third-party-verified"
+    },
+    {
+      "label": "Wetzel's Cheese Meltdown Pretzel",
+      "match": ["^cheese meltdown pretzel$"],
+      "restaurantMatch": ["wetzel"],
+      "nutrition": { "calories": 540, "carbs": 84, "fat": 13, "protein": 17, "sodium": 710 },
+      "source": "official", "confidence": 75,
+      "sourceUrl": "https://www.wetzels.com",
+      "note": "Third-party-verified"
+    },
+    {
+      "label": "Wetzel's Jalapeño Cheese Pretzel",
+      "match": ["^jalape[ñn]o cheese pretzel$"],
+      "restaurantMatch": ["wetzel"],
+      "nutrition": { "calories": 560, "carbs": 84, "fat": 15, "protein": 17 },
+      "source": "official", "confidence": 75,
+      "sourceUrl": "https://www.wetzels.com",
+      "note": "Third-party-verified"
+    },
+    {
+      "label": "Wetzel Dog / Pretzel Dog",
+      "match": ["^wetzel dog$", "^pretzel dog$"],
+      "restaurantMatch": ["wetzel"],
+      "nutrition": { "calories": 450, "carbs": 35, "fat": 27, "protein": 17 },
+      "source": "official", "confidence": 75,
+      "sourceUrl": "https://www.wetzels.com",
+      "note": "Third-party-verified"
+    },
+    {
+      "label": "Panda Express White Steamed Rice",
+      "match": ["^white steamed rice$"],
+      "restaurantMatch": ["panda express"],
+      "nutrition": { "calories": 380, "carbs": 87, "fat": 0, "protein": 7, "sugar": 0, "fiber": 0, "sodium": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.pandaexpress.com/nutritioninfo"
+    },
+    {
+      "label": "Panda Express Fried Rice",
+      "match": ["^fried rice$"],
+      "restaurantMatch": ["panda express"],
+      "nutrition": { "calories": 520, "carbs": 85, "fat": 16, "protein": 11, "sugar": 3, "fiber": 1, "sodium": 850 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.pandaexpress.com/nutritioninfo"
+    },
+    {
+      "label": "Cinnabon Classic Roll",
+      "match": ["^cinnabon® classic( roll)?$", "^classic roll$", "^cinnabon classic( roll)?$"],
+      "restaurantMatch": ["cinnabon"],
+      "nutrition": { "calories": 880, "carbs": 127, "fat": 36, "protein": 13, "sugar": 58, "fiber": 2, "sodium": 850 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.cinnabon.com/-/media/cinnabon/nutrition/cinnabonnutritionalguide.pdf"
+    },
+    {
+      "label": "Cinnabon MiniBon",
+      "match": ["^minibon$"],
+      "restaurantMatch": ["cinnabon"],
+      "nutrition": { "calories": 350, "carbs": 52, "fat": 14, "protein": 6, "sugar": 25, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.cinnabon.com/-/media/cinnabon/nutrition/cinnabonnutritionalguide.pdf"
+    },
+    {
+      "label": "Cinnabon Caramel Pecanbon (full size)",
+      "match": ["^caramel pecanbon"],
+      "restaurantMatch": ["cinnabon"],
+      "nutrition": { "calories": 1090, "carbs": 141, "fat": 52, "protein": 13, "sugar": 76, "fiber": 3 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.cinnabon.com/-/media/cinnabon/nutrition/cinnabonnutritionalguide.pdf",
+      "note": "Full-size roll (MiniBon version is 460 cal)"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "comment": "Blaze Pizza — short-name variants mapped to the 11\" pizza values already verified for the 'Pizza, 11\"'-suffixed twins (Nutritionix official partner data). Skipped: Red Vine + Chipotle Ranch Chicken (no values in verified dataset), build-your-own salads, generic fountain/tea, alcohol. Apply: npx tsx scripts/import-researched-nutrition.ts --file=data/chains/blaze-pizza.json [--apply]",
+  "entries": [
+    {
+      "label": "Meat Eater (11\" pizza)",
+      "match": ["^meat eater$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 1140, "carbs": 102, "fat": 54, "protein": 60, "sugar": 12, "fiber": 6, "sodium": 3180 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Whole 11\" pizza"
+    },
+    {
+      "label": "Art Lover (11\" pizza)",
+      "match": ["^art lover$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 780, "carbs": 96, "fat": 24, "protein": 36, "sugar": 6, "fiber": 6, "sodium": 1500 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Whole 11\" pizza"
+    },
+    {
+      "label": "Veg Out (11\" pizza)",
+      "match": ["^veg out$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 840, "carbs": 102, "fat": 30, "protein": 42, "sugar": 12, "fiber": 9, "sodium": 1620 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Whole 11\" pizza"
+    },
+    {
+      "label": "Green Stripe (11\" pizza)",
+      "match": ["^green stripe$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 840, "carbs": 102, "fat": 30, "protein": 42, "sugar": 12, "fiber": 9, "sodium": 1620 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Whole 11\" pizza"
+    },
+    {
+      "label": "White Top (11\" pizza)",
+      "match": ["^white top$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 960, "carbs": 96, "fat": 42, "protein": 48, "sugar": 6, "fiber": 6, "sodium": 1860 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Whole 11\" pizza"
+    },
+    {
+      "label": "BBQ Chicken / BBQ Chkn (11\" pizza)",
+      "match": ["^bbq ch(icke)?n$", "^bbq chicken$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 1020, "carbs": 114, "fat": 36, "protein": 54, "sugar": 18, "fiber": 6, "sodium": 2100 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Whole 11\" pizza"
+    },
+    {
+      "label": "Hot Link (= The Link, 11\" pizza)",
+      "match": ["^hot link$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 1080, "carbs": 102, "fat": 48, "protein": 54, "sugar": 12, "fiber": 6, "sodium": 2760 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Mapped to The Link Pizza, whole 11\""
+    },
+    {
+      "label": "Cheesy Bread",
+      "match": ["^cheesy bread$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 790, "carbs": 100, "fat": 28, "protein": 30, "sugar": 6, "fiber": 4, "sodium": 1520 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Full order"
+    },
+    {
+      "label": "Dessert Knots (= Cinnamon Sugar Dough Knots)",
+      "match": ["^dessert knots$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 430, "carbs": 62, "fat": 14, "protein": 12, "sugar": 18, "fiber": 2, "sodium": 760 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Mapped to Cinnamon Sugar Dough Knots"
+    },
+    {
+      "label": "Brownie (= Chocolate Brownie)",
+      "match": ["^brownie$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 380, "carbs": 46, "fat": 21, "protein": 4, "sugar": 32, "fiber": 2, "sodium": 180 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium"
+    },
+    {
+      "label": "S'more Pie",
+      "match": ["^s'more pie$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 649, "carbs": 89, "fat": 29, "protein": 7, "sugar": 52, "fiber": 3, "sodium": 340 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium"
+    },
+    {
+      "label": "Lemonade (= Minute Maid 16 oz)",
+      "match": ["^lemonade$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 150, "carbs": 40, "fat": 0, "protein": 0, "sugar": 36, "fiber": 0, "sodium": 25 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "16 oz Minute Maid Lemonade"
+    },
+    {
+      "label": "Agua Fresca (16 oz)",
+      "match": ["^agua fresca$"],
+      "restaurantMatch": ["blaze"],
+      "nutrition": { "calories": 100, "carbs": 25, "fat": 0, "protein": 0, "sugar": 24, "fiber": 0, "sodium": 15 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.nutritionix.com/blaze-pizza/menu/premium",
+      "note": "Agua de Jamaica 16 oz"
+    }
+  ]
+}

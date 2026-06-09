@@ -317,32 +317,32 @@
   {
     "date": "2026-06-09",
     "totalItems": 17306,
-    "qualityScore": 55,
+    "qualityScore": 56,
     "coverage": {
       "description": 83.2,
       "photo": 0.3,
       "price": 68.4,
       "nutritionRow": 99.4,
-      "caloriesPresent": 96.2,
+      "caloriesPresent": 96.1,
       "carbsPresent": 98.1,
-      "allEightFields": 78.9,
+      "allEightFields": 79,
       "allergens": 34.8
     },
     "carbTrust": {
       "trustDefinition": "confidence>=70 (v2)",
-      "trustedCarbsPct": 16.4,
-      "sourcedCarbsPct": 43.6,
-      "untrustedCarbs": 14129,
+      "trustedCarbsPct": 17.4,
+      "sourcedCarbsPct": 44.1,
+      "untrustedCarbs": 13962,
       "bySource": {
-        "crowdsourced": 10794,
-        "official": 1847,
-        "api_lookup": 4560
+        "crowdsourced": 10702,
+        "official": 2022,
+        "api_lookup": 4477
       }
     },
     "prioritySlice": {
       "total": 8818,
-      "dosingGrade": 830,
-      "pct": 9.4
+      "dosingGrade": 878,
+      "pct": 10
     },
     "nutritionFieldNullPct": {
       "calories": 1.2,

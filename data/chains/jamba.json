@@ -1,0 +1,175 @@
+{
+  "comment": "Jamba — low-confidence duplicate names mapped to the official Medium (16 oz) values already verified for the ', Medium'-suffixed twins (Nutritionix partner data, Feb 2026 dataset). Two legacy sugar>carbs data errors corrected (Strawberry Surf Rider, Greens 'N Ginger, Mega Mango, Aloha Pineapple) against published values. Skipped: bowls with implausible legacy fat=0 (Chunky Strawberry, Island Pitaya), items without published anchors (Gotcha Matcha, PB Chocolate Love, La Vida Mocha, Lotta Horchata, Protein Berry Workout, Pomegranate Paradise, juices, shots, waffles, handwiches). Apply: npx tsx scripts/import-researched-nutrition.ts --file=data/chains/jamba.json [--apply]",
+  "entries": [
+    {
+      "label": "Mango-A-Go-Go (medium)",
+      "match": ["^mango-a-go-go$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 400, "carbs": 97, "fat": 2, "protein": 2, "sugar": 89, "fiber": 3 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Caribbean Passion (medium)",
+      "match": ["^caribbean passion$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 340, "carbs": 82, "fat": 2, "protein": 2, "sugar": 77, "fiber": 3 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Razzmatazz (medium)",
+      "match": ["^razzmatazz$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 360, "carbs": 87, "fat": 2, "protein": 1, "sugar": 74, "fiber": 4 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Strawberries Wild (medium)",
+      "match": ["^strawberries wild$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 340, "carbs": 81, "fat": 0, "protein": 5, "sugar": 75, "fiber": 3 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Strawberry Surf Rider (medium)",
+      "match": ["^strawberry surf ride r?$", "^strawberry surf ride$", "^strawberry surf rider$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 340, "carbs": 84, "fat": 2, "protein": 1, "sugar": 71, "fiber": 4 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz; sugar corrected from legacy dataset error (98>carbs)"
+    },
+    {
+      "label": "Aloha Pineapple (medium)",
+      "match": ["^aloha pineapple$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 400, "carbs": 89, "fat": 2, "protein": 7, "sugar": 81, "fiber": 3 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz; sugar corrected from legacy dataset error"
+    },
+    {
+      "label": "White Gummi (medium)",
+      "match": ["^white gummi$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 450, "carbs": 105, "fat": 0, "protein": 2 },
+      "source": "official", "confidence": 80,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz (secret-menu item; published values vary slightly)"
+    },
+    {
+      "label": "Orange Dream Machine (medium)",
+      "match": ["^orange dream machine$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 440, "carbs": 94, "fat": 5, "protein": 8, "sugar": 80, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Peanut Butter Moo'd (medium)",
+      "match": ["^peanut butter moo'?d$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 690, "carbs": 120, "fat": 20, "protein": 16, "sugar": 109, "fiber": 5 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Apple 'N Greens (medium)",
+      "match": ["^apple '?n'? greens$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 320, "carbs": 76, "fat": 1, "protein": 6, "sugar": 61, "fiber": 5 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Mega Mango (medium)",
+      "match": ["^mega mango$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 310, "carbs": 74, "fat": 1, "protein": 3, "sugar": 66, "fiber": 5 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz; sugar corrected from legacy dataset error"
+    },
+    {
+      "label": "Strawberry Whirl (medium)",
+      "match": ["^strawberry whirl$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 300, "carbs": 75, "fat": 1, "protein": 3, "sugar": 66, "fiber": 6 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Peach Perfection (medium)",
+      "match": ["^peach perfection$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 310, "carbs": 76, "fat": 1, "protein": 3, "sugar": 62, "fiber": 5 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Greens 'N Ginger (medium)",
+      "match": ["^greens '?n'? ginger$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 290, "carbs": 70, "fat": 1, "protein": 4, "sugar": 56, "fiber": 5 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz; sugar corrected from legacy dataset error (90>carbs)"
+    },
+    {
+      "label": "Orange C-Booster (medium)",
+      "match": ["^orange c-booster$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 330, "carbs": 76, "fat": 2, "protein": 3, "sugar": 75, "fiber": 3 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "PB & Banana Protein (medium)",
+      "match": ["^pb (&|and) banana protein$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 630, "carbs": 70, "fat": 23, "protein": 38, "sugar": 49, "fiber": 4 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Açaí Super-Antioxidant (medium)",
+      "match": ["^a[cç]a[ií] super-antioxidant$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 440, "carbs": 89, "fat": 6, "protein": 8, "sugar": 70, "fiber": 5 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Medium 16 oz"
+    },
+    {
+      "label": "Açaí Primo Bowl",
+      "match": ["^a[cç]a[ií] primo bowl$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 510, "carbs": 101, "fat": 10, "protein": 8, "sugar": 67, "fiber": 11 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice"
+    },
+    {
+      "label": "Vanilla Blue Sky Bowl",
+      "match": ["^vanilla blue sky bowl$"],
+      "restaurantMatch": ["jamba"],
+      "nutrition": { "calories": 330, "carbs": 62, "protein": 6 },
+      "source": "official", "confidence": 80,
+      "sourceUrl": "https://fastfoodnutrition.org/jamba-juice",
+      "note": "Partial macros (fat not published in source)"
+    }
+  ]
+}

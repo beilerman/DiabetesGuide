@@ -1,0 +1,50 @@
+{
+  "comment": "Joffrey's (Disney coffee kiosks) — composition-determined items only. Joffrey's publishes no café-drink nutrition, so milk/syrup drinks, frozen drinks, pastries, and donuts stay unmapped (Opus published-figure queue handles them). Black espresso/coffee/cold brew and plain brewed tea have universal values independent of vendor. Flavored iced teas (Peach/Mango/Green Apple) SKIPPED: could not verify whether served sweetened — mapping them to 0 carbs would risk a false 'Verified' on a possibly ~25g-sugar drink. Apply: npx tsx scripts/import-researched-nutrition.ts --file=data/chains/joffreys.json [--apply]",
+  "entries": [
+    {
+      "label": "Double Espresso (doppio)",
+      "match": ["^double espresso$"],
+      "restaurantMatch": ["joffrey"],
+      "nutrition": { "calories": 10, "carbs": 2, "sugar": 0, "protein": 0, "fat": 0, "fiber": 0, "sodium": 0, "cholesterol": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://joffreys.com",
+      "note": "Espresso doppio — composition-determined (~5-15 cal regardless of vendor)"
+    },
+    {
+      "label": "Extra Shot (single espresso)",
+      "match": ["^extra shot$"],
+      "restaurantMatch": ["joffrey"],
+      "nutrition": { "calories": 5, "carbs": 1, "sugar": 0, "protein": 0, "fat": 0, "fiber": 0, "sodium": 0, "cholesterol": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://joffreys.com",
+      "note": "Single espresso shot"
+    },
+    {
+      "label": "Brewed black coffee (all blends)",
+      "match": ["^(organic )?caf[eé] femenino coffee$", "^coffee of the day$", "50th anniversary blend coffee"],
+      "restaurantMatch": ["joffrey"],
+      "nutrition": { "calories": 5, "carbs": 0, "sugar": 0, "protein": 0, "fat": 0, "fiber": 0, "sodium": 10, "cholesterol": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://joffreys.com",
+      "note": "Black brewed coffee: ~5 cal at any size/blend; cream/sugar add-ins extra"
+    },
+    {
+      "label": "Hot brewed tea, plain",
+      "match": ["^hot tea$", "^loose-?\\s?leaf (hot )?teas$", "^loose leaf hot teas$", "^immunitea$"],
+      "restaurantMatch": ["joffrey"],
+      "nutrition": { "calories": 0, "carbs": 0, "sugar": 0, "protein": 0, "fat": 0, "fiber": 0, "sodium": 0, "cholesterol": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://joffreys.com",
+      "note": "Plain brewed tea: 0 cal; sweetener add-ins extra"
+    },
+    {
+      "label": "Nitro Cold Brew / Cold Brew, black",
+      "match": ["^nitro cold brew$", "^cold brew \\(large\\)$"],
+      "restaurantMatch": ["joffrey"],
+      "nutrition": { "calories": 5, "carbs": 0, "sugar": 0, "protein": 0, "fat": 0, "fiber": 0, "sodium": 15, "cholesterol": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://joffreys.com",
+      "note": "Black unsweetened cold brew/nitro: ~5 cal at any size"
+    }
+  ]
+}
