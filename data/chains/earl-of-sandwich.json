@@ -1,0 +1,224 @@
+{
+  "comment": "Earl of Sandwich — graduable low-confidence name variants mapped to the official EoS nutrition PDF (EOS-Nutritionals-7.07.2022.pdf, extracted 2026-06-09). Every entry includes carbs (campaign rule). Skipped: items not in the PDF (Maple Donut, Brookie, Chocolatti, park beverages), ambiguous 'Bowl or Burrito' rows (different macros per form), parse-mangled PDF rows (Sausage Egg & Cheddar), and generic placeholders. Apply: npx tsx scripts/import-researched-nutrition.ts --file=data/chains/earl-of-sandwich.json [--apply]",
+  "entries": [
+    {
+      "label": "Grilled Cheese (kids' menu)",
+      "match": ["^grilled cheese$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 360, "carbs": 43, "fat": 13, "protein": 19, "sugar": 1, "fiber": 2, "sodium": 740 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Just 4 Kids menu item per official PDF"
+    },
+    {
+      "label": "Tuna Melt",
+      "match": ["^tuna melt$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 960, "carbs": 70, "fat": 60, "protein": 40, "sugar": 2, "fiber": 3, "sodium": 1550 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Hawaiian BBQ",
+      "match": ["^hawaiian bbq$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 740, "carbs": 116, "fat": 16, "protein": 48, "sodium": 2340 },
+      "source": "official", "confidence": 75,
+      "sourceUrl": "https://earlofsandwichusa.com",
+      "note": "From earlier official dataset; not in 7/2022 PDF (rotating item)"
+    },
+    {
+      "label": "Chicken Caesar Wrap",
+      "match": ["^chicken caesar wrap$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 660, "carbs": 66, "fat": 28, "protein": 34, "sugar": 2, "fiber": 3, "sodium": 1960 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Earl's Cobb Wrap",
+      "match": ["^earl's cobb wrap$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 760, "carbs": 74, "fat": 34, "protein": 37, "sugar": 13, "fiber": 4, "sodium": 1610 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Earl's Cobb Salad",
+      "match": ["^earl'?s cobb( salad)?$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 460, "carbs": 24, "fat": 27, "protein": 30, "sugar": 14, "fiber": 4, "sodium": 880 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Chicken Caesar (salad, short name)",
+      "match": ["^chicken caesar$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 460, "carbs": 21, "fat": 29, "protein": 29, "sugar": 3, "fiber": 3, "sodium": 1660 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Mapped to Chicken Caesar Salad"
+    },
+    {
+      "label": "Greek (salad, short name)",
+      "match": ["^greek$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 440, "carbs": 14, "fat": 31, "protein": 25, "sugar": 4, "fiber": 4, "sodium": 1810 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Mapped to Greek Salad"
+    },
+    {
+      "label": "Caprese Salad",
+      "match": ["^caprese salad$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 430, "carbs": 21, "fat": 30, "protein": 23, "sugar": 14, "fiber": 4, "sodium": 830 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Ham and Swiss (sandwich)",
+      "match": ["^ham and swiss$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 750, "carbs": 73, "fat": 33, "protein": 45, "sugar": 5, "fiber": 3, "sodium": 2380 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Hot sandwich (kids' Ham & Swiss breakfast variant has its own entry)"
+    },
+    {
+      "label": "Cannonballs Sandwich",
+      "match": ["^cannonballs sandwich$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 770, "carbs": 81, "fat": 32, "protein": 52, "sugar": 3, "fiber": 12, "sodium": 2250 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Pizza Bread (kids')",
+      "match": ["^pizza bread$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 290, "carbs": 42, "fat": 10, "protein": 15, "sugar": 2, "fiber": 3, "sodium": 710 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Just 4 Kids Pizza Bread (adult Cheese/Pepperoni Pizza Bread are separate items)"
+    },
+    {
+      "label": "Mac 'n' Cheese",
+      "match": ["^mac 'n' cheese$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 360, "carbs": 32, "fat": 18, "protein": 16, "sugar": 5, "fiber": 1, "sodium": 1120 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Bacon Mac 'n' Cheese",
+      "match": ["^bacon mac 'n' cheese$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 430, "carbs": 33, "fat": 24, "protein": 20, "sugar": 5, "fiber": 1, "sodium": 1450 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Breakfast Tots",
+      "match": ["^breakfast tots$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 350, "carbs": 43, "fat": 19, "protein": 3, "sugar": 0, "fiber": 3, "sodium": 1300 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Mapped to Tater Tots"
+    },
+    {
+      "label": "Pasta Salad",
+      "match": ["^pasta salad$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 320, "carbs": 30, "fat": 18, "protein": 8, "sugar": 3, "fiber": 2, "sodium": 850 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Side Salad",
+      "match": ["^side salad$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 170, "carbs": 9, "fat": 14, "protein": 3, "sugar": 3, "fiber": 2, "sodium": 390 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Oatmeal (plain)",
+      "match": ["^oatmeal$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 100, "carbs": 19, "fat": 2, "protein": 4, "sugar": 0, "fiber": 3, "sodium": 80 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Plain oatmeal (Loaded Oatmeal is a separate item)"
+    },
+    {
+      "label": "Bacon, Egg N Cheddar Breakfast Sandwich",
+      "match": ["^bacon, egg '?n'? cheddar breakfast sandwich$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 540, "carbs": 43, "fat": 29, "protein": 26, "sugar": 1, "fiber": 2, "sodium": 1800 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Ham, Egg 'N' Cheddar Breakfast Sandwich",
+      "match": ["^ham, egg '?n'? cheddar breakfast sandwich$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 440, "carbs": 43, "fat": 21, "protein": 22, "sugar": 1, "fiber": 2, "sodium": 1460 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Ham 'N' Swiss Breakfast Sandwich",
+      "match": ["^ham '?n'? swiss breakfast sandwich$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 460, "carbs": 45, "fat": 20, "protein": 26, "sugar": 3, "fiber": 1, "sodium": 1350 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Egg 'N' Cheddar Breakfast Sandwich",
+      "match": ["^egg '?n'? cheddar breakfast sandwich$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 470, "carbs": 44, "fat": 24, "protein": 21, "sugar": 1, "fiber": 2, "sodium": 1230 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Breakfast BLT Breakfast Sandwich",
+      "match": ["^breakfast blt breakfast sandwich$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 550, "carbs": 44, "fat": 33, "protein": 18, "sugar": 3, "fiber": 2, "sodium": 1610 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf"
+    },
+    {
+      "label": "Cookies (generic → Chocolate Chip Cookie)",
+      "match": ["^cookies$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 420, "carbs": 71, "fat": 23, "protein": 6, "sugar": 43, "fiber": 1, "sodium": 200 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Mapped to Chocolate Chip Cookie (Sugar 510 / Oatmeal Raisin 470 are similar scale)"
+    },
+    {
+      "label": "Brownies (generic → Brownie)",
+      "match": ["^brownies$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 450, "carbs": 65, "fat": 21, "protein": 3, "sugar": 48, "fiber": 2, "sodium": 300 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Single brownie"
+    },
+    {
+      "label": "Brownie Bites (full order)",
+      "match": ["^brownie bites$"],
+      "restaurantMatch": ["earl of sandwich"],
+      "nutrition": { "calories": 910, "carbs": 131, "fat": 41, "protein": 7, "sugar": 97, "fiber": 5, "sodium": 610 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://earlofsandwichusa.com/wp-content/uploads/EOS-Nutritionals-7.07.2022.pdf",
+      "note": "Full order per official PDF"
+    }
+  ]
+}

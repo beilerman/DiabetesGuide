@@ -1,0 +1,84 @@
+{
+  "comment": "Chick-fil-A — full official menu data (chick-fil-a.com, treats verified 2026-06-09). Sized items use the size in the note. Apply: npx tsx scripts/import-researched-nutrition.ts --file=data/chains/chick-fil-a.json [--apply]",
+  "entries": [
+    {
+      "label": "Chick-fil-A Chicken Sandwich",
+      "match": ["^chick-fil-a chicken sandwich$"],
+      "restaurantMatch": ["chick-?fil"],
+      "nutrition": { "calories": 420, "carbs": 41, "fat": 18, "protein": 28, "sugar": 6, "fiber": 1, "sodium": 1370 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.chick-fil-a.com/menu/chick-fil-a-chicken-sandwich"
+    },
+    {
+      "label": "Chick-fil-A Spicy Chicken Sandwich",
+      "match": ["^chick-fil-a spicy chicken sandwich$"],
+      "restaurantMatch": ["chick-?fil"],
+      "nutrition": { "calories": 450, "carbs": 45, "fat": 19, "protein": 28, "sugar": 6, "fiber": 1, "sodium": 1620 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.chick-fil-a.com/menu"
+    },
+    {
+      "label": "Chick-fil-A Nuggets (8-count)",
+      "match": ["^chick-fil-a nuggets"],
+      "restaurantMatch": ["chick-?fil"],
+      "nutrition": { "calories": 250, "carbs": 11, "fat": 12, "protein": 27, "sugar": 1, "fiber": 0, "sodium": 1210 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.chick-fil-a.com/menu",
+      "note": "8-count"
+    },
+    {
+      "label": "Chick-fil-A Grilled Nuggets (8-count)",
+      "match": ["^chick-fil-a grilled nuggets"],
+      "restaurantMatch": ["chick-?fil"],
+      "nutrition": { "calories": 130, "carbs": 1, "fat": 3, "protein": 25, "sugar": 1, "fiber": 0, "sodium": 440 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.chick-fil-a.com/menu",
+      "note": "8-count"
+    },
+    {
+      "label": "Chick-fil-A Waffle Fries (medium)",
+      "match": ["^chick-fil-a waffle fries$"],
+      "restaurantMatch": ["chick-?fil"],
+      "nutrition": { "calories": 420, "carbs": 45, "fat": 24, "protein": 5, "sugar": 1, "fiber": 5, "sodium": 240 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.chick-fil-a.com/menu",
+      "note": "Medium"
+    },
+    {
+      "label": "Chick-fil-A Lemonade (medium)",
+      "match": ["^chick-fil-a lemonade$"],
+      "restaurantMatch": ["chick-?fil"],
+      "nutrition": { "calories": 220, "carbs": 58, "fat": 0, "protein": 0, "sugar": 54, "fiber": 0, "sodium": 10 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.chick-fil-a.com/menu",
+      "note": "Medium, regular (diet is 50 cal)"
+    },
+    {
+      "label": "Chick-fil-A Frosted Lemonade (regular)",
+      "match": ["^chick-fil-a frosted lemonade$"],
+      "restaurantMatch": ["chick-?fil"],
+      "nutrition": { "calories": 320, "carbs": 67, "fat": 5, "protein": 6, "sugar": 61, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.chick-fil-a.com/menu/treats",
+      "note": "Regular, made with regular lemonade"
+    },
+    {
+      "label": "Chick-fil-A Cookies & Cream Milkshake (small)",
+      "match": ["^chick-fil-a cookies (&|and) cream milkshake$"],
+      "restaurantMatch": ["chick-?fil"],
+      "nutrition": { "calories": 630, "carbs": 85, "fat": 25, "protein": 13, "sugar": 71, "fiber": 1 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.chick-fil-a.com/menu/treats/cookies-cream-milkshake",
+      "note": "Small, with whipped cream and cherry"
+    },
+    {
+      "label": "Chick-fil-A Milkshake (generic → Vanilla, small)",
+      "match": ["^chick-fil-a milkshake$"],
+      "restaurantMatch": ["chick-?fil"],
+      "nutrition": { "calories": 580, "carbs": 72, "fat": 23, "protein": 13, "sugar": 65, "fiber": 0 },
+      "source": "official", "confidence": 85,
+      "sourceUrl": "https://www.chick-fil-a.com/menu/treats/vanilla-milkshake",
+      "note": "Mapped to Vanilla Milkshake, small (flavors range 540-660)"
+    }
+  ]
+}

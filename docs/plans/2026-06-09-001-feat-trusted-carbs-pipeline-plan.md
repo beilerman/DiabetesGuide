@@ -92,6 +92,12 @@ After Phases 2 + pilot 3: re-run the quality report, compare to targets, and pic
 3. **Lower the slice target** — keep the 3-destination slice but set the goal to the measured-supply ceiling (e.g., 40–50%), keeping the overall 2× target unchanged.
 4. **Stop and bank** — both targets unreachable with current supply: ship the gains, leave the prioritized queue in place, and revisit when a new supply line appears (e.g., user-submitted citations or a chain publishing data).
 
+> **CHECKPOINT OUTCOME (2026-06-09): Option 4 — Stop and bank, with a named next supply line.**
+> - Results: overall 14.6% → **17.5%** (+497 dosing-grade items); priority slice 7.6% → **10.0%**. Chains executed: Starbucks (327), EoS/Jamba/Blaze/CFA/small chains (105), Joffrey's composition-determined (72), Voodoo Doughnut (37).
+> - Pilot finding: item-level published-figure yield on the top-40 priority sample ≈ **0/40** (Disney publishes nothing; Universal publishes calories-only; one-off vendors publish nothing) — far below the ≥20% scale rule, so per-item Opus batches are stopped.
+> - The pilot's real discovery: supply exists at the **venue level** — official nutrition guides (e.g., the Universal-hosted Voodoo Doughnut PDF, the Earl of Sandwich PDF). **Next supply line: sweep Universal/CityWalk and Disney Springs vendors for hosted nutrition PDFs** and apply via the chains pattern.
+> - Honesty rule held throughout: Joffrey's flavored iced teas and milk-drink recipes left unmapped (unverifiable); internally-inconsistent PDF rows skipped.
+
 ## Technical Considerations
 
 - **No schema changes.** `source_detail` (migration 00003) carries citations; confidence stays the graduation mechanism.
