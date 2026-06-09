@@ -278,5 +278,40 @@
       "cholesterol": 20
     },
     "orphans": 105
+  },
+  {
+    "date": "2026-06-09",
+    "totalItems": 17306,
+    "qualityScore": 67,
+    "coverage": {
+      "description": 83.2,
+      "photo": 0.3,
+      "price": 68.4,
+      "nutritionRow": 99.4,
+      "caloriesPresent": 96.2,
+      "carbsPresent": 98,
+      "allEightFields": 78.8,
+      "allergens": 34.8
+    },
+    "carbTrust": {
+      "trustedCarbsPct": 42.5,
+      "untrustedCarbs": 9608,
+      "bySource": {
+        "crowdsourced": 10994,
+        "official": 1520,
+        "api_lookup": 4687
+      }
+    },
+    "nutritionFieldNullPct": {
+      "calories": 1.3,
+      "carbs": 1.4,
+      "fat": 1.3,
+      "protein": 1.4,
+      "sugar": 2.1,
+      "fiber": 2.3,
+      "sodium": 1.5,
+      "cholesterol": 20
+    },
+    "orphans": 105
   }
 ]
