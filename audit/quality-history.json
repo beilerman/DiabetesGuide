@@ -330,18 +330,18 @@
     },
     "carbTrust": {
       "trustDefinition": "confidence>=70 (v2)",
-      "trustedCarbsPct": 17.4,
+      "trustedCarbsPct": 17.5,
       "sourcedCarbsPct": 44.1,
-      "untrustedCarbs": 13962,
+      "untrustedCarbs": 13954,
       "bySource": {
-        "crowdsourced": 10702,
-        "official": 2022,
-        "api_lookup": 4477
+        "crowdsourced": 10667,
+        "official": 2059,
+        "api_lookup": 4475
       }
     },
     "prioritySlice": {
       "total": 8818,
-      "dosingGrade": 878,
+      "dosingGrade": 884,
       "pct": 10
     },
     "nutritionFieldNullPct": {
