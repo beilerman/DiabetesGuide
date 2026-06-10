@@ -1,0 +1,66 @@
+{
+  "date": "2026-06-10",
+  "method": "keyword",
+  "groundTruthSize": 1802,
+  "poolSize": 16969,
+  "overall": {
+    "n": 1802,
+    "estimated": 1640,
+    "coveragePct": 91,
+    "carbMAE": 9.2,
+    "carbMedianAE": 2,
+    "pctWithin5g": 58.6,
+    "pctWithin10g": 64.5,
+    "pctWithin20pct": 55.7,
+    "severeUndercountPct": 5,
+    "doseErrorUnitsAtICR10": 0.9
+  },
+  "byConfidenceBand": [
+    {
+      "band": "conf < 50 (deferred for review)",
+      "metrics": {
+        "n": 448,
+        "estimated": 448,
+        "coveragePct": 100,
+        "carbMAE": 12.2,
+        "carbMedianAE": 5,
+        "pctWithin5g": 56.9,
+        "pctWithin10g": 61.2,
+        "pctWithin20pct": 47.1,
+        "severeUndercountPct": 8.7,
+        "doseErrorUnitsAtICR10": 1.2
+      }
+    },
+    {
+      "band": "conf 50-64 (auto-approvable)",
+      "metrics": {
+        "n": 731,
+        "estimated": 731,
+        "coveragePct": 100,
+        "carbMAE": 7,
+        "carbMedianAE": 1,
+        "pctWithin5g": 65.9,
+        "pctWithin10g": 73.1,
+        "pctWithin20pct": 64.8,
+        "severeUndercountPct": 4.2,
+        "doseErrorUnitsAtICR10": 0.7
+      }
+    },
+    {
+      "band": "conf 65 (at cap)",
+      "metrics": {
+        "n": 461,
+        "estimated": 461,
+        "coveragePct": 100,
+        "carbMAE": 9.8,
+        "carbMedianAE": 6,
+        "pctWithin5g": 48.6,
+        "pctWithin10g": 54.2,
+        "pctWithin20pct": 49.5,
+        "severeUndercountPct": 2.6,
+        "doseErrorUnitsAtICR10": 1
+      }
+    }
+  ],
+  "note": "Leakage-controlled back-test: target item and identically-named siblings excluded from the matching pool. severeUndercountPct is the dosing-dangerous direction (published carbs exceed prediction by >=20g)."
+}

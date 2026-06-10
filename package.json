@@ -50,7 +50,8 @@
     "test:a11y": "playwright test e2e/accessibility.spec.ts",
     "ai:candidates": "tsx scripts/ai-nutrition-candidates.ts",
     "import:ai": "tsx scripts/import-ai-nutrition.ts",
-    "import:manual-nutrition": "tsx scripts/import-ai-nutrition.ts --file=data/manual-nutrition-estimates.json"
+    "import:manual-nutrition": "tsx scripts/import-ai-nutrition.ts --file=data/manual-nutrition-estimates.json",
+    "audit:calibrate": "tsx scripts/audit/calibrate.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",
