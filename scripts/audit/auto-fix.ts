@@ -1,14 +1,22 @@
 import type { AutoFix } from './types.js'
+import { THRESHOLDS } from './thresholds.js'
 
 export interface FixBatchEntry {
   id: string
-  updates: Record<string, number>
+  updates: Record<string, number | string>
   fixes: AutoFix[]
 }
 
 /**
  * Group fixes by nutritionDataId, merging their field->value updates
  * into a single object per record.
+ *
+ * Every fixed record is also DEMOTED: a row that needed correction has
+ * demonstrably unreliable source data, so its confidence_score is capped at
+ * AUTOFIX_DEMOTED_CONFIDENCE (never raised). This guarantees an auto-fixed
+ * record cannot remain dosing-grade (>=70) purely on the strength of a
+ * fabricated consistency repair. The original values are preserved as
+ * provenance in the fix reasons (written to autofix-results.json by callers).
  */
 export function buildFixBatch(fixes: AutoFix[]): FixBatchEntry[] {
   const map = new Map<string, FixBatchEntry>()
@@ -21,6 +29,13 @@ export function buildFixBatch(fixes: AutoFix[]): FixBatchEntry[] {
     }
     entry.updates[fix.field] = fix.after
     entry.fixes.push(fix)
+
+    // Demote, never raise: write the cap only when the current confidence is
+    // known to exceed it. A null confidence stays null (already untrusted).
+    const current = fix.currentConfidence
+    if (current != null && current > THRESHOLDS.AUTOFIX_DEMOTED_CONFIDENCE) {
+      entry.updates.confidence_score = THRESHOLDS.AUTOFIX_DEMOTED_CONFIDENCE
+    }
   }
 
   return Array.from(map.values())

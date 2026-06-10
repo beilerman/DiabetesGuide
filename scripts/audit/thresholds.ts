@@ -34,4 +34,13 @@ export const THRESHOLDS = {
   // Auto-fix
   FIBER_CARB_RATIO: 0.10,
   SODIUM_DIVISOR: 10,
+  // A record that needed an auto-fix has demonstrably unreliable data — its
+  // confidence is demoted to at most this value (never raised) so it cannot
+  // remain dosing-grade (>=70) on the strength of a fabricated correction.
+  AUTOFIX_DEMOTED_CONFIDENCE: 40,
+
+  // Estimation caps
+  // Keyword-copied estimates (Jaccard similarity to existing items) must never
+  // reach the dosing-grade bar (70) — text similarity is not carb evidence.
+  KEYWORD_CONFIDENCE_CAP: 65,
 } as const

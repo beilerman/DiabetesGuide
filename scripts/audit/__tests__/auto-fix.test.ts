@@ -49,4 +49,22 @@ describe('buildFixBatch', () => {
 
     expect(batch).toHaveLength(0)
   })
+
+  it('demotes confidence to 40 when the fixed record was above the cap', () => {
+    const batch = buildFixBatch([makeFix({ currentConfidence: 75 })])
+
+    expect(batch[0].updates.confidence_score).toBe(40)
+  })
+
+  it('leaves confidence untouched when already at or below the cap', () => {
+    const batch = buildFixBatch([makeFix({ currentConfidence: 30 })])
+
+    expect(batch[0].updates).not.toHaveProperty('confidence_score')
+  })
+
+  it('leaves an unknown (null) confidence untouched — demotion never raises', () => {
+    const batch = buildFixBatch([makeFix({ currentConfidence: null })])
+
+    expect(batch[0].updates).not.toHaveProperty('confidence_score')
+  })
 })
