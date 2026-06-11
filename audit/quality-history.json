@@ -414,9 +414,9 @@
     },
     "carbTrust": {
       "trustDefinition": "confidence>=70 (v2)",
-      "trustedCarbsPct": 17.5,
-      "sourcedCarbsPct": 44.1,
-      "untrustedCarbs": 13954,
+      "trustedCarbsPct": 17.9,
+      "sourcedCarbsPct": 44.4,
+      "untrustedCarbs": 13887,
       "bySource": {
         "crowdsourced": 10667,
         "official": 2059,

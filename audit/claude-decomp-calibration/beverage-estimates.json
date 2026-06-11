@@ -1,0 +1,3002 @@
+[
+  {
+    "id": "2a75c0cd-1f77-422c-9137-7b88d56b89c7",
+    "carbs": 170,
+    "calories": 1350,
+    "fat": 65,
+    "protein": 18,
+    "sugar": 145,
+    "fiber": 2,
+    "sodium": 550
+  },
+  {
+    "id": "34d72d56-d9b4-42c7-bb91-f0a6604dd00e",
+    "carbs": 165,
+    "calories": 1300,
+    "fat": 62,
+    "protein": 18,
+    "sugar": 140,
+    "fiber": 2,
+    "sodium": 540
+  },
+  {
+    "id": "536aa18f-c23f-448a-b96c-e8a72658d111",
+    "carbs": 175,
+    "calories": 1400,
+    "fat": 68,
+    "protein": 20,
+    "sugar": 130,
+    "fiber": 3,
+    "sodium": 700
+  },
+  {
+    "id": "67c2e607-f198-4a42-97a9-8aaf51b74c7c",
+    "carbs": 65,
+    "calories": 250,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 62,
+    "fiber": 0,
+    "sodium": 60
+  },
+  {
+    "id": "72e0d756-ea64-4585-bd4a-4539857332e2",
+    "carbs": 185,
+    "calories": 1500,
+    "fat": 72,
+    "protein": 22,
+    "sugar": 150,
+    "fiber": 3,
+    "sodium": 650
+  },
+  {
+    "id": "8c0e0fb9-aa0e-4187-b37e-80473bf4a752",
+    "carbs": 120,
+    "calories": 800,
+    "fat": 28,
+    "protein": 8,
+    "sugar": 95,
+    "fiber": 3,
+    "sodium": 350
+  },
+  {
+    "id": "8c0ecb9b-9bd0-433c-a619-aeed2bdaa7bf",
+    "carbs": 170,
+    "calories": 1400,
+    "fat": 70,
+    "protein": 20,
+    "sugar": 135,
+    "fiber": 3,
+    "sodium": 700
+  },
+  {
+    "id": "9d2c9f0b-6c25-4bbc-975b-2fcaaf6f3135",
+    "carbs": 180,
+    "calories": 1500,
+    "fat": 72,
+    "protein": 20,
+    "sugar": 145,
+    "fiber": 2,
+    "sodium": 700
+  },
+  {
+    "id": "a4695511-958a-4ab3-897e-da6d41b5ebee",
+    "carbs": 165,
+    "calories": 1350,
+    "fat": 65,
+    "protein": 18,
+    "sugar": 135,
+    "fiber": 2,
+    "sodium": 600
+  },
+  {
+    "id": "c77c5ade-98b9-44d8-9808-4da9229c7188",
+    "carbs": 140,
+    "calories": 1100,
+    "fat": 50,
+    "protein": 16,
+    "sugar": 110,
+    "fiber": 2,
+    "sodium": 480
+  },
+  {
+    "id": "e6fea7c2-7906-4ec6-bd14-0637a9fef7ee",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "f0f0bfa3-b6d1-4c44-adf8-5067b2af9934",
+    "carbs": 120,
+    "calories": 1100,
+    "fat": 60,
+    "protein": 18,
+    "sugar": 95,
+    "fiber": 4,
+    "sodium": 400
+  },
+  {
+    "id": "fc32b912-fd06-41f7-b147-e77d0fba3700",
+    "carbs": 170,
+    "calories": 1400,
+    "fat": 68,
+    "protein": 20,
+    "sugar": 135,
+    "fiber": 3,
+    "sodium": 650
+  },
+  {
+    "id": "c274d20f-dbf6-45a7-8306-73aa706a6917",
+    "carbs": 110,
+    "calories": 900,
+    "fat": 45,
+    "protein": 14,
+    "sugar": 90,
+    "fiber": 2,
+    "sodium": 300
+  },
+  {
+    "id": "d504d5d4-b413-4590-80d0-4ada7ef40209",
+    "carbs": 130,
+    "calories": 1000,
+    "fat": 45,
+    "protein": 16,
+    "sugar": 105,
+    "fiber": 3,
+    "sodium": 380
+  },
+  {
+    "id": "9234c7a6-a269-4999-8dd8-a14f10b6b492",
+    "carbs": 120,
+    "calories": 950,
+    "fat": 42,
+    "protein": 15,
+    "sugar": 95,
+    "fiber": 1,
+    "sodium": 420
+  },
+  {
+    "id": "42403526-6629-4bac-8ff7-af4661ea4813",
+    "carbs": 160,
+    "calories": 1300,
+    "fat": 62,
+    "protein": 17,
+    "sugar": 135,
+    "fiber": 2,
+    "sodium": 550
+  },
+  {
+    "id": "5ce8b624-b3ba-45b6-b599-086ccb353f02",
+    "carbs": 105,
+    "calories": 850,
+    "fat": 40,
+    "protein": 14,
+    "sugar": 90,
+    "fiber": 0,
+    "sodium": 320
+  },
+  {
+    "id": "83843cf2-0d5d-4055-9818-5128c211f775",
+    "carbs": 95,
+    "calories": 750,
+    "fat": 35,
+    "protein": 14,
+    "sugar": 80,
+    "fiber": 2,
+    "sodium": 280
+  },
+  {
+    "id": "06ebdd8d-fdea-42ec-ad46-bfb9c8bd6016",
+    "carbs": 90,
+    "calories": 600,
+    "fat": 22,
+    "protein": 5,
+    "sugar": 75,
+    "fiber": 2,
+    "sodium": 150
+  },
+  {
+    "id": "2ba4d544-ebfa-4425-84a5-c362b2a47a54",
+    "carbs": 140,
+    "calories": 1100,
+    "fat": 50,
+    "protein": 16,
+    "sugar": 110,
+    "fiber": 2,
+    "sodium": 420
+  },
+  {
+    "id": "90df5366-a6c7-49c5-943d-0f7fb4b0ad9a",
+    "carbs": 180,
+    "calories": 1300,
+    "fat": 55,
+    "protein": 16,
+    "sugar": 160,
+    "fiber": 1,
+    "sodium": 480
+  },
+  {
+    "id": "9294643f-bd93-4837-8d1c-60f487eb0daf",
+    "carbs": 115,
+    "calories": 900,
+    "fat": 42,
+    "protein": 13,
+    "sugar": 92,
+    "fiber": 1,
+    "sodium": 350
+  },
+  {
+    "id": "995bc3b3-7239-4c58-ae42-562d23cfe4a9",
+    "carbs": 170,
+    "calories": 1400,
+    "fat": 70,
+    "protein": 20,
+    "sugar": 135,
+    "fiber": 4,
+    "sodium": 700
+  },
+  {
+    "id": "9c5affe1-7662-4ec2-9faf-a6cd9ce92426",
+    "carbs": 110,
+    "calories": 450,
+    "fat": 1,
+    "protein": 3,
+    "sugar": 95,
+    "fiber": 4,
+    "sodium": 600
+  },
+  {
+    "id": "aa337392-63f9-47c4-a4ea-337f2c1633d8",
+    "carbs": 105,
+    "calories": 850,
+    "fat": 40,
+    "protein": 13,
+    "sugar": 88,
+    "fiber": 1,
+    "sodium": 300
+  },
+  {
+    "id": "50dca34c-abd5-4234-ba4d-c52a012f63db",
+    "carbs": 95,
+    "calories": 750,
+    "fat": 34,
+    "protein": 13,
+    "sugar": 82,
+    "fiber": 1,
+    "sodium": 270
+  },
+  {
+    "id": "88db8448-cd25-4a62-bd28-a6b529fb8eb0",
+    "carbs": 98,
+    "calories": 780,
+    "fat": 36,
+    "protein": 14,
+    "sugar": 84,
+    "fiber": 2,
+    "sodium": 300
+  },
+  {
+    "id": "b54ffed5-bc45-4f3f-a4a2-b57ca9aa1069",
+    "carbs": 95,
+    "calories": 950,
+    "fat": 45,
+    "protein": 13,
+    "sugar": 80,
+    "fiber": 1,
+    "sodium": 350
+  },
+  {
+    "id": "7b5512df-e8f4-45ac-8cb7-89591a2ac4c8",
+    "carbs": 100,
+    "calories": 820,
+    "fat": 40,
+    "protein": 14,
+    "sugar": 80,
+    "fiber": 2,
+    "sodium": 380
+  },
+  {
+    "id": "e99c0789-da71-4390-8900-77a571d2d1a6",
+    "carbs": 85,
+    "calories": 700,
+    "fat": 33,
+    "protein": 13,
+    "sugar": 75,
+    "fiber": 0,
+    "sodium": 260
+  },
+  {
+    "id": "1c09f166-ae53-4029-90da-d86375093812",
+    "carbs": 110,
+    "calories": 900,
+    "fat": 42,
+    "protein": 13,
+    "sugar": 95,
+    "fiber": 1,
+    "sodium": 330
+  },
+  {
+    "id": "06ac777f-1acf-40ac-a788-5bfdb1ea5d83",
+    "carbs": 100,
+    "calories": 950,
+    "fat": 50,
+    "protein": 20,
+    "sugar": 80,
+    "fiber": 2,
+    "sodium": 400
+  },
+  {
+    "id": "2f1b287f-9b54-4064-adcd-1db9f7e12daa",
+    "carbs": 50,
+    "calories": 350,
+    "fat": 13,
+    "protein": 6,
+    "sugar": 44,
+    "fiber": 1,
+    "sodium": 90
+  },
+  {
+    "id": "3b2763f3-fbda-4e7b-a795-28065ca8c3bc",
+    "carbs": 88,
+    "calories": 700,
+    "fat": 32,
+    "protein": 13,
+    "sugar": 76,
+    "fiber": 1,
+    "sodium": 260
+  },
+  {
+    "id": "712bb9f6-6155-400b-a0e8-9f65b4f73b19",
+    "carbs": 90,
+    "calories": 550,
+    "fat": 18,
+    "protein": 5,
+    "sugar": 75,
+    "fiber": 2,
+    "sodium": 180
+  },
+  {
+    "id": "79e1a4ba-c5ed-46f4-a918-9b79338e7473",
+    "carbs": 40,
+    "calories": 180,
+    "fat": 1,
+    "protein": 2,
+    "sugar": 36,
+    "fiber": 0,
+    "sodium": 50
+  },
+  {
+    "id": "8b0b14f1-9839-4d66-95b0-7d8e91133929",
+    "carbs": 160,
+    "calories": 1200,
+    "fat": 50,
+    "protein": 14,
+    "sugar": 125,
+    "fiber": 5,
+    "sodium": 550
+  },
+  {
+    "id": "e2a8e99a-650c-4457-bed8-d7627af956ff",
+    "carbs": 75,
+    "calories": 450,
+    "fat": 12,
+    "protein": 5,
+    "sugar": 68,
+    "fiber": 0,
+    "sodium": 150
+  },
+  {
+    "id": "21940ffc-2975-4696-9c49-e9f65ce10e34",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "24126a02-edff-4bb0-93ce-7b8b8fd0d496",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "4621a481-8774-439f-aa3d-3bb6d206d32a",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "48eacefb-4e4a-4c81-b2c9-383e49fc3f9a",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "4c67971d-60e2-42f2-9d9e-06839f8be06f",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "505df01e-e553-46a9-9d44-bba8808fc69b",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "8789cbc6-8793-4d73-90f5-4ee5dbe3dd60",
+    "carbs": 90,
+    "calories": 800,
+    "fat": 40,
+    "protein": 14,
+    "sugar": 75,
+    "fiber": 1,
+    "sodium": 280
+  },
+  {
+    "id": "8d381ed9-e1d2-412a-9b81-157dbd9ed260",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "b46e9717-d611-4064-926a-739d01245332",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "b8f5152e-5ef4-4888-9fad-08d898dda14e",
+    "carbs": 55,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "c1725343-f57e-4ec9-9d48-bdacf0468fb4",
+    "carbs": 100,
+    "calories": 850,
+    "fat": 42,
+    "protein": 15,
+    "sugar": 82,
+    "fiber": 2,
+    "sodium": 400
+  },
+  {
+    "id": "ea810a94-a318-4ef1-a6d6-88de5a5866e8",
+    "carbs": 39,
+    "calories": 140,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 39,
+    "fiber": 0,
+    "sodium": 30
+  },
+  {
+    "id": "052fb22a-8843-4663-9ac8-9a9f25d03a68",
+    "carbs": 160,
+    "calories": 1500,
+    "fat": 80,
+    "protein": 20,
+    "sugar": 120,
+    "fiber": 6,
+    "sodium": 700
+  },
+  {
+    "id": "2f18bc3e-9064-41ad-b91f-efc5a5d151dc",
+    "carbs": 55,
+    "calories": 220,
+    "fat": 0,
+    "protein": 1,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 30
+  },
+  {
+    "id": "57188568-bab1-4517-b8d4-1f12fa7a9062",
+    "carbs": 75,
+    "calories": 460,
+    "fat": 8,
+    "protein": 16,
+    "sugar": 25,
+    "fiber": 5,
+    "sodium": 600
+  },
+  {
+    "id": "5c35d13a-d187-4382-b556-3c5468aa1bae",
+    "carbs": 85,
+    "calories": 700,
+    "fat": 32,
+    "protein": 14,
+    "sugar": 70,
+    "fiber": 1,
+    "sodium": 300
+  },
+  {
+    "id": "69d0214c-ccc8-4a04-9276-311514bc489a",
+    "carbs": 105,
+    "calories": 850,
+    "fat": 38,
+    "protein": 15,
+    "sugar": 85,
+    "fiber": 3,
+    "sodium": 400
+  },
+  {
+    "id": "7c883ec4-7fef-4b44-abc4-a2eddc3c4121",
+    "carbs": 170,
+    "calories": 1400,
+    "fat": 70,
+    "protein": 18,
+    "sugar": 130,
+    "fiber": 2,
+    "sodium": 800
+  },
+  {
+    "id": "b4d3e4b9-25d6-4e00-8301-e0614512e62f",
+    "carbs": 75,
+    "calories": 450,
+    "fat": 12,
+    "protein": 5,
+    "sugar": 65,
+    "fiber": 0,
+    "sodium": 150
+  },
+  {
+    "id": "be1ea987-e50e-4d14-8a9f-fe6f78030e64",
+    "carbs": 45,
+    "calories": 220,
+    "fat": 3,
+    "protein": 2,
+    "sugar": 35,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "cb0cc26b-dade-4fc0-a6b6-a945561b0af2",
+    "carbs": 40,
+    "calories": 150,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 38,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "d14b9b08-0bac-40ff-9223-ee476beb49fb",
+    "carbs": 58,
+    "calories": 420,
+    "fat": 16,
+    "protein": 10,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 200
+  },
+  {
+    "id": "edde812d-841c-43a7-9595-8dea1c2c2379",
+    "carbs": 72,
+    "calories": 480,
+    "fat": 18,
+    "protein": 9,
+    "sugar": 35,
+    "fiber": 2,
+    "sodium": 350
+  },
+  {
+    "id": "62bdaecf-6318-4382-b079-4eb8a077f840",
+    "carbs": 46,
+    "calories": 180,
+    "fat": 0,
+    "protein": 1,
+    "sugar": 42,
+    "fiber": 1,
+    "sodium": 20
+  },
+  {
+    "id": "afebb88a-b6c7-434a-b411-ccb524308fb9",
+    "carbs": 23,
+    "calories": 90,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 20,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "d150c446-1245-4f5b-b927-80f0ed27b4bd",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 1,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "0f529a89-fc9e-4015-b8ec-7efcbb04fba4",
+    "carbs": 80,
+    "calories": 650,
+    "fat": 30,
+    "protein": 13,
+    "sugar": 65,
+    "fiber": 1,
+    "sodium": 280
+  },
+  {
+    "id": "13ef5b18-5338-44d5-a725-c391684accbd",
+    "carbs": 32,
+    "calories": 200,
+    "fat": 7,
+    "protein": 2,
+    "sugar": 28,
+    "fiber": 0,
+    "sodium": 50
+  },
+  {
+    "id": "1ea0e4b2-9b9a-4b9f-b386-f40cad460575",
+    "carbs": 21,
+    "calories": 120,
+    "fat": 3,
+    "protein": 2,
+    "sugar": 18,
+    "fiber": 0,
+    "sodium": 105
+  },
+  {
+    "id": "24729fc0-daa1-4901-97b8-1adc78b7a669",
+    "carbs": 19,
+    "calories": 110,
+    "fat": 3,
+    "protein": 2,
+    "sugar": 15,
+    "fiber": 1,
+    "sodium": 105
+  },
+  {
+    "id": "8413ab19-f25b-4681-8faf-3f338ffb6358",
+    "carbs": 80,
+    "calories": 650,
+    "fat": 30,
+    "protein": 13,
+    "sugar": 65,
+    "fiber": 1,
+    "sodium": 280
+  },
+  {
+    "id": "8dedf3f2-1cf0-4193-9771-84c269db9da9",
+    "carbs": 75,
+    "calories": 620,
+    "fat": 28,
+    "protein": 13,
+    "sugar": 64,
+    "fiber": 0,
+    "sodium": 250
+  },
+  {
+    "id": "b3a2b5bd-bcc8-4a4f-bd21-73623d880718",
+    "carbs": 58,
+    "calories": 420,
+    "fat": 16,
+    "protein": 10,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 200
+  },
+  {
+    "id": "ecc9c403-cd95-418b-926a-6d2301dd46bc",
+    "carbs": 48,
+    "calories": 280,
+    "fat": 8,
+    "protein": 4,
+    "sugar": 32,
+    "fiber": 5,
+    "sodium": 90
+  },
+  {
+    "id": "f3099999-f8b2-4f43-bf2b-488f33481342",
+    "carbs": 72,
+    "calories": 620,
+    "fat": 28,
+    "protein": 13,
+    "sugar": 60,
+    "fiber": 0,
+    "sodium": 250
+  },
+  {
+    "id": "199b7d40-8abb-4ba5-849a-d480e99cfe81",
+    "carbs": 70,
+    "calories": 350,
+    "fat": 5,
+    "protein": 3,
+    "sugar": 50,
+    "fiber": 0,
+    "sodium": 80
+  },
+  {
+    "id": "2e0acb9d-5a65-44b7-9b6e-8eb9cd5b46b3",
+    "carbs": 56,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 54,
+    "fiber": 0,
+    "sodium": 20
+  },
+  {
+    "id": "535d9157-8cc3-4b25-9092-6b869f009afb",
+    "carbs": 95,
+    "calories": 750,
+    "fat": 34,
+    "protein": 14,
+    "sugar": 80,
+    "fiber": 2,
+    "sodium": 320
+  },
+  {
+    "id": "c6aefebd-c7ed-488e-99ef-ad025e2b0953",
+    "carbs": 110,
+    "calories": 900,
+    "fat": 44,
+    "protein": 15,
+    "sugar": 95,
+    "fiber": 1,
+    "sodium": 400
+  },
+  {
+    "id": "dd1c3da0-e7f9-4121-bd3f-e24dffc1de0b",
+    "carbs": 90,
+    "calories": 700,
+    "fat": 30,
+    "protein": 12,
+    "sugar": 75,
+    "fiber": 2,
+    "sodium": 250
+  },
+  {
+    "id": "a3aa17b1-2ae1-47b9-85cd-24e5c8093cf0",
+    "carbs": 58,
+    "calories": 220,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 56,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "0566afa5-63ba-4f64-beff-56bc1e3af6ee",
+    "carbs": 85,
+    "calories": 600,
+    "fat": 24,
+    "protein": 11,
+    "sugar": 72,
+    "fiber": 1,
+    "sodium": 220
+  },
+  {
+    "id": "1a69abca-d257-457e-8430-b0833f72a1ef",
+    "carbs": 170,
+    "calories": 1300,
+    "fat": 60,
+    "protein": 16,
+    "sugar": 150,
+    "fiber": 1,
+    "sodium": 500
+  },
+  {
+    "id": "30c1636c-25d6-4011-96e9-3018f460be9d",
+    "carbs": 95,
+    "calories": 700,
+    "fat": 30,
+    "protein": 12,
+    "sugar": 85,
+    "fiber": 3,
+    "sodium": 280
+  },
+  {
+    "id": "47cdbd11-19da-4f59-a58c-ba1cad505610",
+    "carbs": 55,
+    "calories": 380,
+    "fat": 13,
+    "protein": 10,
+    "sugar": 46,
+    "fiber": 1,
+    "sodium": 180
+  },
+  {
+    "id": "502b1707-7cc4-4b18-83c4-56433a37d6c3",
+    "carbs": 60,
+    "calories": 250,
+    "fat": 1,
+    "protein": 2,
+    "sugar": 52,
+    "fiber": 3,
+    "sodium": 30
+  },
+  {
+    "id": "69e506c4-b673-4881-b7d3-22bf2d580ec9",
+    "carbs": 80,
+    "calories": 330,
+    "fat": 2,
+    "protein": 1,
+    "sugar": 68,
+    "fiber": 1,
+    "sodium": 50
+  },
+  {
+    "id": "ad967428-7847-4aed-8916-95688bdb55e4",
+    "carbs": 75,
+    "calories": 550,
+    "fat": 24,
+    "protein": 5,
+    "sugar": 60,
+    "fiber": 3,
+    "sodium": 150
+  },
+  {
+    "id": "c440ff85-db30-4d2c-a38f-a3031cb4027f",
+    "carbs": 150,
+    "calories": 1500,
+    "fat": 85,
+    "protein": 28,
+    "sugar": 110,
+    "fiber": 4,
+    "sodium": 900
+  },
+  {
+    "id": "c7e078e3-1c82-4740-870d-49b960bab64a",
+    "carbs": 125,
+    "calories": 1000,
+    "fat": 45,
+    "protein": 16,
+    "sugar": 95,
+    "fiber": 2,
+    "sodium": 450
+  },
+  {
+    "id": "dc846cbf-23a4-492d-8dda-fa7c71fb1380",
+    "carbs": 58,
+    "calories": 220,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 56,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "f8b73422-28f7-41da-b0f4-1bf22373ca2a",
+    "carbs": 70,
+    "calories": 550,
+    "fat": 26,
+    "protein": 8,
+    "sugar": 60,
+    "fiber": 2,
+    "sodium": 200
+  },
+  {
+    "id": "a47ba0d1-fbd2-47ac-9cdb-5692d599d30e",
+    "carbs": 18,
+    "calories": 140,
+    "fat": 4,
+    "protein": 8,
+    "sugar": 17,
+    "fiber": 0,
+    "sodium": 130
+  },
+  {
+    "id": "b6494937-57fa-4084-bb34-313cbc8bae3c",
+    "carbs": 65,
+    "calories": 340,
+    "fat": 6,
+    "protein": 4,
+    "sugar": 45,
+    "fiber": 1,
+    "sodium": 90
+  },
+  {
+    "id": "ccc4174d-c1a8-486b-9eea-be1030f40c02",
+    "carbs": 38,
+    "calories": 200,
+    "fat": 3,
+    "protein": 7,
+    "sugar": 18,
+    "fiber": 1,
+    "sodium": 220
+  },
+  {
+    "id": "f76399ed-6b36-432c-bd57-0e002445a050",
+    "carbs": 27,
+    "calories": 110,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 24,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "9c2e11b6-9a7d-4b64-8182-b6785f4e64d1",
+    "carbs": 58,
+    "calories": 220,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 56,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "d672cb12-3e6b-4746-9351-b1b5cbdd9137",
+    "carbs": 85,
+    "calories": 600,
+    "fat": 24,
+    "protein": 10,
+    "sugar": 75,
+    "fiber": 2,
+    "sodium": 250
+  },
+  {
+    "id": "3d396a52-059d-4c4d-bc98-9446cece47a5",
+    "carbs": 68,
+    "calories": 330,
+    "fat": 3,
+    "protein": 2,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 60
+  },
+  {
+    "id": "3dd81a63-5355-4a85-9f05-0dabc6d14c8e",
+    "carbs": 39,
+    "calories": 140,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 38,
+    "fiber": 0,
+    "sodium": 30
+  },
+  {
+    "id": "3ee26ee1-79a7-4fa5-9e41-a52aa00fae4e",
+    "carbs": 180,
+    "calories": 1400,
+    "fat": 62,
+    "protein": 17,
+    "sugar": 145,
+    "fiber": 1,
+    "sodium": 600
+  },
+  {
+    "id": "57fd46b3-4526-40c1-b37a-cc8d402372ef",
+    "carbs": 55,
+    "calories": 220,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 50,
+    "fiber": 0,
+    "sodium": 30
+  },
+  {
+    "id": "cfc3612f-c53b-4d23-9c43-0ff4b7839e97",
+    "carbs": 58,
+    "calories": 235,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 54,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "f63f4997-2356-48f2-ac97-ba490e44e2fd",
+    "carbs": 62,
+    "calories": 250,
+    "fat": 0,
+    "protein": 1,
+    "sugar": 56,
+    "fiber": 0,
+    "sodium": 30
+  },
+  {
+    "id": "4f33853d-c59e-4af9-8478-2fa4ed6a458c",
+    "carbs": 65,
+    "calories": 290,
+    "fat": 3,
+    "protein": 0,
+    "sugar": 57,
+    "fiber": 0,
+    "sodium": 110
+  },
+  {
+    "id": "57685085-ad8e-429e-951a-1f1951d3b475",
+    "carbs": 65,
+    "calories": 290,
+    "fat": 3,
+    "protein": 0,
+    "sugar": 57,
+    "fiber": 0,
+    "sodium": 110
+  },
+  {
+    "id": "8915db34-4cac-4901-a222-78dfcbd706bb",
+    "carbs": 65,
+    "calories": 290,
+    "fat": 3,
+    "protein": 0,
+    "sugar": 57,
+    "fiber": 0,
+    "sodium": 110
+  },
+  {
+    "id": "c5fc1859-ed9c-42df-9a41-8b7ee6a377e2",
+    "carbs": 65,
+    "calories": 290,
+    "fat": 3,
+    "protein": 0,
+    "sugar": 57,
+    "fiber": 0,
+    "sodium": 110
+  },
+  {
+    "id": "e887cd17-02a9-4d3e-9e89-509a8535aa14",
+    "carbs": 65,
+    "calories": 290,
+    "fat": 3,
+    "protein": 0,
+    "sugar": 57,
+    "fiber": 0,
+    "sodium": 110
+  },
+  {
+    "id": "33feb18b-2b3d-4e5c-a413-09bf1abcd4d3",
+    "carbs": 42,
+    "calories": 250,
+    "fat": 5,
+    "protein": 10,
+    "sugar": 18,
+    "fiber": 3,
+    "sodium": 320
+  },
+  {
+    "id": "496af181-1db2-4c26-ac66-60a1504e84e4",
+    "carbs": 52,
+    "calories": 280,
+    "fat": 4,
+    "protein": 7,
+    "sugar": 48,
+    "fiber": 1,
+    "sodium": 85
+  },
+  {
+    "id": "83da0c5e-1dca-42ab-ade0-4f2abfae4bd6",
+    "carbs": 22,
+    "calories": 125,
+    "fat": 3,
+    "protein": 3,
+    "sugar": 19,
+    "fiber": 1,
+    "sodium": 130
+  },
+  {
+    "id": "a6e665dc-033c-47bf-8702-aad2d779b767",
+    "carbs": 22,
+    "calories": 125,
+    "fat": 3,
+    "protein": 3,
+    "sugar": 19,
+    "fiber": 1,
+    "sodium": 130
+  },
+  {
+    "id": "ae5aa324-0e26-47b0-aebd-bbf537ba32e4",
+    "carbs": 25,
+    "calories": 130,
+    "fat": 3,
+    "protein": 3,
+    "sugar": 21,
+    "fiber": 1,
+    "sodium": 120
+  },
+  {
+    "id": "dcb19d0a-b988-4a4e-aecc-5b3bb7078382",
+    "carbs": 30,
+    "calories": 135,
+    "fat": 2,
+    "protein": 2,
+    "sugar": 27,
+    "fiber": 0,
+    "sodium": 100
+  },
+  {
+    "id": "437db019-d59d-4888-9232-5fc8fed19233",
+    "carbs": 42,
+    "calories": 320,
+    "fat": 12,
+    "protein": 8,
+    "sugar": 38,
+    "fiber": 2,
+    "sodium": 170
+  },
+  {
+    "id": "671c7848-c9f6-4247-92f1-9c4085c134ed",
+    "carbs": 48,
+    "calories": 390,
+    "fat": 17,
+    "protein": 9,
+    "sugar": 42,
+    "fiber": 3,
+    "sodium": 160
+  },
+  {
+    "id": "101864c4-acfa-4669-8887-8f756243a2dc",
+    "carbs": 62,
+    "calories": 400,
+    "fat": 15,
+    "protein": 6,
+    "sugar": 60,
+    "fiber": 1,
+    "sodium": 250
+  },
+  {
+    "id": "1696bd03-0e9b-4ca6-801a-bdf95aa03215",
+    "carbs": 44,
+    "calories": 420,
+    "fat": 12,
+    "protein": 8,
+    "sugar": 40,
+    "fiber": 2,
+    "sodium": 160
+  },
+  {
+    "id": "20d65c47-2608-4e32-96f1-566b517c8050",
+    "carbs": 70,
+    "calories": 400,
+    "fat": 9,
+    "protein": 5,
+    "sugar": 62,
+    "fiber": 0,
+    "sodium": 120
+  },
+  {
+    "id": "2db6e535-3172-4724-acc2-24f364f55a0b",
+    "carbs": 30,
+    "calories": 150,
+    "fat": 2,
+    "protein": 2,
+    "sugar": 28,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "4244290a-000d-4b8e-9035-239a24b5f9ea",
+    "carbs": 52,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "4b904933-ed9d-4727-a321-266d100718a5",
+    "carbs": 66,
+    "calories": 265,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 58,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "4f6dd94e-747b-49a2-bf7f-4f18325075c3",
+    "carbs": 110,
+    "calories": 900,
+    "fat": 42,
+    "protein": 14,
+    "sugar": 90,
+    "fiber": 2,
+    "sodium": 450
+  },
+  {
+    "id": "53ea8cfb-1598-4fcf-b867-25fe2b9b0032",
+    "carbs": 55,
+    "calories": 350,
+    "fat": 13,
+    "protein": 3,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 95
+  },
+  {
+    "id": "68877fd6-ac18-45e7-b6e0-27d32af2ca9c",
+    "carbs": 58,
+    "calories": 235,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 54,
+    "fiber": 0,
+    "sodium": 30
+  },
+  {
+    "id": "71fdd71e-9a0b-4f1a-9fe4-e1019a09460e",
+    "carbs": 55,
+    "calories": 420,
+    "fat": 16,
+    "protein": 11,
+    "sugar": 30,
+    "fiber": 5,
+    "sodium": 160
+  },
+  {
+    "id": "7782f907-dbb7-407b-8b95-3b0ddfdc82d6",
+    "carbs": 8,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 6,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "92d66731-390c-4f7b-aae8-4865d4b26d8a",
+    "carbs": 66,
+    "calories": 265,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 58,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "95fd150e-6841-4a14-913a-c42070da0b12",
+    "carbs": 45,
+    "calories": 300,
+    "fat": 12,
+    "protein": 2,
+    "sugar": 40,
+    "fiber": 2,
+    "sodium": 45
+  },
+  {
+    "id": "9b5d687b-a06d-4e9c-ba59-dfb9fc0503fe",
+    "carbs": 48,
+    "calories": 180,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "a29ed187-17ae-4f0b-b07e-a5c0e4c47ef0",
+    "carbs": 60,
+    "calories": 500,
+    "fat": 18,
+    "protein": 20,
+    "sugar": 15,
+    "fiber": 3,
+    "sodium": 900
+  },
+  {
+    "id": "a4fa468a-b272-4c38-9460-7cfe46235bef",
+    "carbs": 68,
+    "calories": 480,
+    "fat": 20,
+    "protein": 6,
+    "sugar": 40,
+    "fiber": 1,
+    "sodium": 320
+  },
+  {
+    "id": "a5816fd5-8878-4628-8cc6-adc3001908cb",
+    "carbs": 48,
+    "calories": 320,
+    "fat": 9,
+    "protein": 9,
+    "sugar": 44,
+    "fiber": 0,
+    "sodium": 180
+  },
+  {
+    "id": "bc8c93f9-db5e-412a-9f86-4fd665ad0c13",
+    "carbs": 55,
+    "calories": 220,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 50,
+    "fiber": 1,
+    "sodium": 20
+  },
+  {
+    "id": "c1c39d00-20a7-49df-b729-b9371a71677b",
+    "carbs": 60,
+    "calories": 250,
+    "fat": 1,
+    "protein": 2,
+    "sugar": 52,
+    "fiber": 2,
+    "sodium": 20
+  },
+  {
+    "id": "c6846642-a9c6-4f65-8996-8db7e10767eb",
+    "carbs": 80,
+    "calories": 320,
+    "fat": 1,
+    "protein": 0,
+    "sugar": 72,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "cf1e7e4c-3d64-44eb-a97c-7ffeda88e56e",
+    "carbs": 64,
+    "calories": 280,
+    "fat": 2,
+    "protein": 4,
+    "sugar": 50,
+    "fiber": 4,
+    "sodium": 35
+  },
+  {
+    "id": "dd0cc8b6-6ce0-41ce-a4f9-f7adc2447799",
+    "carbs": 52,
+    "calories": 190,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "f09c8d3c-6470-4a54-8c00-5d45cea462f5",
+    "carbs": 75,
+    "calories": 300,
+    "fat": 0,
+    "protein": 1,
+    "sugar": 68,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "fb00b215-aa5c-44fb-88db-0672bf9756f7",
+    "carbs": 58,
+    "calories": 235,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 54,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "8f31b201-3423-411c-891e-1ec1181f81b6",
+    "carbs": 58,
+    "calories": 280,
+    "fat": 3,
+    "protein": 6,
+    "sugar": 50,
+    "fiber": 2,
+    "sodium": 60
+  },
+  {
+    "id": "2088712e-1c91-4db3-aeff-0c046a7472ed",
+    "carbs": 15,
+    "calories": 60,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 14,
+    "fiber": 0,
+    "sodium": 10
+  },
+  {
+    "id": "77d2406e-2eeb-4b91-ab87-41d7ac01c909",
+    "carbs": 40,
+    "calories": 350,
+    "fat": 18,
+    "protein": 6,
+    "sugar": 35,
+    "fiber": 1,
+    "sodium": 140
+  },
+  {
+    "id": "99d23e61-d046-47bc-ac7a-dd2732fbbda0",
+    "carbs": 62,
+    "calories": 240,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 56,
+    "fiber": 0,
+    "sodium": 20
+  },
+  {
+    "id": "d4c87de4-6f9b-4f7c-87a7-ecc6e614d749",
+    "carbs": 52,
+    "calories": 190,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "a08e02a8-7eac-48f2-8aed-15ff8927ca4e",
+    "carbs": 48,
+    "calories": 320,
+    "fat": 9,
+    "protein": 9,
+    "sugar": 44,
+    "fiber": 0,
+    "sodium": 180
+  },
+  {
+    "id": "ab343e89-b258-4f24-b2e3-f938bc2a24c2",
+    "carbs": 105,
+    "calories": 750,
+    "fat": 30,
+    "protein": 12,
+    "sugar": 50,
+    "fiber": 5,
+    "sodium": 550
+  },
+  {
+    "id": "b140992f-595e-455f-b81e-23f33d478ad1",
+    "carbs": 105,
+    "calories": 750,
+    "fat": 30,
+    "protein": 12,
+    "sugar": 50,
+    "fiber": 5,
+    "sodium": 550
+  },
+  {
+    "id": "f53fb7de-d049-4d52-8d7d-ee777991127f",
+    "carbs": 105,
+    "calories": 750,
+    "fat": 30,
+    "protein": 12,
+    "sugar": 50,
+    "fiber": 5,
+    "sodium": 550
+  },
+  {
+    "id": "a8469754-4a95-4694-b6e5-8ebcb9cc50c3",
+    "carbs": 55,
+    "calories": 400,
+    "fat": 13,
+    "protein": 14,
+    "sugar": 50,
+    "fiber": 0,
+    "sodium": 320
+  },
+  {
+    "id": "dc706e85-968d-4ce9-bf14-61e6404f5c45",
+    "carbs": 55,
+    "calories": 380,
+    "fat": 14,
+    "protein": 6,
+    "sugar": 42,
+    "fiber": 0,
+    "sodium": 180
+  },
+  {
+    "id": "fc939ad4-4898-4a6b-a14d-e06e545af43f",
+    "carbs": 60,
+    "calories": 230,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 58,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "b8118c94-96f0-4412-856f-6fd0edf83a86",
+    "carbs": 40,
+    "calories": 260,
+    "fat": 6,
+    "protein": 6,
+    "sugar": 38,
+    "fiber": 0,
+    "sodium": 110
+  },
+  {
+    "id": "843c832e-5921-4070-b3b5-8cfc7da53e56",
+    "carbs": 66,
+    "calories": 420,
+    "fat": 16,
+    "protein": 5,
+    "sugar": 62,
+    "fiber": 0,
+    "sodium": 230
+  },
+  {
+    "id": "1fdf24fc-597c-4553-84ca-5e33a43153fe",
+    "carbs": 85,
+    "calories": 620,
+    "fat": 25,
+    "protein": 9,
+    "sugar": 74,
+    "fiber": 1,
+    "sodium": 220
+  },
+  {
+    "id": "3274d85d-7fe9-45f8-9981-71753d62fb30",
+    "carbs": 48,
+    "calories": 350,
+    "fat": 16,
+    "protein": 4,
+    "sugar": 30,
+    "fiber": 2,
+    "sodium": 200
+  },
+  {
+    "id": "55dbe1e4-c0a1-4984-884a-000e5101e35e",
+    "carbs": 95,
+    "calories": 700,
+    "fat": 28,
+    "protein": 10,
+    "sugar": 80,
+    "fiber": 2,
+    "sodium": 280
+  },
+  {
+    "id": "59cf532d-9d7b-4d42-bd34-7d6b4bea4e54",
+    "carbs": 45,
+    "calories": 250,
+    "fat": 5,
+    "protein": 7,
+    "sugar": 40,
+    "fiber": 1,
+    "sodium": 95
+  },
+  {
+    "id": "7521b4aa-08c8-40c2-9cd4-473f70113dc4",
+    "carbs": 130,
+    "calories": 750,
+    "fat": 12,
+    "protein": 25,
+    "sugar": 70,
+    "fiber": 12,
+    "sodium": 600
+  },
+  {
+    "id": "96e17928-d74b-45fb-864c-82a36fb0a163",
+    "carbs": 70,
+    "calories": 330,
+    "fat": 3,
+    "protein": 6,
+    "sugar": 55,
+    "fiber": 4,
+    "sodium": 60
+  },
+  {
+    "id": "c1c9f4d7-5fdd-4a67-b325-0f57dc2a5f34",
+    "carbs": 130,
+    "calories": 760,
+    "fat": 13,
+    "protein": 25,
+    "sugar": 70,
+    "fiber": 12,
+    "sodium": 600
+  },
+  {
+    "id": "c9996657-6805-40f4-a0cb-fe4f1e8daaea",
+    "carbs": 130,
+    "calories": 750,
+    "fat": 12,
+    "protein": 25,
+    "sugar": 70,
+    "fiber": 12,
+    "sodium": 600
+  },
+  {
+    "id": "cb567045-382b-4126-ad13-8c412417c4af",
+    "carbs": 46,
+    "calories": 185,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 43,
+    "fiber": 0,
+    "sodium": 20
+  },
+  {
+    "id": "cdd30e5f-8cc4-4bc2-a965-53084d8af74d",
+    "carbs": 58,
+    "calories": 390,
+    "fat": 14,
+    "protein": 4,
+    "sugar": 44,
+    "fiber": 0,
+    "sodium": 150
+  },
+  {
+    "id": "dbb5bf95-fc3b-4095-af30-9393cf5c3793",
+    "carbs": 65,
+    "calories": 420,
+    "fat": 12,
+    "protein": 5,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 120
+  },
+  {
+    "id": "f89a8159-7426-455f-af54-d97d50c7eaee",
+    "carbs": 62,
+    "calories": 250,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 30
+  },
+  {
+    "id": "d5e6ed39-8edb-419f-a31a-18e0df9a6b96",
+    "carbs": 70,
+    "calories": 500,
+    "fat": 16,
+    "protein": 18,
+    "sugar": 20,
+    "fiber": 3,
+    "sodium": 800
+  },
+  {
+    "id": "024312bd-a22c-4417-8d96-f57519285c31",
+    "carbs": 70,
+    "calories": 400,
+    "fat": 8,
+    "protein": 10,
+    "sugar": 35,
+    "fiber": 5,
+    "sodium": 350
+  },
+  {
+    "id": "1186fc29-9e40-4316-ad55-80ea2e4f613f",
+    "carbs": 60,
+    "calories": 340,
+    "fat": 6,
+    "protein": 8,
+    "sugar": 30,
+    "fiber": 5,
+    "sodium": 300
+  },
+  {
+    "id": "17e7b6a9-6da8-4555-8437-7cbd470418f4",
+    "carbs": 90,
+    "calories": 700,
+    "fat": 30,
+    "protein": 12,
+    "sugar": 70,
+    "fiber": 1,
+    "sodium": 350
+  },
+  {
+    "id": "23bf472d-b3c0-425e-a5da-7484ceded33d",
+    "carbs": 48,
+    "calories": 380,
+    "fat": 16,
+    "protein": 8,
+    "sugar": 42,
+    "fiber": 1,
+    "sodium": 150
+  },
+  {
+    "id": "252eac9c-0a5b-49db-9725-16b0291fad9e",
+    "carbs": 50,
+    "calories": 350,
+    "fat": 14,
+    "protein": 4,
+    "sugar": 42,
+    "fiber": 1,
+    "sodium": 180
+  },
+  {
+    "id": "269dedd0-4265-4d90-91de-2efb892091d5",
+    "carbs": 60,
+    "calories": 225,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 58,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "372431ee-bd94-405d-a45a-38d03d998d9d",
+    "carbs": 70,
+    "calories": 380,
+    "fat": 5,
+    "protein": 8,
+    "sugar": 40,
+    "fiber": 5,
+    "sodium": 300
+  },
+  {
+    "id": "444a263d-2b9e-4be9-84ff-7a22e08565bf",
+    "carbs": 62,
+    "calories": 260,
+    "fat": 1,
+    "protein": 3,
+    "sugar": 48,
+    "fiber": 4,
+    "sodium": 25
+  },
+  {
+    "id": "4d012611-2323-41db-bf87-6c11e443360c",
+    "carbs": 50,
+    "calories": 300,
+    "fat": 5,
+    "protein": 10,
+    "sugar": 32,
+    "fiber": 3,
+    "sodium": 250
+  },
+  {
+    "id": "573ed18d-28b1-49dc-ba34-58f755c6250b",
+    "carbs": 75,
+    "calories": 650,
+    "fat": 32,
+    "protein": 12,
+    "sugar": 65,
+    "fiber": 0,
+    "sodium": 280
+  },
+  {
+    "id": "63d1bb8f-3098-4717-ac96-61a6e3af7d44",
+    "carbs": 85,
+    "calories": 700,
+    "fat": 32,
+    "protein": 12,
+    "sugar": 72,
+    "fiber": 2,
+    "sodium": 320
+  },
+  {
+    "id": "6ccbdf24-7bc5-4d09-a6fb-4e195dd406fe",
+    "carbs": 45,
+    "calories": 320,
+    "fat": 13,
+    "protein": 3,
+    "sugar": 38,
+    "fiber": 1,
+    "sodium": 160
+  },
+  {
+    "id": "750803ed-ccaf-4ff7-8aec-3d9bb7af1a9d",
+    "carbs": 80,
+    "calories": 330,
+    "fat": 1,
+    "protein": 1,
+    "sugar": 70,
+    "fiber": 1,
+    "sodium": 50
+  },
+  {
+    "id": "7ab1b36e-4dba-4f65-859d-663c4dd48f91",
+    "carbs": 55,
+    "calories": 480,
+    "fat": 20,
+    "protein": 15,
+    "sugar": 18,
+    "fiber": 3,
+    "sodium": 750
+  },
+  {
+    "id": "8b9fb4d6-573b-4f5a-9993-6c5c4e1a3de4",
+    "carbs": 60,
+    "calories": 300,
+    "fat": 6,
+    "protein": 2,
+    "sugar": 52,
+    "fiber": 3,
+    "sodium": 40
+  },
+  {
+    "id": "92615b00-dba5-4eab-8cf3-73058765d751",
+    "carbs": 75,
+    "calories": 420,
+    "fat": 7,
+    "protein": 12,
+    "sugar": 45,
+    "fiber": 6,
+    "sodium": 350
+  },
+  {
+    "id": "93f3edcd-78cd-4e8d-8d02-7e39fbdeab4e",
+    "carbs": 72,
+    "calories": 400,
+    "fat": 6,
+    "protein": 11,
+    "sugar": 42,
+    "fiber": 6,
+    "sodium": 330
+  },
+  {
+    "id": "99563955-ea2b-4303-a7d5-a2367af17afe",
+    "carbs": 65,
+    "calories": 420,
+    "fat": 16,
+    "protein": 5,
+    "sugar": 60,
+    "fiber": 0,
+    "sodium": 230
+  },
+  {
+    "id": "9ed5e90a-5c3d-483e-a5e1-14cc3ab7df72",
+    "carbs": 70,
+    "calories": 480,
+    "fat": 16,
+    "protein": 14,
+    "sugar": 30,
+    "fiber": 4,
+    "sodium": 480
+  },
+  {
+    "id": "a239ba30-4f32-4b62-a2ba-24f0a601a9b0",
+    "carbs": 72,
+    "calories": 400,
+    "fat": 7,
+    "protein": 10,
+    "sugar": 42,
+    "fiber": 5,
+    "sodium": 320
+  },
+  {
+    "id": "af22700d-0f0f-43fd-9dc8-7e2c61bfced1",
+    "carbs": 68,
+    "calories": 380,
+    "fat": 6,
+    "protein": 9,
+    "sugar": 38,
+    "fiber": 5,
+    "sodium": 300
+  },
+  {
+    "id": "ba8d717b-95a5-4254-9b35-2156583ee4d6",
+    "carbs": 55,
+    "calories": 350,
+    "fat": 12,
+    "protein": 5,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 95
+  },
+  {
+    "id": "bac25793-3140-4885-ab0d-7d04921a62b5",
+    "carbs": 56,
+    "calories": 220,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 20
+  },
+  {
+    "id": "c94df3ab-3500-42f5-9a10-a41f5ff3d037",
+    "carbs": 65,
+    "calories": 240,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 63,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "d56f881b-30ea-41f1-b38b-9ca0eb4b3cd6",
+    "carbs": 110,
+    "calories": 900,
+    "fat": 42,
+    "protein": 14,
+    "sugar": 90,
+    "fiber": 3,
+    "sodium": 450
+  },
+  {
+    "id": "d6002b38-f80c-41a3-a6ab-6c49cfe88499",
+    "carbs": 70,
+    "calories": 280,
+    "fat": 0,
+    "protein": 1,
+    "sugar": 62,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "ddfc946c-a6d7-474e-8d3c-7bf2cf4d9a74",
+    "carbs": 48,
+    "calories": 380,
+    "fat": 16,
+    "protein": 8,
+    "sugar": 42,
+    "fiber": 1,
+    "sodium": 150
+  },
+  {
+    "id": "e0b0d8c8-6cad-493f-9c07-87dd5febf861",
+    "carbs": 55,
+    "calories": 280,
+    "fat": 6,
+    "protein": 2,
+    "sugar": 48,
+    "fiber": 2,
+    "sodium": 35
+  },
+  {
+    "id": "e504a903-5b63-49f5-be13-43573dd2a8b7",
+    "carbs": 68,
+    "calories": 380,
+    "fat": 6,
+    "protein": 9,
+    "sugar": 38,
+    "fiber": 5,
+    "sodium": 300
+  },
+  {
+    "id": "f40afa15-ca79-4737-bf42-d09dfc04cfac",
+    "carbs": 55,
+    "calories": 400,
+    "fat": 14,
+    "protein": 14,
+    "sugar": 8,
+    "fiber": 4,
+    "sodium": 900
+  },
+  {
+    "id": "fbd662d9-09b0-4286-adae-9e9402e7bc11",
+    "carbs": 60,
+    "calories": 240,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 56,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "2c65cf2b-d99f-47bc-a3d2-dea041055a3b",
+    "carbs": 70,
+    "calories": 380,
+    "fat": 8,
+    "protein": 4,
+    "sugar": 62,
+    "fiber": 0,
+    "sodium": 120
+  },
+  {
+    "id": "691d7b5d-7192-4056-a90f-814491eff2d6",
+    "carbs": 58,
+    "calories": 230,
+    "fat": 1,
+    "protein": 0,
+    "sugar": 50,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "d9871973-f12f-496f-b638-168f8c280209",
+    "carbs": 55,
+    "calories": 230,
+    "fat": 2,
+    "protein": 1,
+    "sugar": 48,
+    "fiber": 1,
+    "sodium": 25
+  },
+  {
+    "id": "e309283f-9434-4798-8d45-3215ca631d21",
+    "carbs": 45,
+    "calories": 280,
+    "fat": 10,
+    "protein": 3,
+    "sugar": 38,
+    "fiber": 1,
+    "sodium": 60
+  },
+  {
+    "id": "1dee88fe-2606-4d9e-a6e5-bc0a2344f309",
+    "carbs": 42,
+    "calories": 240,
+    "fat": 4,
+    "protein": 7,
+    "sugar": 40,
+    "fiber": 0,
+    "sodium": 115
+  },
+  {
+    "id": "41a243e7-0aaa-4d10-8644-640e4f80e636",
+    "carbs": 120,
+    "calories": 900,
+    "fat": 42,
+    "protein": 10,
+    "sugar": 75,
+    "fiber": 3,
+    "sodium": 450
+  },
+  {
+    "id": "678ac9e9-3529-48d9-b8eb-429b35049f18",
+    "carbs": 50,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 46,
+    "fiber": 0,
+    "sodium": 20
+  },
+  {
+    "id": "6d9d9775-5952-4e23-add7-4e2c03b71ed4",
+    "carbs": 45,
+    "calories": 180,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 42,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "9fd3d3ac-6694-4016-88ab-0036f4f32201",
+    "carbs": 75,
+    "calories": 550,
+    "fat": 22,
+    "protein": 12,
+    "sugar": 45,
+    "fiber": 2,
+    "sodium": 350
+  },
+  {
+    "id": "e4896744-fba9-4d27-964e-dc40f20801a6",
+    "carbs": 50,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 46,
+    "fiber": 0,
+    "sodium": 20
+  },
+  {
+    "id": "22452726-656c-4376-81f2-ea5c214c2440",
+    "carbs": 60,
+    "calories": 250,
+    "fat": 1,
+    "protein": 1,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "01d86683-2900-4984-aebf-1157aef02740",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "049bfdc4-d6aa-420e-b246-f10b9054ce3a",
+    "carbs": 52,
+    "calories": 195,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "0c0d4dbb-1714-4285-b2de-9b8a46402af5",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "0d452ba1-869f-4729-b483-f6d06a4e704e",
+    "carbs": 55,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "1161dad1-9032-4598-9361-c589ee6f0316",
+    "carbs": 40,
+    "calories": 160,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 36,
+    "fiber": 0,
+    "sodium": 20
+  },
+  {
+    "id": "1783bb09-b504-4257-b83d-c5df1e18a21e",
+    "carbs": 50,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 46,
+    "fiber": 0,
+    "sodium": 20
+  },
+  {
+    "id": "185575a9-a629-4e31-8dd6-19b1065ee8e6",
+    "carbs": 55,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "26ae17ec-1908-4af8-80c5-7b130c4f91bf",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "28566ca1-8ccf-449f-a1fd-c67b72af1247",
+    "carbs": 50,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "28d52295-8885-4dc2-a546-3b3fa6d36981",
+    "carbs": 65,
+    "calories": 320,
+    "fat": 7,
+    "protein": 1,
+    "sugar": 58,
+    "fiber": 1,
+    "sodium": 35
+  },
+  {
+    "id": "29df1e8a-77bf-4ed9-a75c-5925ed05cfff",
+    "carbs": 15,
+    "calories": 60,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 14,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "2d756492-a8fa-452e-bbbf-152804441d77",
+    "carbs": 55,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "3535378b-2d7a-4c5a-aa00-0eb25d8ecc22",
+    "carbs": 58,
+    "calories": 230,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "39a018be-3a7c-44a1-baf2-afc13f47d948",
+    "carbs": 65,
+    "calories": 240,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 65,
+    "fiber": 0,
+    "sodium": 75
+  },
+  {
+    "id": "3a2b4100-a223-45f5-9410-539d06ea2e9f",
+    "carbs": 45,
+    "calories": 170,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 45,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "46712bdf-c571-4a57-b51e-beb1a47cbe68",
+    "carbs": 55,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "4eabd4d3-06e1-4425-88d8-0a3dc6a60c51",
+    "carbs": 0,
+    "calories": 5,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 0,
+    "fiber": 0,
+    "sodium": 5
+  },
+  {
+    "id": "54449a47-f910-43e8-8c7a-75e9c9c91a51",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "5a87dc8c-c83c-42a1-baa3-343813824f04",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "60e78601-d59f-4167-8633-781f92735327",
+    "carbs": 62,
+    "calories": 450,
+    "fat": 16,
+    "protein": 9,
+    "sugar": 55,
+    "fiber": 1,
+    "sodium": 200
+  },
+  {
+    "id": "647d44f8-013f-47e5-9f3b-20a85400deac",
+    "carbs": 55,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "7a420a48-e2fa-42b9-9fb1-4a0a5c44d66d",
+    "carbs": 38,
+    "calories": 300,
+    "fat": 14,
+    "protein": 4,
+    "sugar": 34,
+    "fiber": 1,
+    "sodium": 95
+  },
+  {
+    "id": "7d713ad0-1e98-43b9-9cb5-51712bc8fd72",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "7d7c8408-2bf6-4216-972e-56db5419b9e7",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "8bce283f-439b-49d2-b85f-1beca298323b",
+    "carbs": 45,
+    "calories": 170,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 45,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "8c700138-839d-400c-a997-4179e57155ce",
+    "carbs": 45,
+    "calories": 170,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 45,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "8eb809f3-af33-49ed-9a3b-0f7efea7f146",
+    "carbs": 65,
+    "calories": 240,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 65,
+    "fiber": 0,
+    "sodium": 75
+  },
+  {
+    "id": "8ecf14af-172d-424d-b312-ad476b966aaf",
+    "carbs": 60,
+    "calories": 250,
+    "fat": 1,
+    "protein": 2,
+    "sugar": 52,
+    "fiber": 2,
+    "sodium": 20
+  },
+  {
+    "id": "8f19f7ff-cee7-44da-a23c-82acad81a101",
+    "carbs": 45,
+    "calories": 170,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 45,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "95960689-8d89-4207-9230-0b2dc3934b5a",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "990c693e-fec4-4950-93bb-c216f690ce75",
+    "carbs": 45,
+    "calories": 170,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 45,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "9a16f882-0487-4483-b414-ff49b8bc9671",
+    "carbs": 45,
+    "calories": 170,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 45,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "a0c540d3-aed7-4ed3-8a9f-e6ee48017074",
+    "carbs": 55,
+    "calories": 215,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "a2c11293-feb1-4efe-8c37-da8b47e9115a",
+    "carbs": 35,
+    "calories": 140,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 32,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "a76952c5-84d7-4a20-bd08-0d6d12f3c430",
+    "carbs": 39,
+    "calories": 140,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 39,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "aeb7d54a-5786-44a0-99ff-c8313015c883",
+    "carbs": 45,
+    "calories": 170,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 45,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "b149c1a0-5946-43fb-845e-4ccac7c0ea15",
+    "carbs": 52,
+    "calories": 200,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "b5c492e3-13f6-4f99-b844-3063fb60f992",
+    "carbs": 55,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "bed6fc7d-bc64-494b-a0d8-b80f71445da8",
+    "carbs": 45,
+    "calories": 170,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 45,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "cbae9575-9c70-48b7-8bae-824d571f0f0b",
+    "carbs": 60,
+    "calories": 300,
+    "fat": 3,
+    "protein": 8,
+    "sugar": 45,
+    "fiber": 5,
+    "sodium": 80
+  },
+  {
+    "id": "cc9146d4-0dea-4084-b774-83050ceb0124",
+    "carbs": 55,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 45
+  },
+  {
+    "id": "d24a2550-4024-43cd-a98c-404ce3dd965f",
+    "carbs": 52,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "d3e69b03-c812-4b68-8fba-e44ae72c5ff9",
+    "carbs": 65,
+    "calories": 260,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 58,
+    "fiber": 0,
+    "sodium": 30
+  },
+  {
+    "id": "d6a27010-57d0-45e2-b670-fdb30d084fc3",
+    "carbs": 60,
+    "calories": 235,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 57,
+    "fiber": 0,
+    "sodium": 40
+  },
+  {
+    "id": "d92336ab-9d3d-45e1-86cf-c1510e2e52fc",
+    "carbs": 42,
+    "calories": 165,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 42,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "db7eed80-d312-48ba-ae6f-fc9791b70451",
+    "carbs": 55,
+    "calories": 450,
+    "fat": 16,
+    "protein": 18,
+    "sugar": 22,
+    "fiber": 3,
+    "sodium": 800
+  },
+  {
+    "id": "dc7a54bc-6c48-411f-9ce9-af695523eb78",
+    "carbs": 55,
+    "calories": 220,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 50,
+    "fiber": 0,
+    "sodium": 20
+  },
+  {
+    "id": "e686a132-a974-41e3-9957-8aed9670e6b6",
+    "carbs": 42,
+    "calories": 165,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 42,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "e70f15d5-6075-47a0-8c97-48304d75ae93",
+    "carbs": 70,
+    "calories": 350,
+    "fat": 8,
+    "protein": 2,
+    "sugar": 62,
+    "fiber": 1,
+    "sodium": 60
+  },
+  {
+    "id": "f3c4d299-dee4-4989-8b93-1452ca9df7e6",
+    "carbs": 42,
+    "calories": 165,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 42,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "f59d9115-6a53-4282-8d14-5735a6b3d3e9",
+    "carbs": 42,
+    "calories": 165,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 42,
+    "fiber": 0,
+    "sodium": 35
+  },
+  {
+    "id": "fb53277c-974d-4e56-abea-d97f6b94d75d",
+    "carbs": 52,
+    "calories": 210,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 48,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "26d93ef5-5375-4f36-b89a-89e092b85761",
+    "carbs": 42,
+    "calories": 240,
+    "fat": 4,
+    "protein": 8,
+    "sugar": 40,
+    "fiber": 0,
+    "sodium": 115
+  },
+  {
+    "id": "91e48a1c-201c-470e-b82a-17d5a9f14da2",
+    "carbs": 62,
+    "calories": 480,
+    "fat": 24,
+    "protein": 5,
+    "sugar": 48,
+    "fiber": 3,
+    "sodium": 180
+  },
+  {
+    "id": "dcc9c58a-272e-4403-966d-02d49241f04e",
+    "carbs": 42,
+    "calories": 240,
+    "fat": 4,
+    "protein": 8,
+    "sugar": 40,
+    "fiber": 0,
+    "sodium": 115
+  },
+  {
+    "id": "5dc76d49-fa66-48d6-a41f-5a9f66b8c2a9",
+    "carbs": 64,
+    "calories": 280,
+    "fat": 1,
+    "protein": 3,
+    "sugar": 54,
+    "fiber": 3,
+    "sodium": 20
+  },
+  {
+    "id": "e0c2681d-758e-4981-8268-6dac1f57d187",
+    "carbs": 45,
+    "calories": 380,
+    "fat": 18,
+    "protein": 9,
+    "sugar": 40,
+    "fiber": 1,
+    "sodium": 150
+  },
+  {
+    "id": "f673c58a-32bf-40ce-a337-0e1d06d00417",
+    "carbs": 40,
+    "calories": 220,
+    "fat": 3,
+    "protein": 9,
+    "sugar": 12,
+    "fiber": 5,
+    "sodium": 200
+  },
+  {
+    "id": "19697de3-0f09-4f08-8d21-db60bd9bbc68",
+    "carbs": 70,
+    "calories": 420,
+    "fat": 12,
+    "protein": 6,
+    "sugar": 60,
+    "fiber": 2,
+    "sodium": 180
+  },
+  {
+    "id": "27f07b68-4717-4a46-b45d-95c124e5ac53",
+    "carbs": 52,
+    "calories": 380,
+    "fat": 14,
+    "protein": 10,
+    "sugar": 30,
+    "fiber": 5,
+    "sodium": 150
+  },
+  {
+    "id": "331ad52f-3a8a-4508-9dc4-d80d321df3dc",
+    "carbs": 52,
+    "calories": 450,
+    "fat": 24,
+    "protein": 6,
+    "sugar": 42,
+    "fiber": 2,
+    "sodium": 150
+  },
+  {
+    "id": "56e7c958-acd6-4f4f-b117-79180540d46b",
+    "carbs": 65,
+    "calories": 320,
+    "fat": 3,
+    "protein": 2,
+    "sugar": 45,
+    "fiber": 1,
+    "sodium": 80
+  },
+  {
+    "id": "990d6b54-0651-42b3-bdab-0036657746c5",
+    "carbs": 55,
+    "calories": 450,
+    "fat": 20,
+    "protein": 10,
+    "sugar": 48,
+    "fiber": 2,
+    "sodium": 160
+  },
+  {
+    "id": "fd92cff3-64ad-4880-97a4-20ea6ce06251",
+    "carbs": 0,
+    "calories": 5,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 0,
+    "fiber": 0,
+    "sodium": 10
+  },
+  {
+    "id": "0da63f47-0191-4f2b-959c-e9d088faa4ca",
+    "carbs": 100,
+    "calories": 800,
+    "fat": 35,
+    "protein": 12,
+    "sugar": 80,
+    "fiber": 2,
+    "sodium": 350
+  },
+  {
+    "id": "01c970c0-9a72-457a-9d50-5fa630d706ec",
+    "carbs": 55,
+    "calories": 220,
+    "fat": 0,
+    "protein": 1,
+    "sugar": 50,
+    "fiber": 0,
+    "sodium": 25
+  },
+  {
+    "id": "06049e56-6850-4f4c-93e8-c1ecc5274662",
+    "carbs": 72,
+    "calories": 300,
+    "fat": 0,
+    "protein": 1,
+    "sugar": 55,
+    "fiber": 1,
+    "sodium": 30
+  },
+  {
+    "id": "0667faf0-7763-485f-9949-4855e139a7e2",
+    "carbs": 35,
+    "calories": 320,
+    "fat": 12,
+    "protein": 16,
+    "sugar": 10,
+    "fiber": 2,
+    "sodium": 900
+  },
+  {
+    "id": "066d89f8-086a-447b-ba9a-d4965c8d1936",
+    "carbs": 10,
+    "calories": 40,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 9,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "08d5b7ac-5f6a-470e-93ae-8bd6c2b6e7af",
+    "carbs": 10,
+    "calories": 40,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 9,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "097a4b94-429c-44da-93bb-8c0ee860183a",
+    "carbs": 30,
+    "calories": 120,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 26,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "0fac8742-52d7-4063-bea6-6db69c5d722f",
+    "carbs": 55,
+    "calories": 420,
+    "fat": 20,
+    "protein": 5,
+    "sugar": 38,
+    "fiber": 1,
+    "sodium": 220
+  },
+  {
+    "id": "10e55787-07b6-4829-a343-0c6abddaf34a",
+    "carbs": 66,
+    "calories": 440,
+    "fat": 16,
+    "protein": 6,
+    "sugar": 60,
+    "fiber": 0,
+    "sodium": 260
+  },
+  {
+    "id": "12fe51fa-acae-47b3-a72a-734c7e676612",
+    "carbs": 50,
+    "calories": 380,
+    "fat": 16,
+    "protein": 4,
+    "sugar": 38,
+    "fiber": 0,
+    "sodium": 150
+  },
+  {
+    "id": "131d4b8c-5d21-48da-a3ba-767889ba635c",
+    "carbs": 90,
+    "calories": 700,
+    "fat": 30,
+    "protein": 11,
+    "sugar": 75,
+    "fiber": 1,
+    "sodium": 300
+  },
+  {
+    "id": "14037845-9a45-4d11-999a-1719fc30f0d0",
+    "carbs": 30,
+    "calories": 250,
+    "fat": 5,
+    "protein": 20,
+    "sugar": 26,
+    "fiber": 0,
+    "sodium": 180
+  },
+  {
+    "id": "1698c02e-91da-4fb0-9d33-8fe73830604a",
+    "carbs": 52,
+    "calories": 220,
+    "fat": 1,
+    "protein": 2,
+    "sugar": 40,
+    "fiber": 3,
+    "sodium": 90
+  },
+  {
+    "id": "17dc0770-13f3-4f02-a670-557a1f6a9641",
+    "carbs": 66,
+    "calories": 440,
+    "fat": 16,
+    "protein": 6,
+    "sugar": 60,
+    "fiber": 0,
+    "sodium": 260
+  },
+  {
+    "id": "1ccdef12-4af7-4754-a9a2-91227ca43308",
+    "carbs": 40,
+    "calories": 400,
+    "fat": 12,
+    "protein": 25,
+    "sugar": 20,
+    "fiber": 3,
+    "sodium": 700
+  },
+  {
+    "id": "23629f4b-81d8-41f6-b47d-13c5cdbf2767",
+    "carbs": 10,
+    "calories": 40,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 9,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "240d705b-8acf-4d2c-8720-1350dbb4ca61",
+    "carbs": 55,
+    "calories": 320,
+    "fat": 7,
+    "protein": 9,
+    "sugar": 30,
+    "fiber": 5,
+    "sodium": 350
+  },
+  {
+    "id": "2ce05ced-700b-4586-b02e-c7a939bcdc1c",
+    "carbs": 45,
+    "calories": 320,
+    "fat": 9,
+    "protein": 9,
+    "sugar": 40,
+    "fiber": 0,
+    "sodium": 160
+  },
+  {
+    "id": "313207f8-fb21-485e-8a9e-9bc2b5c78762",
+    "carbs": 62,
+    "calories": 400,
+    "fat": 14,
+    "protein": 5,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 240
+  },
+  {
+    "id": "36d29053-a0b0-43c8-a2de-b7885780dc98",
+    "carbs": 33,
+    "calories": 140,
+    "fat": 0,
+    "protein": 1,
+    "sugar": 28,
+    "fiber": 1,
+    "sodium": 30
+  },
+  {
+    "id": "3797320d-2d35-4d7d-b13a-317a69b7a738",
+    "carbs": 62,
+    "calories": 400,
+    "fat": 14,
+    "protein": 5,
+    "sugar": 55,
+    "fiber": 0,
+    "sodium": 240
+  },
+  {
+    "id": "387710fc-27b8-4c33-ae7e-634238096404",
+    "carbs": 58,
+    "calories": 230,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 52,
+    "fiber": 0,
+    "sodium": 30
+  },
+  {
+    "id": "3d38e605-3463-48f0-99b6-4264fd1625c5",
+    "carbs": 50,
+    "calories": 420,
+    "fat": 16,
+    "protein": 16,
+    "sugar": 18,
+    "fiber": 3,
+    "sodium": 700
+  },
+  {
+    "id": "51aaf276-db31-4982-9986-0f85fab97101",
+    "carbs": 64,
+    "calories": 280,
+    "fat": 1,
+    "protein": 3,
+    "sugar": 54,
+    "fiber": 3,
+    "sodium": 20
+  },
+  {
+    "id": "54eb1f79-6d0c-4263-881e-b1d3e2b13616",
+    "carbs": 10,
+    "calories": 40,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 9,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "55c9ee09-07ff-4751-8bc4-f6b00fb5ca49",
+    "carbs": 47,
+    "calories": 190,
+    "fat": 0,
+    "protein": 0,
+    "sugar": 42,
+    "fiber": 0,
+    "sodium": 15
+  },
+  {
+    "id": "6190cb37-191e-4611-8ac1-d5d1562099a1",
+    "carbs": 45,
+    "calories": 480,
+    "fat": 22,
+    "protein": 22,
+    "sugar": 10,
+    "fiber": 2,
+    "sodium": 750
+  }
+]
