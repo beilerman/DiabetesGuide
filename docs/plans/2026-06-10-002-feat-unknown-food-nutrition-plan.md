@@ -114,9 +114,15 @@ Conclusions:
 
 **E1 carb-fraction table** (official rows; spread = what an official calorie count leaves uncertain): smoothies ±0g, cookies ±2g, cakes ±5g, sandwiches ±7g, brownies ±7g, pretzels ±8g, salads/wraps ±10g — **E1 is viable for sweet/bakery/sandwich classes** — vs coffee-drinks ±13g, pastry ±14g, tenders ±24g, pizza ±35g (bound-only). Caveat: some classes are single-chain-dominated (Jamba = the entire smoothie class), so fractions may be chain-specific; the venue-PDF sweep will diversify them.
 
+## Phase 1 spike result (E1 acquisition, probed 2026-06-10)
+
+**No easy public-web source for official calories.** Probed: TouringPlans restaurant pages carry no calories and the menu URLs 404; AllEars returns 403 (Cloudflare, known); **Disney's own web menus render rich item descriptions but zero calorie figures** (confirmed via Playwright on a Magic Kingdom QS menu). Official calories therefore live only in: (a) the Disney/Universal **mobile-order app flows** — scraping them needs a TOS decision (**critical ask**), or (b) **physical menu boards** — photo OCR, opportunistic. E1 is downgraded from "spike then build" to **blocked-on-TOS / opportunistic**; the carb-fraction table stays ready for whenever official calories arrive.
+
+**Discovered consolation:** Disney web menus are Playwright-loadable and carry high-quality descriptions — a cheap supply line for improving E4 inputs on items whose descriptions are missing or thin (a description-harvest scraper is an S/M follow-up).
+
 ## Risks & honesty
 
-- **E1 acquisition may be TOS-constrained** (Disney app endpoints). The spike answers this before any build; menu-board photos and TouringPlans are the fallback.
+- **E1 acquisition may be TOS-constrained** (Disney app endpoints). ~~The spike answers this before any build~~ — **probed: confirmed constrained**; see Phase 1 spike result above.
 - **Carb-fraction spread:** for loose classes the calorie anchor only bounds, not pins — the per-class calibration prevents over-claiming.
 - **Copycat recipes vary in fidelity** — treat fan copycats one tier below official recipes; require agreement with another method to rise.
 - **Agent cost:** E2/E4 are LLM-batch work; the priority queue caps spend where dosing impact is highest. E3/E6 are nearly free.

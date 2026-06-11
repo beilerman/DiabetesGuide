@@ -14,6 +14,9 @@
  *   npx tsx scripts/audit/triangulate.ts                 # dry run, top 300 by dosing impact
  *   npx tsx scripts/audit/triangulate.ts --limit 500     # bigger batch
  *   npx tsx scripts/audit/triangulate.ts --apply         # write (undo manifest first, fail-stop)
+ *   npx tsx scripts/audit/triangulate.ts --decomp-file data/pending/claude-decomp-pilot-out.json
+ *       # use precomputed decomposition estimates (e.g. Claude-generated, when
+ *       # Groq's daily token budget is exhausted) instead of calling Groq
  *
  * Env: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, GROQ_API_KEY
  */
@@ -240,10 +243,30 @@ async function main() {
     estimatesByItem.set(t.id, list)
   }
 
-  // Method 3: Groq decomposition for targets with descriptions
+  // Method 3: decomposition — precomputed file takes precedence over Groq
+  const decompFile = argv.flatMap((a, i) => (a === '--decomp-file' && argv[i + 1] ? [argv[i + 1]] : []))[0]
   const groqKey = process.env.GROQ_API_KEY
   const decompTargets = targets.filter((t) => (t.description ?? '').trim().length >= 20)
-  if (groqKey && decompTargets.length > 0) {
+  if (decompFile) {
+    const { readFileSync } = await import('node:fs')
+    const entries: Array<{ id: string; carbs: number; calories?: number; fat?: number; protein?: number; sugar?: number; fiber?: number; sodium?: number }> =
+      JSON.parse(readFileSync(decompFile, 'utf-8'))
+    let used = 0
+    const num = (v: unknown) => {
+      const x = Math.round(Number(v))
+      return Number.isFinite(x) && x >= 0 ? x : null
+    }
+    for (const e of entries) {
+      const carbs = Math.round(Number(e.carbs))
+      if (!estimatesByItem.has(e.id) || !Number.isFinite(carbs) || carbs < 0 || carbs > 500) continue
+      estimatesByItem.get(e.id)!.push({
+        method: 'decomposition', carbs,
+        full: { calories: num(e.calories), fat: num(e.fat), protein: num(e.protein), sugar: num(e.sugar), fiber: num(e.fiber), sodium: num(e.sodium) },
+      })
+      used++
+    }
+    console.log(`Decomposition: loaded ${used} precomputed estimates from ${decompFile}`)
+  } else if (groqKey && decompTargets.length > 0) {
     const { default: Groq } = await import('groq-sdk')
     const groq = new Groq({ apiKey: groqKey })
     console.log(`Decomposition (Groq): ${decompTargets.length} targets with descriptions`)
