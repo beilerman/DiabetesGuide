@@ -1,0 +1,7314 @@
+[
+  {
+    "id": "04efad79-296f-492b-ab7a-452dfe3d2dee",
+    "name": "Thrilla in Vanilla",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 38,
+        "full": {
+          "calories": 316,
+          "fat": 17,
+          "protein": 5,
+          "sugar": 28,
+          "fiber": 1,
+          "sodium": 151
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 115,
+        "full": {
+          "calories": 900,
+          "fat": 45,
+          "protein": 14,
+          "sugar": 95,
+          "fiber": 1,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "097a84dd-b56c-4a74-89e2-c507f1208dbe",
+    "name": "Santa Hat Brownie Sundae",
+    "category": "dessert",
+    "park": "Walt Disney World Festivals & Events",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 128,
+        "full": {
+          "calories": 967,
+          "fat": 45,
+          "protein": 13,
+          "sugar": 97,
+          "fiber": 4,
+          "sodium": 400
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 60
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 800,
+          "fat": 38,
+          "protein": 10,
+          "sugar": 80,
+          "fiber": 3,
+          "sodium": 300
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "0a9e0976-0bdd-45a7-9565-048b5e923ccd",
+    "name": "Two Foot Dog",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 119,
+        "full": {
+          "calories": 1408,
+          "fat": 79,
+          "protein": 55,
+          "sugar": 10,
+          "fiber": 6,
+          "sodium": 4150
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 1300,
+          "fat": 80,
+          "protein": 45,
+          "sugar": 10,
+          "fiber": 4,
+          "sodium": 3200
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "0f822581-6541-4e6e-8d16-90c047e2196b",
+    "name": "Whole Cheese Pizza",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 70,
+        "full": {
+          "calories": 597,
+          "fat": 24,
+          "protein": 26,
+          "sugar": 6,
+          "fiber": 3,
+          "sodium": 1267
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 85,
+        "full": {
+          "calories": 700,
+          "fat": 26,
+          "protein": 30,
+          "sugar": 8,
+          "fiber": 4,
+          "sodium": 1500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "11514c04-9d46-4ddf-bfc7-ca89de8c165d",
+    "name": "Indian-Style Bread Service (with 3 accompaniments)",
+    "category": "entree",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 210,
+        "full": {
+          "calories": 1450,
+          "fat": 52,
+          "protein": 35,
+          "sugar": 48,
+          "fiber": 12,
+          "sodium": 2700
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 700,
+          "fat": 25,
+          "protein": 18,
+          "sugar": 14,
+          "fiber": 7,
+          "sodium": 1300
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "1251b117-a40d-4bbd-a8e4-5fd3d6f73fec",
+    "name": "Chili Cheese Dog Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 63,
+        "full": {
+          "calories": 769,
+          "fat": 47,
+          "protein": 25,
+          "sugar": 7,
+          "fiber": 4,
+          "sodium": 1631
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 1200,
+          "fat": 60,
+          "protein": 35,
+          "sugar": 45,
+          "fiber": 5,
+          "sodium": 2500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "12f03503-c7f3-47b5-9e25-031f22125c05",
+    "name": "Rapunzel Sundae",
+    "category": "dessert",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 68,
+        "full": {
+          "calories": 447,
+          "fat": 15,
+          "protein": 7,
+          "sugar": 55,
+          "fiber": 1,
+          "sodium": 174
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 550,
+          "fat": 16,
+          "protein": 6,
+          "sugar": 70,
+          "fiber": 2,
+          "sodium": 220
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "1351e51a-d868-475b-93e5-ef9a9e21913c",
+    "name": "Indian-Style Bread Service (with all 9 accompaniments)",
+    "category": "entree",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 160,
+        "full": {
+          "calories": 1090,
+          "fat": 38,
+          "protein": 28,
+          "sugar": 18,
+          "fiber": 8,
+          "sodium": 2300
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 850,
+          "fat": 30,
+          "protein": 20,
+          "sugar": 25,
+          "fiber": 9,
+          "sodium": 1600
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "1e5ce75a-b2c8-4044-b920-3de88f4cbae5",
+    "name": "All Classic Dozen",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 53,
+        "full": {
+          "calories": 714,
+          "fat": 39,
+          "protein": 35,
+          "sugar": 20,
+          "fiber": 2,
+          "sodium": 917
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 45,
+        "full": {
+          "calories": 350,
+          "fat": 17,
+          "protein": 5,
+          "sugar": 22,
+          "fiber": 1,
+          "sodium": 330
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "1e98764d-b8ab-49fd-b05c-1caf58603ac3",
+    "name": "Whole Cheese Pizza",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 70,
+        "full": {
+          "calories": 597,
+          "fat": 24,
+          "protein": 26,
+          "sugar": 6,
+          "fiber": 3,
+          "sodium": 1267
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 85,
+        "full": {
+          "calories": 700,
+          "fat": 26,
+          "protein": 30,
+          "sugar": 8,
+          "fiber": 4,
+          "sodium": 1500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "27c5330c-f606-4c43-8658-1fc50e45bd93",
+    "name": "May Contain Nuts",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 30,
+        "full": {
+          "calories": 400,
+          "fat": 27,
+          "protein": 20,
+          "sugar": 17,
+          "fiber": 7,
+          "sodium": 17
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1100,
+          "fat": 62,
+          "protein": 22,
+          "sugar": 90,
+          "fiber": 4,
+          "sodium": 550
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "2868751a-d202-4322-b452-5d27d4dc50e7",
+    "name": "Turkey Wrap Combo",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 68,
+        "full": {
+          "calories": 673,
+          "fat": 26,
+          "protein": 40,
+          "sugar": 14,
+          "fiber": 5,
+          "sodium": 1783
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 52
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 1150,
+          "fat": 50,
+          "protein": 45,
+          "sugar": 60,
+          "fiber": 6,
+          "sodium": 1900
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "2e0d601a-8840-4265-bd0f-e9629935fa13",
+    "name": "Vegan Sausage & Peppers Pasta",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 489,
+          "fat": 22,
+          "protein": 13,
+          "sugar": 7,
+          "fiber": 4,
+          "sodium": 846
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 950,
+          "fat": 35,
+          "protein": 30,
+          "sugar": 14,
+          "fiber": 10,
+          "sodium": 1700
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "31b3deb6-4a73-4e1c-8d9d-5841b36bd69f",
+    "name": "Candy Painted Cinnamon Rolls",
+    "category": "entree",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 59,
+        "full": {
+          "calories": 361,
+          "fat": 12,
+          "protein": 5,
+          "sugar": 34,
+          "fiber": 2,
+          "sodium": 295
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 37
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 650,
+          "fat": 28,
+          "protein": 8,
+          "sugar": 55,
+          "fiber": 3,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "367543a8-90dd-4a32-8347-eba6ba12c4ed",
+    "name": "BBQ Jackfruit Sandwich",
+    "category": "entree",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 92,
+        "full": {
+          "calories": 507,
+          "fat": 13,
+          "protein": 8,
+          "sugar": 55,
+          "fiber": 4,
+          "sodium": 442
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 850,
+          "fat": 32,
+          "protein": 12,
+          "sugar": 35,
+          "fiber": 9,
+          "sodium": 1600
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "3a9ffe7f-07c0-42ec-be1e-3f1ed6acc2ed",
+    "name": "Chicken Tender Stack Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 74,
+        "full": {
+          "calories": 906,
+          "fat": 50,
+          "protein": 40,
+          "sugar": 10,
+          "fiber": 5,
+          "sodium": 819
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 16
+      },
+      {
+        "method": "decomposition",
+        "carbs": 130,
+        "full": {
+          "calories": 1200,
+          "fat": 52,
+          "protein": 45,
+          "sugar": 45,
+          "fiber": 6,
+          "sodium": 2300
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "40a32b03-f50f-4886-926e-cf8137e58edb",
+    "name": "Jumbo Pesto Chicken Slice Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 114,
+        "full": {
+          "calories": 1173,
+          "fat": 57,
+          "protein": 49,
+          "sugar": 27,
+          "fiber": 5,
+          "sodium": 2442
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 50,
+          "sugar": 40,
+          "fiber": 5,
+          "sodium": 2100
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "45f4836f-52f6-4261-85f2-2925af626dc3",
+    "name": "Strawberry Shortcake",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 85,
+        "full": {
+          "calories": 645,
+          "fat": 32,
+          "protein": 7,
+          "sugar": 57,
+          "fiber": 2,
+          "sodium": 497
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1000,
+          "fat": 52,
+          "protein": 15,
+          "sugar": 92,
+          "fiber": 2,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "4f630e45-a4ea-4471-b5ed-24022d5b339c",
+    "name": "Jammin' Chips and Salsa",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 48,
+        "full": {
+          "calories": 548,
+          "fat": 33,
+          "protein": 9,
+          "sugar": 5,
+          "fiber": 4,
+          "sodium": 845
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 80,
+        "full": {
+          "calories": 600,
+          "fat": 26,
+          "protein": 12,
+          "sugar": 8,
+          "fiber": 10,
+          "sodium": 1100
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "5221f49e-83ba-4752-a61a-7b8904532152",
+    "name": "Midnight Munchies",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 40,
+        "full": {
+          "calories": 300,
+          "fat": 10,
+          "protein": 5,
+          "sugar": 30,
+          "fiber": 2,
+          "sodium": 100
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 125,
+        "full": {
+          "calories": 1150,
+          "fat": 60,
+          "protein": 16,
+          "sugar": 100,
+          "fiber": 3,
+          "sodium": 500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "523ede06-95c7-4a63-afc4-8f771ef54109",
+    "name": "S'mores",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 150,
+        "full": {
+          "calories": 940,
+          "fat": 35,
+          "protein": 9,
+          "sugar": 106,
+          "fiber": 4,
+          "sodium": 515
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 125,
+        "full": {
+          "calories": 1000,
+          "fat": 48,
+          "protein": 13,
+          "sugar": 100,
+          "fiber": 3,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "526daff6-8d0f-40e1-aa26-ee58a95ee2b2",
+    "name": "Pork BBQ Burger Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 153,
+        "full": {
+          "calories": 1557,
+          "fat": 81,
+          "protein": 53,
+          "sugar": 54,
+          "fiber": 7,
+          "sodium": 2305
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 130,
+        "full": {
+          "calories": 1500,
+          "fat": 78,
+          "protein": 60,
+          "sugar": 45,
+          "fiber": 6,
+          "sodium": 2800
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "57dda281-bbc7-40c5-8181-76abe1ba06ad",
+    "name": "Chocolate Waffle",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 544,
+          "fat": 31,
+          "protein": 4,
+          "sugar": 36,
+          "fiber": 1,
+          "sodium": 356
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 750,
+          "fat": 36,
+          "protein": 11,
+          "sugar": 60,
+          "fiber": 4,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "5e0558bb-7d8a-4e84-9b06-66b15f61f128",
+    "name": "Sparkling Volcano Dessert",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 100,
+        "full": {
+          "calories": 850,
+          "fat": 45,
+          "protein": 15,
+          "sugar": 60,
+          "fiber": 5,
+          "sodium": 500
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 65,
+        "full": {
+          "calories": 500,
+          "fat": 24,
+          "protein": 6,
+          "sugar": 50,
+          "fiber": 2,
+          "sodium": 220
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "6208fba9-b96d-4d3b-825f-3b22f64f0cdb",
+    "name": "Brownie Sundae",
+    "category": "dessert",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 135,
+        "full": {
+          "calories": 970,
+          "fat": 43,
+          "protein": 12,
+          "sugar": 99,
+          "fiber": 4,
+          "sodium": 420
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 60
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 900,
+          "fat": 46,
+          "protein": 11,
+          "sugar": 85,
+          "fiber": 4,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "63d368ac-0c07-4310-8f6c-b089e1bd8de7",
+    "name": "Battered and Plattered Fish Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 105,
+        "full": {
+          "calories": 1229,
+          "fat": 72,
+          "protein": 41,
+          "sugar": 7,
+          "fiber": 7,
+          "sodium": 2410
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 140,
+        "full": {
+          "calories": 1500,
+          "fat": 75,
+          "protein": 50,
+          "sugar": 55,
+          "fiber": 5,
+          "sodium": 2200
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "681ff460-cfa5-4f14-8785-6d543f7ddd2b",
+    "name": "Smoked Chicken Pesto Pasta",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 1182,
+          "fat": 69,
+          "protein": 76,
+          "sugar": 6,
+          "fiber": 5,
+          "sodium": 2173
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 1050,
+          "fat": 55,
+          "protein": 45,
+          "sugar": 9,
+          "fiber": 6,
+          "sodium": 1700
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "69413b4c-e427-492f-8794-3b47d724adc8",
+    "name": "Bread Pudding",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 81,
+        "full": {
+          "calories": 602,
+          "fat": 24,
+          "protein": 11,
+          "sugar": 52,
+          "fiber": 2,
+          "sodium": 652
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 850,
+          "fat": 42,
+          "protein": 12,
+          "sugar": 75,
+          "fiber": 3,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "6b7155c0-7ce8-40ae-b7e3-184deb06a2d9",
+    "name": "Spaghetti & Meatballs Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 57,
+        "full": {
+          "calories": 607,
+          "fat": 27,
+          "protein": 30,
+          "sugar": 8,
+          "fiber": 4,
+          "sodium": 1124
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 130,
+        "full": {
+          "calories": 1300,
+          "fat": 60,
+          "protein": 50,
+          "sugar": 18,
+          "fiber": 9,
+          "sodium": 2400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "6d66662d-026c-4a08-ab47-8e193035761a",
+    "name": "Cobb",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 14,
+        "full": {
+          "calories": 584,
+          "fat": 39,
+          "protein": 44,
+          "sugar": 5,
+          "fiber": 4,
+          "sodium": 1370
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 60,
+        "full": {
+          "calories": 950,
+          "fat": 58,
+          "protein": 50,
+          "sugar": 22,
+          "fiber": 9,
+          "sodium": 1500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "6dcae79d-530d-4f8e-a09a-5136164f75ae",
+    "name": "Pumpkin Caramel Double Frosted Cake",
+    "category": "dessert",
+    "park": "Walt Disney World & Universal Orlando - Additional Dining",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 750,
+          "fat": 38,
+          "protein": 7,
+          "sugar": 75,
+          "fiber": 1,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "72fff193-3012-48d1-b611-9604f260d96d",
+    "name": "2026 FESTIVAL OF THE ARTS- Wild Berry Funnel Cake",
+    "category": "dessert",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 63,
+        "full": {
+          "calories": 785,
+          "fat": 44,
+          "protein": 9,
+          "sugar": 45,
+          "fiber": 2,
+          "sodium": 375
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 950,
+          "fat": 45,
+          "protein": 12,
+          "sugar": 72,
+          "fiber": 4,
+          "sodium": 500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "75448a8d-647c-472f-9ad1-35ffac3ccf7f",
+    "name": "Morimoto Peking Duck (for two)",
+    "category": "entree",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 95,
+        "full": {
+          "calories": 1260,
+          "fat": 72,
+          "protein": 52,
+          "sugar": 28,
+          "fiber": 4,
+          "sodium": 2800
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 60,
+        "full": {
+          "calories": 900,
+          "fat": 50,
+          "protein": 55,
+          "sugar": 15,
+          "fiber": 3,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "7599b515-55b0-49ab-ba7f-ce960cb11ebc",
+    "name": "Grilled Chicken Bacon & Avocado Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 813,
+          "fat": 36,
+          "protein": 57,
+          "sugar": 4,
+          "fiber": 6,
+          "sodium": 1542
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 140,
+        "full": {
+          "calories": 1300,
+          "fat": 60,
+          "protein": 50,
+          "sugar": 55,
+          "fiber": 8,
+          "sodium": 2300
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "768eaa02-d4a4-469a-89c9-b581ead9a398",
+    "name": "Trio Platter",
+    "category": "entree",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 75,
+        "full": {
+          "calories": 1375,
+          "fat": 80,
+          "protein": 88,
+          "sugar": 24,
+          "fiber": 7,
+          "sodium": 3650
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1300,
+          "fat": 65,
+          "protein": 55,
+          "sugar": 8,
+          "fiber": 7,
+          "sodium": 2500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "7819de68-3274-4d61-bc6c-6fa9bfbada21",
+    "name": "Krusty Burger Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 137,
+        "full": {
+          "calories": 1426,
+          "fat": 74,
+          "protein": 51,
+          "sugar": 38,
+          "fiber": 8,
+          "sodium": 2570
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1700,
+          "fat": 85,
+          "protein": 50,
+          "sugar": 75,
+          "fiber": 8,
+          "sodium": 2600
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "79c21f9d-8157-41a9-ab89-fcaae7077e58",
+    "name": "Whole Pepperoni Pizza",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 102,
+        "full": {
+          "calories": 880,
+          "fat": 36,
+          "protein": 36,
+          "sugar": 10,
+          "fiber": 4,
+          "sodium": 1833
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 800,
+          "fat": 35,
+          "protein": 35,
+          "sugar": 8,
+          "fiber": 4,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "7ab38624-4360-4678-8a8d-aba2ef55d50c",
+    "name": "The Combo",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 50,
+        "full": {
+          "calories": 423,
+          "fat": 17,
+          "protein": 17,
+          "sugar": 9,
+          "fiber": 2,
+          "sodium": 718
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 1600,
+          "fat": 85,
+          "protein": 90,
+          "sugar": 35,
+          "fiber": 7,
+          "sodium": 2800
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "7af42825-69e5-441e-b6b5-441c6a22f606",
+    "name": "Birthday Cake",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 58,
+        "full": {
+          "calories": 420,
+          "fat": 20,
+          "protein": 6,
+          "sugar": 41,
+          "fiber": 2,
+          "sodium": 329
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 850,
+          "fat": 40,
+          "protein": 10,
+          "sugar": 85,
+          "fiber": 2,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "7ce31ac1-b2d1-418e-b5e4-6cd93352ef24",
+    "name": "Whole Con Carne Pizza",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 273,
+        "full": {
+          "calories": 2453,
+          "fat": 103,
+          "protein": 103,
+          "sugar": 18,
+          "fiber": 12,
+          "sodium": 5400
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 900,
+          "fat": 45,
+          "protein": 40,
+          "sugar": 8,
+          "fiber": 4,
+          "sodium": 2100
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "7ef77ba2-77bb-41d9-bf43-02a534554a85",
+    "name": "Hot Fudge Brownie Sundae",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 128,
+        "full": {
+          "calories": 967,
+          "fat": 45,
+          "protein": 13,
+          "sugar": 97,
+          "fiber": 4,
+          "sodium": 400
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 60
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 950,
+          "fat": 50,
+          "protein": 12,
+          "sugar": 85,
+          "fiber": 5,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "8484d3f9-7466-4236-a98c-7aa7286562e2",
+    "name": "Cheese Pizza Combo",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 64,
+        "full": {
+          "calories": 643,
+          "fat": 32,
+          "protein": 25,
+          "sugar": 6,
+          "fiber": 3,
+          "sodium": 1225
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1300,
+          "fat": 50,
+          "protein": 40,
+          "sugar": 60,
+          "fiber": 6,
+          "sodium": 1900
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "84911792-f26a-4d21-b3da-422352e91952",
+    "name": "Meat Hater's Pizza Combo",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 80,
+        "full": {
+          "calories": 761,
+          "fat": 34,
+          "protein": 33,
+          "sugar": 7,
+          "fiber": 6,
+          "sodium": 1605
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1250,
+          "fat": 45,
+          "protein": 35,
+          "sugar": 60,
+          "fiber": 9,
+          "sodium": 1700
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "86c76969-d98b-44e8-8904-3f25b12fdfb4",
+    "name": "Penne Pasta",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 76,
+        "full": {
+          "calories": 772,
+          "fat": 33,
+          "protein": 30,
+          "sugar": 8,
+          "fiber": 5,
+          "sodium": 1228
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 600,
+          "fat": 12,
+          "protein": 18,
+          "sugar": 12,
+          "fiber": 7,
+          "sodium": 900
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "88064e98-9697-4538-b8fd-8a8f8d9234e5",
+    "name": "Churro Sundae",
+    "category": "dessert",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 42,
+        "full": {
+          "calories": 332,
+          "fat": 16,
+          "protein": 5,
+          "sugar": 24,
+          "fiber": 2,
+          "sodium": 222
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 115,
+        "full": {
+          "calories": 750,
+          "fat": 25,
+          "protein": 8,
+          "sugar": 85,
+          "fiber": 2,
+          "sodium": 250
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "88bcfcaa-b39d-4f2f-a54a-8a294ba3a4cb",
+    "name": "Red Velvet",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 56,
+        "full": {
+          "calories": 460,
+          "fat": 21,
+          "protein": 5,
+          "sugar": 45,
+          "fiber": 1,
+          "sodium": 354
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 850,
+          "fat": 40,
+          "protein": 10,
+          "sugar": 85,
+          "fiber": 2,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "8abc36a2-31c4-4e6e-9d4d-24aff41ab05d",
+    "name": "Traditional Gyro Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 131,
+        "full": {
+          "calories": 1045,
+          "fat": 41,
+          "protein": 28,
+          "sugar": 40,
+          "fiber": 9,
+          "sodium": 1550
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 40,
+          "sugar": 45,
+          "fiber": 6,
+          "sodium": 2000
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "8db1dfcb-d8b4-4447-946f-0dadee84b611",
+    "name": "Rocky Road Baked Alaska",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 58,
+        "full": {
+          "calories": 560,
+          "fat": 34,
+          "protein": 10,
+          "sugar": 48,
+          "fiber": 2,
+          "sodium": 150
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 900,
+          "fat": 45,
+          "protein": 12,
+          "sugar": 80,
+          "fiber": 4,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "917661c1-4d78-4219-9af6-ac010953f18b",
+    "name": "Seven Layer Chocolate Decadence Cake",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 116,
+        "full": {
+          "calories": 975,
+          "fat": 53,
+          "protein": 9,
+          "sugar": 89,
+          "fiber": 4,
+          "sodium": 611
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 80,
+        "full": {
+          "calories": 700,
+          "fat": 40,
+          "protein": 8,
+          "sugar": 60,
+          "fiber": 4,
+          "sodium": 300
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "98230d58-d5bc-414a-9434-5130e7c7e395",
+    "name": "Shrimp Florentine",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 35,
+        "full": {
+          "calories": 469,
+          "fat": 21,
+          "protein": 32,
+          "sugar": 4,
+          "fiber": 3,
+          "sodium": 994
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 75,
+        "full": {
+          "calories": 850,
+          "fat": 45,
+          "protein": 35,
+          "sugar": 6,
+          "fiber": 5,
+          "sodium": 1400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "9a35eaaf-0fcb-4f0b-acd5-b301a1722b9d",
+    "name": "Sand Pail Ice Cream Sundae",
+    "category": "dessert",
+    "park": "Walt Disney World & Universal Orlando - Additional Dining",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 74,
+        "full": {
+          "calories": 498,
+          "fat": 19,
+          "protein": 7,
+          "sugar": 59,
+          "fiber": 1,
+          "sodium": 224
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 1000,
+          "fat": 48,
+          "protein": 14,
+          "sugar": 95,
+          "fiber": 3,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "9ce819aa-deeb-4673-8ade-6968a25cb037",
+    "name": "Toku-Jyo Sushi Platter",
+    "category": "entree",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 6,
+        "full": {
+          "calories": 540,
+          "fat": 18,
+          "protein": 88,
+          "sugar": 2,
+          "fiber": 1,
+          "sodium": 1500
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 700,
+          "fat": 12,
+          "protein": 35,
+          "sugar": 12,
+          "fiber": 3,
+          "sodium": 1500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "a1f05654-c604-4f1b-be99-7b8f5dd697b7",
+    "name": "Hot Honey Chicken Sandwich Platter",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 79,
+        "full": {
+          "calories": 940,
+          "fat": 47,
+          "protein": 41,
+          "sugar": 28,
+          "fiber": 4,
+          "sodium": 1527
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 115,
+        "full": {
+          "calories": 1200,
+          "fat": 55,
+          "protein": 50,
+          "sugar": 25,
+          "fiber": 6,
+          "sodium": 2300
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "a4a54f80-75a6-4234-b063-c08eb8c85ff4",
+    "name": "Not so Little Chicken Sandwich",
+    "category": "entree",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 66,
+        "full": {
+          "calories": 818,
+          "fat": 38,
+          "protein": 42,
+          "sugar": 9,
+          "fiber": 4,
+          "sodium": 1399
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 45,
+          "sugar": 20,
+          "fiber": 5,
+          "sodium": 2200
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "a7caec41-40a3-4adc-8737-b3865d7db9d4",
+    "name": "Meat Liker's Pizza Combo",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 69,
+        "full": {
+          "calories": 753,
+          "fat": 39,
+          "protein": 34,
+          "sugar": 7,
+          "fiber": 4,
+          "sodium": 1849
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1450,
+          "fat": 65,
+          "protein": 50,
+          "sugar": 60,
+          "fiber": 6,
+          "sodium": 2400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "a94721d3-4a08-4c7f-b50e-609ac8490f0d",
+    "name": "Whole Pepperoni Pizza",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 102,
+        "full": {
+          "calories": 880,
+          "fat": 36,
+          "protein": 36,
+          "sugar": 10,
+          "fiber": 4,
+          "sodium": 1833
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 800,
+          "fat": 35,
+          "protein": 35,
+          "sugar": 8,
+          "fiber": 4,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "aa18f09e-718f-42d7-957d-92b5cd45f766",
+    "name": "Hazelnut & Banana",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 73,
+        "full": {
+          "calories": 840,
+          "fat": 49,
+          "protein": 25,
+          "sugar": 39,
+          "fiber": 5,
+          "sodium": 654
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 800,
+          "fat": 40,
+          "protein": 12,
+          "sugar": 60,
+          "fiber": 5,
+          "sodium": 300
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "ac3856ea-0db0-47c5-b0e2-18b9c5ba3586",
+    "name": "Cookie Jar",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 37,
+        "full": {
+          "calories": 267,
+          "fat": 14,
+          "protein": 3,
+          "sugar": 22,
+          "fiber": 1,
+          "sodium": 219
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 115,
+        "full": {
+          "calories": 950,
+          "fat": 45,
+          "protein": 12,
+          "sugar": 85,
+          "fiber": 3,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "ad227c66-0414-4638-9b9c-0022bf0f198e",
+    "name": "Bread and Butter Pudding",
+    "category": "dessert",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 119,
+        "full": {
+          "calories": 879,
+          "fat": 40,
+          "protein": 12,
+          "sugar": 83,
+          "fiber": 3,
+          "sodium": 508
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 75,
+        "full": {
+          "calories": 600,
+          "fat": 28,
+          "protein": 10,
+          "sugar": 50,
+          "fiber": 2,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "ae287f09-f8e2-4e2a-a0b1-eb9fa5a7c45e",
+    "name": "Campfire Strawberry Shortcake",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 120,
+        "full": {
+          "calories": 1047,
+          "fat": 57,
+          "protein": 14,
+          "sugar": 85,
+          "fiber": 5,
+          "sodium": 340
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 750,
+          "fat": 35,
+          "protein": 9,
+          "sugar": 65,
+          "fiber": 3,
+          "sodium": 500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "b0060ce0-b59a-4562-b5f8-b8ad755ec932",
+    "name": "Fettuccine Alfredo With Chicken Platter",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 95,
+        "full": {
+          "calories": 1109,
+          "fat": 58,
+          "protein": 49,
+          "sugar": 25,
+          "fiber": 5,
+          "sodium": 1321
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1400,
+          "fat": 80,
+          "protein": 55,
+          "sugar": 8,
+          "fiber": 6,
+          "sodium": 2300
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "b553b93c-b8d0-4951-91f1-251aa549295e",
+    "name": "Pumpkin Caramel Double Frosted Cake",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 750,
+          "fat": 38,
+          "protein": 7,
+          "sugar": 75,
+          "fiber": 1,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "b55545d5-4f7c-4857-880d-c969a16e1f90",
+    "name": "Brookies, Cookies & Cream",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 58,
+        "full": {
+          "calories": 502,
+          "fat": 26,
+          "protein": 8,
+          "sugar": 45,
+          "fiber": 1,
+          "sodium": 248
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 1000,
+          "fat": 50,
+          "protein": 13,
+          "sugar": 90,
+          "fiber": 4,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "b6614e14-642f-42a2-88d3-18c515c0b891",
+    "name": "Blood Orange Chicken Sandwich",
+    "category": "entree",
+    "park": "Walt Disney World & Universal Orlando - Additional Dining",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 51,
+        "full": {
+          "calories": 615,
+          "fat": 28,
+          "protein": 31,
+          "sugar": 11,
+          "fiber": 3,
+          "sodium": 1023
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 115,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 45,
+          "sugar": 25,
+          "fiber": 6,
+          "sodium": 2100
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "ba648be1-d7ba-40ad-a3d2-37d9bf6293bd",
+    "name": "Falafel Gyro Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 90,
+        "full": {
+          "calories": 937,
+          "fat": 52,
+          "protein": 28,
+          "sugar": 38,
+          "fiber": 6,
+          "sodium": 1650
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 130,
+        "full": {
+          "calories": 1100,
+          "fat": 45,
+          "protein": 25,
+          "sugar": 45,
+          "fiber": 10,
+          "sodium": 1900
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "bbdd01d1-4673-4d22-be70-fad1326de376",
+    "name": "Whole Veggie Pizza",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 212,
+        "full": {
+          "calories": 2023,
+          "fat": 91,
+          "protein": 85,
+          "sugar": 17,
+          "fiber": 11,
+          "sodium": 3904
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 65,
+        "full": {
+          "calories": 550,
+          "fat": 22,
+          "protein": 22,
+          "sugar": 8,
+          "fiber": 4,
+          "sodium": 1200
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "bc861d5d-9e00-4bad-b368-4cb68fde3cdc",
+    "name": "Vegetable Lo Mein Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 124,
+        "full": {
+          "calories": 813,
+          "fat": 26,
+          "protein": 20,
+          "sugar": 17,
+          "fiber": 7,
+          "sodium": 1872
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 150,
+        "full": {
+          "calories": 900,
+          "fat": 22,
+          "protein": 18,
+          "sugar": 75,
+          "fiber": 6,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "bef609d7-e8b9-4eb9-aba7-b6bc052612a7",
+    "name": "The Ribwich Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 95,
+        "full": {
+          "calories": 1377,
+          "fat": 76,
+          "protein": 77,
+          "sugar": 31,
+          "fiber": 7,
+          "sodium": 3002
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 200,
+        "full": {
+          "calories": 1800,
+          "fat": 85,
+          "protein": 50,
+          "sugar": 90,
+          "fiber": 7,
+          "sodium": 2600
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "c21ea55d-52f6-4fa9-a552-4c170cbb1018",
+    "name": "Banana Cream Pie",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 47,
+        "full": {
+          "calories": 391,
+          "fat": 20,
+          "protein": 6,
+          "sugar": 34,
+          "fiber": 1,
+          "sodium": 202
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 140,
+        "full": {
+          "calories": 1100,
+          "fat": 55,
+          "protein": 14,
+          "sugar": 105,
+          "fiber": 5,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "c3259148-c59e-4777-baf1-9866e975b159",
+    "name": "Basket O' Shrimp Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 64,
+        "full": {
+          "calories": 730,
+          "fat": 37,
+          "protein": 31,
+          "sugar": 7,
+          "fiber": 5,
+          "sodium": 1600
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1500,
+          "fat": 75,
+          "protein": 40,
+          "sugar": 75,
+          "fiber": 6,
+          "sodium": 2200
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "c353d566-a0b2-424c-9d05-7716b162f7e2",
+    "name": "Signature Amorette's Cake",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 500,
+          "fat": 25,
+          "protein": 6,
+          "sugar": 39,
+          "fiber": 2,
+          "sodium": 254
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 70,
+        "full": {
+          "calories": 600,
+          "fat": 32,
+          "protein": 7,
+          "sugar": 55,
+          "fiber": 2,
+          "sodium": 280
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "c394a0c9-80ef-4971-bbcc-bc57ace68a0b",
+    "name": "Crispy Garden Vegan Sandwich Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 98,
+        "full": {
+          "calories": 881,
+          "fat": 43,
+          "protein": 27,
+          "sugar": 10,
+          "fiber": 10,
+          "sodium": 1632
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1300,
+          "fat": 60,
+          "protein": 22,
+          "sugar": 50,
+          "fiber": 9,
+          "sodium": 2100
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "c920601d-6d45-43a8-ae92-0a41df9735b4",
+    "name": "Family Churros",
+    "category": "entree",
+    "park": "Disney's Animal Kingdom",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 73,
+        "full": {
+          "calories": 623,
+          "fat": 36,
+          "protein": 9,
+          "sugar": 38,
+          "fiber": 4,
+          "sodium": 403
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 48,
+        "full": {
+          "calories": 350,
+          "fat": 16,
+          "protein": 4,
+          "sugar": 24,
+          "fiber": 1,
+          "sodium": 220
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "cad75a80-1f22-4456-bb11-ed9f298d77ce",
+    "name": "Pumpkin-spiced Funnel Cake Sundae",
+    "category": "dessert",
+    "park": "Walt Disney World Festivals & Events",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 63,
+        "full": {
+          "calories": 497,
+          "fat": 24,
+          "protein": 6,
+          "sugar": 47,
+          "fiber": 1,
+          "sodium": 284
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 140,
+        "full": {
+          "calories": 1100,
+          "fat": 55,
+          "protein": 12,
+          "sugar": 85,
+          "fiber": 4,
+          "sodium": 600
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "ceec7758-2a24-41a4-a957-e55cd94609b7",
+    "name": "No Way Jose Sundae",
+    "category": "dessert",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 68,
+        "full": {
+          "calories": 447,
+          "fat": 15,
+          "protein": 7,
+          "sugar": 55,
+          "fiber": 1,
+          "sodium": 174
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 1000,
+          "fat": 60,
+          "protein": 18,
+          "sugar": 80,
+          "fiber": 4,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "d2b3b935-8e7a-4762-8570-661220b147ad",
+    "name": "Burrito",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 90,
+        "full": {
+          "calories": 779,
+          "fat": 29,
+          "protein": 32,
+          "sugar": 6,
+          "fiber": 9,
+          "sodium": 1292
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 52
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 45,
+          "sugar": 8,
+          "fiber": 14,
+          "sodium": 2200
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "d395b5a9-f7af-4905-80a6-c760a8c78139",
+    "name": "Apple Pie",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 68,
+        "full": {
+          "calories": 459,
+          "fat": 19,
+          "protein": 5,
+          "sugar": 45,
+          "fiber": 2,
+          "sodium": 298
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 800,
+          "fat": 36,
+          "protein": 8,
+          "sugar": 65,
+          "fiber": 4,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "df6b5e6e-6bfe-4406-bb8e-1a5fe3a29e6b",
+    "name": "Warm Chocolate Peanut Butter Cookie Sundae",
+    "category": "dessert",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 38,
+        "full": {
+          "calories": 289,
+          "fat": 14,
+          "protein": 3,
+          "sugar": 22,
+          "fiber": 1,
+          "sodium": 219
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 900,
+          "fat": 52,
+          "protein": 16,
+          "sugar": 65,
+          "fiber": 4,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "e9291093-81c8-45cb-9be9-5ee9c6a07388",
+    "name": "Whole Veggie Bianca Pizza",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 146,
+        "full": {
+          "calories": 1251,
+          "fat": 46,
+          "protein": 52,
+          "sugar": 13,
+          "fiber": 7,
+          "sodium": 2523
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 62,
+        "full": {
+          "calories": 600,
+          "fat": 28,
+          "protein": 24,
+          "sugar": 6,
+          "fiber": 4,
+          "sodium": 1250
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "ea72175f-95fb-43db-978e-249885b4b682",
+    "name": "Tiffins Signature Bread Service",
+    "category": "entree",
+    "park": "Disney's Animal Kingdom",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 53,
+        "full": {
+          "calories": 550,
+          "fat": 32,
+          "protein": 12,
+          "sugar": 18,
+          "fiber": 3,
+          "sodium": 523
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 65,
+        "full": {
+          "calories": 500,
+          "fat": 20,
+          "protein": 11,
+          "sugar": 14,
+          "fiber": 4,
+          "sodium": 750
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "eff92d67-6819-41bb-a519-4568b9bd08c8",
+    "name": "Chocolate Brownie Bark",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 51,
+        "full": {
+          "calories": 396,
+          "fat": 22,
+          "protein": 5,
+          "sugar": 36,
+          "fiber": 2,
+          "sodium": 189
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 60
+      },
+      {
+        "method": "decomposition",
+        "carbs": 115,
+        "full": {
+          "calories": 950,
+          "fat": 50,
+          "protein": 12,
+          "sugar": 90,
+          "fiber": 6,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "f6d32c33-ab89-43ee-870c-889cad2bc786",
+    "name": "Jumbo Pepperoni Pizza Platter",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 81,
+        "full": {
+          "calories": 913,
+          "fat": 48,
+          "protein": 36,
+          "sugar": 9,
+          "fiber": 5,
+          "sodium": 1367
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 70,
+        "full": {
+          "calories": 750,
+          "fat": 38,
+          "protein": 30,
+          "sugar": 7,
+          "fiber": 4,
+          "sodium": 1700
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "fad5176f-f256-4421-817b-339945747e50",
+    "name": "Chicken Parmesan Platter",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 115,
+        "full": {
+          "calories": 1266,
+          "fat": 56,
+          "protein": 71,
+          "sugar": 13,
+          "fiber": 7,
+          "sodium": 2866
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 80,
+        "full": {
+          "calories": 1100,
+          "fat": 55,
+          "protein": 60,
+          "sugar": 10,
+          "fiber": 5,
+          "sodium": 2300
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "fb8a0c2b-7944-44ba-b44f-2e6a877db5c2",
+    "name": "Triple Layer Chocolate Cake",
+    "category": "dessert",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 77,
+        "full": {
+          "calories": 614,
+          "fat": 33,
+          "protein": 6,
+          "sugar": 57,
+          "fiber": 2,
+          "sodium": 436
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 750,
+          "fat": 40,
+          "protein": 8,
+          "sugar": 70,
+          "fiber": 4,
+          "sodium": 380
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "fc151641-2c98-4352-b891-7f9c025d40ca",
+    "name": "Bubble Waffle Sundae",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 55,
+        "full": {
+          "calories": 411,
+          "fat": 16,
+          "protein": 8,
+          "sugar": 20,
+          "fiber": 1,
+          "sodium": 466
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 800,
+          "fat": 38,
+          "protein": 12,
+          "sugar": 65,
+          "fiber": 2,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "ffaf0a74-56ab-4520-8d16-f2341318eaeb",
+    "name": "Jumbo Veggie Slice Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 113,
+        "full": {
+          "calories": 1049,
+          "fat": 47,
+          "protein": 40,
+          "sugar": 28,
+          "fiber": 5,
+          "sodium": 2223
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 850,
+          "fat": 32,
+          "protein": 22,
+          "sugar": 50,
+          "fiber": 4,
+          "sodium": 1500
+        }
+      }
+    ],
+    "priority": 27
+  },
+  {
+    "id": "30a4db87-e0f0-4434-88c9-f71a92c274a7",
+    "name": "Lamb Hummus",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 77,
+        "full": {
+          "calories": 654,
+          "fat": 30,
+          "protein": 21,
+          "sugar": 7,
+          "fiber": 14,
+          "sodium": 1122
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 60,
+        "full": {
+          "calories": 750,
+          "fat": 42,
+          "protein": 32,
+          "sugar": 5,
+          "fiber": 10,
+          "sodium": 1300
+        }
+      }
+    ],
+    "priority": 26.76
+  },
+  {
+    "id": "b38a4237-eecc-477d-8137-14a53348a836",
+    "name": "Meatball Sub Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 69,
+        "full": {
+          "calories": 774,
+          "fat": 38,
+          "protein": 37,
+          "sugar": 9,
+          "fiber": 4,
+          "sodium": 1815
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 45,
+          "sugar": 45,
+          "fiber": 5,
+          "sodium": 2400
+        }
+      }
+    ],
+    "priority": 26.76
+  },
+  {
+    "id": "30f685f0-32c9-4947-ae58-26bf442a1899",
+    "name": "Spicy Chicken Sandwich Platter",
+    "category": "entree",
+    "park": "Universal Volcano Bay",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 81,
+        "full": {
+          "calories": 1021,
+          "fat": 59,
+          "protein": 42,
+          "sugar": 10,
+          "fiber": 5,
+          "sodium": 2211
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 1200,
+          "fat": 60,
+          "protein": 45,
+          "sugar": 18,
+          "fiber": 5,
+          "sodium": 2200
+        }
+      }
+    ],
+    "priority": 26.64
+  },
+  {
+    "id": "6221dac8-dc99-4fae-b4f2-643d7ccb95fa",
+    "name": "Caramel Apple",
+    "category": "dessert",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 54,
+        "full": {
+          "calories": 385,
+          "fat": 16,
+          "protein": 4,
+          "sugar": 38,
+          "fiber": 1,
+          "sodium": 243
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 85,
+        "full": {
+          "calories": 450,
+          "fat": 12,
+          "protein": 3,
+          "sugar": 70,
+          "fiber": 4,
+          "sodium": 150
+        }
+      }
+    ],
+    "priority": 26.52
+  },
+  {
+    "id": "01422eb0-4e57-428b-af13-70e89f28115d",
+    "name": "Funnel Cake Gift Kit",
+    "category": "dessert",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 56,
+        "full": {
+          "calories": 449,
+          "fat": 23,
+          "protein": 5,
+          "sugar": 42,
+          "fiber": 1,
+          "sodium": 348
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 900,
+          "fat": 45,
+          "protein": 10,
+          "sugar": 55,
+          "fiber": 3,
+          "sodium": 550
+        }
+      }
+    ],
+    "priority": 26.400000000000002
+  },
+  {
+    "id": "1f18eaff-cc64-433f-a7d4-f24d25fec157",
+    "name": "Jumbo Cheese Slice Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 87,
+        "full": {
+          "calories": 832,
+          "fat": 37,
+          "protein": 36,
+          "sugar": 7,
+          "fiber": 4,
+          "sodium": 1957
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 800,
+          "fat": 28,
+          "protein": 24,
+          "sugar": 48,
+          "fiber": 3,
+          "sodium": 1400
+        }
+      }
+    ],
+    "priority": 26.400000000000002
+  },
+  {
+    "id": "22155847-d6fc-4a65-a38e-43206adfe012",
+    "name": "Bimini Chicken",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 52,
+        "full": {
+          "calories": 960,
+          "fat": 57,
+          "protein": 50,
+          "sugar": 16,
+          "fiber": 3,
+          "sodium": 1633
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 50,
+          "sugar": 30,
+          "fiber": 6,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 26.400000000000002
+  },
+  {
+    "id": "2f44c838-b8a6-40e0-b2e9-a8d7852d4371",
+    "name": "Sand Pail Sundae",
+    "category": "dessert",
+    "park": "Disney's Blizzard Beach Water Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 168,
+        "full": {
+          "calories": 1130,
+          "fat": 44,
+          "protein": 16,
+          "sugar": 119,
+          "fiber": 3,
+          "sodium": 405
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 700,
+          "fat": 32,
+          "protein": 9,
+          "sugar": 75,
+          "fiber": 2,
+          "sodium": 320
+        }
+      }
+    ],
+    "priority": 26.400000000000002
+  },
+  {
+    "id": "6b2b9682-342e-4620-8bdd-30e9ddf3162a",
+    "name": "Candy Bowl Sundae",
+    "category": "dessert",
+    "park": "Walt Disney World Festivals & Events",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 42,
+        "full": {
+          "calories": 281,
+          "fat": 11,
+          "protein": 5,
+          "sugar": 23,
+          "fiber": 1,
+          "sodium": 252
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 900,
+          "fat": 45,
+          "protein": 12,
+          "sugar": 95,
+          "fiber": 3,
+          "sodium": 380
+        }
+      }
+    ],
+    "priority": 26.400000000000002
+  },
+  {
+    "id": "7ede4d9a-51b7-4b72-b91a-e5c7ca0d3074",
+    "name": "Whole Pesto Chicken Pizza",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 100,
+        "full": {
+          "calories": 999,
+          "fat": 41,
+          "protein": 56,
+          "sugar": 18,
+          "fiber": 6,
+          "sodium": 1966
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 58,
+        "full": {
+          "calories": 600,
+          "fat": 28,
+          "protein": 32,
+          "sugar": 5,
+          "fiber": 3,
+          "sodium": 1300
+        }
+      }
+    ],
+    "priority": 26.400000000000002
+  },
+  {
+    "id": "9983daac-11da-4321-8430-d334572fc418",
+    "name": "Jamacaroni and Cheese",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 28,
+        "full": {
+          "calories": 226,
+          "fat": 9,
+          "protein": 8,
+          "sugar": 3,
+          "fiber": 1,
+          "sodium": 478
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 85,
+        "full": {
+          "calories": 700,
+          "fat": 32,
+          "protein": 18,
+          "sugar": 18,
+          "fiber": 5,
+          "sodium": 1100
+        }
+      }
+    ],
+    "priority": 26.400000000000002
+  },
+  {
+    "id": "afc01b04-883a-487b-8ed3-408582f8f3ec",
+    "name": "Earl Grey Lavender Cake",
+    "category": "dessert",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 60,
+        "full": {
+          "calories": 500,
+          "fat": 26,
+          "protein": 5,
+          "sugar": 45,
+          "fiber": 1,
+          "sodium": 280
+        }
+      }
+    ],
+    "priority": 26.400000000000002
+  },
+  {
+    "id": "c0081f95-da8a-4194-a91e-ef43b785d872",
+    "name": "Devil's Food Chocolate Cake",
+    "category": "dessert",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 77,
+        "full": {
+          "calories": 614,
+          "fat": 33,
+          "protein": 6,
+          "sugar": 57,
+          "fiber": 2,
+          "sodium": 436
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 800,
+          "fat": 42,
+          "protein": 9,
+          "sugar": 72,
+          "fiber": 5,
+          "sodium": 420
+        }
+      }
+    ],
+    "priority": 26.400000000000002
+  },
+  {
+    "id": "f5fc505a-bf32-43ba-8eeb-f5edf1293291",
+    "name": "Jumbo Pepperoni Slice Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 87,
+        "full": {
+          "calories": 871,
+          "fat": 40,
+          "protein": 38,
+          "sugar": 7,
+          "fiber": 4,
+          "sodium": 2100
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 1150,
+          "fat": 55,
+          "protein": 35,
+          "sugar": 45,
+          "fiber": 5,
+          "sodium": 2300
+        }
+      }
+    ],
+    "priority": 26.16
+  },
+  {
+    "id": "24c07c54-37b7-4b59-a24d-f4fe72944e4f",
+    "name": "Roasted Pernil Platter",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 102,
+        "full": {
+          "calories": 1276,
+          "fat": 60,
+          "protein": 80,
+          "sugar": 14,
+          "fiber": 12,
+          "sodium": 2640
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 1300,
+          "fat": 60,
+          "protein": 70,
+          "sugar": 20,
+          "fiber": 14,
+          "sodium": 2200
+        }
+      }
+    ],
+    "priority": 26.040000000000003
+  },
+  {
+    "id": "011b9cda-ba26-43bf-987a-97e07d487ebc",
+    "name": "Vegan Field Roast Chili Dog Platter",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 124,
+        "full": {
+          "calories": 1080,
+          "fat": 48,
+          "protein": 38,
+          "sugar": 9,
+          "fiber": 17,
+          "sodium": 2650
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 85,
+        "full": {
+          "calories": 750,
+          "fat": 30,
+          "protein": 30,
+          "sugar": 12,
+          "fiber": 15,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 25.8
+  },
+  {
+    "id": "5e9a8b74-01d4-45b6-8380-38c727c81f47",
+    "name": "Caribbean Chicken Soup Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 126,
+        "full": {
+          "calories": 853,
+          "fat": 24,
+          "protein": 33,
+          "sugar": 42,
+          "fiber": 8,
+          "sodium": 2233
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 850,
+          "fat": 30,
+          "protein": 35,
+          "sugar": 35,
+          "fiber": 8,
+          "sodium": 2000
+        }
+      }
+    ],
+    "priority": 25.8
+  },
+  {
+    "id": "e96fb5e2-9850-4d4d-8540-2fc90b69fba0",
+    "name": "Banana Split",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 39,
+        "full": {
+          "calories": 384,
+          "fat": 13,
+          "protein": 17,
+          "sugar": 12,
+          "fiber": 3,
+          "sodium": 532
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 800,
+          "fat": 35,
+          "protein": 12,
+          "sugar": 85,
+          "fiber": 5,
+          "sodium": 250
+        }
+      }
+    ],
+    "priority": 25.8
+  },
+  {
+    "id": "a9c0d3b1-52ba-4fdc-b603-756242dc0d5f",
+    "name": "Mother Nature Burger Platter",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 175,
+        "full": {
+          "calories": 1619,
+          "fat": 78,
+          "protein": 55,
+          "sugar": 51,
+          "fiber": 13,
+          "sodium": 2573
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1000,
+          "fat": 50,
+          "protein": 25,
+          "sugar": 10,
+          "fiber": 16,
+          "sodium": 1900
+        }
+      }
+    ],
+    "priority": 25.68
+  },
+  {
+    "id": "01aed4a0-9a37-48a7-acf9-3012b41e141e",
+    "name": "Mickey Sink Sundae",
+    "category": "dessert",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 91,
+        "full": {
+          "calories": 686,
+          "fat": 31,
+          "protein": 8,
+          "sugar": 52,
+          "fiber": 4,
+          "sodium": 475
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 75,
+        "full": {
+          "calories": 600,
+          "fat": 30,
+          "protein": 8,
+          "sugar": 60,
+          "fiber": 2,
+          "sodium": 200
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "41d6fcc2-237c-4484-9320-4811e2d2ebe5",
+    "name": "Vegetable Pasta",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 37,
+        "full": {
+          "calories": 186,
+          "fat": 2,
+          "protein": 7,
+          "sugar": 4,
+          "fiber": 3,
+          "sodium": 931
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 600,
+          "fat": 14,
+          "protein": 18,
+          "sugar": 16,
+          "fiber": 10,
+          "sodium": 900
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "52bb136a-02b3-4ee1-93a7-ebbf6259f70c",
+    "name": "Tacos de Camarón",
+    "category": "entree",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 35,
+        "full": {
+          "calories": 406,
+          "fat": 20,
+          "protein": 21,
+          "sugar": 3,
+          "fiber": 4,
+          "sodium": 863
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 52
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 950,
+          "fat": 35,
+          "protein": 40,
+          "sugar": 10,
+          "fiber": 14,
+          "sodium": 1900
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "6b9703f2-6185-4b95-ad56-1c850bc6e713",
+    "name": "Ital Stew",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 54,
+        "full": {
+          "calories": 549,
+          "fat": 23,
+          "protein": 32,
+          "sugar": 8,
+          "fiber": 8,
+          "sodium": 1315
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 800,
+          "fat": 28,
+          "protein": 18,
+          "sugar": 25,
+          "fiber": 16,
+          "sodium": 1200
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "838355de-4a1a-44a8-b20c-4d5f7644bdad",
+    "name": "Chicken alla Parmigiana",
+    "category": "entree",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 81,
+        "full": {
+          "calories": 1005,
+          "fat": 47,
+          "protein": 55,
+          "sugar": 10,
+          "fiber": 5,
+          "sodium": 1885
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 1200,
+          "fat": 55,
+          "protein": 65,
+          "sugar": 16,
+          "fiber": 8,
+          "sodium": 2300
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "96382da2-affe-40da-ab32-86f9e524a7b0",
+    "name": "The Ribwich Platter",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 75,
+        "full": {
+          "calories": 1375,
+          "fat": 80,
+          "protein": 88,
+          "sugar": 24,
+          "fiber": 7,
+          "sodium": 3650
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1150,
+          "fat": 55,
+          "protein": 40,
+          "sugar": 25,
+          "fiber": 8,
+          "sodium": 2100
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "af56e458-14f7-4b96-afb4-029e90213b95",
+    "name": "Cookies & Cream Beignets",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 58,
+        "full": {
+          "calories": 502,
+          "fat": 26,
+          "protein": 8,
+          "sugar": 45,
+          "fiber": 1,
+          "sodium": 248
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 700,
+          "fat": 32,
+          "protein": 9,
+          "sugar": 45,
+          "fiber": 3,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "b5cdcf42-0114-4952-a512-d2b49137a3b8",
+    "name": "Reindeer Sundae",
+    "category": "dessert",
+    "park": "Walt Disney World Festivals & Events",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 68,
+        "full": {
+          "calories": 447,
+          "fat": 15,
+          "protein": 7,
+          "sugar": 55,
+          "fiber": 1,
+          "sodium": 174
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 750,
+          "fat": 35,
+          "protein": 12,
+          "sugar": 70,
+          "fiber": 3,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "c76119ef-3714-42b0-9f72-af9b117066aa",
+    "name": "Classic Mickey Caramel Apple with M&M'S",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 138,
+        "full": {
+          "calories": 847,
+          "fat": 30,
+          "protein": 6,
+          "sugar": 113,
+          "fiber": 6,
+          "sodium": 199
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 550,
+          "fat": 18,
+          "protein": 5,
+          "sugar": 80,
+          "fiber": 4,
+          "sodium": 150
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "c87016b5-6c83-44d1-a141-36ff9e359eb7",
+    "name": "Sideshow Bob Foot-Long Platter",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 252,
+        "full": {
+          "calories": 2500,
+          "fat": 126,
+          "protein": 62,
+          "sugar": 108,
+          "fiber": 13,
+          "sodium": 4900
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 1400,
+          "fat": 80,
+          "protein": 45,
+          "sugar": 15,
+          "fiber": 9,
+          "sodium": 3000
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "eae319d1-b8fa-4da7-aae5-2c2c318bbbf8",
+    "name": "Bang-Bang Chicken",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 52,
+        "full": {
+          "calories": 960,
+          "fat": 57,
+          "protein": 50,
+          "sugar": 16,
+          "fiber": 3,
+          "sodium": 1633
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 950,
+          "fat": 42,
+          "protein": 45,
+          "sugar": 18,
+          "fiber": 6,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "efab1145-5072-4797-b88d-5359667db696",
+    "name": "Smoked Half Chicken",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 54,
+        "full": {
+          "calories": 1035,
+          "fat": 54,
+          "protein": 77,
+          "sugar": 9,
+          "fiber": 4,
+          "sodium": 2620
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 1400,
+          "fat": 70,
+          "protein": 85,
+          "sugar": 30,
+          "fiber": 8,
+          "sodium": 2400
+        }
+      }
+    ],
+    "priority": 25.2
+  },
+  {
+    "id": "b79b31a9-50fa-4e7d-80fe-2e97d713478a",
+    "name": "Chocolate Dirt Cannoli",
+    "category": "dessert",
+    "park": "Walt Disney World Festivals & Events",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 23,
+        "full": {
+          "calories": 142,
+          "fat": 5,
+          "protein": 2,
+          "sugar": 17,
+          "fiber": 0,
+          "sodium": 152
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 50,
+        "full": {
+          "calories": 450,
+          "fat": 24,
+          "protein": 8,
+          "sugar": 35,
+          "fiber": 2,
+          "sodium": 200
+        }
+      }
+    ],
+    "priority": 25.08
+  },
+  {
+    "id": "97c59dbc-21bd-4b77-9a6e-a3ecf10c79a6",
+    "name": "Tremor Crispy Chicken Sandwich Platter",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 144,
+        "full": {
+          "calories": 1363,
+          "fat": 68,
+          "protein": 49,
+          "sugar": 30,
+          "fiber": 7,
+          "sodium": 2714
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 115,
+        "full": {
+          "calories": 1250,
+          "fat": 65,
+          "protein": 50,
+          "sugar": 10,
+          "fiber": 7,
+          "sodium": 2500
+        }
+      }
+    ],
+    "priority": 24.96
+  },
+  {
+    "id": "286e6506-1491-4869-858f-f2d5e66f122a",
+    "name": "Mac and Cheese Pulled Pork",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 72,
+        "full": {
+          "calories": 967,
+          "fat": 49,
+          "protein": 54,
+          "sugar": 13,
+          "fiber": 3,
+          "sodium": 1673
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 1100,
+          "fat": 60,
+          "protein": 50,
+          "sugar": 15,
+          "fiber": 4,
+          "sodium": 2100
+        }
+      }
+    ],
+    "priority": 24.839999999999996
+  },
+  {
+    "id": "c0ce123d-c1e5-4379-a20e-8750e3900f89",
+    "name": "Clogger Burger Platter",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 110,
+        "full": {
+          "calories": 1411,
+          "fat": 82,
+          "protein": 57,
+          "sugar": 14,
+          "fiber": 7,
+          "sodium": 2585
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 1700,
+          "fat": 105,
+          "protein": 75,
+          "sugar": 12,
+          "fiber": 7,
+          "sodium": 2800
+        }
+      }
+    ],
+    "priority": 24.839999999999996
+  },
+  {
+    "id": "e2f42914-0fb2-4120-bb9a-ed51b10f4a6e",
+    "name": "Cinnamon Bread Pudding",
+    "category": "dessert",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 150,
+        "full": {
+          "calories": 1103,
+          "fat": 51,
+          "protein": 15,
+          "sugar": 107,
+          "fiber": 4,
+          "sodium": 597
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 800,
+          "fat": 35,
+          "protein": 12,
+          "sugar": 70,
+          "fiber": 3,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 24.839999999999996
+  },
+  {
+    "id": "299fdd02-d207-4bfd-82e7-2a206b5e2307",
+    "name": "Chili-Cheese All-Beef Foot-long Hot Dog",
+    "category": "entree",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 52,
+        "full": {
+          "calories": 720,
+          "fat": 48,
+          "protein": 22,
+          "sugar": 4,
+          "fiber": 4,
+          "sodium": 1714
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 115,
+        "full": {
+          "calories": 1300,
+          "fat": 75,
+          "protein": 40,
+          "sugar": 12,
+          "fiber": 8,
+          "sodium": 2700
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "33443cbd-ab46-4ce8-859a-d6bc3a039cee",
+    "name": "Crispy Garden Vegan Sandwich Platter",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 121,
+        "full": {
+          "calories": 977,
+          "fat": 44,
+          "protein": 27,
+          "sugar": 31,
+          "fiber": 10,
+          "sodium": 1539
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1000,
+          "fat": 50,
+          "protein": 22,
+          "sugar": 10,
+          "fiber": 10,
+          "sodium": 1900
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "45e104a9-04ae-47b8-9bb9-101433e2737e",
+    "name": "Brownie Sundae",
+    "category": "dessert",
+    "park": "Disney's Blizzard Beach Water Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 135,
+        "full": {
+          "calories": 970,
+          "fat": 43,
+          "protein": 12,
+          "sugar": 99,
+          "fiber": 4,
+          "sodium": 420
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 60
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 850,
+          "fat": 40,
+          "protein": 10,
+          "sugar": 80,
+          "fiber": 3,
+          "sodium": 320
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "47ab7ce4-3048-4ba5-8e53-9f391c214aee",
+    "name": "Rasta Pasta",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 73,
+        "full": {
+          "calories": 635,
+          "fat": 27,
+          "protein": 26,
+          "sugar": 10,
+          "fiber": 7,
+          "sodium": 1415
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 1150,
+          "fat": 65,
+          "protein": 50,
+          "sugar": 10,
+          "fiber": 6,
+          "sodium": 2000
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "5561d940-bc93-40cf-915e-bd64ca85bcb2",
+    "name": "Spaghetti & Meatballs",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 89,
+        "full": {
+          "calories": 735,
+          "fat": 27,
+          "protein": 30,
+          "sugar": 11,
+          "fiber": 6,
+          "sodium": 1600
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 50,
+          "sugar": 16,
+          "fiber": 8,
+          "sodium": 2000
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "5905ada8-1742-4a86-a111-dfdc414bb7ba",
+    "name": "Zeppole Sundae",
+    "category": "dessert",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 68,
+        "full": {
+          "calories": 447,
+          "fat": 15,
+          "protein": 7,
+          "sugar": 55,
+          "fiber": 1,
+          "sodium": 174
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 800,
+          "fat": 38,
+          "protein": 10,
+          "sugar": 65,
+          "fiber": 3,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "9069b0b1-cc38-4d3d-bd3f-d3aa1336866c",
+    "name": "Cast Iron Apple Pie",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 66,
+        "full": {
+          "calories": 461,
+          "fat": 20,
+          "protein": 4,
+          "sugar": 37,
+          "fiber": 3,
+          "sodium": 304
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 700,
+          "fat": 32,
+          "protein": 6,
+          "sugar": 55,
+          "fiber": 4,
+          "sodium": 420
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "90e6ae51-dfe1-46b0-bcf0-010f29f0d42d",
+    "name": "High-Voltage Chicken Sandwich",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 66,
+        "full": {
+          "calories": 818,
+          "fat": 38,
+          "protein": 42,
+          "sugar": 9,
+          "fiber": 4,
+          "sodium": 1399
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1250,
+          "fat": 65,
+          "protein": 45,
+          "sugar": 9,
+          "fiber": 7,
+          "sodium": 2200
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "a4099e7e-b28f-4906-8c13-5e4efb61de53",
+    "name": "Clam Chowder in Artisan Bread",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 51,
+        "full": {
+          "calories": 412,
+          "fat": 16,
+          "protein": 15,
+          "sugar": 5,
+          "fiber": 3,
+          "sodium": 1256
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 850,
+          "fat": 35,
+          "protein": 28,
+          "sugar": 8,
+          "fiber": 5,
+          "sodium": 2200
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "b1f52f01-837f-49e5-b82b-2b5f3356ac24",
+    "name": "Warm Chocolate Almond Bread",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 125,
+        "full": {
+          "calories": 900,
+          "fat": 36,
+          "protein": 18,
+          "sugar": 45,
+          "fiber": 8,
+          "sodium": 900
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 65,
+        "full": {
+          "calories": 560,
+          "fat": 28,
+          "protein": 9,
+          "sugar": 32,
+          "fiber": 4,
+          "sodium": 380
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "c2305fb4-2d09-460e-85f9-582d75bd0b26",
+    "name": "Rasta Pasta",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 73,
+        "full": {
+          "calories": 635,
+          "fat": 27,
+          "protein": 26,
+          "sugar": 10,
+          "fiber": 7,
+          "sodium": 1415
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 1100,
+          "fat": 58,
+          "protein": 45,
+          "sugar": 10,
+          "fiber": 6,
+          "sodium": 1850
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "cf9cf3c9-0296-4635-a67c-2a1dd6374a61",
+    "name": "Crispy Orange Chicken",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 106,
+        "full": {
+          "calories": 946,
+          "fat": 41,
+          "protein": 41,
+          "sugar": 42,
+          "fiber": 4,
+          "sodium": 1819
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 130,
+        "full": {
+          "calories": 1050,
+          "fat": 38,
+          "protein": 40,
+          "sugar": 35,
+          "fiber": 5,
+          "sodium": 1700
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "eadf124a-6be4-4606-a00c-4d5a1e968268",
+    "name": "BBQ Bacon Cheeseburger",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 57,
+        "full": {
+          "calories": 884,
+          "fat": 53,
+          "protein": 45,
+          "sugar": 9,
+          "fiber": 4,
+          "sodium": 1476
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 1350,
+          "fat": 75,
+          "protein": 50,
+          "sugar": 18,
+          "fiber": 6,
+          "sodium": 2400
+        }
+      }
+    ],
+    "priority": 24.6
+  },
+  {
+    "id": "0320c60f-72ac-430f-aa6b-ba9b8e4658df",
+    "name": "Big Bopper Burger Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 134,
+        "full": {
+          "calories": 1174,
+          "fat": 54,
+          "protein": 36,
+          "sugar": 53,
+          "fiber": 8,
+          "sodium": 1833
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 115,
+        "full": {
+          "calories": 1400,
+          "fat": 78,
+          "protein": 50,
+          "sugar": 20,
+          "fiber": 6,
+          "sodium": 2500
+        }
+      }
+    ],
+    "priority": 24.360000000000003
+  },
+  {
+    "id": "08398061-2ec5-4b37-a26f-b8155d26f22b",
+    "name": "Apple Caramel Bread Pudding",
+    "category": "dessert",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 90,
+        "full": {
+          "calories": 594,
+          "fat": 23,
+          "protein": 7,
+          "sugar": 65,
+          "fiber": 3,
+          "sodium": 366
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 800,
+          "fat": 34,
+          "protein": 10,
+          "sugar": 75,
+          "fiber": 3,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 24.360000000000003
+  },
+  {
+    "id": "2e5d502f-dc38-4f42-91af-1a3c2d858a7d",
+    "name": "Box of Sixteen Ganache Squares",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 392,
+          "fat": 13,
+          "protein": 7,
+          "sugar": 30,
+          "fiber": 4,
+          "sodium": 294
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 18,
+        "full": {
+          "calories": 220,
+          "fat": 15,
+          "protein": 2,
+          "sugar": 15,
+          "fiber": 1,
+          "sodium": 25
+        }
+      }
+    ],
+    "priority": 24.360000000000003
+  },
+  {
+    "id": "4ed1528e-7c25-46a1-8513-aaca24d93f76",
+    "name": "Bird is the Word Sandwich",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 41
+      },
+      {
+        "method": "decomposition",
+        "carbs": 70,
+        "full": {
+          "calories": 900,
+          "fat": 50,
+          "protein": 42,
+          "sugar": 10,
+          "fiber": 3,
+          "sodium": 1900
+        }
+      }
+    ],
+    "priority": 24.360000000000003
+  },
+  {
+    "id": "71830cea-7d9e-409d-98bb-cc4917be614d",
+    "name": "Drive-In BBQ Burger",
+    "category": "entree",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 83,
+        "full": {
+          "calories": 1086,
+          "fat": 65,
+          "protein": 43,
+          "sugar": 14,
+          "fiber": 7,
+          "sodium": 3010
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1350,
+          "fat": 74,
+          "protein": 48,
+          "sugar": 18,
+          "fiber": 6,
+          "sodium": 2300
+        }
+      }
+    ],
+    "priority": 24.360000000000003
+  },
+  {
+    "id": "147be38b-273d-4b9a-bbb4-b191079a009d",
+    "name": "Gelato Sandwich",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 45,
+        "full": {
+          "calories": 266,
+          "fat": 9,
+          "protein": 3,
+          "sugar": 33,
+          "fiber": 0,
+          "sodium": 94
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 70,
+        "full": {
+          "calories": 560,
+          "fat": 26,
+          "protein": 8,
+          "sugar": 46,
+          "fiber": 2,
+          "sodium": 260
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "318b5b79-696a-428c-be22-85473c168ef9",
+    "name": "Stagione",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 30,
+        "full": {
+          "calories": 425,
+          "fat": 25,
+          "protein": 20,
+          "sugar": 15,
+          "fiber": 8,
+          "sodium": 450
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 950,
+          "fat": 45,
+          "protein": 40,
+          "sugar": 10,
+          "fiber": 5,
+          "sodium": 2000
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "5b503489-291a-4538-860b-f9f68fbf778b",
+    "name": "Pineapple Coconut Bread Pudding",
+    "category": "dessert",
+    "park": "Walt Disney World & Universal Orlando - Additional Dining",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 150,
+        "full": {
+          "calories": 1103,
+          "fat": 51,
+          "protein": 15,
+          "sugar": 107,
+          "fiber": 4,
+          "sodium": 597
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 750,
+          "fat": 33,
+          "protein": 10,
+          "sugar": 70,
+          "fiber": 3,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "81b2c93b-3d6b-44f7-868d-9afe6ebe5276",
+    "name": "Classic Minnie Caramel Apple with M&M'S",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 154,
+        "full": {
+          "calories": 980,
+          "fat": 38,
+          "protein": 7,
+          "sugar": 133,
+          "fiber": 6,
+          "sodium": 220
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 600,
+          "fat": 18,
+          "protein": 4,
+          "sugar": 95,
+          "fiber": 4,
+          "sodium": 150
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "9374c6ba-bb4d-4435-86d8-ffd463343b01",
+    "name": "Grilled Japanese Curry Chicken",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 22,
+        "full": {
+          "calories": 483,
+          "fat": 19,
+          "protein": 53,
+          "sugar": 2,
+          "fiber": 1,
+          "sodium": 867
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 1200,
+          "fat": 55,
+          "protein": 70,
+          "sugar": 12,
+          "fiber": 6,
+          "sodium": 2200
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "95870aa5-2736-42b3-91eb-d24f2f8918d4",
+    "name": "Spaghetti and Meatballs",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 57,
+        "full": {
+          "calories": 607,
+          "fat": 27,
+          "protein": 30,
+          "sugar": 8,
+          "fiber": 4,
+          "sodium": 1124
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 1000,
+          "fat": 42,
+          "protein": 40,
+          "sugar": 14,
+          "fiber": 8,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "97381092-e1ce-438e-810b-1eee49b262e7",
+    "name": "Chocolate Almond Bread",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 130,
+        "full": {
+          "calories": 990,
+          "fat": 45,
+          "protein": 16,
+          "sugar": 58,
+          "fiber": 6,
+          "sodium": 950
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 60,
+        "full": {
+          "calories": 500,
+          "fat": 24,
+          "protein": 9,
+          "sugar": 28,
+          "fiber": 4,
+          "sodium": 300
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "a0c5d05f-3c4a-4186-b6a8-07754fda37cb",
+    "name": "Mickey Brownie Sundae",
+    "category": "dessert",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 88,
+        "full": {
+          "calories": 673,
+          "fat": 31,
+          "protein": 8,
+          "sugar": 65,
+          "fiber": 3,
+          "sodium": 287
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 60
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 850,
+          "fat": 44,
+          "protein": 10,
+          "sugar": 85,
+          "fiber": 4,
+          "sodium": 320
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "b8751647-6739-4f99-bb2b-385e96657003",
+    "name": "Mythos Burger",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 83,
+        "full": {
+          "calories": 1086,
+          "fat": 65,
+          "protein": 43,
+          "sugar": 14,
+          "fiber": 7,
+          "sodium": 3010
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 1300,
+          "fat": 72,
+          "protein": 48,
+          "sugar": 12,
+          "fiber": 6,
+          "sodium": 2100
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "da567f8f-1781-49d4-9f6e-8cc53f6cced0",
+    "name": "Classic Mickey Caramel Apple",
+    "category": "dessert",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 142,
+        "full": {
+          "calories": 865,
+          "fat": 31,
+          "protein": 6,
+          "sugar": 118,
+          "fiber": 6,
+          "sodium": 199
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 700,
+          "fat": 22,
+          "protein": 5,
+          "sugar": 100,
+          "fiber": 4,
+          "sodium": 160
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "e72a9878-1cfe-4f64-a2a8-100c87c6da3c",
+    "name": "Teppan Yasai",
+    "category": "entree",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 22,
+        "full": {
+          "calories": 145,
+          "fat": 3,
+          "protein": 9,
+          "sugar": 7,
+          "fiber": 3,
+          "sodium": 1310
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 750,
+          "fat": 22,
+          "protein": 25,
+          "sugar": 10,
+          "fiber": 8,
+          "sodium": 1900
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "f40be24b-707b-470d-978c-50adaa490e34",
+    "name": "Cookies and Cream Cake",
+    "category": "dessert",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 114,
+        "full": {
+          "calories": 920,
+          "fat": 47,
+          "protein": 9,
+          "sugar": 60,
+          "fiber": 3,
+          "sodium": 556
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 750,
+          "fat": 38,
+          "protein": 8,
+          "sugar": 72,
+          "fiber": 3,
+          "sodium": 420
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "f63b44b2-9f21-45bd-8b2d-b67170f35092",
+    "name": "Pomegranate Swirl",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 45,
+        "full": {
+          "calories": 340,
+          "fat": 15,
+          "protein": 3,
+          "sugar": 35,
+          "fiber": 2,
+          "sodium": 100
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 72,
+        "full": {
+          "calories": 380,
+          "fat": 7,
+          "protein": 5,
+          "sugar": 62,
+          "fiber": 2,
+          "sodium": 135
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "fbe01d95-e876-4a5a-9b32-22bbca4dc917",
+    "name": "Chocolate Banana Gooey Cake",
+    "category": "dessert",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 77,
+        "full": {
+          "calories": 614,
+          "fat": 33,
+          "protein": 6,
+          "sugar": 57,
+          "fiber": 2,
+          "sodium": 436
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 870,
+          "fat": 48,
+          "protein": 13,
+          "sugar": 72,
+          "fiber": 5,
+          "sodium": 380
+        }
+      }
+    ],
+    "priority": 24.000000000000004
+  },
+  {
+    "id": "91b6db41-4113-40b5-8dff-13b77ea61809",
+    "name": "Vegan Field Roast Chili Dog Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 124,
+        "full": {
+          "calories": 1097,
+          "fat": 48,
+          "protein": 43,
+          "sugar": 9,
+          "fiber": 15,
+          "sodium": 2217
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 92,
+        "full": {
+          "calories": 760,
+          "fat": 30,
+          "protein": 26,
+          "sugar": 13,
+          "fiber": 13,
+          "sodium": 1650
+        }
+      }
+    ],
+    "priority": 23.88
+  },
+  {
+    "id": "a21a325f-a626-4061-b079-c804f1a8f137",
+    "name": "Oishii Shrimp Lo Mein",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 72,
+        "full": {
+          "calories": 690,
+          "fat": 32,
+          "protein": 28,
+          "sugar": 9,
+          "fiber": 6,
+          "sodium": 1450
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 88,
+        "full": {
+          "calories": 700,
+          "fat": 22,
+          "protein": 30,
+          "sugar": 12,
+          "fiber": 5,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 23.88
+  },
+  {
+    "id": "3c4396cc-582b-4acb-8733-ad196279b195",
+    "name": "The Plaza Ice Cream Sundae",
+    "category": "dessert",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 64,
+        "full": {
+          "calories": 494,
+          "fat": 22,
+          "protein": 7,
+          "sugar": 51,
+          "fiber": 1,
+          "sodium": 172
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 112,
+        "full": {
+          "calories": 920,
+          "fat": 46,
+          "protein": 13,
+          "sugar": 82,
+          "fiber": 3,
+          "sodium": 320
+        }
+      }
+    ],
+    "priority": 23.759999999999998
+  },
+  {
+    "id": "04667aaa-ac0b-4e81-8ee8-36a289992e38",
+    "name": "Fusion Specialty Bento Box",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 80,
+        "full": {
+          "calories": 1055,
+          "fat": 55,
+          "protein": 60,
+          "sugar": 20,
+          "fiber": 6,
+          "sodium": 800
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 112,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 46,
+          "sugar": 16,
+          "fiber": 8,
+          "sodium": 1950
+        }
+      }
+    ],
+    "priority": 23.64
+  },
+  {
+    "id": "d663feb5-a2fd-44af-80b2-003af301beda",
+    "name": "The Nutty Cow",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 52,
+        "full": {
+          "calories": 550,
+          "fat": 32,
+          "protein": 10,
+          "sugar": 40,
+          "fiber": 5,
+          "sodium": 100
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 86,
+        "full": {
+          "calories": 760,
+          "fat": 42,
+          "protein": 12,
+          "sugar": 70,
+          "fiber": 4,
+          "sodium": 230
+        }
+      }
+    ],
+    "priority": 23.64
+  },
+  {
+    "id": "0004c9cc-9b0e-48ed-8908-7588c7e55ce6",
+    "name": "Alcatraz Cobb Salad Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 37,
+        "full": {
+          "calories": 770,
+          "fat": 50,
+          "protein": 44,
+          "sugar": 13,
+          "fiber": 8,
+          "sodium": 1609
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 24
+      },
+      {
+        "method": "decomposition",
+        "carbs": 58,
+        "full": {
+          "calories": 560,
+          "fat": 28,
+          "protein": 20,
+          "sugar": 36,
+          "fiber": 10,
+          "sodium": 820
+        }
+      }
+    ],
+    "priority": 23.52
+  },
+  {
+    "id": "1176cfae-3175-43e7-b432-e99166985e03",
+    "name": "Crinkle Cut Fried Pickles",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 65,
+        "full": {
+          "calories": 671,
+          "fat": 41,
+          "protein": 9,
+          "sugar": 5,
+          "fiber": 5,
+          "sodium": 2428
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 52,
+        "full": {
+          "calories": 650,
+          "fat": 45,
+          "protein": 7,
+          "sugar": 5,
+          "fiber": 3,
+          "sodium": 1800
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "124f31bd-9312-4cd4-884e-50330d4026eb",
+    "name": "Mini Pasta and Impossible Meat-balls",
+    "category": "entree",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 8,
+        "full": {
+          "calories": 197,
+          "fat": 9,
+          "protein": 21,
+          "sugar": 1,
+          "fiber": 5,
+          "sodium": 550
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 60,
+        "full": {
+          "calories": 450,
+          "fat": 14,
+          "protein": 20,
+          "sugar": 9,
+          "fiber": 6,
+          "sodium": 820
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "22a5c0ec-64a4-4af3-84d2-6aedbee2c235",
+    "name": "Colossal Mickey Cinnamon Bun",
+    "category": "entree",
+    "park": "Disney's Animal Kingdom",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 37,
+        "full": {
+          "calories": 217,
+          "fat": 5,
+          "protein": 7,
+          "sugar": 4,
+          "fiber": 2,
+          "sodium": 412
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1100,
+          "fat": 44,
+          "protein": 14,
+          "sugar": 92,
+          "fiber": 4,
+          "sodium": 820
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "2751fb00-b7ec-4de2-8cf8-ad190f65aabd",
+    "name": "Lou's BBQ Pork Slider Platter",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 104,
+        "full": {
+          "calories": 1080,
+          "fat": 53,
+          "protein": 45,
+          "sugar": 20,
+          "fiber": 6,
+          "sodium": 2400
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 72,
+        "full": {
+          "calories": 860,
+          "fat": 45,
+          "protein": 40,
+          "sugar": 18,
+          "fiber": 3,
+          "sodium": 1700
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "283c545c-fca5-4f57-94e0-9b8d841cb14e",
+    "name": "2024 NATIONAL POLKA DOT DAY- Minnie Mouse Waffle Sundae",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 72,
+        "full": {
+          "calories": 508,
+          "fat": 20,
+          "protein": 10,
+          "sugar": 18,
+          "fiber": 2,
+          "sodium": 683
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 92,
+        "full": {
+          "calories": 720,
+          "fat": 33,
+          "protein": 11,
+          "sugar": 62,
+          "fiber": 2,
+          "sodium": 360
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "2989035c-1e39-4b04-81ce-58b0f56fe870",
+    "name": "Yeti Sundae",
+    "category": "dessert",
+    "park": "Disney's Animal Kingdom",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 68,
+        "full": {
+          "calories": 447,
+          "fat": 15,
+          "protein": 7,
+          "sugar": 55,
+          "fiber": 1,
+          "sodium": 174
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 92,
+        "full": {
+          "calories": 660,
+          "fat": 28,
+          "protein": 10,
+          "sugar": 76,
+          "fiber": 2,
+          "sodium": 260
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "30928a3c-c2ca-4aac-a7e2-55fc26f2068f",
+    "name": "Jumbo Pistachio Chocolate Cinnamon Roll",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 120,
+        "full": {
+          "calories": 990,
+          "fat": 50,
+          "protein": 15,
+          "sugar": 60,
+          "fiber": 3,
+          "sodium": 400
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 37
+      },
+      {
+        "method": "decomposition",
+        "carbs": 128,
+        "full": {
+          "calories": 1000,
+          "fat": 48,
+          "protein": 15,
+          "sugar": 74,
+          "fiber": 5,
+          "sodium": 700
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "418eb9d1-ff94-49fe-9926-1f17a4f6052f",
+    "name": "2026 FESTIVAL OF THE ARTS- BBQ Chicken Pizza",
+    "category": "entree",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 980,
+          "fat": 55,
+          "protein": 61,
+          "sugar": 10,
+          "fiber": 5,
+          "sodium": 1000
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      },
+      {
+        "method": "decomposition",
+        "carbs": 76,
+        "full": {
+          "calories": 660,
+          "fat": 25,
+          "protein": 32,
+          "sugar": 14,
+          "fiber": 4,
+          "sodium": 1400
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "42a6021e-95d6-4005-8a4a-071a7fe094ea",
+    "name": "Midnight Munchies",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 40,
+        "full": {
+          "calories": 300,
+          "fat": 10,
+          "protein": 5,
+          "sugar": 30,
+          "fiber": 2,
+          "sodium": 100
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 112,
+        "full": {
+          "calories": 960,
+          "fat": 50,
+          "protein": 14,
+          "sugar": 84,
+          "fiber": 4,
+          "sodium": 480
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "5c6de44c-86d9-45c8-aa01-d65211d1bacb",
+    "name": "French Carbonara",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 67,
+        "full": {
+          "calories": 620,
+          "fat": 24,
+          "protein": 34,
+          "sugar": 4,
+          "fiber": 3,
+          "sodium": 1400
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 86,
+        "full": {
+          "calories": 960,
+          "fat": 52,
+          "protein": 36,
+          "sugar": 6,
+          "fiber": 4,
+          "sodium": 1550
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "61b47705-748c-495d-96e7-451a3aaf11db",
+    "name": "Croissant Platter",
+    "category": "entree",
+    "park": "Universal Epic Universe",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 35,
+        "full": {
+          "calories": 317,
+          "fat": 17,
+          "protein": 5,
+          "sugar": 17,
+          "fiber": 1,
+          "sodium": 319
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 37
+      },
+      {
+        "method": "decomposition",
+        "carbs": 92,
+        "full": {
+          "calories": 820,
+          "fat": 43,
+          "protein": 14,
+          "sugar": 30,
+          "fiber": 4,
+          "sodium": 620
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "71f6853e-09b7-4964-bf2e-2a50187a919b",
+    "name": "Jumbo Cinnamon Roll",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 39,
+        "full": {
+          "calories": 229,
+          "fat": 5,
+          "protein": 6,
+          "sugar": 12,
+          "fiber": 2,
+          "sodium": 366
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 37
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 920,
+          "fat": 41,
+          "protein": 12,
+          "sugar": 72,
+          "fiber": 3,
+          "sodium": 660
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "7b5804b3-64c3-42cf-ac2a-e33027a87c99",
+    "name": "Plant-based Dining",
+    "category": "entree",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 92,
+        "full": {
+          "calories": 820,
+          "fat": 39,
+          "protein": 25,
+          "sugar": 8,
+          "fiber": 7,
+          "sodium": 1450
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 860,
+          "fat": 33,
+          "protein": 22,
+          "sugar": 40,
+          "fiber": 10,
+          "sodium": 1300
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "813af25f-bbe4-440a-8fa2-ff07de8486c7",
+    "name": "Liege Waffle",
+    "category": "entree",
+    "park": "EPCOT Flower & Garden Festival 2026",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 544,
+          "fat": 31,
+          "protein": 4,
+          "sugar": 36,
+          "fiber": 1,
+          "sodium": 356
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 82,
+        "full": {
+          "calories": 660,
+          "fat": 31,
+          "protein": 9,
+          "sugar": 46,
+          "fiber": 2,
+          "sodium": 360
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "88162bdf-e17c-4dab-ae93-7c7b837ae8f6",
+    "name": "Chicken Fingers",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 54,
+        "full": {
+          "calories": 765,
+          "fat": 43,
+          "protein": 37,
+          "sugar": 3,
+          "fiber": 3,
+          "sodium": 1596
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 82,
+        "full": {
+          "calories": 960,
+          "fat": 50,
+          "protein": 40,
+          "sugar": 5,
+          "fiber": 6,
+          "sodium": 1900
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "91e01e18-2a90-49c3-a357-8c2ab80af2aa",
+    "name": "Oreo Crumble Funnel Cake",
+    "category": "dessert",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 56,
+        "full": {
+          "calories": 449,
+          "fat": 23,
+          "protein": 5,
+          "sugar": 42,
+          "fiber": 1,
+          "sodium": 348
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 112,
+        "full": {
+          "calories": 910,
+          "fat": 46,
+          "protein": 10,
+          "sugar": 62,
+          "fiber": 3,
+          "sodium": 520
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "a4a1ee2a-64b5-4528-910b-f9a6b9fcc4cb",
+    "name": "Provance Totchos",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 50,
+        "full": {
+          "calories": 552,
+          "fat": 32,
+          "protein": 18,
+          "sugar": 4,
+          "fiber": 4,
+          "sodium": 1100
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 62,
+        "full": {
+          "calories": 760,
+          "fat": 48,
+          "protein": 18,
+          "sugar": 9,
+          "fiber": 4,
+          "sodium": 1550
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "af6250ab-c49d-4e88-a2bd-4ac74a3ee2fa",
+    "name": "Chocolate Baumkuchen",
+    "category": "entree",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 86,
+        "full": {
+          "calories": 876,
+          "fat": 43,
+          "protein": 31,
+          "sugar": 51,
+          "fiber": 5,
+          "sodium": 624
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 62,
+        "full": {
+          "calories": 560,
+          "fat": 31,
+          "protein": 7,
+          "sugar": 44,
+          "fiber": 2,
+          "sodium": 210
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "b5e02157-af7d-4833-b9a2-a5772b2915e7",
+    "name": "Buttermilk Pancakes",
+    "category": "entree",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 66,
+        "full": {
+          "calories": 487,
+          "fat": 15,
+          "protein": 11,
+          "sugar": 18,
+          "fiber": 2,
+          "sodium": 694
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 112,
+        "full": {
+          "calories": 920,
+          "fat": 39,
+          "protein": 25,
+          "sugar": 46,
+          "fiber": 3,
+          "sodium": 1450
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "bbb3b024-5011-4d9b-ab88-9e5b345e7456",
+    "name": "Ticos Loaded Beef Burger Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 940,
+          "fat": 60,
+          "protein": 40,
+          "sugar": 10,
+          "fiber": 5,
+          "sodium": 1000
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 116,
+        "full": {
+          "calories": 1520,
+          "fat": 86,
+          "protein": 66,
+          "sugar": 32,
+          "fiber": 6,
+          "sodium": 2550
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "c13f7355-da8c-4276-b417-5068e8c92637",
+    "name": "Italian Meat",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 74,
+        "full": {
+          "calories": 945,
+          "fat": 55,
+          "protein": 41,
+          "sugar": 6,
+          "fiber": 5,
+          "sodium": 3020
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 92,
+        "full": {
+          "calories": 960,
+          "fat": 46,
+          "protein": 46,
+          "sugar": 10,
+          "fiber": 5,
+          "sodium": 2400
+        }
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "cd83b11c-ad0a-4c7c-a7a0-e7937efc238a",
+    "name": "Dubai Chocolate Cheesecake",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 62,
+        "full": {
+          "calories": 746,
+          "fat": 48,
+          "protein": 13,
+          "sugar": 45,
+          "fiber": 2,
+          "sodium": 460
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "e0c0b943-7974-4400-b1a6-5744c85bac86",
+    "name": "Jumbo Cookie Butter Cinnamon Roll",
+    "category": "dessert",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 35,
+        "full": {
+          "calories": 302,
+          "fat": 13,
+          "protein": 3,
+          "sugar": 23,
+          "fiber": 1,
+          "sodium": 235
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      }
+    ],
+    "priority": 23.400000000000002
+  },
+  {
+    "id": "19810929-bc8e-4420-ace5-ac5ea11d6972",
+    "name": "Mickey Strawberry Cookie Sandwich with SKITTLES",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 405,
+          "fat": 17,
+          "protein": 4,
+          "sugar": 33,
+          "fiber": 2,
+          "sodium": 325
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      }
+    ],
+    "priority": 23.16
+  },
+  {
+    "id": "25620418-b7c5-43eb-841f-7004be0a004f",
+    "name": "Prosciutto e Melone Pizza (Individual)",
+    "category": "entree",
+    "park": "Walt Disney World & Universal Orlando - Additional Dining",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 0,
+        "full": {
+          "calories": 150,
+          "fat": 8,
+          "protein": 18,
+          "sugar": 0,
+          "fiber": 0,
+          "sodium": 1000
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      }
+    ],
+    "priority": 23.16
+  },
+  {
+    "id": "619e9216-02c9-4038-899b-cc6846413ffa",
+    "name": "Caesar Salad Combo",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 58,
+        "full": {
+          "calories": 720,
+          "fat": 38,
+          "protein": 37,
+          "sugar": 29,
+          "fiber": 5,
+          "sodium": 1056
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 24
+      }
+    ],
+    "priority": 23.16
+  },
+  {
+    "id": "818f2194-888e-476e-957c-d406e72e2bc1",
+    "name": "Mediterranean Salad Combo",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 34,
+        "full": {
+          "calories": 626,
+          "fat": 40,
+          "protein": 35,
+          "sugar": 8,
+          "fiber": 7,
+          "sodium": 1162
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 24
+      }
+    ],
+    "priority": 23.16
+  },
+  {
+    "id": "d626b66f-195d-4fe3-8f1c-433f53491966",
+    "name": "Shine Cake",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 475,
+          "fat": 24,
+          "protein": 6,
+          "sugar": 43,
+          "fiber": 2,
+          "sodium": 322
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 23.16
+  },
+  {
+    "id": "5e69ebc3-b979-4796-a727-0d5327e33de0",
+    "name": "Crispy Chicken Sandwich Platter",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 107,
+        "full": {
+          "calories": 1176,
+          "fat": 62,
+          "protein": 47,
+          "sugar": 9,
+          "fiber": 6,
+          "sodium": 2643
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 23.04
+  },
+  {
+    "id": "7e8b088e-5986-4f93-816f-a67ea14d2174",
+    "name": "Chicken Caesar Salad Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 53,
+        "full": {
+          "calories": 826,
+          "fat": 48,
+          "protein": 40,
+          "sugar": 8,
+          "fiber": 6,
+          "sodium": 935
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 24
+      }
+    ],
+    "priority": 23.04
+  },
+  {
+    "id": "63f9492d-72bd-41a7-b0b2-e2e83a19899b",
+    "name": "Hummingbird Cake",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 475,
+          "fat": 24,
+          "protein": 6,
+          "sugar": 43,
+          "fiber": 2,
+          "sodium": 322
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 22.799999999999997
+  },
+  {
+    "id": "cb788d51-9bda-491f-9daa-60da81e824d4",
+    "name": "Mr. Julius Caesar Dithers Chopped Italian Sandwich Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 90,
+        "full": {
+          "calories": 1130,
+          "fat": 62,
+          "protein": 52,
+          "sugar": 8,
+          "fiber": 5,
+          "sodium": 3650
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 22.799999999999997
+  },
+  {
+    "id": "e3a413df-8a8f-4c1d-bcf2-6b9b215f20e2",
+    "name": "Mt. Beanpole Cake",
+    "category": "dessert",
+    "park": "Walt Disney World & Universal Orlando - Additional Dining",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 475,
+          "fat": 24,
+          "protein": 6,
+          "sugar": 43,
+          "fiber": 2,
+          "sodium": 322
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 22.799999999999997
+  },
+  {
+    "id": "ea06db39-0c4b-4029-ac3f-d0e0a72291d8",
+    "name": "Crispy Chicken Sandwich Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 128,
+        "full": {
+          "calories": 1253,
+          "fat": 61,
+          "protein": 47,
+          "sugar": 32,
+          "fiber": 6,
+          "sodium": 2609
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 22.799999999999997
+  },
+  {
+    "id": "0f69790d-26b6-439b-bfb5-a0c59f3791c1",
+    "name": "Championship Pulled Pork Sandwich",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 64,
+        "full": {
+          "calories": 878,
+          "fat": 46,
+          "protein": 48,
+          "sugar": 8,
+          "fiber": 5,
+          "sodium": 2067
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 22.439999999999998
+  },
+  {
+    "id": "4334522f-35a9-4bfe-b3e3-a16640b3ef25",
+    "name": "Artisan Pepperoni Pizza",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 80,
+        "full": {
+          "calories": 705,
+          "fat": 27,
+          "protein": 28,
+          "sugar": 9,
+          "fiber": 3,
+          "sodium": 1364
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      }
+    ],
+    "priority": 22.439999999999998
+  },
+  {
+    "id": "6c138d7d-22d0-4e49-8b17-65eb57e3f579",
+    "name": "Wookiee Cookie",
+    "category": "dessert",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 37,
+        "full": {
+          "calories": 267,
+          "fat": 14,
+          "protein": 3,
+          "sugar": 22,
+          "fiber": 1,
+          "sodium": 219
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      }
+    ],
+    "priority": 22.439999999999998
+  },
+  {
+    "id": "74af8135-d048-47a8-a7f3-d78ed9ff6146",
+    "name": "Large Mickey Pineapple Cookie",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 58,
+        "full": {
+          "calories": 431,
+          "fat": 21,
+          "protein": 5,
+          "sugar": 34,
+          "fiber": 2,
+          "sodium": 279
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      }
+    ],
+    "priority": 22.439999999999998
+  },
+  {
+    "id": "a818944b-75b6-4d1f-a896-f28ae83b0fa2",
+    "name": "Grilled Tuscan Chicken Sandwich Platter",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 83,
+        "full": {
+          "calories": 827,
+          "fat": 32,
+          "protein": 49,
+          "sugar": 8,
+          "fiber": 5,
+          "sodium": 1470
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 22.439999999999998
+  },
+  {
+    "id": "a5c01308-4800-4e28-bd28-2d57fc0522e4",
+    "name": "Patty Melt*",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 1026,
+          "fat": 62,
+          "protein": 42,
+          "sugar": 10,
+          "fiber": 4,
+          "sodium": 1671
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 22.32
+  },
+  {
+    "id": "2cbc41dc-25e3-439f-8a18-1c47e6457148",
+    "name": "Caprese Salad Combo",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 33,
+        "full": {
+          "calories": 535,
+          "fat": 36,
+          "protein": 21,
+          "sugar": 13,
+          "fiber": 5,
+          "sodium": 1026
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 24
+      }
+    ],
+    "priority": 22.200000000000003
+  },
+  {
+    "id": "2d56b933-5704-45bd-8a8d-e37af200b939",
+    "name": "Creme Brulee Cheesecake",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 64,
+        "full": {
+          "calories": 519,
+          "fat": 27,
+          "protein": 8,
+          "sugar": 44,
+          "fiber": 1,
+          "sodium": 257
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 22.200000000000003
+  },
+  {
+    "id": "4389c777-4232-4a1a-a99c-8750182e7be3",
+    "name": "Cookies 'n Cream Funnel Cake",
+    "category": "dessert",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 81,
+        "full": {
+          "calories": 649,
+          "fat": 32,
+          "protein": 8,
+          "sugar": 56,
+          "fiber": 2,
+          "sodium": 296
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      }
+    ],
+    "priority": 22.200000000000003
+  },
+  {
+    "id": "48aad49e-2e75-4496-8e18-e23c4e0585eb",
+    "name": "Balsamic Grilled Chicken Sandwich",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 62,
+        "full": {
+          "calories": 765,
+          "fat": 30,
+          "protein": 52,
+          "sugar": 16,
+          "fiber": 4,
+          "sodium": 1583
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 22.08
+  },
+  {
+    "id": "0846c55a-4a8a-4d6d-bba3-4dd2dce908ec",
+    "name": "Mt. Beanpole Cake",
+    "category": "dessert",
+    "park": "Universal Epic Universe",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 475,
+          "fat": 24,
+          "protein": 6,
+          "sugar": 43,
+          "fiber": 2,
+          "sodium": 322
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 21.72
+  },
+  {
+    "id": "8db98862-b413-45d9-9717-422d54cffd62",
+    "name": "California Cobb Crispy Chicken Salad Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 70,
+        "full": {
+          "calories": 927,
+          "fat": 55,
+          "protein": 36,
+          "sugar": 46,
+          "fiber": 6,
+          "sodium": 1587
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 24
+      }
+    ],
+    "priority": 21.72
+  },
+  {
+    "id": "08214543-eea0-4480-9240-88f9469f6f36",
+    "name": "Forest Mushroom Pizza",
+    "category": "entree",
+    "park": "Disneyland Resort Hotels",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 900,
+          "fat": 40,
+          "protein": 30,
+          "sugar": 10,
+          "fiber": 3,
+          "sodium": 1000
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "13c2b20a-56ae-4edf-8f50-a94173ec88c5",
+    "name": "Flourless Chocolate Cake",
+    "category": "dessert",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 77,
+        "full": {
+          "calories": 614,
+          "fat": 33,
+          "protein": 6,
+          "sugar": 57,
+          "fiber": 2,
+          "sodium": 436
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "30089355-5621-4bd0-8832-7593d8269072",
+    "name": "Tribal Cheesecake",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 77,
+        "full": {
+          "calories": 687,
+          "fat": 37,
+          "protein": 11,
+          "sugar": 52,
+          "fiber": 2,
+          "sodium": 337
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "3e533fd5-be9a-4918-8141-9afe3a6033c5",
+    "name": "Blue Mountain Chicken Sandwich",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 66,
+        "full": {
+          "calories": 818,
+          "fat": 38,
+          "protein": 42,
+          "sugar": 9,
+          "fiber": 4,
+          "sodium": 1399
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "4291d1b3-2eea-45a8-b757-acc04991fe39",
+    "name": "Hawaiian Pizza",
+    "category": "entree",
+    "park": "Universal Volcano Bay",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 82,
+        "full": {
+          "calories": 685,
+          "fat": 25,
+          "protein": 31,
+          "sugar": 12,
+          "fiber": 5,
+          "sodium": 1523
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "440a006b-a3e2-4c3f-a75c-6c520cca579a",
+    "name": "Chicken Tenders Platter",
+    "category": "entree",
+    "park": "Universal Volcano Bay",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 41,
+        "full": {
+          "calories": 631,
+          "fat": 36,
+          "protein": 34,
+          "sugar": 2,
+          "fiber": 2,
+          "sodium": 1268
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 16
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "473294d4-edcc-410b-ace1-fb7e5bc9ccba",
+    "name": "Game Day Flatbread",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 81,
+        "full": {
+          "calories": 661,
+          "fat": 25,
+          "protein": 25,
+          "sugar": 6,
+          "fiber": 6,
+          "sodium": 1394
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "625970b7-fe1d-4108-a23c-e47814347e28",
+    "name": "Gluten-Free Cupcakes",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 58,
+        "full": {
+          "calories": 407,
+          "fat": 19,
+          "protein": 4,
+          "sugar": 40,
+          "fiber": 1,
+          "sodium": 266
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "96363923-4b3b-4604-9024-40afa28d73fa",
+    "name": "Pizza Margherita",
+    "category": "entree",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 57,
+        "full": {
+          "calories": 487,
+          "fat": 19,
+          "protein": 20,
+          "sugar": 4,
+          "fiber": 2,
+          "sodium": 1024
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "99055e95-9563-4899-bd1e-93d18ced2153",
+    "name": "King Cake",
+    "category": "dessert",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 475,
+          "fat": 24,
+          "protein": 6,
+          "sugar": 43,
+          "fiber": 2,
+          "sodium": 322
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "ae58b76a-1818-424f-a8ce-44d3d8cb2357",
+    "name": "S'mores Cake",
+    "category": "dessert",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 475,
+          "fat": 24,
+          "protein": 6,
+          "sugar": 43,
+          "fiber": 2,
+          "sodium": 322
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "e6beb339-5104-4d0c-ba99-b58a5faf3e27",
+    "name": "Volcano Lava Chocolate Cake",
+    "category": "dessert",
+    "park": "Universal Volcano Bay",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 88,
+        "full": {
+          "calories": 730,
+          "fat": 40,
+          "protein": 8,
+          "sugar": 66,
+          "fiber": 4,
+          "sodium": 377
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "feff439d-965f-4754-bfd0-1e6f4d4a95e8",
+    "name": "Island BBQ Chicken Pizza",
+    "category": "entree",
+    "park": "Universal Volcano Bay",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 118,
+        "full": {
+          "calories": 1023,
+          "fat": 37,
+          "protein": 54,
+          "sugar": 22,
+          "fiber": 5,
+          "sodium": 2157
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      }
+    ],
+    "priority": 21.599999999999998
+  },
+  {
+    "id": "22e1886d-2ef5-4506-9fd4-582e3ff8eb6a",
+    "name": "Shine Cake",
+    "category": "dessert",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 475,
+          "fat": 24,
+          "protein": 6,
+          "sugar": 43,
+          "fiber": 2,
+          "sodium": 322
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 21.48
+  },
+  {
+    "id": "d806c01f-0c44-44b5-a068-e78ba995694d",
+    "name": "Crispy Chicken Salad Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 61,
+        "full": {
+          "calories": 1052,
+          "fat": 67,
+          "protein": 51,
+          "sugar": 28,
+          "fiber": 6,
+          "sodium": 2053
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 24
+      }
+    ],
+    "priority": 21.48
+  },
+  {
+    "id": "5c785575-04fb-4e86-baec-fe4c0f25f4ea",
+    "name": "Chicken Parmesan Sub Platter",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 90,
+        "full": {
+          "calories": 900,
+          "fat": 37,
+          "protein": 52,
+          "sugar": 9,
+          "fiber": 5,
+          "sodium": 1962
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 21.240000000000002
+  },
+  {
+    "id": "05d59fd6-3203-453f-af1b-365943c751be",
+    "name": "Dubai Chocolate Brownie",
+    "category": "dessert",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 51,
+        "full": {
+          "calories": 396,
+          "fat": 22,
+          "protein": 5,
+          "sugar": 36,
+          "fiber": 2,
+          "sodium": 189
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 60
+      }
+    ],
+    "priority": 20.999999999999996
+  },
+  {
+    "id": "0ac85b5b-1b59-4c9f-b7e3-8b10456da008",
+    "name": "Smoked Salmon Pizza",
+    "category": "entree",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 42,
+        "full": {
+          "calories": 610,
+          "fat": 30,
+          "protein": 44,
+          "sugar": 4,
+          "fiber": 2,
+          "sodium": 1220
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 96
+      }
+    ],
+    "priority": 20.999999999999996
+  },
+  {
+    "id": "2bf1ab1f-491b-4ddd-b848-ac16c5df157d",
+    "name": "Cupcake",
+    "category": "dessert",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 461,
+          "fat": 23,
+          "protein": 4,
+          "sugar": 44,
+          "fiber": 1,
+          "sodium": 264
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      }
+    ],
+    "priority": 20.999999999999996
+  },
+  {
+    "id": "52fa8f08-5254-450a-a09e-726efde9ada4",
+    "name": "Peanut Butter Cookie Sandwich",
+    "category": "dessert",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 38,
+        "full": {
+          "calories": 287,
+          "fat": 14,
+          "protein": 3,
+          "sugar": 22,
+          "fiber": 1,
+          "sodium": 216
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      }
+    ],
+    "priority": 20.999999999999996
+  },
+  {
+    "id": "56a26533-34a4-4ec0-a834-a66502c783da",
+    "name": "Chicken Tenders",
+    "category": "entree",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 47,
+        "full": {
+          "calories": 758,
+          "fat": 35,
+          "protein": 57,
+          "sugar": 5,
+          "fiber": 3,
+          "sodium": 1766
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 16
+      }
+    ],
+    "priority": 20.999999999999996
+  },
+  {
+    "id": "77a10c94-1571-4f70-afca-4b21f0a7bf8c",
+    "name": "Golden BBQ Pulled Pork Sandwich Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 74,
+        "full": {
+          "calories": 1043,
+          "fat": 60,
+          "protein": 51,
+          "sugar": 9,
+          "fiber": 6,
+          "sodium": 2213
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 41
+      }
+    ],
+    "priority": 20.999999999999996
+  }
+]

@@ -74,3 +74,19 @@ describe('isImportable', () => {
     expect(isImportable({ carbs: 40, confidence: 60, tier: 't', agreeing: [], macros: { calories: 400, fat: 10, protein: 10, sugar: 10, fiber: 2, sodium: 400 } })).toBe(true)
   })
 })
+
+describe('MULTI_SERVING_PATTERN', () => {
+  it('matches multi-serving formats that must not import', async () => {
+    const { MULTI_SERVING_PATTERN } = await import('../triangulate.js')
+    for (const name of ['All Classic Dozen', 'Whole Cheese Pizza', 'BBQ Sharing Platter', 'Family Bucket', "Signature Amorette's Cake"]) {
+      expect(MULTI_SERVING_PATTERN.test(name), name).toBe(true)
+    }
+  })
+
+  it('does not match ordinary single-serving items', async () => {
+    const { MULTI_SERVING_PATTERN } = await import('../triangulate.js')
+    for (const name of ['Chicken Gyro Combo', 'French Toast', "Princess Peach's Cake Slice", 'Pepperoni Pizza Slice']) {
+      expect(MULTI_SERVING_PATTERN.test(name), name).toBe(false)
+    }
+  })
+})

@@ -108,6 +108,16 @@ export function assignTriangulation(
   return null
 }
 
+/**
+ * Items sold as multi-serving formats (a dozen doughnuts, a whole pizza, a
+ * sharing platter) are excluded from triangulated import: estimators tend to
+ * value a single serving while the catalog stores the item as sold, which
+ * produces systematic undercounts — the dosing-dangerous direction. These go
+ * to the verification queue for evidence research instead.
+ */
+export const MULTI_SERVING_PATTERN =
+  /\b(dozen|whole|platter|family|shar(e|ing|eable)|bucket|tray|party|baker'?s|jumbo|giant|colossal|footlong)\b|signature .*cake|celebration cake/i
+
 /** Basic import-safety validation mirroring the import-ai gates. */
 export function isImportable(r: TriangulationResult): boolean {
   if (r.carbs < 0 || r.carbs > 500) return false
@@ -354,7 +364,7 @@ ${itemList}`
       continue
     }
     const result = assignTriangulation(ests, t.category)
-    if (!result || !isImportable(result)) {
+    if (!result || !isImportable(result) || MULTI_SERVING_PATTERN.test(t.name)) {
       queue.push({
         id: t.id, name: t.name, category: t.category, park,
         estimates: ests,
