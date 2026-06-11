@@ -43,7 +43,10 @@ const fileArg = process.argv.find(a => a.startsWith('--file='))
 const FILE = fileArg ? fileArg.split('=')[1] : 'data/ai-nutrition.json'
 
 const RANGES: Record<string, [number, number]> = {
-  calories: [0, 5000], carbs: [0, 600], fat: [0, 400], protein: [0, 300],
+  // carbs cap 700: multi-unit items sold as one menu entry (e.g. Voodoo's
+  // 13-doughnut "All Classic Dozen" = 677g as sold) legitimately exceed the
+  // old 600 cap; the Atwater check below still validates internal consistency.
+  calories: [0, 5000], carbs: [0, 700], fat: [0, 400], protein: [0, 300],
   sugar: [0, 400], fiber: [0, 100], sodium: [0, 20000], cholesterol: [0, 3000],
 }
 const NUT_FIELDS = Object.keys(RANGES) as (keyof typeof RANGES)[]

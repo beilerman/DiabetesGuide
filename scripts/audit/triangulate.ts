@@ -35,14 +35,20 @@ import { dosingPriorityScore } from './trust.js'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Measured confidence tiers (calibration 2026-06-10, per agreement pair and
-// category). Beverages cleared the dosing-grade gate on agreement but are
-// still capped at 65 pending explicit sign-off; entrees measured 76-85%
-// within ±10g on agreement — a clear improvement, honestly sub-dosing.
+// category). Dosing-grade (>=70) requires the tier to have MEASURED >=90%
+// within ±10g AND <=1% severe undercounts on ground truth:
+//   - chain+decomposition  beverage: 100%  ±10g, 0%  undercut (n=205) → 72
+//   - keyword+decomposition beverage: 96.3% ±10g, 0% undercut (n=562) → 70
+//   - keyword+chain beverage: 93.8% ±10g but 4.6% severe undercuts → FAILS
+//     the undercount gate, stays sub-dosing at 55
+//   - entree-tier agreements measured 76-85% ±10g → all sub-dosing
+// Beverage dosing-grade signed off by Brad, 2026-06-11. Alcohol-suspected
+// items never reach these tiers (excluded from targets upstream).
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const TRIANGULATION_TIERS: Record<string, { beverage: number; other: number }> = {
-  'chain+decomposition': { beverage: 65, other: 60 },
-  'keyword+decomposition': { beverage: 60, other: 55 },
+  'chain+decomposition': { beverage: 72, other: 60 },
+  'keyword+decomposition': { beverage: 70, other: 55 },
   'keyword+chain': { beverage: 55, other: 50 },
 }
 
@@ -162,8 +168,9 @@ async function main() {
   const argv = process.argv.slice(2)
   const apply = argv.includes('--apply')
   const limit = Number(argv.flatMap((a, i) => (a === '--limit' && argv[i + 1] ? [argv[i + 1]] : []))[0] ?? 300)
+  const categoryFilter = argv.flatMap((a, i) => (a === '--category' && argv[i + 1] ? [argv[i + 1]] : []))[0]
 
-  console.log(`=== Triangulated estimation — ${apply ? 'APPLY' : 'DRY RUN'} (limit ${limit}) ===`)
+  console.log(`=== Triangulated estimation — ${apply ? 'APPLY' : 'DRY RUN'} (limit ${limit}${categoryFilter ? `, category ${categoryFilter}` : ''}) ===`)
   console.log('Fetching catalog…')
   const rows: DbRow[] = []
   const page = 1000
@@ -213,9 +220,12 @@ async function main() {
   // alcohol model), ranked by dosing impact.
   const targets = rows
     .filter((row) => {
+      if (categoryFilter && row.category !== categoryFilter) return false
       const n = Array.isArray(row.nutritional_data) ? row.nutritional_data[0] : row.nutritional_data
       if (!n || n.source === 'official') return false
-      if (n.carbs != null && (n.confidence_score ?? 0) >= 60) return false
+      // Improvable = below dosing grade; the never-downgrade check at plan
+      // time decides whether a given tier actually beats the existing row.
+      if (n.carbs != null && (n.confidence_score ?? 0) >= 70) return false
       if (isLikelyAlcoholic(row.name, { category: row.category, description: row.description } as never)) return false
       return true
     })

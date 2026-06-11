@@ -25,7 +25,7 @@ describe('assignTriangulation', () => {
   it('grants the beverage tier only to beverages', () => {
     const bev = assignTriangulation([est('chain', 30), est('decomposition', 32)], 'beverage')
     const ent = assignTriangulation([est('chain', 30), est('decomposition', 32)], 'entree')
-    expect(bev!.confidence).toBe(65)
+    expect(bev!.confidence).toBe(72)
     expect(ent!.confidence).toBe(60)
   })
 
@@ -59,9 +59,15 @@ describe('assignTriangulation', () => {
     expect(r!.macros!.calories).toBe(200)
   })
 
-  it('never assigns dosing-grade confidence (all tiers < 70)', () => {
+  it('grants dosing-grade only where the measured gate passed (signed off 2026-06-11)', () => {
+    // Beverage agreements with a decomposition leg measured >=90% within ±10g
+    // and 0% severe undercounts → dosing-grade.
+    expect(TRIANGULATION_TIERS['chain+decomposition'].beverage).toBeGreaterThanOrEqual(70)
+    expect(TRIANGULATION_TIERS['keyword+decomposition'].beverage).toBeGreaterThanOrEqual(70)
+    // keyword+chain beverages measured 4.6% severe undercounts → fails the gate.
+    expect(TRIANGULATION_TIERS['keyword+chain'].beverage).toBeLessThan(70)
+    // No entree/dessert/snack/side tier cleared the gate — all sub-dosing.
     for (const tier of Object.values(TRIANGULATION_TIERS)) {
-      expect(tier.beverage).toBeLessThan(70)
       expect(tier.other).toBeLessThan(70)
     }
   })
