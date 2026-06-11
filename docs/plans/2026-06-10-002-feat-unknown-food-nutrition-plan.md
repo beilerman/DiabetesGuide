@@ -85,6 +85,35 @@ The keyword estimator's measured failure (MAE 9.2g, similarity ≠ accuracy) is 
 
 **Phase 3 — Scale by queue.** Work down the dosing-impact queue in agent batches; weekly `audit:calibrate` regression; quality report gains a "measured accuracy" panel alongside dosing-grade %. (ongoing)
 
+## Phase 0 results (measured 2026-06-10, `audit:calibrate --all`)
+
+**The triangulation hypothesis is confirmed.** Headline agreement numbers (first run; the committed `audit/calibration-results.json` carries the final run with per-category agreement breakdowns):
+
+| Signal | MAE | within ±10g | severe undercounts |
+|---|---|---|---|
+| keyword alone (baseline) | 9.2g | 64.5% | 5.0% |
+| chain alone (43.7% coverage) | 10.1g | 66.8% | **18%** ← dangerous alone |
+| decomposition/Groq alone (first measurement) | 14.8g | 50.1% | 9.3% |
+| **keyword+decomposition AGREE** (609) | **2.3g** | **93.4%** | **0.3%** |
+| **chain+decomposition AGREE** (225) | **0.7g** | **98.7%** | **0.4%** |
+| any pair DISAGREE | ~13–16g | 23–54% | 8–18% |
+
+**Per-category agreement (the deciding breakdown):**
+
+| Agreement pair, AGREE subset | beverage | entree |
+|---|---|---|
+| chain+decomposition | MAE 0.2g, **100% ±10g**, 0% undercut (n=205) | MAE 6.1g, 85% ±10g, 5% undercut (n=20) |
+| keyword+decomposition | MAE 1.6g, **96.3% ±10g**, 0% undercut (n=562) | MAE 7.5g, 77.8% ±10g, 7.4% undercut (n=27) |
+| keyword+chain | MAE 2.5g, 93.8% ±10g, 4.6% undercut (n=260) | MAE 9g, 75.8% ±10g, 6.5% undercut (n=62) |
+
+Conclusions:
+1. **No single method is dosing-grade** — including the Groq estimator, measured for the first time (its asserted confidence 35 is roughly right).
+2. **Agreement on beverages clears the dosing-grade gate** (≥90% ±10g, ~0% undercuts) on this ground truth. **Agreement on entrees does not** — it's a large improvement (76–85% ±10g vs ~44% single-method) but undercut rates of 5–7% keep it below the bar.
+3. **Disagreement correctly routes to verification** — errors are 4–7× higher when methods disagree.
+4. **Pilot confidence policy (calibrated, conservative):** agreement-backed imports at conf 50–65 by tier and category; nothing ≥70 without explicit sign-off (critical ask below).
+
+**E1 carb-fraction table** (official rows; spread = what an official calorie count leaves uncertain): smoothies ±0g, cookies ±2g, cakes ±5g, sandwiches ±7g, brownies ±7g, pretzels ±8g, salads/wraps ±10g — **E1 is viable for sweet/bakery/sandwich classes** — vs coffee-drinks ±13g, pastry ±14g, tenders ±24g, pizza ±35g (bound-only). Caveat: some classes are single-chain-dominated (Jamba = the entire smoothie class), so fractions may be chain-specific; the venue-PDF sweep will diversify them.
+
 ## Risks & honesty
 
 - **E1 acquisition may be TOS-constrained** (Disney app endpoints). The spike answers this before any build; menu-board photos and TouringPlans are the fallback.

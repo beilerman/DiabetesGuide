@@ -1,66 +1,441 @@
 {
-  "date": "2026-06-10",
-  "method": "keyword",
+  "date": "2026-06-11",
   "groundTruthSize": 1802,
   "poolSize": 16969,
-  "overall": {
-    "n": 1802,
-    "estimated": 1640,
-    "coveragePct": 91,
-    "carbMAE": 9.2,
-    "carbMedianAE": 2,
-    "pctWithin5g": 58.6,
-    "pctWithin10g": 64.5,
-    "pctWithin20pct": 55.7,
-    "severeUndercountPct": 5,
-    "doseErrorUnitsAtICR10": 0.9
-  },
-  "byConfidenceBand": [
-    {
-      "band": "conf < 50 (deferred for review)",
-      "metrics": {
-        "n": 448,
-        "estimated": 448,
-        "coveragePct": 100,
-        "carbMAE": 12.2,
-        "carbMedianAE": 5,
-        "pctWithin5g": 56.9,
-        "pctWithin10g": 61.2,
-        "pctWithin20pct": 47.1,
-        "severeUndercountPct": 8.7,
-        "doseErrorUnitsAtICR10": 1.2
+  "methods": {
+    "keyword": {
+      "overall": {
+        "n": 1802,
+        "estimated": 1640,
+        "coveragePct": 91,
+        "carbMAE": 9.2,
+        "carbMedianAE": 2,
+        "pctWithin5g": 58.6,
+        "pctWithin10g": 64.5,
+        "pctWithin20pct": 55.7,
+        "severeUndercountPct": 5,
+        "doseErrorUnitsAtICR10": 0.9
+      },
+      "byCategory": {
+        "beverage": {
+          "n": 1292,
+          "estimated": 1221,
+          "coveragePct": 94.5,
+          "carbMAE": 6.4,
+          "carbMedianAE": 0,
+          "pctWithin5g": 67.8,
+          "pctWithin10g": 71.1,
+          "pctWithin20pct": 59.7,
+          "severeUndercountPct": 1.4,
+          "doseErrorUnitsAtICR10": 0.6
+        },
+        "entree": {
+          "n": 340,
+          "estimated": 283,
+          "coveragePct": 83.2,
+          "carbMAE": 17,
+          "carbMedianAE": 11,
+          "pctWithin5g": 34.6,
+          "pctWithin10g": 49.1,
+          "pctWithin20pct": 44.2,
+          "severeUndercountPct": 15.9,
+          "doseErrorUnitsAtICR10": 1.7
+        },
+        "side": {
+          "n": 42,
+          "estimated": 30,
+          "coveragePct": 71.4,
+          "carbMAE": 19,
+          "carbMedianAE": 18,
+          "pctWithin5g": 26.7,
+          "pctWithin10g": 36.7,
+          "pctWithin20pct": 26.7,
+          "severeUndercountPct": 16.7,
+          "doseErrorUnitsAtICR10": 1.9
+        },
+        "dessert": {
+          "n": 70,
+          "estimated": 61,
+          "coveragePct": 87.1,
+          "carbMAE": 21,
+          "carbMedianAE": 11,
+          "pctWithin5g": 27.9,
+          "pctWithin10g": 47.5,
+          "pctWithin20pct": 37.7,
+          "severeUndercountPct": 11.5,
+          "doseErrorUnitsAtICR10": 2.1
+        },
+        "snack": {
+          "n": 58,
+          "estimated": 45,
+          "coveragePct": 77.6,
+          "carbMAE": 14.6,
+          "carbMedianAE": 11,
+          "pctWithin5g": 22.2,
+          "pctWithin10g": 24.4,
+          "pctWithin20pct": 62.2,
+          "severeUndercountPct": 17.8,
+          "doseErrorUnitsAtICR10": 1.5
+        }
       }
     },
-    {
-      "band": "conf 50-64 (auto-approvable)",
-      "metrics": {
-        "n": 731,
-        "estimated": 731,
-        "coveragePct": 100,
-        "carbMAE": 7,
-        "carbMedianAE": 1,
-        "pctWithin5g": 65.9,
-        "pctWithin10g": 73.1,
-        "pctWithin20pct": 64.8,
-        "severeUndercountPct": 4.2,
-        "doseErrorUnitsAtICR10": 0.7
-      }
-    },
-    {
-      "band": "conf 65 (at cap)",
-      "metrics": {
-        "n": 461,
-        "estimated": 461,
-        "coveragePct": 100,
-        "carbMAE": 9.8,
-        "carbMedianAE": 6,
-        "pctWithin5g": 48.6,
-        "pctWithin10g": 54.2,
-        "pctWithin20pct": 49.5,
-        "severeUndercountPct": 2.6,
+    "chain": {
+      "overall": {
+        "n": 1802,
+        "estimated": 788,
+        "coveragePct": 43.7,
+        "carbMAE": 10.1,
+        "carbMedianAE": 0,
+        "pctWithin5g": 60.8,
+        "pctWithin10g": 66.8,
+        "pctWithin20pct": 59.1,
+        "severeUndercountPct": 18,
         "doseErrorUnitsAtICR10": 1
+      },
+      "byCategory": {
+        "beverage": {
+          "n": 1292,
+          "estimated": 542,
+          "coveragePct": 42,
+          "carbMAE": 6.4,
+          "carbMedianAE": 0,
+          "pctWithin5g": 76.4,
+          "pctWithin10g": 79.7,
+          "pctWithin20pct": 71,
+          "severeUndercountPct": 14,
+          "doseErrorUnitsAtICR10": 0.6
+        },
+        "entree": {
+          "n": 340,
+          "estimated": 168,
+          "coveragePct": 49.4,
+          "carbMAE": 17.7,
+          "carbMedianAE": 14,
+          "pctWithin5g": 29.2,
+          "pctWithin10g": 39.9,
+          "pctWithin20pct": 35.7,
+          "severeUndercountPct": 22,
+          "doseErrorUnitsAtICR10": 1.8
+        },
+        "dessert": {
+          "n": 70,
+          "estimated": 48,
+          "coveragePct": 68.6,
+          "carbMAE": 16,
+          "carbMedianAE": 14,
+          "pctWithin5g": 25,
+          "pctWithin10g": 39.6,
+          "pctWithin20pct": 29.2,
+          "severeUndercountPct": 31.3,
+          "doseErrorUnitsAtICR10": 1.6
+        }
+      }
+    },
+    "decomposition": {
+      "overall": {
+        "n": 400,
+        "estimated": 345,
+        "coveragePct": 86.3,
+        "carbMAE": 14.8,
+        "carbMedianAE": 10,
+        "pctWithin5g": 39.7,
+        "pctWithin10g": 50.1,
+        "pctWithin20pct": 33.3,
+        "severeUndercountPct": 9.3,
+        "doseErrorUnitsAtICR10": 1.5
+      },
+      "byCategory": {
+        "beverage": {
+          "n": 247,
+          "estimated": 212,
+          "coveragePct": 85.8,
+          "carbMAE": 12.3,
+          "carbMedianAE": 7,
+          "pctWithin5g": 45.8,
+          "pctWithin10g": 57.1,
+          "pctWithin20pct": 29.2,
+          "severeUndercountPct": 3.3,
+          "doseErrorUnitsAtICR10": 1.2
+        },
+        "entree": {
+          "n": 115,
+          "estimated": 97,
+          "coveragePct": 84.3,
+          "carbMAE": 17.6,
+          "carbMedianAE": 14,
+          "pctWithin5g": 35.1,
+          "pctWithin10g": 44.3,
+          "pctWithin20pct": 44.3,
+          "severeUndercountPct": 19.6,
+          "doseErrorUnitsAtICR10": 1.8
+        }
+      }
+    }
+  },
+  "agreement": [
+    {
+      "pair": "keyword+chain",
+      "bothEstimated": 770,
+      "agreeN": 348,
+      "agree": {
+        "n": 348,
+        "estimated": 348,
+        "coveragePct": 100,
+        "carbMAE": 4.6,
+        "carbMedianAE": 0,
+        "pctWithin5g": 78.4,
+        "pctWithin10g": 86.2,
+        "pctWithin20pct": 68.1,
+        "severeUndercountPct": 5.5,
+        "doseErrorUnitsAtICR10": 0.5
+      },
+      "disagree": {
+        "n": 422,
+        "estimated": 422,
+        "coveragePct": 100,
+        "carbMAE": 13.3,
+        "carbMedianAE": 9,
+        "pctWithin5g": 12.3,
+        "pctWithin10g": 53.8,
+        "pctWithin20pct": 17.1,
+        "severeUndercountPct": 13,
+        "doseErrorUnitsAtICR10": 1.3
+      },
+      "agreeByCategory": {
+        "beverage": {
+          "n": 260,
+          "estimated": 260,
+          "coveragePct": 100,
+          "carbMAE": 2.5,
+          "carbMedianAE": 0,
+          "pctWithin5g": 89.6,
+          "pctWithin10g": 93.8,
+          "pctWithin20pct": 67.3,
+          "severeUndercountPct": 4.6,
+          "doseErrorUnitsAtICR10": 0.2
+        },
+        "entree": {
+          "n": 62,
+          "estimated": 62,
+          "coveragePct": 100,
+          "carbMAE": 9,
+          "carbMedianAE": 4,
+          "pctWithin5g": 58.1,
+          "pctWithin10g": 75.8,
+          "pctWithin20pct": 69.4,
+          "severeUndercountPct": 6.5,
+          "doseErrorUnitsAtICR10": 0.9
+        }
+      }
+    },
+    {
+      "pair": "keyword+decomposition",
+      "bothEstimated": 1036,
+      "agreeN": 609,
+      "agree": {
+        "n": 609,
+        "estimated": 609,
+        "coveragePct": 100,
+        "carbMAE": 2.3,
+        "carbMedianAE": 0,
+        "pctWithin5g": 90.6,
+        "pctWithin10g": 93.4,
+        "pctWithin20pct": 67,
+        "severeUndercountPct": 0.3,
+        "doseErrorUnitsAtICR10": 0.2
+      },
+      "disagree": {
+        "n": 427,
+        "estimated": 427,
+        "coveragePct": 100,
+        "carbMAE": 16.3,
+        "carbMedianAE": 17,
+        "pctWithin5g": 18.7,
+        "pctWithin10g": 28.8,
+        "pctWithin20pct": 24.6,
+        "severeUndercountPct": 8.2,
+        "doseErrorUnitsAtICR10": 1.6
+      },
+      "agreeByCategory": {
+        "beverage": {
+          "n": 562,
+          "estimated": 562,
+          "coveragePct": 100,
+          "carbMAE": 1.6,
+          "carbMedianAE": 0,
+          "pctWithin5g": 94.1,
+          "pctWithin10g": 96.3,
+          "pctWithin20pct": 68.3,
+          "severeUndercountPct": 0,
+          "doseErrorUnitsAtICR10": 0.2
+        },
+        "entree": {
+          "n": 27,
+          "estimated": 27,
+          "coveragePct": 100,
+          "carbMAE": 7.5,
+          "carbMedianAE": 3,
+          "pctWithin5g": 59.3,
+          "pctWithin10g": 77.8,
+          "pctWithin20pct": 66.7,
+          "severeUndercountPct": 7.4,
+          "doseErrorUnitsAtICR10": 0.7
+        }
+      }
+    },
+    {
+      "pair": "chain+decomposition",
+      "bothEstimated": 440,
+      "agreeN": 225,
+      "agree": {
+        "n": 225,
+        "estimated": 225,
+        "coveragePct": 100,
+        "carbMAE": 0.7,
+        "carbMedianAE": 0,
+        "pctWithin5g": 96.9,
+        "pctWithin10g": 98.7,
+        "pctWithin20pct": 80.4,
+        "severeUndercountPct": 0.4,
+        "doseErrorUnitsAtICR10": 0.1
+      },
+      "disagree": {
+        "n": 215,
+        "estimated": 215,
+        "coveragePct": 100,
+        "carbMAE": 16,
+        "carbMedianAE": 16,
+        "pctWithin5g": 10.7,
+        "pctWithin10g": 23.3,
+        "pctWithin20pct": 16.7,
+        "severeUndercountPct": 17.7,
+        "doseErrorUnitsAtICR10": 1.6
+      },
+      "agreeByCategory": {
+        "beverage": {
+          "n": 205,
+          "estimated": 205,
+          "coveragePct": 100,
+          "carbMAE": 0.2,
+          "carbMedianAE": 0,
+          "pctWithin5g": 100,
+          "pctWithin10g": 100,
+          "pctWithin20pct": 81,
+          "severeUndercountPct": 0,
+          "doseErrorUnitsAtICR10": 0
+        },
+        "entree": {
+          "n": 20,
+          "estimated": 20,
+          "coveragePct": 100,
+          "carbMAE": 6.1,
+          "carbMedianAE": 3,
+          "pctWithin5g": 65,
+          "pctWithin10g": 85,
+          "pctWithin20pct": 75,
+          "severeUndercountPct": 5,
+          "doseErrorUnitsAtICR10": 0.6
+        }
       }
     }
   ],
-  "note": "Leakage-controlled back-test: target item and identically-named siblings excluded from the matching pool. severeUndercountPct is the dosing-dangerous direction (published carbs exceed prediction by >=20g)."
+  "carbFractionTable": [
+    {
+      "cls": "smoothie-juice",
+      "n": 150,
+      "medianFrac": 0.933,
+      "p25": 0.933,
+      "p75": 0.933,
+      "impliedCarbSpreadAtMedianCal": 0
+    },
+    {
+      "cls": "cookie",
+      "n": 11,
+      "medianFrac": 0.544,
+      "p25": 0.544,
+      "p75": 0.562,
+      "impliedCarbSpreadAtMedianCal": 2
+    },
+    {
+      "cls": "cake-cupcake",
+      "n": 25,
+      "medianFrac": 0.579,
+      "p25": 0.558,
+      "p75": 0.623,
+      "impliedCarbSpreadAtMedianCal": 5
+    },
+    {
+      "cls": "sandwich",
+      "n": 59,
+      "medianFrac": 0.374,
+      "p25": 0.333,
+      "p75": 0.391,
+      "impliedCarbSpreadAtMedianCal": 7
+    },
+    {
+      "cls": "brownie-bar",
+      "n": 12,
+      "medianFrac": 0.5,
+      "p25": 0.5,
+      "p75": 0.56,
+      "impliedCarbSpreadAtMedianCal": 7
+    },
+    {
+      "cls": "pretzel",
+      "n": 26,
+      "medianFrac": 0.792,
+      "p25": 0.723,
+      "p75": 0.792,
+      "impliedCarbSpreadAtMedianCal": 8
+    },
+    {
+      "cls": "salad",
+      "n": 14,
+      "medianFrac": 0.288,
+      "p25": 0.209,
+      "p75": 0.303,
+      "impliedCarbSpreadAtMedianCal": 10
+    },
+    {
+      "cls": "wrap-taco",
+      "n": 17,
+      "medianFrac": 0.406,
+      "p25": 0.392,
+      "p75": 0.469,
+      "impliedCarbSpreadAtMedianCal": 10
+    },
+    {
+      "cls": "coffee-drink",
+      "n": 94,
+      "medianFrac": 0.551,
+      "p25": 0.432,
+      "p75": 0.644,
+      "impliedCarbSpreadAtMedianCal": 13
+    },
+    {
+      "cls": "pastry",
+      "n": 37,
+      "medianFrac": 0.562,
+      "p25": 0.415,
+      "p75": 0.578,
+      "impliedCarbSpreadAtMedianCal": 14
+    },
+    {
+      "cls": "chicken-tenders",
+      "n": 14,
+      "medianFrac": 0.24,
+      "p25": 0.176,
+      "p75": 0.447,
+      "impliedCarbSpreadAtMedianCal": 24
+    },
+    {
+      "cls": "pizza",
+      "n": 18,
+      "medianFrac": 0.437,
+      "p25": 0.376,
+      "p75": 0.545,
+      "impliedCarbSpreadAtMedianCal": 35
+    }
+  ],
+  "note": "Leakage-controlled back-test: target item and identically-named siblings excluded from every pool. severeUndercountPct is the dosing-dangerous direction (published carbs exceed prediction by >=20g). Agreement = two methods within max(8g, 15%); the agree/disagree split tests whether triangulation earns confidence."
 }
