@@ -116,6 +116,15 @@ Conclusions:
 
 **Phase 0 addendum — Claude as the decomposition engine (calibrated 2026-06-10).** Groq's 100k-tokens/day budget was consumed by the calibration runs themselves, so E4 was re-based on Claude subagents (the repo's existing "Opus-grounded nutrition engine" precedent) — measured blind on 120 ground-truth items before use: **MAE 5.1g, 75.8% within ±10g, 3.3% severe undercounts, 100% coverage** — 3× better than Groq (14.8g / 50.1% / 9.3%) and better than the keyword estimator overall. Per category: beverages 77% ±10g / 1.2% undercut; entrees 70% ±10g / 7.4% undercut. Still below the single-method dosing-grade gate, so the agreement requirement stands — and applying the Groq-measured agreement tiers to a stronger decomposition engine is conservative.
 
+## Phase 2 pilot result (applied 2026-06-10/11)
+
+`audit:triangulate` ran over the top-500 dosing-impact unknowns with 300 Claude-decomposition estimates + keyword + chain:
+
+- **14 agreement-backed corrections applied** (conf 50–60, all sub-dosing-grade, never-downgrade, undo manifest committed) — mostly repairing over-multiplied legacy values (gyro combo 175→141g, Princess Peach's Cake 260→61g, festival bread plate 125→58g).
+- **228-item verification queue** (by dosing impact) emitted for E2 research.
+- **Portion-semantics lesson (important):** dry-run review caught that multi-serving/oversized items ("All Classic Dozen" 300→49g, "Whole Cheese Pizza", "Jumbo Cinnamon Roll") get valued as a *single serving* by estimators while the catalog stores items *as sold* — a systematic undercount, the dosing-dangerous direction. A `MULTI_SERVING_PATTERN` guard now routes those to the queue; E2 research must resolve as-sold portions explicitly.
+- **Yield observation:** 14/300 (~5%) agreement yield on the *hardest* items (these are the top of the dosing-impact queue precisely because nothing has been able to value them). The queue, not the import count, is the main product of each run — it feeds E2 with exactly the items where independent methods can't agree.
+
 ## Phase 1 spike result (E1 acquisition, probed 2026-06-10)
 
 **No easy public-web source for official calories.** Probed: TouringPlans restaurant pages carry no calories and the menu URLs 404; AllEars returns 403 (Cloudflare, known); **Disney's own web menus render rich item descriptions but zero calorie figures** (confirmed via Playwright on a Magic Kingdom QS menu). Official calories therefore live only in: (a) the Disney/Universal **mobile-order app flows** — scraping them needs a TOS decision (**critical ask**), or (b) **physical menu boards** — photo OCR, opportunistic. E1 is downgraded from "spike then build" to **blocked-on-TOS / opportunistic**; the carb-fraction table stays ready for whenever official calories arrive.
