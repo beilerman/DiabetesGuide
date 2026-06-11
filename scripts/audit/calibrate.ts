@@ -289,6 +289,10 @@ interface AgreementReport {
   agreeN: number
   agree: CalibrationMetrics
   disagree: CalibrationMetrics
+  /** Per-category metrics for the AGREE subset — the ground truth is
+   * beverage-heavy, so the dosing-grade claim must hold per category, not
+   * just in aggregate. */
+  agreeByCategory: Record<string, CalibrationMetrics>
 }
 
 /** Does cross-method agreement predict accuracy? Score the mean of each pair
@@ -325,6 +329,7 @@ export function analyzeAgreement(
         agreeN: agreePairs.length,
         agree: scoreCalibrationPairs(agreePairs),
         disagree: scoreCalibrationPairs(disagreePairs),
+        agreeByCategory: scoreByCategory(agreePairs, 20),
       })
     }
   }
@@ -424,6 +429,9 @@ async function main() {
     console.log(`\nAGREEMENT ${rep.pair}: both estimated ${rep.bothEstimated}, agree ${rep.agreeN}`)
     if (rep.agree.carbMAE != null) console.log(`  when AGREE:    MAE ${rep.agree.carbMAE}g, ±10g ${rep.agree.pctWithin10g}%, undercut ${rep.agree.severeUndercountPct}%`)
     if (rep.disagree.carbMAE != null) console.log(`  when DISAGREE: MAE ${rep.disagree.carbMAE}g, ±10g ${rep.disagree.pctWithin10g}%, undercut ${rep.disagree.severeUndercountPct}%`)
+    for (const [cat, m] of Object.entries(rep.agreeByCategory)) {
+      console.log(`    agree/${cat}: MAE ${m.carbMAE}g, ±10g ${m.pctWithin10g}%, undercut ${m.severeUndercountPct}%, n=${m.estimated}`)
+    }
   }
 
   const carbFractionTable = buildCarbFractionTable(officialPool)
