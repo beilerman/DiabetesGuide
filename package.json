@@ -51,7 +51,8 @@
     "ai:candidates": "tsx scripts/ai-nutrition-candidates.ts",
     "import:ai": "tsx scripts/import-ai-nutrition.ts",
     "import:manual-nutrition": "tsx scripts/import-ai-nutrition.ts --file=data/manual-nutrition-estimates.json",
-    "audit:calibrate": "tsx scripts/audit/calibrate.ts"
+    "audit:calibrate": "tsx scripts/audit/calibrate.ts",
+    "audit:triangulate": "tsx scripts/audit/triangulate.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",
