@@ -33,7 +33,7 @@ function isLikelyBeverage(item: Item): boolean {
 export function checkAccuracy(items: Item[]): AuditPassResult {
   const findings: AuditFinding[] = []
   const autoFixes: AutoFix[] = []
-  const stats = { checked: 0, clean: 0, flagged: 0 }
+  const stats = { checked: 0, clean: 0, flagged: 0, templateGroups: 0 }
 
   for (const item of items) {
     const n = nd(item)
@@ -72,10 +72,14 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
         before: n.fiber,
         after: suggested,
         reason: `fiber (${n.fiber}) > carbs (${n.carbs}); set to ${THRESHOLDS.FIBER_CARB_RATIO * 100}% of carbs`,
+        currentConfidence: n.confidence_score,
       })
     }
 
-    // 2. sugar > carbs
+    // 2. sugar > carbs — flag only, NOT auto-fixed. Sugar is a component of
+    // carbs, so sugar > carbs usually means the CARB value is undercounted
+    // (the dosing-critical field). Capping sugar would hide that signal while
+    // leaving the wrong carb value dosing-eligible.
     if (
       n.sugar !== null &&
       n.carbs !== null &&
@@ -87,20 +91,10 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
         park,
         checkName: 'sugar_gt_carbs',
         severity: 'HIGH',
-        message: `Sugar (${n.sugar}g) exceeds carbs (${n.carbs}g) — impossible`,
+        message: `Sugar (${n.sugar}g) exceeds carbs (${n.carbs}g) — carbs may be undercounted; verify both values`,
         currentValue: String(n.sugar),
         suggestedValue: String(n.carbs),
-        autoFixable: true,
-      })
-      itemFixes.push({
-        nutritionDataId: n.id,
-        item: item.name,
-        restaurant,
-        park,
-        field: 'sugar',
-        before: n.sugar,
-        after: n.carbs,
-        reason: `sugar (${n.sugar}) > carbs (${n.carbs}); capped to carbs`,
+        autoFixable: false,
       })
     }
 
@@ -130,6 +124,7 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
         before: n.sodium,
         after: suggested,
         reason: `sodium ${n.sodium} > ${THRESHOLDS.MAX_SODIUM}; divided by ${THRESHOLDS.SODIUM_DIVISOR}`,
+        currentConfidence: n.confidence_score,
       })
     }
 
@@ -157,6 +152,7 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
           before: val,
           after: 0,
           reason: `${field} was negative (${val}); set to 0`,
+          currentConfidence: n.confidence_score,
         })
       }
     }
@@ -178,16 +174,34 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
       })
     }
 
-    // 6. Atwater deviation (skip for alcoholic beverages)
+    // 6. Atwater deviation. Alcohol contributes ~7 cal/g that the standard
+    // P*4 + C*4 + F*9 formula misses, so:
+    //   - rows with a known alcohol_grams are validated WITH the alcohol term
+    //   - alcohol-suspected rows WITHOUT alcohol_grams are skipped (can't
+    //     distinguish "alcohol calories" from "wrong macros") and flagged LOW
+    //     so the missing alcohol data itself is visible.
+    const hasAlcoholGrams = n.alcohol_grams !== null && n.alcohol_grams > 0
+    const alcoholSuspected = isLikelyAlcoholic(item.name, item)
+    if (alcoholSuspected && !hasAlcoholGrams) {
+      itemFindings.push({
+        item: item.name,
+        restaurant,
+        park,
+        checkName: 'alcohol_grams_missing',
+        severity: 'LOW',
+        message: 'Likely alcoholic but alcohol_grams is unset — caloric validation skipped; backfill to enable it',
+        autoFixable: false,
+      })
+    }
     if (
       n.calories !== null &&
       n.calories > 0 &&
       n.protein !== null &&
       n.carbs !== null &&
       n.fat !== null &&
-      !isLikelyAlcoholic(item.name, item)
+      (hasAlcoholGrams || !alcoholSuspected)
     ) {
-      const estimate = n.protein * 4 + n.carbs * 4 + n.fat * 9
+      const estimate = n.protein * 4 + n.carbs * 4 + n.fat * 9 + (n.alcohol_grams ?? 0) * 7
       if (estimate > 0) {
         const absDiff = Math.abs(n.calories - estimate)
         const deviation = absDiff / estimate * 100
@@ -261,6 +275,45 @@ export function checkAccuracy(items: Item[]): AuditPassResult {
       stats.clean++
     }
   }
+
+  // 9. Template/duplicate nutrition profiles. Keyword-copy estimation pastes
+  // the same macro tuple onto many different foods — one wrong template makes
+  // many wrong items that all pass internal-consistency checks. Flag groups of
+  // >= TEMPLATE_MIN_COUNT *differently-named*, non-official items sharing an
+  // identical full macro tuple. Exclusions:
+  //   - official rows (chains legitimately repeat published values)
+  //   - near-zero-calorie rows (water/black coffee are legitimately identical)
+  //   - same-name items (one item sold at multiple locations)
+  const templateGroups = new Map<string, { names: Set<string>; example: Item }>()
+  for (const item of items) {
+    const n = nd(item)
+    if (!n || n.source === 'official') continue
+    if ((n.calories ?? 0) <= 10) continue
+    if (n.carbs === null) continue
+    const key = [n.calories, n.carbs, n.fat, n.protein, n.sugar, n.fiber, n.sodium].join('|')
+    let group = templateGroups.get(key)
+    if (!group) {
+      group = { names: new Set(), example: item }
+      templateGroups.set(key, group)
+    }
+    group.names.add(item.name.trim().toLowerCase())
+  }
+  for (const [key, group] of templateGroups) {
+    if (group.names.size >= THRESHOLDS.TEMPLATE_MIN_COUNT) {
+      findings.push({
+        item: group.example.name,
+        restaurant: group.example.restaurant?.name ?? 'Unknown Restaurant',
+        park: group.example.restaurant?.park?.name ?? 'Unknown Park',
+        checkName: 'template_profile',
+        severity: 'LOW',
+        message: `${group.names.size} differently-named items share an identical nutrition profile (${key}) — likely copied template; verify the source values`,
+        autoFixable: false,
+      })
+    }
+  }
+  stats.templateGroups = [...templateGroups.values()].filter(
+    (g) => g.names.size >= THRESHOLDS.TEMPLATE_MIN_COUNT,
+  ).length
 
   return {
     pass: 'accuracy',

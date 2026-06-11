@@ -4,17 +4,25 @@ import { resolve, dirname } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
 import type { MergeResult, MergedItem } from './merge.js'
 import { normalizeName } from '../scrapers/utils.js'
+import { THRESHOLDS } from '../audit/thresholds.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const url = process.env.SUPABASE_URL
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY
-if (!url || !key) {
-  console.error('Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in env')
-  process.exit(1)
+// Lazy client: the pure estimator functions in this module are imported by
+// the calibration harness and tests, which must not require env vars (or hit
+// the old import-time process.exit) just to load the module.
+let _supabase: ReturnType<typeof createClient> | null = null
+function getSupabase() {
+  if (_supabase) return _supabase
+  const url = process.env.SUPABASE_URL
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!url || !key) {
+    console.error('Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in env')
+    process.exit(1)
+  }
+  _supabase = createClient(url, key)
+  return _supabase
 }
-
-const supabase = createClient(url, key)
 
 export interface NutritionEstimate {
   calories: number
@@ -52,7 +60,7 @@ const FOOD_KEYWORDS: Record<string, string[]> = {
   pretzel: ['pretzel'],
 }
 
-function extractKeywords(name: string): string[] {
+export function extractKeywords(name: string): string[] {
   const normalized = normalizeName(name)
   const words = normalized.split(' ')
   const keywords: string[] = []
@@ -106,7 +114,7 @@ async function getExistingItemsWithNutrition(): Promise<{
   const page = 1000
   let from = 0
   for (;;) {
-    const { data: batch, error } = await supabase
+    const { data: batch, error } = await getSupabase()
       .from('menu_items')
       .select(`
         id,
@@ -159,9 +167,23 @@ async function getExistingItemsWithNutrition(): Promise<{
     })
 }
 
-function estimateNutrition(
+export interface NutritionPoolEntry {
+  id: string
+  name: string
+  category: string
+  calories: number
+  carbs: number
+  fat: number
+  protein: number
+  sugar: number | null
+  fiber: number | null
+  sodium: number | null
+  keywords: string[]
+}
+
+export function estimateNutrition(
   item: MergedItem,
-  existingItems: Awaited<ReturnType<typeof getExistingItemsWithNutrition>>
+  existingItems: NutritionPoolEntry[]
 ): NutritionEstimate | null {
   const itemKeywords = extractKeywords(item.itemName)
 
@@ -188,7 +210,10 @@ function estimateNutrition(
     carbs: Math.round(topMatches.reduce((sum, m) => sum + (m.carbs * m.similarity), 0) / totalWeight),
     fat: Math.round(topMatches.reduce((sum, m) => sum + (m.fat * m.similarity), 0) / totalWeight),
     protein: Math.round(topMatches.reduce((sum, m) => sum + (m.protein * m.similarity), 0) / totalWeight),
-    confidence: Math.round(topMatches[0].similarity * 0.8),
+    // Capped below the app's dosing-grade bar (70): keyword similarity copies
+    // nutrition from a different item — text overlap is not carb evidence, so
+    // a copied estimate must never be presented as safe to dose insulin from.
+    confidence: Math.min(THRESHOLDS.KEYWORD_CONFIDENCE_CAP, Math.round(topMatches[0].similarity * 0.8)),
     matchedItems: topMatches.map(m => ({ name: m.name, similarity: m.similarity })),
   }
 

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "04efad79-296f-492b-ab7a-452dfe3d2dee",
+    "name": "Thrilla in Vanilla",
+    "calories": 1100,
+    "carbs": 130,
+    "fat": 55,
+    "protein": 17,
+    "sugar": 102,
+    "fiber": 1,
+    "sodium": 480,
+    "confidence": 50,
+    "sourceUrl": "https://www.themouseforless.com/universal-orlando-resort/menus/toothsome-chocolate-emporium-savory-kitchen-feast-menu/",
+    "note": "Toothsome menu confirms $19 shake = vanilla ice cream + vanilla pastry cream + vanilla wafers + macaron + whipped topping + cherry. No official nutrition; modeled as ~20oz premium vanilla shake (Sonic large vanilla ~930 cal/105g carbs analog) plus wafers/macaron/pastry cream toppings. Keyword 38g is a single-serving error; full shake as sold is ~130g carbs."
+  },
+  {
+    "id": "097a84dd-b56c-4a74-89e2-c507f1208dbe",
+    "name": "Santa Hat Brownie Sundae",
+    "calories": 980,
+    "carbs": 130,
+    "fat": 46,
+    "protein": 12,
+    "sugar": 98,
+    "fiber": 4,
+    "sodium": 380,
+    "confidence": 45,
+    "sourceUrl": "https://www.disneyfoodblog.com/2025/11/07/full-review-of-all-the-snacks-we-had-at-mickeys-very-merry-christmas-party-2025/",
+    "note": "DFB review (Plaza Ice Cream Parlor, $7.99, Very Merry Christmas Party): brownie + vanilla ice cream + hot fudge + crushed peppermint + whipped cream + red velvet cone with marshmallow; reviewers call it 'a lot'. Component build: brownie ~56g C, scoop ~30g C, fudge ~22g C, cone/peppermint/marshmallow ~20g C. Low end of prior range (60g) implausible for this build."
+  },
+  {
+    "id": "0a9e0976-0bdd-45a7-9565-048b5e923ccd",
+    "name": "Two Foot Dog",
+    "calories": 1450,
+    "carbs": 125,
+    "fat": 78,
+    "protein": 51,
+    "sugar": 10,
+    "fiber": 5,
+    "sodium": 4200,
+    "confidence": 60,
+    "sourceUrl": "https://orlandoinformer.com/universal/hot-dog-hall-of-fame/",
+    "note": "Official description: 24-inch Vienna all-beef frankfurter on a baguette with 2 toppings ($20.99 base; fries are a separate combo upcharge, excluded here). Carbs driven by the ~24in baguette (~230g bread, ~117g carbs) + toppings; dog itself ~10oz all-beef frank (~810 cal, near-zero carbs). Sodium is genuinely extreme (frank + baguette)."
+  },
+  {
+    "id": "0f822581-6541-4e6e-8d16-90c047e2196b",
+    "name": "Whole Cheese Pizza",
+    "calories": 2300,
+    "carbs": 270,
+    "fat": 88,
+    "protein": 96,
+    "sugar": 32,
+    "fiber": 15,
+    "sodium": 5000,
+    "confidence": 45,
+    "sourceUrl": "https://touringplans.com/universal-studios-florida/dining/louies-italian-restaurant/menus/all-day",
+    "note": "Louie's/Cafe 4 menu: Whole Cheese Pizza $38.99 vs Jumbo Cheese Slice $11.29 — this is a full-size sharing pie (~16in, ~8 slices), NOT a personal pizza; prior 70-96g range is roughly one jumbo slice. Modeled on large NY-style cheese pie (Domino's large cheese 8x290 cal analog). Exact diameter not published, hence 45."
+  },
+  {
+    "id": "11514c04-9d46-4ddf-bfc7-ca89de8c165d",
+    "name": "Indian-Style Bread Service (with 3 accompaniments)",
+    "calories": 1450,
+    "carbs": 230,
+    "fat": 42,
+    "protein": 42,
+    "sugar": 30,
+    "fiber": 10,
+    "sodium": 2700,
+    "confidence": 55,
+    "sourceUrl": "https://www.wdw-magazine.com/sanaas-bread-service-is-it-worth-the-money/",
+    "note": "Sanaa basket = 5 large flatbreads (traditional/garlic-ginger/spiced naan, onion kulcha, paneer paratha) — 'shareable between one and five people'; 3-accompaniment version is same breads with 3 dips (~2oz each, incl. sugary chutneys). Bread: 5 x ~90g naan (262 cal/45g carbs each per USDA-style data) + dips ~20g carbs. As sold for the table: ~230g carbs; prior 100g low end covers only ~2 breads."
+  }
+]

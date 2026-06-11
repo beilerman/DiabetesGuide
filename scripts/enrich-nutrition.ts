@@ -61,13 +61,32 @@ function getNutrient(food: USDAFood, id: number): number | null {
   return n ? n.value : null
 }
 
-function computeConfidence(usdaCals: number | null, storedCals: number): number {
+/**
+ * Confidence for a USDA name-match. Dosing-grade (>=70) requires the USDA
+ * match to corroborate the stored CARB value, not just calories — carbs are
+ * the field insulin is dosed from, and a calorie-only agreement says nothing
+ * about them (a wrong carb value used to be able to inherit confidence 85
+ * because the calories of an unrelated USDA food happened to agree).
+ */
+function computeConfidence(
+  usdaCals: number | null,
+  storedCals: number,
+  usdaCarbs: number | null,
+  storedCarbs: number,
+): number {
   if (!storedCals || storedCals === 0) return 50
   if (usdaCals == null) return 40
-  const ratio = Math.abs(usdaCals - storedCals) / storedCals
-  if (ratio <= 0.2) return 85
-  if (ratio <= 0.5) return 60
-  return 40
+  const calRatio = Math.abs(usdaCals - storedCals) / storedCals
+  if (calRatio > 0.5) return 40
+  if (calRatio > 0.2) return 60
+  // Calories agree within 20%. Grant 85 only when carbs independently agree
+  // within 20% too (two-factor corroboration); otherwise stay below the
+  // dosing-grade bar.
+  if (storedCarbs > 0 && usdaCarbs != null) {
+    const carbRatio = Math.abs(usdaCarbs - storedCarbs) / storedCarbs
+    if (carbRatio <= 0.2) return 85
+  }
+  return 60
 }
 
 async function enrich() {
@@ -79,7 +98,8 @@ async function enrich() {
   while (true) {
     const { data: batch, error: batchErr } = await supabase
       .from('menu_items')
-      .select('id, name, description, nutritional_data(id, calories, carbs, fat, sugar, protein, fiber, sodium, cholesterol)')
+      .select('id, name, description, nutritional_data(id, calories, carbs, fat, sugar, protein, fiber, sodium, cholesterol, source, confidence_score)')
+      .order('id') // stable order — range pagination can skip/duplicate rows without it
       .range(from, from + batchSize - 1)
     if (batchErr) { console.error('Failed to fetch:', batchErr); process.exit(1) }
     if (!batch?.length) break
@@ -114,6 +134,14 @@ async function enrich() {
 
     if (!nutData) {
       failed++
+      continue
+    }
+
+    // Never touch trusted rows: official-source provenance (chain-published
+    // values) and dosing-grade confidence must not be overwritten by a USDA
+    // name-match — this enricher used to re-stamp such rows to api_lookup.
+    if (nutData.source === 'official' || (nutData.confidence_score ?? 0) >= 70) {
+      skipped++
       continue
     }
 
@@ -171,7 +199,7 @@ async function enrich() {
     const usdaCarbs = getNutrient(food, NUTRIENT_IDS.carbs) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.carbs)!) : null
     const usdaFat = getNutrient(food, NUTRIENT_IDS.fat) != null ? Math.round(getNutrient(food, NUTRIENT_IDS.fat)!) : null
 
-    const confidence = computeConfidence(usdaCals, nutData.calories ?? 0)
+    const confidence = computeConfidence(usdaCals, nutData.calories ?? 0, usdaCarbs, nutData.carbs ?? 0)
 
     const update: Record<string, number | null | string> = {
       sugar,

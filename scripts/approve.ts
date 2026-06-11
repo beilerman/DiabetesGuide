@@ -312,6 +312,14 @@ async function main(): Promise<void> {
   let itemsToApprove: EstimatedItem[]
   let deferred: EstimatedItem[]
 
+  // NOTE: `item.confidence` is the scrape-MATCH confidence (is this the right
+  // item?), while `item.nutrition.confidence` is the keyword ESTIMATE
+  // confidence — and the latter is what gets written to the DB as
+  // confidence_score. They are different quantities: this gate requires
+  // match-confidence >= 70 AND estimate-confidence >= 50 (via
+  // !needsManualNutrition). The stored estimate confidence is capped below the
+  // dosing-grade bar at the estimator (KEYWORD_CONFIDENCE_CAP), so an
+  // auto-approved keyword estimate can never present as safe-to-dose.
   const isHighConfidence = (item: EstimatedItem) =>
     item.confidence >= AUTO_APPROVE_MIN_CONFIDENCE && !!item.nutrition && !item.needsManualNutrition
 

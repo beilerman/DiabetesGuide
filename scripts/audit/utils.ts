@@ -82,8 +82,9 @@ export async function fetchAllItems(
       .select(
         `id, name, category, is_vegetarian, is_fried, description,
          restaurant:restaurants(name, park:parks(name)),
-         nutritional_data(id, calories, carbs, fat, sugar, protein, fiber, sodium, cholesterol, source, confidence_score)`
+         nutritional_data(id, calories, carbs, fat, sugar, protein, fiber, sodium, cholesterol, alcohol_grams, source, confidence_score)`
       )
+      .order('id') // stable order — range pagination can skip/duplicate rows without it
       .range(offset, offset + PAGE_SIZE - 1)
 
     if (error) {

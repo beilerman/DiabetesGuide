@@ -21,6 +21,9 @@ export interface AutoFix {
   before: number | null
   after: number
   reason: string
+  /** confidence_score at the time the fix was generated — a record that needed
+   * correction has demonstrably unreliable data, so apply demotes it. */
+  currentConfidence?: number | null
 }
 
 export interface AuditPassResult {
@@ -64,6 +67,7 @@ export interface NutData {
   fiber: number | null
   sodium: number | null
   cholesterol: number | null
+  alcohol_grams: number | null
   source: string
   confidence_score: number | null
 }

@@ -1,0 +1,722 @@
+[
+  {
+    "id": "00624922-e0c8-4a4c-9da0-61fce046b6c6",
+    "name": "Sparkling Wine",
+    "category": "beverage",
+    "description": "bottle $49-$69; glass"
+  },
+  {
+    "id": "016100be-bb62-4f6c-8a10-b47d15a69e3d",
+    "name": "Caffè Mocha (with whip) — Grande (16 oz)",
+    "category": "beverage",
+    "description": "Default milk: 2% milk"
+  },
+  {
+    "id": "0329cf0c-9cfc-4e0f-b83c-2218137fc982",
+    "name": "Carnivore Pizza, 11\"",
+    "category": "entree",
+    "description": "Pepperoni, Italian sausage, meatballs, bacon, red sauce, mozzarella"
+  },
+  {
+    "id": "04f7a833-b6a1-4112-b976-f0c85d1a6c7e",
+    "name": "Heineken",
+    "category": "beverage",
+    "description": "Heineken Dutch lager."
+  },
+  {
+    "id": "06706426-8d74-4bbf-86e2-0416723470f5",
+    "name": "Chicken Caesar Salad",
+    "category": "entree",
+    "description": "Romaine, Grilled Chicken, Shaved Parmesan, House-made Croutons and Caesar Dressing"
+  },
+  {
+    "id": "0893fa99-95ff-454f-9eb1-40340b90fe93",
+    "name": "Nitro Cold Brew",
+    "category": "beverage",
+    "description": "Smooth cold-brewed coffee."
+  },
+  {
+    "id": "0a956704-71c7-41fc-921c-a9bea2831308",
+    "name": "Hot Chocolate",
+    "category": "beverage",
+    "description": "Rich hot chocolate drink."
+  },
+  {
+    "id": "0d8d1bce-a4b3-48fa-9f0f-4572bc642e11",
+    "name": "Clover Brewed Coffee",
+    "category": "beverage",
+    "description": "availability changes regularly"
+  },
+  {
+    "id": "0fb4d9e7-45ba-4dd9-b626-b75c75d46872",
+    "name": "Double Espresso",
+    "category": "beverage",
+    "description": "Double espresso shot."
+  },
+  {
+    "id": "1114bcdb-c8d6-485f-bfdf-cdf62174b982",
+    "name": "Pink Drink",
+    "category": "beverage",
+    "description": "Starbucks Pink Drink refresher."
+  },
+  {
+    "id": "12068591-8de2-4deb-9b6b-2a35c8c132ba",
+    "name": "Chocolate Milk",
+    "category": "beverage",
+    "description": "Rich chocolate-flavored milk."
+  },
+  {
+    "id": "128b834a-dd2e-440a-956c-ec564ce34d88",
+    "name": "Cafe Femenino Coffee",
+    "category": "beverage",
+    "description": "Fair-trade coffee from women-owned farms."
+  },
+  {
+    "id": "1580d544-ead4-43b8-880c-c703ff9e23bb",
+    "name": "Chick-fil-A Frosted Lemonade",
+    "category": "beverage",
+    "description": "Hand-spun vanilla Icedream and lemonade"
+  },
+  {
+    "id": "1843891a-6154-42a3-a16c-8201588fa0bb",
+    "name": "Croissant",
+    "category": "entree",
+    "description": "flavors may vary; butter, almond"
+  },
+  {
+    "id": "1a544541-9e47-444a-8a3b-3afabc9c633b",
+    "name": "Chick-fil-A Cookies & Cream Milkshake",
+    "category": "beverage",
+    "description": "Hand-spun milkshake with Oreo cookie pieces"
+  },
+  {
+    "id": "1c814ddf-a94a-465e-8b48-ca95daeb56a6",
+    "name": "Green Stripe",
+    "category": "entree",
+    "description": "Pesto Drizzle, Chicken, Garlic, Red Peppers, Mozzarella, Arugula. Gluten-Free Dough - $3.00 | High-rise Dough - $3.50 | Cauliflower Crust - $4.00"
+  },
+  {
+    "id": "1de87790-a3b3-4342-b2de-c6b152a410cd",
+    "name": "Powdered Sugar Cake",
+    "category": "dessert",
+    "description": "plain cake doughnut with powdered sugar (270 cal.)"
+  },
+  {
+    "id": "1f014d00-5308-48c0-b3d5-0fe1465d0ce7",
+    "name": "Powerade",
+    "category": "beverage",
+    "description": "choice of Mountain Berry Blast or Fruit Punch"
+  },
+  {
+    "id": "218b4f78-34b5-4f9b-a08d-9bbfd43e72de",
+    "name": "White Chocolate Mocha (with whip) — Grande (16 oz)",
+    "category": "beverage",
+    "description": "Default milk: 2% milk"
+  },
+  {
+    "id": "22e759ed-6ce8-49dd-936f-af8cdf4c378a",
+    "name": "Powerade",
+    "category": "beverage",
+    "description": "Powerade sports drink."
+  },
+  {
+    "id": "248a5304-f834-4a58-ba21-627f0ece9a48",
+    "name": "Hot Chocolate",
+    "category": "beverage",
+    "description": "Nothing warms up a crisp fall day or evening like the warm delicious treat of hot chocolate."
+  },
+  {
+    "id": "2618d223-92a6-40d4-8de6-75d07cd8af1f",
+    "name": "High Noon Pineapple Seltzer",
+    "category": "beverage",
+    "description": "High Noon hard seltzer."
+  },
+  {
+    "id": "2872cfbd-e9e4-4f11-9518-eb517344b4f4",
+    "name": "Pumpkin Juice™",
+    "category": "beverage",
+    "description": "Wizarding World spiced pumpkin juice."
+  },
+  {
+    "id": "29df1c1c-6273-4a2f-8609-56b96882659e",
+    "name": "Coors Light",
+    "category": "beverage",
+    "description": "Light American lager beer."
+  },
+  {
+    "id": "2a9e6431-0240-454f-92f7-ee3f2e184db0",
+    "name": "High Noon Pineapple Seltzer",
+    "category": "beverage",
+    "description": "High Noon hard seltzer."
+  },
+  {
+    "id": "2b68c324-206e-4940-aacc-2bbac9665bfe",
+    "name": "S'more Pie",
+    "category": "dessert",
+    "description": "Classic smores with chocolate and marshmallow."
+  },
+  {
+    "id": "2c287b3b-5cd6-4ee4-8853-4e65c3f349ee",
+    "name": "Chocolate Milk",
+    "category": "beverage",
+    "description": "Rich chocolate-flavored milk."
+  },
+  {
+    "id": "2e35690c-c5ec-4ee8-8e24-f1c0b1b62dfd",
+    "name": "Double-Smoked Bacon, Cheddar and Egg",
+    "category": "entree",
+    "description": "Breakfast sandwich with bacon, cheddar, and egg."
+  },
+  {
+    "id": "311d3210-c528-4b12-8adc-1da1d6355125",
+    "name": "Powerade",
+    "category": "beverage",
+    "description": "Powerade sports drink."
+  },
+  {
+    "id": "3221203c-f421-4fff-9d04-3093b406d404",
+    "name": "Mega Mango",
+    "category": "beverage",
+    "description": "Mango, Strawberry, Orange Juice, Pineapple Juice"
+  },
+  {
+    "id": "3629796b-64f4-44f4-b068-ce46ede36b78",
+    "name": "Organic Café Femenino Coffee",
+    "category": "beverage",
+    "description": "Organic brewed coffee."
+  },
+  {
+    "id": "3874e39f-ef56-4bea-bbc8-2f8e01cf189b",
+    "name": "Heineken",
+    "category": "beverage",
+    "description": "Heineken Dutch lager."
+  },
+  {
+    "id": "399dbd03-03ba-4d3d-aa07-a5bad361682f",
+    "name": "Bagels",
+    "category": "entree",
+    "description": "plain, multigrain, everything with cream cheese"
+  },
+  {
+    "id": "3aea82ef-3f8b-47a6-98b7-5e9aeefba2ac",
+    "name": "Corona Extra",
+    "category": "beverage",
+    "description": "not sold in Magic Kingdom"
+  },
+  {
+    "id": "3d61d095-3e00-47c8-bbf2-99b9cd4ad3a6",
+    "name": "Coffee",
+    "category": "beverage",
+    "description": "(5-200 cal.)\nadd flavor - .99vanilla, caramel, hazelnut, pumpkin"
+  },
+  {
+    "id": "3fa73e96-c575-4133-ab3c-c17be62702ce",
+    "name": "Hot Chocolate",
+    "category": "beverage",
+    "description": "Rich hot chocolate drink."
+  },
+  {
+    "id": "4139a299-305f-433a-864a-ddea33e86f6c",
+    "name": "Green Stripe",
+    "category": "entree",
+    "description": "Pesto Drizzle, Chicken, Garlic, Red Peppers, Mozzarella, Arugula. Gluten-Free Dough - $3.00 | High-rise Dough - $3.50 | Cauliflower Crust - $4.00"
+  },
+  {
+    "id": "4353189a-ee1f-4367-a762-e9f932efc305",
+    "name": "Dragon Drink",
+    "category": "beverage",
+    "description": "Mango dragonfruit Refresher shaken with coconut milk and diced dragonfruit."
+  },
+  {
+    "id": "450415b1-3d5a-44d1-9af4-810b63080891",
+    "name": "Powerade",
+    "category": "beverage",
+    "description": "Fruit Punch, Mountain Berry Blast"
+  },
+  {
+    "id": "475f6b8d-7edb-4218-851f-c58dedb90659",
+    "name": "ImmuniTea",
+    "category": "entree",
+    "description": "blend of black teas from around the world infused with vitamin C, vitamin D, zinc, elderberry & echinacea"
+  },
+  {
+    "id": "4a35ed7e-c1bb-4b34-94f3-8e6db07d1942",
+    "name": "Egg 'N' Cheddar Breakfast Sandwich",
+    "category": "entree",
+    "description": "with breakfast sauce"
+  },
+  {
+    "id": "4af98ebc-5fdb-4e95-832f-ed6d44449d5f",
+    "name": "Pumpkin Juice",
+    "category": "beverage",
+    "description": "Sweet pumpkin-flavored beverage"
+  },
+  {
+    "id": "4c286dcc-48f3-4987-a341-39de6deabbf5",
+    "name": "Bud Light Lager Draft",
+    "category": "beverage",
+    "description": "Light American lager beer."
+  },
+  {
+    "id": "50a6fd2b-d8c9-42f1-ac10-9f15060128cc",
+    "name": "High Noon Pineapple Seltzer",
+    "category": "beverage",
+    "description": "High Noon hard seltzer."
+  },
+  {
+    "id": "5307c8a0-2a35-420b-a855-f0a44dc8aa66",
+    "name": "Hot Chocolate",
+    "category": "beverage",
+    "description": "Rich hot chocolate drink."
+  },
+  {
+    "id": "5570a2ac-16bd-4970-88eb-0bc71b8aa3f0",
+    "name": "Caffè Latte (Grande, 2%)",
+    "category": "beverage",
+    "description": "Starbucks espresso with steamed 2% milk."
+  },
+  {
+    "id": "5695e516-c933-44b1-b114-0efc2a5fd01c",
+    "name": "Espresso Con Panna",
+    "category": "beverage",
+    "description": "Espresso with whipped cream."
+  },
+  {
+    "id": "57ca60d1-e037-49ff-921c-43a8b55e712b",
+    "name": "Art Lover",
+    "category": "entree",
+    "description": "Artichokes, Mozzarella, Ricotta, Garlic, Red Sauce Dollops. Gluten-Free Dough - $3.00 | High-rise Dough - $3.50 | Cauliflower Crust - $4.00"
+  },
+  {
+    "id": "5ad198ed-2239-41ed-8d1f-d2af802021ec",
+    "name": "Bud Light Lager",
+    "category": "beverage",
+    "description": "St. Louis, MO\n20-oz Draft - Golden-colored with flavors that are dry, clean, crisp, and refreshing with subtle bitterness"
+  },
+  {
+    "id": "5cf44eb7-873b-4ee5-a485-fbb7db5a0113",
+    "name": "Simple Pie Pizza, 11\"",
+    "category": "entree",
+    "description": "Red sauce, mozzarella, basil"
+  },
+  {
+    "id": "5e5332d2-24c2-41a4-97cd-8f0bd5a276bf",
+    "name": "Bud Light Lager Draft",
+    "category": "beverage",
+    "description": "Light American lager beer."
+  },
+  {
+    "id": "60720815-ca94-49ca-8764-b4c523cd0fa4",
+    "name": "Mickey Pretzel",
+    "category": "snack",
+    "description": "Soft pretzel in the shape of Mickey Mouse."
+  },
+  {
+    "id": "6313bdf1-92ca-415e-8f8d-ff4e20f0d6a9",
+    "name": "Chocolate Milk",
+    "category": "beverage",
+    "description": "Rich chocolate-flavored milk."
+  },
+  {
+    "id": "64a13acf-4e2e-4f33-8c1b-790a7177371e",
+    "name": "Teavana Matcha Green Tea Latte",
+    "category": "beverage",
+    "description": "Green tea matcha with steamed milk."
+  },
+  {
+    "id": "65d6f400-6afc-413c-bd01-5fe6060b6b3b",
+    "name": "Glazed Old Fashioned",
+    "category": "entree",
+    "description": "glazed cake doughnut (310 cal.)"
+  },
+  {
+    "id": "671a7c5f-9072-4826-a950-2dcfb2d8ddf9",
+    "name": "Aloha Pineapple",
+    "category": "beverage",
+    "description": "Strawberry, Banana, Nonfat Greek Yogurt, Pineapple Juice, Pineapple Sherbet"
+  },
+  {
+    "id": "689647ef-7cb8-4209-a64d-b8f7fbb03402",
+    "name": "Pound Cake, Iced",
+    "category": "dessert",
+    "description": "flavors may vary; raspberry swirl, lemon"
+  },
+  {
+    "id": "6ace4eb7-c465-4001-a42d-d50217d74ed5",
+    "name": "White Wine",
+    "category": "beverage",
+    "description": "Bollini Barricato 40 Chardonnay - $13.00Bollini Pinot Grigio - $15.00"
+  },
+  {
+    "id": "6dd91d47-ab11-447f-89a4-e0bb1808ed35",
+    "name": "MiniBon",
+    "category": "dessert",
+    "description": "Miniature cinnamon rolls"
+  },
+  {
+    "id": "6fac3b99-56ad-4417-b2f7-b96efcbbcb79",
+    "name": "Ham, Egg 'N' Cheddar Breakfast Sandwich",
+    "category": "entree",
+    "description": "with breakfast sauce"
+  },
+  {
+    "id": "723b3e45-3284-41e1-898c-02a89243f20c",
+    "name": "Mango-A-Go-Go",
+    "category": "beverage",
+    "description": "Mango, Passion Mango Juice, Pineapple Sherbet"
+  },
+  {
+    "id": "72fd3d7e-3ed9-4765-83fd-a707aa1e1735",
+    "name": "Cake Pops",
+    "category": "dessert",
+    "description": "flavors may vary; lemon, chocolate cake, cookie dough; $2.25 for one or 3 for"
+  },
+  {
+    "id": "740ff209-431b-43fd-b98a-e2a8e3c01646",
+    "name": "Chocolate Old Fashioned",
+    "category": "beverage",
+    "description": "cake doughnut with chocolate frosting (320 cal.)"
+  },
+  {
+    "id": "7748bdb9-eda4-4c8a-9918-3615af4f98f7",
+    "name": "Bud Light Lager",
+    "category": "beverage",
+    "description": "St. Louis, MO\n20-oz Draft - Golden colored with flavors that are dry, clean, crisp and refreshing with subtle bitterness"
+  },
+  {
+    "id": "78d97152-bc5f-49d3-ab73-f1a7534a9727",
+    "name": "Chocolate Milk",
+    "category": "beverage",
+    "description": "Rich chocolate-flavored milk."
+  },
+  {
+    "id": "7b1b5007-255a-484f-9b58-911b7537ae06",
+    "name": "Ham & Cheese Croissant",
+    "category": "entree",
+    "description": "Croissant with ham and cheese."
+  },
+  {
+    "id": "7ca07df3-e43b-413e-a86e-541e4d4ebe89",
+    "name": "White Claw Black Cherry Hard Seltzer",
+    "category": "beverage",
+    "description": "White Claw hard seltzer, low calorie alcoholic sparkling water."
+  },
+  {
+    "id": "7e343a5c-3370-4283-b26d-75e2ea935918",
+    "name": "High Noon Pineapple Vodka Seltzer",
+    "category": "beverage",
+    "description": "Vodka and Soda with flavors of Pineapple"
+  },
+  {
+    "id": "7fa96c27-d69a-4809-98af-463cc906fbe8",
+    "name": "Orange Juice",
+    "category": "beverage",
+    "description": "Fresh-squeezed orange juice."
+  },
+  {
+    "id": "80715e56-1c62-4bb2-96d2-ff65f25e8a6f",
+    "name": "Heineken",
+    "category": "beverage",
+    "description": "Heineken Dutch lager."
+  },
+  {
+    "id": "81a5b8a4-29d9-4251-9ab9-e1da33501c2c",
+    "name": "Peanut",
+    "category": "entree",
+    "description": "plain cake doughnut with chocolate frosting and peanuts (520 cal.)"
+  },
+  {
+    "id": "82bbd4b3-c423-4a1d-9e4a-199f8a0c015d",
+    "name": "Veg Out",
+    "category": "entree",
+    "description": "Seasonal Veggies, Mushrooms, Red Onion, Mozzarella, Gorgonzola, Red Sauce Dollops. Gluten-Free Dough - $3.00 | High-rise Dough - $3.50 | Cauliflower Crust - $4.00"
+  },
+  {
+    "id": "84561c8e-27b9-4e3d-8c18-0fcddcee1381",
+    "name": "Espresso",
+    "category": "beverage",
+    "description": "Single espresso shot."
+  },
+  {
+    "id": "861ab410-dc2c-4359-a907-ee1fbebdd18d",
+    "name": "Croissant",
+    "category": "entree",
+    "description": "Buttery, flaky French pastry."
+  },
+  {
+    "id": "8849726a-0e39-435e-974f-9318a422ab4e",
+    "name": "Powerade",
+    "category": "beverage",
+    "description": "Mountain Berry Blast"
+  },
+  {
+    "id": "8a35080e-a5c3-41ca-9c98-0f2ad3a35977",
+    "name": "Powerade",
+    "category": "beverage",
+    "description": "Powerade sports drink."
+  },
+  {
+    "id": "8bd8ab8e-c14c-4dff-b9e1-6019346135d8",
+    "name": "Meat Eater Pizza, 11\"",
+    "category": "entree",
+    "description": "Pepperoni, Italian sausage, meatballs, red sauce, mozzarella"
+  },
+  {
+    "id": "8fad6c59-e108-41bf-b706-88be4326e0d5",
+    "name": "Italian",
+    "category": "entree",
+    "description": "Salami, capicola, ham, pepperoni, mozzarella, Roma tomato, Italian seasoning, and Italian dressing"
+  },
+  {
+    "id": "908ade77-7551-41ed-ba1f-13c74fac3bcf",
+    "name": "Chocolate Milk",
+    "category": "beverage",
+    "description": "Rich chocolate-flavored milk."
+  },
+  {
+    "id": "9204caa0-2f87-4132-a2a1-c14194a19c01",
+    "name": "BBQ Chicken",
+    "category": "snack",
+    "description": "BBQ sauce, mozzarella, grilled chicken, red onion, banana peppers"
+  },
+  {
+    "id": "93ff6916-cf85-4638-9551-f8b2e2071f56",
+    "name": "Orange Juice",
+    "category": "beverage",
+    "description": "Fresh-squeezed orange juice."
+  },
+  {
+    "id": "95b87acf-989b-495d-87ee-7c074c709226",
+    "name": "Cappuccino",
+    "category": "beverage",
+    "description": "Espresso with steamed milk foam."
+  },
+  {
+    "id": "97dea4fe-e78d-423d-b3e6-34b113376357",
+    "name": "Caffe Mocha",
+    "category": "entree",
+    "description": "Espresso with chocolate and steamed milk."
+  },
+  {
+    "id": "99bab381-e1f7-4f6d-907c-3341baaaa3ae",
+    "name": "White Top",
+    "category": "entree",
+    "description": "white cream sauce, mozzarella, bacon, garlic, oregano and arugula"
+  },
+  {
+    "id": "9aab7bbe-f4ff-4b8b-a675-6035e28371f0",
+    "name": "Razzmatazz",
+    "category": "beverage",
+    "description": "Mixed Berry Juice blend, Strawberry, Banana, Orange Sherbet"
+  },
+  {
+    "id": "9bbc79fb-7dd0-4781-8e61-19aec336b79c",
+    "name": "Brownie - Double Chocolate Chunk",
+    "category": "dessert",
+    "description": "Decadent double chocolate brownie."
+  },
+  {
+    "id": "9d2bf9d9-1b5d-4ade-aa78-0417b999a79c",
+    "name": "Powerade",
+    "category": "beverage",
+    "description": "Fruit Punch, Mountain Berry Blast"
+  },
+  {
+    "id": "9e97b156-ff4d-4084-aa88-e646fb9c90ba",
+    "name": "Chick-fil-A Spicy Chicken Sandwich",
+    "category": "entree",
+    "description": "Spicy breaded chicken breast on a toasted buttered bun with pickles"
+  },
+  {
+    "id": "9fa901e7-9702-4750-96e6-7d25d89aed6a",
+    "name": "Espresso",
+    "category": "beverage",
+    "description": "Single espresso shot."
+  },
+  {
+    "id": "a2110908-e999-4bed-a6b4-056c03997e9f",
+    "name": "Espresso",
+    "category": "beverage",
+    "description": "Single espresso shot."
+  },
+  {
+    "id": "a3bd874d-19e3-40ff-9a88-137f004a4307",
+    "name": "White Wine",
+    "category": "beverage",
+    "description": "glass $12.00- $14.00; bottle"
+  },
+  {
+    "id": "a519d210-8ebd-42ff-bdb1-9072c1e28435",
+    "name": "Nitro Cold Brew",
+    "category": "beverage",
+    "description": "Smooth cold-brewed coffee."
+  },
+  {
+    "id": "a667eb23-596c-49cb-8fb9-80610787880d",
+    "name": "Cotton Candy",
+    "category": "snack",
+    "description": "Freshly spun cotton candy"
+  },
+  {
+    "id": "a76cbe79-b545-4714-bf57-e355c998e58b",
+    "name": "White Claw Black Cherry Hard Seltzer",
+    "category": "beverage",
+    "description": "16-oz Can - Hard Seltzer with the essence of fresh Mango"
+  },
+  {
+    "id": "a95b1446-73de-4a12-b429-aa7dd55b82c2",
+    "name": "Fried Rice",
+    "category": "side",
+    "description": "Panda Express fried rice"
+  },
+  {
+    "id": "ac0a4162-8429-4e77-b264-e49db9e135cd",
+    "name": "PB & Banana Protein",
+    "category": "beverage",
+    "description": "reduced fat Milk, Banana, Peanut Butter, Honey, Whey Protein Boost"
+  },
+  {
+    "id": "af03cdeb-9c28-4cbf-9b3f-be1a7360fb58",
+    "name": "Cold Brew (Grande)",
+    "category": "beverage",
+    "description": "Unsweetened Starbucks cold brew coffee."
+  },
+  {
+    "id": "b1217c11-5e2b-42ff-962c-7cd3b99200c7",
+    "name": "Chai Tea Latte — Grande (16 oz)",
+    "category": "beverage",
+    "description": "Default milk: 2% milk"
+  },
+  {
+    "id": "b45d6452-f0cf-4fd2-a7e7-60d21798e522",
+    "name": "Chocolate Milk",
+    "category": "beverage",
+    "description": "Rich chocolate-flavored milk."
+  },
+  {
+    "id": "b6da8ed6-e819-430c-ba04-a4c3c6c63af9",
+    "name": "Bud Light Lager",
+    "category": "beverage",
+    "description": "Light American lager beer."
+  },
+  {
+    "id": "bb6bf43e-f144-4cbc-b9e5-52c4c5159229",
+    "name": "Teavana Shaken Iced Tea Lemonade",
+    "category": "beverage",
+    "description": "black, passion tango"
+  },
+  {
+    "id": "bee53f32-d014-4ff8-a276-50034c544b4a",
+    "name": "Hot Chocolate",
+    "category": "beverage",
+    "description": "Rich hot chocolate drink."
+  },
+  {
+    "id": "c284c6d6-274b-4ee9-b58d-b63b8808f3fd",
+    "name": "Chick-fil-A Chicken Sandwich",
+    "category": "entree",
+    "description": "Original breaded chicken breast on a toasted buttered bun with pickles"
+  },
+  {
+    "id": "c4732c24-f0b8-4c79-98c9-b200e111dd72",
+    "name": "Dessert Knots",
+    "category": "entree",
+    "description": "with cinnamon & sugar"
+  },
+  {
+    "id": "c75d7a2b-fc50-447a-9585-2db3042b0fe8",
+    "name": "Bud Light Lager- NOT sold in Magic Kingdom",
+    "category": "beverage",
+    "description": "Light American lager beer."
+  },
+  {
+    "id": "c99a339a-3c7a-4194-bbcb-d2be4c062ae1",
+    "name": "Espresso Macchiato",
+    "category": "beverage",
+    "description": "Espresso marked with foam."
+  },
+  {
+    "id": "cbed67d9-bec1-47bd-aade-aa75c9a72617",
+    "name": "Coffee",
+    "category": "beverage",
+    "description": "regular or decaffeinated"
+  },
+  {
+    "id": "ce5ccf38-6c07-4c5b-826b-5b43b024354d",
+    "name": "Peach Green Tea Lemonade",
+    "category": "beverage",
+    "description": "Tea with sweet peach flavor."
+  },
+  {
+    "id": "d00eaffa-b8ca-4611-85b5-e283a87c3f5a",
+    "name": "White Claw Hard Seltzer",
+    "category": "beverage",
+    "description": "White Claw hard seltzer, low calorie alcoholic sparkling water."
+  },
+  {
+    "id": "d188902a-147e-4750-add2-bc8b4714e5d6",
+    "name": "Corona",
+    "category": "beverage",
+    "description": "Mexican Corona lager beer."
+  },
+  {
+    "id": "d3865405-22f5-44fc-bb86-236cd45cef6b",
+    "name": "Greek",
+    "category": "entree",
+    "description": "Romaine, grilled chicken, feta, tomato, olives, banana peppers and zesty Italian dressing; gluten free"
+  },
+  {
+    "id": "d51b7555-5ae6-4e7e-a771-250d39fa2cf7",
+    "name": "Powerade",
+    "category": "beverage",
+    "description": "Powerade sports drink."
+  },
+  {
+    "id": "d798899f-0230-4675-b8c7-c2974fbc903d",
+    "name": "Latte",
+    "category": "beverage",
+    "description": "Espresso with steamed milk"
+  },
+  {
+    "id": "d8a48c46-9433-45b8-a279-a3844868c0ad",
+    "name": "Corona",
+    "category": "beverage",
+    "description": "Mexican pale lager beer."
+  },
+  {
+    "id": "dae7cc25-b9e4-4721-86c3-c7ef7da430b2",
+    "name": "Bud Light Draft",
+    "category": "beverage",
+    "description": "Light American lager beer."
+  },
+  {
+    "id": "db9d7707-7ad2-4b04-980d-d1ff43d1897c",
+    "name": "Michelob Ultra",
+    "category": "beverage",
+    "description": "not sold in Magic Kingdom"
+  },
+  {
+    "id": "dcb71ae8-4d7b-4676-ab1d-56ed4525c588",
+    "name": "Red Wine",
+    "category": "beverage",
+    "description": "by the bottle $49.00 - $72.00; by the glass"
+  },
+  {
+    "id": "de84decc-9409-4a75-9ac0-88f7927994f9",
+    "name": "Cheese and Fruit Protein Box",
+    "category": "entree",
+    "description": "Pre-packaged snack box with protein, cheese, and accompaniments."
+  },
+  {
+    "id": "dff4eaef-95dd-4d37-af6d-314769ac8f0b",
+    "name": "Reduced-Fat Turkey Bacon Breakfast Sandwich",
+    "category": "entree",
+    "description": "Breakfast sandwich with egg and meat on bread."
+  },
+  {
+    "id": "e150d7ad-73fc-4836-9d66-c1f50505ddb3",
+    "name": "Heineken",
+    "category": "beverage",
+    "description": "Heineken Dutch lager."
+  }
+]

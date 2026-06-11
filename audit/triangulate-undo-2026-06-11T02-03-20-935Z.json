@@ -1,0 +1,338 @@
+[
+  {
+    "nutritionDataId": "3e1bcf96-ea62-40c7-bada-ecc17f45d4d9",
+    "itemId": "17407888-be6b-4249-9cdc-06a2e3cb3103",
+    "name": "Chicken Stinger Gyro Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 175,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 141,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 1250,
+      "fat": 55,
+      "protein": 45,
+      "sugar": 48,
+      "fiber": 6,
+      "sodium": 2400
+    }
+  },
+  {
+    "nutritionDataId": "1d05b8a0-f472-4f45-8433-539a19f1dc6e",
+    "itemId": "6dc59f06-c2c5-4c3b-89e9-443a04c70e24",
+    "name": "Mother Nature Burger Combo",
+    "category": "entree",
+    "park": "Universal Studios Florida",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 230,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 164,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 1500,
+      "fat": 62,
+      "protein": 35,
+      "sugar": 72,
+      "fiber": 16,
+      "sodium": 2200
+    }
+  },
+  {
+    "nutritionDataId": "12d06630-b715-48fc-b87c-546414ab1301",
+    "itemId": "cb3d8820-5355-4396-8e88-c89091cee0d3",
+    "name": "Pernil Bowl Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 150,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 106,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 1000,
+      "fat": 40,
+      "protein": 45,
+      "sugar": 14,
+      "fiber": 12,
+      "sodium": 1900
+    }
+  },
+  {
+    "nutritionDataId": "977add72-7b54-4d58-a7c1-d90640ce94ba",
+    "itemId": "edb7f181-9dcc-45c4-9790-a06ccc0251c6",
+    "name": "Princess Peach's Cake",
+    "category": "dessert",
+    "park": "Universal Epic Universe",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 260,
+      "confidence": 46
+    },
+    "update": {
+      "carbs": 61,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 450,
+      "fat": 20,
+      "protein": 5,
+      "sugar": 45,
+      "fiber": 2,
+      "sodium": 300
+    }
+  },
+  {
+    "nutritionDataId": "f817507f-cecc-4963-a8db-e140da792525",
+    "itemId": "7418f2e3-bcb6-44d6-971b-e2fd2b8efcdf",
+    "name": "BBQ Chicken Pizza",
+    "category": "entree",
+    "park": "Disney Springs",
+    "tier": "chain+decomposition",
+    "confidence": 60,
+    "before": {
+      "carbs": 130,
+      "confidence": 58
+    },
+    "update": {
+      "carbs": 103,
+      "confidence_score": 60,
+      "source_detail": "triangulated chain+decomposition agree (chain/decomposition); calibrated tier; 2026-06-10",
+      "calories": 1000,
+      "fat": 38,
+      "protein": 50,
+      "sugar": 25,
+      "fiber": 5,
+      "sodium": 2200
+    }
+  },
+  {
+    "nutritionDataId": "5e3ffdf1-2a87-4933-add9-afaceb76b4eb",
+    "itemId": "ce1ffe7c-797c-4eff-891e-6f90ed78578c",
+    "name": "French Toast",
+    "category": "entree",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 130,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 95,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 950,
+      "fat": 45,
+      "protein": 26,
+      "sugar": 50,
+      "fiber": 4,
+      "sodium": 1100
+    }
+  },
+  {
+    "nutritionDataId": "0246cda0-fc4f-446b-9c0d-ea2606fc3c57",
+    "itemId": "8bd016ad-d558-4498-a83b-464936e21fbf",
+    "name": "Vegan Magician Meatball Cone",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 125,
+      "confidence": 48
+    },
+    "update": {
+      "carbs": 106,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 750,
+      "fat": 26,
+      "protein": 25,
+      "sugar": 10,
+      "fiber": 8,
+      "sodium": 1500
+    }
+  },
+  {
+    "nutritionDataId": "779a67eb-040f-40c4-a89c-639fc7773764",
+    "itemId": "cace692f-7805-45e9-9ffd-10e9c728c2ae",
+    "name": "2026 FESTIVAL OF THE ARTS- Stone-baked Moroccan Bread with assorted dips",
+    "category": "entree",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 125,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 58,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 450,
+      "fat": 20,
+      "protein": 10,
+      "sugar": 4,
+      "fiber": 4,
+      "sodium": 700
+    }
+  },
+  {
+    "nutritionDataId": "6a347218-9422-4c24-a139-2003b7cd54d1",
+    "itemId": "e462f84a-51af-4546-a3b3-4ab752f1e111",
+    "name": "Pizza Meat Lover",
+    "category": "entree",
+    "park": "EPCOT",
+    "tier": "chain+decomposition",
+    "confidence": 60,
+    "before": {
+      "carbs": 125,
+      "confidence": 58
+    },
+    "update": {
+      "carbs": 98,
+      "confidence_score": 60,
+      "source_detail": "triangulated chain+decomposition agree (chain/decomposition); calibrated tier; 2026-06-10",
+      "calories": 1100,
+      "fat": 55,
+      "protein": 50,
+      "sugar": 8,
+      "fiber": 5,
+      "sodium": 2600
+    }
+  },
+  {
+    "nutritionDataId": "6db2903b-5232-44b9-adae-0ac86794ff25",
+    "itemId": "fd862160-541f-4a6e-bc01-6e7e287ce475",
+    "name": "Butter Cake",
+    "category": "dessert",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 125,
+      "confidence": 48
+    },
+    "update": {
+      "carbs": 81,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 700,
+      "fat": 40,
+      "protein": 8,
+      "sugar": 55,
+      "fiber": 1,
+      "sodium": 420
+    }
+  },
+  {
+    "nutritionDataId": "742ba286-0601-48d3-a3f5-f5b1a8e13bc0",
+    "itemId": "36ecec69-899a-40f6-87ff-12dddd8ece6c",
+    "name": "Smoked Pork BBQ Double Burger Combo",
+    "category": "entree",
+    "park": "Universal's Islands of Adventure",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 120,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 128,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 1600,
+      "fat": 90,
+      "protein": 70,
+      "sugar": 36,
+      "fiber": 7,
+      "sodium": 2800
+    }
+  },
+  {
+    "nutritionDataId": "84a0b99b-4f25-49e4-a029-b35a3a8b7872",
+    "itemId": "6a85f013-d101-4f4d-8d2a-05d28f497de7",
+    "name": "Chocolate Strawberry Peanut-butter Sundae",
+    "category": "dessert",
+    "park": "Universal Studios Florida",
+    "tier": "keyword+decomposition",
+    "confidence": 55,
+    "before": {
+      "carbs": 120,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 89,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 820,
+      "fat": 46,
+      "protein": 14,
+      "sugar": 70,
+      "fiber": 4,
+      "sodium": 360
+    }
+  },
+  {
+    "nutritionDataId": "e5146de5-0d96-47f9-869e-ff88a5a1bed3",
+    "itemId": "d6338ace-81e6-4354-9263-90f5a712130d",
+    "name": "Cheesecake Lumpia Rolls",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "tier": "keyword+chain",
+    "confidence": 50,
+    "before": {
+      "carbs": 115,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 47,
+      "confidence_score": 50,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 596,
+      "fat": 40,
+      "protein": 12,
+      "sugar": 31,
+      "fiber": 1,
+      "sodium": 401
+    }
+  },
+  {
+    "nutritionDataId": "2be8f0f6-f8d1-45e5-9673-50f16d79d7aa",
+    "itemId": "9936bdde-10da-424f-881a-365c12e3f5be",
+    "name": "Cheesecake Lumpia Rolls",
+    "category": "entree",
+    "park": "Universal CityWalk",
+    "tier": "keyword+chain",
+    "confidence": 50,
+    "before": {
+      "carbs": 110,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 47,
+      "confidence_score": 50,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 596,
+      "fat": 40,
+      "protein": 12,
+      "sugar": 31,
+      "fiber": 1,
+      "sodium": 401
+    }
+  }
+]
