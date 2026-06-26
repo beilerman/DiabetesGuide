@@ -194,6 +194,8 @@ npx tsx scripts/estimate-nutrition-ai.ts
 
 ## Data Quality & Audit
 
+> **Live audit subsystem = `scripts/audit/` (canonical — see [`scripts/README.md`](scripts/README.md)).** It is a set of pure-function checks (`accuracy.ts`, `completeness.ts`, `external.ts`, `quality.ts`, `triangulate.ts`, etc., orchestrated by `pipeline.ts`) with vitest coverage in `scripts/audit/__tests__/`, exposed via the `npm run audit:pipeline|accuracy|completeness|external|quality|report|graduation|autofix|...` scripts and run daily in CI via `.github/workflows/daily-audit.yml`. The older `audit-dump.ts` / `audit-nutrition.ts` / `fix-audit-findings.ts` / `fix-remaining.ts` scripts referenced throughout the rest of this section were ARCHIVED to `scripts/archive/` and are kept for historical context only — do not treat them as the live flow.
+
 ### The Over-Multiplication Problem
 
 The biggest systemic data issue: `adjust-portions.ts` applied 1.5-2.5x multipliers to ALL items, but many USDA matches already returned full-portion values. Items that were already correctly sized got doubled. The audit scripts detect and fix this by defining maximum plausible calorie ranges per food type and dividing all macros proportionally when items exceed the range.

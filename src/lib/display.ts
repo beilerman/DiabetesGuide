@@ -1,4 +1,5 @@
 import { getNutrition } from './nutrition'
+import { DOSING_GRADE_CONFIDENCE } from './nutrition-trust'
 import type { MenuItemWithNutrition, NutritionalData, MenuItem } from './types'
 
 const ENTITY_MAP: Record<string, string> = {
@@ -82,7 +83,7 @@ function allKnownValuesAreZero(nutrition: NutritionalData): boolean {
 }
 
 function isConfirmedZeroNutritionItem(item: MenuItemWithNutrition, nutrition: NutritionalData): boolean {
-  if (nutrition.source === 'official' && nutrition.confidence_score >= 70) return true
+  if (nutrition.source === 'official' && nutrition.confidence_score >= DOSING_GRADE_CONFIDENCE) return true
   const name = getMenuItemDisplayName(item).toLowerCase()
   return /\b(water|unsweetened tea|black coffee|diet soda|diet coke|diet pepsi)\b/.test(name)
 }

@@ -11,6 +11,7 @@ import {
   clampInt,
   clampPrice,
 } from './scrapers/utils.js'
+import { enforceNutritionInvariants } from './sync/nutrition-invariants.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -254,7 +255,7 @@ async function importApproved(items: EstimatedItem[]): Promise<ApprovalResult> {
       cache.markItem(c.restaurantId, c.itemName, id)
       result.imported++
       if (c.nutrition) {
-        nutritionRows.push({
+        nutritionRows.push(enforceNutritionInvariants({
           menu_item_id: id,
           calories: clampInt(c.nutrition.calories, 0, 5000),
           carbs: clampInt(c.nutrition.carbs, 0, 2000),
@@ -264,8 +265,8 @@ async function importApproved(items: EstimatedItem[]): Promise<ApprovalResult> {
           fiber: clampInt(c.nutrition.fiber, 0, 2000),
           sodium: clampInt(c.nutrition.sodium, 0, 50000),
           source: 'crowdsourced',
-          confidence_score: clampInt(c.nutrition.confidence, 0, 100),
-        })
+          confidence_score: clampInt(c.nutrition.confidence, 0, 100) ?? 0,
+        }))
         nutritionKeys.push(c.key)
       }
     }

@@ -249,3 +249,100 @@ describe('checkAccuracy', () => {
     expect(result.findings.find((f) => f.checkName === 'template_profile')).toBeUndefined()
   })
 })
+
+// Regression guards for the documented "audit false positive" cases in CLAUDE.md.
+// Each assertion below reflects the ACTUAL current behavior of accuracy.ts /
+// isLikelyAlcoholic (verified by reading the code), so a future logic change
+// that re-introduces a spurious finding — or silently changes one of these
+// outcomes — will break a test instead of slipping through.
+describe('regex false-positive guards', () => {
+  it('does not flag "Coffee Cake Cookie" (snack) with consistent macros — no atwater/meat/fried finding', () => {
+    // BEVERAGE_NAME_PATTERN's \bcoffee\b matches "Coffee Cake Cookie", so it is
+    // treated as a beverage for the RELAXED 30% Atwater threshold. With Atwater-
+    // consistent macros it produces no finding. It is NOT a pastry (cookie is not
+    // in FRIED_PASTRY_PATTERN) and contains no meat word.
+    // Atwater = 2*4 + 28*4 + 9*9 = 8 + 112 + 81 = 201 vs stated 201 → 0% deviation.
+    const item = makeItem({
+      name: 'Coffee Cake Cookie',
+      category: 'snack',
+      nd: { calories: 201, carbs: 28, fat: 9, protein: 2, sugar: 15, fiber: 1, sodium: 150 },
+    })
+    const result = checkAccuracy([item])
+
+    expect(result.findings.find((f) => f.checkName === 'atwater_deviation')).toBeUndefined()
+    expect(result.findings.find((f) => f.checkName === 'zero_protein_meat')).toBeUndefined()
+    expect(result.findings.find((f) => f.checkName === 'zero_fat_fried')).toBeUndefined()
+    expect(result.findings).toHaveLength(0)
+  })
+
+  it('"Beer-battered Onion Rings" is NOT treated as alcoholic and produces no alcohol_grams_missing finding', () => {
+    // FIXED BEHAVIOR: isLikelyAlcoholic now applies the NEGATIVE_PATTERNS gate
+    // (which matches "battered") BEFORE the softer BEER_PATTERNS (\bbeer\b) name
+    // check. The hyphen in "beer-battered" is a word boundary, so \bbeer\b would
+    // otherwise match and spuriously flag this savory fried side. With the early
+    // negative gate, isLikelyAlcoholic returns false, so no alcohol_grams_missing
+    // finding fires. This test LOCKS IN the fix: if the ordering ever regresses so
+    // the beer pattern wins again, the spurious LOW finding reappears and this
+    // test fails. (Definitive cocktail/brand/age/known-name signals still run
+    // earlier and continue to win over the negative gate.)
+    const item = makeItem({
+      name: 'Beer-battered Onion Rings',
+      category: 'side',
+      is_fried: true,
+      nd: { calories: 480, carbs: 50, fat: 28, protein: 6, sugar: 4, fiber: 3, sodium: 800, alcohol_grams: null },
+    })
+    const result = checkAccuracy([item])
+
+    expect(result.findings.find((f) => f.checkName === 'alcohol_grams_missing')).toBeUndefined()
+  })
+
+  it('"BBQ Jackfruit Sandwich" with protein=0 does NOT trigger zero_protein_meat (plant-based, no meat word)', () => {
+    // MEAT_PATTERN does not match "jackfruit"/"BBQ"/"sandwich", so protein=0 must
+    // NOT be flagged as missing meat protein. Macros are Atwater-consistent
+    // (60*4 + 12*9 + 0 = 348 vs stated 350) so no other finding fires either.
+    const item = makeItem({
+      name: 'BBQ Jackfruit Sandwich',
+      category: 'entree',
+      nd: { calories: 350, carbs: 60, fat: 12, protein: 0, sugar: 18, fiber: 6, sodium: 700 },
+    })
+    const result = checkAccuracy([item])
+
+    expect(result.findings.find((f) => f.checkName === 'zero_protein_meat')).toBeUndefined()
+    expect(result.findings).toHaveLength(0)
+  })
+
+  it('"Butterbeer" (beverage) is NOT flagged alcohol_grams_missing — \\bbeer\\b does not match "butterbeer"', () => {
+    // \bbeer\b requires a word boundary before "beer"; in "butterbeer" the 'beer'
+    // is preceded by 'r' (a word char) so it does NOT match. NEGATIVE_PATTERNS
+    // also lists "butterbeer" explicitly. isLikelyAlcoholic returns false, so no
+    // alcohol_grams_missing finding. Macros are Atwater-consistent.
+    // Atwater = 0*4 + 50*4 + 4*9 = 200 + 36 = 236 vs stated 236 → 0% deviation.
+    const item = makeItem({
+      name: 'Butterbeer',
+      category: 'beverage',
+      nd: { calories: 236, carbs: 50, fat: 4, protein: 0, sugar: 45, fiber: 0, sodium: 80, alcohol_grams: null },
+    })
+    const result = checkAccuracy([item])
+
+    expect(result.findings.find((f) => f.checkName === 'alcohol_grams_missing')).toBeUndefined()
+    expect(result.findings).toHaveLength(0)
+  })
+
+  it('"Crispy Chicken Sandwich" with protein>0 and fat>0 produces no zero_fat_fried/zero_protein_meat false positives', () => {
+    // Both FRIED_PASTRY_PATTERN (\bcrispy\b) and MEAT_PATTERN (\bchicken\b) match
+    // the name, but the zero-checks only fire on ACTUAL zeros. With fat>0 and
+    // protein>0, neither zero_fat_fried nor zero_protein_meat should fire.
+    // Atwater = 35*4 + 55*4 + 30*9 = 140 + 220 + 270 = 630 vs stated 650 → ~3.2%.
+    const item = makeItem({
+      name: 'Crispy Chicken Sandwich',
+      category: 'entree',
+      is_fried: true,
+      nd: { calories: 650, carbs: 55, fat: 30, protein: 35, sugar: 8, fiber: 3, sodium: 1000 },
+    })
+    const result = checkAccuracy([item])
+
+    expect(result.findings.find((f) => f.checkName === 'zero_fat_fried')).toBeUndefined()
+    expect(result.findings.find((f) => f.checkName === 'zero_protein_meat')).toBeUndefined()
+    expect(result.findings).toHaveLength(0)
+  })
+})

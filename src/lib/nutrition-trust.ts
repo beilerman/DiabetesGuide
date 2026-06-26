@@ -1,6 +1,14 @@
 import type { MenuItemWithNutrition, NutritionalData } from './types'
 import { getMenuItemDisplayName } from './display'
 
+/**
+ * Confidence score at or above which a nutrition value is "dosing-grade":
+ * the only tier the UI presents without a "do not dose from this value"
+ * caution. Mirrors TRUSTED_CONFIDENCE in scripts/audit/trust.ts — the audit
+ * report and the UI MUST agree on this bar. Change both together.
+ */
+export const DOSING_GRADE_CONFIDENCE = 70
+
 export type NutritionTrustLevel = 'verified' | 'estimated' | 'low' | 'unavailable'
 
 export interface NutritionTrustSummary {
@@ -50,7 +58,7 @@ export function getNutritionTrust(nutrition: NutritionalData | null | undefined)
   const lastUpdatedLabel = updatedDate ? `Last updated ${updatedDate}` : null
   const qualityWarnings = getNutritionQualityWarnings(nutrition)
 
-  if (nutrition.confidence_score < 70) {
+  if (nutrition.confidence_score < DOSING_GRADE_CONFIDENCE) {
     return {
       level: 'low',
       label: 'Low-confidence estimate',
@@ -96,7 +104,7 @@ export function getNutritionTrust(nutrition: NutritionalData | null | undefined)
  */
 export function getEstimateTierShort(confidenceScore: number): string {
   if (confidenceScore < 50) return 'Rough estimate'
-  if (confidenceScore < 70) return 'Estimated'
+  if (confidenceScore < DOSING_GRADE_CONFIDENCE) return 'Estimated'
   return 'Verified'
 }
 
@@ -116,7 +124,7 @@ export function getNutritionQualityWarnings(nutrition: NutritionalData): string[
   }
 
   if (
-    nutrition.confidence_score < 70 &&
+    nutrition.confidence_score < DOSING_GRADE_CONFIDENCE &&
     nutrition.carbs === 0 &&
     (nutrition.calories ?? 0) >= 300
   ) {
