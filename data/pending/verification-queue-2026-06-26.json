@@ -1,0 +1,3175 @@
+[
+  {
+    "id": "2a75c0cd-1f77-422c-9137-7b88d56b89c7",
+    "name": "Bam Bam CrazyShake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 44,
+        "full": {
+          "calories": 339,
+          "fat": 16,
+          "protein": 4,
+          "sugar": 28,
+          "fiber": 4,
+          "sodium": 160
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 170,
+        "full": {
+          "calories": 1350,
+          "fat": 65,
+          "protein": 18,
+          "sugar": 145,
+          "fiber": 2,
+          "sodium": 550
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "34d72d56-d9b4-42c7-bb91-f0a6604dd00e",
+    "name": "Mickey Mouse Edition CrazyShake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 67,
+        "full": {
+          "calories": 476,
+          "fat": 19,
+          "protein": 10,
+          "sugar": 0,
+          "fiber": 5,
+          "sodium": 762
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 165,
+        "full": {
+          "calories": 1300,
+          "fat": 62,
+          "protein": 18,
+          "sugar": 140,
+          "fiber": 2,
+          "sodium": 540
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "536aa18f-c23f-448a-b96c-e8a72658d111",
+    "name": "Churro Milk Shake",
+    "category": "beverage",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 114,
+        "full": {
+          "calories": 838,
+          "fat": 35,
+          "protein": 12,
+          "sugar": 91,
+          "fiber": 2,
+          "sodium": 318
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 175,
+        "full": {
+          "calories": 1400,
+          "fat": 68,
+          "protein": 20,
+          "sugar": 130,
+          "fiber": 3,
+          "sodium": 700
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "8c0e0fb9-aa0e-4187-b37e-80473bf4a752",
+    "name": "Right Side Up Shake",
+    "category": "beverage",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 22,
+        "full": {
+          "calories": 246,
+          "fat": 15,
+          "protein": 8,
+          "sugar": 11,
+          "fiber": 5,
+          "sodium": 262
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 800,
+          "fat": 28,
+          "protein": 8,
+          "sugar": 95,
+          "fiber": 3,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "8c0ecb9b-9bd0-433c-a619-aeed2bdaa7bf",
+    "name": "Cookies N Cream Supreme CrazyShake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 71,
+        "full": {
+          "calories": 563,
+          "fat": 28,
+          "protein": 8,
+          "sugar": 49,
+          "fiber": 2,
+          "sodium": 284
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 170,
+        "full": {
+          "calories": 1400,
+          "fat": 70,
+          "protein": 20,
+          "sugar": 135,
+          "fiber": 3,
+          "sodium": 700
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "a4695511-958a-4ab3-897e-da6d41b5ebee",
+    "name": "Strawberry Shortcake CrazyShake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 80,
+        "full": {
+          "calories": 548,
+          "fat": 25,
+          "protein": 5,
+          "sugar": 59,
+          "fiber": 2,
+          "sodium": 320
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 165,
+        "full": {
+          "calories": 1350,
+          "fat": 65,
+          "protein": 18,
+          "sugar": 135,
+          "fiber": 2,
+          "sodium": 600
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "c77c5ade-98b9-44d8-9808-4da9229c7188",
+    "name": "Milk and Cookies Shake",
+    "category": "beverage",
+    "park": "Walt Disney World Festivals & Events",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 91,
+        "full": {
+          "calories": 644,
+          "fat": 30,
+          "protein": 11,
+          "sugar": 58,
+          "fiber": 2,
+          "sodium": 328
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 140,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 16,
+          "sugar": 110,
+          "fiber": 2,
+          "sodium": 480
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "e6fea7c2-7906-4ec6-bd14-0637a9fef7ee",
+    "name": "Extra day of refills for Freestyle® Cup",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "f0f0bfa3-b6d1-4c44-adf8-5067b2af9934",
+    "name": "Chocolate-Pecan Brownie Milkshake",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 60
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 1100,
+          "fat": 60,
+          "protein": 18,
+          "sugar": 95,
+          "fiber": 4,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "fc32b912-fd06-41f7-b147-e77d0fba3700",
+    "name": "The Cookie CrazyShake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 97,
+        "full": {
+          "calories": 709,
+          "fat": 29,
+          "protein": 12,
+          "sugar": 75,
+          "fiber": 1,
+          "sodium": 303
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 170,
+        "full": {
+          "calories": 1400,
+          "fat": 68,
+          "protein": 20,
+          "sugar": 135,
+          "fiber": 3,
+          "sodium": 650
+        }
+      }
+    ],
+    "priority": 4.5
+  },
+  {
+    "id": "d504d5d4-b413-4590-80d0-4ada7ef40209",
+    "name": "S'mores Shake",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 56,
+        "full": {
+          "calories": 413,
+          "fat": 17,
+          "protein": 7,
+          "sugar": 42,
+          "fiber": 3,
+          "sodium": 213
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 130,
+        "full": {
+          "calories": 1000,
+          "fat": 45,
+          "protein": 16,
+          "sugar": 105,
+          "fiber": 3,
+          "sodium": 380
+        }
+      }
+    ],
+    "priority": 4.26
+  },
+  {
+    "id": "9234c7a6-a269-4999-8dd8-a14f10b6b492",
+    "name": "Cap'n Crunch® Shake",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 22,
+        "full": {
+          "calories": 246,
+          "fat": 15,
+          "protein": 8,
+          "sugar": 11,
+          "fiber": 5,
+          "sodium": 262
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 120,
+        "full": {
+          "calories": 950,
+          "fat": 42,
+          "protein": 15,
+          "sugar": 95,
+          "fiber": 1,
+          "sodium": 420
+        }
+      }
+    ],
+    "priority": 4.16
+  },
+  {
+    "id": "42403526-6629-4bac-8ff7-af4661ea4813",
+    "name": "Strawberry Shortcake - Strawberry Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 110,
+        "full": {
+          "calories": 791,
+          "fat": 33,
+          "protein": 13,
+          "sugar": 86,
+          "fiber": 2,
+          "sodium": 443
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1300,
+          "fat": 62,
+          "protein": 17,
+          "sugar": 135,
+          "fiber": 2,
+          "sodium": 550
+        }
+      }
+    ],
+    "priority": 4.1
+  },
+  {
+    "id": "83843cf2-0d5d-4055-9818-5128c211f775",
+    "name": "Chocolate Milkshake",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 77,
+        "full": {
+          "calories": 553,
+          "fat": 23,
+          "protein": 9,
+          "sugar": 67,
+          "fiber": 1,
+          "sodium": 203
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 750,
+          "fat": 35,
+          "protein": 14,
+          "sugar": 80,
+          "fiber": 2,
+          "sodium": 280
+        }
+      }
+    ],
+    "priority": 3.9400000000000004
+  },
+  {
+    "id": "2ba4d544-ebfa-4425-84a5-c362b2a47a54",
+    "name": "Carnavale Shake",
+    "category": "beverage",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 41,
+        "full": {
+          "calories": 324,
+          "fat": 13,
+          "protein": 7,
+          "sugar": 30,
+          "fiber": 2,
+          "sodium": 194
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 140,
+        "full": {
+          "calories": 1100,
+          "fat": 50,
+          "protein": 16,
+          "sugar": 110,
+          "fiber": 2,
+          "sodium": 420
+        }
+      }
+    ],
+    "priority": 3.9000000000000004
+  },
+  {
+    "id": "995bc3b3-7239-4c58-ae42-562d23cfe4a9",
+    "name": "Cookies 'n Cream Supreme - Oreo Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 103,
+        "full": {
+          "calories": 737,
+          "fat": 31,
+          "protein": 11,
+          "sugar": 76,
+          "fiber": 2,
+          "sodium": 322
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 170,
+        "full": {
+          "calories": 1400,
+          "fat": 70,
+          "protein": 20,
+          "sugar": 135,
+          "fiber": 4,
+          "sodium": 700
+        }
+      }
+    ],
+    "priority": 3.9000000000000004
+  },
+  {
+    "id": "9c5affe1-7662-4ec2-9faf-a6cd9ce92426",
+    "name": "Mangonada Smoothie",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 47,
+        "full": {
+          "calories": 232,
+          "fat": 2,
+          "protein": 6,
+          "sugar": 38,
+          "fiber": 3,
+          "sodium": 63
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 450,
+          "fat": 1,
+          "protein": 3,
+          "sugar": 95,
+          "fiber": 4,
+          "sodium": 600
+        }
+      }
+    ],
+    "priority": 3.9000000000000004
+  },
+  {
+    "id": "aa337392-63f9-47c4-a4ea-337f2c1633d8",
+    "name": "2026 FLOWER & GARDEN FESTIVAL- Orange Cream Milk Shake",
+    "category": "beverage",
+    "park": "EPCOT Flower & Garden Festival 2026",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 88,
+        "full": {
+          "calories": 482,
+          "fat": 14,
+          "protein": 3,
+          "sugar": 67,
+          "fiber": null,
+          "sodium": 61
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 850,
+          "fat": 40,
+          "protein": 13,
+          "sugar": 88,
+          "fiber": 1,
+          "sodium": 300
+        }
+      }
+    ],
+    "priority": 3.9000000000000004
+  },
+  {
+    "id": "88db8448-cd25-4a62-bd28-a6b529fb8eb0",
+    "name": "Chocolate Classic Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 69,
+        "full": {
+          "calories": 551,
+          "fat": 25,
+          "protein": 9,
+          "sugar": 52,
+          "fiber": 2,
+          "sodium": 249
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 98,
+        "full": {
+          "calories": 780,
+          "fat": 36,
+          "protein": 14,
+          "sugar": 84,
+          "fiber": 2,
+          "sodium": 300
+        }
+      }
+    ],
+    "priority": 3.86
+  },
+  {
+    "id": "e99c0789-da71-4390-8900-77a571d2d1a6",
+    "name": "Vanilla Classic Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 69,
+        "full": {
+          "calories": 551,
+          "fat": 25,
+          "protein": 9,
+          "sugar": 52,
+          "fiber": 2,
+          "sodium": 250
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 85,
+        "full": {
+          "calories": 700,
+          "fat": 33,
+          "protein": 13,
+          "sugar": 75,
+          "fiber": 0,
+          "sodium": 260
+        }
+      }
+    ],
+    "priority": 3.7800000000000002
+  },
+  {
+    "id": "1c09f166-ae53-4029-90da-d86375093812",
+    "name": "Ugly Sweater Shake",
+    "category": "beverage",
+    "park": "Walt Disney World Festivals & Events",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 22,
+        "full": {
+          "calories": 246,
+          "fat": 15,
+          "protein": 8,
+          "sugar": 11,
+          "fiber": 5,
+          "sodium": 262
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 900,
+          "fat": 42,
+          "protein": 13,
+          "sugar": 95,
+          "fiber": 1,
+          "sodium": 330
+        }
+      }
+    ],
+    "priority": 3.7399999999999998
+  },
+  {
+    "id": "2f1b287f-9b54-4064-adcd-1db9f7e12daa",
+    "name": "\"The Italian\" Soda Float",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 21,
+        "full": {
+          "calories": 103,
+          "fat": 1,
+          "protein": 1,
+          "sugar": 17,
+          "fiber": null,
+          "sodium": 29
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 50,
+        "full": {
+          "calories": 350,
+          "fat": 13,
+          "protein": 6,
+          "sugar": 44,
+          "fiber": 1,
+          "sodium": 90
+        }
+      }
+    ],
+    "priority": 3.7
+  },
+  {
+    "id": "8b0b14f1-9839-4d66-95b0-7d8e91133929",
+    "name": "Vegan CrazyShake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 230,
+        "full": {
+          "calories": 1600,
+          "fat": 65,
+          "protein": 25,
+          "sugar": 170,
+          "fiber": 2,
+          "sodium": 650
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1200,
+          "fat": 50,
+          "protein": 14,
+          "sugar": 125,
+          "fiber": 5,
+          "sodium": 550
+        }
+      }
+    ],
+    "priority": 3.7
+  },
+  {
+    "id": "e2a8e99a-650c-4457-bed8-d7627af956ff",
+    "name": "Ice Cream Float",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 27,
+        "full": {
+          "calories": 188,
+          "fat": 8,
+          "protein": 2,
+          "sugar": null,
+          "fiber": 1,
+          "sodium": 93
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 75,
+        "full": {
+          "calories": 450,
+          "fat": 12,
+          "protein": 5,
+          "sugar": 68,
+          "fiber": 0,
+          "sodium": 150
+        }
+      }
+    ],
+    "priority": 3.7
+  },
+  {
+    "id": "21940ffc-2975-4696-9c49-e9f65ce10e34",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "24126a02-edff-4bb0-93ce-7b8b8fd0d496",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "4621a481-8774-439f-aa3d-3bb6d206d32a",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "48eacefb-4e4a-4c81-b2c9-383e49fc3f9a",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "4c67971d-60e2-42f2-9d9e-06839f8be06f",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "505df01e-e553-46a9-9d44-bba8808fc69b",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "8d381ed9-e1d2-412a-9b81-157dbd9ed260",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "b46e9717-d611-4064-926a-739d01245332",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "b8f5152e-5ef4-4888-9fad-08d898dda14e",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 55,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "c1725343-f57e-4ec9-9d48-bdacf0468fb4",
+    "name": "Oreo Cookie Shake",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 53,
+        "full": {
+          "calories": 575,
+          "fat": 29,
+          "protein": 9,
+          "sugar": 46,
+          "fiber": 1,
+          "sodium": 243
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 100,
+        "full": {
+          "calories": 850,
+          "fat": 42,
+          "protein": 15,
+          "sugar": 82,
+          "fiber": 2,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "ea810a94-a318-4ef1-a6d6-88de5a5866e8",
+    "name": "Grad 2026 Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 39,
+        "full": {
+          "calories": 140,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 39,
+          "fiber": 0,
+          "sodium": 30
+        }
+      }
+    ],
+    "priority": 3.5999999999999996
+  },
+  {
+    "id": "052fb22a-8843-4663-9ac8-9a9f25d03a68",
+    "name": "Brooklyn Blackout - Chocolate Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 65,
+        "full": {
+          "calories": 471,
+          "fat": 17,
+          "protein": 8,
+          "sugar": 55,
+          "fiber": 1,
+          "sodium": 208
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 160,
+        "full": {
+          "calories": 1500,
+          "fat": 80,
+          "protein": 20,
+          "sugar": 120,
+          "fiber": 6,
+          "sodium": 700
+        }
+      }
+    ],
+    "priority": 3.4999999999999996
+  },
+  {
+    "id": "57188568-bab1-4517-b8d4-1f12fa7a9062",
+    "name": "Penne Pasta with Marinara",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 33,
+        "full": {
+          "calories": 165,
+          "fat": 1,
+          "protein": 7,
+          "sugar": 1,
+          "fiber": 1,
+          "sodium": 0
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 75,
+        "full": {
+          "calories": 460,
+          "fat": 8,
+          "protein": 16,
+          "sugar": 25,
+          "fiber": 5,
+          "sodium": 600
+        }
+      }
+    ],
+    "priority": 3.4999999999999996
+  },
+  {
+    "id": "5c35d13a-d187-4382-b556-3c5468aa1bae",
+    "name": "Classic Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 104,
+        "full": {
+          "calories": 807,
+          "fat": 38,
+          "protein": 14,
+          "sugar": 84,
+          "fiber": 1,
+          "sodium": 323
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 85,
+        "full": {
+          "calories": 700,
+          "fat": 32,
+          "protein": 14,
+          "sugar": 70,
+          "fiber": 1,
+          "sodium": 300
+        }
+      }
+    ],
+    "priority": 3.4999999999999996
+  },
+  {
+    "id": "69d0214c-ccc8-4a04-9276-311514bc489a",
+    "name": "Brownie Classic Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 90,
+        "full": {
+          "calories": 744,
+          "fat": 36,
+          "protein": 13,
+          "sugar": 71,
+          "fiber": 3,
+          "sodium": 331
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 60
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 850,
+          "fat": 38,
+          "protein": 15,
+          "sugar": 85,
+          "fiber": 3,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 3.4999999999999996
+  },
+  {
+    "id": "7c883ec4-7fef-4b44-abc4-a2eddc3c4121",
+    "name": "The Cake Shake - Cake Batter Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 77,
+        "full": {
+          "calories": 598,
+          "fat": 30,
+          "protein": 10,
+          "sugar": 55,
+          "fiber": 1,
+          "sodium": 530
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 170,
+        "full": {
+          "calories": 1400,
+          "fat": 70,
+          "protein": 18,
+          "sugar": 130,
+          "fiber": 2,
+          "sodium": 800
+        }
+      }
+    ],
+    "priority": 3.4999999999999996
+  },
+  {
+    "id": "b4d3e4b9-25d6-4e00-8301-e0614512e62f",
+    "name": "Ice Cream Float",
+    "category": "beverage",
+    "park": "EPCOT Flower & Garden Festival 2026",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 27,
+        "full": {
+          "calories": 188,
+          "fat": 8,
+          "protein": 2,
+          "sugar": null,
+          "fiber": 1,
+          "sodium": 93
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 75,
+        "full": {
+          "calories": 450,
+          "fat": 12,
+          "protein": 5,
+          "sugar": 65,
+          "fiber": 0,
+          "sodium": 150
+        }
+      }
+    ],
+    "priority": 3.4999999999999996
+  },
+  {
+    "id": "be1ea987-e50e-4d14-8a9f-fe6f78030e64",
+    "name": "Horchata Agua Fresca",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 28,
+        "full": {
+          "calories": 125,
+          "fat": 1,
+          "protein": 1,
+          "sugar": 26,
+          "fiber": 0,
+          "sodium": 25
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 45,
+        "full": {
+          "calories": 220,
+          "fat": 3,
+          "protein": 2,
+          "sugar": 35,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.4999999999999996
+  },
+  {
+    "id": "d14b9b08-0bac-40ff-9223-ee476beb49fb",
+    "name": "TOY STORY THEMED- Round 'em Up Latte",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 58,
+        "full": {
+          "calories": 420,
+          "fat": 16,
+          "protein": 10,
+          "sugar": 48,
+          "fiber": 0,
+          "sodium": 200
+        }
+      }
+    ],
+    "priority": 3.4999999999999996
+  },
+  {
+    "id": "edde812d-841c-43a7-9595-8dea1c2c2379",
+    "name": "2026 BLUEY - Poffertjes! Poffertjes!",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 85,
+        "full": {
+          "calories": 375,
+          "fat": 3,
+          "protein": 8,
+          "sugar": 10,
+          "fiber": 8,
+          "sodium": 450
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 72,
+        "full": {
+          "calories": 480,
+          "fat": 18,
+          "protein": 9,
+          "sugar": 35,
+          "fiber": 2,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 3.4999999999999996
+  },
+  {
+    "id": "13ef5b18-5338-44d5-a725-c391684accbd",
+    "name": "Glitter Cupcake Cold Brew",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 32,
+        "full": {
+          "calories": 200,
+          "fat": 7,
+          "protein": 2,
+          "sugar": 28,
+          "fiber": 0,
+          "sodium": 50
+        }
+      }
+    ],
+    "priority": 3.4
+  },
+  {
+    "id": "b3a2b5bd-bcc8-4a4f-bd21-73623d880718",
+    "name": "TOY STORY THEMED- Round 'em Up Latte",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 58,
+        "full": {
+          "calories": 420,
+          "fat": 16,
+          "protein": 10,
+          "sugar": 48,
+          "fiber": 0,
+          "sodium": 200
+        }
+      }
+    ],
+    "priority": 3.4
+  },
+  {
+    "id": "f3099999-f8b2-4f43-bf2b-488f33481342",
+    "name": "Espresso Shake",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 56,
+        "full": {
+          "calories": 443,
+          "fat": 20,
+          "protein": 8,
+          "sugar": 36,
+          "fiber": 3,
+          "sodium": 224
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 72,
+        "full": {
+          "calories": 620,
+          "fat": 28,
+          "protein": 13,
+          "sugar": 60,
+          "fiber": 0,
+          "sodium": 250
+        }
+      }
+    ],
+    "priority": 3.4
+  },
+  {
+    "id": "535d9157-8cc3-4b25-9092-6b869f009afb",
+    "name": "The Frisco Chocolate Shake",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 65,
+        "full": {
+          "calories": 469,
+          "fat": 17,
+          "protein": 8,
+          "sugar": 55,
+          "fiber": 1,
+          "sodium": 206
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 95,
+        "full": {
+          "calories": 750,
+          "fat": 34,
+          "protein": 14,
+          "sugar": 80,
+          "fiber": 2,
+          "sodium": 320
+        }
+      }
+    ],
+    "priority": 3.34
+  },
+  {
+    "id": "c6aefebd-c7ed-488e-99ef-ad025e2b0953",
+    "name": "Caramel Quake Shake",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 34,
+        "full": {
+          "calories": 260,
+          "fat": 11,
+          "protein": 6,
+          "sugar": 25,
+          "fiber": 3,
+          "sodium": 172
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 900,
+          "fat": 44,
+          "protein": 15,
+          "sugar": 95,
+          "fiber": 1,
+          "sodium": 400
+        }
+      }
+    ],
+    "priority": 3.34
+  },
+  {
+    "id": "dd1c3da0-e7f9-4121-bd3f-e24dffc1de0b",
+    "name": "Belgian Chocolate Gelato Shake",
+    "category": "beverage",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 52,
+        "full": {
+          "calories": 339,
+          "fat": 10,
+          "protein": 5,
+          "sugar": 41,
+          "fiber": 0,
+          "sodium": 121
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 700,
+          "fat": 30,
+          "protein": 12,
+          "sugar": 75,
+          "fiber": 2,
+          "sodium": 250
+        }
+      }
+    ],
+    "priority": 3.34
+  },
+  {
+    "id": "1a69abca-d257-457e-8430-b0833f72a1ef",
+    "name": "Cotton Candy - Strawberry Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 94,
+        "full": {
+          "calories": 685,
+          "fat": 30,
+          "protein": 11,
+          "sugar": 78,
+          "fiber": 1,
+          "sodium": 245
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 170,
+        "full": {
+          "calories": 1300,
+          "fat": 60,
+          "protein": 16,
+          "sugar": 150,
+          "fiber": 1,
+          "sodium": 500
+        }
+      }
+    ],
+    "priority": 3.3000000000000003
+  },
+  {
+    "id": "47cdbd11-19da-4f59-a58c-ba1cad505610",
+    "name": "2026 VALENTINES- Fairytale Love Latte",
+    "category": "beverage",
+    "park": "Disney's Animal Kingdom",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 55,
+        "full": {
+          "calories": 380,
+          "fat": 13,
+          "protein": 10,
+          "sugar": 46,
+          "fiber": 1,
+          "sodium": 180
+        }
+      }
+    ],
+    "priority": 3.3000000000000003
+  },
+  {
+    "id": "69e506c4-b673-4881-b7d3-22bf2d580ec9",
+    "name": "2026 FLOWER & GARDEN FESTIVAL- Pineapple Float",
+    "category": "beverage",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 63,
+        "full": {
+          "calories": 428,
+          "fat": 15,
+          "protein": 7,
+          "sugar": 54,
+          "fiber": 1,
+          "sodium": 72
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 80,
+        "full": {
+          "calories": 330,
+          "fat": 2,
+          "protein": 1,
+          "sugar": 68,
+          "fiber": 1,
+          "sodium": 50
+        }
+      }
+    ],
+    "priority": 3.3000000000000003
+  },
+  {
+    "id": "ad967428-7847-4aed-8916-95688bdb55e4",
+    "name": "Mango-Coconut Milk Shake",
+    "category": "beverage",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 93,
+        "full": {
+          "calories": 750,
+          "fat": 34,
+          "protein": 13,
+          "sugar": 80,
+          "fiber": 1,
+          "sodium": 333
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 75,
+        "full": {
+          "calories": 550,
+          "fat": 24,
+          "protein": 5,
+          "sugar": 60,
+          "fiber": 3,
+          "sodium": 150
+        }
+      }
+    ],
+    "priority": 3.3000000000000003
+  },
+  {
+    "id": "c440ff85-db30-4d2c-a38f-a3031cb4027f",
+    "name": "Sweet 'N Salty - Peanut Butter Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 75,
+        "full": {
+          "calories": 750,
+          "fat": 39,
+          "protein": 18,
+          "sugar": 64,
+          "fiber": 2,
+          "sodium": 325
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 150,
+        "full": {
+          "calories": 1500,
+          "fat": 85,
+          "protein": 28,
+          "sugar": 110,
+          "fiber": 4,
+          "sodium": 900
+        }
+      }
+    ],
+    "priority": 3.3000000000000003
+  },
+  {
+    "id": "c7e078e3-1c82-4740-870d-49b960bab64a",
+    "name": "2024 MARDI GRAS- King Cake Bomba Shake",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 46
+      },
+      {
+        "method": "decomposition",
+        "carbs": 125,
+        "full": {
+          "calories": 1000,
+          "fat": 45,
+          "protein": 16,
+          "sugar": 95,
+          "fiber": 2,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 3.3000000000000003
+  },
+  {
+    "id": "d672cb12-3e6b-4746-9351-b1b5cbdd9137",
+    "name": "Frozen Hot Chocolate",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 35,
+        "full": {
+          "calories": 217,
+          "fat": 6,
+          "protein": 6,
+          "sugar": 28,
+          "fiber": 1,
+          "sodium": 153
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 85,
+        "full": {
+          "calories": 600,
+          "fat": 24,
+          "protein": 10,
+          "sugar": 75,
+          "fiber": 2,
+          "sodium": 250
+        }
+      }
+    ],
+    "priority": 3.2199999999999998
+  },
+  {
+    "id": "3d396a52-059d-4c4d-bc98-9446cece47a5",
+    "name": "Mango-Peach Bubble Tea",
+    "category": "beverage",
+    "park": "Walt Disney World Festivals & Events",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 10,
+        "full": {
+          "calories": 55,
+          "fat": 1,
+          "protein": 1,
+          "sugar": 4,
+          "fiber": 1,
+          "sodium": 9
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 68,
+        "full": {
+          "calories": 330,
+          "fat": 3,
+          "protein": 2,
+          "sugar": 48,
+          "fiber": 0,
+          "sodium": 60
+        }
+      }
+    ],
+    "priority": 3.2
+  },
+  {
+    "id": "3dd81a63-5355-4a85-9f05-0dabc6d14c8e",
+    "name": "2026 BLUEY - Bluey Sipper",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 100,
+        "full": {
+          "calories": 389,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 98,
+          "fiber": 0,
+          "sodium": 2
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 39,
+        "full": {
+          "calories": 140,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 38,
+          "fiber": 0,
+          "sodium": 30
+        }
+      }
+    ],
+    "priority": 3.2
+  },
+  {
+    "id": "3ee26ee1-79a7-4fa5-9e41-a52aa00fae4e",
+    "name": "Bam Bam Shake - Fruity Pebbles Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 22,
+        "full": {
+          "calories": 246,
+          "fat": 15,
+          "protein": 8,
+          "sugar": 11,
+          "fiber": 5,
+          "sodium": 262
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 180,
+        "full": {
+          "calories": 1400,
+          "fat": 62,
+          "protein": 17,
+          "sugar": 145,
+          "fiber": 1,
+          "sodium": 600
+        }
+      }
+    ],
+    "priority": 3.2
+  },
+  {
+    "id": "8c63ade7-8015-4fc4-b655-ed99a982fc1a",
+    "name": "Desert Pear Lemonade Pirate Slushy",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 56,
+        "full": {
+          "calories": 240,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 56,
+          "fiber": 0,
+          "sodium": 15
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 34
+      }
+    ],
+    "priority": 3.2
+  },
+  {
+    "id": "4f33853d-c59e-4af9-8478-2fa4ed6a458c",
+    "name": "Butterbeer™",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 45,
+        "full": {
+          "calories": 223,
+          "fat": 4,
+          "protein": 2,
+          "sugar": 43,
+          "fiber": 0,
+          "sodium": 180
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 65,
+        "full": {
+          "calories": 290,
+          "fat": 3,
+          "protein": 0,
+          "sugar": 57,
+          "fiber": 0,
+          "sodium": 110
+        }
+      }
+    ],
+    "priority": 3.1599999999999997
+  },
+  {
+    "id": "33feb18b-2b3d-4e5c-a413-09bf1abcd4d3",
+    "name": "Cereal Selections with Milk",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 53,
+        "full": {
+          "calories": 286,
+          "fat": 8,
+          "protein": 8,
+          "sugar": 19,
+          "fiber": 2,
+          "sodium": 243
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 42,
+        "full": {
+          "calories": 250,
+          "fat": 5,
+          "protein": 10,
+          "sugar": 18,
+          "fiber": 3,
+          "sodium": 320
+        }
+      }
+    ],
+    "priority": 3.1399999999999997
+  },
+  {
+    "id": "437db019-d59d-4888-9232-5fc8fed19233",
+    "name": "Hot Chocolate",
+    "category": "beverage",
+    "park": "Disneyland Resort Hotels",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 32,
+        "full": {
+          "calories": 240,
+          "fat": 3,
+          "protein": 6,
+          "sugar": 31,
+          "fiber": 1,
+          "sodium": 154
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 42,
+        "full": {
+          "calories": 320,
+          "fat": 12,
+          "protein": 8,
+          "sugar": 38,
+          "fiber": 2,
+          "sodium": 170
+        }
+      }
+    ],
+    "priority": 3.12
+  },
+  {
+    "id": "671c7848-c9f6-4247-92f1-9c4085c134ed",
+    "name": "Hot Chocolate",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 32,
+        "full": {
+          "calories": 240,
+          "fat": 3,
+          "protein": 6,
+          "sugar": 31,
+          "fiber": 1,
+          "sodium": 154
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 48,
+        "full": {
+          "calories": 390,
+          "fat": 17,
+          "protein": 9,
+          "sugar": 42,
+          "fiber": 3,
+          "sodium": 160
+        }
+      }
+    ],
+    "priority": 3.12
+  },
+  {
+    "id": "101864c4-acfa-4669-8887-8f756243a2dc",
+    "name": "Frappuccino Blended Creme Beverages",
+    "category": "beverage",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 33,
+        "full": {
+          "calories": 211,
+          "fat": 8,
+          "protein": 4,
+          "sugar": 27,
+          "fiber": 0,
+          "sodium": 117
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 62,
+        "full": {
+          "calories": 400,
+          "fat": 15,
+          "protein": 6,
+          "sugar": 60,
+          "fiber": 1,
+          "sodium": 250
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "1696bd03-0e9b-4ca6-801a-bdf95aa03215",
+    "name": "Grown Up Hot Chocolate",
+    "category": "beverage",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 35,
+        "full": {
+          "calories": 217,
+          "fat": 6,
+          "protein": 6,
+          "sugar": 28,
+          "fiber": 1,
+          "sodium": 153
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 44,
+        "full": {
+          "calories": 420,
+          "fat": 12,
+          "protein": 8,
+          "sugar": 40,
+          "fiber": 2,
+          "sodium": 160
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "4b904933-ed9d-4727-a321-266d100718a5",
+    "name": "Paleontology Lemonade",
+    "category": "beverage",
+    "park": "Disney's Animal Kingdom",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 19,
+        "full": {
+          "calories": 75,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 18,
+          "fiber": 0,
+          "sodium": 5
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 34
+      },
+      {
+        "method": "decomposition",
+        "carbs": 66,
+        "full": {
+          "calories": 265,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 58,
+          "fiber": 0,
+          "sodium": 35
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "4f6dd94e-747b-49a2-bf7f-4f18325075c3",
+    "name": "The Cookie Shake - Vanilla Cookie Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 467,
+          "fat": 20,
+          "protein": 8,
+          "sugar": 50,
+          "fiber": 1,
+          "sodium": 237
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 110,
+        "full": {
+          "calories": 900,
+          "fat": 42,
+          "protein": 14,
+          "sugar": 90,
+          "fiber": 2,
+          "sodium": 450
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "68877fd6-ac18-45e7-b6e0-27d32af2ca9c",
+    "name": "Starship Lemonade",
+    "category": "beverage",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 19,
+        "full": {
+          "calories": 75,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 18,
+          "fiber": 0,
+          "sodium": 5
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 34
+      },
+      {
+        "method": "decomposition",
+        "carbs": 58,
+        "full": {
+          "calories": 235,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 54,
+          "fiber": 0,
+          "sodium": 30
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "7782f907-dbb7-407b-8b95-3b0ddfdc82d6",
+    "name": "Golden Hue",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 36,
+        "full": {
+          "calories": 274,
+          "fat": 0,
+          "protein": 1,
+          "sugar": 15,
+          "fiber": 1,
+          "sodium": 50
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 8,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 6,
+          "fiber": 0,
+          "sodium": 15
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "92d66731-390c-4f7b-aae8-4865d4b26d8a",
+    "name": "Paleontology Lemonade with Glow Cube",
+    "category": "beverage",
+    "park": "Disney's Animal Kingdom",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 56,
+        "full": {
+          "calories": 238,
+          "fat": 0,
+          "protein": 2,
+          "sugar": 50,
+          "fiber": 5,
+          "sodium": 56
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 34
+      },
+      {
+        "method": "decomposition",
+        "carbs": 66,
+        "full": {
+          "calories": 265,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 58,
+          "fiber": 0,
+          "sodium": 35
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "95fd150e-6841-4a14-913a-c42070da0b12",
+    "name": "Non-alcoholic Fifty-Five-Fifty",
+    "category": "beverage",
+    "park": "Disneyland Resort Hotels",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 60,
+        "full": {
+          "calories": 550,
+          "fat": 20,
+          "protein": 5,
+          "sugar": 40,
+          "fiber": 2,
+          "sodium": 50
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 45,
+        "full": {
+          "calories": 300,
+          "fat": 12,
+          "protein": 2,
+          "sugar": 40,
+          "fiber": 2,
+          "sodium": 45
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "9b5d687b-a06d-4e9c-ba59-dfb9fc0503fe",
+    "name": "Fountain Beverages",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 39,
+        "full": {
+          "calories": 149,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 39,
+          "fiber": 0,
+          "sodium": 35
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 48,
+        "full": {
+          "calories": 180,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 48,
+          "fiber": 0,
+          "sodium": 40
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "a29ed187-17ae-4f0b-b07e-a5c0e4c47ef0",
+    "name": "Macaroni & Cheese",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 18,
+        "full": {
+          "calories": 110,
+          "fat": 2,
+          "protein": 4,
+          "sugar": 2,
+          "fiber": 0,
+          "sodium": 451
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 60,
+        "full": {
+          "calories": 500,
+          "fat": 18,
+          "protein": 20,
+          "sugar": 15,
+          "fiber": 3,
+          "sodium": 900
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "a4fa468a-b272-4c38-9460-7cfe46235bef",
+    "name": "Coffee Cake Cookie",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 46,
+        "full": {
+          "calories": 330,
+          "fat": 15,
+          "protein": 4,
+          "sugar": 25,
+          "fiber": 1,
+          "sodium": 197
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 68,
+        "full": {
+          "calories": 480,
+          "fat": 20,
+          "protein": 6,
+          "sugar": 40,
+          "fiber": 1,
+          "sodium": 320
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "a5816fd5-8878-4628-8cc6-adc3001908cb",
+    "name": "2026 VALENTINES- Fairytale Love Latte",
+    "category": "beverage",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 48,
+        "full": {
+          "calories": 320,
+          "fat": 9,
+          "protein": 9,
+          "sugar": 44,
+          "fiber": 0,
+          "sodium": 180
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "dd0cc8b6-6ce0-41ce-a4f9-f7adc2447799",
+    "name": "Coca-Cola Freestyle",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 52,
+        "full": {
+          "calories": 190,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 52,
+          "fiber": 0,
+          "sodium": 45
+        }
+      }
+    ],
+    "priority": 3.0999999999999996
+  },
+  {
+    "id": "8f31b201-3423-411c-891e-1ec1181f81b6",
+    "name": "Mango Smoothie",
+    "category": "beverage",
+    "park": "Walt Disney World Resorts",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 45,
+        "full": {
+          "calories": 215,
+          "fat": 2,
+          "protein": 2,
+          "sugar": 37,
+          "fiber": 2,
+          "sodium": 49
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 58,
+        "full": {
+          "calories": 280,
+          "fat": 3,
+          "protein": 6,
+          "sugar": 50,
+          "fiber": 2,
+          "sodium": 60
+        }
+      }
+    ],
+    "priority": 3.08
+  },
+  {
+    "id": "99d23e61-d046-47bc-ac7a-dd2732fbbda0",
+    "name": "Frozen Lemonade",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 52,
+        "full": {
+          "calories": 200,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 50,
+          "fiber": 0,
+          "sodium": 10
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 34
+      },
+      {
+        "method": "decomposition",
+        "carbs": 62,
+        "full": {
+          "calories": 240,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 56,
+          "fiber": 0,
+          "sodium": 20
+        }
+      }
+    ],
+    "priority": 3.06
+  },
+  {
+    "id": "d4c87de4-6f9b-4f7c-87a7-ecc6e614d749",
+    "name": "Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal CityWalk",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 39,
+        "full": {
+          "calories": 177,
+          "fat": 1,
+          "protein": 1,
+          "sugar": 35,
+          "fiber": 0,
+          "sodium": 50
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 52,
+        "full": {
+          "calories": 190,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 52,
+          "fiber": 0,
+          "sodium": 45
+        }
+      }
+    ],
+    "priority": 3.06
+  },
+  {
+    "id": "a08e02a8-7eac-48f2-8aed-15ff8927ca4e",
+    "name": "2026 VALENTINES- Fairytale Love Latte",
+    "category": "beverage",
+    "park": "EPCOT",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 48,
+        "full": {
+          "calories": 320,
+          "fat": 9,
+          "protein": 9,
+          "sugar": 44,
+          "fiber": 0,
+          "sodium": 180
+        }
+      }
+    ],
+    "priority": 3.0399999999999996
+  },
+  {
+    "id": "ab343e89-b258-4f24-b2e3-f938bc2a24c2",
+    "name": "Grand Continental Breakfast",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 76,
+        "full": {
+          "calories": 418,
+          "fat": 10,
+          "protein": 6,
+          "sugar": 40,
+          "fiber": 2,
+          "sodium": 590
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 750,
+          "fat": 30,
+          "protein": 12,
+          "sugar": 50,
+          "fiber": 5,
+          "sodium": 550
+        }
+      }
+    ],
+    "priority": 3.0200000000000005
+  },
+  {
+    "id": "b140992f-595e-455f-b81e-23f33d478ad1",
+    "name": "Paradise Continental Breakfast",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 76,
+        "full": {
+          "calories": 418,
+          "fat": 10,
+          "protein": 6,
+          "sugar": 40,
+          "fiber": 2,
+          "sodium": 590
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 750,
+          "fat": 30,
+          "protein": 12,
+          "sugar": 50,
+          "fiber": 5,
+          "sodium": 550
+        }
+      }
+    ],
+    "priority": 3.0200000000000005
+  },
+  {
+    "id": "f53fb7de-d049-4d52-8d7d-ee777991127f",
+    "name": "Continental Breakfast",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 76,
+        "full": {
+          "calories": 418,
+          "fat": 10,
+          "protein": 6,
+          "sugar": 40,
+          "fiber": 2,
+          "sodium": 590
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 105,
+        "full": {
+          "calories": 750,
+          "fat": 30,
+          "protein": 12,
+          "sugar": 50,
+          "fiber": 5,
+          "sodium": 550
+        }
+      }
+    ],
+    "priority": 3.0200000000000005
+  },
+  {
+    "id": "fc939ad4-4898-4a6b-a14d-e06e545af43f",
+    "name": "Extra day of refills for Freestyle® Cup",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 12,
+        "full": {
+          "calories": 46,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 12,
+          "fiber": 0,
+          "sodium": 6
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 60,
+        "full": {
+          "calories": 230,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 58,
+          "fiber": 0,
+          "sodium": 45
+        }
+      }
+    ],
+    "priority": 3
+  },
+  {
+    "id": "b8118c94-96f0-4412-856f-6fd0edf83a86",
+    "name": "Drink's",
+    "category": "beverage",
+    "park": "Universal Volcano Bay",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 10,
+        "full": {
+          "calories": 42,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 10,
+          "fiber": 0,
+          "sodium": 3
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 40,
+        "full": {
+          "calories": 260,
+          "fat": 6,
+          "protein": 6,
+          "sugar": 38,
+          "fiber": 0,
+          "sodium": 110
+        }
+      }
+    ],
+    "priority": 2.9800000000000004
+  },
+  {
+    "id": "3274d85d-7fe9-45f8-9981-71753d62fb30",
+    "name": "Mocha Espresso Cookie",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 48,
+        "full": {
+          "calories": 350,
+          "fat": 16,
+          "protein": 4,
+          "sugar": 30,
+          "fiber": 2,
+          "sodium": 200
+        }
+      }
+    ],
+    "priority": 2.94
+  },
+  {
+    "id": "96e17928-d74b-45fb-864c-82a36fb0a163",
+    "name": "Banana Split Smoothie",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 49,
+        "full": {
+          "calories": 260,
+          "fat": 6,
+          "protein": 5,
+          "sugar": 38,
+          "fiber": 2,
+          "sodium": 89
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 70,
+        "full": {
+          "calories": 330,
+          "fat": 3,
+          "protein": 6,
+          "sugar": 55,
+          "fiber": 4,
+          "sodium": 60
+        }
+      }
+    ],
+    "priority": 2.94
+  },
+  {
+    "id": "d5e6ed39-8edb-419f-a31a-18e0df9a6b96",
+    "name": "Macaroni & Cheese",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 18,
+        "full": {
+          "calories": 110,
+          "fat": 2,
+          "protein": 4,
+          "sugar": 2,
+          "fiber": 0,
+          "sodium": 451
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 70,
+        "full": {
+          "calories": 500,
+          "fat": 16,
+          "protein": 18,
+          "sugar": 20,
+          "fiber": 3,
+          "sodium": 800
+        }
+      }
+    ],
+    "priority": 2.92
+  },
+  {
+    "id": "17e7b6a9-6da8-4555-8437-7cbd470418f4",
+    "name": "Cookie Shake",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 62,
+        "full": {
+          "calories": 642,
+          "fat": 33,
+          "protein": 10,
+          "sugar": 52,
+          "fiber": 2,
+          "sodium": 296
+        }
+      },
+      {
+        "method": "chain",
+        "carbs": 49
+      },
+      {
+        "method": "decomposition",
+        "carbs": 90,
+        "full": {
+          "calories": 700,
+          "fat": 30,
+          "protein": 12,
+          "sugar": 70,
+          "fiber": 1,
+          "sodium": 350
+        }
+      }
+    ],
+    "priority": 2.9
+  },
+  {
+    "id": "23bf472d-b3c0-425e-a5da-7484ceded33d",
+    "name": "SEASONAL- Iced Dubai Chocolate Matcha",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 48,
+        "full": {
+          "calories": 380,
+          "fat": 16,
+          "protein": 8,
+          "sugar": 42,
+          "fiber": 1,
+          "sodium": 150
+        }
+      }
+    ],
+    "priority": 2.9
+  },
+  {
+    "id": "252eac9c-0a5b-49db-9725-16b0291fad9e",
+    "name": "2025 HALLOWEEN- BearPaw Basin Cold Brew- Avail through Jan 7, 2026",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "chain",
+        "carbs": 0
+      },
+      {
+        "method": "decomposition",
+        "carbs": 50,
+        "full": {
+          "calories": 350,
+          "fat": 14,
+          "protein": 4,
+          "sugar": 42,
+          "fiber": 1,
+          "sodium": 180
+        }
+      }
+    ],
+    "priority": 2.9
+  },
+  {
+    "id": "269dedd0-4265-4d90-91de-2efb892091d5",
+    "name": "Single Serve Coca-Cola Freestyle® Cup",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 34,
+        "full": {
+          "calories": 145,
+          "fat": 1,
+          "protein": 1,
+          "sugar": 32,
+          "fiber": 0,
+          "sodium": 34
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 60,
+        "full": {
+          "calories": 225,
+          "fat": 0,
+          "protein": 0,
+          "sugar": 58,
+          "fiber": 0,
+          "sodium": 45
+        }
+      }
+    ],
+    "priority": 2.9
+  },
+  {
+    "id": "444a263d-2b9e-4be9-84ff-7a22e08565bf",
+    "name": "Green Machine Smoothie",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 41,
+        "full": {
+          "calories": 233,
+          "fat": 6,
+          "protein": 5,
+          "sugar": 32,
+          "fiber": 2,
+          "sodium": 36
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 62,
+        "full": {
+          "calories": 260,
+          "fat": 1,
+          "protein": 3,
+          "sugar": 48,
+          "fiber": 4,
+          "sodium": 25
+        }
+      }
+    ],
+    "priority": 2.9
+  },
+  {
+    "id": "4d012611-2323-41db-bf87-6c11e443360c",
+    "name": "Kid's Power Pack",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 67,
+        "full": {
+          "calories": 373,
+          "fat": 6,
+          "protein": 9,
+          "sugar": 35,
+          "fiber": 5,
+          "sodium": 317
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 50,
+        "full": {
+          "calories": 300,
+          "fat": 5,
+          "protein": 10,
+          "sugar": 32,
+          "fiber": 3,
+          "sodium": 250
+        }
+      }
+    ],
+    "priority": 2.9
+  },
+  {
+    "id": "573ed18d-28b1-49dc-ba34-58f755c6250b",
+    "name": "Vanilla Shake",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "estimates": [
+      {
+        "method": "keyword",
+        "carbs": 54,
+        "full": {
+          "calories": 375,
+          "fat": 15,
+          "protein": 6,
+          "sugar": 44,
+          "fiber": 0,
+          "sodium": 175
+        }
+      },
+      {
+        "method": "decomposition",
+        "carbs": 75,
+        "full": {
+          "calories": 650,
+          "fat": 32,
+          "protein": 12,
+          "sugar": 65,
+          "fiber": 0,
+          "sodium": 280
+        }
+      }
+    ],
+    "priority": 2.9
+  }
+]
