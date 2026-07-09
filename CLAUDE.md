@@ -196,6 +196,10 @@ npx tsx scripts/estimate-nutrition-ai.ts
 
 > **Live audit subsystem = `scripts/audit/` (canonical — see [`scripts/README.md`](scripts/README.md)).** It is a set of pure-function checks (`accuracy.ts`, `completeness.ts`, `external.ts`, `quality.ts`, `triangulate.ts`, etc., orchestrated by `pipeline.ts`) with vitest coverage in `scripts/audit/__tests__/`, exposed via the `npm run audit:pipeline|accuracy|completeness|external|quality|report|graduation|autofix|...` scripts and run daily in CI via `.github/workflows/daily-audit.yml`. The older `audit-dump.ts` / `audit-nutrition.ts` / `fix-audit-findings.ts` / `fix-remaining.ts` scripts referenced throughout the rest of this section were ARCHIVED to `scripts/archive/` and are kept for historical context only — do not treat them as the live flow.
 
+### Improvement Loop (`scripts/loop/`)
+
+`npm run loop:improve` runs a measure→act→re-measure→decide-until-converged loop that reuses the audit + enrichment building blocks to iteratively raise both **accuracy** (auto-fixes with confidence demotion) and **comprehensiveness** (prioritized enrichment chain: nutritionix → usda → edamam → triangulate → ai) of the nutrition DB. `control.ts` is pure (metrics + dosing-prioritized worklist + convergence); `improve.ts` orchestrates. It is measure/plan-only by default — **`--apply` is required for any DB write** — and appends metrics to `audit/loop-history.json` (`npm run loop:measure` / `--from-file` runs offline). Driven in CI by `.github/workflows/improvement-loop.yml` (weekly measure-only + manual dispatch with apply). **Canonical doc: [`scripts/loop/README.md`](scripts/loop/README.md).**
+
 ### The Over-Multiplication Problem
 
 The biggest systemic data issue: `adjust-portions.ts` applied 1.5-2.5x multipliers to ALL items, but many USDA matches already returned full-portion values. Items that were already correctly sized got doubled. The audit scripts detect and fix this by defining maximum plausible calorie ranges per food type and dividing all macros proportionally when items exceed the range.

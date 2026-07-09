@@ -32,7 +32,8 @@
     "scripts/ai-nutrition-candidates.ts",
     "scripts/sync",
     "scripts/scrapers",
-    "scripts/audit"
+    "scripts/audit",
+    "scripts/loop"
   ],
-  "exclude": ["scripts/audit/__tests__", "scripts/scrapers/allears.ts"]
+  "exclude": ["scripts/audit/__tests__", "scripts/loop/__tests__", "scripts/scrapers/allears.ts"]
 }

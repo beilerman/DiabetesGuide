@@ -52,7 +52,9 @@
     "import:ai": "tsx scripts/import-ai-nutrition.ts",
     "import:manual-nutrition": "tsx scripts/import-ai-nutrition.ts --file=data/manual-nutrition-estimates.json",
     "audit:calibrate": "tsx scripts/audit/calibrate.ts",
-    "audit:triangulate": "tsx scripts/audit/triangulate.ts"
+    "audit:triangulate": "tsx scripts/audit/triangulate.ts",
+    "loop:improve": "tsx scripts/loop/improve.ts",
+    "loop:measure": "tsx scripts/loop/improve.ts --from-file"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",

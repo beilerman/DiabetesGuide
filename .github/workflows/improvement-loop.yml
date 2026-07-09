@@ -1,0 +1,111 @@
+name: Database Improvement Loop
+
+# Iteratively improves the accuracy and comprehensiveness of the nutrition DB.
+#
+# SAFETY: This is a carb-dosing-critical dataset. The scheduled (weekly) run is
+# ALWAYS measure-only — it never writes to the database. Writes only happen on a
+# manual workflow_dispatch with `apply=true`, which passes `--apply` to the
+# orchestrator. See scripts/loop/README.md for the full design + safety model.
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Actually write fixes/enrichment to the DB (off = measure-only)'
+        type: boolean
+        default: false
+      max_iterations:
+        description: 'Maximum measure->act->re-measure iterations'
+        type: string
+        default: '3'
+      enrich_limit:
+        description: 'Max items to enrich per iteration'
+        type: string
+        default: '200'
+  schedule:
+    # 6 AM UTC = 1 AM ET, Mondays. Scheduled runs are MEASURE-ONLY (never write).
+    - cron: '0 6 * * 1'
+
+# Only one improvement-loop run at a time so DB writes / history commits
+# never overlap.
+concurrency:
+  group: improvement-loop
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Guard: without Supabase credentials the loop cannot read the DB.
+      # Short-circuit gracefully (green, not red) instead of failing.
+      - name: Check for Supabase credentials
+        id: guard
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        run: |
+          if [ -z "$SUPABASE_URL" ]; then
+            echo "No Supabase credentials configured — skipping improvement loop."
+            echo "has_creds=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_creds=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # MEASURE-ONLY run: scheduled runs, or manual dispatch with apply=false.
+      # No --apply flag => the orchestrator only reads + reports a plan.
+      - name: Run improvement loop (measure-only)
+        if: steps.guard.outputs.has_creds == 'true' && github.event.inputs.apply != 'true'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          NUTRITIONIX_APP_ID: ${{ secrets.NUTRITIONIX_APP_ID }}
+          NUTRITIONIX_API_KEY: ${{ secrets.NUTRITIONIX_API_KEY }}
+          EDAMAM_APP_ID: ${{ secrets.EDAMAM_APP_ID }}
+          EDAMAM_APP_KEY: ${{ secrets.EDAMAM_APP_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          USDA_API_KEY: ${{ secrets.USDA_API_KEY }}
+        run: npm run loop:improve
+
+      # APPLY run: manual dispatch only, apply=true. Passes --apply so the
+      # orchestrator performs DB writes (auto-fixes + enrichment chain).
+      - name: Run improvement loop (apply)
+        if: steps.guard.outputs.has_creds == 'true' && github.event.inputs.apply == 'true'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          NUTRITIONIX_APP_ID: ${{ secrets.NUTRITIONIX_APP_ID }}
+          NUTRITIONIX_API_KEY: ${{ secrets.NUTRITIONIX_API_KEY }}
+          EDAMAM_APP_ID: ${{ secrets.EDAMAM_APP_ID }}
+          EDAMAM_APP_KEY: ${{ secrets.EDAMAM_APP_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          USDA_API_KEY: ${{ secrets.USDA_API_KEY }}
+        run: npm run loop:improve -- --apply --max-iterations=${{ github.event.inputs.max_iterations }} --enrich-limit=${{ github.event.inputs.enrich_limit }}
+
+      # Persist the metrics history (and any changed audit json) back to the repo.
+      - name: Commit loop history
+        if: steps.guard.outputs.has_creds == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add audit/loop-history.json audit/*.json || true
+          # Only the "nothing to commit" case is tolerated; a real push failure
+          # should surface rather than being silently swallowed by `|| true`.
+          if git diff --cached --quiet; then
+            echo "No loop history changes to commit."
+          else
+            git commit -m "loop: run $(date +%Y-%m-%d) [skip ci]"
+            git push
+          fi

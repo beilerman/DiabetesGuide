@@ -1,0 +1,187 @@
+[
+  {
+    "id": "item-1",
+    "name": "Cheeseburger with Fries",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": true,
+    "description": "1/3 lb Angus beef, cheddar, served with fries",
+    "restaurant": { "name": "Cosmic Ray's Starlight Café", "park": { "name": "Walt Disney World" } },
+    "nutritional_data": [
+      {
+        "id": "nd-1",
+        "calories": 780,
+        "carbs": 62,
+        "fat": 41,
+        "sugar": 9,
+        "protein": 34,
+        "fiber": 4,
+        "sodium": 980,
+        "cholesterol": 95,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 70
+      }
+    ]
+  },
+  {
+    "id": "item-2",
+    "name": "Smoked BBQ Brisket Platter",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": false,
+    "description": "Hickory-smoked brisket with baked beans and slaw",
+    "restaurant": { "name": "Regal Eagle Smokehouse", "park": { "name": "Walt Disney World" } },
+    "nutritional_data": [
+      {
+        "id": "nd-2",
+        "calories": 640,
+        "carbs": 45,
+        "fat": 30,
+        "sugar": 14,
+        "protein": 38,
+        "fiber": 5,
+        "sodium": 1120,
+        "cholesterol": 110,
+        "alcohol_grams": null,
+        "source": "crowdsourced",
+        "confidence_score": 30
+      }
+    ]
+  },
+  {
+    "id": "item-3",
+    "name": "Lard Lad Donut",
+    "category": "dessert",
+    "is_vegetarian": true,
+    "is_fried": true,
+    "description": "Oversized pink-frosted donut",
+    "restaurant": { "name": "Lard Lad Donuts", "park": { "name": "Universal Orlando" } },
+    "nutritional_data": [
+      {
+        "id": "nd-3",
+        "calories": 590,
+        "carbs": null,
+        "fat": 26,
+        "sugar": null,
+        "protein": 6,
+        "fiber": 2,
+        "sodium": 420,
+        "cholesterol": 40,
+        "alcohol_grams": null,
+        "source": "api_lookup",
+        "confidence_score": 50
+      }
+    ]
+  },
+  {
+    "id": "item-4",
+    "name": "Grilled Cheese Sandwich",
+    "category": "snack",
+    "is_vegetarian": true,
+    "is_fried": false,
+    "description": "Toasted sourdough with three cheeses",
+    "restaurant": { "name": "Woody's Lunch Box", "park": { "name": "Walt Disney World" } },
+    "nutritional_data": []
+  },
+  {
+    "id": "item-5",
+    "name": "Simba Sunrise",
+    "category": "beverage",
+    "is_vegetarian": true,
+    "is_fried": false,
+    "description": "Non-alcoholic tropical refresher",
+    "restaurant": { "name": "Tamu Tamu Refreshments", "park": { "name": "Walt Disney World" } },
+    "nutritional_data": [
+      {
+        "id": "nd-5",
+        "calories": null,
+        "carbs": 0,
+        "fat": 0,
+        "sugar": 0,
+        "protein": 0,
+        "fiber": 0,
+        "sodium": 15,
+        "cholesterol": 0,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 70
+      }
+    ]
+  },
+  {
+    "id": "item-6",
+    "name": "Cornbread Muffin",
+    "category": "side",
+    "is_vegetarian": true,
+    "is_fried": false,
+    "description": "Sweet Southern cornbread",
+    "restaurant": { "name": "Aunt Granny's", "park": { "name": "Dollywood" } },
+    "nutritional_data": [
+      {
+        "id": "nd-6",
+        "calories": 180,
+        "carbs": 24,
+        "fat": 6,
+        "sugar": 8,
+        "protein": 3,
+        "fiber": 1,
+        "sodium": 210,
+        "cholesterol": 20,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 75
+      }
+    ]
+  },
+  {
+    "id": "item-7",
+    "name": "The Chocolate Emporium Sundae",
+    "category": "dessert",
+    "is_vegetarian": true,
+    "is_fried": false,
+    "description": "Signature layered chocolate sundae",
+    "restaurant": { "name": "Toothsome Chocolate Emporium", "park": { "name": "Universal Orlando" } },
+    "nutritional_data": [
+      {
+        "id": "nd-7",
+        "calories": 520,
+        "carbs": 55,
+        "fat": 24,
+        "sugar": 44,
+        "protein": 7,
+        "fiber": 3,
+        "sodium": 190,
+        "cholesterol": 55,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 80
+      }
+    ]
+  },
+  {
+    "id": "item-8",
+    "name": "Skyline Cheese Coney",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": false,
+    "description": "Chili dog topped with shredded cheddar",
+    "restaurant": { "name": "Skyline Chili", "park": { "name": "Kings Island" } },
+    "nutritional_data": [
+      {
+        "id": "nd-8",
+        "calories": 340,
+        "carbs": 26,
+        "fat": 19,
+        "sugar": 4,
+        "protein": 15,
+        "fiber": 2,
+        "sodium": 760,
+        "cholesterol": 45,
+        "alcohol_grams": null,
+        "source": "crowdsourced",
+        "confidence_score": 35
+      }
+    ]
+  }
+]
