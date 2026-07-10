@@ -117,9 +117,20 @@ async function main() {
 
     console.log(`  ${APPLY ? 'WRITE' : 'would write'} ${e.name ?? e.id}: ${e.calories}cal/${e.carbs}g [${e.method ?? '?'}, conf ${e.confidence}]`)
     if (APPLY) {
-      const { error } = existing
-        ? await supabase.from('nutritional_data').update(fields).eq('id', existing.id)
-        : await supabase.from('nutritional_data').insert({ menu_item_id: e.id, ...fields })
+      let result
+      if (existing) {
+        let update = supabase.from('nutritional_data').update(fields).eq('id', existing.id)
+        if (!FORCE) {
+          update = update.or(`confidence_score.is.null,confidence_score.lt.${e.confidence}`)
+        }
+        result = await update
+      } else {
+        result = await supabase.from('nutritional_data').upsert(
+          { menu_item_id: e.id, ...fields },
+          { onConflict: 'menu_item_id', ignoreDuplicates: true },
+        )
+      }
+      const { error } = result
       if (error) console.error(`    write failed: ${error.message}`)
       else written++
     } else {
