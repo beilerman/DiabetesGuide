@@ -25,6 +25,8 @@ import {
   summarizeRun,
 } from './control.js'
 import type { LoopMetrics, LoopOptions, WorklistEntry, ContinueDecision } from './control.js'
+import { buildTargetedEstimates, applyTargetedEstimates } from './targeted-enrich.js'
+import type { TargetedEstimate } from './targeted-enrich.js'
 import { createSupabaseClient, fetchAllItems, rootPath } from '../audit/utils.js'
 import { checkAccuracy } from '../audit/accuracy.js'
 import { checkCompleteness } from '../audit/completeness.js'
@@ -41,13 +43,14 @@ interface CliConfig {
   options: LoopOptions
 }
 
-const DEFAULT_ENRICHERS = ['nutritionix', 'edamam', 'triangulate', 'ai']
+const DEFAULT_ENRICHERS = ['targeted', 'nutritionix', 'edamam', 'triangulate', 'ai']
 
 /**
  * Enrichers run cheapest / highest-confidence first. Only the names present in
- * the selected set run, but always in this fixed order.
+ * the selected set run, but always in this fixed order. `targeted` runs first
+ * and IN-PROCESS (corroborated carb-hole fills); the rest shell out.
  */
-const ENRICHER_ORDER = ['nutritionix', 'usda', 'edamam', 'triangulate', 'ai'] as const
+const ENRICHER_ORDER = ['targeted', 'nutritionix', 'usda', 'edamam', 'triangulate', 'ai'] as const
 
 function parseNum(value: string, fallback: number): number {
   const n = Number(value)
@@ -251,6 +254,17 @@ function printWorklist(worklist: WorklistEntry[], limit: number): void {
   })
 }
 
+function printTargetedPreview(estimates: TargetedEstimate[]): void {
+  console.log(`\nTARGETED (corroborated) estimates that would be applied — ${estimates.length}`)
+  if (estimates.length === 0) {
+    console.log('  (none — no two methods agreed on a carb hole)')
+    return
+  }
+  estimates.slice(0, 10).forEach((est) => {
+    console.log(`  ${est.name} — carbs ${est.carbs}g (conf ${est.confidence}, ${est.method}) — ${est.reason}`)
+  })
+}
+
 function printPlan(selected: string[], enrichLimit: number, skipEnrich: boolean, label: string): void {
   console.log(`\n${label}`)
   if (skipEnrich) {
@@ -267,6 +281,9 @@ function printMeasurement(items: Item[], config: CliConfig, selected: string[], 
   const { metrics, worklist } = measure(items, 0, 0)
   printMetrics(metrics)
   printWorklist(worklist, 20)
+  // Preview the corroborated carb-hole fills that would be applied (pure, no DB).
+  const targeted = buildTargetedEstimates(items, { limit: config.options.enrichLimit })
+  printTargetedPreview(targeted)
   printPlan(selected, config.options.enrichLimit, config.skipEnrich, planLabel)
 }
 
@@ -386,7 +403,23 @@ async function runApplyLoop(config: CliConfig, selected: string[]): Promise<void
     appliedLastIter = applied
     console.log(`  applied ${applied}/${batch.length} auto-fix record(s)`)
 
-    // ACT — enrich (each enricher self-selects candidates and self-skips if keys absent).
+    // ACT — targeted corroborated carb-hole fills. Runs FIRST and IN-PROCESS
+    // (buildTargetedEstimates is pure; applyTargetedEstimates is the only writer),
+    // before shelling the CLI enrichers.
+    if (!config.skipEnrich && selected.includes('targeted')) {
+      const targeted = buildTargetedEstimates(items, { limit: opts.enrichLimit })
+      if (targeted.length) {
+        const res = await applyTargetedEstimates(supabase, targeted)
+        console.log(
+          `  targeted: ${res.updated} updated, ${res.inserted} inserted, ${res.failed} failed (corroborated carb-hole fills)`,
+        )
+      } else {
+        console.log('  targeted: no corroborated carb-hole estimates this iteration')
+      }
+    }
+
+    // ACT — enrich (each enricher self-selects candidates and self-skips if keys
+    // absent). `targeted` is handled in-process above and shells nothing.
     if (!config.skipEnrich) runEnrichers(selected, opts.enrichLimit)
   }
 

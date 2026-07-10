@@ -45,14 +45,38 @@ not presented as trustworthy for dosing.
 A prioritized **enrichment chain**, cheapest / highest-confidence source first:
 
 ```
-nutritionix → usda → edamam → triangulate → ai
+targeted → nutritionix → usda → edamam → triangulate → ai
 ```
 
-Each enricher **self-selects** which gap items it should attempt (from the
-dosing-prioritized worklist) and **self-skips** if its API keys are absent, so
-the chain degrades gracefully when only some credentials are configured.
-Estimator-sourced values (usda/edamam/ai/triangulate) are **capped below the
-dosing bar** so they never masquerade as official, dosing-grade data.
+`targeted` runs first and **in-process** (see below); the remaining enrichers
+**self-select** which gap items they should attempt (from the dosing-prioritized
+worklist) and **self-skip** if their API keys are absent, so the chain degrades
+gracefully when only some credentials are configured, and each shells out to its
+existing `enrich-*` script. Estimator-sourced values
+(targeted/usda/edamam/ai/triangulate) are **capped below the dosing bar** so they
+never masquerade as official, dosing-grade data.
+
+#### Targeted (corroborated carb-hole) arm
+
+`targeted-enrich.ts` turns the dosing-impact worklist into **action**: it fills
+the highest-priority **genuine carb holes** — items with **no nutrition row**, or
+a row whose **`carbs` is null** — and **never overwrites an existing carb value**
+(overwriting a stated carb count is the dosing-dangerous direction and belongs to
+the audit / verification flows, not this additive hole-filler).
+
+It writes a carb value **only when two independent local estimators agree**: the
+keyword-copy estimator and the chain-class median must **corroborate via
+triangulation** (`audit/triangulate.assignTriangulation`) and the result must pass
+the import-safety gate (`isImportable`). The triangulated **confidence is capped
+≤ 65** — below the app's dosing-grade bar (70) — so a corroborated fill raises
+comprehensiveness without ever being presented to a user as safe to dose from.
+
+Unlike the shell enrichers, the targeted arm runs **first and in-process**:
+`buildTargetedEstimates` is a **pure** function (no DB / fs / env) that the loop
+also uses to **preview** what it would apply in plan / `--from-file` modes, and
+`applyTargetedEstimates` is the only DB writer (tolerant update-or-insert, counts
+failures instead of throwing). It is skipped from the shell loop because there is
+no `targeted` CLI to invoke.
 
 ## Safety model
 
@@ -89,7 +113,7 @@ npm run loop:improve -- --apply --max-iterations=3 --enrich-limit=200
 | `--enrich-limit=N` | Max items enriched per iteration. |
 | `--min-improvement=P` | Min carb-trust % gain to count a round as progress. |
 | `--convergence-rounds=K` | Non-improving rounds tolerated before stopping. |
-| `--enrichers=csv` | Subset/order of enrichers: `nutritionix,usda,edamam,triangulate,ai`. |
+| `--enrichers=csv` | Subset of enrichers to run (default `targeted,nutritionix,edamam,triangulate,ai`; `usda` also accepted). Always executed in the fixed order `targeted,nutritionix,usda,edamam,triangulate,ai`. |
 | `--skip-enrich` | Run only the accuracy arm (no enrichment chain). |
 
 ### How CI runs it
