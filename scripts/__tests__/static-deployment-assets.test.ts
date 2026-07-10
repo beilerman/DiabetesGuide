@@ -39,6 +39,21 @@ describe('static deployment assets', () => {
     expect(migrations).toMatch(/\balcohol_grams\b/i)
   })
 
+  it('reproduces catalog integrity and aggregate access in Supabase migrations', () => {
+    const migrations = readMigrations()
+
+    expect(migrations).toMatch(/uq_nutritional_data_menu_item_id/i)
+    expect(migrations).toMatch(/chk_nutrition_confidence_range/i)
+    expect(migrations).toMatch(/chk_nutrition_macros_non_negative/i)
+    expect(migrations).toMatch(/chk_nutrition_fiber_lte_carbs/i)
+    expect(migrations).toMatch(/chk_nutrition_sugar_lte_carbs/i)
+    expect(migrations).toMatch(/get_park_menu_item_counts/i)
+    expect(migrations).toMatch(/security\s+invoker/i)
+    expect(migrations).toMatch(/revoke\s+execute[\s\S]*get_park_menu_item_counts[\s\S]*from\s+public/i)
+    expect(migrations).toMatch(/grant\s+execute[\s\S]*get_park_menu_item_counts[\s\S]*to\s+anon\s*,\s*authenticated/i)
+    expect(migrations).toMatch(/grant\s+select\s+on\s+table[\s\S]*public\.parks[\s\S]*public\.allergens[\s\S]*to\s+anon\s*,\s*authenticated/i)
+  })
+
   it('derives PWA Supabase runtime caching from the configured environment URL', () => {
     const viteConfig = readFileSync(resolve(process.cwd(), 'vite.config.ts'), 'utf8')
 
