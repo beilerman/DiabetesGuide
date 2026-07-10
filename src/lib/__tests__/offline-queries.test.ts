@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import {
+  fetchMenuItemCountsOffline,
   fetchMenuItemsByIdsOffline,
   fetchMenuItemsOffline,
   searchMenuItemsOffline,
@@ -29,6 +30,13 @@ const offlineDbMocks = vi.hoisted(() => ({
 }))
 
 vi.mock('../offline-db', () => offlineDbMocks)
+
+const menuCountCacheMocks = vi.hoisted(() => ({
+  writeMenuItemCountsCache: vi.fn(),
+  readMenuItemCountsCache: vi.fn<() => Map<string, number> | null>().mockReturnValue(null),
+}))
+
+vi.mock('../menu-count-cache', () => menuCountCacheMocks)
 
 function makeItem(id: string, parkId = 'park-1'): MenuItemWithNutrition {
   return {
@@ -131,6 +139,56 @@ describe('fetchMenuItemsOffline', () => {
 
     expect(items.map(item => item.id)).toEqual(['water-1', 'water-2'])
     expect(items[0].availability_count).toBeUndefined()
+  })
+})
+
+describe('fetchMenuItemCountsOffline', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    menuCountCacheMocks.readMenuItemCountsCache.mockReturnValue(null)
+    offlineDbMocks.readAllItems.mockResolvedValue([])
+  })
+
+  it('maps compact Supabase aggregate rows into the count cache', async () => {
+    const fetchCountRows = vi.fn().mockResolvedValue([
+      { park_id: 'park-1', item_count: 12 },
+      { park_id: 'park-2', item_count: '7' },
+    ])
+
+    const result = await fetchMenuItemCountsOffline({ fetchCountRows })
+
+    expect([...result]).toEqual([['park-1', 12], ['park-2', 7]])
+    expect(menuCountCacheMocks.writeMenuItemCountsCache).toHaveBeenCalledWith(result)
+  })
+
+  it('uses the count cache when the aggregate RPC fails', async () => {
+    const cached = new Map([['cached-park', 23]])
+    menuCountCacheMocks.readMenuItemCountsCache.mockReturnValueOnce(cached)
+
+    const result = await fetchMenuItemCountsOffline({
+      fetchCountRows: vi.fn().mockRejectedValue(new Error('offline')),
+    })
+
+    expect(result).toBe(cached)
+    expect(offlineDbMocks.readAllItems).not.toHaveBeenCalled()
+  })
+
+  it('reconstructs counts from IndexedDB when the RPC and count cache are unavailable', async () => {
+    const parkOneItem = makeItem('park-one-item', 'park-1')
+    const parkTwoItem = makeItem('park-two-item', 'park-2')
+    parkTwoItem.restaurant_id = 'r2'
+    parkTwoItem.restaurant = {
+      ...parkTwoItem.restaurant!,
+      id: 'r2',
+      park_id: 'park-2',
+    }
+    offlineDbMocks.readAllItems.mockResolvedValueOnce([parkOneItem, parkTwoItem])
+
+    const result = await fetchMenuItemCountsOffline({
+      fetchCountRows: vi.fn().mockRejectedValue(new Error('offline')),
+    })
+
+    expect([...result]).toEqual([['park-1', 1], ['park-2', 1]])
   })
 })
 
