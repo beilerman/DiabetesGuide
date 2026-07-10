@@ -183,5 +183,180 @@
         "confidence_score": 35
       }
     ]
+  },
+  {
+    "id": "gt-1",
+    "name": "Classic Cheeseburger",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": false,
+    "description": "Quarter-pound beef patty with American cheese",
+    "restaurant": { "name": "Blaze Burgers", "park": { "name": "Universal Orlando" } },
+    "nutritional_data": [
+      {
+        "id": "nd-gt-1",
+        "calories": 720,
+        "carbs": 40,
+        "fat": 38,
+        "sugar": 8,
+        "protein": 33,
+        "fiber": 3,
+        "sodium": 940,
+        "cholesterol": 90,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 90
+      }
+    ]
+  },
+  {
+    "id": "gt-2",
+    "name": "Bacon Cheeseburger",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": false,
+    "description": "Beef patty with cheddar and applewood bacon",
+    "restaurant": { "name": "Smokehouse Grill", "park": { "name": "SeaWorld Orlando" } },
+    "nutritional_data": [
+      {
+        "id": "nd-gt-2",
+        "calories": 810,
+        "carbs": 39,
+        "fat": 46,
+        "sugar": 8,
+        "protein": 40,
+        "fiber": 3,
+        "sodium": 1180,
+        "cholesterol": 115,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 90
+      }
+    ]
+  },
+  {
+    "id": "gt-3",
+    "name": "Double Cheeseburger",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": false,
+    "description": "Two beef patties with double cheese",
+    "restaurant": { "name": "Backlot Diner", "park": { "name": "Walt Disney World" } },
+    "nutritional_data": [
+      {
+        "id": "nd-gt-3",
+        "calories": 980,
+        "carbs": 41,
+        "fat": 58,
+        "sugar": 9,
+        "protein": 52,
+        "fiber": 3,
+        "sodium": 1320,
+        "cholesterol": 155,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 90
+      }
+    ]
+  },
+  {
+    "id": "gt-4",
+    "name": "Angus Cheeseburger",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": false,
+    "description": "Angus beef patty with aged cheddar",
+    "restaurant": { "name": "Prime Grill", "park": { "name": "Busch Gardens Tampa" } },
+    "nutritional_data": [
+      {
+        "id": "nd-gt-4",
+        "calories": 760,
+        "carbs": 42,
+        "fat": 40,
+        "sugar": 7,
+        "protein": 35,
+        "fiber": 3,
+        "sodium": 990,
+        "cholesterol": 95,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 90
+      }
+    ]
+  },
+  {
+    "id": "gt-5",
+    "name": "Deluxe Cheeseburger",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": false,
+    "description": "Beef patty with lettuce, tomato, and cheese",
+    "restaurant": { "name": "Main Street Grill", "park": { "name": "Dollywood" } },
+    "nutritional_data": [
+      {
+        "id": "nd-gt-5",
+        "calories": 740,
+        "carbs": 38,
+        "fat": 39,
+        "sugar": 8,
+        "protein": 34,
+        "fiber": 3,
+        "sodium": 960,
+        "cholesterol": 92,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 90
+      }
+    ]
+  },
+  {
+    "id": "gt-6",
+    "name": "Smokehouse Cheeseburger",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": false,
+    "description": "Beef patty with smoked gouda and crispy onions",
+    "restaurant": { "name": "Timber Grill", "park": { "name": "Kings Island" } },
+    "nutritional_data": [
+      {
+        "id": "nd-gt-6",
+        "calories": 800,
+        "carbs": 41,
+        "fat": 44,
+        "sugar": 9,
+        "protein": 38,
+        "fiber": 3,
+        "sodium": 1100,
+        "cholesterol": 108,
+        "alcohol_grams": null,
+        "source": "official",
+        "confidence_score": 90
+      }
+    ]
+  },
+  {
+    "id": "item-hole",
+    "name": "Cheeseburger",
+    "category": "entree",
+    "is_vegetarian": false,
+    "is_fried": false,
+    "description": "Beef patty with cheese on a toasted bun",
+    "restaurant": { "name": "Pecos Bill Tall Tale Inn", "park": { "name": "Walt Disney World" } },
+    "nutritional_data": [
+      {
+        "id": "nd-hole",
+        "calories": 700,
+        "carbs": null,
+        "fat": 37,
+        "sugar": 8,
+        "protein": 32,
+        "fiber": 3,
+        "sodium": 900,
+        "cholesterol": 88,
+        "alcohol_grams": null,
+        "source": "api_lookup",
+        "confidence_score": 45
+      }
+    ]
   }
 ]

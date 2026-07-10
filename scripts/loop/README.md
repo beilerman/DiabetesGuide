@@ -78,6 +78,31 @@ also uses to **preview** what it would apply in plan / `--from-file` modes, and
 failures instead of throwing). It is skipped from the shell loop because there is
 no `targeted` CLI to invoke.
 
+### Accuracy back-test
+
+`accuracy-eval.ts` (`evaluateAccuracy`) is a distinct **ACCURACY** signal from
+coverage: instead of asking "how many items have carbs," it asks "**how wrong is
+our carb-estimation method when we can check it against the truth?**"
+
+For every **official chain-published ground-truth row** (`source === 'official'`,
+`confidence_score >= 85`, `carbs != null`) it **predicts that row's carbs with the
+exact same keyword-copy + chain-class triangulation the loop uses to enrich**, run
+**leave-one-out** — the row's own id (and identically-named siblings) are excluded
+from both estimation pools, so a row's published value can never leak into its own
+prediction. Predicted-vs-actual pairs are scored by the shared
+`scoreCalibrationPairs`, yielding **dose-error** stats: **carb MAE**, **% within
+10g**, **severe-undercount %** (published carbs exceed the prediction by ≥20g — the
+dosing-dangerous direction), and **dose-units-off at an ICR of 10g/unit**. Rows the
+method declines to estimate still count toward `n` but not the error stats, so
+coverage is measured honestly.
+
+It is currently **reported, not gating**: the loop prints a one-line accuracy
+summary per iteration and stores the full `CalibrationMetrics` per iteration under
+the run's `accuracy` array in `audit/loop-history.json`. It does **not** feed
+`decideContinue` — convergence is still judged on coverage/finding metrics only.
+In plan and `--from-file` modes the same back-test prints as an `ACCURACY
+BACK-TEST` block alongside the targeted preview.
+
 ## Safety model
 
 - **`--apply` is required for any DB write.** Without it the loop is

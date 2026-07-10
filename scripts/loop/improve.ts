@@ -27,6 +27,8 @@ import {
 import type { LoopMetrics, LoopOptions, WorklistEntry, ContinueDecision } from './control.js'
 import { buildTargetedEstimates, applyTargetedEstimates } from './targeted-enrich.js'
 import type { TargetedEstimate } from './targeted-enrich.js'
+import { evaluateAccuracy } from './accuracy-eval.js'
+import type { CalibrationMetrics } from '../audit/calibrate.js'
 import { createSupabaseClient, fetchAllItems, rootPath } from '../audit/utils.js'
 import { checkAccuracy } from '../audit/accuracy.js'
 import { checkCompleteness } from '../audit/completeness.js'
@@ -265,6 +267,27 @@ function printTargetedPreview(estimates: TargetedEstimate[]): void {
   })
 }
 
+/**
+ * ACCURACY back-test summary: how well the loop's own keyword+chain method
+ * predicts the carbs of official ground-truth rows (leave-one-out). Distinct
+ * from coverage — this is dose-error, not fill rate. Only non-null stats print.
+ */
+function printAccuracy(acc: CalibrationMetrics): void {
+  console.log('\nACCURACY BACK-TEST (method vs official ground truth, leave-one-out)')
+  if (acc.n === 0) {
+    console.log('  (no official ground-truth rows to back-test)')
+    return
+  }
+  console.log(`  ground-truth rows:      ${acc.n}`)
+  console.log(`  predicted:              ${acc.estimated} (${acc.coveragePct}% coverage)`)
+  if (acc.carbMAE != null) console.log(`  carb MAE:               ${acc.carbMAE.toFixed(1)}g`)
+  if (acc.carbMedianAE != null) console.log(`  carb median AE:         ${acc.carbMedianAE.toFixed(1)}g`)
+  if (acc.pctWithin10g != null) console.log(`  within 10g:             ${acc.pctWithin10g.toFixed(1)}%`)
+  if (acc.severeUndercountPct != null) console.log(`  severe undercount:      ${acc.severeUndercountPct.toFixed(1)}%`)
+  if (acc.doseErrorUnitsAtICR10 != null)
+    console.log(`  dose error @ICR10:      ${acc.doseErrorUnitsAtICR10.toFixed(1)} units`)
+}
+
 function printPlan(selected: string[], enrichLimit: number, skipEnrich: boolean, label: string): void {
   console.log(`\n${label}`)
   if (skipEnrich) {
@@ -284,6 +307,9 @@ function printMeasurement(items: Item[], config: CliConfig, selected: string[], 
   // Preview the corroborated carb-hole fills that would be applied (pure, no DB).
   const targeted = buildTargetedEstimates(items, { limit: config.options.enrichLimit })
   printTargetedPreview(targeted)
+  // Back-test the estimation method against official ground truth (pure, no DB).
+  const acc = evaluateAccuracy(items)
+  printAccuracy(acc)
   printPlan(selected, config.options.enrichLimit, config.skipEnrich, planLabel)
 }
 
@@ -322,7 +348,12 @@ function runEnrichers(selected: string[], limit: number): void {
 
 // ---- Loop-history persistence -------------------------------------------
 
-function appendLoopHistory(options: LoopOptions, iterations: LoopMetrics[], stopReason: string): void {
+function appendLoopHistory(
+  options: LoopOptions,
+  iterations: LoopMetrics[],
+  accuracy: CalibrationMetrics[],
+  stopReason: string,
+): void {
   const path = rootPath('audit', 'loop-history.json')
   let runs: unknown[] = []
   if (existsSync(path)) {
@@ -338,6 +369,7 @@ function appendLoopHistory(options: LoopOptions, iterations: LoopMetrics[], stop
     apply: true,
     options,
     iterations,
+    accuracy,
     stopReason,
   })
   writeFileSync(path, JSON.stringify(runs, null, 2) + '\n', 'utf-8')
@@ -365,6 +397,7 @@ async function runApplyLoop(config: CliConfig, selected: string[]): Promise<void
   const opts = config.options
   const supabase = createSupabaseClient()
   const history: LoopMetrics[] = []
+  const accuracyHistory: CalibrationMetrics[] = []
   let appliedLastIter = 0
   let decision: ContinueDecision = { continue: true, reason: 'starting' }
 
@@ -389,6 +422,18 @@ async function runApplyLoop(config: CliConfig, selected: string[]): Promise<void
         `HIGH ${metrics.highFindings} MED ${metrics.mediumFindings} LOW ${metrics.lowFindings} | ` +
         `fixes ${metrics.autoFixesApplied} enriched ${metrics.enrichedThisIteration} | gaps ${metrics.gapItemCount}`,
     )
+
+    // ACCURACY (reported, not gating): back-test the method against official
+    // ground truth, leave-one-out. Collected parallel to `history`.
+    const accMetrics = evaluateAccuracy(items)
+    accuracyHistory.push(accMetrics)
+    const accParts: string[] = []
+    if (accMetrics.carbMAE != null) accParts.push(`MAE ${accMetrics.carbMAE.toFixed(1)}g`)
+    if (accMetrics.pctWithin10g != null) accParts.push(`${accMetrics.pctWithin10g.toFixed(1)}% within 10g`)
+    if (accMetrics.doseErrorUnitsAtICR10 != null)
+      accParts.push(`${accMetrics.doseErrorUnitsAtICR10.toFixed(1)} dose-units off @ICR10`)
+    accParts.push(`ground-truth n=${accMetrics.n}`)
+    console.log(`  accuracy: ${accParts.join(' | ')}`)
 
     decision = decideContinue(history, opts)
     if (!decision.continue) break
@@ -423,7 +468,7 @@ async function runApplyLoop(config: CliConfig, selected: string[]): Promise<void
     if (!config.skipEnrich) runEnrichers(selected, opts.enrichLimit)
   }
 
-  appendLoopHistory(opts, history, decision.reason)
+  appendLoopHistory(opts, history, accuracyHistory, decision.reason)
   console.log('\n=== RUN SUMMARY ===')
   console.log(summarizeRun(history))
   console.log(`Stop reason: ${decision.reason}`)

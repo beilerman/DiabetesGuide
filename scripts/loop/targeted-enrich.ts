@@ -25,13 +25,8 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 import type { Item } from '../audit/types.js'
 import { nd } from '../audit/utils.js'
 import { buildEnrichmentWorklist } from './control.js'
-import { estimateNutrition, extractKeywords } from '../sync/estimate-nutrition.js'
-import type { NutritionPoolEntry } from '../sync/estimate-nutrition.js'
-import type { MergedItem } from '../sync/merge.js'
-import { chainClassEstimate } from '../audit/calibration-methods.js'
-import type { OfficialRow } from '../audit/calibration-methods.js'
-import { assignTriangulation, isImportable } from '../audit/triangulate.js'
-import type { FullMacros, MethodEstimate } from '../audit/triangulate.js'
+import { buildPools, triangulateCarbs } from './estimate-core.js'
+import type { FullMacros } from '../audit/triangulate.js'
 
 export interface TargetedEstimate {
   itemId: string
@@ -66,43 +61,8 @@ export interface ApplyResult {
  * enough corroborated estimates exist.
  */
 export function buildTargetedEstimates(items: Item[], opts: TargetedOptions): TargetedEstimate[] {
-  // 1. Keyword-copy pool: every item with a complete numeric macro panel.
-  const pool: NutritionPoolEntry[] = []
-  // 2. Chain-class pool: high-confidence official rows with a carb value.
-  const officialPool: OfficialRow[] = []
-  for (const item of items) {
-    const n = nd(item)
-    if (!n) continue
-    if (
-      typeof n.calories === 'number' &&
-      typeof n.carbs === 'number' &&
-      typeof n.fat === 'number' &&
-      typeof n.protein === 'number'
-    ) {
-      pool.push({
-        id: item.id,
-        name: item.name,
-        category: item.category,
-        calories: n.calories,
-        carbs: n.carbs,
-        fat: n.fat,
-        protein: n.protein,
-        sugar: n.sugar,
-        fiber: n.fiber,
-        sodium: n.sodium,
-        keywords: extractKeywords(item.name),
-      })
-    }
-    if (n.source === 'official' && (n.confidence_score ?? 0) >= 85 && n.carbs != null) {
-      officialPool.push({
-        id: item.id,
-        name: item.name,
-        category: item.category,
-        carbs: n.carbs,
-        calories: n.calories,
-      })
-    }
-  }
+  // 1+2. Keyword-copy pool + chain-class official pool (built once, reusable).
+  const pools = buildPools(items)
 
   // 3. Genuine holes only, in dosing-impact order. 'carbs not dosing-grade' has a
   //    numeric value already — never overwrite it here.
@@ -114,56 +74,20 @@ export function buildTargetedEstimates(items: Item[], opts: TargetedOptions): Ta
   for (const entry of holes) {
     const item = entry.item
 
-    const candidatePool = pool.filter((p) => p.id !== item.id)
-    const kw = estimateNutrition(
-      {
-        itemName: item.name,
-        category: item.category,
-        restaurantName: '',
-        parkName: '',
-        sources: [],
-        confidence: 100,
-        isNew: true,
-      } as unknown as MergedItem,
-      candidatePool,
-    )
-    const chain = chainClassEstimate(
-      { id: item.id, name: item.name },
-      officialPool.filter((o) => o.id !== item.id),
-    )
-
-    const estimates: MethodEstimate[] = []
-    if (kw) {
-      estimates.push({
-        method: 'keyword',
-        carbs: kw.carbs,
-        full: {
-          calories: kw.calories,
-          fat: kw.fat,
-          protein: kw.protein,
-          sugar: kw.sugar ?? null,
-          fiber: kw.fiber ?? null,
-          sodium: kw.sodium ?? null,
-        },
-      })
-    }
-    if (chain) estimates.push({ method: 'chain', carbs: chain.carbs })
-
-    if (estimates.length < 2) continue
-
-    const tri = assignTriangulation(estimates, item.category)
-    if (!tri || !isImportable(tri)) continue
+    // Corroborated estimate: keyword + chain, leave-one-out on the item itself.
+    const est = triangulateCarbs(item, pools)
+    if (!est) continue
 
     produced.push({
       itemId: item.id,
       nutritionDataId: nd(item)?.id ?? null,
       name: item.name,
       category: item.category,
-      carbs: tri.carbs,
-      macros: tri.macros,
-      confidence: tri.confidence,
-      method: `triangulated(${tri.agreeing.join('+')})`,
-      agreeing: tri.agreeing,
+      carbs: est.carbs,
+      macros: est.macros,
+      confidence: est.confidence,
+      method: est.method,
+      agreeing: est.agreeing,
       priorityScore: entry.score,
       reason: entry.reason,
     })
