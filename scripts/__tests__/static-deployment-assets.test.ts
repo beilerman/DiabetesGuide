@@ -54,6 +54,15 @@ describe('static deployment assets', () => {
     expect(migrations).toMatch(/grant\s+select\s+on\s+table[\s\S]*public\.parks[\s\S]*public\.allergens[\s\S]*to\s+anon\s*,\s*authenticated/i)
   })
 
+  it('hardens legacy production objects reported by the security advisor', () => {
+    const migrations = readMigrations()
+
+    expect(migrations).toMatch(/nutrition_sources[\s\S]*enable\s+row\s+level\s+security/i)
+    expect(migrations).toMatch(/create\s+policy[\s\S]*nutrition_sources[\s\S]*for\s+select/i)
+    expect(migrations).toMatch(/grant\s+select\s+on\s+table\s+public\.nutrition_sources\s+to\s+anon\s*,\s*authenticated/i)
+    expect(migrations).toMatch(/alter\s+function\s+public\.set_updated_at\(\)\s+set\s+search_path\s*=\s*''/i)
+  })
+
   it('derives PWA Supabase runtime caching from the configured environment URL', () => {
     const viteConfig = readFileSync(resolve(process.cwd(), 'vite.config.ts'), 'utf8')
 
