@@ -16,10 +16,12 @@
  *   npx tsx scripts/import-ai-nutrition.ts --file=data/ai-nutrition-batch2.json --apply
  */
 import { createClient } from '@supabase/supabase-js'
-import { readFileSync } from 'fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { loadEnv } from './audit/utils.js'
+import { buildEvidenceCandidate, buildReviewArtifact, parseEvidenceMode } from './nutrition/evidence-intake.js'
+import type { EvidenceCandidate, EvidenceSourceKind } from './nutrition/evidence-intake.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const envVars = loadEnv()
@@ -35,12 +37,20 @@ if (!url || !key) {
 }
 const supabase = createClient(url, key)
 const APPLY = process.argv.includes('--apply')
+const EVIDENCE_MODE = parseEvidenceMode(process.argv.slice(2))
+if (APPLY && EVIDENCE_MODE !== 'dry-run') {
+  throw new Error('Select only one write mode: --apply or --apply-evidence')
+}
+if (EVIDENCE_MODE === 'publish-reviewed') {
+  throw new Error('Reviewed decisions must be published by the dedicated certification command')
+}
 // --force: overwrite even when existing confidence is >= the new value. Use for
 // the flagged run, where the existing data is provably WRONG (internally
 // inconsistent) regardless of its confidence label.
 const FORCE = process.argv.includes('--force')
 const fileArg = process.argv.find(a => a.startsWith('--file='))
 const FILE = fileArg ? fileArg.split('=')[1] : 'data/ai-nutrition.json'
+const reviewOutArg = process.argv.find(a => a.startsWith('--review-out='))
 
 const RANGES: Record<string, [number, number]> = {
   // carbs cap 700: multi-unit items sold as one menu entry (e.g. Voodoo's
@@ -62,6 +72,21 @@ interface Entry {
   sourceUrl?: string
   sourceDetail?: string
   note?: string
+  servingQuantity?: number
+  servingUnit?: string
+  servingDescription?: string
+  exactItemMatch?: boolean
+  exactServingMatch?: boolean
+  retrievedAt?: string
+  publishedAt?: string
+  contentHash?: string
+  upstreamSourceKey?: string
+}
+
+function evidenceSourceKind(entry: Entry): EvidenceSourceKind {
+  if (/decompos/i.test(entry.method ?? '')) return 'decomposition'
+  if (/recipe/i.test(entry.method ?? '')) return 'recipe'
+  return 'ai'
 }
 
 function sane(e: Entry): string | null {
@@ -95,9 +120,47 @@ async function main() {
   console.log(APPLY ? '\n*** APPLYING ***\n' : '\n(dry-run — pass --apply to write)\n')
 
   let written = 0, skippedBetter = 0, rejected = 0
+  const reviewCandidates: EvidenceCandidate[] = []
   for (const e of json.entries) {
     const bad = sane(e)
     if (bad) { console.log(`  REJECT ${e.name ?? e.id}: ${bad}`); rejected++; continue }
+
+    const evidenceCandidate = buildEvidenceCandidate({
+      menuItemId: e.id,
+      itemName: e.name ?? e.id,
+      sourceKind: evidenceSourceKind(e),
+      sourceName: e.method ?? 'AI-assisted nutrition research',
+      sourceUrl: e.sourceUrl ?? null,
+      upstreamSourceKey: e.upstreamSourceKey ?? null,
+      carbs: e.carbs,
+      serving: {
+        quantity: e.servingQuantity ?? null,
+        unit: e.servingUnit ?? null,
+        description: e.servingDescription ?? null,
+      },
+      exactItemMatch: e.exactItemMatch ?? false,
+      exactServingMatch: e.exactServingMatch ?? false,
+      retrievedAt: e.retrievedAt ?? new Date().toISOString(),
+      publishedAt: e.publishedAt ?? null,
+      contentHash: e.contentHash ?? null,
+      note: e.note ?? e.sourceDetail ?? null,
+      legacyConfidence: e.confidence,
+    })
+    const evidenceReasons = evidenceCandidate.reviewReasons.length > 0
+      ? `; review: ${evidenceCandidate.reviewReasons.join(', ')}`
+      : ''
+    console.log(`  evidence ${evidenceCandidate.proposedTier} candidate for ${evidenceCandidate.itemName}${evidenceReasons}`)
+    reviewCandidates.push(evidenceCandidate)
+
+    if (EVIDENCE_MODE === 'apply-evidence') {
+      const { error } = await supabase.from('nutrition_sources').upsert(
+        evidenceCandidate.evidenceRow,
+        { onConflict: 'evidence_key', ignoreDuplicates: true },
+      )
+      if (error) throw new Error(`evidence write failed for ${evidenceCandidate.itemName}: ${error.message}`)
+      written++
+      continue
+    }
 
     const { data: nd } = await supabase
       .from('nutritional_data').select('id, confidence_score').eq('menu_item_id', e.id).limit(1)
@@ -139,6 +202,12 @@ async function main() {
   }
 
   console.log(`\n=== ${APPLY ? 'Applied' : 'Dry-run'}: ${written} ${APPLY ? 'written' : 'to write'}, ${skippedBetter} skipped (already better), ${rejected} rejected ===`)
+  if (reviewOutArg) {
+    const outputPath = resolve(__dirname, '..', reviewOutArg.split('=')[1])
+    mkdirSync(dirname(outputPath), { recursive: true })
+    writeFileSync(outputPath, `${JSON.stringify(buildReviewArtifact(reviewCandidates, FILE), null, 2)}\n`, 'utf8')
+    console.log(`Evidence review artifact: ${outputPath}`)
+  }
 }
 
 main().catch(err => { console.error(err); process.exit(1) })

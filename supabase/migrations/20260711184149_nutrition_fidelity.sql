@@ -26,6 +26,7 @@ ALTER TABLE public.nutrition_sources
   ADD COLUMN IF NOT EXISTS published_at DATE,
   ADD COLUMN IF NOT EXISTS retrieved_at TIMESTAMPTZ,
   ADD COLUMN IF NOT EXISTS content_hash TEXT,
+  ADD COLUMN IF NOT EXISTS evidence_key TEXT,
   ADD COLUMN IF NOT EXISTS normalized_carbs NUMERIC,
   ADD COLUMN IF NOT EXISTS normalization_formula TEXT,
   ADD COLUMN IF NOT EXISTS normalization_inputs JSONB,
@@ -81,6 +82,9 @@ CREATE INDEX IF NOT EXISTS idx_nutrition_sources_menu_item_id
 CREATE INDEX IF NOT EXISTS idx_nutrition_sources_upstream_source_key
   ON public.nutrition_sources(upstream_source_key)
   WHERE upstream_source_key IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS uq_nutrition_sources_evidence_key
+  ON public.nutrition_sources(evidence_key)
+  WHERE evidence_key IS NOT NULL;
 
 -- A legacy row may be completed once. After it has an observed carb value, its
 -- evidence fields are immutable; corrections create a superseding row.
@@ -113,6 +117,7 @@ BEGIN
     NEW.published_at,
     NEW.retrieved_at,
     NEW.content_hash,
+    NEW.evidence_key,
     NEW.normalized_carbs,
     NEW.normalization_formula,
     NEW.normalization_inputs,
@@ -134,6 +139,7 @@ BEGIN
     OLD.published_at,
     OLD.retrieved_at,
     OLD.content_hash,
+    OLD.evidence_key,
     OLD.normalized_carbs,
     OLD.normalization_formula,
     OLD.normalization_inputs,

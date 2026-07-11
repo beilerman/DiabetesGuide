@@ -20,9 +20,11 @@
  *   npx tsx scripts/import-researched-nutrition.ts --file=data/chains/starbucks.json # per-chain file
  */
 import { createClient } from '@supabase/supabase-js'
-import { readFileSync } from 'fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { buildEvidenceCandidate, buildReviewArtifact, parseEvidenceMode } from './nutrition/evidence-intake.js'
+import type { EvidenceCandidate } from './nutrition/evidence-intake.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
@@ -33,8 +35,16 @@ if (!url || !key) {
 }
 const supabase = createClient(url, key)
 const APPLY = process.argv.includes('--apply')
+const EVIDENCE_MODE = parseEvidenceMode(process.argv.slice(2))
+if (APPLY && EVIDENCE_MODE !== 'dry-run') {
+  throw new Error('Select only one write mode: --apply or --apply-evidence')
+}
+if (EVIDENCE_MODE === 'publish-reviewed') {
+  throw new Error('Reviewed decisions must be published by the dedicated certification command')
+}
 const fileArg = process.argv.find(a => a.startsWith('--file='))
 const FILE = fileArg ? fileArg.split('=')[1] : 'data/researched-nutrition.json'
+const reviewOutArg = process.argv.find(a => a.startsWith('--review-out='))
 
 interface Entry {
   label: string
@@ -48,6 +58,15 @@ interface Entry {
   confidence: number
   sourceUrl?: string
   note?: string
+  servingQuantity?: number
+  servingUnit?: string
+  servingDescription?: string
+  exactItemMatch?: boolean
+  exactServingMatch?: boolean
+  retrievedAt?: string
+  publishedAt?: string
+  contentHash?: string
+  upstreamSourceKey?: string
 }
 
 interface MenuItem {
@@ -89,6 +108,7 @@ async function main() {
 
   let totalMatched = 0, totalWritten = 0, skippedBetter = 0
   const claimed = new Set<string>() // prevent one item matching two entries
+  const reviewCandidates: EvidenceCandidate[] = []
 
   for (const entry of json.entries) {
     const matchRx = entry.match.map(m => new RegExp(m, 'i'))
@@ -110,6 +130,50 @@ async function main() {
     for (const m of matches.slice(0, 25)) console.log(`    - ${m.name}  (${m.restaurant?.name ?? 'unknown restaurant'})`)
     if (matches.length > 25) console.log(`    ... and ${matches.length - 25} more`)
     totalMatched += matches.length
+
+    const evidenceCandidates = typeof entry.nutrition.carbs === 'number'
+      ? matches.map(m => buildEvidenceCandidate({
+          menuItemId: m.id,
+          itemName: m.name,
+          sourceKind: entry.source === 'official' ? 'official_research' : 'third_party_database',
+          sourceName: entry.label,
+          sourceUrl: entry.sourceUrl ?? null,
+          upstreamSourceKey: entry.upstreamSourceKey ?? null,
+          carbs: entry.nutrition.carbs!,
+          serving: {
+            quantity: entry.servingQuantity ?? null,
+            unit: entry.servingUnit ?? null,
+            description: entry.servingDescription ?? null,
+          },
+          exactItemMatch: entry.exactItemMatch ?? false,
+          exactServingMatch: entry.exactServingMatch ?? false,
+          retrievedAt: entry.retrievedAt ?? new Date().toISOString(),
+          publishedAt: entry.publishedAt ?? null,
+          contentHash: entry.contentHash ?? null,
+          note: entry.note ?? null,
+          legacyConfidence: entry.confidence,
+        }))
+      : []
+
+    for (const candidate of evidenceCandidates) {
+      const reasons = candidate.reviewReasons.length > 0
+        ? `; review: ${candidate.reviewReasons.join(', ')}`
+        : ''
+      console.log(`    evidence ${candidate.proposedTier} candidate for ${candidate.itemName}${reasons}`)
+    }
+    reviewCandidates.push(...evidenceCandidates)
+
+    if (EVIDENCE_MODE === 'apply-evidence') {
+      for (const candidate of evidenceCandidates) {
+        const { error } = await supabase.from('nutrition_sources').upsert(
+          candidate.evidenceRow,
+          { onConflict: 'evidence_key', ignoreDuplicates: true },
+        )
+        if (error) throw new Error(`evidence write failed for ${candidate.itemName}: ${error.message}`)
+      }
+      matches.forEach(m => claimed.add(m.id))
+      continue
+    }
 
     if (!APPLY) {
       matches.forEach(m => claimed.add(m.id))
@@ -143,6 +207,12 @@ async function main() {
   }
 
   console.log(`\n=== ${APPLY ? 'Applied' : 'Dry-run'}: ${totalMatched} items matched${APPLY ? `, ${totalWritten} written, ${skippedBetter} skipped (already better)` : ''} ===`)
+  if (reviewOutArg) {
+    const outputPath = resolve(__dirname, '..', reviewOutArg.split('=')[1])
+    mkdirSync(dirname(outputPath), { recursive: true })
+    writeFileSync(outputPath, `${JSON.stringify(buildReviewArtifact(reviewCandidates, FILE), null, 2)}\n`, 'utf8')
+    console.log(`Evidence review artifact: ${outputPath}`)
+  }
   if (!APPLY) console.log('Re-run with --apply to write these values.')
 }
 

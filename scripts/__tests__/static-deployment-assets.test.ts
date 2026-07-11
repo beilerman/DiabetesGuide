@@ -69,6 +69,7 @@ describe('static deployment assets', () => {
     expect(migrations).toMatch(/alter\s+table\s+public\.nutrition_sources[\s\S]*reported_carbs/i)
     expect(migrations).toMatch(/alter\s+table\s+public\.nutrition_sources[\s\S]*serving_quantity/i)
     expect(migrations).toMatch(/alter\s+table\s+public\.nutrition_sources[\s\S]*content_hash/i)
+    expect(migrations).toMatch(/uq_nutrition_sources_evidence_key/i)
     expect(migrations).toMatch(/create\s+table[\s\S]*public\.nutrition_certifications/i)
     expect(migrations).toMatch(/create\s+table[\s\S]*public\.nutrition_certification_evidence/i)
     expect(migrations).toMatch(/chk_nutrition_certification_tier_status/i)

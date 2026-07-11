@@ -31,4 +31,18 @@ describe('curated nutrition import write contracts', () => {
 
     expect(source).toContain('confidence_score.is.null,confidence_score.lt.${entry.confidence}')
   })
+
+  it.each([
+    'import-ai-nutrition.ts',
+    'import-researched-nutrition.ts',
+  ])('%s routes provenance through review-first evidence intake', (file) => {
+    const source = readScript(file)
+
+    expect(source).toContain('buildEvidenceCandidate')
+    expect(source).toContain('parseEvidenceMode')
+    expect(source).toContain(".from('nutrition_sources').upsert(")
+    expect(source).toContain("onConflict: 'evidence_key'")
+    expect(source).toContain('ignoreDuplicates: true')
+    expect(source).not.toContain(".from('nutrition_certifications').insert(")
+  })
 })
