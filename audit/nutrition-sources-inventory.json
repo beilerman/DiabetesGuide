@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-07-11T00:00:00-04:00",
+  "mode": "read-only-public-api",
+  "projectRef": "rcrzdpzwcbekgqgiwqcp",
+  "table": "public.nutrition_sources",
+  "rowCount": 105,
+  "columns": [
+    { "name": "confidence", "nullableRows": 0 },
+    { "name": "created_at", "nullableRows": 0 },
+    { "name": "id", "nullableRows": 0 },
+    { "name": "menu_item_id", "nullableRows": 0 },
+    { "name": "notes", "nullableRows": 0 },
+    { "name": "source_name", "nullableRows": 0 },
+    { "name": "source_url", "nullableRows": 0 }
+  ],
+  "population": {
+    "uniqueMenuItems": 89,
+    "itemsWithMultipleEvidenceRows": 13,
+    "maximumEvidenceRowsPerItem": 4,
+    "createdAtMinimum": "2026-02-05T17:42:38.366637+00:00",
+    "createdAtMaximum": "2026-02-05T19:37:49.717997+00:00",
+    "confidenceDistribution": {
+      "5": 5,
+      "10": 5,
+      "15": 11,
+      "20": 26,
+      "25": 6,
+      "30": 12,
+      "35": 16,
+      "40": 5,
+      "45": 7,
+      "50": 4,
+      "55": 2,
+      "60": 1,
+      "70": 5
+    }
+  },
+  "securityFromCommittedMigrations": {
+    "rowLevelSecurityEnabled": true,
+    "publicReadPolicy": true,
+    "anonymousAndAuthenticatedSelectGrant": true,
+    "publicWritePolicy": false
+  },
+  "limitations": [
+    "The public API does not expose primary-key, foreign-key, trigger, or grant metadata.",
+    "The authenticated CLI and database connector did not have access to this project.",
+    "Constraint and grant details must be rechecked through a privileged read-only query before migration application."
+  ],
+  "decision": "extend-additively"
+}

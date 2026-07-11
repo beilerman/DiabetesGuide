@@ -63,6 +63,22 @@ describe('static deployment assets', () => {
     expect(migrations).toMatch(/alter\s+function\s+public\.set_updated_at\(\)\s+set\s+search_path\s*=\s*''/i)
   })
 
+  it('reproduces the dosing-critical nutrition fidelity contract', () => {
+    const migrations = readMigrations()
+
+    expect(migrations).toMatch(/alter\s+table\s+public\.nutrition_sources[\s\S]*reported_carbs/i)
+    expect(migrations).toMatch(/alter\s+table\s+public\.nutrition_sources[\s\S]*serving_quantity/i)
+    expect(migrations).toMatch(/alter\s+table\s+public\.nutrition_sources[\s\S]*content_hash/i)
+    expect(migrations).toMatch(/create\s+table[\s\S]*public\.nutrition_certifications/i)
+    expect(migrations).toMatch(/create\s+table[\s\S]*public\.nutrition_certification_evidence/i)
+    expect(migrations).toMatch(/chk_nutrition_certification_tier_status/i)
+    expect(migrations).toMatch(/chk_nutrition_certification_review_window/i)
+    expect(migrations).toMatch(/prevent_nutrition_source_evidence_mutation/i)
+    expect(migrations).toMatch(/nutrition_certifications[\s\S]*enable\s+row\s+level\s+security/i)
+    expect(migrations).toMatch(/nutrition_certification_evidence[\s\S]*enable\s+row\s+level\s+security/i)
+    expect(migrations).toMatch(/grant\s+select\s+on\s+table[\s\S]*nutrition_certifications[\s\S]*nutrition_certification_evidence[\s\S]*to\s+anon\s*,\s*authenticated/i)
+  })
+
   it('removes the nutrition index made redundant by the unique key', () => {
     const migrations = readMigrations()
 
