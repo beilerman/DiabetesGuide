@@ -74,11 +74,13 @@ describe('static deployment assets', () => {
     expect(migrations).toMatch(/uq_nutrition_sources_evidence_key/i)
     expect(migrations).toMatch(/create\s+table[\s\S]*public\.nutrition_certifications/i)
     expect(migrations).toMatch(/create\s+table[\s\S]*public\.nutrition_certification_evidence/i)
+    expect(migrations).toMatch(/create\s+table[\s\S]*public\.nutrition_evidence_checks/i)
     expect(migrations).toMatch(/chk_nutrition_certification_tier_status/i)
     expect(migrations).toMatch(/chk_nutrition_certification_review_window/i)
     expect(migrations).toMatch(/prevent_nutrition_source_evidence_mutation/i)
     expect(migrations).toMatch(/nutrition_certifications[\s\S]*enable\s+row\s+level\s+security/i)
     expect(migrations).toMatch(/nutrition_certification_evidence[\s\S]*enable\s+row\s+level\s+security/i)
+    expect(migrations).toMatch(/nutrition_evidence_checks[\s\S]*enable\s+row\s+level\s+security/i)
     expect(migrations).toMatch(/grant\s+select\s+on\s+table[\s\S]*nutrition_certifications[\s\S]*nutrition_certification_evidence[\s\S]*to\s+anon\s*,\s*authenticated/i)
   })
 

@@ -50,6 +50,13 @@ jobs:
         run: npm run audit:quality
         continue-on-error: true
 
+      - name: Monitor certified nutrition evidence
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run evidence:monitor -- --apply-checks
+        continue-on-error: true
+
       - name: Upload audit artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -60,6 +67,8 @@ jobs:
             audit/autofix-results.json
             audit/external-results.json
             audit/quality-results.json
+            audit/fidelity-results.json
+            audit/evidence-monitor-results.json
             audit/daily/*.md
           retention-days: 30
 

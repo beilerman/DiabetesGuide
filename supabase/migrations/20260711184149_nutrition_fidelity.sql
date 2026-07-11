@@ -216,10 +216,27 @@ CREATE TABLE IF NOT EXISTS public.nutrition_certification_evidence (
   PRIMARY KEY (certification_id, nutrition_source_id)
 );
 
+CREATE TABLE IF NOT EXISTS public.nutrition_evidence_checks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  nutrition_source_id UUID NOT NULL
+    REFERENCES public.nutrition_sources(id) ON DELETE CASCADE,
+  checked_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  status TEXT NOT NULL CHECK (status IN ('unchanged', 'changed', 'unavailable', 'redirected')),
+  http_status INTEGER,
+  resolved_url TEXT,
+  content_hash TEXT,
+  observed_item_name TEXT,
+  observed_serving_description TEXT,
+  reasons JSONB NOT NULL DEFAULT '[]'::JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 CREATE INDEX IF NOT EXISTS idx_nutrition_certifications_menu_item_id
   ON public.nutrition_certifications(menu_item_id);
 CREATE INDEX IF NOT EXISTS idx_nutrition_certification_evidence_source_id
   ON public.nutrition_certification_evidence(nutrition_source_id);
+CREATE INDEX IF NOT EXISTS idx_nutrition_evidence_checks_source_checked
+  ON public.nutrition_evidence_checks(nutrition_source_id, checked_at DESC);
 
 CREATE OR REPLACE FUNCTION public.prevent_nutrition_certification_evidence_mutation()
 RETURNS TRIGGER
@@ -359,6 +376,7 @@ CREATE TRIGGER trg_validate_active_nutrition_certification
 ALTER TABLE public.nutrition_sources ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.nutrition_certifications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.nutrition_certification_evidence ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.nutrition_evidence_checks ENABLE ROW LEVEL SECURITY;
 
 DO $$ BEGIN
   CREATE POLICY "Public read nutrition sources"
@@ -384,16 +402,26 @@ DO $$ BEGIN
 EXCEPTION WHEN duplicate_object THEN NULL;
 END $$;
 
+DO $$ BEGIN
+  CREATE POLICY "Public read nutrition evidence checks"
+    ON public.nutrition_evidence_checks
+    FOR SELECT TO anon, authenticated
+    USING (true);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+
 REVOKE INSERT, UPDATE, DELETE ON TABLE
   public.nutrition_sources,
   public.nutrition_certifications,
-  public.nutrition_certification_evidence
+  public.nutrition_certification_evidence,
+  public.nutrition_evidence_checks
 FROM anon, authenticated;
 
 GRANT SELECT ON TABLE
   public.nutrition_sources,
   public.nutrition_certifications,
-  public.nutrition_certification_evidence
+  public.nutrition_certification_evidence,
+  public.nutrition_evidence_checks
 TO anon, authenticated;
 
 NOTIFY pgrst, 'reload schema';
