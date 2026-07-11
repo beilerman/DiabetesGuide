@@ -158,7 +158,7 @@ export function assessCertification(
       const exactPrimaryAgrees = candidate.evidence.some(item =>
         isExactEvidence(item)
         && EXACT_PRIMARY_SOURCE_TYPES.has(item.sourceType)
-        && carbValuesAgree(item.carbs, canonicalCarbs),
+        && Math.round(item.carbs) === canonicalCarbs,
       )
       if (!exactPrimaryAgrees) reasons.push('Tier A evidence does not match canonical carbs')
     }

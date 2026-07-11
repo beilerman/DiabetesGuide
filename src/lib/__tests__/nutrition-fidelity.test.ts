@@ -85,6 +85,13 @@ describe('certification policy', () => {
     })
   })
 
+  it('requires Tier A canonical carbs to equal the rounded official observation', () => {
+    expect(assessCertification(candidate({
+      canonicalCarbs: 42,
+      evidence: [evidence({ carbs: 44 })],
+    }), NOW)).toMatchObject({ eligible: false, dosingGrade: false })
+  })
+
   it('requires two independent agreeing observations for Tier B', () => {
     const second = evidence({
       id: 'evidence-2',

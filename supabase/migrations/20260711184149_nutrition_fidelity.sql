@@ -338,6 +338,7 @@ DECLARE
   mismatched_item_count INTEGER;
   qualifying_evidence_count INTEGER;
   qualifying_primary_count INTEGER;
+  tier_a_primary_count INTEGER;
 BEGIN
   IF NEW.active_certification_id IS NULL THEN
     RETURN NEW;
@@ -422,9 +423,20 @@ BEGIN
             2::NUMERIC,
             GREATEST(COALESCE(source.normalized_carbs, source.reported_carbs), decision.canonical_carbs::NUMERIC) * 0.1
           )
+    )::INTEGER,
+    COUNT(*) FILTER (
+      WHERE source.source_type IN ('official_restaurant', 'manufacturer')
+        AND source.exact_item_match IS TRUE
+        AND source.exact_serving_match IS TRUE
+        AND source.serving_quantity IS NOT DISTINCT FROM decision.serving_quantity
+        AND source.serving_unit IS NOT DISTINCT FROM decision.serving_unit
+        AND source.serving_description IS NOT DISTINCT FROM decision.serving_description
+        AND COALESCE(source.normalized_carbs, source.reported_carbs) IS NOT NULL
+        AND ROUND(COALESCE(source.normalized_carbs, source.reported_carbs)) = decision.canonical_carbs
     )::INTEGER
   INTO evidence_count, missing_upstream_count, independent_source_count,
-    mismatched_item_count, qualifying_evidence_count, qualifying_primary_count
+    mismatched_item_count, qualifying_evidence_count, qualifying_primary_count,
+    tier_a_primary_count
   FROM public.nutrition_certification_evidence AS link
   JOIN public.nutrition_sources AS source
     ON source.id = link.nutrition_source_id
@@ -433,7 +445,7 @@ BEGIN
   IF evidence_count < 1 OR mismatched_item_count > 0 THEN
     RAISE EXCEPTION 'nutrition certification requires matching evidence';
   END IF;
-  IF decision.tier = 'A' AND qualifying_primary_count < 1 THEN
+  IF decision.tier = 'A' AND tier_a_primary_count < 1 THEN
     RAISE EXCEPTION 'Tier A requires exact restaurant or manufacturer evidence for the certified serving';
   END IF;
   IF decision.tier = 'B'
