@@ -238,12 +238,39 @@ CREATE INDEX IF NOT EXISTS idx_nutrition_certification_evidence_source_id
 CREATE INDEX IF NOT EXISTS idx_nutrition_evidence_checks_source_checked
   ON public.nutrition_evidence_checks(nutrition_source_id, checked_at DESC);
 
+CREATE OR REPLACE FUNCTION public.prevent_nutrition_evidence_check_mutation()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = ''
+AS $$
+BEGIN
+  RAISE EXCEPTION 'nutrition evidence checks are append-only';
+END
+$$;
+
+DROP TRIGGER IF EXISTS trg_prevent_nutrition_evidence_check_mutation
+  ON public.nutrition_evidence_checks;
+CREATE TRIGGER trg_prevent_nutrition_evidence_check_mutation
+  BEFORE UPDATE OR DELETE ON public.nutrition_evidence_checks
+  FOR EACH ROW
+  EXECUTE FUNCTION public.prevent_nutrition_evidence_check_mutation();
+
 CREATE OR REPLACE FUNCTION public.prevent_nutrition_certification_evidence_mutation()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 SET search_path = ''
 AS $$
 BEGIN
+  IF TG_OP = 'INSERT' THEN
+    IF EXISTS (
+      SELECT 1
+      FROM public.nutritional_data
+      WHERE active_certification_id = NEW.certification_id
+    ) THEN
+      RAISE EXCEPTION 'cannot add evidence to an active certification; create a superseding decision';
+    END IF;
+    RETURN NEW;
+  END IF;
   RAISE EXCEPTION 'certification evidence links are immutable; insert a superseding decision';
 END
 $$;
@@ -251,7 +278,7 @@ $$;
 DROP TRIGGER IF EXISTS trg_prevent_nutrition_certification_evidence_mutation
   ON public.nutrition_certification_evidence;
 CREATE TRIGGER trg_prevent_nutrition_certification_evidence_mutation
-  BEFORE UPDATE OR DELETE ON public.nutrition_certification_evidence
+  BEFORE INSERT OR UPDATE OR DELETE ON public.nutrition_certification_evidence
   FOR EACH ROW
   EXECUTE FUNCTION public.prevent_nutrition_certification_evidence_mutation();
 
@@ -309,6 +336,8 @@ DECLARE
   missing_upstream_count INTEGER;
   independent_source_count INTEGER;
   mismatched_item_count INTEGER;
+  qualifying_evidence_count INTEGER;
+  qualifying_primary_count INTEGER;
 BEGIN
   IF NEW.active_certification_id IS NULL THEN
     RETURN NEW;
@@ -339,10 +368,63 @@ BEGIN
 
   SELECT
     COUNT(*)::INTEGER,
-    COUNT(*) FILTER (WHERE source.upstream_source_key IS NULL)::INTEGER,
-    COUNT(DISTINCT source.upstream_source_key)::INTEGER,
-    COUNT(*) FILTER (WHERE source.menu_item_id <> decision.menu_item_id)::INTEGER
-  INTO evidence_count, missing_upstream_count, independent_source_count, mismatched_item_count
+    COUNT(*) FILTER (
+      WHERE source.exact_item_match IS TRUE
+        AND source.exact_serving_match IS TRUE
+        AND source.serving_quantity IS NOT DISTINCT FROM decision.serving_quantity
+        AND source.serving_unit IS NOT DISTINCT FROM decision.serving_unit
+        AND source.serving_description IS NOT DISTINCT FROM decision.serving_description
+        AND COALESCE(source.normalized_carbs, source.reported_carbs) IS NOT NULL
+        AND ABS(COALESCE(source.normalized_carbs, source.reported_carbs) - decision.canonical_carbs)
+          <= GREATEST(
+            2::NUMERIC,
+            GREATEST(COALESCE(source.normalized_carbs, source.reported_carbs), decision.canonical_carbs::NUMERIC) * 0.1
+          )
+        AND source.upstream_source_key IS NULL
+    )::INTEGER,
+    COUNT(DISTINCT source.upstream_source_key) FILTER (
+      WHERE source.exact_item_match IS TRUE
+        AND source.exact_serving_match IS TRUE
+        AND source.serving_quantity IS NOT DISTINCT FROM decision.serving_quantity
+        AND source.serving_unit IS NOT DISTINCT FROM decision.serving_unit
+        AND source.serving_description IS NOT DISTINCT FROM decision.serving_description
+        AND COALESCE(source.normalized_carbs, source.reported_carbs) IS NOT NULL
+        AND ABS(COALESCE(source.normalized_carbs, source.reported_carbs) - decision.canonical_carbs)
+          <= GREATEST(
+            2::NUMERIC,
+            GREATEST(COALESCE(source.normalized_carbs, source.reported_carbs), decision.canonical_carbs::NUMERIC) * 0.1
+          )
+    )::INTEGER,
+    COUNT(*) FILTER (WHERE source.menu_item_id <> decision.menu_item_id)::INTEGER,
+    COUNT(*) FILTER (
+      WHERE source.exact_item_match IS TRUE
+        AND source.exact_serving_match IS TRUE
+        AND source.serving_quantity IS NOT DISTINCT FROM decision.serving_quantity
+        AND source.serving_unit IS NOT DISTINCT FROM decision.serving_unit
+        AND source.serving_description IS NOT DISTINCT FROM decision.serving_description
+        AND COALESCE(source.normalized_carbs, source.reported_carbs) IS NOT NULL
+        AND ABS(COALESCE(source.normalized_carbs, source.reported_carbs) - decision.canonical_carbs)
+          <= GREATEST(
+            2::NUMERIC,
+            GREATEST(COALESCE(source.normalized_carbs, source.reported_carbs), decision.canonical_carbs::NUMERIC) * 0.1
+          )
+    )::INTEGER,
+    COUNT(*) FILTER (
+      WHERE source.source_type IN ('official_restaurant', 'manufacturer')
+        AND source.exact_item_match IS TRUE
+        AND source.exact_serving_match IS TRUE
+        AND source.serving_quantity IS NOT DISTINCT FROM decision.serving_quantity
+        AND source.serving_unit IS NOT DISTINCT FROM decision.serving_unit
+        AND source.serving_description IS NOT DISTINCT FROM decision.serving_description
+        AND COALESCE(source.normalized_carbs, source.reported_carbs) IS NOT NULL
+        AND ABS(COALESCE(source.normalized_carbs, source.reported_carbs) - decision.canonical_carbs)
+          <= GREATEST(
+            2::NUMERIC,
+            GREATEST(COALESCE(source.normalized_carbs, source.reported_carbs), decision.canonical_carbs::NUMERIC) * 0.1
+          )
+    )::INTEGER
+  INTO evidence_count, missing_upstream_count, independent_source_count,
+    mismatched_item_count, qualifying_evidence_count, qualifying_primary_count
   FROM public.nutrition_certification_evidence AS link
   JOIN public.nutrition_sources AS source
     ON source.id = link.nutrition_source_id
@@ -351,9 +433,17 @@ BEGIN
   IF evidence_count < 1 OR mismatched_item_count > 0 THEN
     RAISE EXCEPTION 'nutrition certification requires matching evidence';
   END IF;
+  IF decision.tier = 'A' AND qualifying_primary_count < 1 THEN
+    RAISE EXCEPTION 'Tier A requires exact restaurant or manufacturer evidence for the certified serving';
+  END IF;
   IF decision.tier = 'B'
-     AND (evidence_count < 2 OR missing_upstream_count > 0 OR independent_source_count < 2) THEN
-    RAISE EXCEPTION 'Tier B requires two independently keyed evidence sources';
+     AND (
+       qualifying_evidence_count < 2
+       OR qualifying_primary_count < 1
+       OR missing_upstream_count > 0
+       OR independent_source_count < 2
+     ) THEN
+    RAISE EXCEPTION 'Tier B requires two independently keyed, exact, serving-matched evidence sources';
   END IF;
 
   RETURN NEW;
@@ -372,6 +462,140 @@ CREATE TRIGGER trg_validate_active_nutrition_certification
   ON public.nutritional_data
   FOR EACH ROW
   EXECUTE FUNCTION public.validate_active_nutrition_certification();
+
+-- Publish one reviewed certification atomically: decision, immutable evidence
+-- links, canonical carbs/serving, and active pointer move together.
+CREATE OR REPLACE FUNCTION public.publish_nutrition_certification(
+  p_menu_item_id UUID,
+  p_tier TEXT,
+  p_canonical_carbs INTEGER,
+  p_serving_quantity NUMERIC,
+  p_serving_unit TEXT,
+  p_serving_description TEXT,
+  p_reviewer_id TEXT,
+  p_decision_reason TEXT,
+  p_reviewed_at TIMESTAMPTZ,
+  p_expires_at TIMESTAMPTZ,
+  p_evidence_ids UUID[],
+  p_expected_active_certification_id UUID DEFAULT NULL
+)
+RETURNS UUID
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = ''
+AS $$
+DECLARE
+  nutrition_id UUID;
+  current_certification_id UUID;
+  current_tier TEXT;
+  evidence_count INTEGER;
+  new_certification_id UUID;
+BEGIN
+  IF p_tier NOT IN ('A', 'B') THEN
+    RAISE EXCEPTION 'only Tier A or B can be published as dosing-grade';
+  END IF;
+  IF p_reviewed_at > NOW() OR p_expires_at <= NOW() THEN
+    RAISE EXCEPTION 'review time cannot be future and certification must be unexpired';
+  END IF;
+  IF p_expires_at > p_reviewed_at + INTERVAL '180 days' THEN
+    RAISE EXCEPTION 'certification review window cannot exceed 180 days';
+  END IF;
+  IF COALESCE(array_length(p_evidence_ids, 1), 0) < 1 THEN
+    RAISE EXCEPTION 'at least one evidence row is required';
+  END IF;
+
+  SELECT id, active_certification_id
+  INTO nutrition_id, current_certification_id
+  FROM public.nutritional_data
+  WHERE menu_item_id = p_menu_item_id
+  FOR UPDATE;
+
+  IF nutrition_id IS NULL THEN
+    RAISE EXCEPTION 'menu item has no canonical nutrition row';
+  END IF;
+  IF current_certification_id IS DISTINCT FROM p_expected_active_certification_id THEN
+    RAISE EXCEPTION 'active certification changed after review';
+  END IF;
+
+  IF current_certification_id IS NOT NULL THEN
+    SELECT tier INTO current_tier
+    FROM public.nutrition_certifications
+    WHERE id = current_certification_id;
+    IF current_tier = 'A' AND p_tier = 'B' THEN
+      RAISE EXCEPTION 'cannot downgrade an active Tier A certification to Tier B';
+    END IF;
+  END IF;
+
+  SELECT COUNT(DISTINCT source.id)::INTEGER
+  INTO evidence_count
+  FROM public.nutrition_sources AS source
+  WHERE source.id = ANY(p_evidence_ids)
+    AND source.menu_item_id = p_menu_item_id;
+
+  IF evidence_count <> COALESCE(array_length(p_evidence_ids, 1), 0) THEN
+    RAISE EXCEPTION 'evidence rows must be unique, exist, and belong to the menu item';
+  END IF;
+
+  INSERT INTO public.nutrition_certifications (
+    menu_item_id,
+    tier,
+    status,
+    canonical_carbs,
+    serving_quantity,
+    serving_unit,
+    serving_description,
+    reviewer_id,
+    decision_reason,
+    reviewed_at,
+    expires_at,
+    supersedes_id
+  ) VALUES (
+    p_menu_item_id,
+    p_tier,
+    'approved',
+    p_canonical_carbs,
+    p_serving_quantity,
+    p_serving_unit,
+    p_serving_description,
+    p_reviewer_id,
+    p_decision_reason,
+    p_reviewed_at,
+    p_expires_at,
+    current_certification_id
+  )
+  RETURNING id INTO new_certification_id;
+
+  INSERT INTO public.nutrition_certification_evidence (
+    certification_id,
+    nutrition_source_id,
+    evidence_role
+  )
+  SELECT
+    new_certification_id,
+    evidence_id,
+    CASE WHEN ordinal = 1 THEN 'primary' ELSE 'corroborating' END
+  FROM unnest(p_evidence_ids) WITH ORDINALITY AS evidence(evidence_id, ordinal);
+
+  UPDATE public.nutritional_data
+  SET carbs = p_canonical_carbs,
+      serving_quantity = p_serving_quantity,
+      serving_unit = p_serving_unit,
+      serving_description = p_serving_description,
+      active_certification_id = new_certification_id
+  WHERE id = nutrition_id;
+
+  RETURN new_certification_id;
+END
+$$;
+
+REVOKE EXECUTE ON FUNCTION public.publish_nutrition_certification(
+  UUID, TEXT, INTEGER, NUMERIC, TEXT, TEXT, TEXT, TEXT,
+  TIMESTAMPTZ, TIMESTAMPTZ, UUID[], UUID
+) FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.publish_nutrition_certification(
+  UUID, TEXT, INTEGER, NUMERIC, TEXT, TEXT, TEXT, TEXT,
+  TIMESTAMPTZ, TIMESTAMPTZ, UUID[], UUID
+) TO service_role;
 
 ALTER TABLE public.nutrition_sources ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.nutrition_certifications ENABLE ROW LEVEL SECURITY;

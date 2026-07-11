@@ -82,6 +82,9 @@ describe('static deployment assets', () => {
     expect(migrations).toMatch(/nutrition_certification_evidence[\s\S]*enable\s+row\s+level\s+security/i)
     expect(migrations).toMatch(/nutrition_evidence_checks[\s\S]*enable\s+row\s+level\s+security/i)
     expect(migrations).toMatch(/grant\s+select\s+on\s+table[\s\S]*nutrition_certifications[\s\S]*nutrition_certification_evidence[\s\S]*to\s+anon\s*,\s*authenticated/i)
+    expect(migrations).toMatch(/publish_nutrition_certification/i)
+    expect(migrations).toMatch(/revoke\s+execute[\s\S]*publish_nutrition_certification[\s\S]*from\s+public/i)
+    expect(migrations).toMatch(/grant\s+execute[\s\S]*publish_nutrition_certification[\s\S]*to\s+service_role/i)
   })
 
   it('removes the nutrition index made redundant by the unique key', () => {

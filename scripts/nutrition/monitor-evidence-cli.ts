@@ -36,6 +36,11 @@ interface CertificationRow {
   } | null
 }
 
+interface EvidenceCheckRow {
+  nutrition_source_id: string
+  content_hash: string | null
+}
+
 function missingSchema(message: string): boolean {
   return /content_hash|upstream_source_key|nutrition_evidence_checks|nutrition_certifications|schema cache/i.test(message)
 }
@@ -107,11 +112,24 @@ async function fetchTargets(): Promise<EvidenceMonitorTarget[] | null> {
     if (missingSchema(error.message)) return null
     throw error
   }
+  const { data: checkData, error: checkError } = await supabase
+    .from('nutrition_evidence_checks')
+    .select('nutrition_source_id, content_hash, checked_at')
+    .not('content_hash', 'is', null)
+    .order('checked_at', { ascending: false })
+    .limit(5000)
+  if (checkError) throw checkError
+  const latestHash = new Map<string, string>()
+  for (const check of checkData as EvidenceCheckRow[]) {
+    if (check.content_hash && !latestHash.has(check.nutrition_source_id)) {
+      latestHash.set(check.nutrition_source_id, check.content_hash)
+    }
+  }
   return (data as SourceRow[]).map(source => ({
     id: source.id,
     menuItemId: source.menu_item_id,
     sourceUrl: source.source_url,
-    contentHash: source.content_hash,
+    contentHash: source.content_hash ?? latestHash.get(source.id) ?? null,
     upstreamSourceKey: source.upstream_source_key,
     reportedItemName: source.reported_item_name,
     servingDescription: source.serving_description,

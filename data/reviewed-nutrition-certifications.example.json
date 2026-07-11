@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "decisions": [
+    {
+      "menuItemId": "00000000-0000-0000-0000-000000000000",
+      "tier": "A",
+      "canonicalCarbs": 42,
+      "serving": {
+        "quantity": 1,
+        "unit": "item",
+        "description": "1 item as sold"
+      },
+      "reviewerId": "reviewer-internal-id",
+      "reason": "Exact item and serving from the official restaurant nutrition guide.",
+      "reviewedAt": "2026-07-11T15:00:00Z",
+      "expiresAt": "2026-10-09T15:00:00Z",
+      "evidenceKeys": [
+        "replace-with-reviewed-evidence-key"
+      ],
+      "expectedActiveCertificationId": null
+    }
+  ]
+}

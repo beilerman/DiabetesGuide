@@ -43,6 +43,7 @@
     "audit:fidelity": "tsx scripts/audit/fidelity-cli.ts",
     "evidence:backfill": "tsx scripts/nutrition/backfill-evidence-cli.ts",
     "evidence:monitor": "tsx scripts/nutrition/monitor-evidence-cli.ts",
+    "certifications:publish": "tsx scripts/nutrition/publish-reviewed-certifications.ts",
     "enrich:nutritionix": "tsx scripts/enrich-nutritionix.ts",
     "enrich:edamam": "tsx scripts/enrich-edamam.ts",
     "import:researched": "tsx scripts/import-researched-nutrition.ts",
