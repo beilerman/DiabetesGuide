@@ -67,6 +67,7 @@ describe('static deployment assets', () => {
     const migrations = readMigrations()
 
     expect(migrations).toMatch(/drop\s+index\s+if\s+exists\s+public\.idx_nutritional_data_menu_item_id/i)
+    expect(migrations).toMatch(/to_regclass\('public\.idx_nutritional_data_menu_item_unique'\)[\s\S]*drop\s+index\s+public\.uq_nutritional_data_menu_item_id/i)
   })
 
   it('derives PWA Supabase runtime caching from the configured environment URL', () => {
