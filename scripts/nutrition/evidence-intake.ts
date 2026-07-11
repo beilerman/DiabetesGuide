@@ -49,6 +49,8 @@ export interface NutritionEvidenceRow {
   serving_quantity: number | null
   serving_unit: string | null
   serving_description: string | null
+  exact_item_match: boolean
+  exact_serving_match: boolean
   size_name: string | null
   preparation_notes: string | null
   published_at: string | null
@@ -181,6 +183,8 @@ export function buildEvidenceCandidate(input: EvidenceIntakeInput): EvidenceCand
       serving_quantity: input.serving.quantity,
       serving_unit: input.serving.unit,
       serving_description: input.serving.description,
+      exact_item_match: input.exactItemMatch,
+      exact_serving_match: input.exactServingMatch,
       size_name: input.sizeName ?? null,
       preparation_notes: input.preparationNotes ?? null,
       published_at: input.publishedAt ?? null,

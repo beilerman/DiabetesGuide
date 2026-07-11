@@ -40,6 +40,7 @@
     "audit:graduation": "tsx scripts/audit/graduation.ts",
     "audit:migrate": "tsx scripts/audit/migrate-constraints.ts",
     "audit:quality": "tsx scripts/audit/quality.ts",
+    "audit:fidelity": "tsx scripts/audit/fidelity-cli.ts",
     "enrich:nutritionix": "tsx scripts/enrich-nutritionix.ts",
     "enrich:edamam": "tsx scripts/enrich-edamam.ts",
     "import:researched": "tsx scripts/import-researched-nutrition.ts",

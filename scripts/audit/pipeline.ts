@@ -17,17 +17,17 @@ async function main() {
   mkdirSync(rootPath('audit', 'daily'), { recursive: true })
 
   // -----------------------------------------------------------------------
-  // [1/5] Fetch data
+  // [1/6] Fetch data
   // -----------------------------------------------------------------------
-  console.log('[1/5] Fetching data...')
+  console.log('[1/6] Fetching data...')
   const supabase = createSupabaseClient()
   const items = await fetchAllItems(supabase)
   console.log(`  ${items.length} items loaded`)
 
   // -----------------------------------------------------------------------
-  // [2/5] Accuracy checks
+  // [2/6] Accuracy checks
   // -----------------------------------------------------------------------
-  console.log('\n[2/5] Accuracy checks...')
+  console.log('\n[2/6] Accuracy checks...')
   const accuracy = checkAccuracy(items)
 
   const accHigh = accuracy.findings.filter(f => f.severity === 'HIGH').length
@@ -42,9 +42,9 @@ async function main() {
   )
 
   // -----------------------------------------------------------------------
-  // [3/5] Auto-fix
+  // [3/6] Auto-fix
   // -----------------------------------------------------------------------
-  console.log('\n[3/5] Auto-fix...')
+  console.log('\n[3/6] Auto-fix...')
 
   if (accuracy.autoFixes.length === 0) {
     console.log('  No auto-fixes needed')
@@ -94,9 +94,9 @@ async function main() {
   }
 
   // -----------------------------------------------------------------------
-  // [4/5] Completeness checks
+  // [4/6] Completeness checks
   // -----------------------------------------------------------------------
-  console.log('\n[4/5] Completeness checks...')
+  console.log('\n[4/6] Completeness checks...')
   const completeness = checkCompleteness(items)
 
   const compHigh = completeness.findings.filter(f => f.severity === 'HIGH').length
@@ -110,10 +110,23 @@ async function main() {
   )
 
   // -----------------------------------------------------------------------
-  // [5/5] Reporting (graduation + report as child processes)
+  // [5/6] Dosing-critical fidelity (read-only, shadow-safe)
+  // -----------------------------------------------------------------------
+  console.log('\n[5/6] Nutrition fidelity...')
+  try {
+    execSync('npx tsx scripts/audit/fidelity-cli.ts', {
+      stdio: 'inherit',
+      cwd: rootPath(),
+    })
+  } catch {
+    console.error('  Fidelity audit failed (continuing while shadow mode is active)')
+  }
+
+  // -----------------------------------------------------------------------
+  // [6/6] Reporting (graduation + report as child processes)
   // -----------------------------------------------------------------------
   if (!SKIP_REPORT) {
-    console.log('\n[5/5] Reporting...')
+    console.log('\n[6/6] Reporting...')
 
     // Graduation
     try {
@@ -139,7 +152,7 @@ async function main() {
       console.error('  Report step failed (continuing)')
     }
   } else {
-    console.log('\n[5/5] Reporting... skipped (--skip-report)')
+    console.log('\n[6/6] Reporting... skipped (--skip-report)')
   }
 
   // -----------------------------------------------------------------------

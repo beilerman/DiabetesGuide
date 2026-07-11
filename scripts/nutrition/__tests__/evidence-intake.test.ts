@@ -30,6 +30,10 @@ describe('evidence intake', () => {
       status: 'review_required',
       canAutoCertify: false,
       reviewReasons: [],
+      evidenceRow: {
+        exact_item_match: true,
+        exact_serving_match: true,
+      },
     })
   })
 
