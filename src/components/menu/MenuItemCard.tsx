@@ -7,7 +7,13 @@ import { getDisplayCategory, getMenuItemDisplayName, hasUsableNutrition } from '
 import { GradeBadge } from './GradeBadge'
 import { DotMeter } from './DotMeter'
 import { AnnotationBadge } from './AnnotationBadge'
-import { getEstimateTierShort, getNutritionQualityWarnings } from '../../lib/nutrition-trust'
+import {
+  getActiveCertificationTier,
+  getEstimateTierShort,
+  getNutritionQualityWarnings,
+  isNutritionDosingGrade,
+  NUTRITION_CERTIFICATION_TRUST_ENABLED,
+} from '../../lib/nutrition-trust'
 
 interface Props {
   item: MenuItemWithNutrition
@@ -72,7 +78,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
   const availabilityCount = item.availability_count ?? 1
   const availabilityRestaurants = item.availability_restaurants ?? []
   const hasMultipleLocations = availabilityCount > 1
-  const isLowConfidenceNutrition = Boolean(nd && nd.confidence_score < 70)
+  const isLowConfidenceNutrition = Boolean(nd && !isNutritionDosingGrade(nd))
   const qualityWarnings = nd ? getNutritionQualityWarnings(nd) : []
 
   const { grade, colors: gradeColors } = getGradeForItem({
@@ -108,6 +114,8 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
       nutritionSource: nd?.source,
       nutritionSourceDetail: nd?.source_detail,
       nutritionAvailable: true,
+      nutritionDosingGrade: isNutritionDosingGrade(nd),
+      nutritionCertificationTier: getActiveCertificationTier(nd) ?? undefined,
     })
     setTimeout(() => setAddingToMeal(false), 600)
   }
@@ -259,7 +267,9 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
         {isLowConfidenceNutrition && nd && (
           <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
             <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-800">
-              <span aria-hidden="true">~</span>{getEstimateTierShort(nd.confidence_score)} — verify before dosing
+              <span aria-hidden="true">~</span>{NUTRITION_CERTIFICATION_TRUST_ENABLED
+                ? 'Uncertified estimate'
+                : getEstimateTierShort(nd.confidence_score)} — verify before dosing
             </span>
             {qualityWarnings[0] && (
               <span className="text-[11px] font-medium text-amber-800">{qualityWarnings[0]}</span>

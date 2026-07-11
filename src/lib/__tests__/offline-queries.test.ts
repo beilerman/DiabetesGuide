@@ -3,6 +3,7 @@ import {
   fetchMenuItemCountsOffline,
   fetchMenuItemsByIdsOffline,
   fetchMenuItemsOffline,
+  menuItemsSelectForCertificationTrust,
   searchMenuItemsOffline,
 } from '../offline-queries'
 import type { MenuItemWithNutrition } from '../types'
@@ -139,6 +140,15 @@ describe('fetchMenuItemsOffline', () => {
 
     expect(items.map(item => item.id)).toEqual(['water-1', 'water-2'])
     expect(items[0].availability_count).toBeUndefined()
+  })
+})
+
+describe('menu item certification query', () => {
+  it('loads certification evidence only when the rollout flag is enabled', () => {
+    expect(menuItemsSelectForCertificationTrust(false)).not.toContain('nutrition_certifications')
+    expect(menuItemsSelectForCertificationTrust(true)).toContain('nutrition_certifications')
+    expect(menuItemsSelectForCertificationTrust(true)).toContain('exact_item_match')
+    expect(menuItemsSelectForCertificationTrust(true)).toContain('exact_serving_match')
   })
 })
 

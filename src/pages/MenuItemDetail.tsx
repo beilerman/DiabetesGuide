@@ -10,7 +10,13 @@ import { GradeBadge } from '../components/menu/GradeBadge'
 import { AnnotationBadge } from '../components/menu/AnnotationBadge'
 import { NutritionBadge } from '../components/menu/NutritionBadge'
 import { alcoholColor } from '../components/menu/nutrition-colors'
-import { buildNutritionReportMailto, getNutritionTrust, type NutritionTrustSummary } from '../lib/nutrition-trust'
+import {
+  buildNutritionReportMailto,
+  getActiveCertificationTier,
+  getNutritionTrust,
+  isNutritionDosingGrade,
+  type NutritionTrustSummary,
+} from '../lib/nutrition-trust'
 
 const categoryLabels: Record<string, string> = {
   beverage: 'Beverage',
@@ -127,6 +133,8 @@ export default function MenuItemDetail() {
       nutritionSource: nutrition?.source,
       nutritionSourceDetail: nutrition?.source_detail,
       nutritionAvailable: true,
+      nutritionDosingGrade: isNutritionDosingGrade(nutrition),
+      nutritionCertificationTier: getActiveCertificationTier(nutrition) ?? undefined,
     })
   }
   const reportHref = buildNutritionReportMailto(
@@ -339,6 +347,10 @@ export default function MenuItemDetail() {
                   <SourceRow label="Source" value={trust.sourceLabel} />
                   {trust.confidenceLabel && <SourceRow label="Confidence" value={trust.confidenceLabel} />}
                   {trust.lastUpdatedLabel && <SourceRow label="Updated" value={trust.lastUpdatedLabel.replace('Last updated ', '')} />}
+                  {nutrition.serving_description && <SourceRow label="Serving" value={nutrition.serving_description} />}
+                  {getActiveCertificationTier(nutrition) && (
+                    <SourceRow label="Certification" value={`Tier ${getActiveCertificationTier(nutrition)}`} />
+                  )}
                   {nutrition.source_detail && <SourceRow label="Detail" value={nutrition.source_detail} />}
                 </dl>
                 <Link to="/methodology" className="mt-3 inline-flex text-xs font-semibold text-teal-700 hover:text-teal-800">

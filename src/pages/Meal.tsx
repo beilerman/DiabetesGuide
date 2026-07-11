@@ -5,7 +5,7 @@ import { GradeBadge } from '../components/menu/GradeBadge'
 import { computeScore, computeGrade, GRADE_CONFIG } from '../lib/grade'
 import { INSULIN_LIMITS, calculateInsulinDose, validateInsulinInputs, type ActivityLevel } from '../lib/insulin'
 import { cleanDisplayText } from '../lib/display'
-import { getEstimateTierShort } from '../lib/nutrition-trust'
+import { getEstimateTierShort, NUTRITION_CERTIFICATION_TRUST_ENABLED } from '../lib/nutrition-trust'
 import { HiddenDoseExplainer } from '../components/InsulinEstimator/HiddenDoseExplainer'
 import type { Grade } from '../lib/grade'
 import { STORAGE_KEYS } from '../lib/storage-keys'
@@ -41,7 +41,7 @@ function loadInsulinSettings(): InsulinSettings {
 
 export default function Meal() {
   const {
-    items, totals, activeMealId, activeMealName, meals, mealIds,
+    items, totals, trust: mealTrust, activeMealId, activeMealName, meals, mealIds,
     removeItem, clear, createMeal, switchMeal, deleteMeal, renameMeal,
   } = useMealCart()
   const { carbGoal } = usePreferences()
@@ -75,9 +75,12 @@ export default function Meal() {
   const activeCarbOverride = carbOverride?.mealId === activeMealId ? carbOverride.value : null
   const effectiveCarbs = activeCarbOverride ?? totals.carbs
   const netCarbs = Math.max(0, totals.carbs - totals.fiber)
-  const lowConfidenceItems = items.filter(item => (item.nutritionConfidence ?? 100) < 70)
+  const untrustedNutritionItems = items.filter(item => NUTRITION_CERTIFICATION_TRUST_ENABLED
+    ? item.nutritionDosingGrade !== true
+    : (item.nutritionConfidence ?? 100) < 70)
   const unavailableNutritionItems = items.filter(item => item.nutritionAvailable === false)
-  const mealHasEstimates = lowConfidenceItems.length > 0
+  const mealHasEstimates = untrustedNutritionItems.length > 0
+  const blockedByUntrustedNutrition = NUTRITION_CERTIFICATION_TRUST_ENABLED && mealTrust.untrustedCount > 0
 
   // Meal composite grade
   const mealGradeResult = useMemo(() => {
@@ -106,11 +109,14 @@ export default function Meal() {
   }), [effectiveCarbs, bg, insulinSettings, activity])
   const insulinValidation = useMemo(() => validateInsulinInputs(insulinInputs), [insulinInputs])
   const insulinResult = useMemo(
-    () => unavailableNutritionItems.length > 0 ? null : calculateInsulinDose(insulinInputs),
-    [insulinInputs, unavailableNutritionItems.length],
+    () => unavailableNutritionItems.length > 0 || blockedByUntrustedNutrition
+      ? null
+      : calculateInsulinDose(insulinInputs),
+    [insulinInputs, unavailableNutritionItems.length, blockedByUntrustedNutrition],
   )
   const doseHidden =
     unavailableNutritionItems.length > 0 ||
+    blockedByUntrustedNutrition ||
     !insulinValidation.isValid ||
     insulinResult?.status === 'blocked' ||
     (typeof effectiveCarbs === 'number' && effectiveCarbs <= 0)
@@ -268,7 +274,9 @@ export default function Meal() {
                     )}
                     {(item.nutritionConfidence ?? 100) < 70 && (
                       <p className="text-xs font-medium text-amber-800 truncate">
-                        {getEstimateTierShort(item.nutritionConfidence ?? 0)} — verify before dosing
+                        {NUTRITION_CERTIFICATION_TRUST_ENABLED
+                          ? 'Uncertified estimate'
+                          : getEstimateTierShort(item.nutritionConfidence ?? 0)} — verify before dosing
                       </p>
                     )}
                   </div>
@@ -292,10 +300,12 @@ export default function Meal() {
         )}
       </section>
 
-      {lowConfidenceItems.length > 0 && (
+      {untrustedNutritionItems.length > 0 && (
         <div className="rounded-xl border border-amber-300 bg-amber-50 p-3">
           <p className="text-sm font-semibold text-amber-900">
-            {lowConfidenceItems.length} meal item{lowConfidenceItems.length === 1 ? '' : 's'} use estimated or low-confidence nutrition.
+            {untrustedNutritionItems.length} meal item{untrustedNutritionItems.length === 1 ? '' : 's'} use {
+              NUTRITION_CERTIFICATION_TRUST_ENABLED ? 'uncertified' : 'estimated or low-confidence'
+            } nutrition.
           </p>
           <p className="mt-1 text-xs text-amber-800">
             Verify carbs against the restaurant menu, packaging, or your own measurement before using this meal for an insulin estimate.
@@ -511,12 +521,22 @@ export default function Meal() {
           </div>
         )}
 
+        {blockedByUntrustedNutrition && (
+          <div className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-3" role="alert">
+            <p className="text-sm font-semibold text-amber-900">Meal estimator blocked.</p>
+            <p className="mt-1 text-xs text-amber-800">
+              Every item needs an active Tier A or B carbohydrate certification before this total can feed the estimator.
+            </p>
+          </div>
+        )}
+
         {doseHidden && (
           <HiddenDoseExplainer
             inputs={insulinInputs}
             validation={insulinValidation}
             result={insulinResult}
             blockedByUnavailableNutrition={unavailableNutritionItems.length > 0}
+            blockedByUntrustedNutrition={blockedByUntrustedNutrition}
           />
         )}
 

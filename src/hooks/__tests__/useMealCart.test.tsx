@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
-import { useMealCart, __resetMealCartState, __normalizeStoredMealCart } from '../useMealCart'
+import { useMealCart, __resetMealCartState, __normalizeStoredMealCart, mealTrustSummary } from '../useMealCart'
 import type { MealItem } from '../../lib/types'
 
 const mockItem: MealItem = {
@@ -152,5 +152,27 @@ describe('__normalizeStoredMealCart', () => {
     }
 
     expect(__normalizeStoredMealCart(malformed)).toBeNull()
+  })
+})
+
+describe('mealTrustSummary', () => {
+  it('requires every available item to be certified when certification trust is enabled', () => {
+    const certified = { ...mockItem, nutritionDosingGrade: true }
+    const estimate = { ...mockItem, id: 'estimate', nutritionDosingGrade: false }
+
+    expect(mealTrustSummary([certified], true)).toEqual({
+      unavailableCount: 0,
+      untrustedCount: 0,
+      allCarbsDosingGrade: true,
+    })
+    expect(mealTrustSummary([certified, estimate], true)).toMatchObject({
+      untrustedCount: 1,
+      allCarbsDosingGrade: false,
+    })
+  })
+
+  it('preserves confidence-based behavior while the rollout flag is off', () => {
+    expect(mealTrustSummary([{ ...mockItem, nutritionConfidence: 75 }], false).allCarbsDosingGrade).toBe(true)
+    expect(mealTrustSummary([mockItem], false).allCarbsDosingGrade).toBe(false)
   })
 })

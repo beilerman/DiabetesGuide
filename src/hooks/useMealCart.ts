@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { MealItem, MealData, MealCartState } from '../lib/types'
 import { STORAGE_KEYS } from '../lib/storage-keys'
+import { NUTRITION_CERTIFICATION_TRUST_ENABLED } from '../lib/nutrition-trust'
 
 const STORAGE_KEY = STORAGE_KEYS.mealCart
 
@@ -33,6 +34,12 @@ function optionalNumber(value: unknown): number | undefined {
 
 function safeNutritionSource(value: unknown): MealItem['nutritionSource'] | undefined {
   return value === 'official' || value === 'crowdsourced' || value === 'api_lookup'
+    ? value
+    : undefined
+}
+
+function safeCertificationTier(value: unknown): MealItem['nutritionCertificationTier'] | undefined {
+  return value === 'A' || value === 'B' || value === 'C' || value === 'D'
     ? value
     : undefined
 }
@@ -70,6 +77,10 @@ function sanitizeMealItem(raw: unknown): MealItem | null {
     nutritionAvailable: typeof item.nutritionAvailable === 'boolean'
       ? item.nutritionAvailable
       : !likelyLegacyUnavailable,
+    nutritionDosingGrade: typeof item.nutritionDosingGrade === 'boolean'
+      ? item.nutritionDosingGrade
+      : undefined,
+    nutritionCertificationTier: safeCertificationTier(item.nutritionCertificationTier),
   }
 }
 
@@ -167,6 +178,21 @@ function computeTotals(items: MealItem[]): MealTotals {
   )
 }
 
+export function mealTrustSummary(items: MealItem[], certificationRequired: boolean) {
+  const unavailableCount = items.filter(item => item.nutritionAvailable === false).length
+  const untrustedCount = items.filter(item => {
+    if (item.nutritionAvailable === false) return false
+    return certificationRequired
+      ? item.nutritionDosingGrade !== true
+      : (item.nutritionConfidence ?? 100) < 70
+  }).length
+  return {
+    unavailableCount,
+    untrustedCount,
+    allCarbsDosingGrade: items.length > 0 && unavailableCount === 0 && untrustedCount === 0,
+  }
+}
+
 export function useMealCart() {
   const [state, setState] = useState<MealCartState>(sharedState)
 
@@ -179,6 +205,7 @@ export function useMealCart() {
   const activeMeal = state.meals[state.activeMealId] ?? defaultMeal()
   const items = activeMeal.items
   const totals = computeTotals(items)
+  const trust = mealTrustSummary(items, NUTRITION_CERTIFICATION_TRUST_ENABLED)
 
   // Count all items across all meals (for badge)
   const totalItemCount = Object.values(state.meals).reduce((sum, m) => sum + m.items.length, 0)
@@ -255,6 +282,7 @@ export function useMealCart() {
     // Active meal
     items,
     totals,
+    trust,
     activeMealId: state.activeMealId,
     activeMealName: activeMeal.name,
     activeMealParkId: activeMeal.parkId,

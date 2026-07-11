@@ -15,13 +15,34 @@ import { writeMenuItemCountsCache, readMenuItemCountsCache } from './menu-count-
 import { countMenuItemsByPark, type RestaurantCountSource } from './menu-counts'
 import { getMenuItemDisplayName, isLikelyMenuSectionHeader } from './display'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
+import { NUTRITION_CERTIFICATION_TRUST_ENABLED } from './nutrition-trust'
 
-const MENU_ITEMS_SELECT = `
-  *,
-  nutritional_data (*),
-  allergens (*),
-  restaurant:restaurants (*, park:parks (*))
-`
+export function menuItemsSelectForCertificationTrust(enabled: boolean): string {
+  const nutritionSelect = enabled
+    ? `nutritional_data (
+        *,
+        active_certification:nutrition_certifications!fk_nutritional_data_active_certification (
+          *,
+          nutrition_certification_evidence (
+            nutrition_source:nutrition_sources (
+              id, source_type, upstream_source_key, reported_carbs, normalized_carbs,
+              serving_quantity, serving_unit, serving_description,
+              exact_item_match, exact_serving_match
+            )
+          )
+        )
+      )`
+    : 'nutritional_data (*)'
+
+  return `
+    *,
+    ${nutritionSelect},
+    allergens (*),
+    restaurant:restaurants (*, park:parks (*))
+  `
+}
+
+const MENU_ITEMS_SELECT = menuItemsSelectForCertificationTrust(NUTRITION_CERTIFICATION_TRUST_ENABLED)
 const DEFAULT_ALL_PARK_MENU_LIMIT = 3000
 
 type MenuItemsBatchFetcher = (args: {
@@ -61,7 +82,7 @@ async function fetchMenuItemsPage({ from, to, restaurantIds }: {
 
   const { data, error } = await query
   if (error) throw error
-  return (data ?? []) as MenuItemWithNutrition[]
+  return (data ?? []) as unknown as MenuItemWithNutrition[]
 }
 
 async function fetchAllMenuItemsOnline(
@@ -251,7 +272,7 @@ export async function fetchMenuItemsByIdsOffline(ids: string[]): Promise<MenuIte
       .in('id', uniqueIds)
       .order('name')
     if (error) throw error
-    const items = (data ?? []) as MenuItemWithNutrition[]
+    const items = (data ?? []) as unknown as MenuItemWithNutrition[]
     writeAllItems(items).catch(() => {})
     return items
   } catch {
@@ -298,7 +319,7 @@ export async function searchMenuItemsOffline(
       .limit(150)
     if (error) throw error
     return dedupeMenuItems(
-      (data as MenuItemWithNutrition[]).filter(item => !isLikelyMenuSectionHeader(item.name)),
+      (data as unknown as MenuItemWithNutrition[]).filter(item => !isLikelyMenuSectionHeader(item.name)),
     ).slice(0, 50)
   } catch {
     // Offline search: filter cached items by name/description

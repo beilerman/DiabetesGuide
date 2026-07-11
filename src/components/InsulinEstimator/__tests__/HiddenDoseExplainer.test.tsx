@@ -64,6 +64,26 @@ describe('getHiddenDoseTriggers', () => {
       'Carbs <= 0: no meal-carb dose is shown.',
     ]))
   })
+
+  it('explains when uncertified meal carbs block the estimator', () => {
+    const inputs: InsulinInputs = {
+      carbs: 45,
+      bloodGlucose: 120,
+      targetGlucose: 120,
+      insulinToCarbRatio: 10,
+      correctionFactor: 50,
+      activeInsulin: 0,
+      maxBolus: 25,
+      activity: 'none',
+    }
+
+    expect(getHiddenDoseTriggers({
+      inputs,
+      validation: validateInsulinInputs(inputs),
+      result: null,
+      blockedByUntrustedNutrition: true,
+    })).toContain('Meal includes uncertified carbohydrate values; totals should not feed the estimator.')
+  })
 })
 
 describe('HiddenDoseExplainer', () => {

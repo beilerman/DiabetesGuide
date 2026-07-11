@@ -55,6 +55,40 @@ export interface NutritionalData {
   source_detail: string | null
   confidence_score: number
   created_at: string
+  serving_quantity?: number | null
+  serving_unit?: string | null
+  serving_description?: string | null
+  active_certification_id?: string | null
+  active_certification?: NutritionCertification | null
+}
+
+export interface NutritionCertificationSource {
+  id: string
+  source_type: 'official_restaurant' | 'manufacturer' | 'government_database' | 'third_party_database' | 'editorial' | 'recipe_calculation' | 'ai_estimate' | 'other'
+  upstream_source_key: string | null
+  reported_carbs: number
+  normalized_carbs: number | null
+  serving_quantity: number | null
+  serving_unit: string | null
+  serving_description: string | null
+  exact_item_match: boolean
+  exact_serving_match: boolean
+}
+
+export interface NutritionCertification {
+  id: string
+  menu_item_id: string
+  tier: 'A' | 'B' | 'C' | 'D'
+  status: 'approved' | 'rejected' | 'quarantined'
+  canonical_carbs: number | null
+  serving_quantity: number | null
+  serving_unit: string | null
+  serving_description: string | null
+  reviewed_at: string
+  expires_at: string | null
+  nutrition_certification_evidence: Array<{
+    nutrition_source: NutritionCertificationSource | null
+  }>
 }
 
 export interface Allergen {
@@ -89,6 +123,8 @@ export interface MealItem {
   nutritionSource?: NutritionalData['source']
   nutritionSourceDetail?: string | null
   nutritionAvailable?: boolean
+  nutritionDosingGrade?: boolean
+  nutritionCertificationTier?: NutritionCertification['tier']
 }
 
 export interface MealData {

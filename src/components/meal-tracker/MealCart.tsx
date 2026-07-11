@@ -1,9 +1,10 @@
 import { useMealCart } from '../../hooks/useMealCart'
 import { usePreferences } from '../../hooks/usePreferences'
 import { Link } from 'react-router-dom'
+import { NUTRITION_CERTIFICATION_TRUST_ENABLED } from '../../lib/nutrition-trust'
 
 export function MealCart() {
-  const { items, removeItem, clear, totals } = useMealCart()
+  const { items, removeItem, clear, totals, trust } = useMealCart()
   const { carbGoal } = usePreferences()
   const pct = carbGoal > 0 ? Math.min(100, Math.round((totals.carbs / carbGoal) * 100)) : 0
 
@@ -44,12 +45,18 @@ export function MealCart() {
         </div>
       )}
 
-      <Link
-        to={`/insulin?carbs=${totals.carbs}`}
-        className="mt-2 block text-center rounded-lg bg-blue-600 px-3 py-1.5 text-sm text-white hover:bg-blue-700"
-      >
-        Use in Carb Estimator
-      </Link>
+      {NUTRITION_CERTIFICATION_TRUST_ENABLED && !trust.allCarbsDosingGrade ? (
+        <div className="mt-2 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900" role="alert">
+          Carb estimator unavailable until every item has active Tier A or B certification.
+        </div>
+      ) : (
+        <Link
+          to={`/insulin?carbs=${totals.carbs}`}
+          className="mt-2 block text-center rounded-lg bg-blue-600 px-3 py-1.5 text-sm text-white hover:bg-blue-700"
+        >
+          Use in Carb Estimator
+        </Link>
+      )}
     </div>
   )
 }
