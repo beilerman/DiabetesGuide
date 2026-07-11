@@ -128,8 +128,15 @@ async function main() {
         continue
       }
       const { error } = existing
-        ? await supabase.from('nutritional_data').update(fields).eq('id', existing.id)
-        : await supabase.from('nutritional_data').insert({ menu_item_id: m.id, ...fields })
+        ? await supabase
+            .from('nutritional_data')
+            .update(fields)
+            .eq('id', existing.id)
+            .or(`confidence_score.is.null,confidence_score.lt.${entry.confidence}`)
+        : await supabase.from('nutritional_data').upsert(
+            { menu_item_id: m.id, ...fields },
+            { onConflict: 'menu_item_id', ignoreDuplicates: true },
+          )
       if (error) console.error(`    write failed for ${m.name}: ${error.message}`)
       else { totalWritten++; claimed.add(m.id) }
     }

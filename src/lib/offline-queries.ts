@@ -12,7 +12,7 @@ import {
 } from './offline-db'
 import { dedupeMenuItems } from './menu-item-dedupe'
 import { writeMenuItemCountsCache, readMenuItemCountsCache } from './menu-count-cache'
-import { countMenuItemsByPark, type RestaurantCountSource, type MenuItemCountSource } from './menu-counts'
+import { countMenuItemsByPark, type RestaurantCountSource } from './menu-counts'
 import { getMenuItemDisplayName, isLikelyMenuSectionHeader } from './display'
 import type { Park, Restaurant, MenuItemWithNutrition } from './types'
 
@@ -30,10 +30,12 @@ type MenuItemsBatchFetcher = (args: {
   restaurantIds?: string[]
 }) => Promise<MenuItemWithNutrition[]>
 
-type MenuItemCountBatchFetcher = (args: {
-  from: number
-  to: number
-}) => Promise<MenuItemCountSource[]>
+interface ParkMenuItemCountRow {
+  park_id: string
+  item_count: number | string
+}
+
+type ParkMenuItemCountFetcher = () => Promise<ParkMenuItemCountRow[]>
 
 export interface FetchMenuItemsOptions {
   limit?: number
@@ -83,36 +85,23 @@ async function fetchAllMenuItemsOnline(
   return Number.isFinite(cap) ? allItems.slice(0, cap) : allItems
 }
 
-async function fetchMenuItemCountPage({ from, to }: {
-  from: number
-  to: number
-}): Promise<MenuItemCountSource[]> {
+async function fetchParkMenuItemCountRowsOnline(): Promise<ParkMenuItemCountRow[]> {
   const { data, error } = await supabase
-    .from('menu_items')
-    .select('restaurant_id')
-    .order('restaurant_id')
-    .range(from, to)
+    .rpc('get_park_menu_item_counts')
 
   if (error) throw error
-  return (data ?? []) as MenuItemCountSource[]
+  return (data ?? []) as ParkMenuItemCountRow[]
 }
 
-async function fetchAllMenuItemCountRowsOnline(
-  fetchPage: MenuItemCountBatchFetcher = fetchMenuItemCountPage,
-): Promise<MenuItemCountSource[]> {
-  const batchSize = 1000
-  let from = 0
-  const rows: MenuItemCountSource[] = []
-
-  while (true) {
-    const batch = await fetchPage({ from, to: from + batchSize - 1 })
-    if (batch.length === 0) break
-    rows.push(...batch)
-    if (batch.length < batchSize) break
-    from += batchSize
+function mapParkMenuItemCounts(rows: ParkMenuItemCountRow[]): Map<string, number> {
+  const counts = new Map<string, number>()
+  for (const row of rows) {
+    const count = Number(row.item_count)
+    if (typeof row.park_id !== 'string' || row.park_id.length === 0) continue
+    if (!Number.isFinite(count) || count < 0) continue
+    counts.set(row.park_id, count)
   }
-
-  return rows
+  return counts
 }
 
 function escapeSearch(q: string): string {
@@ -178,19 +167,11 @@ export async function fetchAllRestaurantsOffline(): Promise<Restaurant[]> {
 
 /** Fetch all park item counts with offline/cached fallback */
 export async function fetchMenuItemCountsOffline(options?: {
-  fetchCountPage?: MenuItemCountBatchFetcher
+  fetchCountRows?: ParkMenuItemCountFetcher
 }): Promise<Map<string, number>> {
   try {
-    const { data: restaurants, error: restErr } = await supabase
-      .from('restaurants')
-      .select('id, park_id')
-    if (restErr) throw restErr
-
-    const itemRows = await fetchAllMenuItemCountRowsOnline(options?.fetchCountPage)
-    const counts = countMenuItemsByPark(
-      (restaurants ?? []) as RestaurantCountSource[],
-      itemRows,
-    )
+    const rows = await (options?.fetchCountRows ?? fetchParkMenuItemCountRowsOnline)()
+    const counts = mapParkMenuItemCounts(rows)
     writeMenuItemCountsCache(counts)
     return counts
   } catch {

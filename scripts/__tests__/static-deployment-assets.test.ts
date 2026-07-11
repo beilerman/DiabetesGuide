@@ -39,6 +39,37 @@ describe('static deployment assets', () => {
     expect(migrations).toMatch(/\balcohol_grams\b/i)
   })
 
+  it('reproduces catalog integrity and aggregate access in Supabase migrations', () => {
+    const migrations = readMigrations()
+
+    expect(migrations).toMatch(/uq_nutritional_data_menu_item_id/i)
+    expect(migrations).toMatch(/chk_nutrition_confidence_range/i)
+    expect(migrations).toMatch(/chk_nutrition_macros_non_negative/i)
+    expect(migrations).toMatch(/chk_nutrition_fiber_lte_carbs/i)
+    expect(migrations).toMatch(/chk_nutrition_sugar_lte_carbs/i)
+    expect(migrations).toMatch(/get_park_menu_item_counts/i)
+    expect(migrations).toMatch(/security\s+invoker/i)
+    expect(migrations).toMatch(/revoke\s+execute[\s\S]*get_park_menu_item_counts[\s\S]*from\s+public/i)
+    expect(migrations).toMatch(/grant\s+execute[\s\S]*get_park_menu_item_counts[\s\S]*to\s+anon\s*,\s*authenticated/i)
+    expect(migrations).toMatch(/grant\s+select\s+on\s+table[\s\S]*public\.parks[\s\S]*public\.allergens[\s\S]*to\s+anon\s*,\s*authenticated/i)
+  })
+
+  it('hardens legacy production objects reported by the security advisor', () => {
+    const migrations = readMigrations()
+
+    expect(migrations).toMatch(/nutrition_sources[\s\S]*enable\s+row\s+level\s+security/i)
+    expect(migrations).toMatch(/create\s+policy[\s\S]*nutrition_sources[\s\S]*for\s+select/i)
+    expect(migrations).toMatch(/grant\s+select\s+on\s+table\s+public\.nutrition_sources\s+to\s+anon\s*,\s*authenticated/i)
+    expect(migrations).toMatch(/alter\s+function\s+public\.set_updated_at\(\)\s+set\s+search_path\s*=\s*''/i)
+  })
+
+  it('removes the nutrition index made redundant by the unique key', () => {
+    const migrations = readMigrations()
+
+    expect(migrations).toMatch(/drop\s+index\s+if\s+exists\s+public\.idx_nutritional_data_menu_item_id/i)
+    expect(migrations).toMatch(/to_regclass\('public\.idx_nutritional_data_menu_item_unique'\)[\s\S]*drop\s+index\s+public\.uq_nutritional_data_menu_item_id/i)
+  })
+
   it('derives PWA Supabase runtime caching from the configured environment URL', () => {
     const viteConfig = readFileSync(resolve(process.cwd(), 'vite.config.ts'), 'utf8')
 
