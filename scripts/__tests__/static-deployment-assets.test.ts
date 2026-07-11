@@ -63,6 +63,12 @@ describe('static deployment assets', () => {
     expect(migrations).toMatch(/alter\s+function\s+public\.set_updated_at\(\)\s+set\s+search_path\s*=\s*''/i)
   })
 
+  it('removes the nutrition index made redundant by the unique key', () => {
+    const migrations = readMigrations()
+
+    expect(migrations).toMatch(/drop\s+index\s+if\s+exists\s+public\.idx_nutritional_data_menu_item_id/i)
+  })
+
   it('derives PWA Supabase runtime caching from the configured environment URL', () => {
     const viteConfig = readFileSync(resolve(process.cwd(), 'vite.config.ts'), 'utf8')
 
