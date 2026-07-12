@@ -1,7 +1,7 @@
-import { type FormEvent, type MouseEvent, useEffect, useMemo, useState } from 'react'
+import { type CSSProperties, type FormEvent, type MouseEvent, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCatalogPreview, useParks, useMenuItemCounts } from '../lib/queries'
-import { DEFAULT_THEME } from '../lib/park-themes'
+import { getThemeForResort } from '../lib/park-themes'
 import { buildBrowsePresetUrl } from '../lib/browse-url'
 import { useFavorites } from '../hooks/useFavorites'
 import {
@@ -239,7 +239,7 @@ export default function Home() {
       <section aria-labelledby="destination-heading" className="space-y-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 id="destination-heading" className="text-2xl font-bold text-stone-900">Choose a Destination</h2>
+            <h2 id="destination-heading" className="font-display text-2xl font-bold text-stone-900">Choose a Destination</h2>
             <p className="mt-1 text-sm text-stone-600">Browse by resort, then park, hotel, land, restaurant, and menu.</p>
           </div>
           <Link
@@ -386,24 +386,21 @@ function ResortDestinationSection({
   group: HomeResortGroup
   countsReady: boolean
 }) {
-  // Home is a brand surface: use the teal brand accent for all resorts so the
-  // landing screen reads as one product. Per-resort theming lives on the resort
-  // and park detail pages, where a distinct identity is expected.
-  const theme = DEFAULT_THEME
+  const theme = getThemeForResort(group.id)
 
   return (
     <section aria-labelledby={`home-resort-${group.id}`} className="border-t border-stone-200 pt-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex min-w-0 gap-3">
           <div
-            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-white"
-            style={{ backgroundColor: theme.primary }}
+            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl text-white shadow-sm"
+            style={{ background: theme.gradient }}
             aria-hidden="true"
           >
             <Icon name={RESORT_ICONS[group.id] ?? 'map'} className="h-6 w-6" />
           </div>
           <div className="min-w-0">
-            <h3 id={`home-resort-${group.id}`} tabIndex={-1} className="scroll-mt-24 text-xl font-bold text-stone-900">
+            <h3 id={`home-resort-${group.id}`} tabIndex={-1} className="scroll-mt-24 font-display text-xl font-bold text-stone-900">
               {group.name}
             </h3>
             <p className="text-sm text-stone-600">{resortContext(group)}</p>
@@ -426,18 +423,18 @@ function ResortDestinationSection({
           <Link
             key={category.id}
             to={categoryHref(group, category)}
-            className="group flex min-h-24 gap-3 rounded-lg border border-stone-200 bg-white p-3 transition-colors hover:border-teal-300 hover:bg-teal-50/40 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-            style={{ borderLeftColor: theme.primary, borderLeftWidth: 4 }}
+            className="group flex min-h-24 gap-3 rounded-xl border border-stone-200 bg-white p-3 transition-all duration-150 hover:-translate-y-0.5 hover:bg-[var(--tile-tint)] hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+            style={{ borderLeftColor: theme.primary, borderLeftWidth: 4, '--tile-tint': theme.surface } as CSSProperties}
           >
             <span
-              className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md text-white"
+              className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-white"
               style={{ backgroundColor: theme.primary }}
               aria-hidden="true"
             >
               <Icon name={CATEGORY_ICONS[category.id] ?? RESORT_ICONS[group.id] ?? 'map'} className="h-4 w-4" />
             </span>
             <span className="min-w-0 flex-1">
-              <span className="block font-semibold text-stone-900 group-hover:text-teal-800">{category.label}</span>
+              <span className="block font-semibold text-stone-900">{category.label}</span>
               <span className="mt-0.5 block text-xs font-medium text-stone-500">
                 {formatItems(category.itemCount, countsReady)} | {formatDestinations(category.locationCount)}
               </span>
