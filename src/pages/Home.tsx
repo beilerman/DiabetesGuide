@@ -225,7 +225,7 @@ export default function Home() {
           </div>
           <div
             data-testid="home-filter-chip-chevron"
-            className="pointer-events-none absolute inset-y-0 right-0 flex w-10 items-center justify-end bg-gradient-to-l from-stone-50 via-stone-50/95 to-transparent pr-1 text-stone-500"
+            className="pointer-events-none absolute inset-y-0 right-0 flex w-10 items-center justify-end bg-gradient-to-l from-cream via-cream/95 to-transparent pr-1 text-stone-500"
             aria-hidden="true"
           >
             <Icon name="chevron-right" className="h-5 w-5" />
@@ -268,7 +268,7 @@ export default function Home() {
         {!showLoadingState && !showErrorState && resortGroups.length > 0 && (
           <nav
             aria-label="Jump to destination groups"
-            className="sticky top-16 z-30 -mx-4 border-y border-stone-200 bg-stone-50/95 px-4 py-2 backdrop-blur"
+            className="sticky top-16 z-30 -mx-4 border-y border-stone-200/70 bg-cream/95 px-4 py-2 backdrop-blur"
           >
             <div className="flex gap-2 overflow-x-auto pb-1">
               {resortGroups.map(group => (
