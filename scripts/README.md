@@ -47,6 +47,15 @@ same dry-run/apply semantics as `import:ai`. Use it for ID-specific researched o
 recipe-computed values that should be traceable in git before being written to
 Supabase.
 
+`ai:candidates -- --priority-slice` generates a no-write, dosing-impact ordered
+verification queue for the audit `prioritySlice` denominator (entrees/desserts at
+WDW/Universal/Disneyland). Under this flag the confidence gate defaults to 70
+(the dosing-grade bar) instead of 45, so the whole sub-dosing band is queued;
+items without a usable description are still skipped (research needs grounding).
+It writes JSON batches to `data/ai-batches/` for manual/agent research before
+any `import:ai -- --apply` step. Batches are wiped and renumbered on every run —
+don't resume an in-flight campaign by batch number after regenerating.
+
 ## Safety notes
 
 - **`approve.ts` writes to production.** `--auto` applies the confidence gate and a

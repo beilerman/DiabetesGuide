@@ -15,27 +15,18 @@
  *   npx tsx scripts/import-ai-nutrition.ts --apply
  *   npx tsx scripts/import-ai-nutrition.ts --file=data/ai-nutrition-batch2.json --apply
  */
-import { createClient } from '@supabase/supabase-js'
 import { mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import { loadEnv } from './audit/utils.js'
+import { createSupabaseClient } from './audit/utils.js'
 import { buildEvidenceCandidate, buildReviewArtifact, parseEvidenceMode } from './nutrition/evidence-intake.js'
 import type { EvidenceCandidate, EvidenceSourceKind } from './nutrition/evidence-intake.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const envVars = loadEnv()
-const url =
-  process.env.SUPABASE_URL ||
-  process.env.VITE_SUPABASE_URL ||
-  envVars.SUPABASE_URL ||
-  envVars.VITE_SUPABASE_URL
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY || envVars.SUPABASE_SERVICE_ROLE_KEY
-if (!url || !key) {
-  console.error('Set SUPABASE_URL (or VITE_SUPABASE_URL) and SUPABASE_SERVICE_ROLE_KEY')
-  process.exit(1)
-}
-const supabase = createClient(url, key)
+// Same resolution as the queue generator (ai-nutrition-candidates): .env.local
+// beats ambient shell vars, so the --apply write always targets the project
+// the batches were generated against.
+const supabase = createSupabaseClient()
 const APPLY = process.argv.includes('--apply')
 const EVIDENCE_MODE = parseEvidenceMode(process.argv.slice(2))
 if (APPLY && EVIDENCE_MODE !== 'dry-run') {

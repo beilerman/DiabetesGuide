@@ -53,18 +53,44 @@ const FOOD_CLASSES: Array<{ cls: string; pattern: RegExp; exclude?: RegExp }> = 
   { cls: 'popcorn', pattern: /\bpopcorn\b/i },
   // drinks (specific before generic)
   { cls: 'coffee-drink', pattern: /\b(lattes?|mochas?|cappuccinos?|macchiatos?|frappuccinos?|cold brew|americanos?|espresso|coffee)\b/i },
-  { cls: 'smoothie-juice', pattern: /\b(smoothies?|juices?|lemonades?|refreshers?)\b/i },
+  // Drink sub-classes are deliberately split: a coarse smoothie-juice class
+  // mixed Starbucks Refreshers (~17g carbs) with smoothies (~70g) and
+  // lemonades (~50g), and its class median produced live lemonade
+  // undercounts. Thin pools decline (chainClassEstimate minPool) rather
+  // than guess from the wrong analog.
+  //
+  // ORDER IS LOAD-BEARING (first match wins): format words before flavor
+  // words, because compound names put the flavor first and the format last —
+  // "Strawberry Lemonade Smoothie" is a smoothie (~70g), "Strawberry Açaí
+  // Lemonade Refresher" is a refresher (~30g). Matching 'lemonade' first
+  // would put both in the lemonade pool, recreating the undercount.
+  { cls: 'refresher', pattern: /\brefreshers?\b/i },
+  { cls: 'smoothie', pattern: /\bsmoothies?\b/i },
+  { cls: 'lemonade', pattern: /\b(lemonades?|limeades?)\b/i },
+  { cls: 'juice', pattern: /\bjuices?\b/i },
   { cls: 'tea-drink', pattern: /\b(teas?|chai|matcha)\b/i, exclude: /tea[- ]smoked|tea sandwich/i },
   { cls: 'soda', pattern: /\b(sodas?|cola|coke|sprite|root beer|dr\.? pepper)\b/i },
 ]
 
+// Memoized: chainClassEstimate re-classifies the full official pool for every
+// target (~pool² calls per calibration run), and pool names repeat across
+// calls. One-shot CLI processes, so the cache is never evicted.
+const classCache = new Map<string, string | null>()
+
 /** Classify an item into a food class, or null when no anchored class fits. */
 export function classifyFoodClass(name: string): string | null {
+  const hit = classCache.get(name)
+  if (hit !== undefined) return hit
   const n = name.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '')
+  let result: string | null = null
   for (const { cls, pattern, exclude } of FOOD_CLASSES) {
-    if (pattern.test(n) && !(exclude && exclude.test(n))) return cls
+    if (pattern.test(n) && !(exclude && exclude.test(n))) {
+      result = cls
+      break
+    }
   }
-  return null
+  classCache.set(name, result)
+  return result
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

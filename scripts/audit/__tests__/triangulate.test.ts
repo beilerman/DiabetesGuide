@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { assignTriangulation, isImportable, TRIANGULATION_TIERS, type MethodEstimate } from '../triangulate.js'
+import { assignTriangulation, isBeverageCategorySuspect, isImportable, TRIANGULATION_TIERS, type MethodEstimate } from '../triangulate.js'
 
 function est(method: MethodEstimate['method'], carbs: number, full?: MethodEstimate['full']): MethodEstimate {
   return { method, carbs, full }
@@ -94,5 +94,45 @@ describe('MULTI_SERVING_PATTERN', () => {
     for (const name of ['Chicken Gyro Combo', 'French Toast', "Princess Peach's Cake Slice", 'Pepperoni Pizza Slice']) {
       expect(MULTI_SERVING_PATTERN.test(name), name).toBe(false)
     }
+  })
+})
+
+describe('isBeverageCategorySuspect', () => {
+  it('catches food items that are miscategorized as beverages before they can get beverage confidence tiers', () => {
+    for (const name of [
+      'Coffee Cake Cookie',
+      'Brownie Sundae',
+      'Mickey Pretzel',
+      'Birthday Cupcake',
+      'Hot Fudge Sundae',
+      'Apple Pie',
+      'Churro',
+      'Ice Cream Cone',
+    ]) {
+      expect(isBeverageCategorySuspect('beverage', name), name).toBe(true)
+    }
+  })
+
+  it('does not block ordinary beverages from beverage-tier triangulation', () => {
+    for (const name of ['Frozen Lemonade', 'Iced Coffee', 'Strawberry Smoothie', 'Coca-Cola Cherry']) {
+      expect(isBeverageCategorySuspect('beverage', name), name).toBe(false)
+    }
+  })
+
+  it('does not block real drinks whose names carry dessert flavor words', () => {
+    for (const name of [
+      'Cookies and Cream Milkshake',
+      'Birthday Cake Shake',
+      'Cookie Butter Cold Brew',
+      'Funnel Cake Frappuccino',
+    ]) {
+      expect(isBeverageCategorySuspect('beverage', name), name).toBe(false)
+    }
+  })
+
+  it('only fires for rows stored as beverage — the food-word list is unsafe on other categories', () => {
+    expect(isBeverageCategorySuspect('dessert', 'Coffee Cake Cookie')).toBe(false)
+    expect(isBeverageCategorySuspect('snack', 'Mickey Pretzel')).toBe(false)
+    expect(isBeverageCategorySuspect(null, 'Churro')).toBe(false)
   })
 })

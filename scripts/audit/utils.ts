@@ -36,21 +36,45 @@ export function loadEnv(): Record<string, string> {
 }
 
 /**
- * Create a Supabase client using env vars (with fallbacks).
+ * Resolve Supabase connection settings for DB-writing scripts.
+ *
+ * Project-local .env.local intentionally takes precedence over ambient shell
+ * variables: this workspace often has multiple Supabase-backed projects open,
+ * and a stale SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY from another repo can
+ * make quality/audit scripts either fail against the wrong schema or, worse,
+ * write to the wrong project. CI still works because env vars are used when no
+ * local .env.local entry exists.
+ *
+ * url and key always come from the SAME source — a partial .env.local must
+ * fail loudly (missing key) rather than pair the local project's URL with an
+ * ambient service key from another repo. When shell vars are being shadowed,
+ * a warning names the ignored override so a deliberate redirect (e.g. at a
+ * staging project) is never discarded silently.
+ */
+export function resolveSupabaseConfig(
+  envVars = loadEnv(),
+  runtimeEnv: NodeJS.ProcessEnv = process.env,
+): { url: string | undefined; key: string | undefined } {
+  const localUrl = envVars['SUPABASE_URL'] || envVars['VITE_SUPABASE_URL']
+  const runtimeUrl = runtimeEnv.SUPABASE_URL || runtimeEnv.VITE_SUPABASE_URL
+  if (localUrl) {
+    if (runtimeUrl && runtimeUrl !== localUrl) {
+      console.warn(
+        `Ignoring shell SUPABASE_URL (${runtimeUrl}) — .env.local takes precedence. ` +
+          'Remove/rename .env.local to target a different project.',
+      )
+    }
+    return { url: localUrl, key: envVars['SUPABASE_SERVICE_ROLE_KEY'] }
+  }
+  return { url: runtimeUrl, key: runtimeEnv.SUPABASE_SERVICE_ROLE_KEY }
+}
+
+/**
+ * Create a Supabase client using project-local env vars (with CI fallbacks).
  * Exits with error if required vars are missing.
  */
 export function createSupabaseClient() {
-  const envVars = loadEnv()
-
-  const url =
-    process.env.SUPABASE_URL ||
-    envVars['SUPABASE_URL'] ||
-    process.env.VITE_SUPABASE_URL ||
-    envVars['VITE_SUPABASE_URL']
-
-  const key =
-    process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    envVars['SUPABASE_SERVICE_ROLE_KEY']
+  const { url, key } = resolveSupabaseConfig()
 
   if (!url) {
     console.error('Missing SUPABASE_URL or VITE_SUPABASE_URL in environment or .env.local')

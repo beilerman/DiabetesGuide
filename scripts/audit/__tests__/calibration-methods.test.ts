@@ -35,6 +35,17 @@ describe('classifyFoodClass', () => {
   it('handles diacritics', () => {
     expect(classifyFoodClass('Crème Brûlée Latte')).toBe('coffee-drink')
   })
+
+  it('classifies compound drink names by format word, not flavor word', () => {
+    // The format is the last noun; the flavor prefix must not steal the class,
+    // or lemonade-flavored smoothies pool with ~50g lemonades (undercount).
+    expect(classifyFoodClass('Strawberry Lemonade Smoothie')).toBe('smoothie')
+    expect(classifyFoodClass('Strawberry Açaí Lemonade Refresher')).toBe('refresher')
+    expect(classifyFoodClass('Orange Juice Smoothie')).toBe('smoothie')
+    expect(classifyFoodClass('Frozen Lemonade')).toBe('lemonade')
+    expect(classifyFoodClass('Fresh-Squeezed Lemonade')).toBe('lemonade')
+    expect(classifyFoodClass('Apple Juice')).toBe('juice')
+  })
 })
 
 function official(id: string, name: string, carbs: number, calories: number | null = 400): OfficialRow {

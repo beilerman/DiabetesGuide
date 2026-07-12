@@ -19,21 +19,18 @@
  *   npx tsx scripts/import-researched-nutrition.ts --apply                           # write to DB
  *   npx tsx scripts/import-researched-nutrition.ts --file=data/chains/starbucks.json # per-chain file
  */
-import { createClient } from '@supabase/supabase-js'
 import { mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { createSupabaseClient } from './audit/utils.js'
 import { buildEvidenceCandidate, buildReviewArtifact, parseEvidenceMode } from './nutrition/evidence-intake.js'
 import type { EvidenceCandidate } from './nutrition/evidence-intake.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY
-if (!url || !key) {
-  console.error('Set SUPABASE_URL (or VITE_SUPABASE_URL) and SUPABASE_SERVICE_ROLE_KEY')
-  process.exit(1)
-}
-const supabase = createClient(url, key)
+// .env.local-first resolution (see resolveSupabaseConfig) — this script
+// writes to production, so it must never trust a stale ambient shell var
+// from another repo over the project-local config.
+const supabase = createSupabaseClient()
 const APPLY = process.argv.includes('--apply')
 const EVIDENCE_MODE = parseEvidenceMode(process.argv.slice(2))
 if (APPLY && EVIDENCE_MODE !== 'dry-run') {

@@ -44,6 +44,13 @@ import { dosingPriorityScore } from './trust.js'
 //   - entree-tier agreements measured 76-85% ±10g → all sub-dosing
 // Beverage dosing-grade signed off by Brad, 2026-06-11. Alcohol-suspected
 // items never reach these tiers (excluded from targets upstream).
+//
+// CAVEAT (2026-07-11): the drink-class split in calibration-methods.ts
+// (smoothie-juice → lemonade/smoothie/refresher/juice) changed the chain
+// estimator after these tiers were measured. The chain-involved tiers
+// (chain+decomposition 72, keyword+chain 55) need `npm run audit:calibrate`
+// re-run — and the numbers re-verified — before the next `--apply`.
+// keyword+decomposition (70) does not use the chain method and is unaffected.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const TRIANGULATION_TIERS: Record<string, { beverage: number; other: number }> = {
@@ -123,6 +130,33 @@ export function assignTriangulation(
  */
 export const MULTI_SERVING_PATTERN =
   /\b(dozen|whole|platter|family|shar(e|ing|eable)|bucket|tray|party|baker'?s|jumbo|giant|colossal|footlong)\b|signature .*cake|celebration cake/i
+
+// Food words that suggest a 'beverage' row is actually food. Kept in sync by
+// hand with FOOD_CONTEXT in recategorize.ts and FOOD_CLASSES in
+// calibration-methods.ts — full unification is pending, so when adding a word
+// check all three lists.
+const BEVERAGE_SUSPECT_FOOD =
+  /\b(cookies?|brownies?|cakes?|cupcakes?|muffins?|croissants?|pastry|pastries|pretzels?|popcorn|donuts?|doughnuts?|sundaes?|pies?|churros?|cinnamon rolls?|ice cream|funnel cakes?|nachos?|fries|waffles?|crepes?)\b/i
+
+// Drink formats whose names legitimately carry dessert flavor words
+// ("Birthday Cake Shake", "Cookie Butter Cold Brew") — these ARE beverages
+// and must keep access to the beverage agreement tiers.
+const BEVERAGE_DRINK_CONTEXT =
+  /\b(milk ?shakes?|shakes?|floats?|smoothies?|lattes?|mochas?|frapp\w*|cold brew|cocoa|hot chocolate|lemonades?|refreshers?|sodas?|slush\w*|icees?|boba|juices?|ciders?|punch)\b/i
+
+/**
+ * Items whose stored category is 'beverage' but whose name is clearly food
+ * (the Coffee Cake Cookie trap) are category-contaminated rows. They must not
+ * receive the beverage agreement tiers — those were measured on actual drinks
+ * — so they route to the queue and should be recategorized first. Names with
+ * an explicit drink format are exempt: a flavor word ("cake", "cookie") in a
+ * shake or latte name does not make the row food.
+ */
+export function isBeverageCategorySuspect(category: string | null, name: string): boolean {
+  if (category !== 'beverage') return false
+  if (BEVERAGE_DRINK_CONTEXT.test(name)) return false
+  return BEVERAGE_SUSPECT_FOOD.test(name)
+}
 
 /** Basic import-safety validation mirroring the import-ai gates. */
 export function isImportable(r: TriangulationResult): boolean {
@@ -361,7 +395,7 @@ ${itemList}`
     update: Record<string, number | string>
   }
   const planned: PlannedUpdate[] = []
-  const queue: Array<{ id: string; name: string; category: string; park: string; estimates: MethodEstimate[]; priority: number }> = []
+  const queue: Array<{ id: string; name: string; category: string; park: string; reasons: string[]; estimates: MethodEstimate[]; priority: number }> = []
   let noEstimates = 0
 
   for (const t of targets) {
@@ -374,9 +408,18 @@ ${itemList}`
       continue
     }
     const result = assignTriangulation(ests, t.category)
-    if (!result || !isImportable(result) || MULTI_SERVING_PATTERN.test(t.name)) {
+    // Why the item was queued, so the E2 consumer can route it: category-suspect
+    // rows need recategorization, not carb research.
+    const reasons = [
+      ...(!result ? ['no-agreement'] : []),
+      ...(result && !isImportable(result) ? ['not-importable'] : []),
+      ...(MULTI_SERVING_PATTERN.test(t.name) ? ['multi-serving'] : []),
+      ...(isBeverageCategorySuspect(t.category, t.name) ? ['category-suspect'] : []),
+    ]
+    if (!result || reasons.length > 0) {
       queue.push({
         id: t.id, name: t.name, category: t.category, park,
+        reasons,
         estimates: ests,
         priority: dosingPriorityScore(t.category, t.restaurant?.park?.location ?? null, n.carbs),
       })
