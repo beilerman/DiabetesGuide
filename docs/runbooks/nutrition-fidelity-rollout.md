@@ -85,6 +85,10 @@ npm run import:researched -- --apply-evidence
 
 AI, keyword, recipe, decomposition, and generic database observations cannot become Tier A/B by confidence relabeling.
 
+For proactive Disney official-source intake, install and verify the version-controlled Hermes skill, then complete one fixture-backed and one isolated-Supabase run from `docs/runbooks/hermes-nutrition-research.md`. Keep the cron job paused until the protected PR checks, GitHub Environment, idempotent apply test, and unchanged active-state assertions all pass.
+
+Hermes may auto-merge only unflagged evidence-only PRs. A merged batch appends `nutrition_sources`; it does not update active carbs or create/activate a certification.
+
 Create a reviewed certification artifact from `data/reviewed-nutrition-certifications.example.json`. Validate it without writes:
 
 ```powershell
@@ -122,6 +126,8 @@ The daily workflow runs the fidelity audit and evidence monitor. Operational tar
 - zero public writes to evidence/certification/check tables;
 - monthly high-impact sampling; and
 - review or renewal of all remaining certifications at least quarterly.
+
+The Hermes Disney research job runs every six hours with at most five WDW items. Monitor its GitHub PR/apply results and Slack summaries. Pause the job on repeated source/catalog drift, lease anomalies, protected apply failure, or any unexpected active-state change. Expand to `all-disney` only after phase-1 review quality is accepted.
 
 Use `docs/runbooks/nutrition-fidelity-incident.md` for source changes, serving drift, conflicts, or incorrect certification.
 

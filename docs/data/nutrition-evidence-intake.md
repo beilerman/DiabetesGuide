@@ -20,6 +20,21 @@ Existing research files usually lack explicit serving and exact-match fields. Th
 - `retrievedAt` and preferably `publishedAt` or `contentHash`; and
 - `upstreamSourceKey` when multiple URLs reproduce the same original document.
 
+## Hermes official-source intake
+
+The `disney-nutrition-research` Hermes skill is an official-evidence producer for queued Disney menu items. It reads the live catalog with an anon/publishable Supabase key, researches at most five items, and opens a pull request containing a deterministic artifact under `audit/nutrition-research/batches/`.
+
+The artifact distinguishes four states:
+
+- `accepted`: complete, exact, first-party evidence;
+- `flagged`: evidence requiring human resolution;
+- `skipped:no_first_party_source`: no qualifying owned source exists; and
+- `failed`: research could not be completed without converting an outage into data.
+
+Runtime findings are not database rows. A reviewed merged artifact may create an immutable `nutrition_sources` observation through the protected post-merge workflow. That observation is still not an active nutritional value or certification.
+
+Install/check the skill and operate its six-hour job using `docs/runbooks/hermes-nutrition-research.md`.
+
 ## Store evidence only
 
 After the fidelity migration is deployed and the review artifact is accepted:
@@ -30,6 +45,8 @@ npm run import:ai -- --apply-evidence
 ```
 
 Evidence insertion is idempotent on `evidence_key`. It cannot write `nutrition_certifications` or set `nutritional_data.active_certification_id`.
+
+Hermes batches use the narrower `npm run nutrition:research-apply` command only inside the protected post-merge GitHub Environment. The research agent never invokes it and never receives the service role.
 
 Do not combine `--apply`, `--apply-evidence`, or `--publish-reviewed`. The importers fail when more than one write path is selected. `--publish-reviewed` is reserved for the dedicated certification workflow and is rejected by these candidate importers.
 
