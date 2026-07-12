@@ -195,7 +195,7 @@ export default function Home() {
                 <Link
                   key={link.label}
                   to={link.href}
-                  className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-white/30 bg-white/15 px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/70"
+                  className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-white/40 bg-teal-950/30 px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-950/50 focus:outline-none focus:ring-2 focus:ring-white/70"
                   title={link.detail}
                 >
                   {link.label}

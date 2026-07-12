@@ -10,8 +10,9 @@
 
 /* Design System - Warm, approachable color palette */
 :root {
-  /* Decorative only — never on semantic elements (traffic lights/grades) */
-  --gradient-sunrise: linear-gradient(120deg, #0d9488 0%, #0ea47a 45%, #f59e0b 130%);
+  /* Decorative only — never on semantic elements (traffic lights/grades).
+     Anchored dark enough that white text stays >=4.5:1 across the panel. */
+  --gradient-sunrise: linear-gradient(120deg, #115e59 0%, #0d9488 65%, #f59e0b 150%);
 
   /* Primary colors */
   --color-primary: #0d9488;
@@ -148,6 +149,12 @@ body {
 
 .high-contrast .shadow-soft {
   box-shadow: none !important;
+}
+
+/* Amber CTA keeps dark text — the global stone-900→white override would
+   put white on amber. */
+.high-contrast .bg-amber-300 {
+  color: #000 !important;
 }
 
 .high-contrast .bg-cream {
