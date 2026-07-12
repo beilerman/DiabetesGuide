@@ -60,6 +60,7 @@
     "nutrition:research-build": "tsx scripts/nutrition/research-findings-cli.ts",
     "nutrition:research-validate": "tsx scripts/nutrition/validate-research-batch-cli.ts",
     "nutrition:research-apply": "tsx scripts/nutrition/apply-research-batch-cli.ts",
+    "hermes:install-nutrition-research": "tsx scripts/hermes/install-disney-nutrition-research.ts",
     "audit:calibrate": "tsx scripts/audit/calibrate.ts",
     "audit:triangulate": "tsx scripts/audit/triangulate.ts"
   },
