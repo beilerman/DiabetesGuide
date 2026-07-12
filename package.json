@@ -58,6 +58,7 @@
     "nutrition:research-queue": "tsx scripts/nutrition/research-queue-cli.ts",
     "nutrition:research-lease": "tsx scripts/nutrition/research-lease-cli.ts",
     "nutrition:research-build": "tsx scripts/nutrition/research-findings-cli.ts",
+    "nutrition:research-validate": "tsx scripts/nutrition/validate-research-batch-cli.ts",
     "audit:calibrate": "tsx scripts/audit/calibrate.ts",
     "audit:triangulate": "tsx scripts/audit/triangulate.ts"
   },

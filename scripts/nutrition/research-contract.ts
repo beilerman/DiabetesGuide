@@ -46,6 +46,9 @@ export interface ResearchEvidenceOutcome extends ResearchOutcomeBase {
   currentCarbs: number | null
   sourceKind: ResearchSourceKind
   sourceOwner: string
+  ownerId: string
+  sourceOwnerType: 'destination' | 'chain' | 'manufacturer'
+  manufacturerRelationship: string | null
   sourceUrl: string
   sourceLocator: string | null
   sourceReportedItemName: string
@@ -105,6 +108,9 @@ const EVIDENCE_KEYS = new Set([
   'currentCarbs',
   'sourceKind',
   'sourceOwner',
+  'ownerId',
+  'sourceOwnerType',
+  'manufacturerRelationship',
   'sourceUrl',
   'sourceLocator',
   'sourceReportedItemName',
@@ -262,6 +268,23 @@ function parseEvidenceOutcome(record: Record<string, unknown>, index: number): R
     throw new Error(`${name}.sourceKind must be official_research or manufacturer_research`)
   }
   const serving = parseServing(record.serving, `${name}.serving`)
+  const sourceOwnerType = record.sourceOwnerType
+  if (sourceOwnerType !== 'destination' && sourceOwnerType !== 'chain' && sourceOwnerType !== 'manufacturer') {
+    throw new Error(`${name}.sourceOwnerType is invalid`)
+  }
+  const manufacturerRelationship = requireNullableString(
+    record.manufacturerRelationship,
+    `${name}.manufacturerRelationship`,
+  )
+  if (sourceOwnerType === 'manufacturer' && manufacturerRelationship == null) {
+    throw new Error(`${name}.manufacturerRelationship is required for manufacturer evidence`)
+  }
+  if (sourceOwnerType === 'manufacturer' && sourceKind !== 'manufacturer_research') {
+    throw new Error(`${name}.sourceKind must be manufacturer_research for a manufacturer source`)
+  }
+  if (sourceOwnerType !== 'manufacturer' && sourceKind !== 'official_research') {
+    throw new Error(`${name}.sourceKind must be official_research for a destination or chain source`)
+  }
   const exactItemMatch = record.exactItemMatch
   const exactServingMatch = record.exactServingMatch
   if (typeof exactItemMatch !== 'boolean') throw new Error(`${name}.exactItemMatch must be boolean`)
@@ -303,6 +326,9 @@ function parseEvidenceOutcome(record: Record<string, unknown>, index: number): R
     currentCarbs: requireNullableNonNegativeNumber(record.currentCarbs, `${name}.currentCarbs`),
     sourceKind: sourceKind as ResearchSourceKind,
     sourceOwner: requireString(record.sourceOwner, `${name}.sourceOwner`),
+    ownerId: requireString(record.ownerId, `${name}.ownerId`),
+    sourceOwnerType,
+    manufacturerRelationship,
     sourceUrl: requireHttpsUrl(record.sourceUrl, `${name}.sourceUrl`),
     sourceLocator: requireNullableString(record.sourceLocator, `${name}.sourceLocator`),
     sourceReportedItemName: requireString(record.sourceReportedItemName, `${name}.sourceReportedItemName`),

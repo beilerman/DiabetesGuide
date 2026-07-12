@@ -1,0 +1,39 @@
+{
+  "batchId": "wdw-20260712T120000Z-a1b2c3d4",
+  "catalogSnapshotAt": "2026-07-12T12:00:00.000Z",
+  "generatedAt": "2026-07-12T12:10:00.000Z",
+  "outcomes": [
+    {
+      "catalogSnapshotHash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "contentHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "currentCarbs": 40,
+      "evidenceKey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "exactItemMatch": true,
+      "exactServingMatch": true,
+      "itemName": "Official Pretzel",
+      "manufacturerRelationship": null,
+      "menuItemId": "item-1",
+      "ownerId": "disney",
+      "publishedAt": null,
+      "reportedCarbs": 42,
+      "retrievedAt": "2026-07-12T12:05:00.000Z",
+      "reviewReasons": [],
+      "serving": {
+        "description": "1 pretzel",
+        "quantity": 1,
+        "unit": "pretzel"
+      },
+      "sourceExcerpt": "Total Carbohydrate 42 g",
+      "sourceKind": "official_research",
+      "sourceLocator": "row 2",
+      "sourceOwner": "Disney",
+      "sourceOwnerType": "destination",
+      "sourceReportedItemName": "Official Pretzel",
+      "sourceUrl": "https://disneyworld.disney.go.com/menu",
+      "status": "accepted",
+      "upstreamSourceKey": "disney-menu-2026"
+    }
+  ],
+  "schemaVersion": 1,
+  "scope": "wdw"
+}

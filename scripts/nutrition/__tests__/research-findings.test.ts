@@ -101,6 +101,8 @@ describe('buildResearchBatch', () => {
       itemName: 'Catalog item-1',
       catalogSnapshotHash: 'a'.repeat(64),
       sourceReportedItemName: 'Official item-1',
+      ownerId: 'disney',
+      sourceOwnerType: 'destination',
       sourceUrl: resolved.finalUrl,
       contentHash: resolved.contentHash,
       reportedCarbs: 55,
