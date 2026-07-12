@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { buildNutritionReportMailto, getNutritionQualityWarnings, getNutritionTrust } from '../nutrition-trust'
+import {
+  buildNutritionReportMailto,
+  getNutritionQualityWarnings,
+  getNutritionTrust,
+  isNutritionDosingGrade,
+} from '../nutrition-trust'
 import type { MenuItemWithNutrition, NutritionalData } from '../types'
 
 function nutrition(overrides: Partial<NutritionalData>): NutritionalData {
@@ -63,6 +68,91 @@ describe('getNutritionTrust', () => {
   it('keeps visible warnings for unusually high values', () => {
     expect(getNutritionTrust(nutrition({ source: 'crowdsourced', confidence_score: 30, calories: 1100, protein: 140 })).qualityWarnings)
       .toEqual(expect.arrayContaining(['Protein looks unusually high for a single menu item.']))
+  })
+
+  it('does not accept confidence alone when certification trust is required', () => {
+    const result = getNutritionTrust(
+      nutrition({ source: 'official', confidence_score: 90 }),
+      { certificationRequired: true, now: new Date('2026-07-11T16:00:00Z') },
+    )
+
+    expect(result).toMatchObject({
+      level: 'low',
+      label: 'Uncertified carb estimate',
+      caution: 'Do not dose from this value without verifying it.',
+    })
+  })
+
+  it('accepts an active Tier A certification with exact serving evidence', () => {
+    const certified = nutrition({
+      carbs: 42,
+      serving_quantity: 1,
+      serving_unit: 'item',
+      serving_description: '1 sandwich as sold',
+      active_certification_id: 'cert-1',
+      active_certification: {
+        id: 'cert-1',
+        menu_item_id: 'item-1',
+        tier: 'A',
+        status: 'approved',
+        canonical_carbs: 42,
+        serving_quantity: 1,
+        serving_unit: 'item',
+        serving_description: '1 sandwich as sold',
+        reviewed_at: '2026-07-10T16:00:00Z',
+        expires_at: '2026-10-10T16:00:00Z',
+        nutrition_certification_evidence: [{
+          nutrition_source: {
+            id: 'evidence-1',
+            source_type: 'official_restaurant',
+            upstream_source_key: 'official-document',
+            reported_carbs: 42,
+            normalized_carbs: null,
+            serving_quantity: 1,
+            serving_unit: 'item',
+            serving_description: '1 sandwich as sold',
+            exact_item_match: true,
+            exact_serving_match: true,
+          },
+        }],
+      },
+    })
+
+    expect(isNutritionDosingGrade(certified, {
+      certificationRequired: true,
+      now: new Date('2026-07-11T16:00:00Z'),
+    })).toBe(true)
+    expect(getNutritionTrust(certified, {
+      certificationRequired: true,
+      now: new Date('2026-07-11T16:00:00Z'),
+    })).toMatchObject({
+      level: 'verified',
+      label: 'Certified nutrition · Tier A',
+    })
+  })
+
+  it('rejects expired certification', () => {
+    const expired = nutrition({
+      active_certification_id: 'cert-expired',
+      active_certification: {
+        id: 'cert-expired',
+        menu_item_id: 'item-1',
+        tier: 'A',
+        status: 'approved',
+        canonical_carbs: 0,
+        serving_quantity: 1,
+        serving_unit: 'item',
+        serving_description: '1 item',
+        reviewed_at: '2026-01-01T00:00:00Z',
+        expires_at: '2026-07-01T00:00:00Z',
+        nutrition_certification_evidence: [],
+      },
+    })
+
+    expect(isNutritionDosingGrade(expired, {
+      certificationRequired: true,
+      now: new Date('2026-07-11T16:00:00Z'),
+    })).toBe(false)
   })
 })
 

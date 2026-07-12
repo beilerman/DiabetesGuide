@@ -10,6 +10,7 @@ import type { DayTotals } from '../hooks/useTripPlan'
 import { computeScore, computeGrade } from '../lib/grade'
 import { RESORT_CONFIG, getParksForResort } from '../lib/resort-config'
 import { cleanDisplayText } from '../lib/display'
+import { getActiveCertificationTier, isNutritionDosingGrade } from '../lib/nutrition-trust'
 // Lazy-load PDF export to keep main bundle small (~200KB for jsPDF)
 const lazyExportPdf = () => import('../lib/export-pdf').then(m => m.exportTripPlanPdf)
 import type { MealItem, MenuItemWithNutrition, Park } from '../lib/types'
@@ -111,6 +112,12 @@ function FavoritesTab() {
         sodium: nd?.sodium ?? 0,
         restaurant: item.restaurant?.name,
         parkName: item.restaurant?.park?.name,
+        nutritionConfidence: nd?.confidence_score,
+        nutritionSource: nd?.source,
+        nutritionSourceDetail: nd?.source_detail,
+        nutritionAvailable: nd != null,
+        nutritionDosingGrade: isNutritionDosingGrade(nd),
+        nutritionCertificationTier: getActiveCertificationTier(nd) ?? undefined,
       }
       // Add to the first meal slot of the day (Breakfast or Meal 1)
       addItemToSlot(dayIndex, 0, mealItem)
@@ -136,6 +143,8 @@ function FavoritesTab() {
       nutritionSource: nd?.source,
       nutritionSourceDetail: nd?.source_detail,
       nutritionAvailable: nd != null,
+      nutritionDosingGrade: isNutritionDosingGrade(nd),
+      nutritionCertificationTier: getActiveCertificationTier(nd) ?? undefined,
     }
   }
 

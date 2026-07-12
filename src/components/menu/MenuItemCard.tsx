@@ -2,12 +2,14 @@ import { memo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { MenuItemWithNutrition, MealItem } from '../../lib/types'
 import { getGradeForItem } from '../../lib/grade'
-import { getDiabetesAnnotations } from '../../lib/annotations'
+import { getDiabetesAnnotations, type Annotation } from '../../lib/annotations'
 import { getDisplayCategory, getMenuItemDisplayName, hasUsableNutrition } from '../../lib/display'
 import { GradeBadge } from './GradeBadge'
 import { DotMeter } from './DotMeter'
-import { AnnotationBadge } from './AnnotationBadge'
-import { getEstimateTierShort, getNutritionQualityWarnings } from '../../lib/nutrition-trust'
+import {
+  getActiveCertificationTier,
+  isNutritionDosingGrade,
+} from '../../lib/nutrition-trust'
 
 interface Props {
   item: MenuItemWithNutrition
@@ -25,30 +27,22 @@ function carbDots(v: number): 'green' | 'amber' | 'rose' {
   return 'rose'
 }
 
-function calDots(v: number): 'green' | 'amber' | 'rose' {
-  if (v < 400) return 'green'
-  if (v <= 700) return 'amber'
-  return 'rose'
-}
-
-function sugarDots(v: number): 'green' | 'amber' | 'rose' {
-  if (v < 10) return 'green'
-  if (v <= 25) return 'amber'
-  return 'rose'
-}
-
-function proteinDots(v: number): 'green' | 'amber' | 'rose' {
-  if (v >= 20) return 'green'
-  if (v >= 10) return 'amber'
-  return 'rose'
-}
-
-const categoryColors: Record<string, string> = {
-  entree: 'bg-teal-100 text-teal-700',
-  snack: 'bg-amber-100 text-amber-800',
-  beverage: 'bg-blue-100 text-blue-700',
-  dessert: 'bg-rose-100 text-rose-700',
-  side: 'bg-emerald-100 text-emerald-700',
+/**
+ * The card shows ONE trust/annotation line (spec 2026-07-12 §4): a high-risk
+ * annotation wins, then the estimate caution, then a positive/info note. Full
+ * warning detail lives on the item detail page and meal builder, where dosing
+ * decisions actually happen. Estimated data additionally keeps the ~ marker on
+ * the grade badge, so the estimate signal survives even when a risk note takes
+ * the line.
+ */
+function pickTrustLine(
+  topAnnotation: Annotation | null,
+  isEstimate: boolean,
+): { text: string; tone: 'risk' | 'info' } | null {
+  if (topAnnotation && topAnnotation.severity !== 'green') return { text: topAnnotation.text, tone: 'risk' }
+  if (isEstimate) return { text: 'Estimate — check details before dosing', tone: 'risk' }
+  if (topAnnotation) return { text: topAnnotation.text, tone: 'info' }
+  return null
 }
 
 function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onCompare, themeColor }: Props) {
@@ -72,10 +66,9 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
   const availabilityCount = item.availability_count ?? 1
   const availabilityRestaurants = item.availability_restaurants ?? []
   const hasMultipleLocations = availabilityCount > 1
-  const isLowConfidenceNutrition = Boolean(nd && nd.confidence_score < 70)
-  const qualityWarnings = nd ? getNutritionQualityWarnings(nd) : []
+  const isLowConfidenceNutrition = Boolean(nd && !isNutritionDosingGrade(nd))
 
-  const { grade, colors: gradeColors } = getGradeForItem({
+  const { grade } = getGradeForItem({
     calories, carbs, fat, protein, sugar, fiber, sodium,
     alcoholGrams,
   })
@@ -88,6 +81,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
     confidenceScore: nd?.confidence_score,
   })
   const topAnnotation = annotations[0] ?? null
+  const trustLine = pickTrustLine(topAnnotation, isLowConfidenceNutrition)
 
   const handleAddToMeal = () => {
     if (!hasNutrition) return
@@ -108,6 +102,8 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
       nutritionSource: nd?.source,
       nutritionSourceDetail: nd?.source_detail,
       nutritionAvailable: true,
+      nutritionDosingGrade: isNutritionDosingGrade(nd),
+      nutritionCertificationTier: getActiveCertificationTier(nd) ?? undefined,
     })
     setTimeout(() => setAddingToMeal(false), 600)
   }
@@ -128,13 +124,13 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
   // click without nesting buttons/links inside a role="link" container.
   return (
     <div
-      className="relative rounded-2xl bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
+      className="relative rounded-2xl bg-white shadow-soft overflow-hidden transition-all duration-150 hover:-translate-y-0.5 hover:shadow-lg"
       style={{ borderLeft: `3px solid ${borderColor}` }}
     >
       <div className="p-4">
         {/* Top row: Grade badge + name + favorite */}
         <div className="flex items-start gap-3">
-          <GradeBadge grade={grade} size="lg" estimated={isLowConfidenceNutrition} />
+          <GradeBadge grade={grade} size="md" estimated={isLowConfidenceNutrition} />
 
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2">
@@ -153,7 +149,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
                 aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
               >
                 <svg
-                  className={`w-5 h-5 ${isFavorite ? 'fill-rose-500 stroke-rose-500' : 'fill-none stroke-stone-400'}`}
+                  className={`w-5 h-5 ${isFavorite ? 'fill-rose-500 stroke-rose-500' : 'fill-none stroke-stone-400'} ${favoriteNotice ? 'heart-pop' : ''}`}
                   viewBox="0 0 24 24"
                   strokeWidth="2"
                 >
@@ -166,16 +162,17 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
               </button>
             </div>
 
-            {/* Restaurant + category */}
-            <div className="mt-0.5 flex items-center gap-2 text-xs text-stone-500">
+            {/* Restaurant + category — one muted line, no pill */}
+            <div className="mt-0.5 flex items-center gap-1.5 text-xs text-stone-500">
               {(item.restaurant || hasMultipleLocations) && (
-                <span className="truncate" title={hasMultipleLocations ? availabilityRestaurants.join(', ') : item.restaurant?.name}>
-                  {hasMultipleLocations ? `${availabilityCount} locations` : item.restaurant?.name}
-                </span>
+                <>
+                  <span className="truncate" title={hasMultipleLocations ? availabilityRestaurants.join(', ') : item.restaurant?.name}>
+                    {hasMultipleLocations ? `${availabilityCount} locations` : item.restaurant?.name}
+                  </span>
+                  <span aria-hidden="true">·</span>
+                </>
               )}
-              <span className={`inline-block px-1.5 py-0.5 rounded text-[11px] font-medium uppercase tracking-wider ${categoryColors[displayCategory] ?? 'bg-stone-100 text-stone-600'}`}>
-                {displayCategory}
-              </span>
+              <span className="capitalize">{displayCategory}</span>
             </div>
           </div>
         </div>
@@ -186,8 +183,8 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
             {/* Carbs hero */}
             {carbs != null && (
               <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold text-stone-900">{carbs}<span className="text-sm font-normal text-stone-500">g</span></span>
-                <span className="text-[11px] text-stone-500 uppercase tracking-wide">Carbs</span>
+                <span className="font-display text-3xl font-bold leading-none text-stone-900">{carbs}<span className="text-sm font-normal text-stone-500">g</span></span>
+                <span className="mt-0.5 text-[11px] text-stone-500 uppercase tracking-wide">Carbs</span>
                 <DotMeter value={carbs} max={80} colorFn={carbDots} label="Carbs" />
               </div>
             )}
@@ -208,7 +205,6 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
               <div className="flex flex-col items-center">
                 <span className="text-lg font-semibold text-stone-700">{calories}</span>
                 <span className="text-[11px] text-stone-500 uppercase tracking-wide">Cal</span>
-                <DotMeter value={calories} max={1000} colorFn={calDots} label="Calories" />
               </div>
             )}
 
@@ -217,7 +213,6 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
               <div className="flex flex-col items-center">
                 <span className="text-lg font-semibold text-stone-700">{sugar}<span className="text-xs font-normal text-stone-500">g</span></span>
                 <span className="text-[11px] text-stone-500 uppercase tracking-wide">Sugar</span>
-                <DotMeter value={sugar} max={50} colorFn={sugarDots} label="Sugar" />
               </div>
             )}
 
@@ -226,7 +221,6 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
               <div className="flex flex-col items-center">
                 <span className="text-lg font-semibold text-stone-700">{protein}<span className="text-xs font-normal text-stone-500">g</span></span>
                 <span className="text-[11px] text-stone-500 uppercase tracking-wide">Protein</span>
-                <DotMeter value={protein} max={50} colorFn={proteinDots} label="Protein" />
               </div>
             )}
 
@@ -249,57 +243,12 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
           </div>
         )}
 
-        {/* Top annotation */}
-        {topAnnotation && (
-          <div className="mt-2">
-            <AnnotationBadge annotation={topAnnotation} />
-          </div>
-        )}
-
-        {isLowConfidenceNutrition && nd && (
-          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
-            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-800">
-              <span aria-hidden="true">~</span>{getEstimateTierShort(nd.confidence_score)} — verify before dosing
-            </span>
-            {qualityWarnings[0] && (
-              <span className="text-[11px] font-medium text-amber-800">{qualityWarnings[0]}</span>
-            )}
-          </div>
-        )}
-
-        {!isLowConfidenceNutrition && qualityWarnings.length > 0 && (
-          <div className="mt-2 text-[11px] font-medium text-amber-800">
-            Verify nutrition values: {qualityWarnings[0]}
-          </div>
-        )}
-
-        {/* Grade label */}
-        {gradeColors && (
-          <div className="mt-2 text-xs font-medium" style={{ color: gradeColors.bg }}>
-            {gradeColors.label}
-            {isLowConfidenceNutrition && <span className="text-amber-800"> · estimated</span>}
-          </div>
-        )}
-
-        {/* Tags row */}
-        {(item.is_vegetarian || item.is_fried || item.is_seasonal) && (
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {item.is_vegetarian && (
-              <span className="px-2 py-0.5 bg-green-50 border border-green-200 text-green-700 text-[11px] rounded-full font-medium">
-                Vegetarian
-              </span>
-            )}
-            {item.is_fried && (
-              <span className="px-2 py-0.5 bg-orange-50 border border-orange-200 text-orange-700 text-[11px] rounded-full font-medium">
-                Fried
-              </span>
-            )}
-            {item.is_seasonal && (
-              <span className="px-2 py-0.5 bg-purple-50 border border-purple-200 text-purple-700 text-[11px] rounded-full font-medium">
-                Seasonal
-              </span>
-            )}
-          </div>
+        {/* Single trust/annotation line (see pickTrustLine) */}
+        {trustLine && (
+          <p className={`mt-2 flex items-start gap-1 text-xs font-medium leading-snug ${trustLine.tone === 'risk' ? 'text-amber-800' : 'text-stone-500'}`}>
+            <span aria-hidden="true">{trustLine.tone === 'risk' ? '⚠' : '✓'}</span>
+            <span>{trustLine.text}</span>
+          </p>
         )}
 
         {favoriteNotice && (
@@ -308,24 +257,17 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
           </div>
         )}
 
-        <Link
-          to={`/item/${item.id}`}
-          className="relative z-10 mt-2 inline-flex text-xs text-teal-600 hover:text-teal-700 font-medium"
-        >
-          More details
-        </Link>
-
         {/* Action buttons */}
-        <div className="relative z-10 mt-3 flex gap-2">
+        <div className="relative z-10 mt-3 flex items-center gap-2">
           <button
             type="button"
             disabled={!hasNutrition}
-            aria-label={!hasNutrition ? `Nutrition needed before adding ${displayName} to meal` : undefined}
-            className={`flex-1 h-10 flex items-center justify-center gap-1.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+            aria-label={!hasNutrition ? `Nutrition needed before adding ${displayName} to meal` : `Add ${displayName} to meal`}
+            className={`h-10 flex items-center justify-center gap-1.5 rounded-full px-5 text-sm font-semibold transition-all duration-200 ${
               !hasNutrition
                 ? 'bg-stone-200 text-stone-500 cursor-not-allowed'
                 : addingToMeal
-                ? 'bg-green-500 text-white'
+                ? 'bg-green-600 text-white'
                 : 'bg-teal-600 hover:bg-teal-700 text-white shadow-sm'
             }`}
             onClick={(event) => {
@@ -347,7 +289,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
                 </svg>
-                Add to Meal
+                Add
               </>
             )}
           </button>
@@ -355,7 +297,7 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
           {onCompare && (
             <button
               type="button"
-              className="h-10 px-3 flex items-center justify-center gap-1.5 rounded-xl text-sm font-medium border border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors"
+              className="h-10 w-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-600 hover:bg-stone-100 transition-colors"
               onClick={(event) => {
                 event.stopPropagation()
                 onCompare(item)
@@ -365,9 +307,15 @@ function MenuItemCardImpl({ item, onAddToMeal, isFavorite, onToggleFavorite, onC
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
-              Compare
             </button>
           )}
+
+          <Link
+            to={`/item/${item.id}`}
+            className="ml-auto text-sm font-semibold text-teal-700 hover:text-teal-800"
+          >
+            Details <span aria-hidden="true">›</span>
+          </Link>
         </div>
       </div>
     </div>

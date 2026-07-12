@@ -1,0 +1,2330 @@
+[
+  {
+    "nutritionDataId": "10c084ab-ef94-4ff7-8938-0e23200017ca",
+    "itemId": "5ce8b624-b3ba-45b6-b599-086ccb353f02",
+    "name": "Dulce Classic Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 122,
+      "confidence": 55
+    },
+    "update": {
+      "carbs": 108,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 850,
+      "fat": 40,
+      "protein": 14,
+      "sugar": 90,
+      "fiber": 0,
+      "sodium": 320
+    }
+  },
+  {
+    "nutritionDataId": "a518f865-b823-4812-9164-d7a72fb774a5",
+    "itemId": "06ebdd8d-fdea-42ec-ad46-bfb9c8bd6016",
+    "name": "Mango-Coconut Milk Shake",
+    "category": "beverage",
+    "park": "EPCOT Flower & Garden Festival 2026",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 120,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 92,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 600,
+      "fat": 22,
+      "protein": 5,
+      "sugar": 75,
+      "fiber": 2,
+      "sodium": 150
+    }
+  },
+  {
+    "nutritionDataId": "dd8430ba-5663-4015-afc5-600272aa02b8",
+    "itemId": "9294643f-bd93-4837-8d1c-60f487eb0daf",
+    "name": "Gingerbread Milk Shake",
+    "category": "beverage",
+    "park": "Walt Disney World Festivals & Events",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 120,
+      "confidence": 55
+    },
+    "update": {
+      "carbs": 109,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 900,
+      "fat": 42,
+      "protein": 13,
+      "sugar": 92,
+      "fiber": 1,
+      "sodium": 350
+    }
+  },
+  {
+    "nutritionDataId": "515263bb-fd50-419d-b16a-609731ba7fc3",
+    "itemId": "50dca34c-abd5-4234-ba4d-c52a012f63db",
+    "name": "Strawberry Classic Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 118,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 97,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 750,
+      "fat": 34,
+      "protein": 13,
+      "sugar": 82,
+      "fiber": 1,
+      "sodium": 270
+    }
+  },
+  {
+    "nutritionDataId": "673b6d96-4298-4ecb-a943-0045a09b46a1",
+    "itemId": "7b5512df-e8f4-45ac-8cb7-89591a2ac4c8",
+    "name": "Oreo Classic Shake",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 116,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 106,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 820,
+      "fat": 40,
+      "protein": 14,
+      "sugar": 80,
+      "fiber": 2,
+      "sodium": 380
+    }
+  },
+  {
+    "nutritionDataId": "47b67351-5c79-40f8-bf5c-a0d2f4009848",
+    "itemId": "06ac777f-1acf-40ac-a788-5bfdb1ea5d83",
+    "name": "Peanut Butter & Jelly Milk Shake",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 110,
+      "confidence": 58
+    },
+    "update": {
+      "carbs": 95,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 950,
+      "fat": 50,
+      "protein": 20,
+      "sugar": 80,
+      "fiber": 2,
+      "sodium": 400
+    }
+  },
+  {
+    "nutritionDataId": "d871b532-fed4-4cfd-aa6b-83c9e52168f7",
+    "itemId": "3b2763f3-fbda-4e7b-a795-28065ca8c3bc",
+    "name": "Hand-dipped Milkshake",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 110,
+      "confidence": 62
+    },
+    "update": {
+      "carbs": 83,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 700,
+      "fat": 32,
+      "protein": 13,
+      "sugar": 76,
+      "fiber": 1,
+      "sodium": 260
+    }
+  },
+  {
+    "nutritionDataId": "62e2f53f-f0bc-419c-8340-9b2bd8b23951",
+    "itemId": "79e1a4ba-c5ed-46f4-a918-9b79338e7473",
+    "name": "Costa® Chocolate Hazelnut Cold Brew",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 110,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 180,
+      "fat": 1,
+      "protein": 2,
+      "sugar": 36,
+      "fiber": 0,
+      "sodium": 50
+    }
+  },
+  {
+    "nutritionDataId": "366b24c5-78d5-4f8e-8ecc-2d236154d2f7",
+    "itemId": "62bdaecf-6318-4382-b079-4eb8a077f840",
+    "name": "Mint to Be",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 98,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 43,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 180,
+      "fat": 0,
+      "protein": 1,
+      "sugar": 42,
+      "fiber": 1,
+      "sodium": 20
+    }
+  },
+  {
+    "nutritionDataId": "46bdde40-2756-479b-9b53-bf6716e75147",
+    "itemId": "afebb88a-b6c7-434a-b411-ccb524308fb9",
+    "name": "Honey Lemon-Ade",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 98,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 21,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 90,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 20,
+      "fiber": 0,
+      "sodium": 25
+    }
+  },
+  {
+    "nutritionDataId": "b75f4e63-36fe-43f7-a2fb-f1367587034d",
+    "itemId": "d150c446-1245-4f5b-b927-80f0ed27b4bd",
+    "name": "Heimlich Chew Chew Juice",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 97,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 18,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 110,
+      "fat": 2,
+      "protein": 3,
+      "sugar": 12,
+      "fiber": 1,
+      "sodium": 157
+    }
+  },
+  {
+    "nutritionDataId": "b9b9552b-3253-46c9-aa1e-60cf4bfcb5ef",
+    "itemId": "1ea0e4b2-9b9a-4b9f-b386-f40cad460575",
+    "name": "Iced Brown Sugar Oatmilk Shaken Espresso",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 95,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 20,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 120,
+      "fat": 3,
+      "protein": 2,
+      "sugar": 18,
+      "fiber": 0,
+      "sodium": 105
+    }
+  },
+  {
+    "nutritionDataId": "f77056c9-b03d-4e9c-8fb8-ab619751ff88",
+    "itemId": "24729fc0-daa1-4901-97b8-1adc78b7a669",
+    "name": "Iced Chocolate Almondmilk Shaken Espresso",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 95,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 19,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 110,
+      "fat": 3,
+      "protein": 2,
+      "sugar": 15,
+      "fiber": 1,
+      "sodium": 105
+    }
+  },
+  {
+    "nutritionDataId": "58e8e8dd-516e-4626-b4d7-a079f38ed4ee",
+    "itemId": "8413ab19-f25b-4681-8faf-3f338ffb6358",
+    "name": "Seasonal Milk Shakes",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 95,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 81,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 650,
+      "fat": 30,
+      "protein": 13,
+      "sugar": 65,
+      "fiber": 1,
+      "sodium": 280
+    }
+  },
+  {
+    "nutritionDataId": "bfbfe1b1-ec17-4377-a54d-2eebe7959896",
+    "itemId": "8dedf3f2-1cf0-4193-9771-84c269db9da9",
+    "name": "Madagascar Vanilla Milk Shake",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 95,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 73,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 620,
+      "fat": 28,
+      "protein": 13,
+      "sugar": 64,
+      "fiber": 0,
+      "sodium": 250
+    }
+  },
+  {
+    "nutritionDataId": "300a89ea-3596-4d98-8cc3-fe8e58e1ef78",
+    "itemId": "2e0acb9d-5a65-44b7-9b6e-8eb9cd5b46b3",
+    "name": "Coca-Cola Frozen Slushy",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 92,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 56,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 210,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 54,
+      "fiber": 0,
+      "sodium": 20
+    }
+  },
+  {
+    "nutritionDataId": "9abd40e3-8ebf-4820-bd25-5af121c52fb2",
+    "itemId": "30c1636c-25d6-4011-96e9-3018f460be9d",
+    "name": "Frozen Hot Chocolate made with Ghirardelli®",
+    "category": "beverage",
+    "park": "Downtown Disney District",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 90,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 91,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 700,
+      "fat": 30,
+      "protein": 12,
+      "sugar": 85,
+      "fiber": 3,
+      "sodium": 280
+    }
+  },
+  {
+    "nutritionDataId": "7268acc2-b3bb-461c-b674-fad0ac4ff9ff",
+    "itemId": "dc846cbf-23a4-492d-8dda-fa7c71fb1380",
+    "name": "Fanta Orange Frozen Slushy",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 90,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 63,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 220,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 56,
+      "fiber": 0,
+      "sodium": 25
+    }
+  },
+  {
+    "nutritionDataId": "4b0990ad-f7aa-47fa-9eec-9230a23995d5",
+    "itemId": "f8b73422-28f7-41da-b0f4-1bf22373ca2a",
+    "name": "2026 FLOWER & GARDEN FESTIVAL- Dubai Chocolate Frozen Cappuccino",
+    "category": "beverage",
+    "park": "Walt Disney World Festivals & Events",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 90,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 72,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 550,
+      "fat": 26,
+      "protein": 8,
+      "sugar": 60,
+      "fiber": 2,
+      "sodium": 200
+    }
+  },
+  {
+    "nutritionDataId": "c49a10e4-0f9d-4011-b011-f8695fd05a66",
+    "itemId": "a47ba0d1-fbd2-47ac-9cdb-5692d599d30e",
+    "name": "Lait (Milk)",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 89,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 15,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 140,
+      "fat": 4,
+      "protein": 8,
+      "sugar": 15,
+      "fiber": 0,
+      "sodium": 130
+    }
+  },
+  {
+    "nutritionDataId": "1f30f54d-d9c0-4a39-a4b2-3392473336f5",
+    "itemId": "b6494937-57fa-4084-bb34-313cbc8bae3c",
+    "name": "Strawberry Boba with Green Matcha Tea and Oatmilk",
+    "category": "beverage",
+    "park": "Disney's Typhoon Lagoon Water Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 89,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 64,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 340,
+      "fat": 6,
+      "protein": 4,
+      "sugar": 45,
+      "fiber": 1,
+      "sodium": 90
+    }
+  },
+  {
+    "nutritionDataId": "1245e907-2feb-4a65-97b5-f9d86dc4c68a",
+    "itemId": "ccc4174d-c1a8-486b-9eea-be1030f40c02",
+    "name": "For children 9 and under: cereal with milk",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 89,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 39,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 200,
+      "fat": 3,
+      "protein": 7,
+      "sugar": 18,
+      "fiber": 1,
+      "sodium": 220
+    }
+  },
+  {
+    "nutritionDataId": "750658f5-7e7e-45e3-b92b-08b9d31e007d",
+    "itemId": "9c2e11b6-9a7d-4b64-8182-b6785f4e64d1",
+    "name": "Fanta Frozen Slushy",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 88,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 62,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 220,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 56,
+      "fiber": 0,
+      "sodium": 25
+    }
+  },
+  {
+    "nutritionDataId": "b8bd127d-28ae-4a55-99a8-37f5bf4ab3b2",
+    "itemId": "cfc3612f-c53b-4d23-9c43-0ff4b7839e97",
+    "name": "Strawberry Lemonade",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 85,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 1,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "4fd4ba00-251e-4e9f-a4e6-5999592a3482",
+    "itemId": "f63f4997-2356-48f2-ac97-ba490e44e2fd",
+    "name": "Blue Lagoon Lemonade",
+    "category": "beverage",
+    "park": "Disney's Animal Kingdom",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 85,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 30,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 103,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 24,
+      "fiber": 0,
+      "sodium": 8
+    }
+  },
+  {
+    "nutritionDataId": "b4d3affc-b03b-4d76-b629-d79c6b2a08f6",
+    "itemId": "57685085-ad8e-429e-951a-1f1951d3b475",
+    "name": "Holiday Souvenir Stainless Butterbeer™",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 83,
+      "confidence": 40
+    },
+    "update": {
+      "carbs": 69,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 290,
+      "fat": 3,
+      "protein": 0,
+      "sugar": 57,
+      "fiber": 0,
+      "sodium": 110
+    }
+  },
+  {
+    "nutritionDataId": "2e013094-c9a7-47e1-8cfd-789c34100fc0",
+    "itemId": "e887cd17-02a9-4d3e-9e89-509a8535aa14",
+    "name": "Holiday Souvenir Stainless Butterbeer™",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 83,
+      "confidence": 40
+    },
+    "update": {
+      "carbs": 69,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 290,
+      "fat": 3,
+      "protein": 0,
+      "sugar": 57,
+      "fiber": 0,
+      "sodium": 110
+    }
+  },
+  {
+    "nutritionDataId": "5ad6dfb5-f0d2-429c-aa52-287e42f056ce",
+    "itemId": "496af181-1db2-4c26-ac66-60a1504e84e4",
+    "name": "Mango Lassi",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 82,
+      "confidence": 58
+    },
+    "update": {
+      "carbs": 49,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 280,
+      "fat": 4,
+      "protein": 7,
+      "sugar": 48,
+      "fiber": 1,
+      "sodium": 85
+    }
+  },
+  {
+    "nutritionDataId": "e08b6680-d81f-455d-847e-db2f1a548178",
+    "itemId": "20d65c47-2608-4e32-96f1-566b517c8050",
+    "name": "2026 FLOWER & GARDEN FESTIVAL- Ice Cream Float",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 80,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 70,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 400,
+      "fat": 9,
+      "protein": 5,
+      "sugar": 62,
+      "fiber": 0,
+      "sodium": 120
+    }
+  },
+  {
+    "nutritionDataId": "869b413e-e8a4-4530-b4c2-df83a1b1e137",
+    "itemId": "2db6e535-3172-4724-acc2-24f364f55a0b",
+    "name": "Shakin' Jamaican Cold Brew",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 80,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 29,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 150,
+      "fat": 2,
+      "protein": 2,
+      "sugar": 28,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "186c6c5a-c241-41c9-926c-5caa297e420e",
+    "itemId": "4244290a-000d-4b8e-9035-239a24b5f9ea",
+    "name": "Premium Lemonade in a Souvenir cup",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 80,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 38,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 161,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 38,
+      "fiber": 0,
+      "sodium": 8
+    }
+  },
+  {
+    "nutritionDataId": "134bf149-8226-43a9-9327-94879203c6d4",
+    "itemId": "71fdd71e-9a0b-4f1a-9fe4-e1019a09460e",
+    "name": "Charlie Brown Smoothie",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 80,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 59,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 420,
+      "fat": 16,
+      "protein": 11,
+      "sugar": 30,
+      "fiber": 5,
+      "sodium": 160
+    }
+  },
+  {
+    "nutritionDataId": "18f429a3-4348-4a55-ac38-61aafb0461c7",
+    "itemId": "fb00b215-aa5c-44fb-88db-0672bf9756f7",
+    "name": "Awesome Lemonade",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 80,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 32,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 169,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 28,
+      "fiber": 0,
+      "sodium": 9
+    }
+  },
+  {
+    "nutritionDataId": "85fba8f1-b206-42d2-a8a4-7ccfb1e8a4d4",
+    "itemId": "2088712e-1c91-4db3-aeff-0c046a7472ed",
+    "name": "Teddy's Tea",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 78,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 0,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 1,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 1
+    }
+  },
+  {
+    "nutritionDataId": "40c4e358-156c-442c-8c4d-43d0f0917cc7",
+    "itemId": "dc706e85-968d-4ce9-bf14-61e6404f5c45",
+    "name": "Hong Kong Boba Tea",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 75,
+      "confidence": 55
+    },
+    "update": {
+      "carbs": 57,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 380,
+      "fat": 14,
+      "protein": 6,
+      "sugar": 42,
+      "fiber": 0,
+      "sodium": 180
+    }
+  },
+  {
+    "nutritionDataId": "56f6cc85-6306-4785-b4ab-831ff3a64655",
+    "itemId": "843c832e-5921-4070-b3b5-8cfc7da53e56",
+    "name": "Frappuccino",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 73,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 63,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 420,
+      "fat": 16,
+      "protein": 5,
+      "sugar": 62,
+      "fiber": 0,
+      "sodium": 230
+    }
+  },
+  {
+    "nutritionDataId": "513ea219-7873-4ccb-b44a-5969ba452978",
+    "itemId": "1fdf24fc-597c-4553-84ca-5e33a43153fe",
+    "name": "Strawberry Gelato Shake",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 72,
+      "confidence": 40
+    },
+    "update": {
+      "carbs": 90,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 620,
+      "fat": 25,
+      "protein": 9,
+      "sugar": 74,
+      "fiber": 1,
+      "sodium": 220
+    }
+  },
+  {
+    "nutritionDataId": "23f58425-4d81-42dd-9a1d-9aa23437f62e",
+    "itemId": "55dbe1e4-c0a1-4984-884a-000e5101e35e",
+    "name": "S'mores Gelato Shake",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 72,
+      "confidence": 40
+    },
+    "update": {
+      "carbs": 100,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 700,
+      "fat": 28,
+      "protein": 10,
+      "sugar": 80,
+      "fiber": 2,
+      "sodium": 280
+    }
+  },
+  {
+    "nutritionDataId": "79154228-fbaf-47a4-9ef6-abad98a82099",
+    "itemId": "59cf532d-9d7b-4d42-bd34-7d6b4bea4e54",
+    "name": "Mango Lassi",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 72,
+      "confidence": 66
+    },
+    "update": {
+      "carbs": 45,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 250,
+      "fat": 5,
+      "protein": 7,
+      "sugar": 40,
+      "fiber": 1,
+      "sodium": 95
+    }
+  },
+  {
+    "nutritionDataId": "2f02470e-a21d-4a42-a8d3-cf5c6a22dec1",
+    "itemId": "024312bd-a22c-4417-8d96-f57519285c31",
+    "name": "Power Pack",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 70,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 69,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 400,
+      "fat": 8,
+      "protein": 10,
+      "sugar": 35,
+      "fiber": 5,
+      "sodium": 350
+    }
+  },
+  {
+    "nutritionDataId": "857f913f-648a-4733-b76d-5701e56fa559",
+    "itemId": "1186fc29-9e40-4316-ad55-80ea2e4f613f",
+    "name": "POWER Pack",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 70,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 64,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 340,
+      "fat": 6,
+      "protein": 8,
+      "sugar": 30,
+      "fiber": 5,
+      "sodium": 300
+    }
+  },
+  {
+    "nutritionDataId": "1e25d04c-2893-434c-abf0-c39290551d9d",
+    "itemId": "372431ee-bd94-405d-a45a-38d03d998d9d",
+    "name": "Power Pack",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 70,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 69,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 380,
+      "fat": 5,
+      "protein": 8,
+      "sugar": 40,
+      "fiber": 5,
+      "sodium": 300
+    }
+  },
+  {
+    "nutritionDataId": "df1e7412-554b-4924-9e87-7e8855b93e77",
+    "itemId": "92615b00-dba5-4eab-8cf3-73058765d751",
+    "name": "Power Pack",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 70,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 71,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 420,
+      "fat": 7,
+      "protein": 12,
+      "sugar": 45,
+      "fiber": 6,
+      "sodium": 350
+    }
+  },
+  {
+    "nutritionDataId": "32b38b8c-12f7-4ee0-9ad7-809b70180a15",
+    "itemId": "93f3edcd-78cd-4e8d-8d02-7e39fbdeab4e",
+    "name": "Kid's POWER Pack",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 70,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 71,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 400,
+      "fat": 6,
+      "protein": 11,
+      "sugar": 42,
+      "fiber": 6,
+      "sodium": 330
+    }
+  },
+  {
+    "nutritionDataId": "0fea23d0-39c9-410d-9a70-b95df34c8863",
+    "itemId": "a239ba30-4f32-4b62-a2ba-24f0a601a9b0",
+    "name": "Power Pack",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 70,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 70,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 400,
+      "fat": 7,
+      "protein": 10,
+      "sugar": 42,
+      "fiber": 5,
+      "sodium": 320
+    }
+  },
+  {
+    "nutritionDataId": "b4d986da-e130-48d6-bd23-c6b34e4cb6df",
+    "itemId": "af22700d-0f0f-43fd-9dc8-7e2c61bfced1",
+    "name": "Kid's Power Pack",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 70,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 69,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 380,
+      "fat": 6,
+      "protein": 9,
+      "sugar": 38,
+      "fiber": 5,
+      "sodium": 300
+    }
+  },
+  {
+    "nutritionDataId": "02d57c42-e535-489d-b038-60d62e1dea58",
+    "itemId": "e504a903-5b63-49f5-be13-43573dd2a8b7",
+    "name": "Kid's Power Pack",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 70,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 69,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 380,
+      "fat": 6,
+      "protein": 9,
+      "sugar": 38,
+      "fiber": 5,
+      "sodium": 300
+    }
+  },
+  {
+    "nutritionDataId": "512f1a7b-3daf-4b14-a95a-2c63a943d209",
+    "itemId": "fbd662d9-09b0-4286-adae-9e9402e7bc11",
+    "name": "Lemonade Slushy",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 70,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 56,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 240,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 56,
+      "fiber": 0,
+      "sodium": 15
+    }
+  },
+  {
+    "nutritionDataId": "f4c2552e-48d8-4516-a563-47a35fb644fd",
+    "itemId": "1dee88fe-2606-4d9e-a6e5-bc0a2344f309",
+    "name": "Chai Latte",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 67,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 40,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 240,
+      "fat": 4,
+      "protein": 7,
+      "sugar": 40,
+      "fiber": 0,
+      "sodium": 115
+    }
+  },
+  {
+    "nutritionDataId": "cedb0c73-5a7c-42d5-8dbb-13f104ac116b",
+    "itemId": "1161dad1-9032-4598-9361-c589ee6f0316",
+    "name": "Mint to Be",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 40,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 160,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 36,
+      "fiber": 0,
+      "sodium": 20
+    }
+  },
+  {
+    "nutritionDataId": "1d0504b6-518c-4a7a-9a88-7c89dd7534cd",
+    "itemId": "3a2b4100-a223-45f5-9410-539d06ea2e9f",
+    "name": "Soft Drinks",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 44,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 170,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 44,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "062c9420-8515-4361-b35a-519af9452a5d",
+    "itemId": "4eabd4d3-06e1-4425-88d8-0a3dc6a60c51",
+    "name": "Decaf Coffee",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "tier": "chain+decomposition",
+    "confidence": 72,
+    "before": {
+      "carbs": 65,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 0,
+      "confidence_score": 72,
+      "source_detail": "triangulated chain+decomposition agree (chain/decomposition); calibrated tier; 2026-06-10",
+      "calories": 5,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 5
+    }
+  },
+  {
+    "nutritionDataId": "848ff9b3-8984-450d-a751-ad8b576d4f40",
+    "itemId": "8bce283f-439b-49d2-b85f-1beca298323b",
+    "name": "Soft Drinks",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 44,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 170,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 44,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "fe8631f1-043e-45dc-9051-3190396af32c",
+    "itemId": "8c700138-839d-400c-a997-4179e57155ce",
+    "name": "Soft Drinks",
+    "category": "beverage",
+    "park": "Disney's Typhoon Lagoon Water Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 44,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 170,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 44,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "c98e31d1-ae91-4a37-a530-50c9cd46c558",
+    "itemId": "8f19f7ff-cee7-44da-a23c-82acad81a101",
+    "name": "Soft Drinks",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 44,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 170,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 44,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "252985a3-fe00-403c-9174-27212db63e0e",
+    "itemId": "990c693e-fec4-4950-93bb-c216f690ce75",
+    "name": "Assorted Coca-Cola Fountain Beverages",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 42,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 170,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 42,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "e5a58c64-ce59-454d-9664-b08f5645f6c9",
+    "itemId": "9a16f882-0487-4483-b414-ff49b8bc9671",
+    "name": "Soft Drinks",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 44,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 170,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 44,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "46c91430-30ae-4911-9f47-74ff3736c714",
+    "itemId": "a0c540d3-aed7-4ed3-8a9f-e6ee48017074",
+    "name": "Frozen Butterfly Pea Tea Lemonade",
+    "category": "beverage",
+    "park": "Disney's Typhoon Lagoon Water Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 56,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 215,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 52,
+      "fiber": 0,
+      "sodium": 15
+    }
+  },
+  {
+    "nutritionDataId": "0fcee957-85bb-471d-a3c5-15d58a6bee74",
+    "itemId": "aeb7d54a-5786-44a0-99ff-c8313015c883",
+    "name": "Soft Drinks",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 44,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 170,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 44,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "01c3f64e-e58b-4a60-bb4b-f9144e9cdf83",
+    "itemId": "bed6fc7d-bc64-494b-a0d8-b80f71445da8",
+    "name": "Fountain Beverages",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 42,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 170,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 42,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "0f6fa22d-8fbd-4a12-9898-ca89499083ed",
+    "itemId": "cbae9575-9c70-48b7-8bae-824d571f0f0b",
+    "name": "Berry Acai Smoothie",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 61,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 300,
+      "fat": 3,
+      "protein": 8,
+      "sugar": 45,
+      "fiber": 5,
+      "sodium": 80
+    }
+  },
+  {
+    "nutritionDataId": "4204eaf3-bec0-49f9-86ec-d0ccf6f5ca05",
+    "itemId": "d92336ab-9d3d-45e1-86cf-c1510e2e52fc",
+    "name": "Coca-Cola Freestyle® Souvenir Cup",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 41,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 165,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 41,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "9825af46-d323-4e52-8322-c06720c6b628",
+    "itemId": "e686a132-a974-41e3-9957-8aed9670e6b6",
+    "name": "Single Serve Coca-Cola Freestyle® cup",
+    "category": "beverage",
+    "park": "Universal Epic Universe",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 38,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 165,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 38,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "65a35b0e-ec3f-4151-a420-d88f4a0c72cf",
+    "itemId": "f3c4d299-dee4-4989-8b93-1452ca9df7e6",
+    "name": "Single Serve Coca-Cola Freestyle® cup",
+    "category": "beverage",
+    "park": "Universal Epic Universe",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 65,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 38,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 165,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 38,
+      "fiber": 0,
+      "sodium": 35
+    }
+  },
+  {
+    "nutritionDataId": "5ba82550-a322-49e8-9391-91d1744c979e",
+    "itemId": "26d93ef5-5375-4f36-b89a-89e092b85761",
+    "name": "Chai Latte",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 64,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 40,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 240,
+      "fat": 4,
+      "protein": 8,
+      "sugar": 40,
+      "fiber": 0,
+      "sodium": 115
+    }
+  },
+  {
+    "nutritionDataId": "120b90a1-04a2-40e9-9b4f-aa9d50e00c62",
+    "itemId": "dcc9c58a-272e-4403-966d-02d49241f04e",
+    "name": "Chai Latte",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 64,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 40,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 240,
+      "fat": 4,
+      "protein": 8,
+      "sugar": 40,
+      "fiber": 0,
+      "sodium": 115
+    }
+  },
+  {
+    "nutritionDataId": "ecb081f2-8624-4750-b9e2-f54d2785e127",
+    "itemId": "fd92cff3-64ad-4880-97a4-20ea6ce06251",
+    "name": "Nitro Cold Brew",
+    "category": "beverage",
+    "park": "Universal CityWalk",
+    "tier": "chain+decomposition",
+    "confidence": 72,
+    "before": {
+      "carbs": 62,
+      "confidence": 50
+    },
+    "update": {
+      "carbs": 0,
+      "confidence_score": 72,
+      "source_detail": "triangulated chain+decomposition agree (chain/decomposition); calibrated tier; 2026-06-10",
+      "calories": 5,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 10
+    }
+  },
+  {
+    "nutritionDataId": "6601eb11-fb9d-418f-9621-6352c2ce56c1",
+    "itemId": "10e55787-07b6-4829-a343-0c6abddaf34a",
+    "name": "Pistachio Frappuccino",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 60,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 64,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 440,
+      "fat": 16,
+      "protein": 6,
+      "sugar": 60,
+      "fiber": 0,
+      "sodium": 260
+    }
+  },
+  {
+    "nutritionDataId": "0c589c05-d895-42dd-aa47-22936cc8126a",
+    "itemId": "1698c02e-91da-4fb0-9d33-8fe73830604a",
+    "name": "Kawabunga Smoothie",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 60,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 50,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 220,
+      "fat": 1,
+      "protein": 2,
+      "sugar": 40,
+      "fiber": 3,
+      "sodium": 90
+    }
+  },
+  {
+    "nutritionDataId": "f0028edf-8063-45ee-afee-6f259021cd4e",
+    "itemId": "17dc0770-13f3-4f02-a670-557a1f6a9641",
+    "name": "Pistachio Frappuccino",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 60,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 64,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 440,
+      "fat": 16,
+      "protein": 6,
+      "sugar": 60,
+      "fiber": 0,
+      "sodium": 260
+    }
+  },
+  {
+    "nutritionDataId": "dcdf8d21-d691-49c3-ad08-ed05a94c7a44",
+    "itemId": "36d29053-a0b0-43c8-a2de-b7885780dc98",
+    "name": "Green Tea Fruit Splash",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 60,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 0,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 1,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 1
+    }
+  },
+  {
+    "nutritionDataId": "bee46d89-eb0a-49b8-83eb-8a7d81ade72f",
+    "itemId": "3797320d-2d35-4d7d-b13a-317a69b7a738",
+    "name": "Frappuccino",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 60,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 61,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 400,
+      "fat": 14,
+      "protein": 5,
+      "sugar": 55,
+      "fiber": 0,
+      "sodium": 240
+    }
+  },
+  {
+    "nutritionDataId": "8ed6d526-be1d-49f6-9a94-a634f5f7ee1a",
+    "itemId": "55c9ee09-07ff-4751-8bc4-f6b00fb5ca49",
+    "name": "Frozen Starbucks Refreshers™ with Lemonade",
+    "category": "beverage",
+    "park": "Disney's Animal Kingdom",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 60,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 50,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 190,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 42,
+      "fiber": 0,
+      "sodium": 15
+    }
+  },
+  {
+    "nutritionDataId": "631c7284-c651-44b7-b70d-822b41755d56",
+    "itemId": "6190cb37-191e-4611-8ac1-d5d1562099a1",
+    "name": "Cheeseburger",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 60,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 49,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 480,
+      "fat": 22,
+      "protein": 22,
+      "sugar": 10,
+      "fiber": 2,
+      "sodium": 750
+    }
+  },
+  {
+    "nutritionDataId": "22fa06d4-3ebc-413d-a8fc-69df045c6c1e",
+    "itemId": "d6b8c549-6aa1-4b86-85e2-fe48906a7cdd",
+    "name": "Tropical Boba Juice",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 60,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 18,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 110,
+      "fat": 2,
+      "protein": 3,
+      "sugar": 12,
+      "fiber": 1,
+      "sodium": 157
+    }
+  },
+  {
+    "nutritionDataId": "fd42154c-c473-4c2a-aa25-f8087f71932d",
+    "itemId": "daf6ec08-09da-474c-8c44-c03c3a6089fe",
+    "name": "Tropical Boba Juice",
+    "category": "beverage",
+    "park": "EPCOT Flower & Garden Festival 2026",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 60,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 18,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 110,
+      "fat": 2,
+      "protein": 3,
+      "sugar": 12,
+      "fiber": 1,
+      "sodium": 157
+    }
+  },
+  {
+    "nutritionDataId": "2acacc76-c7a4-4433-8d75-88f8246af7c3",
+    "itemId": "ee752b41-a820-40d4-8ed1-1f6f92b194ae",
+    "name": "Meiloorun Juice",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 60,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 18,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 110,
+      "fat": 2,
+      "protein": 3,
+      "sugar": 12,
+      "fiber": 1,
+      "sodium": 157
+    }
+  },
+  {
+    "nutritionDataId": "c13cb877-f655-479b-941e-401a969cdc01",
+    "itemId": "257bc416-c523-4968-8f83-467997aed819",
+    "name": "Coca Cola Coffee",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 55,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 0,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 5,
+      "fat": 0,
+      "protein": 1,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 5
+    }
+  },
+  {
+    "nutritionDataId": "a9375802-d706-48b4-98a3-e8158f5e6e9f",
+    "itemId": "28e4e4c6-fcf2-4c9d-9f9d-42342389f389",
+    "name": "The Cubano Americano",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 55,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 0,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 5,
+      "fat": 0,
+      "protein": 1,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 5
+    }
+  },
+  {
+    "nutritionDataId": "a4af8238-71d9-4395-8a2f-5a950cb3efec",
+    "itemId": "b6b5bc80-c0a5-41bd-8460-e07050100312",
+    "name": "Coca Cola Coffee",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 55,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 0,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 5,
+      "fat": 0,
+      "protein": 1,
+      "sugar": 0,
+      "fiber": 0,
+      "sodium": 5
+    }
+  },
+  {
+    "nutritionDataId": "bac730c1-f5a8-4d27-8bc8-fa54c58970c9",
+    "itemId": "0232e063-bf37-4df6-9fca-a552f0a69162",
+    "name": "Frozen Strawberry Lemonade Cup",
+    "category": "beverage",
+    "park": "Disney's Typhoon Lagoon Water Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 3,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "86039b56-4774-4378-896e-f4fa43550abb",
+    "itemId": "27864da7-f7f3-434f-a29c-e877b7fd79f0",
+    "name": "Frozen Strawberry Lemonade Cup",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 3,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "f3371004-3907-4bab-98be-81b5f69626b4",
+    "itemId": "4194aae8-efa6-445f-ad05-98a80dabdd93",
+    "name": "Frozen Strawberry Lemonade",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 1,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "d668efa9-240f-414b-927d-c1ec5692cc4c",
+    "itemId": "42233180-7496-4fe5-93b8-b3e541baf697",
+    "name": "Simply Lemonade",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 34,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 130,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 32,
+      "fiber": 0,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "d8c53fbe-cb7b-45d8-bc0e-e5f42797c43b",
+    "itemId": "53ee6cbf-927d-4642-bc51-537a3e2b8fe5",
+    "name": "Frozen Strawberry Lemonade Cup",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 3,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "94304f69-11e2-49b8-88d5-604265ab8903",
+    "itemId": "729e1c6b-4511-4aba-9cbb-6fbdeb419888",
+    "name": "Frozen Strawberry Lemonade Cup",
+    "category": "beverage",
+    "park": "Disney's Typhoon Lagoon Water Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 3,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "da48dede-322e-4fa2-af46-917e42341c36",
+    "itemId": "8596b3c4-901f-46ac-b112-b4dc054cc995",
+    "name": "Frozen Hibiscus-Lemonade Slushy",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 149,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 34,
+      "fiber": 1,
+      "sodium": 6
+    }
+  },
+  {
+    "nutritionDataId": "0656a769-e6dc-482d-a4e0-505866f93d2a",
+    "itemId": "94895400-54c0-43da-ae0a-901e42446e5c",
+    "name": "Frozen Strawberry Lemonade Cup",
+    "category": "beverage",
+    "park": "Disney's Hollywood Studios",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 3,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "42f585e2-b24f-4cf6-a7cb-ca76760dabb4",
+    "itemId": "94d47a52-6ba2-4fd4-b97a-315a1df169b9",
+    "name": "Frozen Strawberry Lemonade Cup",
+    "category": "beverage",
+    "park": "Disney's Blizzard Beach Water Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 3,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "946b1c07-851a-4aec-8b20-69c05fb3f20c",
+    "itemId": "9679a9d9-69f4-4c44-896d-c82fef0b6701",
+    "name": "Simply Lemonade",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 34,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 130,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 32,
+      "fiber": 0,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "30be060a-839e-4ed1-afc2-a4046d7245f8",
+    "itemId": "ac448616-5bfd-49e7-b8b2-d9e2539453ca",
+    "name": "Frozen Hibiscus-Lemonade Slushy",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 149,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 34,
+      "fiber": 1,
+      "sodium": 6
+    }
+  },
+  {
+    "nutritionDataId": "03644b27-9ecd-422f-ac8f-9d0a5d326e8a",
+    "itemId": "b0afb55f-7695-4aa6-9e49-4b180a71e2f1",
+    "name": "Simply Orange Juice, Simply Lemonade Juice",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 35,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 147,
+      "fat": 0,
+      "protein": 1,
+      "sugar": 31,
+      "fiber": 0,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "aa383da8-810f-4c7e-ad15-a89a0a9ff48b",
+    "itemId": "e91de554-5dc3-47f1-bde0-73da94cb22d3",
+    "name": "Lavender Lemonade",
+    "category": "beverage",
+    "park": "Disneyland Resort Hotels",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 30,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 156,
+      "fat": 1,
+      "protein": 1,
+      "sugar": 17,
+      "fiber": 0,
+      "sodium": 22
+    }
+  },
+  {
+    "nutritionDataId": "7f56ea3d-fa9b-4e22-b592-1c871c609913",
+    "itemId": "f453e0d9-d65d-4138-bb70-3e164b504223",
+    "name": "Frozen Strawberry Lemonade Slushy",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 52,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 1,
+      "sodium": 7
+    }
+  },
+  {
+    "nutritionDataId": "5367e2df-0627-4b54-a32c-c74c523a8ecb",
+    "itemId": "9b84d29a-b375-418f-8740-54fd7c2d7109",
+    "name": "Juice",
+    "category": "beverage",
+    "park": "Disneyland Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 50,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 17,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 125,
+      "fat": 3,
+      "protein": 5,
+      "sugar": 4,
+      "fiber": 1,
+      "sodium": 309
+    }
+  },
+  {
+    "nutritionDataId": "3e3a1b2c-23c8-4601-a642-f07dfb63a651",
+    "itemId": "bcea5c7e-1634-4a01-9f9f-99777d3bf576",
+    "name": "Hot Cocoa or Hot Tea",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 50,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 3,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 29,
+      "fat": 0,
+      "protein": 1,
+      "sugar": 3,
+      "fiber": 0,
+      "sodium": 27
+    }
+  },
+  {
+    "nutritionDataId": "f2505f51-d500-447e-b10d-22aceef00fdd",
+    "itemId": "c581e47a-8580-455f-b717-c31790d7a2bb",
+    "name": "Strawberry Lemonade",
+    "category": "beverage",
+    "park": "Disney Springs",
+    "tier": "keyword+chain",
+    "confidence": 55,
+    "before": {
+      "carbs": 50,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 36,
+      "confidence_score": 55,
+      "source_detail": "triangulated keyword+chain agree (keyword/chain); calibrated tier; 2026-06-10",
+      "calories": 145,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 35,
+      "fiber": 1,
+      "sodium": 7
+    }
+  }
+]

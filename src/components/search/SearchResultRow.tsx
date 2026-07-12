@@ -3,6 +3,7 @@ import { getGradeForItem } from '../../lib/grade'
 import { getMenuItemDisplayName, hasUsableNutrition } from '../../lib/display'
 import { GradeBadge } from '../menu/GradeBadge'
 import type { SearchMatchTier } from '../../lib/search-index'
+import { isNutritionDosingGrade } from '../../lib/nutrition-trust'
 
 interface Props {
   item: MenuItemWithNutrition
@@ -16,7 +17,7 @@ export function SearchResultRow({ item, onClick, relevanceTier, relevanceReason 
   const nd = hasUsableNutrition(item) ? item.nutritional_data?.[0] : undefined
   const carbs = nd?.carbs ?? null
   const calories = nd?.calories ?? null
-  const isLowConfidence = nd != null && nd.confidence_score < 70
+  const isLowConfidence = nd != null && !isNutritionDosingGrade(nd)
   const availabilityCount = item.availability_count ?? 1
   const hasMultipleLocations = availabilityCount > 1
 

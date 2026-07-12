@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import type { MenuItemWithNutrition } from '../lib/types'
 import { getDisplayCategory, getMenuItemDisplayName } from '../lib/display'
 import { STORAGE_KEYS } from '../lib/storage-keys'
+import { getActiveCertificationTier, isNutritionDosingGrade } from '../lib/nutrition-trust'
 
 const STORAGE_KEY = STORAGE_KEYS.compare
 const MAX_ITEMS = 3
@@ -23,6 +24,8 @@ export interface CompareItem {
   restaurant: string | null
   parkName: string | null
   isFried: boolean
+  nutritionDosingGrade?: boolean
+  nutritionCertificationTier?: 'A' | 'B' | 'C' | 'D' | null
 }
 
 function toCompareItem(item: MenuItemWithNutrition): CompareItem {
@@ -43,6 +46,8 @@ function toCompareItem(item: MenuItemWithNutrition): CompareItem {
     restaurant: item.restaurant?.name ?? null,
     parkName: item.restaurant?.park?.name ?? null,
     isFried: item.is_fried,
+    nutritionDosingGrade: isNutritionDosingGrade(nd),
+    nutritionCertificationTier: getActiveCertificationTier(nd),
   }
 }
 

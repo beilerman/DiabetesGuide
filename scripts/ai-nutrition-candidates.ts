@@ -12,23 +12,18 @@
  *
  * Usage:
  *   npx tsx scripts/ai-nutrition-candidates.ts                 # all, batches of 20
+ *   npx tsx scripts/ai-nutrition-candidates.ts --priority-slice --limit=100  # audit prioritySlice queue (conf gate defaults to 70)
  *   npx tsx scripts/ai-nutrition-candidates.ts --batch-size=25 --max-conf=45 --limit=200
  */
-import { createClient } from '@supabase/supabase-js'
 import { writeFileSync, mkdirSync, existsSync, rmSync, readdirSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
-import { dosingPriorityScore } from './audit/trust.js'
+import { createSupabaseClient } from './audit/utils.js'
+import { dosingPriorityScore, isPrioritySliceItem, TRUSTED_CONFIDENCE } from './audit/trust.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY
-if (!url || !key) {
-  console.error('Set SUPABASE_URL (or VITE_SUPABASE_URL) and SUPABASE_SERVICE_ROLE_KEY')
-  process.exit(1)
-}
-const supabase = createClient(url, key)
+const supabase = createSupabaseClient()
 
 const args = process.argv.slice(2)
 const num = (flag: string, def: number) => {
@@ -36,7 +31,6 @@ const num = (flag: string, def: number) => {
   return a ? parseInt(a.split('=')[1], 10) : def
 }
 const BATCH = num('--batch-size', 20)
-const MAX_CONF = num('--max-conf', 45)
 const LIMIT = num('--limit', Infinity as unknown as number)
 // --flagged: target items whose CURRENT nutrition is internally inconsistent
 // (definitely wrong), regardless of confidence — the highest accuracy-per-token.
@@ -44,6 +38,14 @@ const FLAGGED = args.includes('--flagged')
 // --priority: order candidates by dosing impact (destination tier x category
 // weight x carb magnitude) so high-stakes items get researched first.
 const PRIORITY = args.includes('--priority')
+// --priority-slice: restrict to entrees/desserts at the top destinations used
+// by audit/quality.ts, i.e. the denominator behind prioritySlice.dosingGrade.
+const PRIORITY_SLICE = args.includes('--priority-slice')
+const ORDERED = PRIORITY || PRIORITY_SLICE
+// The slice queue exists to close the dosing-grade (conf >= 70) gap, so under
+// --priority-slice everything below that bar is a candidate — the generic
+// default of 45 would silently exclude the conf 45-69 band (most USDA rows).
+const MAX_CONF = num('--max-conf', PRIORITY_SLICE ? TRUSTED_CONFIDENCE : 45)
 
 const CHAIN = /starbucks|panda express|cinnabon|cold stone|haagen|ben\s*&?\s*jerry|blaze|earl of sandwich|wetzel|jamba|chicken guy|sprinkles|skyline|larosa|auntie anne|subway|chipotle|shake shack|dunkin/i
 // Broad alcohol detection over name + description: alcoholic drinks carry ~7
@@ -70,7 +72,8 @@ async function fetchAll<T>(table: string, cols: string): Promise<T[]> {
   const page = 1000
   let from = 0
   for (;;) {
-    const { data, error } = await supabase.from(table).select(cols).range(from, from + page - 1)
+    // Stable order — range pagination can skip/duplicate rows without it.
+    const { data, error } = await supabase.from(table).select(cols).order('id').range(from, from + page - 1)
     if (error) throw error
     if (!data || data.length === 0) break
     out.push(...(data as T[]))
@@ -89,7 +92,9 @@ async function main() {
     .filter(it => {
       const nd = it.nutritional_data?.[0]
       const r = Array.isArray(it.restaurant) ? it.restaurant[0] : it.restaurant
+      const parkLocation = r?.park?.location ?? null
       if (CHAIN.test(r?.name ?? '')) return false
+      if (PRIORITY_SLICE && !isPrioritySliceItem(it.category ?? null, parkLocation)) return false
       if (FLAGGED) {
         // Wrong-data targeting: implausible nutrition, not yet authoritative.
         return isImplausible(nd, `${it.name} ${it.description ?? ''}`) && (nd?.confidence_score ?? 0) < 70
@@ -100,14 +105,29 @@ async function main() {
     .map(it => {
       const r = Array.isArray(it.restaurant) ? it.restaurant[0] : it.restaurant
       const nd = it.nutritional_data?.[0]
+      const parkLocation = r?.park?.location ?? null
       return {
-        id: it.id, name: it.name, description: it.description,
-        restaurant: r?.name ?? '', park: r?.park?.name ?? '',
-        curCal: nd?.calories ?? null, curCarbs: nd?.carbs ?? null, conf: nd?.confidence_score ?? null,
-        priority: dosingPriorityScore(it.category ?? null, r?.park?.location ?? null, nd?.carbs ?? null),
+        id: it.id,
+        name: it.name,
+        description: it.description,
+        category: it.category ?? null,
+        restaurant: r?.name ?? '',
+        park: r?.park?.name ?? '',
+        parkLocation,
+        curCal: nd?.calories ?? null,
+        curCarbs: nd?.carbs ?? null,
+        conf: nd?.confidence_score ?? null,
+        priority: dosingPriorityScore(it.category ?? null, parkLocation, nd?.carbs ?? null),
       }
     })
-    .sort((a, b) => (PRIORITY ? b.priority - a.priority : 0))
+    .sort((a, b) => {
+      if (!ORDERED) return 0
+      // Deterministic tiebreaks (locale-independent) so regenerated batches
+      // are reproducible across machines: conf asc, then name.
+      if (b.priority !== a.priority) return b.priority - a.priority
+      if ((a.conf ?? 0) !== (b.conf ?? 0)) return (a.conf ?? 0) - (b.conf ?? 0)
+      return a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+    })
     .slice(0, Number.isFinite(LIMIT) ? LIMIT : undefined)
 
   const dir = resolve(__dirname, '..', 'data', 'ai-batches')
@@ -121,9 +141,9 @@ async function main() {
     writeFileSync(resolve(dir, `batch-${String(n).padStart(3, '0')}.json`), JSON.stringify(batch, null, 2))
   }
 
-  console.log(`Candidates (park-unique, conf < ${MAX_CONF}, with description, non-chain${PRIORITY ? ', dosing-priority order' : ''}): ${cand.length}`)
-  if (PRIORITY && cand.length > 0) {
-    console.log(`Top of queue: ${cand.slice(0, 5).map(c => `${c.name} (${c.park}, score ${c.priority.toFixed(1)})`).join(' | ')}`)
+  console.log(`Candidates (${PRIORITY_SLICE ? 'priority-slice entrees/desserts, ' : ''}park-unique, conf < ${MAX_CONF}, with description, non-chain${ORDERED ? ', dosing-priority order' : ''}): ${cand.length}`)
+  if (ORDERED && cand.length > 0) {
+    console.log(`Top of queue: ${cand.slice(0, 5).map(c => `${c.name} (${c.park}, ${c.category}, ${c.curCarbs ?? '?'}g carbs, conf ${c.conf ?? '?'}, score ${c.priority.toFixed(1)})`).join(' | ')}`)
   }
   console.log(`Wrote ${n} batch file(s) of up to ${BATCH} items to data/ai-batches/`)
   console.log(`\nNext: dispatch an Opus subagent per batch to write data/ai-nutrition.json, then:`)

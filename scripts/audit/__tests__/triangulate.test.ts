@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { assignTriangulation, isImportable, TRIANGULATION_TIERS, type MethodEstimate } from '../triangulate.js'
+import { assignTriangulation, isBeverageCategorySuspect, isImportable, TRIANGULATION_TIERS, type MethodEstimate } from '../triangulate.js'
 
 function est(method: MethodEstimate['method'], carbs: number, full?: MethodEstimate['full']): MethodEstimate {
   return { method, carbs, full }
@@ -25,7 +25,7 @@ describe('assignTriangulation', () => {
   it('grants the beverage tier only to beverages', () => {
     const bev = assignTriangulation([est('chain', 30), est('decomposition', 32)], 'beverage')
     const ent = assignTriangulation([est('chain', 30), est('decomposition', 32)], 'entree')
-    expect(bev!.confidence).toBe(65)
+    expect(bev!.confidence).toBe(72)
     expect(ent!.confidence).toBe(60)
   })
 
@@ -59,9 +59,15 @@ describe('assignTriangulation', () => {
     expect(r!.macros!.calories).toBe(200)
   })
 
-  it('never assigns dosing-grade confidence (all tiers < 70)', () => {
+  it('grants dosing-grade only where the measured gate passed (signed off 2026-06-11)', () => {
+    // Beverage agreements with a decomposition leg measured >=90% within ±10g
+    // and 0% severe undercounts → dosing-grade.
+    expect(TRIANGULATION_TIERS['chain+decomposition'].beverage).toBeGreaterThanOrEqual(70)
+    expect(TRIANGULATION_TIERS['keyword+decomposition'].beverage).toBeGreaterThanOrEqual(70)
+    // keyword+chain beverages measured 4.6% severe undercounts → fails the gate.
+    expect(TRIANGULATION_TIERS['keyword+chain'].beverage).toBeLessThan(70)
+    // No entree/dessert/snack/side tier cleared the gate — all sub-dosing.
     for (const tier of Object.values(TRIANGULATION_TIERS)) {
-      expect(tier.beverage).toBeLessThan(70)
       expect(tier.other).toBeLessThan(70)
     }
   })
@@ -88,5 +94,45 @@ describe('MULTI_SERVING_PATTERN', () => {
     for (const name of ['Chicken Gyro Combo', 'French Toast', "Princess Peach's Cake Slice", 'Pepperoni Pizza Slice']) {
       expect(MULTI_SERVING_PATTERN.test(name), name).toBe(false)
     }
+  })
+})
+
+describe('isBeverageCategorySuspect', () => {
+  it('catches food items that are miscategorized as beverages before they can get beverage confidence tiers', () => {
+    for (const name of [
+      'Coffee Cake Cookie',
+      'Brownie Sundae',
+      'Mickey Pretzel',
+      'Birthday Cupcake',
+      'Hot Fudge Sundae',
+      'Apple Pie',
+      'Churro',
+      'Ice Cream Cone',
+    ]) {
+      expect(isBeverageCategorySuspect('beverage', name), name).toBe(true)
+    }
+  })
+
+  it('does not block ordinary beverages from beverage-tier triangulation', () => {
+    for (const name of ['Frozen Lemonade', 'Iced Coffee', 'Strawberry Smoothie', 'Coca-Cola Cherry']) {
+      expect(isBeverageCategorySuspect('beverage', name), name).toBe(false)
+    }
+  })
+
+  it('does not block real drinks whose names carry dessert flavor words', () => {
+    for (const name of [
+      'Cookies and Cream Milkshake',
+      'Birthday Cake Shake',
+      'Cookie Butter Cold Brew',
+      'Funnel Cake Frappuccino',
+    ]) {
+      expect(isBeverageCategorySuspect('beverage', name), name).toBe(false)
+    }
+  })
+
+  it('only fires for rows stored as beverage — the food-word list is unsafe on other categories', () => {
+    expect(isBeverageCategorySuspect('dessert', 'Coffee Cake Cookie')).toBe(false)
+    expect(isBeverageCategorySuspect('snack', 'Mickey Pretzel')).toBe(false)
+    expect(isBeverageCategorySuspect(null, 'Churro')).toBe(false)
   })
 })

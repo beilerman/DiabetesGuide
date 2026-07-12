@@ -35,14 +35,27 @@ import { dosingPriorityScore } from './trust.js'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Measured confidence tiers (calibration 2026-06-10, per agreement pair and
-// category). Beverages cleared the dosing-grade gate on agreement but are
-// still capped at 65 pending explicit sign-off; entrees measured 76-85%
-// within ±10g on agreement — a clear improvement, honestly sub-dosing.
+// category). Dosing-grade (>=70) requires the tier to have MEASURED >=90%
+// within ±10g AND <=1% severe undercounts on ground truth:
+//   - chain+decomposition  beverage: 100%  ±10g, 0%  undercut (n=205) → 72
+//   - keyword+decomposition beverage: 96.3% ±10g, 0% undercut (n=562) → 70
+//   - keyword+chain beverage: 93.8% ±10g but 4.6% severe undercuts → FAILS
+//     the undercount gate, stays sub-dosing at 55
+//   - entree-tier agreements measured 76-85% ±10g → all sub-dosing
+// Beverage dosing-grade signed off by Brad, 2026-06-11. Alcohol-suspected
+// items never reach these tiers (excluded from targets upstream).
+//
+// CAVEAT (2026-07-11): the drink-class split in calibration-methods.ts
+// (smoothie-juice → lemonade/smoothie/refresher/juice) changed the chain
+// estimator after these tiers were measured. The chain-involved tiers
+// (chain+decomposition 72, keyword+chain 55) need `npm run audit:calibrate`
+// re-run — and the numbers re-verified — before the next `--apply`.
+// keyword+decomposition (70) does not use the chain method and is unaffected.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const TRIANGULATION_TIERS: Record<string, { beverage: number; other: number }> = {
-  'chain+decomposition': { beverage: 65, other: 60 },
-  'keyword+decomposition': { beverage: 60, other: 55 },
+  'chain+decomposition': { beverage: 72, other: 60 },
+  'keyword+decomposition': { beverage: 70, other: 55 },
   'keyword+chain': { beverage: 55, other: 50 },
 }
 
@@ -118,6 +131,33 @@ export function assignTriangulation(
 export const MULTI_SERVING_PATTERN =
   /\b(dozen|whole|platter|family|shar(e|ing|eable)|bucket|tray|party|baker'?s|jumbo|giant|colossal|footlong)\b|signature .*cake|celebration cake/i
 
+// Food words that suggest a 'beverage' row is actually food. Kept in sync by
+// hand with FOOD_CONTEXT in recategorize.ts and FOOD_CLASSES in
+// calibration-methods.ts — full unification is pending, so when adding a word
+// check all three lists.
+const BEVERAGE_SUSPECT_FOOD =
+  /\b(cookies?|brownies?|cakes?|cupcakes?|muffins?|croissants?|pastry|pastries|pretzels?|popcorn|donuts?|doughnuts?|sundaes?|pies?|churros?|cinnamon rolls?|ice cream|funnel cakes?|nachos?|fries|waffles?|crepes?)\b/i
+
+// Drink formats whose names legitimately carry dessert flavor words
+// ("Birthday Cake Shake", "Cookie Butter Cold Brew") — these ARE beverages
+// and must keep access to the beverage agreement tiers.
+const BEVERAGE_DRINK_CONTEXT =
+  /\b(milk ?shakes?|shakes?|floats?|smoothies?|lattes?|mochas?|frapp\w*|cold brew|cocoa|hot chocolate|lemonades?|refreshers?|sodas?|slush\w*|icees?|boba|juices?|ciders?|punch)\b/i
+
+/**
+ * Items whose stored category is 'beverage' but whose name is clearly food
+ * (the Coffee Cake Cookie trap) are category-contaminated rows. They must not
+ * receive the beverage agreement tiers — those were measured on actual drinks
+ * — so they route to the queue and should be recategorized first. Names with
+ * an explicit drink format are exempt: a flavor word ("cake", "cookie") in a
+ * shake or latte name does not make the row food.
+ */
+export function isBeverageCategorySuspect(category: string | null, name: string): boolean {
+  if (category !== 'beverage') return false
+  if (BEVERAGE_DRINK_CONTEXT.test(name)) return false
+  return BEVERAGE_SUSPECT_FOOD.test(name)
+}
+
 /** Basic import-safety validation mirroring the import-ai gates. */
 export function isImportable(r: TriangulationResult): boolean {
   if (r.carbs < 0 || r.carbs > 500) return false
@@ -162,8 +202,9 @@ async function main() {
   const argv = process.argv.slice(2)
   const apply = argv.includes('--apply')
   const limit = Number(argv.flatMap((a, i) => (a === '--limit' && argv[i + 1] ? [argv[i + 1]] : []))[0] ?? 300)
+  const categoryFilter = argv.flatMap((a, i) => (a === '--category' && argv[i + 1] ? [argv[i + 1]] : []))[0]
 
-  console.log(`=== Triangulated estimation — ${apply ? 'APPLY' : 'DRY RUN'} (limit ${limit}) ===`)
+  console.log(`=== Triangulated estimation — ${apply ? 'APPLY' : 'DRY RUN'} (limit ${limit}${categoryFilter ? `, category ${categoryFilter}` : ''}) ===`)
   console.log('Fetching catalog…')
   const rows: DbRow[] = []
   const page = 1000
@@ -213,9 +254,12 @@ async function main() {
   // alcohol model), ranked by dosing impact.
   const targets = rows
     .filter((row) => {
+      if (categoryFilter && row.category !== categoryFilter) return false
       const n = Array.isArray(row.nutritional_data) ? row.nutritional_data[0] : row.nutritional_data
       if (!n || n.source === 'official') return false
-      if (n.carbs != null && (n.confidence_score ?? 0) >= 60) return false
+      // Improvable = below dosing grade; the never-downgrade check at plan
+      // time decides whether a given tier actually beats the existing row.
+      if (n.carbs != null && (n.confidence_score ?? 0) >= 70) return false
       if (isLikelyAlcoholic(row.name, { category: row.category, description: row.description } as never)) return false
       return true
     })
@@ -351,7 +395,7 @@ ${itemList}`
     update: Record<string, number | string>
   }
   const planned: PlannedUpdate[] = []
-  const queue: Array<{ id: string; name: string; category: string; park: string; estimates: MethodEstimate[]; priority: number }> = []
+  const queue: Array<{ id: string; name: string; category: string; park: string; reasons: string[]; estimates: MethodEstimate[]; priority: number }> = []
   let noEstimates = 0
 
   for (const t of targets) {
@@ -364,9 +408,18 @@ ${itemList}`
       continue
     }
     const result = assignTriangulation(ests, t.category)
-    if (!result || !isImportable(result) || MULTI_SERVING_PATTERN.test(t.name)) {
+    // Why the item was queued, so the E2 consumer can route it: category-suspect
+    // rows need recategorization, not carb research.
+    const reasons = [
+      ...(!result ? ['no-agreement'] : []),
+      ...(result && !isImportable(result) ? ['not-importable'] : []),
+      ...(MULTI_SERVING_PATTERN.test(t.name) ? ['multi-serving'] : []),
+      ...(isBeverageCategorySuspect(t.category, t.name) ? ['category-suspect'] : []),
+    ]
+    if (!result || reasons.length > 0) {
       queue.push({
         id: t.id, name: t.name, category: t.category, park,
+        reasons,
         estimates: ests,
         priority: dosingPriorityScore(t.category, t.restaurant?.park?.location ?? null, n.carbs),
       })

@@ -1,0 +1,122 @@
+[
+  {
+    "nutritionDataId": "a72c2006-3563-4364-9f99-bac79238aafa",
+    "itemId": "0f529a89-fc9e-4015-b8ec-7efcbb04fba4",
+    "name": "Seasonal Milk Shake",
+    "category": "beverage",
+    "park": "EPCOT",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 95,
+      "confidence": 30
+    },
+    "update": {
+      "carbs": 86,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 650,
+      "fat": 30,
+      "protein": 13,
+      "sugar": 65,
+      "fiber": 1,
+      "sodium": 280
+    }
+  },
+  {
+    "nutritionDataId": "bda6a0ec-4009-4bcc-a0fe-cf69a80a011d",
+    "itemId": "a3aa17b1-2ae1-47b9-85cd-24e5c8093cf0",
+    "name": "Fanta Blue Raspberry Frozen Slushy",
+    "category": "beverage",
+    "park": "Magic Kingdom Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 91,
+      "confidence": 45
+    },
+    "update": {
+      "carbs": 62,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 220,
+      "fat": 0,
+      "protein": 0,
+      "sugar": 56,
+      "fiber": 0,
+      "sodium": 25
+    }
+  },
+  {
+    "nutritionDataId": "b06995cd-99a1-4f3c-8e76-ac3dbe2a6d0a",
+    "itemId": "0566afa5-63ba-4f64-beff-56bc1e3af6ee",
+    "name": "Tropical Milk Shake",
+    "category": "beverage",
+    "park": "Disney's Typhoon Lagoon Water Park",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 90,
+      "confidence": 35
+    },
+    "update": {
+      "carbs": 90,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 600,
+      "fat": 24,
+      "protein": 11,
+      "sugar": 72,
+      "fiber": 1,
+      "sodium": 220
+    }
+  },
+  {
+    "nutritionDataId": "c21f38cc-f478-40ae-9647-2e8b5dc52749",
+    "itemId": "8915db34-4cac-4901-a222-78dfcbd706bb",
+    "name": "Souvenir Stainless Butterbeer™",
+    "category": "beverage",
+    "park": "Universal's Islands of Adventure",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 83,
+      "confidence": 40
+    },
+    "update": {
+      "carbs": 70,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 290,
+      "fat": 3,
+      "protein": 0,
+      "sugar": 57,
+      "fiber": 0,
+      "sodium": 110
+    }
+  },
+  {
+    "nutritionDataId": "d413d28f-e70f-4ca1-93fc-36043d75e813",
+    "itemId": "c5fc1859-ed9c-42df-9a41-8b7ee6a377e2",
+    "name": "Butterbeer™ Stainless Souvenir",
+    "category": "beverage",
+    "park": "Universal Studios Florida",
+    "tier": "keyword+decomposition",
+    "confidence": 70,
+    "before": {
+      "carbs": 83,
+      "confidence": 40
+    },
+    "update": {
+      "carbs": 70,
+      "confidence_score": 70,
+      "source_detail": "triangulated keyword+decomposition agree (keyword/decomposition); calibrated tier; 2026-06-10",
+      "calories": 290,
+      "fat": 3,
+      "protein": 0,
+      "sugar": 57,
+      "fiber": 0,
+      "sodium": 110
+    }
+  }
+]

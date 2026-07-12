@@ -22,7 +22,7 @@ export function Layout() {
   const compareTrayVisible = showCompareTray && compareCount > 0 && compareKey !== dismissedCompareKey
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-stone-50">
+    <div className="min-h-screen overflow-x-hidden bg-cream">
       <PageMeta />
       <SkipLinks />
       <Header />

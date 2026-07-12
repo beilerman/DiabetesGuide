@@ -1,0 +1,2529 @@
+{
+  "schemaReady": false,
+  "shadowMode": true,
+  "generatedAt": "2026-07-11T19:01:18.599Z",
+  "metrics": {
+    "totalItems": 17306,
+    "dosingGradeCount": 0,
+    "dosingGradePct": 0,
+    "dosingImpactWeightedPct": 0,
+    "explicitServingCount": 0,
+    "retrievableProvenanceCount": 0,
+    "quarantinedCount": 0,
+    "expiredCount": 0,
+    "upcomingExpiryCount": 0,
+    "sourceConflictCount": 0,
+    "certifiedValueRegressionCount": 0,
+    "tiers": {
+      "A": 0,
+      "B": 0,
+      "C": 0,
+      "D": 0,
+      "unreviewed": 17306
+    }
+  },
+  "findings": [],
+  "reviewQueue": [
+    {
+      "menuItemId": "0274456b-369f-497c-8b94-c2585a808aad",
+      "itemName": "Natty Dread Vegetable Patties",
+      "priority": 9
+    },
+    {
+      "menuItemId": "031632a0-5d94-454f-8e78-8fc2eb05fd53",
+      "itemName": "Crispy Chicken Gyro Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "0385b618-c3eb-4489-b2a2-efd0514229e7",
+      "itemName": "Kettle Korn Family Bag",
+      "priority": 9
+    },
+    {
+      "menuItemId": "039b1608-43f4-4c4d-8d93-feed27ba276a",
+      "itemName": "Loaded Funnel Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "0496608c-a496-444e-8555-b62d1dd63a7a",
+      "itemName": "Triple Chocolate Bread Pudding",
+      "priority": 9
+    },
+    {
+      "menuItemId": "0549ccd9-c8bc-4db9-a159-4432c46eadc2",
+      "itemName": "Earthquake Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "05ab98bc-bf6b-4220-8a07-e2d4e1c5691c",
+      "itemName": "Herbivore Burger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "08e88d1d-0087-4a31-a856-ca71e1dab5fb",
+      "itemName": "Marshmallow Crisp",
+      "priority": 9
+    },
+    {
+      "menuItemId": "08ee541d-727a-4e4b-84c9-ede36f078c66",
+      "itemName": "Pink Minnie Caramel Apple with M&M'S",
+      "priority": 9
+    },
+    {
+      "menuItemId": "0e02b7fc-9400-4530-9410-0ab0866199fc",
+      "itemName": "Basket O' Bait",
+      "priority": 9
+    },
+    {
+      "menuItemId": "0e99007f-eff9-4b4b-9041-0884e1a54664",
+      "itemName": "Baked Brie en Croute",
+      "priority": 9
+    },
+    {
+      "menuItemId": "0f822581-6541-4e6e-8d16-90c047e2196b",
+      "itemName": "Whole Cheese Pizza",
+      "priority": 9
+    },
+    {
+      "menuItemId": "0fe10df9-4a2b-4979-9b52-044ec649ca97",
+      "itemName": "Fettuccine Alfredo With Chicken Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "11514c04-9d46-4ddf-bfc7-ca89de8c165d",
+      "itemName": "Indian-Style Bread Service (with 3 accompaniments)",
+      "priority": 9
+    },
+    {
+      "menuItemId": "11519f8e-fb5f-405c-9821-0b786c759ac7",
+      "itemName": "Chicken Parmesan Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "1351e51a-d868-475b-93e5-ef9a9e21913c",
+      "itemName": "Indian-Style Bread Service (with all 9 accompaniments)",
+      "priority": 9
+    },
+    {
+      "menuItemId": "13e95fc4-e6b4-4e76-b5ff-e29a258c8511",
+      "itemName": "Kettle Korn Bucket",
+      "priority": 9
+    },
+    {
+      "menuItemId": "14024377-cb30-401d-86fa-47b5298cb83d",
+      "itemName": "Cookies & Cream Cookie",
+      "priority": 9
+    },
+    {
+      "menuItemId": "1c4ad58d-bb96-409b-aed2-e8a0782914eb",
+      "itemName": "Voodoo Dozen",
+      "priority": 9
+    },
+    {
+      "menuItemId": "1d4a30e8-258e-465f-8073-c44a2bc8fd74",
+      "itemName": "Texas",
+      "priority": 9
+    },
+    {
+      "menuItemId": "1e5ce75a-b2c8-4044-b920-3de88f4cbae5",
+      "itemName": "All Classic Dozen",
+      "priority": 9
+    },
+    {
+      "menuItemId": "1e98764d-b8ab-49fd-b05c-1caf58603ac3",
+      "itemName": "Whole Cheese Pizza",
+      "priority": 9
+    },
+    {
+      "menuItemId": "20d517f7-795f-4d8f-8aa3-34c4f4f782e9",
+      "itemName": "Chocolate Piñatas",
+      "priority": 9
+    },
+    {
+      "menuItemId": "21314e02-7ca1-402e-be1d-33da54f3c29b",
+      "itemName": "Spaghetti & Meatballs Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "229b1b11-8c5c-4ebf-946d-3797bead14ea",
+      "itemName": "Chocolate Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "250c51fd-4d37-4e93-a9b1-d573da01a010",
+      "itemName": "Fried Chicken and Doughnuts",
+      "priority": 9
+    },
+    {
+      "menuItemId": "25b14225-6d5c-497a-84d1-243f97d65c99",
+      "itemName": "Sancocho Chicken Soup Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "27c5330c-f606-4c43-8658-1fc50e45bd93",
+      "itemName": "May Contain Nuts",
+      "priority": 9
+    },
+    {
+      "menuItemId": "2868751a-d202-4322-b452-5d27d4dc50e7",
+      "itemName": "Turkey Wrap Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "2b111d5b-bc57-4907-9713-d248256afb3d",
+      "itemName": "Evil Queen Caramel Apple",
+      "priority": 9
+    },
+    {
+      "menuItemId": "2e0d601a-8840-4265-bd0f-e9629935fa13",
+      "itemName": "Vegan Sausage & Peppers Pasta",
+      "priority": 9
+    },
+    {
+      "menuItemId": "31b3deb6-4a73-4e1c-8d9d-5841b36bd69f",
+      "itemName": "Candy Painted Cinnamon Rolls",
+      "priority": 9
+    },
+    {
+      "menuItemId": "31d5c4af-8ed9-42e0-8f06-0c4c11ff76c3",
+      "itemName": "Orange Chicken Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "323edd7b-0cf4-4047-a462-0fb116dd9443",
+      "itemName": "Kettle Korn Bag",
+      "priority": 9
+    },
+    {
+      "menuItemId": "33928a4d-d4aa-4de3-b97f-661b3cf003b4",
+      "itemName": "Spaghetti Pomodoro and Meatballs",
+      "priority": 9
+    },
+    {
+      "menuItemId": "3557896f-667e-4df8-8629-f06eea242042",
+      "itemName": "Belly Full Beef Patties",
+      "priority": 9
+    },
+    {
+      "menuItemId": "367543a8-90dd-4a32-8347-eba6ba12c4ed",
+      "itemName": "BBQ Jackfruit Sandwich",
+      "priority": 9
+    },
+    {
+      "menuItemId": "37c8da0c-f974-4b54-8554-aed4c3358ad2",
+      "itemName": "Jacques' Specialty Flight",
+      "priority": 9
+    },
+    {
+      "menuItemId": "39058605-7937-498c-9d18-3c0aa454a990",
+      "itemName": "That's \"Mint\"",
+      "priority": 9
+    },
+    {
+      "menuItemId": "39944841-c9e9-4ec6-bdd1-98855313936c",
+      "itemName": "Cinnamon Bread",
+      "priority": 9
+    },
+    {
+      "menuItemId": "3a417029-bb12-4f80-8ea7-0b7617f11563",
+      "itemName": "An assortment of Norwegian-inspired Desserts",
+      "priority": 9
+    },
+    {
+      "menuItemId": "3a9ffe7f-07c0-42ec-be1e-3f1ed6acc2ed",
+      "itemName": "Chicken Tender Stack Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "3b551ed6-33a9-44db-b8c8-3087e2329eca",
+      "itemName": "Basket O' Bait Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "40a32b03-f50f-4886-926e-cf8137e58edb",
+      "itemName": "Jumbo Pesto Chicken Slice Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "444c9ba8-a39e-4eef-a8a9-e481c813ae92",
+      "itemName": "Orange Chicken with Fried Rice",
+      "priority": 9
+    },
+    {
+      "menuItemId": "4592fb3b-7898-458c-8b86-92d513455165",
+      "itemName": "Pancake Breakfast",
+      "priority": 9
+    },
+    {
+      "menuItemId": "45f4836f-52f6-4261-85f2-2925af626dc3",
+      "itemName": "Strawberry Shortcake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "4601cbf0-4f8f-426f-aaa8-bdf2edebba04",
+      "itemName": "10\" Cinnamon Roll Skillet",
+      "priority": 9
+    },
+    {
+      "menuItemId": "46f7ef81-6bab-4d32-b7c4-31900a09232c",
+      "itemName": "Pretzel Bread Pudding",
+      "priority": 9
+    },
+    {
+      "menuItemId": "472fa950-f262-4c2f-bce1-d5815cb6f2f2",
+      "itemName": "Chocolate Peanut Butter Cake Slice",
+      "priority": 9
+    },
+    {
+      "menuItemId": "4af0dbab-16cd-41e3-be24-78b14b53083e",
+      "itemName": "Crispy Coconut Shrimp",
+      "priority": 9
+    },
+    {
+      "menuItemId": "4bc84370-b529-4ac7-b5f5-c1fee908ddd3",
+      "itemName": "Not-So-Classic Mickey Caramel Apple",
+      "priority": 9
+    },
+    {
+      "menuItemId": "4c4a8a27-115c-44fd-9cfb-2c28827afa80",
+      "itemName": "Sideshow Bob Foot-Long Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "4c931482-80b7-4584-83b8-c2fcba5a22ea",
+      "itemName": "Pecan Ginger Bliss Rolls",
+      "priority": 9
+    },
+    {
+      "menuItemId": "4d025c2c-a2ae-47ce-82d2-d71d4b41e532",
+      "itemName": "Chocolate X5",
+      "priority": 9
+    },
+    {
+      "menuItemId": "4f630e45-a4ea-4471-b5ed-24022d5b339c",
+      "itemName": "Jammin' Chips and Salsa",
+      "priority": 9
+    },
+    {
+      "menuItemId": "5221f49e-83ba-4752-a61a-7b8904532152",
+      "itemName": "Midnight Munchies",
+      "priority": 9
+    },
+    {
+      "menuItemId": "523ede06-95c7-4a63-afc4-8f771ef54109",
+      "itemName": "S'mores",
+      "priority": 9
+    },
+    {
+      "menuItemId": "526daff6-8d0f-40e1-aa26-ee58a95ee2b2",
+      "itemName": "Pork BBQ Burger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "54147133-9244-4a01-b931-a79f475cd78e",
+      "itemName": "Honey Chicken",
+      "priority": 9
+    },
+    {
+      "menuItemId": "57dda281-bbc7-40c5-8181-76abe1ba06ad",
+      "itemName": "Chocolate Waffle",
+      "priority": 9
+    },
+    {
+      "menuItemId": "587c508d-f33f-41df-b9e0-9775b3424442",
+      "itemName": "Bacon Cheeseburger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "5d1c08c5-528b-49f5-a386-b186d25ad7e0",
+      "itemName": "Bakery Sink",
+      "priority": 9
+    },
+    {
+      "menuItemId": "5e0558bb-7d8a-4e84-9b06-66b15f61f128",
+      "itemName": "Sparkling Volcano Dessert",
+      "priority": 9
+    },
+    {
+      "menuItemId": "5ee465ed-7ca8-47d3-8f22-c9e0fd27a345",
+      "itemName": "Spaghetti e Polpette",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6070758c-f791-4b15-9284-7007c9e36ae8",
+      "itemName": "LandShark® Larger Fish & Chips",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6208fba9-b96d-4d3b-825f-3b22f64f0cdb",
+      "itemName": "Brownie Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "62ca10d9-abf0-430f-b912-5a3704f2729d",
+      "itemName": "Brownie Sundae Martini",
+      "priority": 9
+    },
+    {
+      "menuItemId": "63d368ac-0c07-4310-8f6c-b089e1bd8de7",
+      "itemName": "Battered and Plattered Fish Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6649446b-7d1b-4034-9d51-4808f0b23d55",
+      "itemName": "Mickey Caramel Apple with Chocolate Candies",
+      "priority": 9
+    },
+    {
+      "menuItemId": "681ff460-cfa5-4f14-8785-6d543f7ddd2b",
+      "itemName": "Smoked Chicken Pesto Pasta",
+      "priority": 9
+    },
+    {
+      "menuItemId": "69413b4c-e427-492f-8794-3b47d724adc8",
+      "itemName": "Bread Pudding",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6b7155c0-7ce8-40ae-b7e3-184deb06a2d9",
+      "itemName": "Spaghetti & Meatballs Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6c5c87b2-bb7a-4db7-884e-8134fc4e2991",
+      "itemName": "VALENTINES SPECIAL",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6d66662d-026c-4a08-ab47-8e193035761a",
+      "itemName": "Cobb",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6dc59f06-c2c5-4c3b-89e9-443a04c70e24",
+      "itemName": "Mother Nature Burger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6dcae79d-530d-4f8e-a09a-5136164f75ae",
+      "itemName": "Pumpkin Caramel Double Frosted Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6f75b36f-9a04-4d4c-95a7-f41d3f8e04ff",
+      "itemName": "Steakhouse 71 Signature Chocolate Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "6fcca326-7db5-4ed8-beb1-a06f52112ab9",
+      "itemName": "Ploughman’s",
+      "priority": 9
+    },
+    {
+      "menuItemId": "72fff193-3012-48d1-b611-9604f260d96d",
+      "itemName": "2026 FESTIVAL OF THE ARTS- Wild Berry Funnel Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "74f50fe6-1b04-4032-985c-21c5ec62c0dd",
+      "itemName": "Fish Tacos",
+      "priority": 9
+    },
+    {
+      "menuItemId": "75448a8d-647c-472f-9ad1-35ffac3ccf7f",
+      "itemName": "Morimoto Peking Duck (for two)",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7599b515-55b0-49ab-ba7f-ce960cb11ebc",
+      "itemName": "Grilled Chicken Bacon & Avocado Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "768eaa02-d4a4-469a-89c9-b581ead9a398",
+      "itemName": "Trio Platter",
+      "priority": 9
+    },
+    {
+      "menuItemId": "78186392-ea31-4993-8833-b85ccd985e24",
+      "itemName": "Red Velvet Cinnamon Roll",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7819de68-3274-4d61-bc6c-6fa9bfbada21",
+      "itemName": "Krusty Burger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "79c21f9d-8157-41a9-ab89-fcaae7077e58",
+      "itemName": "Whole Pepperoni Pizza",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7a751a76-0cc1-4463-94b1-910039988a0a",
+      "itemName": "Grilled Tuscan Chicken Sandwich Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7ab38624-4360-4678-8a8d-aba2ef55d50c",
+      "itemName": "The Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7af42825-69e5-441e-b6b5-441c6a22f606",
+      "itemName": "Birthday Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7c7c17b6-7d49-4efc-9815-f301ab67b086",
+      "itemName": "Brownie Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7ce31ac1-b2d1-418e-b5e4-6cd93352ef24",
+      "itemName": "Whole Con Carne Pizza",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7ead0c40-4322-4414-9d35-1c4e5c7edba5",
+      "itemName": "Shrimp Mac & Cheese",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7ef38675-a39a-414c-9c84-47ed36dd8e2c",
+      "itemName": "Spicy Chicken Sandwich Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "7ef77ba2-77bb-41d9-bf43-02a534554a85",
+      "itemName": "Hot Fudge Brownie Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "8130e88a-257a-4fc9-97b6-77bcd36ef174",
+      "itemName": "Peppermint Bark Funnel Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "8484d3f9-7466-4236-a98c-7aa7286562e2",
+      "itemName": "Cheese Pizza Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "84911792-f26a-4d21-b3da-422352e91952",
+      "itemName": "Meat Hater's Pizza Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "84bf4b58-a795-4215-9068-fed44d1a63ce",
+      "itemName": "Strawberry Cheesecake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "86c76969-d98b-44e8-8904-3f25b12fdfb4",
+      "itemName": "Penne Pasta",
+      "priority": 9
+    },
+    {
+      "menuItemId": "88064e98-9697-4538-b8fd-8a8f8d9234e5",
+      "itemName": "Churro Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "883d14f7-5b72-4c59-892b-11ed569c2ad2",
+      "itemName": "Chicken Fingers Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "88bcfcaa-b39d-4f2f-a54a-8a294ba3a4cb",
+      "itemName": "Red Velvet",
+      "priority": 9
+    },
+    {
+      "menuItemId": "8abc36a2-31c4-4e6e-9d4d-24aff41ab05d",
+      "itemName": "Traditional Gyro Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "8cad788d-7fbb-4f09-ad58-09b29c9b439f",
+      "itemName": "Sweet Plantain Bread Pudding",
+      "priority": 9
+    },
+    {
+      "menuItemId": "8cd9e283-aeed-4ebc-90ec-e9c2faaed193",
+      "itemName": "Crispy Orange Chicken Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "8db1dfcb-d8b4-4447-946f-0dadee84b611",
+      "itemName": "Rocky Road Baked Alaska",
+      "priority": 9
+    },
+    {
+      "menuItemId": "8ee90926-37d4-4a5d-b7c7-a6720bfe4711",
+      "itemName": "Cauldron Caramel Apple",
+      "priority": 9
+    },
+    {
+      "menuItemId": "917661c1-4d78-4219-9af6-ac010953f18b",
+      "itemName": "Seven Layer Chocolate Decadence Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "92411ac2-0848-4f58-88ec-9d49fa104fa6",
+      "itemName": "Gimme More S'More",
+      "priority": 9
+    },
+    {
+      "menuItemId": "93045c2c-1a33-4a1e-9139-b738f518fba1",
+      "itemName": "Chicken Fajitas",
+      "priority": 9
+    },
+    {
+      "menuItemId": "9470161d-85f4-4b7b-9c82-8dc150c8a8f1",
+      "itemName": "Red Velvet Funnel Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "98230d58-d5bc-414a-9434-5130e7c7e395",
+      "itemName": "Shrimp Florentine",
+      "priority": 9
+    },
+    {
+      "menuItemId": "9a35eaaf-0fcb-4f0b-acd5-b301a1722b9d",
+      "itemName": "Sand Pail Ice Cream Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "9ce819aa-deeb-4673-8ade-6968a25cb037",
+      "itemName": "Toku-Jyo Sushi Platter",
+      "priority": 9
+    },
+    {
+      "menuItemId": "9d77b65e-a312-49ef-af12-0d1266a2e5a2",
+      "itemName": "Pad Thai",
+      "priority": 9
+    },
+    {
+      "menuItemId": "9ee40e3d-9e87-4a49-a7d5-1b47c3fcdc8f",
+      "itemName": "Aftershock Burger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "a00e7761-d24f-420e-9af4-ed607d343619",
+      "itemName": "Tableside S'mores",
+      "priority": 9
+    },
+    {
+      "menuItemId": "a1f05654-c604-4f1b-be99-7b8f5dd697b7",
+      "itemName": "Hot Honey Chicken Sandwich Platter",
+      "priority": 9
+    },
+    {
+      "menuItemId": "a4a54f80-75a6-4234-b063-c08eb8c85ff4",
+      "itemName": "Not so Little Chicken Sandwich",
+      "priority": 9
+    },
+    {
+      "menuItemId": "a4a5f950-41df-4d13-913e-0afd641dda7b",
+      "itemName": "Roasted Pernil Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "a7bac266-eee9-4575-a386-fa8e25a13cd0",
+      "itemName": "Hot Honey Chicken Sandwich Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "a7caec41-40a3-4adc-8737-b3865d7db9d4",
+      "itemName": "Meat Liker's Pizza Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "a94721d3-4a08-4c7f-b50e-609ac8490f0d",
+      "itemName": "Whole Pepperoni Pizza",
+      "priority": 9
+    },
+    {
+      "menuItemId": "a95a58de-7e2e-4206-b214-813974ef7d56",
+      "itemName": "Grilled Chicken Sandwich Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "a95fa957-2d20-44e0-b1ce-2acefa0ad2fe",
+      "itemName": "Basket O' Calamari Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "aa18f09e-718f-42d7-957d-92b5cd45f766",
+      "itemName": "Hazelnut & Banana",
+      "priority": 9
+    },
+    {
+      "menuItemId": "ac3856ea-0db0-47c5-b0e2-18b9c5ba3586",
+      "itemName": "Cookie Jar",
+      "priority": 9
+    },
+    {
+      "menuItemId": "ad227c66-0414-4638-9b9c-0022bf0f198e",
+      "itemName": "Bread and Butter Pudding",
+      "priority": 9
+    },
+    {
+      "menuItemId": "ae287f09-f8e2-4e2a-a0b1-eb9fa5a7c45e",
+      "itemName": "Campfire Strawberry Shortcake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "af40a530-28cb-4560-9b04-3a3c953a20a2",
+      "itemName": "2026 FLOWER & GARDEN FESTIVAL- Bananas Foster Funnel Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "b0060ce0-b59a-4562-b5f8-b8ad755ec932",
+      "itemName": "Fettuccine Alfredo With Chicken Platter",
+      "priority": 9
+    },
+    {
+      "menuItemId": "b0746f50-8979-49bf-a597-f83a8e4c5d4a",
+      "itemName": "Bread Pudding",
+      "priority": 9
+    },
+    {
+      "menuItemId": "b2cfbb7e-582f-421b-bf95-bff6d68d7eb4",
+      "itemName": "Maple Bourbon BBQ Pulled Pork Sandwich Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "b553b93c-b8d0-4951-91f1-251aa549295e",
+      "itemName": "Pumpkin Caramel Double Frosted Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "b55545d5-4f7c-4857-880d-c969a16e1f90",
+      "itemName": "Brookies, Cookies & Cream",
+      "priority": 9
+    },
+    {
+      "menuItemId": "b6405628-391d-4c5c-a485-3ada683dd30d",
+      "itemName": "Trio Platter",
+      "priority": 9
+    },
+    {
+      "menuItemId": "b6614e14-642f-42a2-88d3-18c515c0b891",
+      "itemName": "Blood Orange Chicken Sandwich",
+      "priority": 9
+    },
+    {
+      "menuItemId": "b734988a-dfab-4e77-84fb-e3cd80f49519",
+      "itemName": "Just Enough For Two",
+      "priority": 9
+    },
+    {
+      "menuItemId": "ba648be1-d7ba-40ad-a3d2-37d9bf6293bd",
+      "itemName": "Falafel Gyro Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "bafbecf2-a533-44b9-ad8d-dd6162e1c87d",
+      "itemName": "Bacon Cheeseburger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "bbdd01d1-4673-4d22-be70-fad1326de376",
+      "itemName": "Whole Veggie Pizza",
+      "priority": 9
+    },
+    {
+      "menuItemId": "bc861d5d-9e00-4bad-b368-4cb68fde3cdc",
+      "itemName": "Vegetable Lo Mein Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "bef609d7-e8b9-4eb9-aba7-b6bc052612a7",
+      "itemName": "The Ribwich Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c00d92f9-fb4e-4405-a559-f5f1f690ffda",
+      "itemName": "Stegosaurus Burger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c110ce97-3371-4999-ae57-ac904ff9ee9e",
+      "itemName": "Tremor Crispy Chicken Sandwich Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c1a6df77-d677-4e7b-8e1a-a48ceacef3ad",
+      "itemName": "Cinnamon Bread",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c21ea55d-52f6-4fa9-a552-4c170cbb1018",
+      "itemName": "Banana Cream Pie",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c2e5a48a-b93e-4cfa-92ec-d99431d9f227",
+      "itemName": "Minnie-Shaped Cinnamon Roll",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c3259148-c59e-4777-baf1-9866e975b159",
+      "itemName": "Basket O' Shrimp Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c353d566-a0b2-424c-9d05-7716b162f7e2",
+      "itemName": "Signature Amorette's Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c394a0c9-80ef-4971-bbcc-bc57ace68a0b",
+      "itemName": "Crispy Garden Vegan Sandwich Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c3eb44eb-f8f1-46da-8181-4ac434557bee",
+      "itemName": "Marinara Garganelli",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c4fae0a5-c67c-4da9-b1f6-8725822f84d6",
+      "itemName": "Jumbo Cinnamon Sugar Pretzel",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c5055c8e-b79f-4bce-b98a-7776dfc39495",
+      "itemName": "Berries & Cream Funnel Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c52da382-6449-48ff-abb0-436cc1c1f16d",
+      "itemName": "Memphis Mafia Fritter",
+      "priority": 9
+    },
+    {
+      "menuItemId": "c920601d-6d45-43a8-ae92-0a41df9735b4",
+      "itemName": "Family Churros",
+      "priority": 9
+    },
+    {
+      "menuItemId": "ca6482a8-c274-4e62-9465-9567ea2b8f2f",
+      "itemName": "Two Foot Dog Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "cad75a80-1f22-4456-bb11-ed9f298d77ce",
+      "itemName": "Pumpkin-spiced Funnel Cake Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "cb9ccee2-b43e-41f5-bb9b-7233b38b302e",
+      "itemName": "Not-So-Classic Minnie Caramel Apple",
+      "priority": 9
+    },
+    {
+      "menuItemId": "ceec7758-2a24-41a4-a957-e55cd94609b7",
+      "itemName": "No Way Jose Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "d286ec5b-d32d-4c80-9f21-3aae95587c57",
+      "itemName": "Chicken Fingers Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "d2b3b935-8e7a-4762-8570-661220b147ad",
+      "itemName": "Burrito",
+      "priority": 9
+    },
+    {
+      "menuItemId": "d395b5a9-f7af-4905-80a6-c760a8c78139",
+      "itemName": "Apple Pie",
+      "priority": 9
+    },
+    {
+      "menuItemId": "d568e96c-653a-425e-b54a-fd76cc71851b",
+      "itemName": "Clogger Burger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "d7ed1ced-0ee3-4690-a01d-a0b5c7f822a1",
+      "itemName": "Aunt Fronnie's Sampler",
+      "priority": 9
+    },
+    {
+      "menuItemId": "d9424e34-2152-4802-b689-8eea1ccdd151",
+      "itemName": "The Original New Orleans Beignets",
+      "priority": 9
+    },
+    {
+      "menuItemId": "dac72a8f-6b13-4c81-9411-6881e29e3273",
+      "itemName": "Cookies n' Cream Funnel Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "dc5456e9-7b27-451a-8090-65974ff91ef1",
+      "itemName": "The Big One Burger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "df6b5e6e-6bfe-4406-bb8e-1a5fe3a29e6b",
+      "itemName": "Warm Chocolate Peanut Butter Cookie Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "e0025d0b-315b-44ea-9b4f-08bf875f34b3",
+      "itemName": "The Great Feast",
+      "priority": 9
+    },
+    {
+      "menuItemId": "e31acf89-c106-45cf-8a2a-ec131e8dd893",
+      "itemName": "Chicken Parmesan Sub Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "e7d2aa8c-5a39-45ab-bf00-653898ee73af",
+      "itemName": "Assorted Desserts",
+      "priority": 9
+    },
+    {
+      "menuItemId": "e9291093-81c8-45cb-9be9-5ee9c6a07388",
+      "itemName": "Whole Veggie Bianca Pizza",
+      "priority": 9
+    },
+    {
+      "menuItemId": "ea72175f-95fb-43db-978e-249885b4b682",
+      "itemName": "Tiffins Signature Bread Service",
+      "priority": 9
+    },
+    {
+      "menuItemId": "ed06646f-0dcb-4971-ae95-fa56e0dd7d6d",
+      "itemName": "Tonga Toast",
+      "priority": 9
+    },
+    {
+      "menuItemId": "eff92d67-6819-41bb-a519-4568b9bd08c8",
+      "itemName": "Chocolate Brownie Bark",
+      "priority": 9
+    },
+    {
+      "menuItemId": "f1924f98-4be2-4e2c-9cb7-58de8799cbfc",
+      "itemName": "Confetti",
+      "priority": 9
+    },
+    {
+      "menuItemId": "f648720c-2d53-4613-b7af-d1ce714e70d3",
+      "itemName": "25lb Apple Pie",
+      "priority": 9
+    },
+    {
+      "menuItemId": "f6d32c33-ab89-43ee-870c-889cad2bc786",
+      "itemName": "Jumbo Pepperoni Pizza Platter",
+      "priority": 9
+    },
+    {
+      "menuItemId": "fad5176f-f256-4421-817b-339945747e50",
+      "itemName": "Chicken Parmesan Platter",
+      "priority": 9
+    },
+    {
+      "menuItemId": "fb8a0c2b-7944-44ba-b44f-2e6a877db5c2",
+      "itemName": "Triple Layer Chocolate Cake",
+      "priority": 9
+    },
+    {
+      "menuItemId": "fc151641-2c98-4352-b891-7f9c025d40ca",
+      "itemName": "Bubble Waffle Sundae",
+      "priority": 9
+    },
+    {
+      "menuItemId": "fcb7d9f5-81f9-461a-8899-2e4d24318ed6",
+      "itemName": "Wellington Cheeseburger Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "ffaf0a74-56ab-4520-8d16-f2341318eaeb",
+      "itemName": "Jumbo Veggie Slice Combo",
+      "priority": 9
+    },
+    {
+      "menuItemId": "30a4db87-e0f0-4434-88c9-f71a92c274a7",
+      "itemName": "Lamb Hummus",
+      "priority": 8.920000000000002
+    },
+    {
+      "menuItemId": "b38a4237-eecc-477d-8137-14a53348a836",
+      "itemName": "Meatball Sub Combo",
+      "priority": 8.920000000000002
+    },
+    {
+      "menuItemId": "30f685f0-32c9-4947-ae58-26bf442a1899",
+      "itemName": "Spicy Chicken Sandwich Platter",
+      "priority": 8.879999999999999
+    },
+    {
+      "menuItemId": "6221dac8-dc99-4fae-b4f2-643d7ccb95fa",
+      "itemName": "Caramel Apple",
+      "priority": 8.84
+    },
+    {
+      "menuItemId": "9a98865f-4083-4e81-a84f-34a059a610d6",
+      "itemName": "Maple Bourbon BBQ Pulled Pork Sandwich Platter",
+      "priority": 8.84
+    },
+    {
+      "menuItemId": "01422eb0-4e57-428b-af13-70e89f28115d",
+      "itemName": "Funnel Cake Gift Kit",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "02715bf4-dc8a-4377-bad7-96cc96e86bb8",
+      "itemName": "Yoshi Mushroom Alfredo",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "1592368f-8d00-4b71-98c0-f7c4b11e1a8d",
+      "itemName": "Cookie Butter Brew",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "1697a9e5-e0af-4828-91c7-ebf0825d3d8e",
+      "itemName": "Mini Cinnamon Bread",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "1f18eaff-cc64-433f-a7d4-f24d25fec157",
+      "itemName": "Jumbo Cheese Slice Combo",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "1ff6887e-b905-4a88-b80c-d0d666786025",
+      "itemName": "Abrictosaurus Apple Crisp",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "22155847-d6fc-4a65-a38e-43206adfe012",
+      "itemName": "Bimini Chicken",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "29ea6f7c-b181-4374-a641-18778842c5ff",
+      "itemName": "Giant Warm Chocolate Chip Cookie",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "2f44c838-b8a6-40e0-b2e9-a8d7852d4371",
+      "itemName": "Sand Pail Sundae",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "4e25a881-4190-4371-8a8a-4c31a73d5c5d",
+      "itemName": "White Chocolate Bread Pudding",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "53435213-229f-40af-bc7d-a8496a5dc913",
+      "itemName": "Spaghetti & Meatballs Platter",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "662df617-d371-4ca1-b0f1-5158c0a76c69",
+      "itemName": "Pabellon-Ropa Vieja",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "691be13c-7480-4b7e-aac1-7f8ee05de97f",
+      "itemName": "Pancake Breakfast",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "6b2b9682-342e-4620-8bdd-30e9ddf3162a",
+      "itemName": "Candy Bowl Sundae",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "7ede4d9a-51b7-4b72-b91a-e5c7ca0d3074",
+      "itemName": "Whole Pesto Chicken Pizza",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "9983daac-11da-4321-8430-d334572fc418",
+      "itemName": "Jamacaroni and Cheese",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "9cf566f9-6a89-4ce7-98bf-29e737448a79",
+      "itemName": "Cluck-A-Doodle Waffle Toodle",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "9dbc8cfe-c5e3-4ae3-9f87-1a294776bc98",
+      "itemName": "Vegan Hot Dog",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "9e0315b9-a5af-4956-9e6a-9816350f45ac",
+      "itemName": "Spaghetti with Meatball",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "a03ca105-7933-4da4-91be-2ebbbfeeb515",
+      "itemName": "Mikey's Bag-A-Donuts",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "afc01b04-883a-487b-8ed3-408582f8f3ec",
+      "itemName": "Earl Grey Lavender Cake",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "b2c1fdfc-5450-466f-bf3a-927283b90589",
+      "itemName": "Footlong Corn Dog & Chili Cheese Tater Curls",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "b9d0fd0a-adeb-46b5-92fe-6f8acb1bd01c",
+      "itemName": "Penne with Marinara Sauce",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "c0081f95-da8a-4194-a91e-ef43b785d872",
+      "itemName": "Devil's Food Chocolate Cake",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "c26324c2-df19-4685-8fdb-486a5d58f330",
+      "itemName": "Eggplant Parmesan",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "ddbfc81d-4e72-478d-8a30-99d5c145dfb1",
+      "itemName": "Pad Thai",
+      "priority": 8.8
+    },
+    {
+      "menuItemId": "61fe7beb-2d29-4635-997b-ae1c4f882527",
+      "itemName": "Triple Double Mint Shake",
+      "priority": 8.76
+    },
+    {
+      "menuItemId": "329f6ea3-96b2-40b2-a9c5-0c2268bed2a7",
+      "itemName": "Chocolate Fudge Sundae",
+      "priority": 8.72
+    },
+    {
+      "menuItemId": "f5fc505a-bf32-43ba-8eeb-f5edf1293291",
+      "itemName": "Jumbo Pepperoni Slice Combo",
+      "priority": 8.72
+    },
+    {
+      "menuItemId": "24c07c54-37b7-4b59-a24d-f4fe72944e4f",
+      "itemName": "Roasted Pernil Platter",
+      "priority": 8.68
+    },
+    {
+      "menuItemId": "2811721c-f296-4e26-9785-f86e5fbd9e11",
+      "itemName": "Pineapple Upside Down Ice Cream",
+      "priority": 8.68
+    },
+    {
+      "menuItemId": "a4719584-6f0d-4a77-8f1c-7ff252bd8eea",
+      "itemName": "Fire Flower Spaghetti and Meatballs",
+      "priority": 8.68
+    },
+    {
+      "menuItemId": "17407888-be6b-4249-9cdc-06a2e3cb3103",
+      "itemName": "Chicken Stinger Gyro Combo",
+      "priority": 8.64
+    },
+    {
+      "menuItemId": "2ea473b4-3cda-48af-bd2a-d657a6e7524c",
+      "itemName": "Caramel Pecanbon®",
+      "priority": 8.64
+    },
+    {
+      "menuItemId": "011b9cda-ba26-43bf-987a-97e07d487ebc",
+      "itemName": "Vegan Field Roast Chili Dog Platter",
+      "priority": 8.6
+    },
+    {
+      "menuItemId": "3780eb9f-143a-4cff-9442-bb28201aa567",
+      "itemName": "Chicken and Waffles",
+      "priority": 8.6
+    },
+    {
+      "menuItemId": "5e9a8b74-01d4-45b6-8380-38c727c81f47",
+      "itemName": "Caribbean Chicken Soup Combo",
+      "priority": 8.6
+    },
+    {
+      "menuItemId": "7b4ac8a0-7039-455a-8b90-d1e2a533eb7f",
+      "itemName": "Red Velvet Funnel Cake",
+      "priority": 8.6
+    },
+    {
+      "menuItemId": "b49ebda4-4c99-47ed-9fb3-8e02b8a9f619",
+      "itemName": "2022 NOVEMBER- Pecan Pie Crazyshake",
+      "priority": 8.6
+    },
+    {
+      "menuItemId": "e96fb5e2-9850-4d4d-8540-2fc90b69fba0",
+      "itemName": "Banana Split",
+      "priority": 8.6
+    },
+    {
+      "menuItemId": "ee3fa27f-99b8-4f2f-93d6-f4560a462d61",
+      "itemName": "Original Banana Split",
+      "priority": 8.6
+    },
+    {
+      "menuItemId": "ee502cca-0697-4d52-9c25-32f0fd8a5fea",
+      "itemName": "BBQ Bacon Cheese Burger",
+      "priority": 8.6
+    },
+    {
+      "menuItemId": "12c19783-fb0a-470b-8715-f9aa1bd1fea1",
+      "itemName": "Smokehouse Angus Beef Brisket",
+      "priority": 8.56
+    },
+    {
+      "menuItemId": "40447a83-a0bf-4cad-8891-f854ff3e6853",
+      "itemName": "Chocolate Cupcake",
+      "priority": 8.56
+    },
+    {
+      "menuItemId": "a9c0d3b1-52ba-4fdc-b603-756242dc0d5f",
+      "itemName": "Mother Nature Burger Platter",
+      "priority": 8.56
+    },
+    {
+      "menuItemId": "4bb14795-0925-42ed-9064-978e5c0bdc0a",
+      "itemName": "Vegan Pasta",
+      "priority": 8.440000000000001
+    },
+    {
+      "menuItemId": "01aed4a0-9a37-48a7-acf9-3012b41e141e",
+      "itemName": "Mickey Sink Sundae",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "0f9d5827-741c-4f75-83d3-f01502e9c804",
+      "itemName": "Smoked Pulled Pork",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "24353bf4-33ea-4a09-8bc2-cd937f545aaa",
+      "itemName": "Monte Cristo",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "29c3b646-87da-434c-a791-a317a1a0cb98",
+      "itemName": "Empanada Platter",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "364269c1-6efe-43ea-a314-492a3c26fa5f",
+      "itemName": "Jumbo Pepperoni Slice Combo",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "41d6fcc2-237c-4484-9320-4811e2d2ebe5",
+      "itemName": "Vegetable Pasta",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "43e44ff5-81a8-496a-8ca1-cd4e3a030443",
+      "itemName": "Vegetable Noodle Combo",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "4eb3a0aa-a3f1-4f70-b1db-eb181e4d0bf3",
+      "itemName": "Catch A Fire Chicken Char-Grilled",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "52bb136a-02b3-4ee1-93a7-ebbf6259f70c",
+      "itemName": "Tacos de Camarón",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "56f3b6ec-faf1-4a46-b5c9-ac29f2dba23b",
+      "itemName": "Minnie Valentine Chocolate Cupcake",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "637f92e6-cbdd-467e-b5c3-e8b81247c973",
+      "itemName": "Cinnamon Apple Cereal Shake",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "680fca51-ad4e-49fd-9376-b6c0189e3554",
+      "itemName": "Spaghetti and Meatball Cupcake",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "6b9703f2-6185-4b95-ad56-1c850bc6e713",
+      "itemName": "Ital Stew",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "7682c4ef-67f5-4486-934f-c92480104794",
+      "itemName": "Spring Salad Combo",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "838355de-4a1a-44a8-b20c-4d5f7644bdad",
+      "itemName": "Chicken alla Parmigiana",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "83c61152-c69d-4d7c-a613-ded9895f674c",
+      "itemName": "Christmas Wreath Cupcake",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "96382da2-affe-40da-ab32-86f9e524a7b0",
+      "itemName": "The Ribwich Platter",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "9c0fe1d6-2180-46a4-9b9a-d50617a6f983",
+      "itemName": "Triple Chocolate Chip Cookie",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "9f17d973-0a9b-4b7a-a0f9-8f5f567f05d8",
+      "itemName": "Fish-N-Chips",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "a1fd9e2b-c50f-4266-8026-8d969c6ca4cb",
+      "itemName": "Strawberry Funnel Cake",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "a6a43e33-f251-4ba8-ac0e-42efa7474e21",
+      "itemName": "Chicken Parmesan",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "af56e458-14f7-4b96-afb4-029e90213b95",
+      "itemName": "Cookies & Cream Beignets",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "aff0c774-232b-4e9f-8a3d-018701be011b",
+      "itemName": "Caramel Popcorn Cupcake",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "b5cdcf42-0114-4952-a512-d2b49137a3b8",
+      "itemName": "Reindeer Sundae",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "b6fbf170-78e6-4a44-8e05-058b03503133",
+      "itemName": "Brownie a la Cold Stone",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "bf05cd55-7336-48ed-8549-284dbb940b91",
+      "itemName": "Eggplant Parmigiana",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "c76119ef-3714-42b0-9f72-af9b117066aa",
+      "itemName": "Classic Mickey Caramel Apple with M&M'S",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "c87016b5-6c83-44d1-a141-36ff9e359eb7",
+      "itemName": "Sideshow Bob Foot-Long Platter",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "e0f9b391-bb45-4288-abac-0ebe4d6fbf8f",
+      "itemName": "Bananas Foster",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "eae319d1-b8fa-4da7-aae5-2c2c318bbbf8",
+      "itemName": "Bang-Bang Chicken",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "efab1145-5072-4797-b88d-5359667db696",
+      "itemName": "Smoked Half Chicken",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "f5d9d6cd-23af-4c84-8026-c39f0b50e2f2",
+      "itemName": "Vanilla Cupcake",
+      "priority": 8.399999999999999
+    },
+    {
+      "menuItemId": "449a539f-176c-4a17-9d06-7019b7bcf43d",
+      "itemName": "Parmesan Cream Shrimp Bucatini",
+      "priority": 8.36
+    },
+    {
+      "menuItemId": "7eae7c22-48e1-400b-b8fb-efe4d82ae17b",
+      "itemName": "Taste of Jamaica",
+      "priority": 8.36
+    },
+    {
+      "menuItemId": "b79b31a9-50fa-4e7d-80fe-2e97d713478a",
+      "itemName": "Chocolate Dirt Cannoli",
+      "priority": 8.36
+    },
+    {
+      "menuItemId": "97c59dbc-21bd-4b77-9a6e-a3ecf10c79a6",
+      "itemName": "Tremor Crispy Chicken Sandwich Platter",
+      "priority": 8.32
+    },
+    {
+      "menuItemId": "286e6506-1491-4869-858f-f2d5e66f122a",
+      "itemName": "Mac and Cheese Pulled Pork",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "30e7b3fe-e45a-4bce-a9b2-bc5c4eecddcd",
+      "itemName": "Pasta Della Nonna",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "464dc980-76d0-4567-b966-101a2b8f42c3",
+      "itemName": "Irish Loaded Chips",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "7b79be67-393c-407c-8ce1-cd06a1527282",
+      "itemName": "Taste of the Islands",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "b6ff0be8-b8bf-4d8b-bc0d-1678ffc91bed",
+      "itemName": "Heavenly Hazelnut",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "c0ce123d-c1e5-4379-a20e-8750e3900f89",
+      "itemName": "Clogger Burger Platter",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "cbb1450b-7cff-48e8-9a35-464d000a4d6c",
+      "itemName": "Gourmet Caramel Apple",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "dcbee395-4069-47ea-a590-7fd4d7bd3cca",
+      "itemName": "Mickey Valentine Vanilla Cupcake",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "e2f42914-0fb2-4120-bb9a-ed51b10f4a6e",
+      "itemName": "Cinnamon Bread Pudding",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "e49afdb7-a2da-419b-bbb4-ec64619749c4",
+      "itemName": "Quattro Cannoli",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "e8de9415-f2be-4786-b4ce-1ae19935080e",
+      "itemName": "Moriawase Double Deuce",
+      "priority": 8.28
+    },
+    {
+      "menuItemId": "0824b5df-520d-4a5b-b7f2-b62ea730b2d1",
+      "itemName": "Chicken Tacos",
+      "priority": 8.24
+    },
+    {
+      "menuItemId": "3a17ee4e-bb1f-4e38-a16b-1102e991b297",
+      "itemName": "Brownie Bites",
+      "priority": 8.24
+    },
+    {
+      "menuItemId": "00241499-1842-4e9a-9864-95fe796bae16",
+      "itemName": "Bread Pudding",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "028cb3ef-d209-4be0-9f8a-735a862d10d8",
+      "itemName": "Christmas Cupcakes",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "04efad79-296f-492b-ab7a-452dfe3d2dee",
+      "itemName": "Thrilla in Vanilla",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "097a84dd-b56c-4a74-89e2-c507f1208dbe",
+      "itemName": "Santa Hat Brownie Sundae",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "1387e19a-71f7-48f4-bf03-c49f899bee19",
+      "itemName": "Hot Fudge Brownie Sundae",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "23351448-7dab-46b0-b32a-a130543cab4a",
+      "itemName": "Peppermint Mocha Milkshake",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "2566b7ef-c13b-4a97-b44d-a779bbb979a5",
+      "itemName": "Midwest Ribs",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "25a6ae4c-be7a-429a-8235-45b86088deb2",
+      "itemName": "Cookie Doughn't You Want Some™",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "299fdd02-d207-4bfd-82e7-2a206b5e2307",
+      "itemName": "Chili-Cheese All-Beef Foot-long Hot Dog",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "33443cbd-ab46-4ce8-859a-d6bc3a039cee",
+      "itemName": "Crispy Garden Vegan Sandwich Platter",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "45e104a9-04ae-47b8-9bb9-101433e2737e",
+      "itemName": "Brownie Sundae",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "47ab7ce4-3048-4ba5-8e53-9f391c214aee",
+      "itemName": "Rasta Pasta",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "51b33215-cf8d-4d46-a03d-07304377f588",
+      "itemName": "Buttermilk Pancakes",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "5561d940-bc93-40cf-915e-bd64ca85bcb2",
+      "itemName": "Spaghetti & Meatballs",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "5905ada8-1742-4a86-a111-dfdc414bb7ba",
+      "itemName": "Zeppole Sundae",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "59bfeb3e-a78f-4737-b801-927f7676debc",
+      "itemName": "Spaghetti and Meatballs",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "5fd6305a-bdb7-48bd-903f-342c729a9dfe",
+      "itemName": "Cinnamon French Toast",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "6517f0a1-88a4-442f-bb32-8b9f0cfaa540",
+      "itemName": "Chicken Parmesan with Marinara Pasta",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "6526b2f7-2cec-40e3-9a77-fa7df7b6c995",
+      "itemName": "Churraffle Sundae",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "72406b28-7abb-46f8-9874-8a53c54ecdfe",
+      "itemName": "Brownie Sundae",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "7d1e8636-5568-46e2-af96-b065cc22e133",
+      "itemName": "Peach Cobbler",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "819937ae-421e-4b41-a370-ead4df251434",
+      "itemName": "Brownie",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "9069b0b1-cc38-4d3d-bd3f-d3aa1336866c",
+      "itemName": "Cast Iron Apple Pie",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "90e6ae51-dfe1-46b0-bcf0-010f29f0d42d",
+      "itemName": "High-Voltage Chicken Sandwich",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "910f4b7e-2b8c-41f3-8853-c4855b0489f5",
+      "itemName": "Creamy Tomato in Artisan Bread",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "925bef76-12fc-4d60-ba0b-c94f701c114e",
+      "itemName": "Cookie Butter Cake",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "92c257d8-d5cf-4e37-a61d-a665266d6364",
+      "itemName": "BBQ Chicken Pizza",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "99bccf5c-bcb5-4425-96d4-e6a35a3b06c9",
+      "itemName": "Strawberry S'mores",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "99e47136-7711-4d75-9d23-8a66516e33ea",
+      "itemName": "Burrata Ravioli Combo",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "9c2d421c-7f3b-4d5f-91a8-b9e275dcadca",
+      "itemName": "Hot Fudge Brownie Sundae",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "a02a00bf-5fed-43aa-bc1b-1ae59b27e768",
+      "itemName": "Parmesan Rosemary Knots",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "a4099e7e-b28f-4906-8c13-5e4efb61de53",
+      "itemName": "Clam Chowder in Artisan Bread",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "b1f52f01-837f-49e5-b82b-2b5f3356ac24",
+      "itemName": "Warm Chocolate Almond Bread",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "b7b465ba-f522-49ca-a554-dc5e0d0a8e0a",
+      "itemName": "Jerk Chicken Pasta",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "c2305fb4-2d09-460e-85f9-582d75bd0b26",
+      "itemName": "Rasta Pasta",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "c246c2e7-7d41-4d14-a07f-2dff2fe5844b",
+      "itemName": "Malva Pudding Cake",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "c7d29349-99cf-4891-b60e-26c206518523",
+      "itemName": "Christmas Wreath Cupcake",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "cf9cf3c9-0296-4635-a67c-2a1dd6374a61",
+      "itemName": "Crispy Orange Chicken",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "d84047d7-28e1-4a83-bae8-0d68e587e27d",
+      "itemName": "Ribs, Steak & Shrimp Trio",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "eadf124a-6be4-4606-a00c-4d5a1e968268",
+      "itemName": "BBQ Bacon Cheeseburger",
+      "priority": 8.2
+    },
+    {
+      "menuItemId": "864e7aff-c068-4fd0-bd7d-4639a2d22e5d",
+      "itemName": "Chocolate Shake",
+      "priority": 8.16
+    },
+    {
+      "menuItemId": "0320c60f-72ac-430f-aa6b-ba9b8e4658df",
+      "itemName": "Big Bopper Burger Combo",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "0731324b-1b44-4b5f-970e-5a1520ba5695",
+      "itemName": "Wilson's Reuben Combo",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "08398061-2ec5-4b37-a26f-b8155d26f22b",
+      "itemName": "Apple Caramel Bread Pudding",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "2e5d502f-dc38-4f42-91af-1a3c2d858a7d",
+      "itemName": "Box of Sixteen Ganache Squares",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "2ecda705-8ba8-4bb3-a4a0-fcfe88f54252",
+      "itemName": "Buttered Noodles",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "36ecec69-899a-40f6-87ff-12dddd8ece6c",
+      "itemName": "Smoked Pork BBQ Double Burger Combo",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "4423fc4a-8ca8-4504-beca-74bcb2db4b91",
+      "itemName": "Chicken Fingers",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "4ed1528e-7c25-46a1-8513-aaca24d93f76",
+      "itemName": "Bird is the Word Sandwich",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "71830cea-7d9e-409d-98bb-cc4917be614d",
+      "itemName": "Drive-In BBQ Burger",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "71ea92a5-c24f-4a87-982e-c54c83af8aba",
+      "itemName": "Apple Fritters",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "8e6ac3ee-2d8b-4fec-8995-2d7b314ffdb0",
+      "itemName": "Chicken Alfredo",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "c22f7d84-db92-4fad-bfbc-33311fd5d93b",
+      "itemName": "Tour De France*",
+      "priority": 8.120000000000001
+    },
+    {
+      "menuItemId": "6915607d-f46f-4b69-90f9-6eb27fffd610",
+      "itemName": "Curried Chickpeas",
+      "priority": 8.08
+    },
+    {
+      "menuItemId": "73c1e178-1dd8-498c-8aae-85f4c3a39102",
+      "itemName": "Cinnabon® Classic Roll",
+      "priority": 8.08
+    },
+    {
+      "menuItemId": "98d31be7-e3c6-454a-9865-5889574b22f4",
+      "itemName": "Classic Roll",
+      "priority": 8.08
+    },
+    {
+      "menuItemId": "a97d26f4-9e09-45e5-b80d-3732cc9e6cad",
+      "itemName": "Cinnabon® Classic",
+      "priority": 8.08
+    },
+    {
+      "menuItemId": "ba9ae21e-4c4c-4bb2-a083-e66c409ca4da",
+      "itemName": "Paccheri de la Confisco",
+      "priority": 8.04
+    },
+    {
+      "menuItemId": "c87bbb50-4662-4087-9125-7ff9e5a9c809",
+      "itemName": "Big Bopper Burger Platter",
+      "priority": 8.04
+    },
+    {
+      "menuItemId": "f6d5cbcc-5e05-4ec7-987f-bd3557fb5f4d",
+      "itemName": "Beyond Smokehouse",
+      "priority": 8.04
+    },
+    {
+      "menuItemId": "0748255b-f295-4752-b6b9-d25d2e889d26",
+      "itemName": "Sticky Toffee Pudding",
+      "priority": 8
+    },
+    {
+      "menuItemId": "09f6bc25-c03c-4eca-8da3-54befe85d3ba",
+      "itemName": "Chimichanga",
+      "priority": 8
+    },
+    {
+      "menuItemId": "0a9e0976-0bdd-45a7-9565-048b5e923ccd",
+      "itemName": "Two Foot Dog",
+      "priority": 8
+    },
+    {
+      "menuItemId": "147be38b-273d-4b9a-bbb4-b191079a009d",
+      "itemName": "Gelato Sandwich",
+      "priority": 8
+    },
+    {
+      "menuItemId": "2ac2553a-bea4-4326-8b21-5d8d9ad46fd8",
+      "itemName": "Chick'n Katsu Bowl Combo",
+      "priority": 8
+    },
+    {
+      "menuItemId": "318b5b79-696a-428c-be22-85473c168ef9",
+      "itemName": "Stagione",
+      "priority": 8
+    },
+    {
+      "menuItemId": "4028bb99-b15f-4ec6-b056-40bf0ca07a99",
+      "itemName": "Apple Fritters",
+      "priority": 8
+    },
+    {
+      "menuItemId": "4864512b-60b4-4bd8-aef4-3769e1c3950e",
+      "itemName": "Empanadas con Queso",
+      "priority": 8
+    },
+    {
+      "menuItemId": "4c9ca0ac-dfdd-4881-b2ff-4032c4ee2311",
+      "itemName": "Marsala",
+      "priority": 8
+    },
+    {
+      "menuItemId": "4f25e892-0a20-4012-8587-ca37805c3fb4",
+      "itemName": "Brownie Pie",
+      "priority": 8
+    },
+    {
+      "menuItemId": "590d5ab6-aafe-4267-be84-65ce53a6ddf7",
+      "itemName": "Bang Bang Shrimp Bowl",
+      "priority": 8
+    },
+    {
+      "menuItemId": "5b503489-291a-4538-860b-f9f68fbf778b",
+      "itemName": "Pineapple Coconut Bread Pudding",
+      "priority": 8
+    },
+    {
+      "menuItemId": "63981ad8-3716-4543-9562-5badf8a2ede9",
+      "itemName": "Hot Honey Chicken Sandwich",
+      "priority": 8
+    },
+    {
+      "menuItemId": "6c24ab53-d271-41b1-9817-ead84579d294",
+      "itemName": "Hot Fudge Bourbon Brownie",
+      "priority": 8
+    },
+    {
+      "menuItemId": "73582cd6-1fc1-4ec9-a50b-15a772dac45d",
+      "itemName": "Chocoflan",
+      "priority": 8
+    },
+    {
+      "menuItemId": "74943083-7f29-47a8-9a79-fd15b72ed193",
+      "itemName": "Tastes like Chicken",
+      "priority": 8
+    },
+    {
+      "menuItemId": "78df0fc5-9a3b-4e94-89c6-1a86f74c5157",
+      "itemName": "The Original Ringer Burger",
+      "priority": 8
+    },
+    {
+      "menuItemId": "81b2c93b-3d6b-44f7-868d-9afe6ebe5276",
+      "itemName": "Classic Minnie Caramel Apple with M&M'S",
+      "priority": 8
+    },
+    {
+      "menuItemId": "885fdeca-fb90-470c-8dce-34cae1046660",
+      "itemName": "Sticky Toffee Pudding",
+      "priority": 8
+    },
+    {
+      "menuItemId": "8b095947-0a9d-4404-9d30-3f4bdf43b9f9",
+      "itemName": "Fish-n-Chips",
+      "priority": 8
+    },
+    {
+      "menuItemId": "8f3c3e62-42db-4a19-a321-fbf684f150d6",
+      "itemName": "Chicken Quesadilla",
+      "priority": 8
+    },
+    {
+      "menuItemId": "8f900b68-d238-4153-a3e4-f326d93a05a5",
+      "itemName": "Parmigiano",
+      "priority": 8
+    },
+    {
+      "menuItemId": "9374c6ba-bb4d-4435-86d8-ffd463343b01",
+      "itemName": "Grilled Japanese Curry Chicken",
+      "priority": 8
+    },
+    {
+      "menuItemId": "957e1763-f159-4f48-b153-aeec95e1113b",
+      "itemName": "Brownie A La Mode",
+      "priority": 8
+    },
+    {
+      "menuItemId": "95870aa5-2736-42b3-91eb-d24f2f8918d4",
+      "itemName": "Spaghetti and Meatballs",
+      "priority": 8
+    },
+    {
+      "menuItemId": "97381092-e1ce-438e-810b-1eee49b262e7",
+      "itemName": "Chocolate Almond Bread",
+      "priority": 8
+    },
+    {
+      "menuItemId": "9d194a9c-4698-4c37-9847-b76189863cab",
+      "itemName": "Caramel Chocolate Cupcake",
+      "priority": 8
+    },
+    {
+      "menuItemId": "a0c5d05f-3c4a-4186-b6a8-07754fda37cb",
+      "itemName": "Mickey Brownie Sundae",
+      "priority": 8
+    },
+    {
+      "menuItemId": "a6789b1f-f7c1-4cf7-ac92-59e489c36e72",
+      "itemName": "Mac and Cheese Pulled Pork Combo",
+      "priority": 8
+    },
+    {
+      "menuItemId": "b8751647-6739-4f99-bb2b-385e96657003",
+      "itemName": "Mythos Burger",
+      "priority": 8
+    },
+    {
+      "menuItemId": "bbd2909d-7eb2-4173-87ee-927b2fe99ebc",
+      "itemName": "Vanilla Eggnog Cupcake",
+      "priority": 8
+    },
+    {
+      "menuItemId": "bc8acd45-0bc5-40e4-9e60-85161ba0055c",
+      "itemName": "Wildwood Grove Rice Bowl",
+      "priority": 8
+    },
+    {
+      "menuItemId": "be558bac-c1fa-4ec1-8d65-c291dfabbc75",
+      "itemName": "Veal Beef and Pork Ragu Pasta",
+      "priority": 8
+    },
+    {
+      "menuItemId": "c80f1892-28d5-4d21-8970-abd79ec174bf",
+      "itemName": "Rum Cake",
+      "priority": 8
+    },
+    {
+      "menuItemId": "c92c80de-3cf0-4214-a957-1c58575cfbab",
+      "itemName": "Mickey Apple Pie Caramel Apple",
+      "priority": 8
+    },
+    {
+      "menuItemId": "da567f8f-1781-49d4-9f6e-8cc53f6cced0",
+      "itemName": "Classic Mickey Caramel Apple",
+      "priority": 8
+    },
+    {
+      "menuItemId": "e72a9878-1cfe-4f64-a2a8-100c87c6da3c",
+      "itemName": "Teppan Yasai",
+      "priority": 8
+    },
+    {
+      "menuItemId": "f3485b81-f696-45c9-89c2-48a225415456",
+      "itemName": "Bucatini with Meatballs",
+      "priority": 8
+    },
+    {
+      "menuItemId": "f40be24b-707b-470d-978c-50adaa490e34",
+      "itemName": "Cookies and Cream Cake",
+      "priority": 8
+    },
+    {
+      "menuItemId": "f63b44b2-9f21-45bd-8b2d-b67170f35092",
+      "itemName": "Pomegranate Swirl",
+      "priority": 8
+    },
+    {
+      "menuItemId": "fbe01d95-e876-4a5a-9b32-22bbca4dc917",
+      "itemName": "Chocolate Banana Gooey Cake",
+      "priority": 8
+    },
+    {
+      "menuItemId": "13d98390-f1ac-4b6e-aac4-99ce47a81baf",
+      "itemName": "Crispy Chicken Sandwich",
+      "priority": 7.96
+    },
+    {
+      "menuItemId": "91b6db41-4113-40b5-8dff-13b77ea61809",
+      "itemName": "Vegan Field Roast Chili Dog Combo",
+      "priority": 7.96
+    },
+    {
+      "menuItemId": "a00b6526-13f9-4fa1-be03-ffdcacc68151",
+      "itemName": "Turtle Cheesecake",
+      "priority": 7.96
+    },
+    {
+      "menuItemId": "a21a325f-a626-4061-b079-c804f1a8f137",
+      "itemName": "Oishii Shrimp Lo Mein",
+      "priority": 7.96
+    },
+    {
+      "menuItemId": "d4256b7e-5112-4225-8a37-ac4a72255dc3",
+      "itemName": "Chipotle Chicken Wrap",
+      "priority": 7.96
+    },
+    {
+      "menuItemId": "3b1d5a63-2272-426c-96c6-7393ddbf569e",
+      "itemName": "Chicken and Waffle Bowl",
+      "priority": 7.919999999999999
+    },
+    {
+      "menuItemId": "3c4396cc-582b-4acb-8733-ad196279b195",
+      "itemName": "The Plaza Ice Cream Sundae",
+      "priority": 7.919999999999999
+    },
+    {
+      "menuItemId": "04667aaa-ac0b-4e81-8ee8-36a289992e38",
+      "itemName": "Fusion Specialty Bento Box",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "176f4b1d-ac6d-4c91-9bdb-f2134408640a",
+      "itemName": "Terralina Penne Alfredo",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "35e7b107-f957-47ad-83a8-17cea5e28e2b",
+      "itemName": "Pork BBQ Burger Platter",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "5728a767-8976-49eb-ac26-672e2af78ab9",
+      "itemName": "Chocolate Funnel Cake",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "6849cfdc-920e-4f41-9364-fcde3e23fd10",
+      "itemName": "Nathan’s® All Beef Hot Dog",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "75fb732b-b61c-4c34-bf2c-13ba76ac42c3",
+      "itemName": "Meteor Meatloaf",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "8f032360-fda1-45fd-b695-57b5590ef1a4",
+      "itemName": "Barbecue Chicken Flatbread",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "8f3494d8-0331-4acf-a001-bfb78a4b4ebe",
+      "itemName": "Flourless Chocolate Cake",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "d663feb5-a2fd-44af-80b2-003af301beda",
+      "itemName": "The Nutty Cow",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "e32ffdf1-5b3b-4f6d-a248-82ddcda195a4",
+      "itemName": "Birthday Cake Remix™",
+      "priority": 7.880000000000001
+    },
+    {
+      "menuItemId": "0004c9cc-9b0e-48ed-8908-7588c7e55ce6",
+      "itemName": "Alcatraz Cobb Salad Combo",
+      "priority": 7.84
+    },
+    {
+      "menuItemId": "11f9b573-66d9-474c-a222-6965c0c96e02",
+      "itemName": "OREO® Overload",
+      "priority": 7.84
+    },
+    {
+      "menuItemId": "bf317c0a-e3fa-420b-8020-2857679caa4d",
+      "itemName": "Meat-za Pizza Burger",
+      "priority": 7.84
+    },
+    {
+      "menuItemId": "023932bd-92c3-4a32-80cb-188ece795625",
+      "itemName": "Burrito Bowl",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "0ea3562d-e2fc-4d72-acb6-5b4f578f6b43",
+      "itemName": "Birria Beef Burger*",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "0fa445c2-625d-4fda-916f-3c1bc8d51a2e",
+      "itemName": "Potato Barrels",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "1176cfae-3175-43e7-b432-e99166985e03",
+      "itemName": "Crinkle Cut Fried Pickles",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "11ff9776-43b5-4c07-87e5-ee7afb34e7a5",
+      "itemName": "Chicken & Waffles",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "124f31bd-9312-4cd4-884e-50330d4026eb",
+      "itemName": "Mini Pasta and Impossible Meat-balls",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "1251b117-a40d-4bbd-a8e4-5fd3d6f73fec",
+      "itemName": "Chili Cheese Dog Combo",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "149b9570-c2b5-4000-98e8-8acd4f019dcf",
+      "itemName": "Chicken Tenders Combo",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "1be624bb-36d6-4c90-8c32-ead23149365c",
+      "itemName": "Spicy Fried Chicken Sandwich",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "20c41ec5-4324-4892-b29c-c398dbe2f50b",
+      "itemName": "Margherita Pizza",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "214fc4b8-d643-4c65-9ff7-3ccffd7181be",
+      "itemName": "Chocolate Brownie Sundae",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "2175f3cf-926b-44f0-891f-1b30a29b32c6",
+      "itemName": "Pint",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "22a5c0ec-64a4-4af3-84d2-6aedbee2c235",
+      "itemName": "Colossal Mickey Cinnamon Bun",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "2751fb00-b7ec-4de2-8cf8-ad190f65aabd",
+      "itemName": "Lou's BBQ Pork Slider Platter",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "283c545c-fca5-4f57-94e0-9b8d841cb14e",
+      "itemName": "2024 NATIONAL POLKA DOT DAY- Minnie Mouse Waffle Sundae",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "2989035c-1e39-4b04-81ce-58b0f56fe870",
+      "itemName": "Yeti Sundae",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "30928a3c-c2ca-4aac-a7e2-55fc26f2068f",
+      "itemName": "Jumbo Pistachio Chocolate Cinnamon Roll",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "33a22b02-6266-4fcd-ae89-ab7678080b8c",
+      "itemName": "2026 FESTIVAL OF THE ARTS- The Architecture of Drip",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "415404ed-27d4-4e70-ad4d-03570e9c23bd",
+      "itemName": "2026 FLOWER & GARDEN FESTIVAL Farmers Feast - Avail 4/6-5/10- Peach Cobbler",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "418eb9d1-ff94-49fe-9926-1f17a4f6052f",
+      "itemName": "2026 FESTIVAL OF THE ARTS- BBQ Chicken Pizza",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "42a6021e-95d6-4005-8a4a-071a7fe094ea",
+      "itemName": "Midnight Munchies",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "437dbca4-38c6-48b6-bafd-ea3d1ac3d220",
+      "itemName": "Burrata Ravioli",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "48e95e98-c035-4070-932e-1b142d9652a2",
+      "itemName": "Spaghetti e Polpettine",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "5658f203-f3a2-4d8b-9dc7-600b7ab8277f",
+      "itemName": "Crafted Hand Sandwiches & Twisted Taters",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "5c6de44c-86d9-45c8-aa01-d65211d1bacb",
+      "itemName": "French Carbonara",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "5cfad064-62c6-4ad8-b78f-583e2017b7f7",
+      "itemName": "Mango Strawberry Chile-Lime Parfait",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "61b47705-748c-495d-96e7-451a3aaf11db",
+      "itemName": "Croissant Platter",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "71f6853e-09b7-4964-bf2e-2a50187a919b",
+      "itemName": "Jumbo Cinnamon Roll",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "7349ca54-5c5e-4f15-99a5-5b3ec6d20eee",
+      "itemName": "French Country*",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "787d5a8e-bd68-420b-9c26-1e67a85c49bd",
+      "itemName": "Morimoto Gomoku Fried Rice",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "7b5804b3-64c3-42cf-ac2a-e33027a87c99",
+      "itemName": "Plant-based Dining",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "813af25f-bbe4-440a-8fa2-ff07de8486c7",
+      "itemName": "Liege Waffle",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "82585e11-5982-4077-a775-711031072aa3",
+      "itemName": "World Famous Hot Fudge Sundae",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "88162bdf-e17c-4dab-ae93-7c7b837ae8f6",
+      "itemName": "Chicken Fingers",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "91e01e18-2a90-49c3-a357-8c2ab80af2aa",
+      "itemName": "Oreo Crumble Funnel Cake",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "96975105-dc77-4ecf-9930-ecd9574bb1df",
+      "itemName": "Garlic Cream Penne",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "984197e9-499f-4eaf-9d60-65855016ee1e",
+      "itemName": "Cheese Fondue",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "a4a1ee2a-64b5-4528-910b-f9a6b9fcc4cb",
+      "itemName": "Provance Totchos",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "a7bbc475-6a85-4bd1-9521-f8f11216ce72",
+      "itemName": "The Frosted Owl",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "abb2f174-7b95-4ea1-99d7-af71569d8c1f",
+      "itemName": "2025 FOURTH OF JULY- Caramel-Apple Pie Funnel Cake",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "ae8684ec-7e72-406f-a731-50be454297d8",
+      "itemName": "Fettuccine Alfredo",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "af6250ab-c49d-4e88-a2bd-4ac74a3ee2fa",
+      "itemName": "Chocolate Baumkuchen",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "b5e02157-af7d-4833-b9a2-a5772b2915e7",
+      "itemName": "Buttermilk Pancakes",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "bbb3b024-5011-4d9b-ab88-9e5b345e7456",
+      "itemName": "Ticos Loaded Beef Burger Combo",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "c13f7355-da8c-4276-b417-5068e8c92637",
+      "itemName": "Italian Meat",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "c8f166a1-2ae1-4a56-999a-2730a0cd1388",
+      "itemName": "Southwestern",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "ca32e53b-e005-4f0f-80e1-14199da86efe",
+      "itemName": "Vegan Chorizo Bowl",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "cb628a0e-f1ae-44ac-ba4d-360666418610",
+      "itemName": "Mickey Mousse",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "cd1234d7-bc56-4480-8a7c-9d16ae5bbfb4",
+      "itemName": "Bambu Burger Platter",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "cd83b11c-ad0a-4c7c-a7a0-e7937efc238a",
+      "itemName": "Dubai Chocolate Cheesecake",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "dbd08d6a-7307-4e24-88b7-2985b9f625fb",
+      "itemName": "Spaghetti & Meatballs Platter",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "df5af1ca-a303-4a6e-b67d-8328b09b82ac",
+      "itemName": "Seasonal Buttermilk Pancakes",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "e0c0b943-7974-4400-b1a6-5744c85bac86",
+      "itemName": "Jumbo Cookie Butter Cinnamon Roll",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "e188deeb-c0a8-44af-bcd3-ec57b1242d99",
+      "itemName": "Moon Rocks",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "e4c05f77-7fc2-4956-a393-58429d3c344d",
+      "itemName": "Rocky Road Dazzler Sundae",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "ea3742dc-330a-4187-8c38-541132beddf3",
+      "itemName": "Pesto (vegetarian)",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "eb1c1de3-8d97-4e55-a187-b7798d74154e",
+      "itemName": "Rigatoni Bolognese",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "f0caf5d5-7abc-4938-91ef-b1040570cbcd",
+      "itemName": "Soft-serve in a Waffle Cone",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "f2c56341-4bfd-4549-89b5-33dba210c73d",
+      "itemName": "Fish & Chips",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "f72b6183-fe66-45e6-9b41-2365f273282f",
+      "itemName": "Parmesan Rosemary Knots",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "f8ed6bd8-de3c-4e40-a36b-7ecb29f2850d",
+      "itemName": "Roasted Mushroom Farro Risotto",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "fbd2b4fb-2fac-4be0-9527-34b1e60c56cc",
+      "itemName": "Spaghetti Bolognese",
+      "priority": 7.800000000000001
+    },
+    {
+      "menuItemId": "0763f67a-6cc9-409e-b29b-a633a783320c",
+      "itemName": "Banana Bread Chocolate Chip Cookie",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "1644eb07-fa34-4125-a5c5-4d4660596dec",
+      "itemName": "Bar en croute feuilletée, sauce Choron, grand mets de Monsieur Paul",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "19810929-bc8e-4420-ace5-ac5ea11d6972",
+      "itemName": "Mickey Strawberry Cookie Sandwich with SKITTLES",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "1eafcf0b-d554-405f-af28-adba521468b7",
+      "itemName": "Picatta",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "25620418-b7c5-43eb-841f-7004be0a004f",
+      "itemName": "Prosciutto e Melone Pizza (Individual)",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "270b69b7-7492-4819-8b97-555c355aa195",
+      "itemName": "Crispy Buffalo Bacon Sandwich Combo",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "31fbf6bf-9842-45d7-8863-2dc7dc84ec91",
+      "itemName": "Curry Shrimp",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "5b18b038-722a-40fb-b460-249f788e6543",
+      "itemName": "Pizza Quattro Formaggi",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "619e9216-02c9-4038-899b-cc6846413ffa",
+      "itemName": "Caesar Salad Combo",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "6e7ae349-6f74-478e-a602-8b431b9c564d",
+      "itemName": "1/2 Pound Muffins",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "8155c008-c0f6-4f1d-8c63-ab476751dcb7",
+      "itemName": "Chocolate Devotion®",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "818f2194-888e-476e-957c-d406e72e2bc1",
+      "itemName": "Mediterranean Salad Combo",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "887c76a1-38c1-4233-8d5a-f5d71f275494",
+      "itemName": "Mac and Cheese Bowl",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "993efc12-5b7a-41ad-925e-594d73b0a1fd",
+      "itemName": "Peppermint Twist Cupcake",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "9f94b462-2502-4ecc-8973-7eb354f47bfa",
+      "itemName": "Chick'n Katsu Bowl",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "a5cb535e-dad8-44a4-b0a9-8386d3030b61",
+      "itemName": "Newcastle Chicken",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "b5a909a1-3faf-4cb6-9c65-f762de277f87",
+      "itemName": "Chili Bread Bowl",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "c8b9486c-a201-4c90-8435-98ae6f1dff3b",
+      "itemName": "Honey Sesame Chicken",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "ca8376a1-a57d-4ca7-b185-5e032905438d",
+      "itemName": "Creole Chicken",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "cf2000c9-a794-47d5-aeed-eb3628ed8375",
+      "itemName": "Mickey Caramel Apple with M&M'S Milk Chocolate Minis",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "d2f20794-8a72-4d1a-b792-ec7ea5a7ab37",
+      "itemName": "Ice Cream Cookie Sandwich",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "d626b66f-195d-4fe3-8f1c-433f53491966",
+      "itemName": "Shine Cake",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "d86eeeae-89c7-4caf-98ca-4a186c8dd398",
+      "itemName": "Stegosaurus Burger Platter",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "df8607a9-0385-48d0-92fb-c13ecc4ceda4",
+      "itemName": "Spaghetti and Meatballs",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "e41d5ba9-eba4-4a85-b762-d65fea26bbd9",
+      "itemName": "Chicken Fettucine Alfredo",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "ea92f122-b702-4cf0-bcbc-833f9bb89f67",
+      "itemName": "Jumbo Cheese Slice Combo",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "f51b5a0d-01a5-4253-bc27-5b67d6deea3b",
+      "itemName": "Hot Cocoa Cupcake",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "fa848b3d-3c32-43f0-a891-1b89ae2b4a16",
+      "itemName": "Vegan Footlong Corn Dog & Tater Curls",
+      "priority": 7.72
+    },
+    {
+      "menuItemId": "5e69ebc3-b979-4796-a727-0d5327e33de0",
+      "itemName": "Crispy Chicken Sandwich Platter",
+      "priority": 7.68
+    },
+    {
+      "menuItemId": "6df33f79-12c5-491b-954c-1d6107e059f2",
+      "itemName": "Turkey Stacker",
+      "priority": 7.68
+    },
+    {
+      "menuItemId": "7e8b088e-5986-4f93-816f-a67ea14d2174",
+      "itemName": "Chicken Caesar Salad Combo",
+      "priority": 7.68
+    },
+    {
+      "menuItemId": "a335d506-2b96-4fa6-abe2-2416deb9b64a",
+      "itemName": "Mediterranean Market Falafel",
+      "priority": 7.68
+    }
+  ],
+  "certifiedValues": {}
+}

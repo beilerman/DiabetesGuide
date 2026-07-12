@@ -6,6 +6,7 @@ export interface HiddenDoseTriggerInput {
   validation: InsulinValidation
   result: InsulinDoseResult | null
   blockedByUnavailableNutrition?: boolean
+  blockedByUntrustedNutrition?: boolean
 }
 
 export function getHiddenDoseTriggers({
@@ -13,6 +14,7 @@ export function getHiddenDoseTriggers({
   validation,
   result,
   blockedByUnavailableNutrition,
+  blockedByUntrustedNutrition,
 }: HiddenDoseTriggerInput): string[] {
   const triggers: string[] = []
   const missing = getMissingRequiredFields(inputs)
@@ -47,6 +49,10 @@ export function getHiddenDoseTriggers({
 
   if (blockedByUnavailableNutrition) {
     triggers.push('Meal includes items with unavailable nutrition; totals should not feed the estimator.')
+  }
+
+  if (blockedByUntrustedNutrition) {
+    triggers.push('Meal includes uncertified carbohydrate values; totals should not feed the estimator.')
   }
 
   for (const message of validation.messages) {

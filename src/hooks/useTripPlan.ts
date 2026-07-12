@@ -96,6 +96,8 @@ function sanitizeMealItem(raw: unknown): MealItem | null {
     nutritionSource: item.nutritionSource,
     nutritionSourceDetail: typeof item.nutritionSourceDetail === 'string' ? item.nutritionSourceDetail : null,
     nutritionAvailable: typeof item.nutritionAvailable === 'boolean' ? item.nutritionAvailable : undefined,
+    nutritionDosingGrade: typeof item.nutritionDosingGrade === 'boolean' ? item.nutritionDosingGrade : undefined,
+    nutritionCertificationTier: item.nutritionCertificationTier,
   }
 }
 

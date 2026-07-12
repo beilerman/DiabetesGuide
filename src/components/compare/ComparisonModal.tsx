@@ -112,6 +112,9 @@ export function ComparisonModal({ onClose }: Props) {
       sodium: item.sodium,
       restaurant: item.restaurant ?? undefined,
       parkName: item.parkName ?? undefined,
+      nutritionDosingGrade: item.nutritionDosingGrade,
+      nutritionCertificationTier: item.nutritionCertificationTier ?? undefined,
+      nutritionAvailable: true,
     })
   }
 

@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import App from './App'
+import '@fontsource-variable/baloo-2/index.css'
+import '@fontsource-variable/nunito-sans/index.css'
 import './index.css'
 
 const queryClient = new QueryClient({

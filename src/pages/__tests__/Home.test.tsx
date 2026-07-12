@@ -102,8 +102,8 @@ describe('Home', () => {
       </MemoryRouter>,
     )
 
-    expect(screen.getByRole('heading', { level: 1, name: 'DiabetesGuide' })).toBeInTheDocument()
-    expect(screen.getByText(/for type 1 and type 2 travelers/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: 'Eat the parks with confidence.' })).toBeInTheDocument()
+    expect(screen.getByText(/carb counts and nutrition confidence/i)).toBeInTheDocument()
     expect(screen.getByRole('searchbox', { name: /search all menu items/i })).toBeInTheDocument()
     expect(screen.getByText(/not medical advice/i)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /data sources/i })).toHaveAttribute('href', '/data-sources')
@@ -143,7 +143,7 @@ describe('Home', () => {
 
     const jumpNav = screen.getByRole('navigation', { name: /jump to destination groups/i })
     expect(within(jumpNav).getByRole('link', { name: /walt disney world/i })).toHaveAttribute('href', '#home-resort-wdw')
-    expect(screen.getByText('Catalog preview: 15 menu items · 2 restaurants · 2 destinations')).toBeInTheDocument()
+    expect(screen.getByText(/for 15 menu items across 2 destinations/i)).toBeInTheDocument()
     expect(screen.getByText('15 menu items across 2 destinations')).toBeInTheDocument()
     expect(screen.queryByText(/menu records/i)).not.toBeInTheDocument()
   })
@@ -223,7 +223,7 @@ describe('Home', () => {
       </MemoryRouter>,
     )
 
-    expect(screen.getByText(/catalog preview:/i)).toHaveClass('w-fit', 'sm:ml-auto')
+    expect(screen.getByText(/for 9,741 menu items across 2 destinations/i)).toBeInTheDocument()
 
     const chipRail = screen.getByTestId('home-filter-chip-rail')
     expect(chipRail).toHaveClass('overflow-x-auto', 'pr-10')
@@ -259,7 +259,7 @@ describe('Home', () => {
       </MemoryRouter>,
     )
 
-    expect(screen.getByText('Catalog preview: 20 menu items · 3 restaurants · 2 destinations')).toBeInTheDocument()
+    expect(screen.getByText(/for 20 menu items across 2 destinations/i)).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /walt disney world/i })).toBeInTheDocument()
     expect(screen.getByText('20 menu items across 2 destinations')).toBeInTheDocument()
     expect(screen.queryByText(/counts syncing/i)).not.toBeInTheDocument()

@@ -1,7 +1,7 @@
-import { type FormEvent, type MouseEvent, useEffect, useMemo, useState } from 'react'
+import { type CSSProperties, type FormEvent, type MouseEvent, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useCatalogPreview, useParks, useMenuItemCounts, useTotalRestaurantCount } from '../lib/queries'
-import { DEFAULT_THEME } from '../lib/park-themes'
+import { useCatalogPreview, useParks, useMenuItemCounts } from '../lib/queries'
+import { getThemeForResort } from '../lib/park-themes'
 import { buildBrowsePresetUrl } from '../lib/browse-url'
 import { useFavorites } from '../hooks/useFavorites'
 import {
@@ -98,7 +98,6 @@ export default function Home() {
   const { favorites } = useFavorites()
   const { data: parks, isLoading, error } = useParks()
   const { data: menuItemCounts } = useMenuItemCounts()
-  const { data: totalRestaurantCount } = useTotalRestaurantCount()
   const { data: catalogPreview } = useCatalogPreview()
   const previewParks = useMemo(
     () => catalogPreview ? getCatalogPreviewParks(catalogPreview) : [],
@@ -117,9 +116,6 @@ export default function Home() {
 
   const totalDestinationCount = resortGroups.reduce((sum, group) => sum + group.locationCount, 0)
   const totalItemCount = resortGroups.reduce((sum, group) => sum + group.itemCount, 0)
-  const displayedRestaurantCount = totalRestaurantCount && totalRestaurantCount > 0
-    ? totalRestaurantCount
-    : catalogPreview?.totalRestaurants
   const showLoadingState = isLoading && resortGroups.length === 0
   const showErrorState = error && resortGroups.length === 0
 
@@ -153,31 +149,21 @@ export default function Home() {
 
   return (
     <div className="space-y-6">
-      <section className="space-y-4 py-2 sm:py-3" aria-labelledby="home-title">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-600 text-white shadow-sm">
-              <BrandMark />
-            </div>
-            <div>
-              <h1 id="home-title" tabIndex={-1} className="text-3xl font-bold text-stone-900 sm:text-4xl">DiabetesGuide</h1>
-              <p className="mt-1 text-sm text-stone-600 sm:text-base">
-                Theme-park nutrition planning for diabetes.
-              </p>
-            </div>
-          </div>
-          {countsReady && displayedRestaurantCount != null && (
-            <div className="w-fit rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-600 sm:ml-auto">
-              Catalog preview: {totalItemCount.toLocaleString()} menu items &middot; {displayedRestaurantCount.toLocaleString()} restaurants &middot; {totalDestinationCount} destinations
-            </div>
-          )}
-        </div>
-
-        <div className="max-w-3xl space-y-3">
-          <p className="text-base text-stone-700 sm:text-lg">
-            For Type 1 and Type 2 travelers - carb counts, nutrition confidence, and meal planning before you reach the queue.
+      <section className="space-y-3" aria-labelledby="home-title">
+        <div
+          className="relative overflow-hidden rounded-3xl px-5 py-8 text-white shadow-soft sm:px-8 sm:py-10"
+          style={{ background: 'var(--gradient-sunrise)' }}
+        >
+          <h1 id="home-title" tabIndex={-1} className="font-display text-4xl font-bold leading-tight sm:text-5xl">
+            Eat the parks with confidence.
+          </h1>
+          <p className="mt-3 max-w-2xl text-base text-white/95 sm:text-lg">
+            {countsReady && totalItemCount > 0
+              ? `Carb counts and nutrition confidence for ${totalItemCount.toLocaleString()} menu items across ${totalDestinationCount} destinations — before you reach the queue.`
+              : 'Carb counts and nutrition confidence for every park day — before you reach the queue.'}
           </p>
-          <form role="search" onSubmit={submitSearch} className="flex flex-col gap-2 sm:flex-row">
+
+          <form role="search" onSubmit={submitSearch} className="mt-5 flex max-w-2xl flex-col gap-2 sm:flex-row">
             <label className="sr-only" htmlFor="home-menu-search">Search all menu items</label>
             <div className="relative flex-1">
               <Icon name="search" className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-stone-400" />
@@ -188,73 +174,72 @@ export default function Home() {
                 value={searchQuery}
                 onChange={event => setSearchQuery(event.target.value)}
                 placeholder="Search chicken, churro, Dole Whip..."
-                className="h-12 w-full rounded-xl border border-stone-300 bg-white pl-10 pr-3 text-base text-stone-900 placeholder-stone-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                className="h-12 w-full rounded-xl border-0 bg-white pl-10 pr-3 text-base text-stone-900 shadow-soft placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-white/70"
               />
             </div>
             <button
               type="submit"
-              className="h-12 rounded-xl bg-teal-700 px-5 text-sm font-semibold text-white transition-colors hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+              className="h-12 rounded-xl bg-amber-300 px-6 font-display text-base font-bold text-stone-900 transition-colors hover:bg-amber-200 focus:outline-none focus:ring-2 focus:ring-white/70"
             >
               Search
             </button>
           </form>
-        </div>
 
-        <div className="relative" aria-label="Common browse filters">
-          <div
-            data-testid="home-filter-chip-rail"
-            className="scrollbar-hide flex gap-2 overflow-x-auto pb-1 pr-10"
-            style={{ maskImage: 'linear-gradient(to right, #000 calc(100% - 2.5rem), transparent)' }}
-          >
-            {PRESET_LINKS.map(link => (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="group inline-flex min-h-11 shrink-0 items-center rounded-full border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-stone-700 transition-colors hover:border-teal-400 hover:text-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-                title={link.detail}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              to="/insulin"
-              className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-amber-300 bg-amber-50 px-3 py-2 text-sm font-semibold text-amber-900 transition-colors hover:border-amber-400 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+          <div className="relative mt-4" aria-label="Common browse filters">
+            <div
+              data-testid="home-filter-chip-rail"
+              className="scrollbar-hide flex gap-2 overflow-x-auto pb-1 pr-10"
+              style={{ maskImage: 'linear-gradient(to right, #000 calc(100% - 2.5rem), transparent)' }}
             >
-              Carb &amp; correction estimator
-            </Link>
-          </div>
-          <div
-            data-testid="home-filter-chip-chevron"
-            className="pointer-events-none absolute inset-y-0 right-0 flex w-10 items-center justify-end bg-gradient-to-l from-stone-50 via-stone-50/95 to-transparent pr-1 text-stone-500"
-            aria-hidden="true"
-          >
-            <Icon name="chevron-right" className="h-5 w-5" />
+              {PRESET_LINKS.map(link => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-white/40 bg-teal-950/30 px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-950/50 focus:outline-none focus:ring-2 focus:ring-white/70"
+                  title={link.detail}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link
+                to="/insulin"
+                className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-white/95 px-3.5 py-2 text-sm font-bold text-teal-800 transition-colors hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/70"
+              >
+                Carb &amp; correction estimator
+              </Link>
+            </div>
+            <div
+              data-testid="home-filter-chip-chevron"
+              className="pointer-events-none absolute inset-y-0 right-0 flex w-10 items-center justify-end pr-1 text-white/80"
+              aria-hidden="true"
+            >
+              <Icon name="chevron-right" className="h-5 w-5" />
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-950 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            Not medical advice - nutrition can be estimated or unavailable. Confirm dosing decisions with your care team.
-          </p>
-          <Link to="/data-sources" className="font-bold text-amber-950 underline decoration-amber-500 underline-offset-2">
+        <p className="flex flex-wrap items-center gap-x-1.5 px-1 text-xs text-stone-600">
+          <span aria-hidden="true">⚠</span>
+          <span>Educational tool — not medical advice. Nutrition may be estimated.</span>
+          <Link to="/data-sources" className="font-semibold text-stone-700 underline decoration-stone-400 underline-offset-2 hover:text-teal-700">
             Data Sources
           </Link>
-        </div>
+        </p>
 
         {favorites.size > 0 && (
-          <div className="flex flex-col gap-2 rounded-xl border border-teal-200 bg-teal-50 px-3 py-2 text-sm text-teal-950 sm:flex-row sm:items-center sm:justify-between">
-            <p>You have {favorites.size} saved favorite{favorites.size === 1 ? '' : 's'} ready for trip planning.</p>
-            <Link to="/plan" className="font-bold text-teal-900 underline decoration-teal-500 underline-offset-2">
+          <p className="flex flex-wrap items-center gap-x-1.5 px-1 text-sm text-teal-900">
+            <span>You have {favorites.size} saved favorite{favorites.size === 1 ? '' : 's'} ready for trip planning.</span>
+            <Link to="/plan" className="font-bold underline decoration-teal-500 underline-offset-2">
               Saved favorites
             </Link>
-          </div>
+          </p>
         )}
       </section>
 
       <section aria-labelledby="destination-heading" className="space-y-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 id="destination-heading" className="text-2xl font-bold text-stone-900">Choose a Destination</h2>
+            <h2 id="destination-heading" className="font-display text-2xl font-bold text-stone-900">Choose a Destination</h2>
             <p className="mt-1 text-sm text-stone-600">Browse by resort, then park, hotel, land, restaurant, and menu.</p>
           </div>
           <Link
@@ -268,7 +253,7 @@ export default function Home() {
         {!showLoadingState && !showErrorState && resortGroups.length > 0 && (
           <nav
             aria-label="Jump to destination groups"
-            className="sticky top-16 z-30 -mx-4 border-y border-stone-200 bg-stone-50/95 px-4 py-2 backdrop-blur"
+            className="sticky top-16 z-30 -mx-4 border-y border-stone-200/70 bg-cream/95 px-4 py-2 backdrop-blur"
           >
             <div className="flex gap-2 overflow-x-auto pb-1">
               {resortGroups.map(group => (
@@ -401,24 +386,21 @@ function ResortDestinationSection({
   group: HomeResortGroup
   countsReady: boolean
 }) {
-  // Home is a brand surface: use the teal brand accent for all resorts so the
-  // landing screen reads as one product. Per-resort theming lives on the resort
-  // and park detail pages, where a distinct identity is expected.
-  const theme = DEFAULT_THEME
+  const theme = getThemeForResort(group.id)
 
   return (
     <section aria-labelledby={`home-resort-${group.id}`} className="border-t border-stone-200 pt-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex min-w-0 gap-3">
           <div
-            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-white"
-            style={{ backgroundColor: theme.primary }}
+            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl text-white shadow-sm"
+            style={{ background: theme.gradient }}
             aria-hidden="true"
           >
             <Icon name={RESORT_ICONS[group.id] ?? 'map'} className="h-6 w-6" />
           </div>
           <div className="min-w-0">
-            <h3 id={`home-resort-${group.id}`} tabIndex={-1} className="scroll-mt-24 text-xl font-bold text-stone-900">
+            <h3 id={`home-resort-${group.id}`} tabIndex={-1} className="scroll-mt-24 font-display text-xl font-bold text-stone-900">
               {group.name}
             </h3>
             <p className="text-sm text-stone-600">{resortContext(group)}</p>
@@ -441,18 +423,18 @@ function ResortDestinationSection({
           <Link
             key={category.id}
             to={categoryHref(group, category)}
-            className="group flex min-h-24 gap-3 rounded-lg border border-stone-200 bg-white p-3 transition-colors hover:border-teal-300 hover:bg-teal-50/40 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-            style={{ borderLeftColor: theme.primary, borderLeftWidth: 4 }}
+            className="group flex min-h-24 gap-3 rounded-xl border border-stone-200 bg-white p-3 transition-all duration-150 hover:-translate-y-0.5 hover:bg-[var(--tile-tint)] hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+            style={{ borderLeftColor: theme.primary, borderLeftWidth: 4, '--tile-tint': theme.surface } as CSSProperties}
           >
             <span
-              className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md text-white"
+              className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-white"
               style={{ backgroundColor: theme.primary }}
               aria-hidden="true"
             >
               <Icon name={CATEGORY_ICONS[category.id] ?? RESORT_ICONS[group.id] ?? 'map'} className="h-4 w-4" />
             </span>
             <span className="min-w-0 flex-1">
-              <span className="block font-semibold text-stone-900 group-hover:text-teal-800">{category.label}</span>
+              <span className="block font-semibold text-stone-900">{category.label}</span>
               <span className="mt-0.5 block text-xs font-medium text-stone-500">
                 {formatItems(category.itemCount, countsReady)} | {formatDestinations(category.locationCount)}
               </span>
@@ -466,18 +448,6 @@ function ResortDestinationSection({
         ))}
       </div>
     </section>
-  )
-}
-
-function BrandMark() {
-  return (
-    <svg className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.9" viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="8" />
-      <path d="M8 13.5h8" strokeLinecap="round" />
-      <path d="M9 10.5c1.6-1.7 4.4-1.7 6 0" strokeLinecap="round" />
-      <path d="M12 5.5v3" strokeLinecap="round" />
-      <path d="M7 17h10" strokeLinecap="round" />
-    </svg>
   )
 }
 

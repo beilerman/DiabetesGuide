@@ -8,6 +8,7 @@ interface HiddenDoseExplainerProps {
   validation: InsulinValidation
   result: InsulinDoseResult | null
   blockedByUnavailableNutrition?: boolean
+  blockedByUntrustedNutrition?: boolean
 }
 
 export function HiddenDoseExplainer(props: HiddenDoseExplainerProps) {
