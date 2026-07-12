@@ -182,9 +182,9 @@ function descriptionHasAlcohol(desc: string): boolean {
  * 2. Brand beers/seltzers/ciders are definitive
  * 3. Age restriction markers (21+) are definitive
  * 4. Known creative cocktail names (verified from menus)
- * 5. General alcohol keyword matching on name
- * 6. Description-based detection (spirits/cocktails in description)
- * 7. Negative patterns block softer matches (e.g., "beer-battered" is food)
+ * 5. Description-based detection (spirits/cocktails in description) — wins over negatives
+ * 6. Negative-pattern gate blocks softer NAME matches (e.g., "beer-battered" is food)
+ * 7. General alcohol keyword matching on name
  * 8. Bar context: beverages at bars/lounges assumed alcoholic unless clearly non-alcoholic
  */
 export function isLikelyAlcoholic(name: string, item: Item): boolean {
@@ -204,7 +204,27 @@ export function isLikelyAlcoholic(name: string, item: Item): boolean {
   // 4. Known creative cocktail names (verified alcoholic)
   if (KNOWN_ALCOHOLIC_NAMES.has(text)) return true
 
-  // 5. Check ALL alcohol patterns on name — these override negatives
+  // 5. Description-based detection — catches creative cocktail names like
+  // "Lost on Safari" (desc: "Rum + fruit punch"), "Texas Tea" (desc: "bourbon, rum..."),
+  // "Alberto Dante's Millionaire Cappuccino" (desc: "Baileys Irish Cream Liqueur...").
+  // Runs before the negative-pattern gate so a confirmed-alcoholic description still
+  // wins even when the NAME contains a cooking word (e.g., a glazed/braised dish).
+  if (desc && descriptionHasAlcohol(desc)) {
+    return true
+  }
+
+  // 6. Negative-pattern gate — food items whose NAME carries an alcohol word only
+  // in a cooking/soda context (e.g., "beer-battered", "root beer", "butterbeer",
+  // "wine sauce"). This MUST run before the softer name-keyword checks below: the
+  // hyphen in "beer-battered" is a regex word boundary, so \bbeer\b would otherwise
+  // match and spuriously flag a savory fried side. Gating here returns false before
+  // any soft beer/wine/spirit/bar-context match can fire. Definitive cocktail/brand/
+  // age/known-name signals (steps 1-4) intentionally run earlier and still win.
+  if (NEGATIVE_PATTERNS.test(text)) {
+    return false
+  }
+
+  // 7. Check ALL remaining alcohol patterns on name
   if (/\bcocktail\b/i.test(text) && !/\b(shrimp|prawn|fruit|crab|seafood)\b/i.test(text)) {
     return true
   }
@@ -223,18 +243,6 @@ export function isLikelyAlcoholic(name: string, item: Item): boolean {
   if (COCKTAIL_PATTERNS.test(text)) return true
   if (SPIRIT_PATTERNS.test(text)) return true
   if (OTHER_ALCOHOL_PATTERNS.test(text)) return true
-
-  // 6. Description-based detection — catches creative cocktail names like
-  // "Lost on Safari" (desc: "Rum + fruit punch"), "Texas Tea" (desc: "bourbon, rum..."),
-  // "Alberto Dante's Millionaire Cappuccino" (desc: "Baileys Irish Cream Liqueur...")
-  if (desc && descriptionHasAlcohol(desc)) {
-    return true
-  }
-
-  // 7. Negative patterns — food items with alcohol words in cooking context
-  if (NEGATIVE_PATTERNS.test(text)) {
-    return false
-  }
 
   // 8. Bar context: items at bars/lounges/cantinas/pubs/taverns
   // assumed alcoholic unless clearly non-alcoholic

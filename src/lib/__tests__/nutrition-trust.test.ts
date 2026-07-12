@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { buildNutritionReportMailto, getNutritionQualityWarnings, getNutritionTrust } from '../nutrition-trust'
+import { buildNutritionReportMailto, DOSING_GRADE_CONFIDENCE, getNutritionQualityWarnings, getNutritionTrust } from '../nutrition-trust'
+import { TRUSTED_CONFIDENCE } from '../../../scripts/audit/trust'
 import type { MenuItemWithNutrition, NutritionalData } from '../types'
 
 function nutrition(overrides: Partial<NutritionalData>): NutritionalData {
@@ -22,6 +23,20 @@ function nutrition(overrides: Partial<NutritionalData>): NutritionalData {
     ...overrides,
   }
 }
+
+describe('DOSING_GRADE_CONFIDENCE', () => {
+  it('is 70 — the carb-dosing-grade confidence bar', () => {
+    expect(DOSING_GRADE_CONFIDENCE).toBe(70)
+  })
+
+  it('stays coupled to the audit report bar (TRUSTED_CONFIDENCE)', () => {
+    // The UI "do not dose from this value" warning and the audit quality
+    // report MUST use the same threshold. Lock them together so a change to
+    // one without the other fails here. scripts/audit/trust.ts is pure (no DB
+    // imports) so importing it in this test is safe.
+    expect(DOSING_GRADE_CONFIDENCE).toBe(TRUSTED_CONFIDENCE)
+  })
+})
 
 describe('getNutritionTrust', () => {
   it('marks official high-confidence nutrition as verified', () => {

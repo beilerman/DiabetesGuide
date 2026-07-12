@@ -1,3 +1,5 @@
+import { DOSING_GRADE_CONFIDENCE } from './nutrition-trust'
+
 export type AnnotationSeverity = 'green' | 'amber' | 'red' | 'teal'
 
 export interface Annotation {
@@ -24,7 +26,7 @@ interface AnnotationInput {
 export function getDiabetesAnnotations(item: AnnotationInput): Annotation[] {
   const { calories, carbs, sugar, fat, protein, fiber, alcoholGrams, category, isFried, confidenceScore } = item
   if (calories == null || carbs == null) return []
-  const isLowConfidence = confidenceScore != null && confidenceScore < 70
+  const isLowConfidence = confidenceScore != null && confidenceScore < DOSING_GRADE_CONFIDENCE
 
   const annotations: Annotation[] = []
   const s = sugar ?? 0
