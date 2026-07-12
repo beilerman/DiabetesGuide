@@ -55,6 +55,7 @@
     "ai:candidates": "tsx scripts/ai-nutrition-candidates.ts",
     "import:ai": "tsx scripts/import-ai-nutrition.ts",
     "import:manual-nutrition": "tsx scripts/import-ai-nutrition.ts --file=data/manual-nutrition-estimates.json",
+    "nutrition:research-queue": "tsx scripts/nutrition/research-queue-cli.ts",
     "audit:calibrate": "tsx scripts/audit/calibrate.ts",
     "audit:triangulate": "tsx scripts/audit/triangulate.ts"
   },
