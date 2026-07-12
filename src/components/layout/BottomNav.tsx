@@ -14,7 +14,7 @@ export function BottomNav({ totalItemCount }: BottomNavProps) {
     <>
       <nav
         aria-label="Bottom navigation"
-        className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 shadow-lg z-40"
+        className="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-stone-200/70 shadow-lg z-40"
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}
       >
         <div className="grid grid-cols-5 h-16">
@@ -25,10 +25,12 @@ export function BottomNav({ totalItemCount }: BottomNavProps) {
                 key={item.id}
                 to={item.href}
                 aria-current={active ? 'page' : undefined}
-                className={`${navItemClass(active)} ${item.id === 'meal-builder' ? 'relative' : ''}`}
+                className={`flex items-center justify-center ${item.id === 'meal-builder' ? 'relative' : ''}`}
               >
-                <NavItemIconWithBadge item={item} active={active} totalItemCount={totalItemCount} />
-                <span className="px-0.5 text-center text-[11px] font-medium leading-tight">{item.label}</span>
+                <span className={navItemClass(active)}>
+                  <NavItemIconWithBadge item={item} active={active} totalItemCount={totalItemCount} />
+                  <span className="px-0.5 text-center text-[11px] leading-tight">{item.label}</span>
+                </span>
               </Link>
             )
           })}
@@ -51,7 +53,7 @@ export function BottomNav({ totalItemCount }: BottomNavProps) {
                 className={desktopNavItemClass(active)}
               >
                 <NavItemIconWithBadge item={item} active={active} totalItemCount={totalItemCount} />
-                <span className="sr-only text-sm font-semibold lg:not-sr-only">{item.label}</span>
+                <span className="sr-only font-display text-sm font-semibold lg:not-sr-only">{item.label}</span>
               </Link>
             )
           })}
@@ -62,18 +64,18 @@ export function BottomNav({ totalItemCount }: BottomNavProps) {
 }
 
 function navItemClass(active: boolean): string {
-  return `flex flex-col items-center justify-center gap-1 border-t-2 ${
+  return `flex min-w-16 flex-col items-center justify-center gap-0.5 rounded-2xl px-3 py-1.5 transition-colors ${
     active
-      ? 'border-teal-600 text-teal-700 font-semibold'
-      : 'border-transparent text-stone-500 font-medium'
+      ? 'bg-teal-600 text-white font-semibold shadow-sm'
+      : 'text-stone-500 font-medium'
   }`
 }
 
 function desktopNavItemClass(active: boolean): string {
   return `flex min-h-12 items-center justify-center gap-3 rounded-xl px-3 transition-colors lg:justify-start ${
     active
-      ? 'bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200'
-      : 'text-stone-600 hover:bg-stone-50 hover:text-teal-700'
+      ? 'bg-teal-600/10 text-teal-800 ring-1 ring-inset ring-teal-600/20'
+      : 'text-stone-600 hover:bg-stone-100 hover:text-teal-700'
   }`
 }
 
@@ -90,7 +92,12 @@ function NavItemIconWithBadge({
     <div className="relative flex-shrink-0">
       <NavIcon id={item.id} active={active} />
       {item.id === 'meal-builder' && totalItemCount > 0 && (
-        <span aria-hidden="true" className="absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-700 px-1 text-[10px] font-bold leading-none text-white">
+        <span
+          aria-hidden="true"
+          className={`absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-bold leading-none ${
+            active ? 'bg-white text-teal-800' : 'bg-teal-700 text-white'
+          }`}
+        >
           {totalItemCount > 9 ? '9+' : totalItemCount}
         </span>
       )}
