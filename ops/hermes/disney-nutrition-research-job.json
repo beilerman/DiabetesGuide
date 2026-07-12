@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "name": "disney-nutrition-research",
+  "intervalMinutes": 360,
+  "maxItems": 5,
+  "maxConcurrentRuns": 1,
+  "scope": "wdw",
+  "skill": "disney-nutrition-research"
+}
