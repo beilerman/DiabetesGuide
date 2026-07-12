@@ -166,6 +166,15 @@ describe('parseResearchBatch', () => {
     batch.outcomes.push(structuredClone(batch.outcomes[0]))
     expect(() => parseResearchBatch(batch)).toThrow(/duplicate/i)
   })
+
+  it('rejects a duplicate evidence key even when menu item IDs differ', () => {
+    const batch = validBatch()
+    const duplicate = structuredClone(batch.outcomes[0])
+    duplicate.menuItemId = 'different-item'
+    duplicate.catalogSnapshotHash = '5'.repeat(64)
+    batch.outcomes.push(duplicate)
+    expect(() => parseResearchBatch(batch)).toThrow(/duplicate evidence key/i)
+  })
 })
 
 describe('stableResearchJson', () => {

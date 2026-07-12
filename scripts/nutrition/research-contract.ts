@@ -399,12 +399,11 @@ export function parseResearchBatch(value: unknown): ResearchBatch {
       ? parseEvidenceOutcome(outcome, index)
       : parseResultOutcome(outcome, index)
   })
-  const duplicates = new Set<string>()
+  const evidenceKeys = new Set<string>()
   for (const outcome of outcomes) {
     if (!('evidenceKey' in outcome) || outcome.evidenceKey == null) continue
-    const key = `${outcome.menuItemId}\u0000${outcome.evidenceKey}`
-    if (duplicates.has(key)) throw new Error(`duplicate menu item/evidence key pair: ${outcome.menuItemId}`)
-    duplicates.add(key)
+    if (evidenceKeys.has(outcome.evidenceKey)) throw new Error(`duplicate evidence key: ${outcome.evidenceKey}`)
+    evidenceKeys.add(outcome.evidenceKey)
   }
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
