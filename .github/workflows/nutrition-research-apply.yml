@@ -1,0 +1,64 @@
+name: Apply merged nutrition research evidence
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'audit/nutrition-research/batches/*.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nutrition-research-apply-production
+  cancel-in-progress: false
+
+jobs:
+  apply-evidence:
+    runs-on: ubuntu-latest
+    environment: production-nutrition-evidence
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Discover merged research batches
+        id: batches
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          MERGED_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          mkdir -p nutrition-apply-reports
+          git diff --name-only --diff-filter=AM "$BEFORE_SHA" "$MERGED_SHA" \
+            | grep -E '^audit/nutrition-research/batches/[^/]+\.json$' \
+            | sort -u > nutrition-apply-reports/batches.txt
+          if [ ! -s nutrition-apply-reports/batches.txt ]; then
+            echo "No added or modified research batch JSON found." >&2
+            exit 1
+          fi
+      - name: Validate and apply each merged batch exactly once
+        shell: bash
+        run: |
+          while IFS= read -r batch; do
+            name=$(basename "$batch" .json)
+            npm run nutrition:research-validate -- --static --batch="$batch" \
+              | tee "nutrition-apply-reports/${name}-validation.json"
+            npm run nutrition:research-apply -- --batch="$batch" --protected-branch=main \
+              | tee "nutrition-apply-reports/${name}-apply.json"
+          done < nutrition-apply-reports/batches.txt
+      - name: Upload apply report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nutrition-research-apply-${{ github.run_id }}
+          path: nutrition-apply-reports/
+          if-no-files-found: warn

@@ -1,0 +1,121 @@
+name: Nutrition research PR validation
+
+on:
+  pull_request:
+    paths:
+      - 'audit/nutrition-research/batches/*.json'
+      - 'audit/nutrition-research/batches/*.md'
+
+permissions:
+  contents: read
+
+jobs:
+  static-contract:
+    runs-on: ubuntu-latest
+    outputs:
+      batch: ${{ steps.changed.outputs.batch }}
+      blocks_auto_merge: ${{ steps.validate.outputs.blocks_auto_merge }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Discover the evidence-only change
+        id: changed
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git diff --name-only "$BASE_SHA" "$HEAD_SHA" | tee changed-files.txt
+          mapfile -t batches < <(grep -E '^audit/nutrition-research/batches/[^/]+\.json$' changed-files.txt || true)
+          if [ "${#batches[@]}" -ne 1 ]; then
+            echo "Expected exactly one research batch JSON; found ${#batches[@]}" >&2
+            exit 1
+          fi
+          echo "batch=${batches[0]}" >> "$GITHUB_OUTPUT"
+      - name: Run focused contract tests
+        run: |
+          npx vitest run scripts/nutrition/__tests__/research-contract.test.ts scripts/nutrition/__tests__/validate-research-batch.test.ts
+      - name: Validate static artifact contract
+        id: validate
+        shell: bash
+        run: |
+          set +e
+          npm run nutrition:research-validate -- --static --batch="${{ steps.changed.outputs.batch }}" --changed-files=changed-files.txt | tee static-validation.json
+          code=${PIPESTATUS[0]}
+          set -e
+          if [ "$code" -eq 1 ]; then
+            exit 1
+          fi
+          if [ "$code" -eq 2 ]; then
+            echo "blocks_auto_merge=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "blocks_auto_merge=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  live-drift:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    needs: static-contract
+    runs-on: ubuntu-latest
+    outputs:
+      blocks_auto_merge: ${{ steps.validate.outputs.blocks_auto_merge }}
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Revalidate catalog and first-party source
+        id: validate
+        shell: bash
+        run: |
+          set +e
+          npm run nutrition:research-validate -- --live --batch="${{ needs.static-contract.outputs.batch }}" | tee live-validation.json
+          code=${PIPESTATUS[0]}
+          set -e
+          if [ "$code" -eq 1 ]; then
+            exit 1
+          fi
+          if [ "$code" -eq 2 ]; then
+            echo "blocks_auto_merge=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "blocks_auto_merge=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  auto-merge-gate:
+    if: always()
+    needs: [static-contract, live-drift]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require a clean, current evidence artifact
+        shell: bash
+        run: |
+          if [ "${{ needs.static-contract.result }}" != "success" ]; then
+            echo "Static evidence validation failed."
+            exit 1
+          fi
+          if [ "${{ needs.static-contract.outputs.blocks_auto_merge }}" = "true" ]; then
+            echo "The batch requires human review and artifact resolution."
+            exit 1
+          fi
+          if [ "${{ github.event.pull_request.head.repo.full_name }}" = "${{ github.repository }}" ]; then
+            if [ "${{ needs.live-drift.result }}" != "success" ]; then
+              echo "Live drift validation failed."
+              exit 1
+            fi
+            if [ "${{ needs.live-drift.outputs.blocks_auto_merge }}" = "true" ]; then
+              echo "Live validation requires human review."
+              exit 1
+            fi
+          fi
+          echo "Artifact is eligible for repository auto-merge policy."
