@@ -135,21 +135,14 @@ export default function Browse() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      <div className="bg-white border-b border-stone-200 px-4 py-6">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Browse Menu</h1>
-        <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2">
-          <p className="text-sm font-semibold text-amber-900">
-            Educational tool only - not medical advice. Nutrition values may be estimated or unavailable.
-          </p>
-        </div>
-        {!parkId && (
-          <div className="mb-4 rounded-lg border border-teal-200 bg-teal-50 px-3 py-2">
-            <p className="text-sm font-semibold text-teal-900">
-              All Parks shows a 3,000-item preview for speed; pick a destination for the full catalog.
-            </p>
-          </div>
-        )}
+    <div className="min-h-screen bg-cream">
+      <div className="border-b border-stone-200/70 px-4 py-6">
+        <h1 className="font-display text-3xl font-bold text-stone-900 mb-1">Browse Menu</h1>
+        <p className="mb-4 text-xs text-stone-600">
+          <span aria-hidden="true">⚠ </span>
+          Educational tool — not medical advice. Nutrition may be estimated or unavailable.
+          {!parkId && ' · Showing a 3,000-item preview — pick a destination for the full catalog.'}
+        </p>
 
         {/* Park selector - horizontal pill buttons */}
         <div id="browse-destination" tabIndex={-1} className="flex items-center gap-2 scroll-mt-20">
@@ -183,12 +176,12 @@ export default function Browse() {
           </div>
         </div>
 
-        <div className="mt-4 inline-flex gap-1 bg-stone-100 rounded-lg p-0.5">
+        <div className="mt-4 inline-flex gap-1 bg-stone-200/70 rounded-full p-1">
           <button
             type="button"
             onClick={() => setViewMode('list')}
             aria-pressed={viewMode === 'list'}
-            className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+            className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-colors ${
               viewMode === 'list' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-600 hover:text-stone-800'
             }`}
           >
@@ -198,7 +191,7 @@ export default function Browse() {
             type="button"
             onClick={() => setViewMode('location')}
             aria-pressed={viewMode === 'location'}
-            className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+            className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-colors ${
               viewMode === 'location' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-600 hover:text-stone-800'
             }`}
           >
@@ -213,7 +206,7 @@ export default function Browse() {
         <h2 id="browse-results-heading" className="sr-only">Browse results</h2>
         {/* Result count */}
         {!isLoading && totalItems > 0 && (
-          <div className="mb-4 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm text-gray-600" aria-live="polite">
+          <div className="mb-4 px-1 text-sm text-gray-600" aria-live="polite">
             <BrowseSummaryMain summary={browseSummary} />
             {browseSummary.detail && <span className="text-gray-500"> {browseSummary.detail}</span>}
             {browseSummary.note && (

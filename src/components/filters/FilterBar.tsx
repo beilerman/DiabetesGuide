@@ -147,7 +147,7 @@ export function FilterBar({ filters, onChange }: Props) {
   }
 
   return (
-    <div className="bg-stone-50/95 border-b border-stone-200 shadow-sm">
+    <div className="bg-white/60 backdrop-blur border-b border-stone-200/60">
       <div className="p-4 space-y-3">
         {/* Search input */}
         <div className="relative">
@@ -163,7 +163,7 @@ export function FilterBar({ filters, onChange }: Props) {
             aria-label="Search menu items and restaurants"
             value={filters.search}
             onChange={e => set('search', e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-stone-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 focus:outline-none text-sm transition-colors"
+            className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 bg-white shadow-sm focus:border-teal-500 focus:ring-2 focus:ring-teal-200 focus:outline-none text-sm transition-colors"
           />
         </div>
 
