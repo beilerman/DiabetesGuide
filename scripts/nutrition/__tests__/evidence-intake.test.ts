@@ -53,6 +53,16 @@ describe('evidence intake', () => {
     })
   })
 
+  it('preserves the item name exactly as the source reported it', () => {
+    const result = buildEvidenceCandidate(input({
+      itemName: 'Catalog Sandwich',
+      reportedItemName: 'Official Sandwich — Full Size',
+    }))
+
+    expect(result.itemName).toBe('Catalog Sandwich')
+    expect(result.evidenceRow.reported_item_name).toBe('Official Sandwich — Full Size')
+  })
+
   it('routes incomplete serving evidence to review with no Tier A proposal', () => {
     const result = buildEvidenceCandidate(input({
       serving: { quantity: null, unit: null, description: null },

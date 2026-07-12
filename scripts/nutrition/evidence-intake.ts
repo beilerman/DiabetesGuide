@@ -17,6 +17,7 @@ export type EvidenceMode = 'dry-run' | 'apply-evidence' | 'publish-reviewed'
 export interface EvidenceIntakeInput {
   menuItemId: string
   itemName: string
+  reportedItemName?: string
   sourceKind: EvidenceSourceKind
   sourceName: string
   sourceUrl: string | null
@@ -163,6 +164,7 @@ export function buildEvidenceCandidate(input: EvidenceIntakeInput): EvidenceCand
     contentHash: input.contentHash ?? null,
     normalizationFormula: input.normalizationFormula ?? null,
     normalizationInputs: input.normalizationInputs ?? null,
+    ...(input.reportedItemName == null ? {} : { reportedItemName: input.reportedItemName.trim() }),
   }
 
   return {
@@ -174,7 +176,7 @@ export function buildEvidenceCandidate(input: EvidenceIntakeInput): EvidenceCand
     reviewReasons,
     evidenceRow: {
       menu_item_id: input.menuItemId,
-      reported_item_name: input.itemName,
+      reported_item_name: input.reportedItemName?.trim() || input.itemName,
       source_name: input.sourceName.trim(),
       source_type: SOURCE_TYPE[input.sourceKind],
       source_url: input.sourceUrl?.trim() ?? '',

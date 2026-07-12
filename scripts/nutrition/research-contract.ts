@@ -38,6 +38,7 @@ interface ResearchOutcomeBase {
   status: ResearchStatus
   menuItemId: string
   itemName: string
+  catalogSnapshotHash: string
 }
 
 export interface ResearchEvidenceOutcome extends ResearchOutcomeBase {
@@ -52,11 +53,11 @@ export interface ResearchEvidenceOutcome extends ResearchOutcomeBase {
   serving: ResearchServing
   exactItemMatch: boolean
   exactServingMatch: boolean
-  retrievedAt: string
+  retrievedAt: string | null
   publishedAt: string | null
-  contentHash: string
+  contentHash: string | null
   upstreamSourceKey: string
-  evidenceKey: string
+  evidenceKey: string | null
   sourceExcerpt?: string
   reviewReasons: ResearchReviewReason[]
 }
@@ -100,6 +101,7 @@ const EVIDENCE_KEYS = new Set([
   'status',
   'menuItemId',
   'itemName',
+  'catalogSnapshotHash',
   'currentCarbs',
   'sourceKind',
   'sourceOwner',
@@ -119,7 +121,7 @@ const EVIDENCE_KEYS = new Set([
   'reviewReasons',
 ])
 
-const RESULT_KEYS = new Set(['status', 'menuItemId', 'itemName', 'reason', 'detail'])
+const RESULT_KEYS = new Set(['status', 'menuItemId', 'itemName', 'catalogSnapshotHash', 'reason', 'detail'])
 const SERVING_KEYS = new Set(['quantity', 'unit', 'description'])
 const ALLOWED_SOURCE_KINDS = new Set<ResearchSourceKind>([
   'official_research',
@@ -283,10 +285,21 @@ function parseEvidenceOutcome(record: Record<string, unknown>, index: number): R
   const sourceExcerpt = record.sourceExcerpt === undefined
     ? undefined
     : requireString(record.sourceExcerpt, `${name}.sourceExcerpt`, 500)
+  const retrievedAt = record.retrievedAt === null ? null : requireIsoDate(record.retrievedAt, `${name}.retrievedAt`)
+  const contentHash = record.contentHash === null ? null : requireHash(record.contentHash, `${name}.contentHash`)
+  const evidenceKey = record.evidenceKey === null ? null : requireHash(record.evidenceKey, `${name}.evidenceKey`)
+  if (status === 'accepted' && (retrievedAt == null || contentHash == null || evidenceKey == null)) {
+    throw new Error(`${name} accepted evidence requires retrievedAt, contentHash, and evidenceKey`)
+  }
+  if ((retrievedAt == null || contentHash == null || evidenceKey == null)
+    && !reviewReasons.some(reason => reason === 'owner_unverified' || reason === 'invalid_source')) {
+    throw new Error(`${name} missing provenance is allowed only for an unverified or invalid source`)
+  }
   return {
     status,
     menuItemId: requireString(record.menuItemId, `${name}.menuItemId`),
     itemName: requireString(record.itemName, `${name}.itemName`),
+    catalogSnapshotHash: requireHash(record.catalogSnapshotHash, `${name}.catalogSnapshotHash`),
     currentCarbs: requireNullableNonNegativeNumber(record.currentCarbs, `${name}.currentCarbs`),
     sourceKind: sourceKind as ResearchSourceKind,
     sourceOwner: requireString(record.sourceOwner, `${name}.sourceOwner`),
@@ -297,11 +310,11 @@ function parseEvidenceOutcome(record: Record<string, unknown>, index: number): R
     serving,
     exactItemMatch,
     exactServingMatch,
-    retrievedAt: requireIsoDate(record.retrievedAt, `${name}.retrievedAt`),
+    retrievedAt,
     publishedAt: requireNullableIsoDate(record.publishedAt, `${name}.publishedAt`),
-    contentHash: requireHash(record.contentHash, `${name}.contentHash`),
+    contentHash,
     upstreamSourceKey: requireString(record.upstreamSourceKey, `${name}.upstreamSourceKey`),
-    evidenceKey: requireHash(record.evidenceKey, `${name}.evidenceKey`),
+    evidenceKey,
     ...(sourceExcerpt === undefined ? {} : { sourceExcerpt }),
     reviewReasons: [...new Set(reviewReasons)].sort(),
   }
@@ -313,6 +326,7 @@ function parseResultOutcome(record: Record<string, unknown>, index: number): Res
   const common = {
     menuItemId: requireString(record.menuItemId, `${name}.menuItemId`),
     itemName: requireString(record.itemName, `${name}.itemName`),
+    catalogSnapshotHash: requireHash(record.catalogSnapshotHash, `${name}.catalogSnapshotHash`),
     detail: requireString(record.detail, `${name}.detail`, 500),
   }
   if (record.status === 'skipped') {
@@ -361,7 +375,7 @@ export function parseResearchBatch(value: unknown): ResearchBatch {
   })
   const duplicates = new Set<string>()
   for (const outcome of outcomes) {
-    if (!('evidenceKey' in outcome)) continue
+    if (!('evidenceKey' in outcome) || outcome.evidenceKey == null) continue
     const key = `${outcome.menuItemId}\u0000${outcome.evidenceKey}`
     if (duplicates.has(key)) throw new Error(`duplicate menu item/evidence key pair: ${outcome.menuItemId}`)
     duplicates.add(key)
