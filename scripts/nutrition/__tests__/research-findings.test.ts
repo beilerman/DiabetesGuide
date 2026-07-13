@@ -87,6 +87,37 @@ function dependencies(result: ResolvedSource = resolved) {
 }
 
 describe('buildResearchBatch', () => {
+  it('completes the five-item mixed-outcome acceptance fixture', async () => {
+    const sourceQueue = queue([
+      queueItem('accepted'),
+      queueItem('skip'),
+      queueItem('failed'),
+      queueItem('ambiguous'),
+      queueItem('discrepancy'),
+    ])
+    const result = await buildResearchBatch(sourceQueue, {
+      schemaVersion: 1,
+      batchId: sourceQueue.batchId,
+      outcomes: [
+        found('accepted'),
+        { status: 'skipped', menuItemId: 'skip', reason: 'no_first_party_source', detail: 'No official value.' },
+        { status: 'failed', menuItemId: 'failed', reason: 'source_unavailable', detail: 'Official site unavailable.' },
+        found('ambiguous', { serving: { quantity: null, unit: null, description: null } }),
+        found('discrepancy', { reportedCarbs: 61 }),
+      ],
+    } as ResearchFindings, dependencies())
+
+    expect(result.counts).toEqual({ accepted: 1, flagged: 2, skipped: 1, failed: 1 })
+    expect(result).toMatchObject({ shouldOpenPullRequest: true, blocksAutoMerge: true })
+    expect(result.batch.outcomes.map(outcome => `${outcome.menuItemId}:${outcome.status}`)).toEqual([
+      'accepted:accepted',
+      'ambiguous:flagged',
+      'discrepancy:flagged',
+      'failed:failed',
+      'skip:skipped',
+    ])
+  })
+
   it('turns exact official findings into evidence candidates', async () => {
     const result = await buildResearchBatch(queue([queueItem('item-1')]), {
       schemaVersion: 1,
