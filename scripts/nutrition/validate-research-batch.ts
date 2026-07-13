@@ -44,10 +44,21 @@ function evidenceOutcomes(batch: ResearchBatch): ResearchEvidenceOutcome[] {
     outcome.status === 'accepted' || outcome.status === 'flagged')
 }
 
-function fileScopeIsValid(batchId: string, changedFiles: string[]): boolean {
+function normalizedChangedFiles(changedFiles: string[]): Set<string> {
+  return new Set(changedFiles.map(file => file.replaceAll('\\', '/')))
+}
+
+function fileScopeIsValid(batchId: string, changedFiles: ReadonlySet<string>): boolean {
   const prefix = `audit/nutrition-research/batches/${batchId}`
   const allowed = new Set([`${prefix}.json`, `${prefix}.md`])
-  return changedFiles.every(file => allowed.has(file.replaceAll('\\', '/')))
+  return [...changedFiles].every(file => allowed.has(file))
+}
+
+function evidencePairIsComplete(batchId: string, changedFiles: ReadonlySet<string>): boolean {
+  const prefix = `audit/nutrition-research/batches/${batchId}`
+  return changedFiles.size === 2
+    && changedFiles.has(`${prefix}.json`)
+    && changedFiles.has(`${prefix}.md`)
 }
 
 export async function validateResearchBatch(
@@ -66,8 +77,10 @@ export async function validateResearchBatch(
   if (options.originalJson != null && options.originalJson !== stableResearchJson(batch)) {
     errors.push('artifact_not_deterministic')
   }
-  if (options.changedFiles && !fileScopeIsValid(batch.batchId, options.changedFiles)) {
-    errors.push('non_evidence_file_changed')
+  if (options.changedFiles) {
+    const changedFiles = normalizedChangedFiles(options.changedFiles)
+    if (!fileScopeIsValid(batch.batchId, changedFiles)) errors.push('non_evidence_file_changed')
+    if (!evidencePairIsComplete(batch.batchId, changedFiles)) errors.push('evidence_pair_incomplete')
   }
   let blocksAutoMerge = batch.outcomes.some(outcome => outcome.status === 'flagged')
 

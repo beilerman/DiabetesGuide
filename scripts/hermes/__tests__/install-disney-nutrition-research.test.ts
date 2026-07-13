@@ -39,6 +39,12 @@ describe('Disney nutrition research Hermes skill contract', () => {
     expect(source).toContain('no_first_party_source')
     expect(source).toMatch(/maximum.*five|at most five/i)
   })
+
+  it('uses PowerShell-compatible environment syntax for the deployed Windows worker', () => {
+    const source = readFileSync(sourceSkillPath(), 'utf8')
+    expect(source).toContain('$env:HERMES_HOME')
+    expect(source).not.toMatch(/(?<!env:)\$HERMES_HOME/)
+  })
 })
 
 describe('installDisneyNutritionResearchSkill', () => {

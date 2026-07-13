@@ -134,6 +134,16 @@ describe('validateResearchBatch static mode', () => {
     expect(result.errors).toEqual(expect.arrayContaining(['artifact_not_deterministic', 'non_evidence_file_changed']))
   })
 
+  it('requires both the JSON artifact and its Markdown summary', async () => {
+    const batch = validBatch()
+    const result = await validateResearchBatch(batch, {
+      mode: 'static',
+      changedFiles: [`audit/nutrition-research/batches/${batch.batchId}.json`],
+    })
+    expect(result.valid).toBe(false)
+    expect(result.errors).toContain('evidence_pair_incomplete')
+  })
+
   it('rejects malformed and duplicate evidence keys through the shared contract', async () => {
     const batch = validBatch() as unknown as Record<string, unknown>
     const outcomes = batch.outcomes as Array<Record<string, unknown>>

@@ -24,36 +24,36 @@ Research at most five queued Disney menu items, preserve every outcome, and open
 1. Work from the DiabetesGuide repository root. Confirm `gh auth status`, the current branch, and the existing worktree status. Leave unrelated untracked files untouched; stop if tracked changes overlap the research batch paths.
 2. Acquire the worker lease:
 
-   ```bash
-   npm run nutrition:research-lease -- acquire --home="$HERMES_HOME"
+   ```powershell
+   npm run nutrition:research-lease -- acquire --home="$env:HERMES_HOME"
    ```
 
    If the result is `busy`, report the skipped overlap and stop successfully. Save the returned token. Release this lease before every final response, including failures.
 3. Inspect open `hermes/nutrition-research/*` pull requests and collect their artifact menu-item IDs into a runtime `pending.json`. Also note newly merged/applied or apply-failed batches for the final status summary.
-4. Create a run directory under `$HERMES_HOME/nutrition-research/runs/<UTC timestamp>/` and build the queue:
+4. Create `$runDir` under `$env:HERMES_HOME/nutrition-research/runs/<UTC timestamp>/` and build the queue:
 
-   ```bash
-   npm run nutrition:research-queue -- --scope=wdw --limit=5 \
-     --pending-file="$RUN_DIR/pending.json" --out="$RUN_DIR/queue.json"
+   ```powershell
+   npm run nutrition:research-queue -- --scope=wdw --limit=5 `
+     --pending-file="$runDir/pending.json" --out="$runDir/queue.json"
    ```
 
    Never exceed the maximum of five items. If the queue is empty, release the lease and return an empty-batch summary.
 5. Research each queue item independently. Follow redirects to the final URL and verify ownership. Prefer exact nutrition pages or original PDFs. Capture the source-reported name, carbohydrate grams, serving quantity/unit/description, exact-match decisions, locator, publication date when present, and a source excerpt no longer than 500 characters.
-6. Write exactly one finding per queue item to `$RUN_DIR/findings.json` using the schema below. Use only `official_research` or `manufacturer_research` for found evidence. A temporary outage is `failed:source_unavailable`, never a no-source result.
+6. Write exactly one finding per queue item to `$runDir/findings.json` using the schema below. Use only `official_research` or `manufacturer_research` for found evidence. A temporary outage is `failed:source_unavailable`, never a no-source result.
 7. Build and validate the batch:
 
-   ```bash
-   npm run nutrition:research-build -- \
-     --queue="$RUN_DIR/queue.json" \
-     --findings="$RUN_DIR/findings.json" \
-     --runtime-out="$RUN_DIR/batch.json" \
-     --commit-out="audit/nutrition-research/batches/$BATCH_ID.json" \
-     --summary-out="audit/nutrition-research/batches/$BATCH_ID.md"
+   ```powershell
+   npm run nutrition:research-build -- `
+     --queue="$runDir/queue.json" `
+     --findings="$runDir/findings.json" `
+     --runtime-out="$runDir/batch.json" `
+     --commit-out="audit/nutrition-research/batches/$batchId.json" `
+     --summary-out="audit/nutrition-research/batches/$batchId.md"
 
-   npm run nutrition:research-validate -- \
-     --static --batch="audit/nutrition-research/batches/$BATCH_ID.json"
-   npm run nutrition:research-validate -- \
-     --live --batch="audit/nutrition-research/batches/$BATCH_ID.json"
+   npm run nutrition:research-validate -- `
+     --static --batch="audit/nutrition-research/batches/$batchId.json"
+   npm run nutrition:research-validate -- `
+     --live --batch="audit/nutrition-research/batches/$batchId.json"
    ```
 
 8. If there is no accepted or flagged evidence, create no pull request. Keep the runtime batch log, release the lease, and return the counts.
@@ -61,9 +61,9 @@ Research at most five queued Disney menu items, preserve every outcome, and open
 10. Push the branch and open a draft pull request with the Markdown summary. If the artifact is flagged, add `nutrition-research-review` and leave the PR draft. Do not dismiss or bypass the review block.
 11. If the artifact is unflagged and required checks are registered, mark it ready and request repository auto-merge:
 
-    ```bash
-    gh pr ready "$PR_URL"
-    gh pr merge "$PR_URL" --auto --squash
+    ```powershell
+    gh pr ready "$prUrl"
+    gh pr merge "$prUrl" --auto --squash
     ```
 
     If auto-merge is unavailable, leave the PR open and report that exact state.
