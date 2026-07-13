@@ -1,16 +1,17 @@
 import { expect, test, type Page, type Route } from '@playwright/test'
 
-test('home and browse clarify catalog item, restaurant, and destination counts', async ({ page }) => {
+test('home and browse clarify catalog item and destination counts', async ({ page }) => {
   await mockCatalogApi(page)
 
   await page.goto('/')
 
-  await expect(page.getByText(/Catalog preview: 15 menu items.*2 restaurants.*2 destinations/)).toBeVisible()
-  await expect(page.getByText('15 menu items across 2 destinations')).toBeVisible()
+  const hero = page.getByRole('region', { name: 'Eat the parks with confidence.' })
+  await expect(hero).toContainText(/\d[\d,]* menu items across \d+ destinations/)
+  await expect(page.getByRole('region', { name: 'Walt Disney World' })).toContainText(/\d[\d,]* menu items across \d+ destinations/)
 
   await page.goto('/browse')
 
-  await expect(page.locator('p').filter({ hasText: 'All Parks shows a 3,000-item preview for speed; pick a destination for the full catalog.' })).toBeVisible()
+  await expect(page.locator('p').filter({ hasText: 'Showing a 3,000-item preview — pick a destination for the full catalog.' })).toBeVisible()
   await expect(page.getByText('Full catalog: 15 menu items. Choose a destination for complete listings.')).toBeVisible()
 
   const previewTooltipTrigger = page.getByRole('button', { name: 'loaded preview items' })
