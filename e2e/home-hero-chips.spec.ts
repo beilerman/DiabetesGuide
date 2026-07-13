@@ -1,15 +1,15 @@
 import { expect, test, type Page, type Route } from '@playwright/test'
 
-test('home hero badge and quick-filter chips are mobile responsive', async ({ page }) => {
+test('home hero summary and quick-filter chips are mobile responsive', async ({ page }) => {
   await mockCatalog(page)
   await page.setViewportSize({ width: 375, height: 812 })
   await page.goto('/')
 
-  const titleBox = await page.getByRole('heading', { name: /diabetesguide/i }).boundingBox()
-  const badgeBox = await page.getByText(/catalog preview:/i).boundingBox()
+  const titleBox = await page.getByRole('heading', { name: 'Eat the parks with confidence.' }).boundingBox()
+  const summaryBox = await page.getByText(/Carb counts and nutrition confidence for \d[\d,]* menu items across \d+ destinations/).boundingBox()
   expect(titleBox).not.toBeNull()
-  expect(badgeBox).not.toBeNull()
-  expect(badgeBox!.y).toBeGreaterThan(titleBox!.y)
+  expect(summaryBox).not.toBeNull()
+  expect(summaryBox!.y).toBeGreaterThan(titleBox!.y)
 
   const chipRail = page.getByTestId('home-filter-chip-rail')
   await expect(chipRail).toBeVisible()

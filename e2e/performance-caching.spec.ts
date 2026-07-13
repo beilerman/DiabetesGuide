@@ -6,7 +6,7 @@ test('home uses the preloaded static catalog preview before live catalog request
   await page.goto('/', { waitUntil: 'domcontentloaded' })
 
   await expect(page.locator('link[rel="preload"][href="/data/catalog-preview.json"][as="fetch"]')).toHaveCount(1)
-  await expect(page.getByText(/Catalog preview: .*menu items.*restaurants.*destinations/)).toBeVisible()
+  await expect(page.getByText(/Carb counts and nutrition confidence for .*menu items across .*destinations/)).toBeVisible()
   await expect(page.getByRole('heading', { name: /walt disney world/i })).toBeVisible()
   await expect(page.getByText(/counts syncing/i)).toHaveCount(0)
 })
