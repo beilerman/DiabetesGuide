@@ -1,0 +1,29 @@
+name: Disposable nutrition research integration
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  isolated-supabase-integration:
+    runs-on: ubuntu-latest
+    environment: nutrition-research-integration
+    env:
+      RUN_NUTRITION_RESEARCH_INTEGRATION: '1'
+      TEST_SUPABASE_ALLOW_REMOTE_DISPOSABLE: '1'
+      TEST_SUPABASE_URL: ${{ secrets.TEST_SUPABASE_URL }}
+      TEST_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.TEST_SUPABASE_SERVICE_ROLE_KEY }}
+      TEST_SUPABASE_ANON_KEY: ${{ secrets.TEST_SUPABASE_ANON_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 'main'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Verify the real evidence-only database path
+        run: npx vitest run scripts/nutrition/__tests__/apply-research-batch.integration.test.ts

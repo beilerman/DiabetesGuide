@@ -55,6 +55,13 @@
     "ai:candidates": "tsx scripts/ai-nutrition-candidates.ts",
     "import:ai": "tsx scripts/import-ai-nutrition.ts",
     "import:manual-nutrition": "tsx scripts/import-ai-nutrition.ts --file=data/manual-nutrition-estimates.json",
+    "nutrition:research-queue": "tsx scripts/nutrition/research-queue-cli.ts",
+    "nutrition:research-lease": "tsx scripts/nutrition/research-lease-cli.ts",
+    "nutrition:research-build": "tsx scripts/nutrition/research-findings-cli.ts",
+    "nutrition:research-validate": "tsx scripts/nutrition/validate-research-batch-cli.ts",
+    "nutrition:research-apply": "tsx scripts/nutrition/apply-research-batch-cli.ts",
+    "hermes:install-nutrition-research": "tsx scripts/hermes/install-disney-nutrition-research.ts",
+    "hermes:provision-nutrition-research": "tsx scripts/hermes/provision-disney-nutrition-research.ts",
     "audit:calibrate": "tsx scripts/audit/calibrate.ts",
     "audit:triangulate": "tsx scripts/audit/triangulate.ts"
   },
