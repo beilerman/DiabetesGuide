@@ -182,7 +182,7 @@ export function createResearchApplyStore(client: SupabaseClient): ResearchApplyS
       if (rows.length === 0) return
       const { error } = await client
         .from('nutrition_sources')
-        .upsert(rows, { onConflict: 'evidence_key', ignoreDuplicates: true })
+        .insert(rows)
       if (error) throw new Error(`Failed to insert reviewed evidence: ${errorMessage(error)}`)
     },
   }

@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 
 const prPath = '.github/workflows/nutrition-research-pr.yml'
 const applyPath = '.github/workflows/nutrition-research-apply.yml'
+const integrationPath = '.github/workflows/nutrition-research-integration.yml'
 
 function workflow(path: string): string {
   return readFileSync(path, 'utf8')
@@ -82,5 +83,16 @@ describe('nutrition research protected apply workflow', () => {
     const source = workflow(applyPath)
     expect(source).toContain('actions/upload-artifact@v4')
     expect(source).toContain('if: always()')
+  })
+})
+
+describe('nutrition research disposable integration workflow', () => {
+  it('is manual, main-only, and isolated from pull-request execution', () => {
+    const source = workflow(integrationPath)
+    expect(source).toContain('workflow_dispatch:')
+    expect(source).toContain('environment: nutrition-research-integration')
+    expect(source).toContain("ref: 'main'")
+    expect(source).not.toMatch(/pull_request(?:_target)?:/)
+    expect(source).toContain('TEST_SUPABASE_SERVICE_ROLE_KEY')
   })
 })
