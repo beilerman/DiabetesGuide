@@ -1,17 +1,10 @@
 {
   "mode": "daily",
   "consecutiveCleanDays": 0,
-  "lastAudit": "2026-07-17",
+  "lastAudit": "2026-07-18",
   "autoFixesApplied": 0,
   "graduationThreshold": 14,
   "history": [
-    {
-      "date": "2026-06-18",
-      "high": 38,
-      "medium": 270,
-      "low": 3708,
-      "autoFixes": 0
-    },
     {
       "date": "2026-06-19",
       "high": 38,
@@ -210,6 +203,13 @@
     },
     {
       "date": "2026-07-17",
+      "high": 38,
+      "medium": 270,
+      "low": 3708,
+      "autoFixes": 0
+    },
+    {
+      "date": "2026-07-18",
       "high": 38,
       "medium": 270,
       "low": 3708,
