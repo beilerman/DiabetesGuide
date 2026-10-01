@@ -1,0 +1,73 @@
+{
+  "batchId": "wdw-20260714T150000Z-64d38b07",
+  "catalogSnapshotAt": "2026-07-14T15:26:03.383Z",
+  "generatedAt": "2026-07-14T15:34:17.829Z",
+  "outcomes": [
+    {
+      "catalogSnapshotHash": "8978eaeae7c6ed990573f4672982768afc0d95a5eb8b867d2c9fef8da179011c",
+      "contentHash": null,
+      "currentCarbs": null,
+      "evidenceKey": null,
+      "exactItemMatch": false,
+      "exactServingMatch": true,
+      "itemName": "Ginger Lemon Cayenne",
+      "manufacturerRelationship": null,
+      "menuItemId": "04b43821-4f18-4bcc-9e4d-84a6a586c671",
+      "ownerId": "jamba",
+      "publishedAt": null,
+      "reportedCarbs": 6,
+      "retrievedAt": null,
+      "reviewReasons": [
+        "owner_unverified"
+      ],
+      "serving": {
+        "description": "1 shot (2 fl oz [60 ml])",
+        "quantity": 1,
+        "unit": "shot"
+      },
+      "sourceExcerpt": "\"nutrition\":{\"servingSize\":\"Serving size 1 shot (2fl oz [60ml])\",\"calories\":\"25\",\"totalCarbohydrates\":\"6\",\"sugar\":\"3\"}",
+      "sourceKind": "official_research",
+      "sourceLocator": "embedded product nutrition JSON for Ginger Shot",
+      "sourceOwner": "Jamba",
+      "sourceOwnerType": "chain",
+      "sourceReportedItemName": "Ginger Shot",
+      "sourceUrl": "https://www.jamba.com/menu/grab-n-go/ginger-shot",
+      "status": "flagged",
+      "upstreamSourceKey": "jamba-menu-grab-n-go-ginger-shot-20260714"
+    },
+    {
+      "catalogSnapshotHash": "fa93e30d54fd67feda6f744505f3409bd579841923cd16a98470feadbb2fd1f3",
+      "detail": "No qualifying first-party carbohydrate value found for Pork Egg Rolls (2) at Yak & Yeti Local Food Cafes.",
+      "itemName": "Pork Egg Rolls (2)",
+      "menuItemId": "0b8b78cf-61d3-41a5-aae0-5dedb44d8812",
+      "reason": "no_first_party_source",
+      "status": "skipped"
+    },
+    {
+      "catalogSnapshotHash": "81ff791c61515df90f22cc4691062d86377d05cfeeccbbe77a476d39e69b05c1",
+      "detail": "No qualifying first-party carbohydrate value found for Strawberry Fruit Bar at Cooling Hut.",
+      "itemName": "Strawberry Fruit Bar",
+      "menuItemId": "0dcf3341-3dcc-43a5-992b-dda6d500f62c",
+      "reason": "no_first_party_source",
+      "status": "skipped"
+    },
+    {
+      "catalogSnapshotHash": "b3b6726236ed06c20f4d6f8e90c4682861a401ec7a5664940359700b481f64f7",
+      "detail": "No qualifying first-party carbohydrate value found for Pina CoLAVA at Polar Pub.",
+      "itemName": "Pina CoLAVA",
+      "menuItemId": "2bfafbe7-ec63-4ddf-971f-894a787e5d79",
+      "reason": "no_first_party_source",
+      "status": "skipped"
+    },
+    {
+      "catalogSnapshotHash": "85bba8ac1b0634e82363bfb972f002b40104072ea420950b0a0442bfb1a0aaf7",
+      "detail": "The Peroni-owned product site did not respond after bounded retries, so first-party carbohydrate evidence could not be verified.",
+      "itemName": "Peroni",
+      "menuItemId": "2c7c88f7-eae3-41a5-89dd-ab7585a4ed52",
+      "reason": "source_unavailable",
+      "status": "failed"
+    }
+  ],
+  "schemaVersion": 1,
+  "scope": "wdw"
+}
