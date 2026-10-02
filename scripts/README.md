@@ -58,6 +58,22 @@ don't resume an in-flight campaign by batch number after regenerating.
 
 ## Safety notes
 
+- Scheduled jobs record metadata receipts with required step outcomes. The daily
+  audit continues independent diagnostics, then fails if any required stage
+  failed/skipped and commits results only on complete runs. Artifacts upload on
+  failures too. This status does not prove that any mail or DB operation inside
+  a successful stage completed; those entry points need their own effect receipts.
+- Weekly sync validates Supabase configuration, clears old JSON only in its
+  disposable CI checkout, and requires complete, fresh, dated scrape results and
+  at least 100 items before merge/automated approval. Partial or HTTP 403 failures
+  block the run; they are never bypassed. A healthy scrape with no DB changes is
+  still a complete run. `workflow-guard.mjs prepare` deletes old local scrape JSON;
+  use it only in a disposable checkout.
+- Offline guard fixtures: `node --test scripts/sync/workflow-guard.test.mjs`.
+  They call pure validation functions, use no credentials/network, and write no
+  catalog files. Cron times remain UTC; Eastern local times shift with DST and
+  GitHub dispatch can be delayed. `*/3` day-of-month resets monthly, rather than
+  providing an exact 72-hour interval.
 - **`approve.ts` writes to production.** `--auto` applies the confidence gate and a
   volume circuit-breaker (`AUTO_APPROVE_MAX_ITEMS`, default 1500). `--all` bypasses
   the gate — never wire it into CI.
