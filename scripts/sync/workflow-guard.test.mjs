@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync, existsSync } from 'node:fs'
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync, existsSync, utimesSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -8,6 +8,8 @@ import { spawnSync } from 'node:child_process'
 import { auditOutcome, requireConfig, syncOutcome, validateScrapes } from './workflow-guard.mjs'
 
 const startedAt = Date.parse('2026-10-01T23:59:59Z')
+const checkedAt = startedAt + 2000
+const validate = (files, outcome = 'success') => validateScrapes(files, startedAt, outcome, 100, checkedAt)
 const healthy = () => [{ mtimeMs: startedAt + 2000, result: {
   scrapedAt: '2026-10-02T00:00:01Z', errors: [], restaurants: [{
     restaurantName: 'Fixture Cafe', items: Array.from({ length: 100 }, (_, i) => ({ itemName: `Fixture ${i}` })),
@@ -19,36 +21,76 @@ test('missing and blank config block without reflecting credential values', () =
   assert.doesNotThrow(() => requireConfig({ SUPABASE_URL: 'https://fixture.invalid', SUPABASE_SERVICE_ROLE_KEY: 'fixture-only' }))
 })
 test('healthy fresh output is valid across UTC midnight, regardless of new DB changes', () => {
-  assert.deepEqual(validateScrapes(healthy(), startedAt, 'success'), { itemCount: 100, fileCount: 1 })
+  assert.deepEqual(validate(healthy()), { itemCount: 100, fileCount: 1 })
 })
 test('partial scraper failure blocks even with enough rows', () => {
-  assert.throws(() => validateScrapes(healthy(), startedAt, 'failure'), /scrapers failed/)
+  assert.throws(() => validate(healthy(), 'failure'), /scrapers failed/)
 })
 test('old files cannot satisfy the fresh item minimum', () => {
   const files = healthy()
   files[0].mtimeMs = startedAt - 86400000
-  assert.throws(() => validateScrapes(files, startedAt, 'success'), /Stale/)
+  assert.throws(() => validate(files), /Stale/)
   files[0].mtimeMs = startedAt + 2000
   files[0].result.scrapedAt = '2026-09-30T10:00:00Z'
-  assert.throws(() => validateScrapes(files, startedAt, 'success'), /Stale/)
+  assert.throws(() => validate(files), /Stale/)
 })
 test('zero and 99 fresh rows are blocked; exactly 100 remains valid', () => {
-  assert.throws(() => validateScrapes([], startedAt, 'success'), /No fresh/)
+  assert.throws(() => validate([]), /No fresh/)
   const files = healthy()
   files[0].result.restaurants[0].items = []
-  assert.throws(() => validateScrapes(files, startedAt, 'success'), /Insufficient/)
+  assert.throws(() => validate(files), /Insufficient/)
   const belowMinimum = healthy()
   belowMinimum[0].result.restaurants[0].items.pop()
-  assert.throws(() => validateScrapes(belowMinimum, startedAt, 'success'), /Insufficient/)
-  assert.equal(validateScrapes(healthy(), startedAt, 'success').itemCount, 100)
+  assert.throws(() => validate(belowMinimum), /Insufficient/)
+  assert.equal(validate(healthy()).itemCount, 100)
 })
 test('scrape errors, missing error receipts and invalid item names fail closed', () => {
   for (const change of [r => r.errors.push('HTTP 403'), r => delete r.errors,
                         r => { r.restaurants[0].items[0].itemName = '' }]) {
     const files = healthy()
     change(files[0].result)
-    assert.throws(() => validateScrapes(files, startedAt, 'success'))
+    assert.throws(() => validate(files))
   }
+})
+
+test('scrapedAt beyond five-minute clock skew blocks even with 100 fresh items', () => {
+  for (const delta of [300001, 86400000]) {
+    const files = healthy()
+    files[0].result.scrapedAt = new Date(checkedAt + delta).toISOString()
+    assert.throws(() => validate(files), /Future-dated/, `scrapedAt +${delta}ms`)
+  }
+})
+test('mtime beyond five-minute clock skew blocks even with 100 fresh items', () => {
+  for (const delta of [300001, 86400000]) {
+    const files = healthy()
+    files[0].mtimeMs = checkedAt + delta
+    assert.throws(() => validate(files), /Future-dated/, `mtime +${delta}ms`)
+  }
+})
+test('timestamps exactly at the five-minute skew boundary remain valid', () => {
+  for (const delta of [0, 1, 300000]) {
+    const files = healthy()
+    files[0].mtimeMs = checkedAt + delta
+    files[0].result.scrapedAt = new Date(checkedAt + delta).toISOString()
+    assert.deepEqual(validate(files), { itemCount: 100, fileCount: 1 })
+  }
+  const files = healthy()
+  const futureStart = checkedAt + 300000
+  files[0].mtimeMs = futureStart
+  files[0].result.scrapedAt = new Date(futureStart).toISOString()
+  assert.equal(validateScrapes(files, futureStart, 'success', 100, checkedAt).itemCount, 100)
+})
+test('missing and non-finite mtimes cannot prove freshness', () => {
+  for (const mtimeMs of [undefined, NaN, Infinity, -Infinity, String(checkedAt)]) {
+    const files = healthy()
+    files[0].mtimeMs = mtimeMs
+    assert.throws(() => validate(files), /Stale or undated/)
+  }
+})
+test('invalid validation clocks and future run-start receipts fail closed', () => {
+  for (const now of [NaN, Infinity, -Infinity])
+    assert.throws(() => validateScrapes(healthy(), startedAt, 'success', 100, now), /No fresh/)
+  assert.throws(() => validateScrapes(healthy(), checkedAt + 300001, 'success', 100, checkedAt), /No fresh/)
 })
 test('daily audit completion requires every required stage, including rejected/skipped stages', () => {
   const statuses = { pipeline: 'success', external: 'success', quality: 'success', evidence: 'success' }
@@ -101,6 +143,21 @@ test('CLI check and finish retain counts for a completed healthy/no-change run',
   assert.equal(receipt().status, 'complete')
   assert.equal(receipt().itemCount, 100)
 }))
+for (const field of ['scrapedAt', 'mtime']) {
+  test(`CLI check rejects future ${field} with a blocked receipt`, () => inFixture(({ root, invoke, receipt }) => {
+    assert.equal(invoke('prepare', { SUPABASE_URL: 'https://fixture.invalid', SUPABASE_SERVICE_ROLE_KEY: 'fixture-only' }).status, 0)
+    const now = Date.now()
+    const future = now + 86400000
+    const fixture = healthy()[0].result
+    fixture.scrapedAt = new Date(field === 'scrapedAt' ? future : now).toISOString()
+    const path = join(root, 'data/scraped/fixture.json')
+    writeFileSync(path, JSON.stringify(fixture))
+    if (field === 'mtime') utimesSync(path, new Date(now), new Date(future))
+    assert.equal(invoke('check', { SCRAPE_OUTCOME: 'success' }).status, 1, field)
+    assert.equal(receipt().status, 'blocked_scrape', field)
+    assert.equal(receipt().itemCount, undefined, field)
+  }))
+}
 test('CLI audit aggregate failure preserves a receipt and returns nonzero', () => inFixture(({ root, invoke }) => {
   const result = invoke('audit', { STAGE_OUTCOMES: JSON.stringify({ pipeline: 'failure', external: 'success', quality: 'success', evidence: 'success' }) })
   assert.equal(result.status, 1)

@@ -65,8 +65,11 @@ don't resume an in-flight campaign by batch number after regenerating.
   a successful stage completed; those entry points need their own effect receipts.
 - Weekly sync validates Supabase configuration, clears old JSON only in its
   disposable CI checkout, and requires complete, fresh, dated scrape results and
-  at least 100 items before merge/automated approval. Partial or HTTP 403 failures
-  block the run; they are never bypassed. A healthy scrape with no DB changes is
+  at least 100 items before merge/automated approval. Scrape dates and file
+  modification times may be at most five minutes ahead of the validation clock;
+  invalid timestamps or a run-start receipt beyond that bound block the run.
+  Partial or HTTP 403 failures block the run; they are never bypassed.
+  A healthy scrape with no DB changes is
   still a complete run. `workflow-guard.mjs prepare` deletes old local scrape JSON;
   use it only in a disposable checkout.
 - Offline guard fixtures: `node --test scripts/sync/workflow-guard.test.mjs`.

@@ -3,6 +3,8 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, unlinkSync,
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+const MAX_CLOCK_SKEW_MS = 5 * 60 * 1000
+
 export function requireConfig(env) {
   const missing = ['SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY'].filter(key => !env[key]?.trim())
   if (missing.length) throw new Error(`Missing required configuration: ${missing.join(', ')}`)
@@ -13,14 +15,22 @@ export function auditOutcome(outcomes) {
   return required.every(name => outcomes[name] === 'success') ? 'complete' : 'failed'
 }
 
-export function validateScrapes(files, startedAt, scrapeOutcome, minItems = 100) {
+export function validateScrapes(files, startedAt, scrapeOutcome, minItems = 100, checkedAt = Date.now()) {
   if (scrapeOutcome !== 'success') throw new Error('One or more required scrapers failed')
-  if (!Number.isFinite(startedAt) || !files.length) throw new Error('No fresh scrape output')
+  if (!Number.isFinite(checkedAt) || !Number.isFinite(startedAt) ||
+      startedAt > checkedAt + MAX_CLOCK_SKEW_MS || !files.length)
+    throw new Error('No fresh scrape output')
+  // Use one validation clock for the entire batch. A small forward clock skew
+  // is tolerated; arbitrarily future-dated output must never prove freshness.
+  const latestTimestamp = checkedAt + MAX_CLOCK_SKEW_MS
   let itemCount = 0
   for (const { result, mtimeMs } of files) {
     const scrapedAt = Date.parse(result.scrapedAt)
-    if (!Number.isFinite(scrapedAt) || scrapedAt < startedAt - 1000 || mtimeMs < startedAt - 1000)
+    if (!Number.isFinite(scrapedAt) || !Number.isFinite(mtimeMs) ||
+        scrapedAt < startedAt - 1000 || mtimeMs < startedAt - 1000)
       throw new Error('Stale or undated scrape output')
+    if (scrapedAt > latestTimestamp || mtimeMs > latestTimestamp)
+      throw new Error('Future-dated scrape output')
     if (!Array.isArray(result.errors) || result.errors.length || !Array.isArray(result.restaurants))
       throw new Error('Incomplete scrape output')
     for (const restaurant of result.restaurants) {
