@@ -32,11 +32,15 @@ test('old files cannot satisfy the fresh item minimum', () => {
   files[0].result.scrapedAt = '2026-09-30T10:00:00Z'
   assert.throws(() => validateScrapes(files, startedAt, 'success'), /Stale/)
 })
-test('zero output and insufficient rows are blocked, not no-change success', () => {
+test('zero and 99 fresh rows are blocked; exactly 100 remains valid', () => {
   assert.throws(() => validateScrapes([], startedAt, 'success'), /No fresh/)
   const files = healthy()
   files[0].result.restaurants[0].items = []
   assert.throws(() => validateScrapes(files, startedAt, 'success'), /Insufficient/)
+  const belowMinimum = healthy()
+  belowMinimum[0].result.restaurants[0].items.pop()
+  assert.throws(() => validateScrapes(belowMinimum, startedAt, 'success'), /Insufficient/)
+  assert.equal(validateScrapes(healthy(), startedAt, 'success').itemCount, 100)
 })
 test('scrape errors, missing error receipts and invalid item names fail closed', () => {
   for (const change of [r => r.errors.push('HTTP 403'), r => delete r.errors,
