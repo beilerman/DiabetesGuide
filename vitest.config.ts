@@ -8,6 +8,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./src/test-utils.tsx'],
     css: false,
-    exclude: [...configDefaults.exclude, 'e2e/**', 'test-results/**'],
+    // This suite uses Node's native runner and is executed by npm test first.
+    exclude: [...configDefaults.exclude, 'e2e/**', 'test-results/**', 'scripts/sync/workflow-guard.test.mjs'],
   },
 })

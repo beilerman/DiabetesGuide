@@ -21,9 +21,15 @@ describe('weekly-menu-sync workflow', () => {
   it('gates DB sync on a real scraped item count, not merely a file existing', () => {
     const workflow = readWorkflow()
 
-    // Empty scrapes still write a file, so the gate must check item count.
-    expect(workflow).toContain('item_count')
-    expect(workflow).toMatch(/fromJSON\(steps\.check_scraped\.outputs\.item_count\)\s*>=\s*100/)
+    // The guard now owns freshness, completeness and the real minimum count.
+    // Its behavior/boundaries are exercised by the native Node suite in npm test.
+    const gate = workflow.match(/- name: Check scraped output([\s\S]*?)(?=\n      - name:)/)?.[1]
+    expect(gate).toContain('id: check_scraped')
+    expect(gate).toContain('node scripts/sync/workflow-guard.mjs check')
+    expect(gate).toContain('SCRAPE_OUTCOME: ${{ steps.scrape.outcome }}')
+    expect(gate).not.toContain('continue-on-error: true')
+    expect(workflow.indexOf('node scripts/sync/workflow-guard.mjs check'))
+      .toBeLessThan(workflow.indexOf('npm run sync:merge'))
     expect(workflow).not.toContain("outputs.file_count != '0'")
   })
 
