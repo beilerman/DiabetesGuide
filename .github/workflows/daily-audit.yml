@@ -2,7 +2,7 @@ name: Daily Audit
 
 on:
   schedule:
-    # 6 AM UTC = 1 AM ET daily
+    # 06:00 UTC daily = 02:00 EDT / 01:00 EST; GitHub dispatch may be delayed.
     - cron: '0 6 * * *'
   workflow_dispatch:
 
@@ -13,6 +13,10 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: daily-audit-${{ github.ref }}
+      cancel-in-progress: false
 
     steps:
       - uses: actions/checkout@v4
@@ -26,6 +30,7 @@ jobs:
         run: npm ci
 
       - name: Run audit pipeline
+        id: pipeline
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -37,6 +42,7 @@ jobs:
         continue-on-error: true
 
       - name: Run external checks
+        id: external
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -44,6 +50,7 @@ jobs:
         continue-on-error: true
 
       - name: Run quality report
+        id: quality
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -51,17 +58,28 @@ jobs:
         continue-on-error: true
 
       - name: Monitor certified nutrition evidence
+        id: evidence
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: npm run evidence:monitor -- --apply-checks
         continue-on-error: true
 
+      - name: Record required audit outcomes
+        id: audit_outcome
+        if: always()
+        env:
+          STAGE_OUTCOMES: >-
+            {"pipeline":"${{ steps.pipeline.outcome }}","external":"${{ steps.external.outcome }}","quality":"${{ steps.quality.outcome }}","evidence":"${{ steps.evidence.outcome }}"}
+        run: node scripts/sync/workflow-guard.mjs audit
+
       - name: Upload audit artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: audit-report-${{ github.run_id }}
           path: |
+            audit/workflow-receipt.json
             audit/accuracy-results.json
             audit/completeness-results.json
             audit/autofix-results.json
@@ -73,6 +91,7 @@ jobs:
           retention-days: 30
 
       - name: Commit audit results
+        if: steps.audit_outcome.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

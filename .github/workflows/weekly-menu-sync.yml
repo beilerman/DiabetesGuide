@@ -2,7 +2,7 @@ name: Weekly Menu Sync
 
 on:
   schedule:
-    # Run every Sunday at 11 PM ET (4 AM UTC Monday)
+    # Monday 04:00 UTC = Monday 00:00 EDT / Sunday 23:00 EST; dispatch may be delayed.
     - cron: '0 4 * * 1'
   workflow_dispatch: # Allow manual trigger
 
@@ -12,6 +12,10 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: weekly-menu-sync-${{ github.ref }}
+      cancel-in-progress: false
 
     steps:
       - uses: actions/checkout@v4
@@ -27,55 +31,58 @@ jobs:
       - name: Install Puppeteer browsers
         run: npx puppeteer browsers install
 
+      - name: Validate config and isolate this run's scrape output
+        id: prepare
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/sync/workflow-guard.mjs prepare
+
       - name: Run all scrapers
+        id: scrape
         run: npm run scrape:all -- --skip-dfb
         continue-on-error: true
 
       - name: Check scraped output
         id: check_scraped
+        env:
+          SCRAPE_OUTCOME: ${{ steps.scrape.outcome }}
         run: |
-          # Gate on TOTAL ITEM COUNT, not "a file exists": empty scrapes still
-          # write a file, so the old file-count check let a fully-broken scrape
-          # proceed to the DB. Require a sane minimum before touching the DB.
-          item_count=$(node -e "
-            const fs=require('fs');const dir='data/scraped';let total=0;
-            if(fs.existsSync(dir)){for(const f of fs.readdirSync(dir).filter(f=>f.endsWith('.json'))){
-              try{const d=JSON.parse(fs.readFileSync(dir+'/'+f,'utf8'));
-                total+=(d.restaurants||[]).reduce((s,r)=>s+((r.items||[]).length),0);}catch{}}}
-            console.log(total);
-          ")
-          echo "item_count=$item_count" >> $GITHUB_OUTPUT
-          echo "Scraped item count: $item_count"
-          if [ "$item_count" -lt 100 ]; then
-            echo "::warning::Only $item_count scraped items (< 100) — scrapers likely failing; skipping DB sync."
-          fi
+          node scripts/sync/workflow-guard.mjs check
 
       - name: Merge with database
-        if: fromJSON(steps.check_scraped.outputs.item_count) >= 100
+        id: merge
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: npm run sync:merge
 
       - name: Estimate nutrition
-        if: fromJSON(steps.check_scraped.outputs.item_count) >= 100
+        id: estimate
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: npm run sync:estimate
 
       - name: Generate diff report
-        if: fromJSON(steps.check_scraped.outputs.item_count) >= 100
+        id: report
         run: npm run sync:report
 
       - name: Auto-approve high-confidence items
-        if: fromJSON(steps.check_scraped.outputs.item_count) >= 100
+        id: approve
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         # No continue-on-error: a failed import (approve sets a non-zero exit on
         # errors, or the volume circuit-breaker trips) should fail the run loudly.
         run: npm run sync:approve -- --auto
+
+      - name: Record sync outcome
+        if: always()
+        env:
+          STAGE_OUTCOMES: >-
+            {"prepare":"${{ steps.prepare.outcome }}","scrape":"${{ steps.scrape.outcome }}","check":"${{ steps.check_scraped.outcome }}","merge":"${{ steps.merge.outcome }}","estimate":"${{ steps.estimate.outcome }}","report":"${{ steps.report.outcome }}","approve":"${{ steps.approve.outcome }}"}
+        run: node scripts/sync/workflow-guard.mjs finish
 
       - name: Upload report + pending artifacts
         if: always()
@@ -87,6 +94,7 @@ jobs:
           # ignore rules and defeated the secret-leak backstop).
           name: menu-sync-report-${{ github.run_id }}
           path: |
+            data/pending/workflow-receipt.json
             data/pending/report-*.md
             data/pending/report-*.json
             data/pending/estimated-*.json
