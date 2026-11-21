@@ -130,6 +130,9 @@ async function main() {
     for (const r of results.filter(r => !r.success)) {
       console.warn(`  - ${r.name}: ${r.error}`)
     }
+    // Partial source coverage is a failed required scrape, not a healthy sync.
+    // Keep diagnostic output but prevent downstream automated DB approval.
+    process.exitCode = 1
   }
 
   // Count scraped files for today
